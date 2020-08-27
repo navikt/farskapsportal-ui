@@ -13,13 +13,16 @@ const cache = new NodeCache({
     checkperiod: SECONDS_PER_MINUTE,
 });
 
+const decoratorUrl =
+    'https://dekoratoren.dev.nav.no/?context=privatperson&redirectToApp=true&level=4';
+
 const getDecorator = () =>
     new Promise((resolve, reject) => {
         const decorator = cache.get('main-cache');
         if (decorator) {
             resolve(decorator);
         } else {
-            request(process.env.DECORATOR_URL, (error, response, body) => {
+            request(decoratorUrl, (error, response, body) => {
                 if (
                     !error &&
                     response.statusCode >= 200 &&
