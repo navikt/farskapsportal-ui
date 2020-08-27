@@ -1,5 +1,4 @@
 FROM node:14-alpine
-# RUN apk add --no-cache bash
 ENV NODE_ENV production
 
 WORKDIR usr/src/app
@@ -10,5 +9,4 @@ WORKDIR server
 RUN yarn install
 
 CMD ["node", "./server.js"]
-
 EXPOSE 8080

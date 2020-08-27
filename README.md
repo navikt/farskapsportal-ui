@@ -1,5 +1,7 @@
 # farskapsportal-ui
 
+![Deploy to dev](https://github.com/navikt/farskapsportal-ui/workflows/Deploy%20to%20dev/badge.svg)
+
 UI for farskapserklæring
 
 ## Komme i gang
