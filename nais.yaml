@@ -17,3 +17,4 @@ spec:
   ingresses:
     - https://dev-nav.no/person/farskapsportal
     - https://dev.nav.no/person/farskapsportal
+    - https://farskapsportal.dev.nav.no/person/farskapsportal
