@@ -9,12 +9,14 @@ spec:
   image: {{ image }}
   port: 8080
   liveness:
-    path: person/farskapsportal/internal/isAlive
+    path: internal/isAlive
     initialDelay: 10
     readiness:
-      path: person/farskapsportal/internal/isReady
+      path: internal/isReady
       initialDelay: 10
   ingresses:
-    - https://dev-nav.no/person/farskapsportal
-    - https://dev.nav.no/person/farskapsportal
-    - https://farskapsportal.dev.nav.no/person/farskapsportal
+    - https://farskapsportal.dev.nav.no
+#  accessPolicy:
+#    outbound:
+#      external:
+#        - host: dekoratoren.dev.nav.no

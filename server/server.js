@@ -4,7 +4,7 @@ const path = require('path');
 const mustacheExpress = require('mustache-express');
 const getDecorator = require('./decorator');
 const buildPath = path.resolve(__dirname, '../build');
-/* TODO */ const basePath = '/person/farskapsportal';
+/* TODO */ const basePath = '';
 const logger = require('./logger');
 const server = express();
 
