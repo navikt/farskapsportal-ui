@@ -6,37 +6,27 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import messages from './text/nb';
 import footer from './clients/apiMock/decorator/decorator-footer';
-import withMenu from './clients/apiMock/decorator/decorator-header-withmenu';
-import megamenu from './clients/apiMock/decorator/decorator-megamenu';
+import header from './clients/apiMock/decorator/decorator-header';
 import scripts from './clients/apiMock/decorator/decorator-scripts';
-import skiplinks from './clients/apiMock/decorator/decorator-skiplinks';
 import styles from './clients/apiMock/decorator/decorator-styles';
 
 const init = () => {
     if (process.env.NODE_ENV === 'development') {
         document.body.innerHTML = document.body.innerHTML.replace(
-            '{{{NAV_HEADING}}}',
-            withMenu
-        );
-        document.body.innerHTML = document.body.innerHTML.replace(
-            '{{{NAV_FOOTER}}}',
-            footer
-        );
-        document.body.innerHTML = document.body.innerHTML.replace(
-            '{{{NAV_STYLES}}}',
+            '{{{STYLES}}}',
             styles
         );
         document.body.innerHTML = document.body.innerHTML.replace(
-            '{{{NAV_SCRIPTS}}}',
+            '{{{HEADER}}}',
+            header
+        );
+        document.body.innerHTML = document.body.innerHTML.replace(
+            '{{{FOOTER}}}',
+            footer
+        );
+        document.body.innerHTML = document.body.innerHTML.replace(
+            '{{{SCRIPTS}}}',
             scripts
-        );
-        document.body.innerHTML = document.body.innerHTML.replace(
-            '{{{NAV_SKIPLINKS}}}',
-            skiplinks
-        );
-        document.body.innerHTML = document.body.innerHTML.replace(
-            '{{{MEGAMENU_RESOURCES}}}',
-            megamenu
         );
 
         // Execute client.js
