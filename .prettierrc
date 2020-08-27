@@ -1,0 +1,17 @@
+{
+  "singleQuote": true,
+  "tabWidth": 4,
+  "overrides": [
+    {
+      "files": [
+        "*.json",
+        "*.less",
+        "*.yaml",
+        "*.yml"
+      ],
+      "options": {
+        "tabWidth": 2
+      }
+    }
+  ]
+}
