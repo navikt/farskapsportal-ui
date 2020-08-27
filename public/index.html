@@ -11,6 +11,19 @@
         <meta name="description" content="Portal for erklæring av farskap" />
         <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
         {{{NAV_SCRIPTS}}} {{{NAV_STYLES}}} {{{MEGAMENU_RESOURCES}}}
+        <script type="application/javascript">
+            window.frontendlogger = {
+                info: function () {},
+                warn: function () {},
+                error: function () {},
+                event: function () {},
+            };
+            window.frontendlogger.appname = 'farskapsportal-ui';
+        </script>
+        <script
+            type="application/javascript"
+            src="/frontendlogger/logger.js"
+        ></script>
         <title>Farskapsportal - www.nav.no</title>
     </head>
     <body>

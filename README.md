@@ -4,7 +4,7 @@ UI for farskapserklæring
 
 ## Komme i gang
 
-Hent repoet fra github
+Hent repoet fra github:
 
 ```
 git clone https://github.com/navikt/farskapsportal-ui.git
@@ -16,7 +16,7 @@ Installer nødvendige pakker:
 yarn install
 ```
 
-Start dekoratøren
+Start dekoratøren:
 
 ```
 docker-compose up -d
