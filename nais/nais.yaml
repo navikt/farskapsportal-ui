@@ -15,8 +15,15 @@ spec:
       path: internal/isReady
       initialDelay: 10
   ingresses:
-    - https://farskapsportal.dev.nav.no
-#  accessPolicy:
-#    outbound:
-#      external:
-#        - host: dekoratoren.dev.nav.no
+  {{#each ingresses as |url|}}
+    - {{url}}
+  {{/each}}
+  env:
+  {{#each env}}
+    - name: {{@key}}
+      value: "{{this}}"
+  {{/each}}
+  accessPolicy:
+    outbound:
+      external:
+        - host: {{dekoratoren}}
