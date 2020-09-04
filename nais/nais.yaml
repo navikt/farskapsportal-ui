@@ -2,9 +2,9 @@ apiVersion: nais.io/v1alpha1
 kind: Application
 metadata:
   name: farskapsportal-ui
-  namespace: bidrag
+  namespace: farskapsportal
   labels:
-    team: bidrag
+    team: farskapsportal
 spec:
   image: {{ image }}
   port: 8080
