@@ -2,6 +2,7 @@
   "ingresses": ["https://farskapsportal.dev.nav.no"],
   "dekoratoren": "dekoratoren.dev.nav.no",
   "env": {
+    "REACT_APP_LOGINSERVICE_URL": "https://loginservice.dev.nav.no/login",
     "DEKORATOREN_URL": "https://dekoratoren.dev.nav.no"
   }
 }
