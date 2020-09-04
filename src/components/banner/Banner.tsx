@@ -7,9 +7,7 @@ function Banner() {
     return (
         <div className="Banner">
             <Sidetittel>
-                <FormattedMessage id="page.title" /> hallo{' '}
-                {process.env.REACT_APP_LOGINSERVICE_URL}{' '}
-                {JSON.stringify(process.env.REACT_APP_LOGINSERVICE_URL)}
+                <FormattedMessage id="page.title" />
             </Sidetittel>
         </div>
     );
