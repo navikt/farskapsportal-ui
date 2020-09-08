@@ -27,3 +27,5 @@ spec:
     outbound:
       external:
         - host: {{dekoratoren}}
+        - host: {{innloggingslinje}}
+        - host: {{nav}}
