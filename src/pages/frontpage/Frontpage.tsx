@@ -1,10 +1,15 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import Lenke from 'nav-frontend-lenker';
+import { Hovedknapp } from 'nav-frontend-knapper';
 import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
+
 import './Frontpage.less';
 
 function Frontpage() {
+    const history = useHistory();
+
     return (
         <div className="Frontpage">
             <Undertittel tag="h2">
@@ -93,6 +98,9 @@ function Frontpage() {
                     </ul>
                 </li>
             </ol>
+            <Hovedknapp onClick={() => history.push('/mor')}>
+                <FormattedMessage id="frontpage.login" />
+            </Hovedknapp>
         </div>
     );
 }

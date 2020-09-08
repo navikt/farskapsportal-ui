@@ -15,6 +15,24 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Define client-side environment variables
+        run: |
+          echo ::set-env name=REACT_APP_URL::https://farskapsportal.dev.nav.no
+          echo ::set-env name=REACT_APP_LOGINSERVICE_URL::https://loginservice.dev.nav.no/login
+          echo ::set-env name=REACT_APP_INNLOGGINGSLINJE_URL::https://innloggingslinje-api.dev.nav.no/auth
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache node modules
+        uses: actions/cache@v1
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
       - name: Install dependencies (yarn install)
         run: yarn install --production --ignore-scripts --ignore-optional
 
@@ -36,6 +54,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}

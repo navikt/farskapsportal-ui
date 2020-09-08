@@ -13,7 +13,7 @@ const cache = new NodeCache({
     checkperiod: SECONDS_PER_MINUTE,
 });
 
-const decoratorUrl = `${process.env.DEKORATOREN_URL}/?context=privatperson&redirectToApp=true&level=4`;
+const decoratorUrl = `${process.env.DEKORATOREN_URL}/?redirectToApp=true&level=4`;
 
 const getDecorator = () =>
     new Promise((resolve, reject) => {

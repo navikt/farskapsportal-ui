@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { IntlProvider } from 'react-intl';
+import { BrowserRouter as Router } from 'react-router-dom';
+
 import './index.less';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import messages from './text/nb';
-import footer from './clients/apiMock/decorator/decorator-footer';
-import header from './clients/apiMock/decorator/decorator-header';
-import scripts from './clients/apiMock/decorator/decorator-scripts';
-import styles from './clients/apiMock/decorator/decorator-styles';
+import footer from 'clients/apiMock/decorator/decorator-footer';
+import header from 'clients/apiMock/decorator/decorator-header';
+import scripts from 'clients/apiMock/decorator/decorator-scripts';
+import styles from 'clients/apiMock/decorator/decorator-styles';
+import { StoreProvider } from 'store/Context';
+import { initialState, reducer } from 'store/store';
+import messages from 'text/nb';
 
 const init = () => {
     if (process.env.NODE_ENV === 'development') {
@@ -36,11 +40,15 @@ const init = () => {
     }
 
     ReactDOM.render(
-        <IntlProvider locale="nb" messages={messages}>
-            <React.StrictMode>
-                <App />
-            </React.StrictMode>
-        </IntlProvider>,
+        <React.StrictMode>
+            <IntlProvider locale="nb" messages={messages}>
+                <StoreProvider initialState={initialState} reducer={reducer}>
+                    <Router>
+                        <App />
+                    </Router>
+                </StoreProvider>
+            </IntlProvider>
+        </React.StrictMode>,
         document.getElementById('app')
     );
 

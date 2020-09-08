@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Sidetittel } from 'nav-frontend-typografi';
+
 import './Banner.less';
 
 function Banner() {
