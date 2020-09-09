@@ -36,7 +36,7 @@ function Frontpage() {
                 <FormattedMessage
                     id="frontpage.1.link"
                     values={{
-                        a: (text: String) => (
+                        a: (text: string) => (
                             <Lenke
                                 href="https://www.regjeringen.no/bld/farskap"
                                 target="blank"

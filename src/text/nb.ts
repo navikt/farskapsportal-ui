@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
     'page.title': 'Elektronisk farskapserklæring',
     'frontpage.1.title': 'Hva innebærer det å erklære farskap?',

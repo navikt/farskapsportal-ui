@@ -1,5 +1,6 @@
 import { AlertError } from 'types/error';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const { frontendlogger } = window as any;
 
 export const logApiError = (url: string, err: AlertError) => {
