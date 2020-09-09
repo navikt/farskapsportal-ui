@@ -1,0 +1,7 @@
+ingresses:
+  - https://farskapsportal.dev.nav.no
+dekoratoren: dekoratoren.dev.nav.no
+innloggingslinje: innloggingslinje-api.dev.nav.no
+nav: www.nav.no
+env:
+  DEKORATOREN_URL: https://dekoratoren.dev.nav.no
