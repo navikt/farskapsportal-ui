@@ -2,8 +2,10 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import Lenke from 'nav-frontend-lenker';
-import { Hovedknapp } from 'nav-frontend-knapper';
+import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
 import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
+
+import { sendToLogin } from 'clients/apiClients';
 
 import './Frontpage.less';
 
@@ -101,6 +103,7 @@ function Frontpage() {
             <Hovedknapp onClick={() => history.push('/mor')}>
                 <FormattedMessage id="frontpage.login" />
             </Hovedknapp>
+            <Knapp onClick={() => sendToLogin()}>Send to login</Knapp>
         </div>
     );
 }
