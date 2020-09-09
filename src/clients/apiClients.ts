@@ -43,7 +43,7 @@ const checkAuth = (response: Response): Response => {
     return response;
 };
 
-export const sendToLogin = () => {
+const sendToLogin = () => {
     window.location.assign(
         `${REACT_APP_LOGINSERVICE_URL}?redirect=${REACT_APP_URL}`
     );

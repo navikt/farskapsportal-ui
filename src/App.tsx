@@ -11,10 +11,12 @@ function App() {
     return (
         <div className="App">
             <Banner />
-            <Switch>
-                <Route path="/" exact={true} component={Frontpage} />
-                <Route path="/mor" exact={true} component={MorPage} />
-            </Switch>
+            <div className="App__content">
+                <Switch>
+                    <Route path="/" exact={true} component={Frontpage} />
+                    <Route path="/mor" exact={true} component={MorPage} />
+                </Switch>
+            </div>
         </div>
     );
 }
