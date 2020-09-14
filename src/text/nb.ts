@@ -26,4 +26,18 @@ export default {
     'frontpage.inperson.title': 'Erklære farskapet gjennom oppmøte',
     'frontpage.inperson.desc': 'Hvis dere ikke oppfyller kravene til å erklære farskapet elektronisk må dere erklære farskapet ved å møte opp.',
     'frontpage.inperson.link': 'Finn ut hvordan',
+    'mor.title': 'Opplysninger om barnet og barnets far',
+    'mor.form.barn.legend': 'Gjelder barn(a)',
+    'mor.form.termindato.label': 'Termindato',
+    'mor.form.termindato.placeholder': 'DD.MM.ÅÅÅÅ',
+    'mor.form.termindato.validation.required': 'Termindato er påkrevd',
+    'mor.form.termindato.validation.pattern': 'Ugyldig dato',
+    'mor.form.far.legend': 'Far til barn(a)',
+    'mor.form.navn.label': 'Navn til far (som det står i Folkeregisteret)',
+    'mor.form.foedselsnummer.label': 'Fødselsnummer til far (11 siffer)',
+    'mor.form.foedselsnummer.validation.required': 'Fødselsnummer er påkrevd',
+    'mor.form.foedselsnummer.validation.pattern': 'Fødselsnummer må bestå av 11 siffer',
+    'mor.form.feiloppsummering': 'For å gå videre må du rette opp følgende:',
+    'mor.form.buttons.submit': 'Kontrollere',
+    'mor.form.buttons.cancel': 'Avbryt'
 }

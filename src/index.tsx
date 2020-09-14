@@ -10,6 +10,7 @@ import footer from 'clients/apiMock/decorator/decorator-footer';
 import header from 'clients/apiMock/decorator/decorator-header';
 import scripts from 'clients/apiMock/decorator/decorator-scripts';
 import styles from 'clients/apiMock/decorator/decorator-styles';
+import ScrollToTop from 'components/scrollToTop/ScrollToTop';
 import { StoreProvider } from 'store/Context';
 import { initialState, reducer } from 'store/store';
 import messages from 'text/nb';
@@ -44,7 +45,9 @@ const init = () => {
             <IntlProvider locale="nb" messages={messages}>
                 <StoreProvider initialState={initialState} reducer={reducer}>
                     <Router>
-                        <App />
+                        <ScrollToTop>
+                            <App />
+                        </ScrollToTop>
                     </Router>
                 </StoreProvider>
             </IntlProvider>
