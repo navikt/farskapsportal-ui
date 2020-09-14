@@ -20,7 +20,9 @@ const getDecorator = () =>
         if (decorator) {
             resolve(decorator);
         } else {
+            console.log(decoratorUrl)
             request(decoratorUrl, (error, response, body) => {
+                console.log('if')
                 if (
                     !error &&
                     response.statusCode >= 200 &&
@@ -42,6 +44,7 @@ const getDecorator = () =>
                     console.log('Creating cache');
                     resolve(data);
                 } else {
+                    console.log('else')
                     reject(new Error(error));
                 }
             });
