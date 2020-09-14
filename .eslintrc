@@ -13,6 +13,10 @@
       "version": "detect"
     }
   },
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "parser": "@typescript-eslint/parser",
   "rules": {
     "prettier/prettier": "warn",

@@ -4,7 +4,6 @@ const mustacheExpress = require('mustache-express');
 const getDecorator = require('./decorator');
 const buildPath = path.resolve(__dirname, '../build');
 /* TODO */ const basePath = '';
-const logger = require('./logger');
 const server = express();
 
 server.set('views', `${__dirname}/../build`);
@@ -34,14 +33,14 @@ server.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
         })
         .catch((e) => {
             const error = `Failed to get decorator: ${e}`;
-            logger.error(error);
+            console.error(error);
             res.status(500).send(error);
         })
 );
 
 const port = process.env.PORT || 8080;
-server.listen(port, () => logger.info(`App listening on port: ${port}`));
+server.listen(port, () => console.log(`App listening on port: ${port}`));
 
 process.on('SIGTERM', () =>
-    setTimeout(() => logger.info('Har sovet i 30 sekunder'), 30000)
+    setTimeout(() => console.log('Har sovet i 30 sekunder'), 30000)
 );

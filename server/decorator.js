@@ -1,7 +1,6 @@
 const jsdom = require('jsdom');
 const request = require('request');
 const NodeCache = require('node-cache');
-const logger = require('./logger');
 const { JSDOM } = jsdom;
 
 const SECONDS_PER_MINUTE = 60;
@@ -40,7 +39,7 @@ const getDecorator = () =>
                         SCRIPTS: document.getElementById('scripts')[prop],
                     };
                     cache.set('main-cache', data);
-                    logger.info('Creating cache');
+                    console.log('Creating cache');
                     resolve(data);
                 } else {
                     reject(new Error(error));
