@@ -18,18 +18,14 @@ const getDecorator = () =>
     new Promise((resolve, reject) => {
         const decorator = cache.get('main-cache');
         if (decorator) {
-            console.error('got cache')
             resolve(decorator);
         } else {
-            console.error(decoratorUrl)
             request(decoratorUrl, (error, response, body) => {
-                console.error('request callback')
                 if (
                     !error &&
                     response.statusCode >= 200 &&
                     response.statusCode < 400
                 ) {
-                    console.error('if')
                     const { document } = new JSDOM(body).window;
                     const prop = 'innerHTML';
                     const data = {
@@ -46,7 +42,6 @@ const getDecorator = () =>
                     console.log('Creating cache');
                     resolve(data);
                 } else {
-                    console.error('else')
                     reject(new Error(error));
                 }
             });
