@@ -21,12 +21,6 @@ const getDecorator = () =>
             resolve(decorator);
         } else {
             request(decoratorUrl, (error, response, body) => {
-                console.error('error:');
-                console.error(JSON.stringify(error));
-                console.error('response');
-                console.error(JSON.stringify(response));
-                console.error('body');
-                console.error(JSON.stringify(body));
                 if (
                     !error &&
                     response.statusCode >= 200 &&
