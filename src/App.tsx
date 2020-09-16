@@ -11,7 +11,7 @@ function App() {
     return (
         <div className="App">
             <Banner />
-            <div className="App__content">
+            <div role="main" className="App__content">
                 <Switch>
                     <Route path="/" exact={true} component={Frontpage} />
                     <Route path="/mor" exact={true} component={MorPage} />
