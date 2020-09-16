@@ -5,17 +5,18 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import './index.less';
 import App from './App';
-import footer from 'clients/apiMock/decorator/decorator-footer';
-import header from 'clients/apiMock/decorator/decorator-header';
-import scripts from 'clients/apiMock/decorator/decorator-scripts';
-import styles from 'clients/apiMock/decorator/decorator-styles';
+import footer from 'api/mock/decorator/decorator-footer';
+import header from 'api/mock/decorator/decorator-header';
+import scripts from 'api/mock/decorator/decorator-scripts';
+import styles from 'api/mock/decorator/decorator-styles';
 import ScrollToTop from 'components/scrollToTop/ScrollToTop';
 import { StoreProvider } from 'store/Context';
 import { initialState, reducer } from 'store/store';
 import messages from 'text/nb';
 
-const init = () => {
+const init = async () => {
     if (process.env.NODE_ENV === 'development') {
+        await import('./api/mock/app').then(({ setUpMock }) => setUpMock());
         document.body.innerHTML = document.body.innerHTML.replace('{{{STYLES}}}', styles);
         document.body.innerHTML = document.body.innerHTML.replace('{{{HEADER}}}', header);
         document.body.innerHTML = document.body.innerHTML.replace('{{{FOOTER}}}', footer);

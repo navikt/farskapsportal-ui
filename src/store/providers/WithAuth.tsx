@@ -1,40 +1,40 @@
 import React, { ReactNode, useEffect } from 'react';
 
-import { checkAuthFetchAuth } from 'clients/apiClients';
+import { fetchUser } from 'api/api';
 import Error from 'components/error/Error';
 import Spinner from 'components/spinner/Spinner';
 import { useStore } from 'store/Context';
-import { AuthInfo } from 'types/auth';
 import { AlertError } from 'types/error';
+import { UserInfo } from 'types/user';
 
 interface Props {
     children: ReactNode;
 }
 
 function WithAuth(props: Props) {
-    const [{ authInfo }, dispatch] = useStore();
+    const [{ userInfo }, dispatch] = useStore();
 
     useEffect(() => {
-        if (authInfo.status === 'PENDING') {
-            checkAuthFetchAuth()
-                .then((authInfo: AuthInfo) => {
-                    dispatch({ type: 'SET_AUTH_SUCCESS', payload: authInfo });
+        if (userInfo.status === 'PENDING') {
+            fetchUser()
+                .then((userInfo: UserInfo) => {
+                    dispatch({ type: 'SET_USER_SUCCESS', payload: userInfo });
                 })
                 .catch((error: AlertError) => {
                     if (error.code !== 401 && error.code !== 403) {
-                        dispatch({ type: 'SET_AUTH_FAILURE', payload: error });
+                        dispatch({ type: 'SET_USER_FAILURE', payload: error });
                     }
                 });
         }
-    }, [authInfo, dispatch]);
+    }, [userInfo, dispatch]);
 
-    switch (authInfo.status) {
+    switch (userInfo.status) {
         case 'PENDING':
             return <Spinner />;
         case 'SUCCESS':
             return <>{props.children}</>;
         case 'FAILURE':
-            return <Error error={authInfo.error} />;
+            return <Error error={userInfo.error} />;
     }
 }
 

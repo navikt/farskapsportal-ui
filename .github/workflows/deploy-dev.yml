@@ -19,7 +19,7 @@ jobs:
         run: |
           echo ::set-env name=REACT_APP_URL::https://farskapsportal.dev.nav.no
           echo ::set-env name=REACT_APP_LOGINSERVICE_URL::https://loginservice.dev.nav.no/login
-          echo ::set-env name=REACT_APP_INNLOGGINGSLINJE_URL::https://innloggingslinje-api.dev.nav.no/auth
+          echo ::set-env name=REACT_APP_API_URL::https://farskapsportal-api.dev.nav.no/api
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path

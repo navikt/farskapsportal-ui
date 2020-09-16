@@ -1,38 +1,38 @@
-import { AuthInfo, FetchAuthInfo } from 'types/auth';
 import { HTTPError } from 'types/error';
+import { FetchUserInfo, UserInfo } from 'types/user';
 
 export const initialState: Store = {
-    authInfo: { status: 'PENDING' } as FetchAuthInfo,
+    userInfo: { status: 'PENDING' } as FetchUserInfo,
 };
 
 export interface Store {
-    authInfo: FetchAuthInfo;
+    userInfo: FetchUserInfo;
 }
 
 export type Action =
     | {
-          type: 'SET_AUTH_SUCCESS';
-          payload: AuthInfo;
+          type: 'SET_USER_SUCCESS';
+          payload: UserInfo;
       }
     | {
-          type: 'SET_AUTH_FAILURE';
+          type: 'SET_USER_FAILURE';
           payload: HTTPError;
       };
 
 export const reducer = (state: Store, action: Action): Store => {
     switch (action.type) {
-        case 'SET_AUTH_SUCCESS':
+        case 'SET_USER_SUCCESS':
             return {
                 ...state,
-                authInfo: {
+                userInfo: {
                     status: 'SUCCESS',
                     data: action.payload,
                 },
             };
-        case 'SET_AUTH_FAILURE':
+        case 'SET_USER_FAILURE':
             return {
                 ...state,
-                authInfo: {
+                userInfo: {
                     status: 'FAILURE',
                     error: action.payload,
                 },

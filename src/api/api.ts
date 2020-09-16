@@ -1,11 +1,12 @@
 import { AlertError } from 'types/error';
 import { logApiError } from 'utils/logger';
 
-const { REACT_APP_INNLOGGINGSLINJE_URL, REACT_APP_LOGINSERVICE_URL, REACT_APP_URL } = process.env;
+const { REACT_APP_LOGINSERVICE_URL, REACT_APP_API_URL, REACT_APP_URL } = process.env;
 
-export const checkAuthFetchAuth = () => {
-    const url = `${REACT_APP_INNLOGGINGSLINJE_URL}`;
-    return fetch(url, {
+export const fetchUser = () => checkAuthFetchJson(`${REACT_APP_API_URL}/user`);
+
+const checkAuthFetchJson = (url: string) =>
+    fetch(url, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
         credentials: 'include',
@@ -19,12 +20,9 @@ export const checkAuthFetchAuth = () => {
                 type: err.type || 'feil',
                 text: err.text || err,
             };
-            if (error.code !== 401 && error.code !== 403) {
-                logApiError(url, error);
-            }
+            logApiError(url, error);
             throw error;
         });
-};
 
 /*
  *   UTILS
