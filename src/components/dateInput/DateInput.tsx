@@ -39,8 +39,7 @@ function DateInput(props: DateInputProps) {
                         />
                         {!context.feil && props.feil && (
                             <SkjemaelementFeilmelding>
-                                {typeof feilmelding !== 'boolean' &&
-                                    feilmelding}
+                                {typeof feilmelding !== 'boolean' && feilmelding}
                             </SkjemaelementFeilmelding>
                         )}
                     </div>

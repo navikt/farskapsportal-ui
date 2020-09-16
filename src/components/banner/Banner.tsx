@@ -6,11 +6,11 @@ import './Banner.less';
 
 function Banner() {
     return (
-        <div className="Banner">
+        <header className="Banner">
             <Sidetittel>
                 <FormattedMessage id="page.title" />
             </Sidetittel>
-        </div>
+        </header>
     );
 }
 

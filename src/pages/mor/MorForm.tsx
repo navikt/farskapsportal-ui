@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectIntl, WrappedComponentProps } from 'react-intl';
+import { useIntl } from 'react-intl';
 import { useForm, Controller } from 'react-hook-form';
 import { Feiloppsummering, Input, SkjemaGruppe } from 'nav-frontend-skjema';
 import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
@@ -22,9 +22,8 @@ interface MorFormProps {
     onCancel: () => void;
 }
 
-type Props = MorFormProps & WrappedComponentProps;
-
-function MorForm({ intl, onSubmit, onCancel }: Props) {
+function MorForm({ onSubmit, onCancel }: MorFormProps) {
+    const intl = useIntl();
     const { register, handleSubmit, errors, control } = useForm({
         defaultValues: {
             termindato: '',
@@ -50,35 +49,21 @@ function MorForm({ intl, onSubmit, onCancel }: Props) {
                     rules={{
                         required: {
                             value: true,
-                            message: getMessage(
-                                intl,
-                                'mor.form.termindato.validation.required'
-                            ),
+                            message: getMessage(intl, 'mor.form.termindato.validation.required'),
                         },
                         pattern: {
                             value: /^\d{4}-\d{2}-\d{2}$/,
-                            message: getMessage(
-                                intl,
-                                'mor.form.termindato.validation.pattern'
-                            ),
+                            message: getMessage(intl, 'mor.form.termindato.validation.pattern'),
                         },
                     }}
                     render={({ onChange, value, name }) => (
                         <DateInput
                             id={name}
-                            label={getMessage(
-                                intl,
-                                'mor.form.termindato.label'
-                            )}
+                            label={getMessage(intl, 'mor.form.termindato.label')}
                             onChange={onChange}
                             value={value}
-                            feil={
-                                errors.termindato && errors.termindato.message
-                            }
-                            placeholder={getMessage(
-                                intl,
-                                'mor.form.termindato.placeholder'
-                            )}
+                            feil={errors.termindato && errors.termindato.message}
+                            placeholder={getMessage(intl, 'mor.form.termindato.placeholder')}
                         />
                     )}
                 />
@@ -100,22 +85,14 @@ function MorForm({ intl, onSubmit, onCancel }: Props) {
                     inputRef={register({
                         required: {
                             value: true,
-                            message: getMessage(
-                                intl,
-                                'mor.form.foedselsnummer.validation.required'
-                            ),
+                            message: getMessage(intl, 'mor.form.foedselsnummer.validation.required'),
                         },
                         pattern: {
                             value: /^[0-9]{11}$/,
-                            message: getMessage(
-                                intl,
-                                'mor.form.foedselsnummer.validation.pattern'
-                            ),
+                            message: getMessage(intl, 'mor.form.foedselsnummer.validation.pattern'),
                         },
                     })}
-                    feil={
-                        errors.foedselsnummer && errors.foedselsnummer.message
-                    }
+                    feil={errors.foedselsnummer && errors.foedselsnummer.message}
                 />
             </SkjemaGruppe>
             {!!feil.length && (
@@ -126,9 +103,7 @@ function MorForm({ intl, onSubmit, onCancel }: Props) {
                 />
             )}
             <div className="MorForm__buttons">
-                <Hovedknapp htmlType="submit">
-                    {getMessage(intl, 'mor.form.buttons.submit')}
-                </Hovedknapp>
+                <Hovedknapp htmlType="submit">{getMessage(intl, 'mor.form.buttons.submit')}</Hovedknapp>
                 <Knapp htmlType="button" onClick={onCancel}>
                     {getMessage(intl, 'mor.form.buttons.cancel')}
                 </Knapp>
@@ -137,4 +112,4 @@ function MorForm({ intl, onSubmit, onCancel }: Props) {
     );
 }
 
-export default injectIntl(MorForm);
+export default MorForm;

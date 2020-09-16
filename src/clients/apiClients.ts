@@ -1,11 +1,7 @@
 import { AlertError } from 'types/error';
 import { logApiError } from 'utils/logger';
 
-const {
-    REACT_APP_INNLOGGINGSLINJE_URL,
-    REACT_APP_LOGINSERVICE_URL,
-    REACT_APP_URL,
-} = process.env;
+const { REACT_APP_INNLOGGINGSLINJE_URL, REACT_APP_LOGINSERVICE_URL, REACT_APP_URL } = process.env;
 
 export const checkAuthFetchAuth = () => {
     const url = `${REACT_APP_INNLOGGINGSLINJE_URL}`;
@@ -44,9 +40,7 @@ const checkAuth = (response: Response): Response => {
 };
 
 const sendToLogin = () => {
-    window.location.assign(
-        `${REACT_APP_LOGINSERVICE_URL}?redirect=${REACT_APP_URL}`
-    );
+    window.location.assign(`${REACT_APP_LOGINSERVICE_URL}?redirect=${REACT_APP_URL}`);
 };
 
 const checkHttpError = (response: Response): Response => {

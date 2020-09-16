@@ -1,11 +1,4 @@
-import React, {
-    createContext,
-    Dispatch,
-    ReactNode,
-    Reducer,
-    useContext,
-    useReducer,
-} from 'react';
+import React, { createContext, Dispatch, ReactNode, Reducer, useContext, useReducer } from 'react';
 
 import { Action, Store } from './store';
 
@@ -18,11 +11,7 @@ interface Props {
 const StoreContext = createContext({} as [Store, Dispatch<Action>]);
 
 export function StoreProvider({ reducer, initialState, children }: Props) {
-    return (
-        <StoreContext.Provider value={useReducer(reducer, initialState)}>
-            {children}
-        </StoreContext.Provider>
-    );
+    return <StoreContext.Provider value={useReducer(reducer, initialState)}>{children}</StoreContext.Provider>;
 }
 
 export const useStore = () => useContext(StoreContext);

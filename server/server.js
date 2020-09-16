@@ -21,9 +21,7 @@ server.use((req, res, next) => {
 server.use(basePath, express.static(buildPath, { index: false }));
 
 // Nais functions
-server.get(`${basePath}/internal/isAlive|isReady`, (req, res) =>
-    res.sendStatus(200)
-);
+server.get(`${basePath}/internal/isAlive|isReady`, (req, res) => res.sendStatus(200));
 
 // Match everything except internal og static
 server.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
@@ -41,6 +39,4 @@ server.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
 const port = process.env.PORT || 8080;
 server.listen(port, () => console.log(`App listening on port: ${port}`));
 
-process.on('SIGTERM', () =>
-    setTimeout(() => console.log('Har sovet i 30 sekunder'), 30000)
-);
+process.on('SIGTERM', () => setTimeout(() => console.log('Har sovet i 30 sekunder'), 30000));

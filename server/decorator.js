@@ -12,39 +12,39 @@ const cache = new NodeCache({
     checkperiod: SECONDS_PER_MINUTE,
 });
 
-const decoratorUrl = `${process.env.DEKORATOREN_URL}/?redirectToApp=true&Level=4`;
+const requestDecorator = (callback) => {
+    const decoratorUrl = `${process.env.DEKORATOREN_URL}/?redirectToApp=true&Level=4`;
+    return request(decoratorUrl, callback);
+};
 
 const getDecorator = () =>
-    new Promise((resolve, reject) => {
+    new Promise((resolve) => {
         const decorator = cache.get('main-cache');
+
         if (decorator) {
             resolve(decorator);
         } else {
-            request(decoratorUrl, (error, response, body) => {
-                if (
-                    !error &&
-                    response.statusCode >= 200 &&
-                    response.statusCode < 400
-                ) {
+            const callback = (error, response, body) => {
+                if (!error && response.statusCode >= 200 && response.statusCode < 400) {
                     const { document } = new JSDOM(body).window;
                     const prop = 'innerHTML';
                     const data = {
-                        HEADER: document.getElementById('header-withmenu')[
-                            prop
-                        ],
                         STYLES: document.getElementById('styles')[prop],
-                        FOOTER: document.getElementById('footer-withmenu')[
-                            prop
-                        ],
+                        HEADER: document.getElementById('header-withmenu')[prop],
+                        FOOTER: document.getElementById('footer-withmenu')[prop],
                         SCRIPTS: document.getElementById('scripts')[prop],
                     };
+
                     cache.set('main-cache', data);
                     console.log('Creating cache');
                     resolve(data);
                 } else {
-                    reject(new Error(error));
+                    console.error('Failed to get decorator. Exiting node.', error);
+                    process.exit(1);
                 }
-            });
+            };
+
+            requestDecorator(callback);
         }
     });
 

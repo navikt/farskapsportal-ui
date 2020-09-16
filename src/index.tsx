@@ -5,7 +5,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import './index.less';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
 import footer from 'clients/apiMock/decorator/decorator-footer';
 import header from 'clients/apiMock/decorator/decorator-header';
 import scripts from 'clients/apiMock/decorator/decorator-scripts';
@@ -17,22 +16,10 @@ import messages from 'text/nb';
 
 const init = () => {
     if (process.env.NODE_ENV === 'development') {
-        document.body.innerHTML = document.body.innerHTML.replace(
-            '{{{STYLES}}}',
-            styles
-        );
-        document.body.innerHTML = document.body.innerHTML.replace(
-            '{{{HEADER}}}',
-            header
-        );
-        document.body.innerHTML = document.body.innerHTML.replace(
-            '{{{FOOTER}}}',
-            footer
-        );
-        document.body.innerHTML = document.body.innerHTML.replace(
-            '{{{SCRIPTS}}}',
-            scripts
-        );
+        document.body.innerHTML = document.body.innerHTML.replace('{{{STYLES}}}', styles);
+        document.body.innerHTML = document.body.innerHTML.replace('{{{HEADER}}}', header);
+        document.body.innerHTML = document.body.innerHTML.replace('{{{FOOTER}}}', footer);
+        document.body.innerHTML = document.body.innerHTML.replace('{{{SCRIPTS}}}', scripts);
 
         // Execute client.js
         const script = document.createElement('script');
@@ -54,8 +41,6 @@ const init = () => {
         </React.StrictMode>,
         document.getElementById('app')
     );
-
-    serviceWorker.unregister();
 };
 
 init();
