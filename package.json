@@ -20,6 +20,7 @@
     "@types/react-router-dom": "^5.1.5",
     "classnames": "^2.2.6",
     "craco-less": "^1.17.0",
+    "fetch-mock": "^9.10.7",
     "lodash.throttle": "^4.1.1",
     "moment": "^2.28.0",
     "nav-datovelger": "^6.1.9",
@@ -57,7 +58,6 @@
     "eslint-plugin-jsx-a11y": "^6.3.1",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react-hooks": "^4.1.2",
-    "fetch-mock": "^9.10.7",
     "prettier": "^2.1.2"
   },
   "scripts": {
