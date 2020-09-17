@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { IntlProvider } from 'react-intl';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import './index.less';
@@ -10,9 +9,9 @@ import header from 'api/mock/decorator/decorator-header';
 import scripts from 'api/mock/decorator/decorator-scripts';
 import styles from 'api/mock/decorator/decorator-styles';
 import ScrollToTop from 'components/scrollToTop/ScrollToTop';
+import IntlProvider from 'intl/IntlProvider';
 import { StoreProvider } from 'store/Context';
 import { initialState, reducer } from 'store/store';
-import messages from 'text/nb';
 
 const init = async () => {
     if (process.env.NODE_ENV === 'development') {
@@ -30,15 +29,15 @@ const init = async () => {
 
     ReactDOM.render(
         <React.StrictMode>
-            <IntlProvider locale="nb" messages={messages}>
-                <StoreProvider initialState={initialState} reducer={reducer}>
+            <StoreProvider initialState={initialState} reducer={reducer}>
+                <IntlProvider>
                     <Router>
                         <ScrollToTop>
                             <App />
                         </ScrollToTop>
                     </Router>
-                </StoreProvider>
-            </IntlProvider>
+                </IntlProvider>
+            </StoreProvider>
         </React.StrictMode>,
         document.getElementById('app')
     );

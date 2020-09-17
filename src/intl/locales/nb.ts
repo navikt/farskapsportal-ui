@@ -1,5 +1,7 @@
 /* eslint-disable */
 export default {
+    'languageToggle.nb': 'Bokmål',
+    'languageToggle.en': 'Engelsk',
     'page.title': 'Elektronisk farskapserklæring',
     'frontpage.1.title': 'Hva innebærer det å erklære farskap?',
     'frontpage.1.desc': 'Hvis far og mor er gift, blir far automatisk registrert som far til barnet. Hvis far og mor ikke er gift må farskapet erklæres, helst innen barnets fødsel. Å erklære farskap gir far både rettigheter og plikter til barnet, som for eksempel:',
@@ -38,6 +40,6 @@ export default {
     'mor.form.foedselsnummer.validation.required': 'Fødselsnummer er påkrevd',
     'mor.form.foedselsnummer.validation.pattern': 'Fødselsnummer må bestå av 11 siffer',
     'mor.form.feiloppsummering': 'For å gå videre må du rette opp følgende:',
-    'mor.form.buttons.submit': 'Kontrollere',
+    'mor.form.buttons.submit': 'Kontroller',
     'mor.form.buttons.cancel': 'Avbryt'
 }
