@@ -44,13 +44,13 @@ const renderMenuItem = (code: Language, intl: IntlShape) => {
 
 function LanguageToggle() {
     const intl = useIntl();
-    const [{ locale }, dispatch] = useStore();
+    const [{ language }, dispatch] = useStore();
 
-    const menuLanguages: Language[] = (['nb', 'en'] as Language[]).filter((code) => code !== locale);
+    const menuLanguages: Language[] = (['nb', 'en'] as Language[]).filter((code) => code !== language);
 
     const handleSelection = (value: ReactElement[]) => {
         const localeCode = getLanguageCodeFromValue(value[1].props.id);
-        dispatch({ type: 'SET_LOCALE', payload: localeCode });
+        dispatch({ type: 'SET_LANGUAGE', payload: localeCode });
     };
 
     return (
@@ -58,9 +58,9 @@ function LanguageToggle() {
             <Wrapper className="LanguageToggle__wrapper" onSelection={handleSelection}>
                 <Button className="LanguageToggle__button">
                     <div className="LanguageToggle__button__flag">
-                        {locale === 'en' ? <UKFlagSVG /> : <NorwayFlagSVG />}
+                        {language === 'en' ? <UKFlagSVG /> : <NorwayFlagSVG />}
                     </div>
-                    <div className="LanguageToggle__button__language">{getLanguageTextFromCode(intl, locale)}</div>
+                    <div className="LanguageToggle__button__language">{getLanguageTextFromCode(intl, language)}</div>
                     <div>
                         <NedChevron />
                     </div>

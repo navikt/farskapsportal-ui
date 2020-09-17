@@ -10,16 +10,16 @@ interface IntlProviderProps {
 }
 
 function IntlProvider({ children }: IntlProviderProps) {
-    const [{ locale }] = useStore();
+    const [{ language }] = useStore();
 
     let messages = nbMessages;
-    if (locale === 'en') {
+    if (language === 'en') {
         messages = { ...nbMessages, ...enMessages };
     }
 
     return (
-        <Provider locale={locale} messages={messages || {}}>
-            <div lang={locale}>{children}</div>
+        <Provider locale={language} messages={messages || {}}>
+            <div lang={language}>{children}</div>
         </Provider>
     );
 }
