@@ -4,7 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { Feiloppsummering, Input, SkjemaGruppe } from 'nav-frontend-skjema';
 import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
 
-import DateInput from 'components/dateInput/DateInput';
+import DateInput from 'components/date-input/DateInput';
 import { mapErrors } from 'utils/form';
 import { useFocus } from 'utils/hooks';
 import { getMessage } from 'utils/intl';
@@ -24,6 +24,7 @@ interface MorFormProps {
 
 function MorForm({ onSubmit, onCancel }: MorFormProps) {
     const intl = useIntl();
+    const [feilRef, setFeiloppsummeringFocus] = useFocus();
     const { register, handleSubmit, errors, control } = useForm({
         defaultValues: {
             termindato: '',
@@ -32,7 +33,6 @@ function MorForm({ onSubmit, onCancel }: MorFormProps) {
         },
         shouldFocusError: false,
     });
-    const [feilRef, setFeiloppsummeringFocus] = useFocus();
 
     const onError = () => {
         setFeiloppsummeringFocus();
@@ -50,10 +50,6 @@ function MorForm({ onSubmit, onCancel }: MorFormProps) {
                         required: {
                             value: true,
                             message: getMessage(intl, 'mor.form.termindato.validation.required'),
-                        },
-                        pattern: {
-                            value: /^\d{4}-\d{2}-\d{2}$/,
-                            message: getMessage(intl, 'mor.form.termindato.validation.pattern'),
                         },
                     }}
                     render={({ onChange, value, name }) => (
@@ -74,7 +70,13 @@ function MorForm({ onSubmit, onCancel }: MorFormProps) {
                     name="navn"
                     label={getMessage(intl, 'mor.form.navn.label')}
                     bredde="XXL"
-                    inputRef={register}
+                    inputRef={register({
+                        required: {
+                            value: true,
+                            message: getMessage(intl, 'mor.form.navn.validation.required'),
+                        },
+                    })}
+                    feil={errors.navn && errors.navn.message}
                 />
                 <Input
                     id="foedselsnummer"

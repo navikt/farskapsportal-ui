@@ -8,7 +8,7 @@ import footer from 'api/mock/decorator/decorator-footer';
 import header from 'api/mock/decorator/decorator-header';
 import scripts from 'api/mock/decorator/decorator-scripts';
 import styles from 'api/mock/decorator/decorator-styles';
-import ScrollToTop from 'components/scrollToTop/ScrollToTop';
+import ScrollToTop from 'components/scroll-to-top/ScrollToTop';
 import IntlProvider from 'intl/IntlProvider';
 import { StoreProvider } from 'store/Context';
 import { initialState, reducer } from 'store/store';

@@ -1,6 +1,6 @@
-import { HTTPError } from 'types/error';
 import { Language } from 'types/intl';
-import { FetchUserInfo, UserInfo } from 'types/user';
+import { FetchUserInfo } from 'types/user';
+import { Action } from './actions';
 
 export const initialState: Store = {
     language: 'nb',
@@ -11,11 +11,6 @@ export interface Store {
     language: Language;
     userInfo: FetchUserInfo;
 }
-
-export type Action =
-    | { type: 'SET_LANGUAGE'; payload: Language }
-    | { type: 'SET_USER_SUCCESS'; payload: UserInfo }
-    | { type: 'SET_USER_FAILURE'; payload: HTTPError };
 
 export const reducer = (state: Store, action: Action): Store => {
     switch (action.type) {

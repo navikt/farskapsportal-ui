@@ -3,6 +3,7 @@ import React, { ReactNode, useEffect } from 'react';
 import { fetchUser } from 'api/api';
 import Error from 'components/error/Error';
 import Spinner from 'components/spinner/Spinner';
+import { setUserFailure, setUserSuccess } from 'store/actions';
 import { useStore } from 'store/Context';
 import { AlertError } from 'types/error';
 import { UserInfo } from 'types/user';
@@ -18,11 +19,11 @@ function WithAuth(props: Props) {
         if (userInfo.status === 'PENDING') {
             fetchUser()
                 .then((userInfo: UserInfo) => {
-                    dispatch({ type: 'SET_USER_SUCCESS', payload: userInfo });
+                    dispatch(setUserSuccess(userInfo));
                 })
                 .catch((error: AlertError) => {
                     if (error.code !== 401 && error.code !== 403) {
-                        dispatch({ type: 'SET_USER_FAILURE', payload: error });
+                        dispatch(setUserFailure(error));
                     }
                 });
         }

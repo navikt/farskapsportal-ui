@@ -3,6 +3,7 @@ import { IntlShape, useIntl } from 'react-intl';
 import { NedChevron } from 'nav-frontend-chevron';
 import { Wrapper, Button, Menu, MenuItem } from 'react-aria-menubutton';
 
+import { setLanguage } from 'store/actions';
 import { useStore } from 'store/Context';
 import { Language } from 'types/intl';
 import { getMessage } from 'utils/intl';
@@ -49,8 +50,8 @@ function LanguageToggle() {
     const menuLanguages: Language[] = (['nb', 'en'] as Language[]).filter((code) => code !== language);
 
     const handleSelection = (value: ReactElement[]) => {
-        const localeCode = getLanguageCodeFromValue(value[1].props.id);
-        dispatch({ type: 'SET_LANGUAGE', payload: localeCode });
+        const languageCode = getLanguageCodeFromValue(value[1].props.id);
+        dispatch(setLanguage(languageCode));
     };
 
     return (
