@@ -1,7 +1,7 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { useForm, Controller } from 'react-hook-form';
-import { Feiloppsummering, Input, SkjemaGruppe } from 'nav-frontend-skjema';
+import { Feiloppsummering, FnrInput, Input, SkjemaGruppe } from 'nav-frontend-skjema';
 import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
 
 import DateInput from 'components/date-input/DateInput';
@@ -25,7 +25,7 @@ interface MorFormProps {
 function MorForm({ onSubmit, onCancel }: MorFormProps) {
     const intl = useIntl();
     const [feilRef, setFeiloppsummeringFocus] = useFocus();
-    const { register, handleSubmit, errors, control } = useForm({
+    const { register, handleSubmit, errors, control, setError, formState } = useForm({
         defaultValues: {
             termindato: '',
             navn: '',
@@ -33,6 +33,7 @@ function MorForm({ onSubmit, onCancel }: MorFormProps) {
         },
         shouldFocusError: false,
     });
+    const { isSubmitted } = formState;
 
     const onError = () => {
         setFeiloppsummeringFocus();
@@ -78,22 +79,25 @@ function MorForm({ onSubmit, onCancel }: MorFormProps) {
                     })}
                     feil={errors.navn && errors.navn.message}
                 />
-                <Input
+                <FnrInput
                     id="foedselsnummer"
                     name="foedselsnummer"
                     label={getMessage(intl, 'mor.form.foedselsnummer.label')}
-                    bredde="M"
-                    maxLength={11}
+                    bredde="S"
                     inputRef={register({
                         required: {
                             value: true,
                             message: getMessage(intl, 'mor.form.foedselsnummer.validation.required'),
                         },
-                        pattern: {
-                            value: /^[0-9]{11}$/,
-                            message: getMessage(intl, 'mor.form.foedselsnummer.validation.pattern'),
-                        },
                     })}
+                    onValidate={(isValid) => {
+                        if (isSubmitted && !isValid) {
+                            setError('foedselsnummer', {
+                                type: 'fnr',
+                                message: getMessage(intl, 'mor.form.foedselsnummer.validation.fnr'),
+                            });
+                        }
+                    }}
                     feil={errors.foedselsnummer && errors.foedselsnummer.message}
                 />
             </SkjemaGruppe>

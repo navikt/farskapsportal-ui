@@ -38,7 +38,7 @@ export default {
     'mor.form.navn.validation.required': 'Navn til far er påkrevd',
     'mor.form.foedselsnummer.label': 'Fødselsnummer til far (11 siffer)',
     'mor.form.foedselsnummer.validation.required': 'Fødselsnummer er påkrevd',
-    'mor.form.foedselsnummer.validation.pattern': 'Fødselsnummer er fødselsdato DDMMÅÅ og avsluttes med fem siffer',
+    'mor.form.foedselsnummer.validation.fnr': 'Ugyldig fødselsnummer. Fødselsnummer er fødselsdato DDMMÅÅ og avsluttes med fem siffer.',
     'mor.form.feiloppsummering': 'For å gå videre må du rette opp følgende:',
     'mor.form.buttons.submit': 'Kontroller',
     'mor.form.buttons.cancel': 'Avbryt'
