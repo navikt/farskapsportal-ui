@@ -1,9 +1,12 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
-import Lenke from 'nav-frontend-lenker';
 import { Hovedknapp } from 'nav-frontend-knapper';
+import { LenkepanelBase } from 'nav-frontend-lenkepanel';
+import Panel from 'nav-frontend-paneler';
 import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
+
+import ExternalLink from 'components/external-link/ExternalLink';
 
 import './Frontpage.less';
 
@@ -11,7 +14,7 @@ function Frontpage() {
     const history = useHistory();
 
     return (
-        <div className="Frontpage">
+        <Panel className="Frontpage">
             <section className="Frontpage__section">
                 <Undertittel tag="h2">
                     <FormattedMessage id="frontpage.1.title" />
@@ -37,13 +40,7 @@ function Frontpage() {
                     id="frontpage.1.link"
                     values={{
                         a: (text: string) => (
-                            <Lenke
-                                href="https://www.regjeringen.no/bld/farskap"
-                                target="blank"
-                                rel="noopener noreferrer"
-                            >
-                                {text}
-                            </Lenke>
+                            <ExternalLink href="https://www.regjeringen.no/bld/farskap">{text}</ExternalLink>
                         ),
                     }}
                 />
@@ -109,7 +106,17 @@ function Frontpage() {
             <Hovedknapp onClick={() => history.push('/mor')}>
                 <FormattedMessage id="frontpage.login" />
             </Hovedknapp>
-        </div>
+            <LenkepanelBase href="#" border={true}>
+                <div>
+                    <Undertittel className="lenkepanel__heading">
+                        <FormattedMessage id="frontpage.inperson.title" />
+                    </Undertittel>
+                    <Normaltekst>
+                        <FormattedMessage id="frontpage.inperson.desc" />
+                    </Normaltekst>
+                </div>
+            </LenkepanelBase>
+        </Panel>
     );
 }
 
