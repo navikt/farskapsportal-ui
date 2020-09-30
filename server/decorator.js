@@ -1,5 +1,5 @@
 const jsdom = require('jsdom');
-const request = require('request');
+const fetch = require('node-fetch');
 const NodeCache = require('node-cache');
 const { JSDOM } = jsdom;
 
@@ -12,40 +12,37 @@ const cache = new NodeCache({
     checkperiod: SECONDS_PER_MINUTE,
 });
 
-const requestDecorator = (callback) => {
-    const decoratorUrl = `${process.env.DEKORATOREN_URL}/?redirectToApp=true&Level=4`;
-    return request(decoratorUrl, callback);
-};
+const decoratorUrl = `${process.env.DEKORATOREN_URL}/?redirectToApp=true&Level=4`;
 
-const getDecorator = () =>
-    new Promise((resolve) => {
-        const decorator = cache.get('main-cache');
+const getDecorator = async () => {
+    const decorator = cache.get('main-cache');
 
-        if (decorator) {
-            resolve(decorator);
-        } else {
-            const callback = (error, response, body) => {
-                if (!error && response.statusCode >= 200 && response.statusCode < 400) {
-                    const { document } = new JSDOM(body).window;
-                    const prop = 'innerHTML';
-                    const data = {
-                        STYLES: document.getElementById('styles')[prop],
-                        HEADER: document.getElementById('header-withmenu')[prop],
-                        FOOTER: document.getElementById('footer-withmenu')[prop],
-                        SCRIPTS: document.getElementById('scripts')[prop],
-                    };
+    if (decorator) {
+        return decorator;
+    } else {
+        try {
+            const res = await fetch(decoratorUrl);
 
-                    cache.set('main-cache', data);
-                    console.log('Creating cache');
-                    resolve(data);
-                } else {
-                    console.error('Failed to get decorator. Exiting node.', error);
-                    process.exit(1);
-                }
-            };
+            if (res.status >= 200 && res.status < 400) {
+                const body = await res.text();
+                const { document } = new JSDOM(body).window;
+                const prop = 'innerHTML';
+                const data = {
+                    STYLES: document.getElementById('styles')[prop],
+                    HEADER: document.getElementById('header-withmenu')[prop],
+                    FOOTER: document.getElementById('footer-withmenu')[prop],
+                    SCRIPTS: document.getElementById('scripts')[prop],
+                };
 
-            requestDecorator(callback);
+                cache.set('main-cache', data);
+                console.log('Creating cache');
+                return data;
+            }
+        } catch (error) {
+            console.error('Failed to get decorator.', error);
+            throw error;
         }
-    });
+    }
+};
 
 module.exports = getDecorator;
