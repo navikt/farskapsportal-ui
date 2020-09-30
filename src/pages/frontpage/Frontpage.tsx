@@ -40,11 +40,18 @@ function Frontpage() {
                     id="frontpage.1.link"
                     values={{
                         a: (text: string) => (
-                            <ExternalLink href="https://www.regjeringen.no/bld/farskap">{text}</ExternalLink>
+                            <ExternalLink href="https://www.regjeringen.no/bld/farskap">
+                                {text}
+                            </ExternalLink>
                         ),
                     }}
                 />
             </section>
+
+
+
+
+
             <section className="Frontpage__section">
                 <Undertittel tag="h2">
                     <FormattedMessage id="frontpage.2.title" />

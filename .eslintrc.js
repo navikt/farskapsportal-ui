@@ -1,4 +1,8 @@
 module.exports = {
+    env: {
+        browser: true,
+        node: true,
+    },
     extends: [
         'eslint:recommended',
         'plugin:react/recommended',
@@ -7,17 +11,13 @@ module.exports = {
         'plugin:prettier/recommended',
         'plugin:jsx-a11y/recommended',
     ],
+    parser: '@typescript-eslint/parser',
     plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
     settings: {
         react: {
             version: 'detect',
         },
     },
-    env: {
-        browser: true,
-        node: true,
-    },
-    parser: '@typescript-eslint/parser',
     rules: {
         'prettier/prettier': 'warn',
         'react/display-name': 'off',

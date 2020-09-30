@@ -34,7 +34,9 @@ const renderMenuItem = (code: Language, intl: IntlShape) => {
     return (
         <li key={code}>
             <MenuItem className="LanguageToggle__menu__item">
-                <div className="LanguageToggle__button__flag">{code === 'en' ? <UKFlagSVG /> : <NorwayFlagSVG />}</div>
+                <div className="LanguageToggle__button__flag">
+                    {code === 'en' ? <UKFlagSVG /> : <NorwayFlagSVG />}
+                </div>
                 <div id={`languageCode_${code}`} className="LanguageToggle__button__language">
                     {getLanguageTextFromCode(intl, code)}
                 </div>
@@ -47,7 +49,9 @@ function LanguageToggle() {
     const intl = useIntl();
     const [{ language }, dispatch] = useStore();
 
-    const menuLanguages: Language[] = (['nb', 'en'] as Language[]).filter((code) => code !== language);
+    const menuLanguages: Language[] = (['nb', 'en'] as Language[]).filter(
+        (code) => code !== language
+    );
 
     const handleSelection = (value: ReactElement[]) => {
         const languageCode = getLanguageCodeFromValue(value[1].props.id);
@@ -61,7 +65,9 @@ function LanguageToggle() {
                     <div className="LanguageToggle__button__flag">
                         {language === 'en' ? <UKFlagSVG /> : <NorwayFlagSVG />}
                     </div>
-                    <div className="LanguageToggle__button__language">{getLanguageTextFromCode(intl, language)}</div>
+                    <div className="LanguageToggle__button__language">
+                        {getLanguageTextFromCode(intl, language)}
+                    </div>
                     <div>
                         <NedChevron />
                     </div>

@@ -87,7 +87,10 @@ function MorForm({ onSubmit, onCancel }: MorFormProps) {
                     inputRef={register({
                         required: {
                             value: true,
-                            message: getMessage(intl, 'mor.form.foedselsnummer.validation.required'),
+                            message: getMessage(
+                                intl,
+                                'mor.form.foedselsnummer.validation.required'
+                            ),
                         },
                     })}
                     onValidate={(isValid) => {
@@ -109,7 +112,9 @@ function MorForm({ onSubmit, onCancel }: MorFormProps) {
                 />
             )}
             <div className="MorForm__buttons">
-                <Hovedknapp htmlType="submit">{getMessage(intl, 'mor.form.buttons.submit')}</Hovedknapp>
+                <Hovedknapp htmlType="submit">
+                    {getMessage(intl, 'mor.form.buttons.submit')}
+                </Hovedknapp>
                 <Knapp htmlType="button" onClick={onCancel}>
                     {getMessage(intl, 'mor.form.buttons.cancel')}
                 </Knapp>

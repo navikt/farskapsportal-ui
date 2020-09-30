@@ -1,18 +1,7 @@
-{
-  "singleQuote": true,
-  "tabWidth": 4,
-  "printWidth": 120,
-  "overrides": [
-    {
-      "files": [
-        "*.json",
-        "*.less",
-        "*.yaml",
-        "*.yml"
-      ],
-      "options": {
-        "tabWidth": 2
-      }
-    }
-  ]
-}
+singleQuote: true
+tabWidth: 4
+printWidth: 100
+overrides:
+  - files: '*.{json,less,yaml,yml}'
+    options:
+      tabWidth: 2
