@@ -47,6 +47,10 @@ function Frontpage() {
                     }}
                 />
             </section>
+
+
+
+
             <section className="Frontpage__section">
                 <Undertittel tag="h2">
                     <FormattedMessage id="frontpage.2.title" />
