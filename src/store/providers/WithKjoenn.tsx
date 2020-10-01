@@ -1,4 +1,7 @@
 import React, { ReactNode, useEffect } from 'react';
+import { Redirect } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
+import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 
 import { fetchUser } from 'api/api';
 import Error from 'components/error/Error';
@@ -6,13 +9,15 @@ import Spinner from 'components/spinner/Spinner';
 import { setUserFailure, setUserSuccess } from 'store/actions';
 import { useStore } from 'store/Context';
 import { AlertError } from 'types/error';
+import { Kjoenn } from 'types/kjoenn';
 import { UserInfo } from 'types/user';
 
 interface Props {
+    kjoenn: Kjoenn;
     children: ReactNode;
 }
 
-function WithAuth(props: Props) {
+function WithKjoenn(props: Props) {
     const [{ userInfo }, dispatch] = useStore();
 
     useEffect(() => {
@@ -33,10 +38,24 @@ function WithAuth(props: Props) {
         case 'PENDING':
             return <Spinner />;
         case 'SUCCESS':
-            return <>{props.children}</>;
+            if (userInfo.data.kjoenn === props.kjoenn) {
+                return <>{props.children}</>;
+            } else {
+                if (userInfo.data.kjoenn === Kjoenn.Kvinne) {
+                    return <Redirect to="/mor" />;
+                } else if (userInfo.data.kjoenn === Kjoenn.Mann) {
+                    return <Redirect to="/far" />;
+                } else {
+                    return (
+                        <AlertStripeFeil>
+                            <FormattedMessage id="login.error" />
+                        </AlertStripeFeil>
+                    );
+                }
+            }
         case 'FAILURE':
             return <Error error={userInfo.error} />;
     }
 }
 
-export default WithAuth;
+export default WithKjoenn;

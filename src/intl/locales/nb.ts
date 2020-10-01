@@ -5,6 +5,7 @@ export default {
     'page.title': 'Elektronisk farskapserklæring',
     'form.feiloppsummering': 'For å gå videre må du rette opp følgende:',
     'form.date.placeholder': 'dd.mm.åååå',
+    'login.error': 'Finner ikke kjønn for innlogget bruker.',
     'frontpage.1.title': 'Hva innebærer det å erklære farskap?',
     'frontpage.1.desc': 'Hvis far og mor er gift, blir far automatisk registrert som far til barnet. Hvis far og mor ikke er gift må farskapet erklæres, helst innen barnets fødsel. Å erklære farskap gir far både rettigheter og plikter til barnet, som for eksempel:',
     'frontpage.1.li.1': 'Arverett',
