@@ -1,0 +1,32 @@
+@import (reference) 'styles/assets';
+
+.StepIcon {
+  margin-top: 0.75rem;
+  margin-right: 0.75rem;
+
+  svg {
+    height: 2rem;
+    width: 2rem;
+  }
+
+  &__active,
+  &__not-started {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;
+    border-radius: 1rem;
+  }
+
+  &__active {
+    color: white;
+    background-color: @navDypBla;
+    transform: scale(1.2);
+  }
+
+  &__not-started {
+    background-color: @navLysGra;
+    box-shadow: 0 0 0 1px @navGra60 inset;
+  }
+}
