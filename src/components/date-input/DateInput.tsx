@@ -7,6 +7,9 @@ import {
     SkjemaGruppeFeilContextProps,
 } from 'nav-frontend-skjema';
 import cls from 'classnames';
+import 'moment/locale/nb';
+
+import { useStore } from 'store/Context';
 
 interface DateInputProps {
     id: string;
@@ -19,6 +22,8 @@ interface DateInputProps {
 }
 
 function DateInput(props: DateInputProps) {
+    const [{ language }] = useStore();
+
     return (
         <SkjemaGruppeFeilContext.Consumer>
             {(context: SkjemaGruppeFeilContextProps) => {
@@ -32,6 +37,7 @@ function DateInput(props: DateInputProps) {
                             onChange={props.onChange}
                             valgtDato={props.value}
                             datoErGyldig={!feilmelding}
+                            locale={language}
                             input={{
                                 name: props.id,
                                 placeholder: props.placeholder,
