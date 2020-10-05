@@ -18,23 +18,27 @@ interface SoeknadStepProps {
 }
 
 function SoeknadStep(props: SoeknadStepProps) {
-    const content =
-        props.status === StepStatus.Done ? (
-            <div className="SoeknadStep__done">
-                {props.presentationComponent}
-                <Flatknapp onClick={props.onChange}>Endre</Flatknapp>
-            </div>
-        ) : props.status === StepStatus.Active ? (
-            props.formComponent
-        ) : (
-            <Undertittel>{props.title}</Undertittel>
-        );
+    const renderContent = (props: SoeknadStepProps) => {
+        switch (props.status) {
+            case StepStatus.Done:
+                return (
+                    <div className="SoeknadStep__done">
+                        {props.presentationComponent}
+                        <Flatknapp onClick={props.onChange}>Endre</Flatknapp>
+                    </div>
+                );
+            case StepStatus.Active:
+                return props.formComponent;
+            case StepStatus.NotStarted:
+                return <Undertittel>{props.title}</Undertittel>;
+        }
+    };
 
     return (
-        <div className="SoeknadStep">
+        <section className="SoeknadStep">
             <StepIcon status={props.status} stepNumber={props.stepNumber} />
-            <Panel>{content}</Panel>
-        </div>
+            <Panel>{renderContent(props)}</Panel>
+        </section>
     );
 }
 

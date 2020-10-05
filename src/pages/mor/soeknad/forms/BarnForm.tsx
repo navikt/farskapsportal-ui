@@ -48,10 +48,7 @@ function BarnForm({ defaultTermindato, onSubmit, onCancel }: BarnFormProps) {
                             onChange={onChange}
                             value={value}
                             feil={errors.termindato && errors.termindato.message}
-                            placeholder={getMessage(
-                                intl,
-                                'mor.soeknad.barn.form.termindato.placeholder'
-                            )}
+                            placeholder={getMessage(intl, 'form.date.placeholder')}
                         />
                     )}
                 />
