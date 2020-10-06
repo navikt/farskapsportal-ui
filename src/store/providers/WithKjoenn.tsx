@@ -38,12 +38,12 @@ function WithKjoenn(props: Props) {
         case 'PENDING':
             return <Spinner />;
         case 'SUCCESS':
-            if (userInfo.data.kjoenn === props.kjoenn) {
+            if (userInfo.data === props.kjoenn) {
                 return <>{props.children}</>;
             } else {
-                if (userInfo.data.kjoenn === Kjoenn.Kvinne) {
+                if (userInfo.data === Kjoenn.Kvinne) {
                     return <Redirect to="/mor" />;
-                } else if (userInfo.data.kjoenn === Kjoenn.Mann) {
+                } else if (userInfo.data === Kjoenn.Mann) {
                     return <Redirect to="/far" />;
                 } else {
                     return (

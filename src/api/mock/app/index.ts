@@ -11,7 +11,12 @@ const delay = (min: number, max: number) =>
         setTimeout(resolve, Math.random() * (max - min) + min);
     });
 
-const mockGet = (path: string, response: Record<string, unknown>, minDelay = 200, maxDelay = 750) =>
+const mockGet = (
+    path: string,
+    response: Record<string, unknown> | string,
+    minDelay = 200,
+    maxDelay = 750
+) =>
     fetchMock.get(`${REACT_APP_API_URL}${path}`, () =>
         delay(minDelay, maxDelay).then(() => response)
     );
@@ -27,7 +32,7 @@ const mockPost = (
     );
 
 export const setUpMock = async () => {
-    mockGet('/user', user);
+    mockGet('/kjoenn', user);
 
     mockPost('/kontroller', { statusType: 'OK' });
 };

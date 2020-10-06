@@ -1,9 +1,10 @@
 import { AlertError } from 'types/error';
+import { Kjoenn } from 'types/kjoenn';
 import { logApiError } from 'utils/logger';
 
 const { REACT_APP_LOGINSERVICE_URL, REACT_APP_API_URL, REACT_APP_URL } = process.env;
 
-export const fetchUser = () => checkAuthFetchJson(`${REACT_APP_API_URL}/user`);
+export const fetchUser = () => checkAuthFetchJson(`${REACT_APP_API_URL}/kjoenn`) as Promise<Kjoenn>;
 
 const checkAuthFetchJson = (url: string) =>
     fetch(url, {
@@ -13,7 +14,8 @@ const checkAuthFetchJson = (url: string) =>
     })
         .then(checkAuth)
         .then(checkHttpError)
-        .then(parseJson)
+        // .then(parseJson)
+        .then((res) => res.text())
         .catch((err: string & AlertError) => {
             const error = {
                 code: err.code || 404,
@@ -27,7 +29,7 @@ const checkAuthFetchJson = (url: string) =>
 /*
  *   UTILS
  */
-const parseJson = (response: Response) => response.json();
+// const parseJson = (response: Response) => response.json();
 
 const checkAuth = (response: Response): Response => {
     if (response.status === 401 || response.status === 403) {
