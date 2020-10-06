@@ -8,6 +8,10 @@ const server = express();
 
 server.set('views', `${__dirname}/../build`);
 server.set('view engine', 'mustache');
+server.set('X-Frame-Options', 'SAMEORIGIN');
+server.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+server.set('X-Content-Type-Options', 'nosniff');
+server.set('X-XSS-Protection', '1; mode=block');
 server.engine('html', mustacheExpress());
 
 // Parse application/json
