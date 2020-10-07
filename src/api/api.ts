@@ -9,7 +9,7 @@ export const fetchUser = () => checkAuthFetchJson(`${REACT_APP_API_URL}/kjoenn`)
 const checkAuthFetchJson = (url: string) =>
     fetch(url, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+        headers: { 'Content-Type': 'text/plain' },
         credentials: 'include',
     })
         .then(checkAuth)
