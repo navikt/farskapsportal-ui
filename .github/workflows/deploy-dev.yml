@@ -36,6 +36,9 @@ jobs:
       - name: Install dependencies (yarn install)
         run: yarn install --production --ignore-scripts --ignore-optional --frozen-lockfile
 
+      - name: Run tests (yarn test)
+        run: yarn test
+
       - name: Build frontend (yarn build)
         run: yarn build
 
