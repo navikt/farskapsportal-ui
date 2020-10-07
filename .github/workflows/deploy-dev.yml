@@ -17,9 +17,9 @@ jobs:
 
       - name: Define client-side environment variables
         run: |
-          echo ::set-env name=REACT_APP_URL::https://farskapsportal.dev.nav.no
-          echo ::set-env name=REACT_APP_LOGINSERVICE_URL::https://loginservice.dev.nav.no/login
-          echo ::set-env name=REACT_APP_API_URL::https://farskapsportal-api.dev.nav.no/api
+          echo "REACT_APP_URL=https://farskapsportal.dev.nav.no" >> $GITHUB_ENV
+          echo "REACT_APP_LOGINSERVICE_URL=https://loginservice.dev.nav.no/login" >> $GITHUB_ENV
+          echo "REACT_APP_API_URL=https://farskapsportal-api.dev.nav.no/api" >> $GITHUB_ENV
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path

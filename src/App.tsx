@@ -13,6 +13,9 @@ function App() {
         <div className="App">
             <LanguageToggle />
             <Banner />
+            <div>{process.env.REACT_APP_URL}</div>
+            <div>{process.env.REACT_APP_LOGINSERVICE_URL}</div>
+            <div>{process.env.REACT_APP_API_URL}</div>
             <div role="main" className="App__content">
                 <Switch>
                     <Route path="/" exact={true} component={Frontpage} />
