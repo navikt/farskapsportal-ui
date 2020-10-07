@@ -1,7 +1,8 @@
 import React from 'react';
 import { useIntl } from 'react-intl';
 import { useForm } from 'react-hook-form';
-import { Feiloppsummering, FnrInput, Input, SkjemaGruppe } from 'nav-frontend-skjema';
+import { Feiloppsummering, Input, SkjemaGruppe } from 'nav-frontend-skjema';
+import { fnr } from '@navikt/fnrvalidator';
 
 import FormButtons from 'components/form-buttons/FormButtons';
 import { mapErrors } from 'utils/form';
@@ -23,14 +24,13 @@ interface FarFormProps {
 function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: FarFormProps) {
     const intl = useIntl();
     const [feilRef, setFeiloppsummeringFocus] = useFocus();
-    const { register, handleSubmit, errors, setError, formState } = useForm<FarFormInput>({
+    const { register, handleSubmit, errors } = useForm<FarFormInput>({
         defaultValues: {
             navn: defaultNavn,
             foedselsnummer: defaultFoedselsnummer,
         },
         shouldFocusError: false,
     });
-    const { isSubmitted } = formState;
 
     const onError = () => {
         setFeiloppsummeringFocus();
@@ -57,9 +57,13 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
                     })}
                     feil={errors.navn && errors.navn.message}
                 />
-                <FnrInput
+                <Input
                     id="foedselsnummer"
                     name="foedselsnummer"
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    inputClassName="skjemaelement__input-fodselsnr"
                     label={getMessage(intl, 'mor.soeknad.far.form.foedselsnummer.label')}
                     bredde="S"
                     inputRef={register({
@@ -70,18 +74,10 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
                                 'mor.soeknad.far.form.foedselsnummer.validation.required'
                             ),
                         },
+                        validate: (value: string) =>
+                            fnr(value).status === 'valid' ||
+                            getMessage(intl, 'mor.soeknad.far.form.foedselsnummer.validation.fnr'),
                     })}
-                    onValidate={(isValid) => {
-                        if (isSubmitted && !isValid) {
-                            setError('foedselsnummer', {
-                                type: 'fnr',
-                                message: getMessage(
-                                    intl,
-                                    'mor.soeknad.far.form.foedselsnummer.validation.fnr'
-                                ),
-                            });
-                        }
-                    }}
                     feil={errors.foedselsnummer && errors.foedselsnummer.message}
                 />
             </SkjemaGruppe>
