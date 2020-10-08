@@ -3,3 +3,4 @@ ingresses:
 dekoratoren: dekoratoren.dev.nav.no
 env:
   DEKORATOREN_URL: https://dekoratoren.dev.nav.no
+  FARSKAPSPORTAL_API_URL: https://farskapsportal-api.dev.nav.no/api/v1/farskapsportal

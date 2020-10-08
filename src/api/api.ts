@@ -2,9 +2,9 @@ import { AlertError } from 'types/error';
 import { Kjoenn } from 'types/kjoenn';
 import { logApiError } from 'utils/logger';
 
-const { REACT_APP_LOGINSERVICE_URL, REACT_APP_API_URL, REACT_APP_URL } = process.env;
+const { REACT_APP_LOGINSERVICE_URL, REACT_APP_URL } = process.env;
 
-export const fetchUser = () => checkAuthFetchJson(`${REACT_APP_API_URL}/kjoenn`) as Promise<Kjoenn>;
+export const fetchUser = () => checkAuthFetchJson('/api/kjoenn') as Promise<Kjoenn>;
 
 const checkAuthFetchJson = (url: string) =>
     fetch(url, {

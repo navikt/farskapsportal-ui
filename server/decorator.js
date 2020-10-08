@@ -1,6 +1,7 @@
-const jsdom = require('jsdom');
-const fetch = require('node-fetch');
-const NodeCache = require('node-cache');
+import jsdom from 'jsdom';
+import fetch from 'node-fetch';
+import NodeCache from 'node-cache';
+
 const { JSDOM } = jsdom;
 
 const SECONDS_PER_MINUTE = 60;
@@ -14,7 +15,7 @@ const cache = new NodeCache({
 
 const decoratorUrl = `${process.env.DEKORATOREN_URL}/?redirectToApp=true&Level=4`;
 
-const getDecorator = async () => {
+export const getDecorator = async () => {
     const decorator = cache.get('main-cache');
 
     if (decorator) {
@@ -44,5 +45,3 @@ const getDecorator = async () => {
         }
     }
 };
-
-module.exports = getDecorator;
