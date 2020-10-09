@@ -43,7 +43,15 @@ app.use(
             return proxyReqOpts;
         },
         proxyReqPathResolver: (req) => {
+            console.log('proxyReqPathResolver path:');
+            console.log(`${apiPath}${req.url}`);
             return `${apiPath}${req.url}`;
+        },
+        proxyErrorHandler: (err, res, next) => {
+            console.log('proxyErrorHandler');
+            console.log('err', err);
+            console.log('res', res);
+            next(err);
         },
     })
 );
