@@ -1,6 +1,8 @@
 ingresses:
   - https://farskapsportal.dev.nav.no
-dekoratoren: dekoratoren.dev.nav.no
+host:
+  - dekoratoren.dev.nav.no
+  - farskapsportal-api.dev.nav.no
 env:
   DEKORATOREN_URL: https://dekoratoren.dev.nav.no
   FARSKAPSPORTAL_API_URL: https://farskapsportal-api.dev.nav.no

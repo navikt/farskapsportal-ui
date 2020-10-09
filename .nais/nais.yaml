@@ -26,4 +26,6 @@ spec:
   accessPolicy:
     outbound:
       external:
-        - host: {{dekoratoren}}
+      {{#each host}}
+        - host: "{{this}}"
+      {{/each}}
