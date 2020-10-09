@@ -37,8 +37,12 @@ app.use(
     '/api',
     proxy(apiUrl, {
         proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
+            console.log('In proxyReqOptDecorator');
+            console.log('apiUrl', apiUrl);
             const token = srcReq.cookies[tokenName];
+            console.log('token', token);
             proxyReqOpts.headers.Authorization = `Bearer ${token}`;
+            console.log('proxyReqOpts.headers.Authorization', proxyReqOpts.headers.Authorization);
             return proxyReqOpts;
         },
     })
