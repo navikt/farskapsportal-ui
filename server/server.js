@@ -49,8 +49,8 @@ app.use(
         },
         proxyErrorHandler: (err, res, next) => {
             console.log('proxyErrorHandler');
-            console.log('err', JSON.stringify(err));
-            console.log('res', JSON.stringify(res));
+            console.log('err', err.toString());
+            console.log('res', res.toString());
             next(err);
         },
     })
