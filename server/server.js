@@ -47,8 +47,6 @@ app.use(
             console.log('proxyErrorHandler');
             console.log('err');
             console.log(err);
-            console.log('res');
-            console.log(res);
             next(err);
         },
     })
