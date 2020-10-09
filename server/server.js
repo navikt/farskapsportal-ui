@@ -5,7 +5,8 @@ import cookieParser from 'cookie-parser';
 import { getDecorator } from './decorator.js';
 
 const buildPath = '../build';
-const apiUrl = process.env.FARSKAPSPORTAL_API_URL;
+const apiBaseUrl = process.env.FARSKAPSPORTAL_API_URL;
+const apiPath = '/api/v1/farskapsportal';
 const tokenName = 'selvbetjening-idtoken';
 const app = express();
 
@@ -35,15 +36,14 @@ app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 // Api proxy
 app.use(
     '/api',
-    proxy(apiUrl, {
+    proxy(apiBaseUrl, {
         proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
-            console.log('In proxyReqOptDecorator');
-            console.log('apiUrl', apiUrl);
             const token = srcReq.cookies[tokenName];
-            console.log('token', token);
             proxyReqOpts.headers.Authorization = `Bearer ${token}`;
-            console.log('proxyReqOpts.headers.Authorization', proxyReqOpts.headers.Authorization);
             return proxyReqOpts;
+        },
+        proxyReqPathResolver: (req) => {
+            return `${apiPath}${req.url}`;
         },
     })
 );
