@@ -12,10 +12,10 @@ const app = express();
 
 app.set('views', buildPath);
 app.set('view engine', 'mustache');
-// app.set('X-Frame-Options', 'SAMEORIGIN');
-// app.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-// app.set('X-Content-Type-Options', 'nosniff');
-// app.set('X-XSS-Protection', '1; mode=block');
+app.set('X-Frame-Options', 'SAMEORIGIN');
+app.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+app.set('X-Content-Type-Options', 'nosniff');
+app.set('X-XSS-Protection', '1; mode=block');
 app.engine('html', mustacheExpress());
 
 app.use(cookieParser());
@@ -43,12 +43,12 @@ app.use(
             return proxyReqOpts;
         },
         proxyReqPathResolver: (req) => `${apiPath}${req.url}`,
-        proxyErrorHandler: (err, res, next) => {
-            console.log('proxyErrorHandler');
-            console.log('err');
-            console.log(err);
-            next(err);
-        },
+        // proxyErrorHandler: (err, res, next) => {
+        //     console.log('proxyErrorHandler');
+        //     console.log('err');
+        //     console.log(err);
+        //     next(err);
+        // },
     })
 );
 
