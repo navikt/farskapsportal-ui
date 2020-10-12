@@ -36,7 +36,6 @@ app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 app.get('/api/kjoenn', async (req, res) => {
     try {
         const token = req.cookies[tokenName];
-        console.log('/api/kjoenn hit');
         const response = await fetch(`${apiUrl}/kjoenn`, {
             method: 'get',
             headers: {

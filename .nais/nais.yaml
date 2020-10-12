@@ -23,9 +23,9 @@ spec:
     - name: {{@key}}
       value: "{{this}}"
   {{/each}}
-#  accessPolicy:
-#    outbound:
-#      external:
-#      {{#each host}}
-#        - host: "{{this}}"
-#      {{/each}}
+  accessPolicy:
+    outbound:
+      external:
+      {{#each host}}
+        - host: "{{this}}"
+      {{/each}}
