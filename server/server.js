@@ -47,6 +47,11 @@ app.get('/api/kjoenn', async (req, res) => {
         });
         console.log('after fetch');
         const text = await response.text();
+        console.log('text');
+        console.log(text);
+        const json = await response.json();
+        console.log('json');
+        console.log(json);
         res.send(text);
     } catch (error) {
         console.log(error);
