@@ -3,7 +3,6 @@ import mustacheExpress from 'mustache-express';
 import cookieParser from 'cookie-parser';
 import fetch from 'node-fetch';
 import { getDecorator } from './decorator.js';
-import * as headers from './headers.js';
 
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
@@ -12,9 +11,12 @@ const app = express();
 
 app.set('views', buildPath);
 app.set('view engine', 'mustache');
+app.set('X-Frame-Options', 'SAMEORIGIN');
+app.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+app.set('X-Content-Type-Options', 'nosniff');
+app.set('X-XSS-Protection', '1; mode=block');
 app.engine('html', mustacheExpress());
 
-headers.setup(app);
 app.use(cookieParser());
 
 // Parse application/json
