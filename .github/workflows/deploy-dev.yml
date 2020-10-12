@@ -3,7 +3,7 @@ name: Deploy to dev
 on:
   push:
     branches:
-      - 'feature/far-page-with-kjoenn'
+      - '**'
 
 env:
   IMAGE: docker.pkg.github.com/${{ github.repository }}/farskapsportal-ui:${{ github.sha }}
@@ -15,9 +15,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Define client-side environment variables
+      - name: Define client-side environment variables for main
+        if: github.ref == 'refs/heads/main'
         run: |
           echo "REACT_APP_URL=https://farskapsportal.dev.nav.no" >> $GITHUB_ENV
+          echo "REACT_APP_LOGINSERVICE_URL=https://loginservice.dev.nav.no/login" >> $GITHUB_ENV
+
+      - name: Define client-side environment variables for feature
+        if: github.ref != 'refs/heads/main'
+        run: |
+          echo "REACT_APP_URL=https://farskapsportal-feature.dev.nav.no" >> $GITHUB_ENV
           echo "REACT_APP_LOGINSERVICE_URL=https://loginservice.dev.nav.no/login" >> $GITHUB_ENV
 
       - name: Get yarn cache directory path
@@ -52,14 +59,25 @@ jobs:
   deploy:
     name: Deploy to NAIS
     needs: build
-    if: github.ref == 'refs/heads/feature/far-page-with-kjoenn'
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
 
-      - uses: nais/deploy/actions/deploy@v1
+      - name: Deploy to dev-gcp for main
+        if: github.ref == 'refs/heads/main'
+        uses: nais/deploy/actions/deploy@v1
         env:
           APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
           RESOURCE: .nais/nais.yaml
           VARS: .nais/dev.yaml
+
+      - name: Deploy to dev-gcp for feature
+        if: github.ref != 'refs/heads/main'
+        uses: nais/deploy/actions/deploy@v1
+        env:
+          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
+          CLUSTER: dev-gcp
+          RESOURCE: .nais/nais.yaml
+          VARS: .nais/feature.yaml
