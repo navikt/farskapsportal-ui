@@ -2,6 +2,7 @@ import express from 'express';
 import mustacheExpress from 'mustache-express';
 import proxy from 'express-http-proxy';
 import cookieParser from 'cookie-parser';
+import fetch from 'node-fetch';
 import { getDecorator } from './decorator.js';
 
 const buildPath = '../build';
@@ -32,6 +33,25 @@ app.use(express.static(buildPath, { index: false }));
 
 // Nais functions
 app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
+
+app.get('/api/kjoenn', async (req, res) => {
+    console.log('/api/kjoenn hit');
+    try {
+        const token = req.cookies[tokenName];
+        console.log('before fetch');
+        const response = await fetch(apiBaseUrl + apiPath + '/kjoenn', {
+            method: 'get',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        console.log('after fetch');
+        const text = await response.text();
+        res.send(text);
+    } catch (error) {
+        console.log(error);
+    }
+});
 
 // Api proxy
 app.use(
