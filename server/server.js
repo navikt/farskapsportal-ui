@@ -1,13 +1,11 @@
 import express from 'express';
 import mustacheExpress from 'mustache-express';
-import proxy from 'express-http-proxy';
 import cookieParser from 'cookie-parser';
 import fetch from 'node-fetch';
 import { getDecorator } from './decorator.js';
 
 const buildPath = '../build';
-const apiBaseUrl = process.env.FARSKAPSPORTAL_API_URL;
-const apiPath = '/api/v1/farskapsportal';
+const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
 const tokenName = 'selvbetjening-idtoken';
 const app = express();
 
@@ -34,47 +32,23 @@ app.use(express.static(buildPath, { index: false }));
 // Nais functions
 app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 
+// Api calls
 app.get('/api/kjoenn', async (req, res) => {
-    console.log('/api/kjoenn hit');
     try {
         const token = req.cookies[tokenName];
-        console.log('before fetch');
-        const response = await fetch(apiBaseUrl + apiPath + '/kjoenn', {
+        const response = await fetch(`${apiUrl}/kjoenn`, {
             method: 'get',
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log('after fetch');
         const json = await response.json();
-        console.log('json');
-        console.log(json);
-        console.log('response.status');
-        console.log(response.status);
         res.status(response.status).send(json);
     } catch (error) {
-        console.log(error);
+        console.log(`Error while calling api: ${error}`);
         res.sendStatus(500);
     }
 });
-
-// Api proxy
-app.use(
-    '/api',
-    proxy(apiBaseUrl, {
-        proxyReqOptDecorator: (proxyReqOpts, srcReq) => {
-            const token = srcReq.cookies[tokenName];
-            proxyReqOpts.headers.Authorization = `Bearer ${token}`;
-            return proxyReqOpts;
-        },
-        proxyReqPathResolver: (req) => `${apiPath}${req.url}`,
-        proxyErrorHandler: (err, res, next) => {
-            console.log('proxyErrorHandler');
-            console.log(err);
-            next(err);
-        },
-    })
-);
 
 // Match everything except internal og static
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
