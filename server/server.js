@@ -48,7 +48,8 @@ app.get('/api/kjoenn', async (req, res) => {
         const json = await response.json();
         console.log('after json');
         console.log('response.status', response.status);
-        console.log('json', json);
+        console.log('response.headers', response.headers);
+        // console.log('json', json);
         res.status(response.status).send(json);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
