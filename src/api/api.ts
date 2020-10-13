@@ -7,32 +7,61 @@ import { logApiError } from 'utils/logger';
 
 const { REACT_APP_LOGINSERVICE_URL, REACT_APP_URL } = process.env;
 
-export const fetchUser = () => checkAuthFetchJson('/api/kjoenn') as Promise<Kjoenn>;
+/*
+ * AUTH
+ * Henter informasjon om bruker.
+ * Logger ikke 401 eller 403 feil da det forventes.
+ * */
+export const checkAuthFetchUser = () => {
+    const url = '/api/kjoenn';
 
-const checkAuthFetchJson = (url: string) =>
-    fetch(url, {
+    return fetch(url, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
         credentials: 'include',
     })
         .then(checkAuth)
         .then(checkHttpError)
-        .then(parseJson)
-        // .then((res) => res.text())
+        .then((res) => res.text() as Promise<Kjoenn>)
         .catch((err: string & AlertError) => {
             const error = {
                 code: err.code || 404,
                 type: err.type || 'feil',
                 text: err.text || err,
             };
-            logApiError(url, error);
+            if (error.code !== 401 && error.code !== 403) {
+                logApiError(url, error);
+            }
             throw error;
         });
+};
 
 /*
- *   UTILS
+ * GET
+ * */
+// const checkAuthFetchJson = (url: string) =>
+//     fetch(url, {
+//         method: 'GET',
+//         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+//         credentials: 'include',
+//     })
+//         .then(checkAuth)
+//         .then(checkHttpError)
+//         .then(parseJson)
+//         .catch((err: string & AlertError) => {
+//             const error = {
+//                 code: err.code || 404,
+//                 type: err.type || 'feil',
+//                 text: err.text || err,
+//             };
+//             logApiError(url, error);
+//             throw error;
+//         });
+
+/*
+ * UTILS
  */
-const parseJson = (response: Response) => response.json();
+// const parseJson = (response: Response) => response.json();
 
 const checkAuth = (response: Response): Response => {
     if (response.status === 401 || response.status === 403) {

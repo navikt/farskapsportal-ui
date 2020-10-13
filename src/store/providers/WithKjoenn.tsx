@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 
-import { fetchUser } from 'api/api';
+import { checkAuthFetchUser } from 'api/api';
 import Error from 'components/error/Error';
 import Spinner from 'components/spinner/Spinner';
 import { setUserFailure, setUserSuccess } from 'store/actions';
@@ -22,7 +22,7 @@ function WithKjoenn(props: Props) {
 
     useEffect(() => {
         if (userInfo.status === 'PENDING') {
-            fetchUser()
+            checkAuthFetchUser()
                 .then((userInfo: UserInfo) => {
                     dispatch(setUserSuccess(userInfo));
                 })
