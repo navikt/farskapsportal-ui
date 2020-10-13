@@ -17,8 +17,8 @@ const checkAuthFetchJson = (url: string) =>
     })
         .then(checkAuth)
         .then(checkHttpError)
-        // .then(parseJson)
-        .then((res) => res.text())
+        .then(parseJson)
+        // .then((res) => res.text())
         .catch((err: string & AlertError) => {
             const error = {
                 code: err.code || 404,
@@ -32,7 +32,7 @@ const checkAuthFetchJson = (url: string) =>
 /*
  *   UTILS
  */
-// const parseJson = (response: Response) => response.json();
+const parseJson = (response: Response) => response.json();
 
 const checkAuth = (response: Response): Response => {
     if (response.status === 401 || response.status === 403) {

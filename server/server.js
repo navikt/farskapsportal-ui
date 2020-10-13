@@ -34,22 +34,15 @@ app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 
 // Api calls
 app.get('/api/kjoenn', async (req, res) => {
-    console.log('/api/kjoenn hit');
     try {
         const token = req.cookies[tokenName];
-        console.log('before fetch');
         const response = await fetch(`${apiUrl}/kjoenn`, {
             method: 'get',
             headers: {
                 Authorization: `Bearer ${token}`,
             },
         });
-        console.log('after fetch');
         const json = await response.json();
-        console.log('after json');
-        console.log('response.status', response.status);
-        console.log('response.headers', response.headers);
-        // console.log('json', json);
         res.status(response.status).send(json);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
