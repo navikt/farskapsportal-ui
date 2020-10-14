@@ -49,7 +49,7 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
                     inputRef={register({
                         required: getMessage(intl, 'mor.soeknad.far.form.navn.validation.required'),
                     })}
-                    feil={errors.navn && errors.navn.message}
+                    feil={errors.navn?.message}
                 />
                 <Input
                     id="foedselsnummer"
@@ -69,7 +69,7 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
                             fnr(value).status === 'valid' ||
                             getMessage(intl, 'mor.soeknad.far.form.foedselsnummer.validation.fnr'),
                     })}
-                    feil={errors.foedselsnummer && errors.foedselsnummer.message}
+                    feil={errors.foedselsnummer?.message}
                 />
             </SkjemaGruppe>
             {!!feil.length && (

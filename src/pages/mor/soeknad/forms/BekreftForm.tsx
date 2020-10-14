@@ -42,10 +42,8 @@ function BekreftForm({ onSubmit, onCancel }: BekreftFormProps) {
                             label={getMessage(intl, 'mor.soeknad.confirm.form.farCorrect.label')}
                             checked={value}
                             onChange={(e) => onChange((e.target as HTMLInputElement).checked)}
-                            feil={errors.farCorrect && errors.farCorrect.message}
-                            inputProps={{
-                                name,
-                            }}
+                            feil={errors.farCorrect?.message}
+                            inputProps={{ name }}
                         />
                     )}
                 />
@@ -63,10 +61,8 @@ function BekreftForm({ onSubmit, onCancel }: BekreftFormProps) {
                             )}
                             checked={value}
                             onChange={(e) => onChange((e.target as HTMLInputElement).checked)}
-                            feil={errors.cannotWithdraw && errors.cannotWithdraw.message}
-                            inputProps={{
-                                name,
-                            }}
+                            feil={errors.cannotWithdraw?.message}
+                            inputProps={{ name }}
                         />
                     )}
                 />
