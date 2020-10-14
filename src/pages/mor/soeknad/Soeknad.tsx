@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Innholdstittel } from 'nav-frontend-typografi';
 
 import WithKjoenn from 'store/providers/WithKjoenn';
 import { StepStatus } from 'types/form';
 import { Kjoenn } from 'types/kjoenn';
+import { getMessage } from 'utils/intl';
 import BarnForm, { BarnFormInput } from './forms/BarnForm';
 import BekreftForm from './forms/BekreftForm';
 import FarForm, { FarFormInput } from './forms/FarForm';
@@ -18,6 +19,7 @@ import './Soeknad.less';
 type SoeknadData = BarnFormInput & FarFormInput;
 
 function Soeknad() {
+    const intl = useIntl();
     const [stepStatus, setStepStatus] = useState<{ step1: StepStatus; step2: StepStatus }>({
         step1: StepStatus.Active,
         step2: StepStatus.NotStarted,
@@ -90,14 +92,14 @@ function Soeknad() {
                             foedselsnummer={soeknadData.foedselsnummer}
                         />
                     }
-                    title="Far til barn(a)"
+                    title={getMessage(intl, 'mor.soeknad.far.title')}
                     status={stepStatus.step2}
                     onChange={onEndreFarForm}
                 />
                 <SoeknadStep
                     stepNumber={3}
                     formComponent={<BekreftForm onSubmit={onSubmit} onCancel={onCancel} />}
-                    title="Bekreft farskap"
+                    title={getMessage(intl, 'mor.soeknad.confirm.title')}
                     status={
                         stepStatus.step1 === StepStatus.Done && stepStatus.step2 === StepStatus.Done
                             ? StepStatus.Active
