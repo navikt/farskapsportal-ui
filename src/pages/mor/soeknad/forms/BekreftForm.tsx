@@ -35,13 +35,7 @@ function BekreftForm({ onSubmit, onCancel }: BekreftFormProps) {
                     name="farCorrect"
                     control={control}
                     rules={{
-                        required: {
-                            value: true,
-                            message: getMessage(
-                                intl,
-                                'mor.soeknad.confirm.form.validation.required'
-                            ),
-                        },
+                        required: getMessage(intl, 'mor.soeknad.confirm.form.validation.required'),
                     }}
                     render={({ onChange, value, name }) => (
                         <BekreftCheckboksPanel
@@ -59,13 +53,7 @@ function BekreftForm({ onSubmit, onCancel }: BekreftFormProps) {
                     name="cannotWithdraw"
                     control={control}
                     rules={{
-                        required: {
-                            value: true,
-                            message: getMessage(
-                                intl,
-                                'mor.soeknad.confirm.form.validation.required'
-                            ),
-                        },
+                        required: getMessage(intl, 'mor.soeknad.confirm.form.validation.required'),
                     }}
                     render={({ onChange, value, name }) => (
                         <BekreftCheckboksPanel

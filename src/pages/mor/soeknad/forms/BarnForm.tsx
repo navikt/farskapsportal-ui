@@ -33,13 +33,10 @@ function BarnForm({ defaultTermindato, onSubmit, onCancel }: BarnFormProps) {
                     name="termindato"
                     control={control}
                     rules={{
-                        required: {
-                            value: true,
-                            message: getMessage(
-                                intl,
-                                'mor.soeknad.barn.form.termindato.validation.required'
-                            ),
-                        },
+                        required: getMessage(
+                            intl,
+                            'mor.soeknad.barn.form.termindato.validation.required'
+                        ),
                     }}
                     render={({ onChange, value, name }) => (
                         <DateInput

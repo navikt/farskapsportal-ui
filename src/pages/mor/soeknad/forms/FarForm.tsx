@@ -47,13 +47,7 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
                     label={getMessage(intl, 'mor.soeknad.far.form.navn.label')}
                     bredde="XXL"
                     inputRef={register({
-                        required: {
-                            value: true,
-                            message: getMessage(
-                                intl,
-                                'mor.soeknad.far.form.navn.validation.required'
-                            ),
-                        },
+                        required: getMessage(intl, 'mor.soeknad.far.form.navn.validation.required'),
                     })}
                     feil={errors.navn && errors.navn.message}
                 />
@@ -67,13 +61,10 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
                     label={getMessage(intl, 'mor.soeknad.far.form.foedselsnummer.label')}
                     bredde="S"
                     inputRef={register({
-                        required: {
-                            value: true,
-                            message: getMessage(
-                                intl,
-                                'mor.soeknad.far.form.foedselsnummer.validation.required'
-                            ),
-                        },
+                        required: getMessage(
+                            intl,
+                            'mor.soeknad.far.form.foedselsnummer.validation.required'
+                        ),
                         validate: (value: string) =>
                             fnr(value).status === 'valid' ||
                             getMessage(intl, 'mor.soeknad.far.form.foedselsnummer.validation.fnr'),
