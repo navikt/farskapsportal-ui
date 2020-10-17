@@ -55,7 +55,7 @@
     "react-intl": "^5.8.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "typescript": "3.9.4"
+    "typescript": "3.9.7"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.4.1",
