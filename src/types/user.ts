@@ -6,4 +6,4 @@ export type FetchUserInfo =
     | { status: 'SUCCESS'; data: UserInfo }
     | { status: 'FAILURE'; error: HTTPError };
 
-export type UserInfo = { kjoenn: Kjoenn };
+export type UserInfo = Kjoenn;

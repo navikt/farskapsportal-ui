@@ -1,33 +1,67 @@
+import Cookies from 'js-cookie';
+
 import { AlertError } from 'types/error';
+import { Kjoenn } from 'types/kjoenn';
+import { redirectLoginCookie } from 'utils/cookies';
 import { logApiError } from 'utils/logger';
 
-const { REACT_APP_LOGINSERVICE_URL, REACT_APP_API_URL, REACT_APP_URL } = process.env;
+const { REACT_APP_LOGINSERVICE_URL, REACT_APP_URL } = process.env;
 
-export const fetchUser = () => checkAuthFetchJson(`${REACT_APP_API_URL}/user`);
+/*
+ * AUTH
+ * Henter informasjon om bruker.
+ * Logger ikke 401 eller 403 feil da det forventes.
+ * */
+export const checkAuthFetchUser = () => {
+    const url = '/api/kjoenn';
 
-const checkAuthFetchJson = (url: string) =>
-    fetch(url, {
+    return fetch(url, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
         credentials: 'include',
     })
         .then(checkAuth)
         .then(checkHttpError)
-        .then(parseJson)
+        .then((res) => res.text() as Promise<Kjoenn>)
         .catch((err: string & AlertError) => {
             const error = {
                 code: err.code || 404,
                 type: err.type || 'feil',
                 text: err.text || err,
             };
-            logApiError(url, error);
+            if (error.code !== 401 && error.code !== 403) {
+                logApiError(url, error);
+            }
             throw error;
         });
+};
 
 /*
- *   UTILS
+ * GET
+ * */
+// const checkAuthFetchJson = (url: string) =>
+//     fetch(url, {
+//         method: 'GET',
+//         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+//         credentials: 'include',
+//     })
+//         .then(checkAuth)
+//         .then(checkHttpError)
+//         .then(parseJson)
+//         .catch((err: string & AlertError) => {
+//             const error = {
+//                 code: err.code || 404,
+//                 type: err.type || 'feil',
+//                 text: err.text || err,
+//             };
+//             logApiError(url, error);
+//             throw error;
+//         });
+
+/*
+ * UTILS
  */
-const parseJson = (response: Response) => response.json();
+// const parseJson = (response: Response) => response.json();
 
 const checkAuth = (response: Response): Response => {
     if (response.status === 401 || response.status === 403) {
@@ -38,6 +72,10 @@ const checkAuth = (response: Response): Response => {
 };
 
 const sendToLogin = () => {
+    const to = window.location.pathname + window.location.hash;
+    const inFiveMinutes = new Date(new Date().getTime() + 5 * 60 * 1000);
+    const options = { expires: inFiveMinutes };
+    Cookies.set(redirectLoginCookie, to, options);
     window.location.assign(`${REACT_APP_LOGINSERVICE_URL}?redirect=${REACT_APP_URL}`);
 };
 

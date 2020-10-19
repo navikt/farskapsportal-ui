@@ -35,23 +35,15 @@ function BekreftForm({ onSubmit, onCancel }: BekreftFormProps) {
                     name="farCorrect"
                     control={control}
                     rules={{
-                        required: {
-                            value: true,
-                            message: getMessage(
-                                intl,
-                                'mor.soeknad.confirm.form.validation.required'
-                            ),
-                        },
+                        required: getMessage(intl, 'mor.soeknad.confirm.form.validation.required'),
                     }}
                     render={({ onChange, value, name }) => (
                         <BekreftCheckboksPanel
                             label={getMessage(intl, 'mor.soeknad.confirm.form.farCorrect.label')}
                             checked={value}
                             onChange={(e) => onChange((e.target as HTMLInputElement).checked)}
-                            feil={errors.farCorrect && errors.farCorrect.message}
-                            inputProps={{
-                                name,
-                            }}
+                            feil={errors.farCorrect?.message}
+                            inputProps={{ name }}
                         />
                     )}
                 />
@@ -59,13 +51,7 @@ function BekreftForm({ onSubmit, onCancel }: BekreftFormProps) {
                     name="cannotWithdraw"
                     control={control}
                     rules={{
-                        required: {
-                            value: true,
-                            message: getMessage(
-                                intl,
-                                'mor.soeknad.confirm.form.validation.required'
-                            ),
-                        },
+                        required: getMessage(intl, 'mor.soeknad.confirm.form.validation.required'),
                     }}
                     render={({ onChange, value, name }) => (
                         <BekreftCheckboksPanel
@@ -75,10 +61,8 @@ function BekreftForm({ onSubmit, onCancel }: BekreftFormProps) {
                             )}
                             checked={value}
                             onChange={(e) => onChange((e.target as HTMLInputElement).checked)}
-                            feil={errors.cannotWithdraw && errors.cannotWithdraw.message}
-                            inputProps={{
-                                name,
-                            }}
+                            feil={errors.cannotWithdraw?.message}
+                            inputProps={{ name }}
                         />
                     )}
                 />

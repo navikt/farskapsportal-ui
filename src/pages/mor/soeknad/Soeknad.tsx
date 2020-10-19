@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Innholdstittel } from 'nav-frontend-typografi';
 
+import WithKjoenn from 'store/providers/WithKjoenn';
 import { StepStatus } from 'types/form';
+import { Kjoenn } from 'types/kjoenn';
+import { getMessage } from 'utils/intl';
 import BarnForm, { BarnFormInput } from './forms/BarnForm';
 import BekreftForm from './forms/BekreftForm';
 import FarForm, { FarFormInput } from './forms/FarForm';
@@ -16,6 +19,7 @@ import './Soeknad.less';
 type SoeknadData = BarnFormInput & FarFormInput;
 
 function Soeknad() {
+    const intl = useIntl();
     const [stepStatus, setStepStatus] = useState<{ step1: StepStatus; step2: StepStatus }>({
         step1: StepStatus.Active,
         step2: StepStatus.NotStarted,
@@ -54,54 +58,56 @@ function Soeknad() {
     };
 
     return (
-        <div className="Soeknad">
-            <Innholdstittel tag="h2">
-                <FormattedMessage id="mor.title" />
-            </Innholdstittel>
-            <SoeknadStep
-                stepNumber={1}
-                formComponent={
-                    <BarnForm
-                        defaultTermindato={soeknadData.termindato}
-                        onSubmit={onSubmitBarnForm}
-                        onCancel={onCancel}
-                    />
-                }
-                presentationComponent={<BarnPresentation termindato={soeknadData.termindato} />}
-                status={stepStatus.step1}
-                onChange={onEndreBarnForm}
-            />
-            <SoeknadStep
-                stepNumber={2}
-                formComponent={
-                    <FarForm
-                        defaultNavn={soeknadData.navn}
-                        defaultFoedselsnummer={soeknadData.foedselsnummer}
-                        onSubmit={onSubmitFarForm}
-                        onCancel={onCancel}
-                    />
-                }
-                presentationComponent={
-                    <FarPresentation
-                        navn={soeknadData.navn}
-                        foedselsnummer={soeknadData.foedselsnummer}
-                    />
-                }
-                title="Far til barn(a)"
-                status={stepStatus.step2}
-                onChange={onEndreFarForm}
-            />
-            <SoeknadStep
-                stepNumber={3}
-                formComponent={<BekreftForm onSubmit={onSubmit} onCancel={onCancel} />}
-                title="Bekreft farskap"
-                status={
-                    stepStatus.step1 === StepStatus.Done && stepStatus.step2 === StepStatus.Done
-                        ? StepStatus.Active
-                        : StepStatus.NotStarted
-                }
-            />
-        </div>
+        <WithKjoenn kjoenn={Kjoenn.Kvinne}>
+            <div className="Soeknad">
+                <Innholdstittel tag="h2">
+                    <FormattedMessage id="mor.title" />
+                </Innholdstittel>
+                <SoeknadStep
+                    stepNumber={1}
+                    formComponent={
+                        <BarnForm
+                            defaultTermindato={soeknadData.termindato}
+                            onSubmit={onSubmitBarnForm}
+                            onCancel={onCancel}
+                        />
+                    }
+                    presentationComponent={<BarnPresentation termindato={soeknadData.termindato} />}
+                    status={stepStatus.step1}
+                    onChange={onEndreBarnForm}
+                />
+                <SoeknadStep
+                    stepNumber={2}
+                    formComponent={
+                        <FarForm
+                            defaultNavn={soeknadData.navn}
+                            defaultFoedselsnummer={soeknadData.foedselsnummer}
+                            onSubmit={onSubmitFarForm}
+                            onCancel={onCancel}
+                        />
+                    }
+                    presentationComponent={
+                        <FarPresentation
+                            navn={soeknadData.navn}
+                            foedselsnummer={soeknadData.foedselsnummer}
+                        />
+                    }
+                    title={getMessage(intl, 'mor.soeknad.far.title')}
+                    status={stepStatus.step2}
+                    onChange={onEndreFarForm}
+                />
+                <SoeknadStep
+                    stepNumber={3}
+                    formComponent={<BekreftForm onSubmit={onSubmit} onCancel={onCancel} />}
+                    title={getMessage(intl, 'mor.soeknad.confirm.title')}
+                    status={
+                        stepStatus.step1 === StepStatus.Done && stepStatus.step2 === StepStatus.Done
+                            ? StepStatus.Active
+                            : StepStatus.NotStarted
+                    }
+                />
+            </div>
+        </WithKjoenn>
     );
 }
 

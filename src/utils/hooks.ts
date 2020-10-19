@@ -11,9 +11,9 @@ export const useFocus = (): [RefObject<HTMLDivElement>, () => void] => {
         setIsFocused(false);
     }, [isFocused]);
 
-    const focus = () => {
+    const setFocus = () => {
         setIsFocused(true);
     };
 
-    return [ref, focus];
+    return [ref, setFocus];
 };

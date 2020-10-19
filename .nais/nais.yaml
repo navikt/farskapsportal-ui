@@ -1,7 +1,7 @@
 apiVersion: nais.io/v1alpha1
 kind: Application
 metadata:
-  name: farskapsportal-ui
+  name: {{ name }}
   namespace: farskapsportal
   labels:
     team: farskapsportal
@@ -26,4 +26,6 @@ spec:
   accessPolicy:
     outbound:
       external:
-        - host: {{dekoratoren}}
+      {{#each host}}
+        - host: "{{this}}"
+      {{/each}}
