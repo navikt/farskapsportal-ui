@@ -15,18 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Define client-side environment variables for main
-        if: github.ref == 'refs/heads/main'
-        run: |
-          echo "REACT_APP_URL=https://farskapsportal.dev.nav.no" >> $GITHUB_ENV
-          echo "REACT_APP_LOGINSERVICE_URL=https://loginservice.dev.nav.no/login" >> $GITHUB_ENV
-
-      - name: Define client-side environment variables for feature
-        if: github.ref != 'refs/heads/main'
-        run: |
-          echo "REACT_APP_URL=https://farskapsportal-feature.dev.nav.no" >> $GITHUB_ENV
-          echo "REACT_APP_LOGINSERVICE_URL=https://loginservice.dev.nav.no/login" >> $GITHUB_ENV
-
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"

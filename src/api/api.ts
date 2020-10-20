@@ -5,7 +5,7 @@ import { Kjoenn } from 'types/kjoenn';
 import { redirectLoginCookie } from 'utils/cookies';
 import { logApiError } from 'utils/logger';
 
-const { REACT_APP_LOGINSERVICE_URL, REACT_APP_URL } = process.env;
+const { LOGIN_URL } = window as never;
 
 /*
  * AUTH
@@ -76,7 +76,7 @@ const sendToLogin = () => {
     const inFiveMinutes = new Date(new Date().getTime() + 5 * 60 * 1000);
     const options = { expires: inFiveMinutes };
     Cookies.set(redirectLoginCookie, to, options);
-    window.location.assign(`${REACT_APP_LOGINSERVICE_URL}?redirect=${REACT_APP_URL}`);
+    window.location.assign(`${LOGIN_URL}?redirect=${window.location.origin}`);
 };
 
 const checkHttpError = (response: Response): Response => {

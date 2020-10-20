@@ -1,3 +1,4 @@
+import 'dotenv/config.js';
 import express from 'express';
 import mustacheExpress from 'mustache-express';
 import cookieParser from 'cookie-parser';
@@ -11,10 +12,6 @@ const app = express();
 
 app.set('views', buildPath);
 app.set('view engine', 'mustache');
-app.set('X-Frame-Options', 'SAMEORIGIN');
-app.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-app.set('X-Content-Type-Options', 'nosniff');
-app.set('X-XSS-Protection', '1; mode=block');
 app.engine('html', mustacheExpress());
 
 app.use(cookieParser());
@@ -23,6 +20,10 @@ app.use(cookieParser());
 app.use(express.json());
 app.use((req, res, next) => {
     res.removeHeader('X-Powered-By');
+    res.set('X-Frame-Options', 'SAMEORIGIN');
+    res.set('X-XSS-Protection', '1; mode=block');
+    res.set('X-Content-Type-Options', 'nosniff');
+    res.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
     next();
 });
 
@@ -54,7 +55,10 @@ app.get('/api/kjoenn', async (req, res) => {
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
     getDecorator()
         .then((fragments) => {
-            res.render('index.html', fragments);
+            res.render('index.html', {
+                ...fragments,
+                LOGIN_URL: process.env.LOGINSERVICE_URL,
+            });
         })
         .catch((e) => {
             const error = `Failed to get decorator: ${e}`;

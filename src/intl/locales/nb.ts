@@ -27,7 +27,7 @@ export default {
     'frontpage.3.ol.2': 'Far bekrefter farskapserklæring på dittnav:',
     'frontpage.3.ol.2.li.1': 'Far logger inn og kontrollerer opplysningene.',
     'frontpage.3.ol.2.li.2': 'Far signerer farskapserklæringen.',
-    'frontpage.login': 'Gå til elektronisk erklæring av farskap',
+    'frontpage.login': 'Fyll ut erklæring av farskap',
     'frontpage.inperson.title': 'Erklære farskapet gjennom oppmøte',
     'frontpage.inperson.desc': 'Hvis dere ikke oppfyller kravene til å erklære farskapet elektronisk må dere erklære farskapet ved å møte opp.',
     'mor.title': 'Opplysninger om barnet og barnets far',
