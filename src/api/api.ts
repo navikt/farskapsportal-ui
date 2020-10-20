@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie';
 
+import { Outbound, OutboundFatherControl } from 'types/api';
 import { AlertError } from 'types/error';
 import { Kjoenn } from 'types/kjoenn';
 import { redirectLoginCookie } from 'utils/cookies';
@@ -60,9 +61,36 @@ export const checkAuthFetchUser = () => {
 //         });
 
 /*
+ *   POST
+ */
+export const controlFatherInfo = (data: OutboundFatherControl) => postJson('/api/kontroller', data);
+
+const postJson = (url: string, data?: Outbound) => {
+    return fetch(url, {
+        method: 'POST',
+        ...(data && {
+            body: JSON.stringify(data),
+        }),
+        headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+        credentials: 'include',
+    })
+        .then(checkHttpError)
+        .then(parseJson)
+        .catch((err: string & AlertError) => {
+            const error = {
+                code: err.code || 404,
+                type: err.type || 'feil',
+                text: err.text || err,
+            };
+            logApiError(url, error);
+            throw error;
+        });
+};
+
+/*
  * UTILS
  */
-// const parseJson = (response: Response) => response.json();
+const parseJson = (response: Response) => response.json();
 
 const checkAuth = (response: Response): Response => {
     if (response.status === 401 || response.status === 403) {

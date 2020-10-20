@@ -26,5 +26,5 @@ const mockPost = (
 export const setUpMock = async () => {
     mockGet('/api/kjoenn', user);
 
-    mockPost('/api/kontroller', { statusType: 'OK' });
+    mockPost('/api/kontroller', { statusType: 'OK' }, 2000, 3000);
 };

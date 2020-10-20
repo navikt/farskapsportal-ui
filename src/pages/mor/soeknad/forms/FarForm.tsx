@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useIntl } from 'react-intl';
 import { useForm } from 'react-hook-form';
 import { Feiloppsummering, Input, SkjemaGruppe } from 'nav-frontend-skjema';
 import { fnr } from '@navikt/fnrvalidator';
 
+import { controlFatherInfo } from 'api/api';
+import Error from 'components/error/Error';
 import FormButtons from 'components/form-buttons/FormButtons';
+import { AlertError } from 'types/error';
 import { mapErrors } from 'utils/form';
 import { useFocus } from 'utils/hooks';
 import { getMessage } from 'utils/intl';
@@ -31,6 +34,30 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
         },
         shouldFocusError: false,
     });
+    const [isControlPending, setIsControlPending] = useState(false);
+    const [isControlError, setIsControlError] = useState(false);
+    const [apiError, setApiError] = useState<AlertError>();
+
+    const controlInfoAndSubmit = (data: FarFormInput) => {
+        setIsControlPending(true);
+        setIsControlError(false);
+        setApiError(undefined);
+
+        controlFatherInfo(data)
+            .then((res) => {
+                if (res.ok) {
+                    onSubmit(data);
+                } else {
+                    setIsControlError(true);
+                }
+            })
+            .catch((error: AlertError) => {
+                setApiError(error);
+            })
+            .finally(() => {
+                setIsControlPending(false);
+            });
+    };
 
     const onError = () => {
         setFeiloppsummeringFocus();
@@ -39,8 +66,11 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
     const feil = mapErrors(errors, ['navn', 'foedselsnummer']);
 
     return (
-        <form onSubmit={handleSubmit(onSubmit, onError)}>
-            <SkjemaGruppe legend={getMessage(intl, 'mor.soeknad.far.title')}>
+        <form onSubmit={handleSubmit(controlInfoAndSubmit, onError)}>
+            <SkjemaGruppe
+                legend={getMessage(intl, 'mor.soeknad.far.title')}
+                feil={isControlError && getMessage(intl, 'mor.soeknad.far.form.error')}
+            >
                 <Input
                     id="navn"
                     name="navn"
@@ -83,7 +113,9 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
                 submitText={getMessage(intl, 'mor.form.buttons.next')}
                 cancelText={getMessage(intl, 'mor.form.buttons.cancel')}
                 onCancel={onCancel}
+                submitSpinner={isControlPending}
             />
+            {apiError && <Error error={apiError} />}
         </form>
     );
 }
