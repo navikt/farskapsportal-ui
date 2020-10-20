@@ -26,7 +26,7 @@
     "js-cookie": "^2.2.1",
     "lodash.throttle": "^4.1.1",
     "moment": "^2.29.1",
-    "nav-datovelger": "^6.2.1",
+    "nav-datovelger": "^7.0.0",
     "nav-frontend-alertstriper": "^3.0.27",
     "nav-frontend-alertstriper-style": "^2.0.21",
     "nav-frontend-chevron": "^1.0.17",

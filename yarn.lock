@@ -7559,10 +7559,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-nav-datovelger@^6.2.1:
-  version "6.2.1"
-  resolved "https://registry.yarnpkg.com/nav-datovelger/-/nav-datovelger-6.2.1.tgz#064d75ec0b2964a63f71375c24b55efd532563b4"
-  integrity sha512-r79bUItP1tvQ7IpNFLB/uEZnGfHW8bg7qgw+uqhWhWSIqag3YX55k8mkYSSxF8mvkn/WV07KMNcCCMwGmi3Lww==
+nav-datovelger@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/nav-datovelger/-/nav-datovelger-7.0.0.tgz#78a25c1828b66023a3dd8b0f4f327437991abbec"
+  integrity sha512-tuwfoXADE1OFiff6y+dp7SlUGlIFJiSH5EBD57BuHzK2eZnfkBL/c83zamVZ46W+vfyt39c54UsknkaxOkFbhQ==
   dependencies:
     focus-trap-react "^8.1.0"
 

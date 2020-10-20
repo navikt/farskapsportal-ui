@@ -37,6 +37,13 @@ function BarnForm({ defaultTermindato, onSubmit, onCancel }: BarnFormProps) {
                             intl,
                             'mor.soeknad.barn.form.termindato.validation.required'
                         ),
+                        pattern: {
+                            value: /\d{4}-\d{2}-\d{2}/,
+                            message: getMessage(
+                                intl,
+                                'mor.soeknad.barn.form.termindato.validation.pattern'
+                            ),
+                        },
                     }}
                     render={({ onChange, value, name }) => (
                         <DateInput

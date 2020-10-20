@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Datovelger } from 'nav-datovelger';
+import { Datepicker } from 'nav-datovelger';
 import {
     Label,
     SkjemaelementFeilmelding,
@@ -32,15 +32,16 @@ function DateInput(props: DateInputProps) {
                 return (
                     <div className={cls('skjemaelement', props.className)}>
                         <Label htmlFor={props.id}>{props.label}</Label>
-                        <Datovelger
-                            id={props.id}
+                        <Datepicker
+                            inputId={props.id}
                             onChange={props.onChange}
-                            valgtDato={props.value}
-                            datoErGyldig={!feilmelding}
+                            value={props.value}
                             locale={language}
-                            input={{
+                            inputProps={{
                                 name: props.id,
                                 placeholder: props.placeholder,
+                                'aria-invalid': !!feilmelding,
+                                pattern: undefined,
                             }}
                         />
                         {!context.feil && props.feil && (

@@ -35,6 +35,7 @@ export default {
     'mor.soeknad.barn.form.termindato.label': 'Termindato',
     'mor.soeknad.barn.form.termindato.placeholder': 'dd.mm.åååå',
     'mor.soeknad.barn.form.termindato.validation.required': 'Termindato er påkrevd',
+    'mor.soeknad.barn.form.termindato.validation.pattern': 'Ugyldig dato',
     'mor.soeknad.barn.presentation.termindato.label': 'Termindato:',
     'mor.soeknad.far.title': 'Far til barn(a)',
     'mor.soeknad.far.form.navn.label': 'Navn til far (som det står i Folkeregisteret)',
