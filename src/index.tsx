@@ -12,6 +12,7 @@ import ScrollToTop from 'components/scroll-to-top/ScrollToTop';
 import IntlProvider from 'intl/IntlProvider';
 import { StoreProvider } from 'store/Context';
 import { initialState, reducer } from 'store/store';
+import { logApiError } from './utils/logger';
 
 const init = async () => {
     if (process.env.NODE_ENV === 'development') {
@@ -26,6 +27,8 @@ const init = async () => {
         script.src = 'http://localhost:8100/dekoratoren/client.js';
         document.body.appendChild(script);
     }
+
+    logApiError('test url', { type: 'feil', code: 420, text: 'TEST error' });
 
     ReactDOM.render(
         <React.StrictMode>

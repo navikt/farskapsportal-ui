@@ -5,7 +5,8 @@ import { Kjoenn } from 'types/kjoenn';
 import { redirectLoginCookie } from 'utils/cookies';
 import { logApiError } from 'utils/logger';
 
-const { LOGIN_URL } = window as never;
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const { LOGIN_URL } = window as any;
 
 /*
  * AUTH
