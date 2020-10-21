@@ -41,7 +41,6 @@ function DateInput(props: DateInputProps) {
                                 name: props.id,
                                 placeholder: props.placeholder,
                                 'aria-invalid': !!feilmelding,
-                                pattern: undefined,
                             }}
                         />
                         {!context.feil && props.feil && (
