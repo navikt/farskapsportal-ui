@@ -64,13 +64,14 @@ app.post('/api/kontroller', async (req, res) => {
         const token = req.cookies[tokenName];
         console.log('post kontroller');
         console.log(req.body);
+        console.log(typeof req.body);
         const response = await fetch(`${apiUrl}/kontrollere/far`, {
             method: 'post',
             headers: {
                 Authorization: `Bearer ${token}`,
                 'Content-Type': 'application/json;charset=UTF-8',
             },
-            body: req.body,
+            body: JSON.stringify(req.body),
         });
         const json = await response.json();
         res.status(response.status).send(json);
