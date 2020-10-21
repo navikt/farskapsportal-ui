@@ -20,7 +20,6 @@ export const checkAuthFetchUser = () => {
     return fetch(url, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
-        credentials: 'include',
     })
         .then(checkAuth)
         .then(checkHttpError)
@@ -70,7 +69,6 @@ const postJson = (url: string, data: Outbound) => {
         method: 'POST',
         body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
-        credentials: 'include',
     })
         .then(checkHttpError)
         .catch((err: string & AlertError) => {
