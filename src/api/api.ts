@@ -80,8 +80,6 @@ const postJson = (url: string, data: Outbound) => {
                 text: err.text || err,
             };
             if (error.code !== 400) {
-                console.log('error logged');
-                console.log(error.code);
                 logApiError(url, error);
             }
             throw error;

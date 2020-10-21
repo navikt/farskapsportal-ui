@@ -44,8 +44,7 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
         setApiError(undefined);
 
         controlFatherInfo(data)
-            .then((res) => {
-                console.log(res);
+            .then(() => {
                 onSubmit(data);
             })
             .catch((error: AlertError) => {
