@@ -73,7 +73,6 @@ const postJson = (url: string, data: Outbound) => {
         credentials: 'include',
     })
         .then(checkHttpError)
-        .then(parseJson)
         .catch((err: string & AlertError) => {
             const error = {
                 code: err.code || 404,
@@ -81,6 +80,8 @@ const postJson = (url: string, data: Outbound) => {
                 text: err.text || err,
             };
             if (error.code !== 400) {
+                console.log('error logged');
+                console.log(error.code);
                 logApiError(url, error);
             }
             throw error;
@@ -90,7 +91,7 @@ const postJson = (url: string, data: Outbound) => {
 /*
  * UTILS
  */
-const parseJson = (response: Response) => response.json();
+// const parseJson = (response: Response) => response.json();
 
 const checkAuth = (response: Response): Response => {
     if (response.status === 401 || response.status === 403) {
