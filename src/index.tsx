@@ -16,6 +16,12 @@ import { initialState, reducer } from 'store/store';
 const init = async () => {
     if (process.env.NODE_ENV === 'development') {
         await import('./api/mock/app').then(({ setUpMock }) => setUpMock());
+
+        document.body.innerHTML = document.body.innerHTML.replace(
+            '{{{FRONTEND_LOGGER_SCRIPT}}}',
+            ''
+        );
+
         document.body.innerHTML = document.body.innerHTML.replace('{{{STYLES}}}', styles);
         document.body.innerHTML = document.body.innerHTML.replace('{{{HEADER}}}', header);
         document.body.innerHTML = document.body.innerHTML.replace('{{{FOOTER}}}', footer);
