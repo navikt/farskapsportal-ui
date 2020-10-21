@@ -62,9 +62,6 @@ app.get('/api/kjoenn', async (req, res) => {
 app.post('/api/kontroller', async (req, res) => {
     try {
         const token = req.cookies[tokenName];
-        console.log('post kontroller');
-        console.log(req.body);
-        console.log(typeof req.body);
         const response = await fetch(`${apiUrl}/kontrollere/far`, {
             method: 'post',
             headers: {
@@ -73,8 +70,7 @@ app.post('/api/kontroller', async (req, res) => {
             },
             body: JSON.stringify(req.body),
         });
-        const json = await response.json();
-        res.status(response.status).send(json);
+        res.sendStatus(response.status);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
         res.sendStatus(500);
