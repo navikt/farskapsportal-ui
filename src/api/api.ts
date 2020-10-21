@@ -71,7 +71,7 @@ const postJson = (url: string, data?: Outbound) => {
         ...(data && {
             body: JSON.stringify(data),
         }),
-        headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+        headers: { 'Content-Type': 'application/json;charset=utf-8' },
         credentials: 'include',
     })
         .then(checkHttpError)
