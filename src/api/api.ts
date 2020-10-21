@@ -65,13 +65,11 @@ export const checkAuthFetchUser = () => {
  */
 export const controlFatherInfo = (data: OutboundFatherControl) => postJson('/api/kontroller', data);
 
-const postJson = (url: string, data?: Outbound) => {
+const postJson = (url: string, data: Outbound) => {
     return fetch(url, {
         method: 'POST',
-        ...(data && {
-            body: JSON.stringify(data),
-        }),
-        headers: { 'Content-Type': 'application/json;charset=utf-8' },
+        body: JSON.stringify(data),
+        headers: { 'Content-Type': 'application/json;charset=UTF-8' },
         credentials: 'include',
     })
         .then(checkHttpError)

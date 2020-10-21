@@ -68,6 +68,7 @@ app.post('/api/kontroller', async (req, res) => {
             method: 'post',
             headers: {
                 Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json;charset=UTF-8',
             },
             body: req.body,
         });
