@@ -59,6 +59,23 @@ app.get('/api/kjoenn', async (req, res) => {
     }
 });
 
+app.post('/api/kontroller', async (req, res) => {
+    try {
+        const token = req.cookies[tokenName];
+        const response = await fetch(`${apiUrl}/kontrollere/far`, {
+            method: 'post',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        const json = await response.json();
+        res.status(response.status).send(json);
+    } catch (error) {
+        console.log(`Error while calling api: ${error}`);
+        res.sendStatus(500);
+    }
+});
+
 // Match everything except internal og static
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
     getDecorator()

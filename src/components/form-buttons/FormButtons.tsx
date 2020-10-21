@@ -7,12 +7,15 @@ interface FormButtonsProps {
     submitText: string;
     cancelText: string;
     onCancel: () => void;
+    submitSpinner?: boolean;
 }
 
-function FormButtons({ submitText, cancelText, onCancel }: FormButtonsProps) {
+function FormButtons({ submitText, cancelText, onCancel, submitSpinner }: FormButtonsProps) {
     return (
         <div className="FormButtons">
-            <Hovedknapp htmlType="submit">{submitText}</Hovedknapp>
+            <Hovedknapp htmlType="submit" spinner={submitSpinner} autoDisableVedSpinner={true}>
+                {submitText}
+            </Hovedknapp>
             <Knapp htmlType="button" onClick={onCancel}>
                 {cancelText}
             </Knapp>
