@@ -82,7 +82,9 @@ const postJson = (url: string, data?: Outbound) => {
                 type: err.type || 'feil',
                 text: err.text || err,
             };
-            logApiError(url, error);
+            if (error.code !== 400) {
+                logApiError(url, error);
+            }
             throw error;
         });
 };

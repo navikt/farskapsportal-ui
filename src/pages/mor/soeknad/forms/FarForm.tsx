@@ -45,14 +45,15 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
 
         controlFatherInfo(data)
             .then((res) => {
-                if (res.ok) {
-                    onSubmit(data);
-                } else {
-                    setIsControlError(true);
-                }
+                console.log(res);
+                onSubmit(data);
             })
             .catch((error: AlertError) => {
-                setApiError(error);
+                if (error.code === 400) {
+                    setIsControlError(true);
+                } else {
+                    setApiError(error);
+                }
             })
             .finally(() => {
                 setIsControlPending(false);
