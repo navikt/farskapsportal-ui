@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-import { Outbound, OutboundFatherControl } from 'types/api';
+import { OutboundFatherControl } from 'types/api';
 import { AlertError } from 'types/error';
 import { Kjoenn } from 'types/kjoenn';
 import { redirectLoginCookie } from 'utils/cookies';
@@ -62,9 +62,9 @@ export const checkAuthFetchUser = () => {
 /*
  *   POST
  */
-export const controlFatherInfo = (data: OutboundFatherControl) => postJson('/api/kontroller', data);
+export const controlFatherInfo = (data: OutboundFatherControl) => {
+    const url = '/api/kontroller';
 
-const postJson = (url: string, data: Outbound) => {
     return fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
