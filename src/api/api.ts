@@ -110,6 +110,15 @@ const checkHttpError = (response: Response): Response => {
     if (response.ok) {
         return response;
     } else {
+        console.log(response);
+        console.log(response.body);
+        try {
+            let json = '';
+            response.json().then((j) => (json = j));
+            console.log(json);
+        } catch (e) {
+            console.log(e);
+        }
         const error = {
             code: response.status,
             text: response.statusText,
