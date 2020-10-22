@@ -111,12 +111,14 @@ const checkHttpError = (response: Response): Response => {
         return response;
     } else {
         console.log(response);
-        console.log(response.body);
+        // console.log(response.body);
         try {
-            let json = '';
-            response.json().then((j) => (json = j));
-            console.log(json);
+            response.json().then((data) => {
+                console.log('data:');
+                console.log(data);
+            });
         } catch (e) {
+            console.log('error:');
             console.log(e);
         }
         const error = {
