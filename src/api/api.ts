@@ -107,24 +107,22 @@ const sendToLogin = () => {
 };
 
 const checkHttpError = (response: Response): Response => {
-    if (response.ok) {
-        return response;
-    } else {
-        console.log(response);
-        // console.log(response.body);
-        try {
-            response.json().then((data) => {
-                console.log('data:');
-                console.log(data);
+    if (!response.ok) {
+        response
+            .json()
+            .then((errorData) => {
+                throw {
+                    code: response.status,
+                    text: errorData.body,
+                };
+            })
+            .catch(() => {
+                throw {
+                    code: response.status,
+                    text: response.statusText,
+                };
             });
-        } catch (e) {
-            console.log('error:');
-            console.log(e);
-        }
-        const error = {
-            code: response.status,
-            text: response.statusText,
-        };
-        throw error;
     }
+
+    return response;
 };

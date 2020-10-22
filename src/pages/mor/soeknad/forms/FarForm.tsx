@@ -36,11 +36,13 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
     });
     const [isControlPending, setIsControlPending] = useState(false);
     const [isControlError, setIsControlError] = useState(false);
+    const [isControlErrorFemale, setIsControlErrorFemale] = useState(false);
     const [apiError, setApiError] = useState<AlertError>();
 
     const controlInfoAndSubmit = (data: FarFormInput) => {
         setIsControlPending(true);
         setIsControlError(false);
+        setIsControlErrorFemale(false);
         setApiError(undefined);
 
         controlFatherInfo(data)
@@ -49,6 +51,9 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
             })
             .catch((error: AlertError) => {
                 if (error.code === 400) {
+                    if (error.text.startsWith('Oppgitt far er ikke mann')) {
+                        setIsControlErrorFemale(true);
+                    }
                     setIsControlError(true);
                 } else {
                     setApiError(error);
@@ -69,7 +74,15 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
         <form onSubmit={handleSubmit(controlInfoAndSubmit, onError)}>
             <SkjemaGruppe
                 legend={getMessage(intl, 'mor.soeknad.far.title')}
-                feil={isControlError && getMessage(intl, 'mor.soeknad.far.form.error')}
+                feil={
+                    isControlError &&
+                    getMessage(
+                        intl,
+                        isControlErrorFemale
+                            ? 'mor.soeknad.far.form.error.female'
+                            : 'mor.soeknad.far.form.error'
+                    )
+                }
             >
                 <Input
                     id="navn"
