@@ -88,7 +88,7 @@ export const controlFatherInfo = (data: OutboundFatherControl) => {
 /*
  * UTILS
  */
-// const parseJson = (response: Response) => response.json();
+const parseJson = (response: Response) => response.json();
 
 const checkAuth = (response: Response): Response => {
     if (response.status === 401 || response.status === 403) {
@@ -106,23 +106,15 @@ const sendToLogin = () => {
     window.location.assign(`${LOGIN_URL}?redirect=${window.location.origin}`);
 };
 
-const checkHttpError = (response: Response): Response => {
-    if (!response.ok) {
-        response
-            .json()
-            .then((errorData) => {
-                throw {
-                    code: response.status,
-                    text: errorData.body,
-                };
-            })
-            .catch(() => {
-                throw {
-                    code: response.status,
-                    text: response.statusText,
-                };
-            });
+const checkHttpError = async (response: Response): Promise<Response> => {
+    if (response.ok) {
+        return response;
+    } else {
+        const responseErrorData = await parseJson(response);
+        const error = {
+            code: response.status,
+            text: responseErrorData.body,
+        };
+        throw error;
     }
-
-    return response;
 };
