@@ -70,6 +70,7 @@ export const controlFatherInfo = (data: OutboundFatherControl) => {
         body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
     })
+        .then(checkAuth)
         .then(checkHttpError)
         .catch((err: string & AlertError) => {
             const error = {
