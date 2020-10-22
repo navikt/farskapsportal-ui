@@ -70,8 +70,8 @@ app.post('/api/kontroller', async (req, res) => {
             },
             body: JSON.stringify(req.body),
         });
-        const text = await response.text();
-        res.status(response.status).send(text);
+        const json = await response.json();
+        res.status(response.status).send(json);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
         res.sendStatus(500);
