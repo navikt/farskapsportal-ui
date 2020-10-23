@@ -5,6 +5,6 @@ import App from '../App';
 
 test('renders learn react link', () => {
     const { getByText } = renderWithIntlAndStore(<App />);
-    const linkElement = getByText(/Elektronisk farskapserklæring/i);
-    expect(linkElement).toBeInTheDocument();
+    const headerElement = getByText('Farskapserklæring');
+    expect(headerElement).toBeInTheDocument();
 });
