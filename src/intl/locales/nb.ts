@@ -2,7 +2,7 @@
 export default {
     'languageToggle.nb': 'Bokmål',
     'languageToggle.en': 'Engelsk',
-    'page.title': 'Elektronisk farskapserklæring',
+    'page.title': 'Farskapserklæring',
     'form.feiloppsummering': 'For å gå videre må du rette opp følgende:',
     'form.date.placeholder': 'dd.mm.åååå',
     'login.error': 'Finner ikke kjønn for innlogget bruker.',
@@ -36,6 +36,9 @@ export default {
     'mor.soeknad.barn.form.termindato.placeholder': 'dd.mm.åååå',
     'mor.soeknad.barn.form.termindato.validation.required': 'Termindato er påkrevd',
     'mor.soeknad.barn.form.termindato.validation.pattern': 'Ugyldig dato',
+    'mor.soeknad.barn.form.termindato.validation.minDate': 'Kan ikke være før dagens dato',
+    'mor.soeknad.barn.form.termindato.validation.maxDate': 'Datoen er mer enn 40 uker fram i tid. Vent til uke 17 av svangerskapet med å bekrefte far.',
+    'mor.soeknad.barn.form.termindato.validation.beforeWeek17': 'Du er i uke {weekNr} i svangerskapet. Vent til uke 17 med å bekrefte far.',
     'mor.soeknad.barn.presentation.termindato.label': 'Termindato:',
     'mor.soeknad.far.title': 'Far til barn(a)',
     'mor.soeknad.far.form.navn.label': 'Navn til far (som det står i Folkeregisteret)',

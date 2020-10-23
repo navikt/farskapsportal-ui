@@ -1,3 +1,9 @@
 import { IntlShape } from 'react-intl';
 
-export const getMessage = (intl: IntlShape, id: string): string => intl.formatMessage({ id });
+type MessageValue = string | number | boolean | Date | null | undefined;
+
+export const getMessage = (
+    intl: IntlShape,
+    id: string,
+    value?: { [key: string]: MessageValue }
+): string => intl.formatMessage({ id }, value);

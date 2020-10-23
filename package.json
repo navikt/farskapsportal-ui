@@ -22,6 +22,7 @@
     "@types/react-router-dom": "^5.1.6",
     "classnames": "^2.2.6",
     "craco-less": "^1.17.0",
+    "date-fns": "^2.16.1",
     "fetch-mock": "^9.10.7",
     "js-cookie": "^2.2.1",
     "lodash.throttle": "^4.1.1",

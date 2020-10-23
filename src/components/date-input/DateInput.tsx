@@ -19,6 +19,9 @@ interface DateInputProps {
     onChange: (date?: string) => void;
     feil?: ReactNode;
     placeholder?: string;
+    minDate?: string;
+    maxDate?: string;
+    showYearSelector?: boolean;
 }
 
 function DateInput(props: DateInputProps) {
@@ -41,6 +44,11 @@ function DateInput(props: DateInputProps) {
                                 name: props.id,
                                 placeholder: props.placeholder,
                                 'aria-invalid': !!feilmelding,
+                            }}
+                            showYearSelector={props.showYearSelector}
+                            limitations={{
+                                minDate: props.minDate,
+                                maxDate: props.maxDate,
                             }}
                         />
                         {!context.feil && props.feil && (
