@@ -1,8 +1,10 @@
 @import (reference) 'styles/assets';
 
 .StepIcon {
-  margin-top: 0.75rem;
-  margin-right: 0.75rem;
+  @media (min-width: @mobile-breakpoint) {
+    margin-top: 0.75rem;
+    margin-right: 0.75rem;
+  }
 
   svg {
     height: 2rem;
@@ -17,6 +19,11 @@
     height: 2rem;
     width: 2rem;
     border-radius: 1rem;
+    margin-bottom: 0.5rem;
+
+    @media (min-width: @mobile-breakpoint) {
+      margin-bottom: 0;
+    }
   }
 
   &__active {

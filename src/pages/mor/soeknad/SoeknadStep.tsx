@@ -24,7 +24,9 @@ function SoeknadStep(props: SoeknadStepProps) {
                 return (
                     <div className="SoeknadStep__done">
                         {props.presentationComponent}
-                        <Flatknapp onClick={props.onChange}>Endre</Flatknapp>
+                        <Flatknapp htmlType="button" onClick={props.onChange}>
+                            Endre
+                        </Flatknapp>
                     </div>
                 );
             case StepStatus.Active:

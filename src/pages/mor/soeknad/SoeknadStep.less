@@ -1,15 +1,26 @@
+@import 'styles/assets';
+
 .SoeknadStep {
   display: flex;
+  flex-direction: column;
   margin-bottom: 1rem;
+
+  @media (min-width: @mobile-breakpoint) {
+    flex-direction: row;
+  }
 
   &__done {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+
+    .knapp {
+      margin-right: -1rem;
+    }
   }
 
   .panel {
     width: 100%;
-    padding-left: 2rem;
+    padding: 1rem 2rem;
   }
 }

@@ -1,7 +1,22 @@
+@import (reference) 'styles/assets';
+
 .FormButtons {
   margin-top: 2rem;
 
-  .knapp--standard {
-    margin-left: 1rem;
+  .knapp {
+    width: 100%;
+
+    @media (min-width: @mobile-breakpoint) {
+      width: unset;
+    }
+
+    &--standard {
+      margin-top: 1rem;
+
+      @media (min-width: @mobile-breakpoint) {
+        margin-top: 0;
+        margin-left: 1rem;
+      }
+    }
   }
 }
