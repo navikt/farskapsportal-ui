@@ -1,6 +1,7 @@
 /* eslint-disable */
 export default {
     'languageToggle.nb': 'Bokmål',
+    'languageToggle.nn': 'Nynorsk',
     'languageToggle.en': 'Engelsk',
     'page.title': 'Farskapserklæring',
     'form.feiloppsummering': 'For å gå videre må du rette opp følgende:',

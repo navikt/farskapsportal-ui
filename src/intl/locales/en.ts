@@ -1,6 +1,7 @@
 /* eslint-disable */
 export default {
     'languageToggle.nb': 'Bokmål',
+    'languageToggle.nn': 'Nynorsk',
     'languageToggle.en': 'English',
     'page.title': 'Paternity declaration',
 

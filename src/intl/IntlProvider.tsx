@@ -4,6 +4,7 @@ import { IntlProvider as Provider } from 'react-intl';
 import { useStore } from 'store/Context';
 import enMessages from './locales/en';
 import nbMessages from './locales/nb';
+import nnMessages from './locales/nn';
 
 interface IntlProviderProps {
     children: ReactNode;
@@ -15,6 +16,8 @@ function IntlProvider({ children }: IntlProviderProps) {
     let messages = nbMessages;
     if (language === 'en') {
         messages = { ...nbMessages, ...enMessages };
+    } else if (language === 'nn') {
+        messages = { ...nbMessages, ...nnMessages };
     }
 
     return (

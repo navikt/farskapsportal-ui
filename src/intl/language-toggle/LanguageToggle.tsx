@@ -16,6 +16,8 @@ const getLanguageCodeFromValue = (value: string) => {
     switch (value) {
         case 'languageCode_en':
             return 'en';
+        case 'languageCode_nn':
+            return 'nn';
         default:
             return 'nb';
     }
@@ -25,6 +27,8 @@ const getLanguageTextFromCode = (intl: IntlShape, code: Language) => {
     switch (code) {
         case 'en':
             return getMessage(intl, 'languageToggle.en');
+        case 'nn':
+            return getMessage(intl, 'languageToggle.nn');
         default:
             return getMessage(intl, 'languageToggle.nb');
     }
@@ -49,7 +53,7 @@ function LanguageToggle() {
     const intl = useIntl();
     const [{ language }, dispatch] = useStore();
 
-    const menuLanguages: Language[] = (['nb', 'en'] as Language[]).filter(
+    const menuLanguages: Language[] = (['nb', 'nn', 'en'] as Language[]).filter(
         (code) => code !== language
     );
 

@@ -1,1 +1,1 @@
-export type Language = 'nb' | 'en';
+export type Language = 'nb' | 'nn' | 'en';
