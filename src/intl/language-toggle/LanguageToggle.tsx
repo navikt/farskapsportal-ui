@@ -34,20 +34,18 @@ const getLanguageTextFromCode = (intl: IntlShape, code: Language) => {
     }
 };
 
-const renderMenuItem = (code: Language, intl: IntlShape) => {
+function CustomMenuItem({ code, intl }: { code: Language; intl: IntlShape }) {
     return (
-        <li key={code}>
-            <MenuItem className="LanguageToggle__menu__item">
-                <div className="LanguageToggle__button__flag">
-                    {code === 'en' ? <UKFlagSVG /> : <NorwayFlagSVG />}
-                </div>
-                <div id={`languageCode_${code}`} className="LanguageToggle__button__language">
-                    {getLanguageTextFromCode(intl, code)}
-                </div>
-            </MenuItem>
-        </li>
+        <MenuItem className="LanguageToggle__menu__item">
+            <div className="LanguageToggle__button__flag">
+                {code === 'en' ? <UKFlagSVG /> : <NorwayFlagSVG />}
+            </div>
+            <div id={`languageCode_${code}`} className="LanguageToggle__button__language">
+                {getLanguageTextFromCode(intl, code)}
+            </div>
+        </MenuItem>
     );
-};
+}
 
 function LanguageToggle() {
     const intl = useIntl();
@@ -77,7 +75,13 @@ function LanguageToggle() {
                     </div>
                 </Button>
                 <Menu className="LanguageToggle__menu">
-                    <ul>{menuLanguages.map((code) => renderMenuItem(code, intl))}</ul>
+                    <ul>
+                        {menuLanguages.map((code) => (
+                            <li key={code}>
+                                <CustomMenuItem code={code} intl={intl} />
+                            </li>
+                        ))}
+                    </ul>
                 </Menu>
             </Wrapper>
         </div>
