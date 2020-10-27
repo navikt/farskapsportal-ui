@@ -15,12 +15,18 @@
     align-items: flex-start;
 
     .knapp {
-      margin-right: -1rem;
+      @media (min-width: @mobile-breakpoint) {
+        margin-right: -1rem;
+      }
     }
   }
 
   .panel {
     width: 100%;
-    padding: 1rem 2rem;
+    padding: 1rem;
+
+    @media (min-width: @mobile-breakpoint) {
+      padding: 1rem 2rem;
+    }
   }
 }
