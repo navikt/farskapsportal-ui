@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';
 
 import { HTTPError } from 'types/error';
@@ -13,7 +14,7 @@ function Error({ error }: Props) {
     return (
         <div className="Error">
             <AlertStripeFeil>
-                Oisann, noe gikk galt ved henting av data!
+                <FormattedMessage id="api.error" />
                 <br />
                 {error.code && <span>{`${error.code}: `}</span>}
                 {error.text && <span>{`${error.text}`}</span>}

@@ -5,6 +5,8 @@ export default {
     'languageToggle.en': 'English',
     'page.title': 'Paternity declaration',
 
+    'api.error': 'Whoops, something went wrong while fetching data!',
+
     'form.date.placeholder': 'dd.mm.yyyy',
 
     'mor.form.buttons.next': 'Next',
