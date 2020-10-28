@@ -8,6 +8,7 @@ import {
 } from 'nav-frontend-skjema';
 import cls from 'classnames';
 import 'moment/locale/nb';
+import 'moment/locale/nn';
 
 import { useStore } from 'store/Context';
 
