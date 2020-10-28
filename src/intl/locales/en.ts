@@ -23,7 +23,7 @@ export default {
     'mor.soeknad.barn.form.termindato.validation.beforeWeek17': 'You are in week {weekNr} of the pregnancy. Wait until week 17 of the pregnancy to confirm the father.',
     'mor.soeknad.barn.presentation.termindato.label': 'Due date:',
     'mor.soeknad.far.title': 'Father of the child/children',
-    'mor.soeknad.far.form.navn.label': 'Name of father (as it says in the National Population Register)',
+    'mor.soeknad.far.form.navn.label': 'Name of father (as listed in the National Population Register)',
     'mor.soeknad.far.form.navn.validation.required': 'Name of father is required',
     'mor.soeknad.far.form.foedselsnummer.label': 'National identity number of father (11 digits)',
     'mor.soeknad.far.form.foedselsnummer.validation.required': 'National identity number is required',
