@@ -35,6 +35,10 @@ export default {
     'frontpage.inperson.desc': 'Hvis dere ikke oppfyller kravene til å erklære farskapet elektronisk må dere erklære farskapet ved å møte opp.',
 
     'mor.title': 'Opplysninger om barnet og barnets far',
+    'mor.form.buttons.next': 'Neste',
+    'mor.form.buttons.submit': 'Bekreft farskap',
+    'mor.form.buttons.cancel': 'Avbryt',
+    'mor.presentation.change': 'Endre',
     'mor.soeknad.barn.title': 'Gjelder barn(a)',
     'mor.soeknad.barn.form.termindato.label': 'Termindato',
     'mor.soeknad.barn.form.termindato.validation.required': 'Termindato er påkrevd',
@@ -56,8 +60,5 @@ export default {
     'mor.soeknad.confirm.title': 'Bekreft farskap',
     'mor.soeknad.confirm.form.validation.required': 'Du må bekrefte før søknaden kan sendes inn.',
     'mor.soeknad.confirm.form.farCorrect.label': 'Jeg godkjenner at opplysningene om far er korrekt.',
-    'mor.soeknad.confirm.form.cannotWithdraw.label': 'Jeg er kjent med at denne bekreftelsen ikke kan trekkes tilbake på et senere tidspunkt.',
-    'mor.form.buttons.next': 'Neste',
-    'mor.form.buttons.submit': 'Bekreft farskap',
-    'mor.form.buttons.cancel': 'Avbryt'
+    'mor.soeknad.confirm.form.cannotWithdraw.label': 'Jeg er kjent med at denne bekreftelsen ikke kan trekkes tilbake på et senere tidspunkt.'
 }

@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react';
+import { FormattedMessage } from 'react-intl';
 import Panel from 'nav-frontend-paneler';
 import { Flatknapp } from 'nav-frontend-knapper';
 import { Undertittel } from 'nav-frontend-typografi';
@@ -25,7 +26,7 @@ function SoeknadStep(props: SoeknadStepProps) {
                     <div className="SoeknadStep__done">
                         {props.presentationComponent}
                         <Flatknapp htmlType="button" onClick={props.onChange}>
-                            Endre
+                            <FormattedMessage id="mor.presentation.change" />
                         </Flatknapp>
                     </div>
                 );
