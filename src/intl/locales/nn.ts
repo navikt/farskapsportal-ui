@@ -53,7 +53,7 @@ export default {
     'mor.soeknad.far.form.foedselsnummer.label': 'Fødselsnummer til far (11 siffer)',
     'mor.soeknad.far.form.foedselsnummer.validation.required': 'Fødselsnummer er påkravd',
     'mor.soeknad.far.form.foedselsnummer.validation.fnr': 'Ugyldig fødselsnummer',
-    'mor.soeknad.far.form.error': 'Kontroller at opplysningane stemmer. Vi finn ingen person med desse opplysningane.',
+    'mor.soeknad.far.form.error': 'Kontroller at opplysningane stemmer. Vi finn ingen person med desse opplysningane. Både namn og fødselsnummer må stemma overeins med det som er registrert i Folkreregisteret.',
     'mor.soeknad.far.form.error.female': 'Angitt person er registrert som kvinne.',
     'mor.soeknad.far.presentation.navn': 'Namn:',
     'mor.soeknad.far.presentation.foedselsnummer': 'Fødselsnummer:',

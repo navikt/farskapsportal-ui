@@ -28,7 +28,7 @@ export default {
     'mor.soeknad.far.form.foedselsnummer.label': 'National identity number of father (11 digits)',
     'mor.soeknad.far.form.foedselsnummer.validation.required': 'National identity number is required',
     'mor.soeknad.far.form.foedselsnummer.validation.fnr': 'Invalid national identity number',
-    'mor.soeknad.far.form.error': 'Check that the information is correct. We cannot find any person with this information.',
+    'mor.soeknad.far.form.error': 'Check that the information is correct. We cannot find any person with this information. Both name and birth number must match what is registered in the National Population Register.',
     'mor.soeknad.far.form.error.female': 'The specified person is registered as a woman.',
     'mor.soeknad.far.presentation.navn': 'Name:',
     'mor.soeknad.far.presentation.foedselsnummer': 'National identity number:',
