@@ -1,0 +1,7 @@
+# .prettierrc not treated as yaml https://github.com/prettier/prettier/issues/6040
+.prettierrc
+
+build
+
+.nais/nais.yaml
+src/intl/locales/*

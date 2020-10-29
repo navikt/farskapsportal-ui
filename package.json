@@ -82,7 +82,9 @@
     "test": "craco test",
     "lint": "tsc --noEmit && yarn lint:jsts && yarn lint:less",
     "lint:jsts": "eslint --ext .ts,.tsx,.js .",
-    "lint:less": "stylelint \"src/**/*.less\""
+    "lint:less": "stylelint \"src/**/*.less\"",
+    "prettier:check": "prettier --check .",
+    "prettier:write": "prettier --write ."
   },
   "eslintConfig": {
     "extends": "react-app"
