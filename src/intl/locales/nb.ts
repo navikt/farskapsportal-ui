@@ -54,7 +54,7 @@ export default {
     'mor.soeknad.far.form.foedselsnummer.validation.required': 'Fødselsnummer er påkrevd',
     'mor.soeknad.far.form.foedselsnummer.validation.fnr': 'Ugyldig fødselsnummer',
     'mor.soeknad.far.form.error': 'Kontroller at opplysningene stemmer. Vi finner ingen person med disse opplysningene.',
-    'mor.soeknad.far.form.error.female': 'Angitt person er regisrert som kvinne.',
+    'mor.soeknad.far.form.error.female': 'Angitt person er registrert som kvinne.',
     'mor.soeknad.far.presentation.navn': 'Navn:',
     'mor.soeknad.far.presentation.foedselsnummer': 'Fødselsnummer:',
     'mor.soeknad.confirm.title': 'Bekreft farskap',
