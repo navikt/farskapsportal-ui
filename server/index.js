@@ -113,22 +113,6 @@ const authMiddleware = async (req, res, next) => {
 //     }
 // });
 
-app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
-    getDecorator()
-        .then((fragments) => {
-            res.render('index.html', {
-                ...fragments,
-                LOGIN_URL: process.env.LOGINSERVICE_URL,
-                FRONTEND_LOGGER_SCRIPT: frontendloggerScript(),
-            });
-        })
-        .catch((e) => {
-            const error = `Failed to get decorator: ${e}`;
-            logger.error(error);
-            res.status(500).send(error);
-        })
-);
-
 // authenticated routes below
 app.get('/api/kjoenn', authMiddleware, async (req, res) => {
     try {
@@ -146,6 +130,22 @@ app.get('/api/kjoenn', authMiddleware, async (req, res) => {
         res.sendStatus(500);
     }
 });
+
+app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
+    getDecorator()
+        .then((fragments) => {
+            res.render('index.html', {
+                ...fragments,
+                LOGIN_URL: process.env.LOGINSERVICE_URL,
+                FRONTEND_LOGGER_SCRIPT: frontendloggerScript(),
+            });
+        })
+        .catch((e) => {
+            const error = `Failed to get decorator: ${e}`;
+            logger.error(error);
+            res.status(500).send(error);
+        })
+);
 
 app.listen(config.app.port, () => {
     logger.info(`farskapsportal-ui listening at port ${config.app.port}`);
