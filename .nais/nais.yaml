@@ -7,29 +7,43 @@ metadata:
     team: farskapsportal
 spec:
   image: {{ image }}
-  port: 8080
-  replicas:
-    min: 2
-    max: 2
-    cpuThresholdPercentage: 50
-  liveness:
-    path: internal/isAlive
-    initialDelay: 10
-  readiness:
-    path: internal/isReady
-    initialDelay: 10
-  ingresses:
-  {{#each ingresses as |url|}}
-    - {{url}}
-  {{/each}}
-  env:
-  {{#each env}}
-    - name: {{@key}}
-      value: "{{this}}"
-  {{/each}}
   accessPolicy:
     outbound:
       external:
       {{#each host}}
         - host: "{{this}}"
       {{/each}}
+      rules:
+        - application: farskapsportal-ui-redis
+  port: 8080
+  replicas:
+    min: 2
+    max: 2
+    cpuThresholdPercentage: 50
+  liveness:
+    path: /internal/isAlive
+    initialDelay: 10
+  readiness:
+    path: /internal/isReady
+    initialDelay: 10
+  tokenx:
+    enabled: true
+  idporten:
+    enabled: true
+
+  ingresses:
+  {{#each ingresses as |url|}}
+    - {{url}}
+  {{/each}}
+
+  env:
+  {{#each env}}
+    - name: {{@key}}
+      value: "{{this}}"
+  {{/each}}
+    - name: REDIS_HOST
+      value: farskapsportal-ui-redis
+
+  envFrom:
+    - secret: session-encrypt-key
+    - secret: redis-password

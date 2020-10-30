@@ -5,7 +5,9 @@ host:
   - dekoratoren.dev.nav.no
   - farskapsportal-api-feature.dev.nav.no
 env:
+  NODE_ENV: production
   DEKORATOREN_URL: https://dekoratoren.dev.nav.no
+  FARSKAPSPORTAL_API_AUDIENCE: dev-gcp:farskapsportal:farskapsportal-api-feature
   FARSKAPSPORTAL_API_URL: https://farskapsportal-api-feature.dev.nav.no
   FRONTENDLOGGER_BASE_URL: https://www-q0.nav.no/frontendlogger
   LOGINSERVICE_URL: https://loginservice.dev.nav.no/login

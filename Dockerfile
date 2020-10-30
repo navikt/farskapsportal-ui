@@ -6,7 +6,7 @@ COPY server server/
 COPY build build/
 
 WORKDIR server
-RUN yarn install
+RUN npm install
 
-CMD ["node", "./server.js"]
+CMD ["node", "./index.js"]
 EXPOSE 8080

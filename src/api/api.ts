@@ -14,27 +14,42 @@ const { LOGIN_URL } = window as any;
  * Henter informasjon om bruker.
  * Logger ikke 401 eller 403 feil da det forventes.
  * */
-export const checkAuthFetchUser = () => {
-    const url = '/api/kjoenn';
+// export const checkAuthFetchUser = () => {
+//     const url = '/api/kjoenn';
+//
+//     return fetch(url, {
+//         method: 'GET',
+//         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+//     })
+//         .then(checkAuth)
+//         .then(checkHttpError)
+//         .then((res) => res.text() as Promise<Kjoenn>)
+//         .catch((err: string & AlertError) => {
+//             const error = {
+//                 code: err.code || 404,
+//                 type: err.type || 'feil',
+//                 text: err.text || err,
+//             };
+//             if (error.code !== 401 && error.code !== 403) {
+//                 logApiError(url, error);
+//             }
+//             throw error;
+//         });
+// };
 
-    return fetch(url, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json;charset=UTF-8' },
-    })
-        .then(checkAuth)
-        .then(checkHttpError)
-        .then((res) => res.text() as Promise<Kjoenn>)
-        .catch((err: string & AlertError) => {
-            const error = {
-                code: err.code || 404,
-                type: err.type || 'feil',
-                text: err.text || err,
-            };
-            if (error.code !== 401 && error.code !== 403) {
-                logApiError(url, error);
-            }
-            throw error;
-        });
+export const checkAuthFetchUser = async () => {
+    const response = await fetch('/api/kjoenn');
+
+    if (response.status >= 300) {
+        const error = {
+            code: response.status,
+            type: 'feil',
+            text: response.statusText || response,
+        };
+        throw error;
+    }
+
+    return (await response.text()) as Kjoenn;
 };
 
 /*
