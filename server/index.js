@@ -80,6 +80,21 @@ app.get('/oauth2/callback', (req, res) => {
         });
 });
 
+const renderApp = (req, res) =>
+    getDecorator()
+        .then((fragments) => {
+            res.render('index.html', {
+                ...fragments,
+                LOGIN_URL: process.env.LOGINSERVICE_URL,
+                FRONTEND_LOGGER_SCRIPT: frontendloggerScript(),
+            });
+        })
+        .catch((e) => {
+            const error = `Failed to get decorator: ${e}`;
+            logger.error(error);
+            res.status(500).send(error);
+        });
+
 const authMiddleware = async (req, res, next) => {
     let currentTokens = req.session.tokens;
     if (!currentTokens) {
@@ -113,8 +128,13 @@ const authMiddleware = async (req, res, next) => {
 //     }
 // });
 
+app.use('/', renderApp);
+
+// check auth
+app.use(authMiddleware);
+
 // authenticated routes below
-app.get('/api/kjoenn', authMiddleware, async (req, res) => {
+app.get('/api/kjoenn', async (req, res) => {
     try {
         const accessToken = await auth.exchangeToken(req.session.tokens.id_token);
         const response = await fetch(`${apiUrl}/kjoenn`, {
@@ -131,21 +151,23 @@ app.get('/api/kjoenn', authMiddleware, async (req, res) => {
     }
 });
 
-app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
-    getDecorator()
-        .then((fragments) => {
-            res.render('index.html', {
-                ...fragments,
-                LOGIN_URL: process.env.LOGINSERVICE_URL,
-                FRONTEND_LOGGER_SCRIPT: frontendloggerScript(),
-            });
-        })
-        .catch((e) => {
-            const error = `Failed to get decorator: ${e}`;
-            logger.error(error);
-            res.status(500).send(error);
-        })
-);
+app.use(/^(?!.*\/(internal|static)\/).*$/, renderApp);
+
+// app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
+//     getDecorator()
+//         .then((fragments) => {
+//             res.render('index.html', {
+//                 ...fragments,
+//                 LOGIN_URL: process.env.LOGINSERVICE_URL,
+//                 FRONTEND_LOGGER_SCRIPT: frontendloggerScript(),
+//             });
+//         })
+//         .catch((e) => {
+//             const error = `Failed to get decorator: ${e}`;
+//             logger.error(error);
+//             res.status(500).send(error);
+//         })
+// );
 
 app.listen(config.app.port, () => {
     logger.info(`farskapsportal-ui listening at port ${config.app.port}`);

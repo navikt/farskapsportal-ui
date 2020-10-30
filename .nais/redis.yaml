@@ -24,6 +24,6 @@ spec:
   accessPolicy:
     inbound:
       rules:
-        - application: farskapsportal-ui-feature
+        - application: {{ name }}
   envFrom:
     - secret: redis-password
