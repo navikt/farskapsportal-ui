@@ -129,15 +129,6 @@ const authMiddleware = async (req, res, next) => {
 //     }
 // });
 
-app.use(
-    '/',
-    (req, res, next) => {
-        console.log('use /');
-        next();
-    },
-    renderApp
-);
-
 // check auth
 app.use(authMiddleware);
 
@@ -159,14 +150,7 @@ app.get('/api/kjoenn', async (req, res) => {
     }
 });
 
-app.use(
-    /^(?!.*\/(internal|static)\/).*$/,
-    (req, res, next) => {
-        console.log('use /^(?!.*\\/(internal|static)\\/).*$/');
-        next();
-    },
-    renderApp
-);
+app.use(/^(?!.*\/(internal|static)\/).*$/, renderApp);
 
 // app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
 //     getDecorator()
