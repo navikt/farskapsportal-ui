@@ -96,6 +96,7 @@ const renderApp = (req, res) =>
         });
 
 const authMiddleware = async (req, res, next) => {
+    console.log('in auth middleware');
     let currentTokens = req.session.tokens;
     if (!currentTokens) {
         res.redirect('/login');
@@ -128,7 +129,14 @@ const authMiddleware = async (req, res, next) => {
 //     }
 // });
 
-app.use('/', renderApp);
+app.use(
+    '/',
+    (req, res, next) => {
+        console.log('use /');
+        next();
+    },
+    renderApp
+);
 
 // check auth
 app.use(authMiddleware);
@@ -151,7 +159,14 @@ app.get('/api/kjoenn', async (req, res) => {
     }
 });
 
-app.use(/^(?!.*\/(internal|static)\/).*$/, renderApp);
+app.use(
+    /^(?!.*\/(internal|static)\/).*$/,
+    (req, res, next) => {
+        console.log('use /^(?!.*\\/(internal|static)\\/).*$/');
+        next();
+    },
+    renderApp
+);
 
 // app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
 //     getDecorator()
