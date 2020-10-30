@@ -8,7 +8,7 @@ import logger from 'winston-logstash-format';
 // import * as api from './api.js';
 import * as auth from './auth.js';
 import * as config from './config.js';
-import { getDecorator } from './decorator';
+import { getDecorator } from './decorator.js';
 import * as headers from './headers.js';
 // import { limit } from './ratelimit.js';
 import { setupSession } from './session.js';
