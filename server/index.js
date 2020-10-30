@@ -98,6 +98,8 @@ const renderApp = (req, res) =>
 const authMiddleware = async (req, res, next) => {
     console.log('in auth middleware');
     let currentTokens = req.session.tokens;
+    logger.info('req.session.tokens:');
+    logger.info(req.session.tokens);
     if (!currentTokens) {
         res.redirect('/login');
     } else {
