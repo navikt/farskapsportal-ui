@@ -131,12 +131,29 @@ const authMiddleware = async (req, res, next) => {
 //     }
 // });
 
+// app.use(
+//     /^(?!.*\/(internal|static)\/).*$/,
+//     async (req, res, next) => {
+//         if (req.path === '/') {
+//             return next();
+//         }
+//         await authMiddleware(req, res, next);
+//         next();
+//     },
+//     renderApp
+// );
+
 // check auth
 app.use(authMiddleware);
 
 // authenticated routes below
 app.get('/api/kjoenn', async (req, res) => {
     try {
+        logger.info('in /api/kjoenn');
+        logger.info('req.session.tokens');
+        logger.info(req.session.tokens);
+        logger.info('req.session.tokens.id_token');
+        logger.info(req.session.tokens.id_token);
         const accessToken = await auth.exchangeToken(req.session.tokens.id_token);
         const response = await fetch(`${apiUrl}/kjoenn`, {
             method: 'get',
