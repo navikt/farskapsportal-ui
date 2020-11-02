@@ -150,8 +150,8 @@ app.use(authMiddleware);
 app.get('/api/kjoenn', async (req, res) => {
     try {
         logger.info('in /api/kjoenn');
-        logger.info('req.session.tokens');
-        logger.info(req.session.tokens);
+        // logger.info('req.session.tokens');
+        // logger.info(req.session.tokens);
         logger.info('req.session.tokens.id_token');
         logger.info(req.session.tokens.id_token);
         const accessToken = await auth.exchangeToken(req.session.tokens.id_token);
