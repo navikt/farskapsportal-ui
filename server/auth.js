@@ -1,5 +1,6 @@
 import { Issuer } from 'openid-client';
-import logger from 'winston-logstash-format';
+
+import { logger } from './logger.js';
 
 let tokenxConfig = null;
 let tokenxClient = null;
@@ -42,7 +43,10 @@ export const validateOidcCallback = async (req) => {
             { nonce, state },
             { clientAssertionPayload: { aud: idportenMetadata.metadata.issuer } }
         )
-        .catch((err) => Promise.reject(`error in oidc callback: ${err}`))
+        .catch((error) => {
+            logger.error('Error in OIDC callback:', error);
+            Promise.reject(error);
+        })
         .then(async (tokenSet) => tokenSet);
 };
 
@@ -67,9 +71,9 @@ export const exchangeToken = async (idportenToken) => {
             additionalClaims
         )
         .then((tokenSet) => Promise.resolve(tokenSet.access_token))
-        .catch((err) => {
-            logger.error(`Error while exchanging token: ${err}`);
-            return Promise.reject(err);
+        .catch((error) => {
+            logger.error('Error while exchanging token:', error);
+            return Promise.reject(error);
         });
 };
 
@@ -77,9 +81,9 @@ export const refresh = (oldTokenSet) =>
     idportenClient
         .refresh(oldTokenSet)
         .then((newTokenSet) => Promise.resolve(newTokenSet))
-        .catch((err) => {
-            logger.error(err);
-            return Promise.reject(err);
+        .catch((error) => {
+            logger.error('Error while refreshing token:', error);
+            return Promise.reject(error);
         });
 
 const init = async () => {
@@ -118,7 +122,8 @@ const init = async () => {
         );
 
         return Promise.resolve({ idporten: idportenClient, tokenx: tokenxClient });
-    } catch (err) {
-        return Promise.reject(err);
+    } catch (error) {
+        logger.error('Error while initializing auth:', error);
+        return Promise.reject(error);
     }
 };

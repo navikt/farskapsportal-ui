@@ -4,12 +4,13 @@ import fetch from 'node-fetch';
 import jsdom from 'jsdom';
 import mustacheExpress from 'mustache-express';
 import { generators, TokenSet } from 'openid-client';
-import logger from 'winston-logstash-format';
+
 // import * as api from './api.js';
 import * as auth from './auth.js';
 import * as config from './config.js';
 import { getDecorator } from './decorator.js';
 import * as headers from './headers.js';
+import { logger } from './logger.js';
 // import { limit } from './ratelimit.js';
 import { setupSession } from './session.js';
 
@@ -30,8 +31,8 @@ auth.setup(config.idporten, config.tokenx, config.app)
     .then((endpoint) => {
         authEndpoint = endpoint;
     })
-    .catch((err) => {
-        logger.error(`Error while setting up auth: ${err}`);
+    .catch((error) => {
+        logger.error('Error while setting up auth:', error);
         process.exit(1);
     });
 
@@ -73,8 +74,8 @@ app.get('/oauth2/callback', (req, res) => {
             });
             res.redirect(303, '/');
         })
-        .catch((err) => {
-            logger.error(err);
+        .catch((error) => {
+            logger.error('Error while validating OIDC callback:', error);
             session.destroy(() => {});
             res.sendStatus(403);
         });
@@ -89,24 +90,21 @@ const renderApp = (req, res) =>
                 FRONTEND_LOGGER_SCRIPT: frontendloggerScript(),
             });
         })
-        .catch((e) => {
-            const error = `Failed to get decorator: ${e}`;
-            logger.error(error);
-            res.status(500).send(error);
+        .catch((error) => {
+            logger.error('Error while rendering app:', error);
+            res.sendStatus(500);
         });
 
 const authMiddleware = async (req, res, next) => {
-    console.log('in auth middleware');
     let currentTokens = req.session.tokens;
-    logger.info('req.session.tokens:');
-    logger.info(req.session.tokens);
+
     if (!currentTokens) {
         res.redirect('/login');
     } else {
         let tokenSet = new TokenSet(currentTokens);
 
         if (tokenSet.expired()) {
-            logger.debug('refreshing token');
+            logger.debug('Refreshing token');
             tokenSet = new TokenSet(await auth.refresh(currentTokens));
             req.session.tokens = tokenSet;
         }
@@ -149,11 +147,6 @@ app.use(authMiddleware);
 // authenticated routes below
 app.get('/api/kjoenn', async (req, res) => {
     try {
-        logger.info('in /api/kjoenn');
-        // logger.info('req.session.tokens');
-        // logger.info(req.session.tokens);
-        logger.info('req.session.tokens.id_token');
-        logger.info(req.session.tokens.id_token);
         const accessToken = await auth.exchangeToken(req.session.tokens.id_token);
         const response = await fetch(`${apiUrl}/kjoenn`, {
             method: 'get',
@@ -163,8 +156,8 @@ app.get('/api/kjoenn', async (req, res) => {
         });
         const json = await response.json();
         res.status(response.status).send(json);
-    } catch (err) {
-        logger.error(`Error while calling api: ${err}`);
+    } catch (error) {
+        logger.error('Error while calling api:', error);
         res.sendStatus(500);
     }
 });
@@ -191,4 +184,6 @@ app.listen(config.app.port, () => {
     logger.info(`farskapsportal-ui listening at port ${config.app.port}`);
 });
 
-process.on('SIGTERM', () => setTimeout(() => logger.info('Har sovet i 30 sekunder'), 30000));
+process.on('SIGTERM', () =>
+    setTimeout(() => logger.info('SIGTERM, has slept for 30 seconds'), 30000)
+);

@@ -2,10 +2,13 @@ import jsdom from 'jsdom';
 import fetch from 'node-fetch';
 import NodeCache from 'node-cache';
 
+import { logger } from './logger.js';
+
 const { JSDOM } = jsdom;
 
 const SECONDS_PER_MINUTE = 60;
 const SECONDS_PER_HOUR = SECONDS_PER_MINUTE * 60;
+const CACHE_NAME = 'decorator-cache';
 
 // Refresh cache every hour
 const cache = new NodeCache({
@@ -16,7 +19,7 @@ const cache = new NodeCache({
 const decoratorUrl = `${process.env.DEKORATOREN_URL}/?redirectToApp=true&Level=4`;
 
 export const getDecorator = async () => {
-    const decorator = cache.get('main-cache');
+    const decorator = cache.get(CACHE_NAME);
 
     if (decorator) {
         return decorator;
@@ -35,12 +38,12 @@ export const getDecorator = async () => {
                     SCRIPTS: document.getElementById('scripts')[prop],
                 };
 
-                cache.set('main-cache', data);
-                console.log('Creating cache');
+                cache.set(CACHE_NAME, data);
+                logger.info('Creating cache');
                 return data;
             }
         } catch (error) {
-            console.error('Failed to get decorator.', error);
+            logger.error('Failed to get decorator:', error);
             throw error;
         }
     }

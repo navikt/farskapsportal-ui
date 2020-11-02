@@ -1,12 +1,10 @@
 import session from 'express-session';
 import redis from 'redis';
 import RedisStore from 'connect-redis';
+
 import * as config from './config.js';
 
 export const setupSession = () => {
-    console.log('setupSession');
-    console.log('config.session.secret defined:', !!config.session.secret);
-
     const options = {
         cookie: {
             maxAge: config.session.maxAgeMs,
@@ -29,10 +27,6 @@ export const setupSession = () => {
 };
 
 const setupRedis = () => {
-    console.log('setupRedis');
-    console.log('config.session.redisHost:', config.session.redisHost);
-    console.log('config.session.redisPassword defined:', !!config.session.redisPassword);
-
     const store = RedisStore(session);
     const client = redis.createClient({
         host: config.session.redisHost,

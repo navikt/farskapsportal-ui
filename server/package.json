@@ -22,7 +22,7 @@
     "node-fetch": "^2.6.1",
     "openid-client": "^4.2.1",
     "redis": "^3.0.2",
-    "winston-logstash-format": "^0.2.0"
+    "winston": "^3.3.3"
   },
   "browserslist": [
     ">0.2%",
