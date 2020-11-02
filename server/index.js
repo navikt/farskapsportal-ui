@@ -145,7 +145,7 @@ const authMiddleware = async (req, res, next) => {
 // app.use(authMiddleware);
 
 // authenticated routes below
-app.get('/api/kjoenn', async (req, res) => {
+app.get('/api/kjoenn', authMiddleware, async (req, res) => {
     try {
         const accessToken = await auth.exchangeToken(req.session.tokens.id_token);
         const response = await fetch(`${apiUrl}/kjoenn`, {
@@ -162,19 +162,19 @@ app.get('/api/kjoenn', async (req, res) => {
     }
 });
 
-app.use(
-    /^(?!.*\/(internal|static)\/).*$/,
-    async (req, res, next) => {
-        if (req.path === '/') {
-            return next();
-        }
-        await authMiddleware(req, res, next);
-        next();
-    },
-    renderApp
-);
+// app.use(
+//     /^(?!.*\/(internal|static)\/).*$/,
+//     async (req, res, next) => {
+//         if (req.path === '/') {
+//             return next();
+//         }
+//         await authMiddleware(req, res, next);
+//         next();
+//     },
+//     renderApp
+// );
 
-// app.use(/^(?!.*\/(internal|static)\/).*$/, renderApp);
+app.use(/^(?!.*\/(internal|static)\/).*$/, renderApp);
 
 // app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
 //     getDecorator()
