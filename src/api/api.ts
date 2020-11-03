@@ -98,11 +98,16 @@ const checkHttpError = async (response: Response): Promise<Response> => {
     if (response.ok) {
         return response;
     } else {
-        const responseErrorData = await parseJson(response);
         const error = {
             code: response.status,
-            text: responseErrorData.body,
+            text: response.statusText,
         };
+
+        if (response.status === 400) {
+            const responseErrorData = await parseJson(response);
+            error.text = responseErrorData.body;
+        }
+
         throw error;
     }
 };
