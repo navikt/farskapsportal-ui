@@ -11,7 +11,7 @@ import { logApiError } from 'utils/logger';
  * Henter informasjon om bruker.
  * Logger ikke 401 eller 403 feil da det forventes.
  * */
-export const checkAuthFetchUser = async () => {
+export const checkAuthFetchUser = () => {
     const url = '/api/kjoenn';
 
     return fetch(url)
