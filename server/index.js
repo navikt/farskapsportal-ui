@@ -53,11 +53,37 @@ app.use(express.static(buildPath, { index: false }));
 
 app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 
-app.get('/login', (req, res) => {
-    const session = req.session;
-    session.nonce = generators.nonce();
-    session.state = generators.state();
-    res.redirect(auth.authUrl(session));
+// const login = (req, res) => {
+//     const session = req.session;
+//     session.nonce = generators.nonce();
+//     session.state = generators.state();
+//     res.redirect(auth.authUrl(session));
+// };
+
+// app.get('/login', (req, res) => {
+//     const session = req.session;
+//     session.nonce = generators.nonce();
+//     session.state = generators.state();
+//     res.redirect(auth.authUrl(session));
+// });
+
+app.get('/login', async (req, res) => {
+    const currentTokens = req.session.tokens;
+
+    if (!currentTokens) {
+        const session = req.session;
+        session.nonce = generators.nonce();
+        session.state = generators.state();
+        res.redirect(auth.authUrl(session));
+    } else {
+        let tokenSet = new TokenSet(currentTokens);
+
+        if (tokenSet.expired()) {
+            logger.debug('Refreshing token');
+            tokenSet = new TokenSet(await auth.refresh(currentTokens));
+            req.session.tokens = tokenSet;
+        }
+    }
 });
 
 app.get('/oauth2/callback', (req, res) => {
@@ -95,21 +121,29 @@ const renderApp = (req, res) =>
             res.sendStatus(500);
         });
 
-const authMiddleware = async (req, res, next) => {
-    let currentTokens = req.session.tokens;
+// const authMiddleware = async (req, res, next) => {
+//     let currentTokens = req.session.tokens;
+//
+//     if (!currentTokens) {
+//         res.redirect('/login');
+//     } else {
+//         let tokenSet = new TokenSet(currentTokens);
+//
+//         if (tokenSet.expired()) {
+//             logger.debug('Refreshing token');
+//             tokenSet = new TokenSet(await auth.refresh(currentTokens));
+//             req.session.tokens = tokenSet;
+//         }
+//
+//         return next();
+//     }
+// };
 
-    if (!currentTokens) {
-        res.redirect('/login');
+const checkAuth = async (req, res, next) => {
+    if (!req.session.tokens) {
+        res.sendStatus(401);
     } else {
-        let tokenSet = new TokenSet(currentTokens);
-
-        if (tokenSet.expired()) {
-            logger.debug('Refreshing token');
-            tokenSet = new TokenSet(await auth.refresh(currentTokens));
-            req.session.tokens = tokenSet;
-        }
-
-        return next();
+        next();
     }
 };
 
@@ -145,7 +179,7 @@ const authMiddleware = async (req, res, next) => {
 // app.use(authMiddleware);
 
 // authenticated routes below
-app.get('/api/kjoenn', authMiddleware, async (req, res) => {
+app.get('/api/kjoenn', checkAuth, async (req, res) => {
     try {
         const accessToken = await auth.exchangeToken(req.session.tokens.id_token);
         const response = await fetch(`${apiUrl}/kjoenn`, {

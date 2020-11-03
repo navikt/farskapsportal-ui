@@ -38,7 +38,7 @@ const { LOGIN_URL } = window as any;
 // };
 
 export const checkAuthFetchUser = async () => {
-    const response = await fetch('/api/kjoenn');
+    const response = await fetch('/api/kjoenn').then(checkAuth);
 
     if (response.status >= 300) {
         const error = {
@@ -118,7 +118,7 @@ const sendToLogin = () => {
     const inFiveMinutes = new Date(new Date().getTime() + 5 * 60 * 1000);
     const options = { expires: inFiveMinutes };
     Cookies.set(redirectLoginCookie, to, options);
-    window.location.assign(`${LOGIN_URL}?redirect=${window.location.origin}`);
+    window.location.assign('/login');
 };
 
 const checkHttpError = async (response: Response): Promise<Response> => {
