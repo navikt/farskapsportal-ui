@@ -68,22 +68,22 @@ app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 // });
 
 app.get('/login', async (req, res) => {
-    const currentTokens = req.session.tokens;
-
-    if (!currentTokens) {
-        const session = req.session;
-        session.nonce = generators.nonce();
-        session.state = generators.state();
-        res.redirect(auth.authUrl(session));
-    } else {
-        let tokenSet = new TokenSet(currentTokens);
-
-        if (tokenSet.expired()) {
-            logger.debug('Refreshing token');
-            tokenSet = new TokenSet(await auth.refresh(currentTokens));
-            req.session.tokens = tokenSet;
-        }
-    }
+    // const currentTokens = req.session.tokens;
+    //
+    // if (!currentTokens) {
+    const session = req.session;
+    session.nonce = generators.nonce();
+    session.state = generators.state();
+    res.redirect(auth.authUrl(session));
+    // } else {
+    //     let tokenSet = new TokenSet(currentTokens);
+    //
+    //     if (tokenSet.expired()) {
+    //         logger.debug('Refreshing token');
+    //         tokenSet = new TokenSet(await auth.refresh(currentTokens));
+    //         req.session.tokens = tokenSet;
+    //     }
+    // }
 });
 
 app.get('/oauth2/callback', (req, res) => {
@@ -140,10 +140,20 @@ const renderApp = (req, res) =>
 // };
 
 const checkAuth = async (req, res, next) => {
-    if (!req.session.tokens) {
+    const currentTokens = req.session.tokens;
+
+    if (!currentTokens) {
         res.sendStatus(401);
     } else {
-        next();
+        let tokenSet = new TokenSet(currentTokens);
+
+        if (tokenSet.expired()) {
+            logger.debug('Refreshing token');
+            tokenSet = new TokenSet(await auth.refresh(currentTokens));
+            req.session.tokens = tokenSet;
+        }
+
+        return next();
     }
 };
 
