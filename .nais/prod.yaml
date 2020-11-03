@@ -10,4 +10,3 @@ env:
   FARSKAPSPORTAL_API_AUDIENCE: prod-gcp:farskapsportal:farskapsportal-api
   FARSKAPSPORTAL_API_URL: https://farskapsportal-api.nav.no
   FRONTENDLOGGER_BASE_URL: https://www.nav.no/frontendlogger
-  LOGINSERVICE_URL: https://loginservice.nav.no/login

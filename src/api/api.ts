@@ -6,50 +6,25 @@ import { Kjoenn } from 'types/kjoenn';
 import { redirectLoginCookie } from 'utils/cookies';
 import { logApiError } from 'utils/logger';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-// const { LOGIN_URL } = window as any;
-
 /*
  * AUTH
  * Henter informasjon om bruker.
  * Logger ikke 401 eller 403 feil da det forventes.
  * */
-// export const checkAuthFetchUser = () => {
-//     const url = '/api/kjoenn';
-//
-//     return fetch(url, {
-//         method: 'GET',
-//         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
-//     })
-//         .then(checkAuth)
-//         .then(checkHttpError)
-//         .then((res) => res.text() as Promise<Kjoenn>)
-//         .catch((err: string & AlertError) => {
-//             const error = {
-//                 code: err.code || 404,
-//                 type: err.type || 'feil',
-//                 text: err.text || err,
-//             };
-//             if (error.code !== 401 && error.code !== 403) {
-//                 logApiError(url, error);
-//             }
-//             throw error;
-//         });
-// };
-
 export const checkAuthFetchUser = async () => {
-    const response = await fetch('/api/kjoenn').then(checkAuth);
+    const url = '/api/kjoenn';
 
-    if (response.status >= 300) {
-        const error = {
-            code: response.status,
-            type: 'feil',
-            text: response.statusText || response,
-        };
-        throw error;
-    }
-
-    return (await response.text()) as Kjoenn;
+    return fetch(url)
+        .then(checkAuth)
+        .then(checkHttpError)
+        .then((res) => res.text() as Promise<Kjoenn>)
+        .catch((err: string & AlertError) => {
+            const error = mapError(err);
+            if (error.code !== 401 && error.code !== 403) {
+                logApiError(url, error);
+            }
+            throw error;
+        });
 };
 
 /*
@@ -65,11 +40,7 @@ export const checkAuthFetchUser = async () => {
 //         .then(checkHttpError)
 //         .then(parseJson)
 //         .catch((err: string & AlertError) => {
-//             const error = {
-//                 code: err.code || 404,
-//                 type: err.type || 'feil',
-//                 text: err.text || err,
-//             };
+//             const error = mapError(err);
 //             logApiError(url, error);
 //             throw error;
 //         });
@@ -88,11 +59,7 @@ export const controlFatherInfo = (data: OutboundFatherControl) => {
         .then(checkAuth)
         .then(checkHttpError)
         .catch((err: string & AlertError) => {
-            const error = {
-                code: err.code || 404,
-                type: err.type || 'feil',
-                text: err.text || err,
-            };
+            const error = mapError(err);
             if (error.code !== 400) {
                 logApiError(url, error);
             }
@@ -104,6 +71,12 @@ export const controlFatherInfo = (data: OutboundFatherControl) => {
  * UTILS
  */
 const parseJson = (response: Response) => response.json();
+
+const mapError = (err: string & AlertError) => ({
+    code: err.code || 404,
+    type: err.type || 'feil',
+    text: err.text || err,
+});
 
 const checkAuth = (response: Response): Response => {
     if (response.status === 401 || response.status === 403) {

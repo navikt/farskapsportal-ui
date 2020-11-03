@@ -2,18 +2,18 @@ import { Issuer } from 'openid-client';
 
 import { logger } from './logger.js';
 
-let tokenxConfig = null;
-let tokenxClient = null;
-let tokenxMetadata = null;
+let appConfig = null;
 let idportenConfig = null;
 let idportenClient = null;
-let idportenMetadata = null;
-let appConfig = null;
+let idportenIssuer = null;
+let tokenxConfig = null;
+let tokenxClient = null;
+let tokenxIssuer = null;
 
-export const setup = async (idpConfig, txConfig, appConf) => {
+export const setup = async (appConf, idpConfig, txConfig) => {
+    appConfig = appConf;
     idportenConfig = idpConfig;
     tokenxConfig = txConfig;
-    appConfig = appConf;
 
     return init().then((clients) => {
         idportenClient = clients.idporten;
@@ -41,7 +41,7 @@ export const validateOidcCallback = async (req) => {
             idportenConfig.redirectUri,
             params,
             { nonce, state },
-            { clientAssertionPayload: { aud: idportenMetadata.metadata.issuer } }
+            { clientAssertionPayload: { aud: idportenIssuer.metadata.issuer } }
         )
         .catch((error) => {
             logger.error('Error in OIDC callback:', error);
@@ -87,18 +87,16 @@ export const refresh = (oldTokenSet) =>
         });
 
 const init = async () => {
-    const idporten = await Issuer.discover(idportenConfig.discoveryUrl);
-    const tokenx = await Issuer.discover(tokenxConfig.discoveryUrl);
-    idportenMetadata = idporten;
-    tokenxMetadata = tokenx;
-    logger.info(`discovered idporten @ ${idporten.issuer}`);
-    logger.info(`discovered tokenx @ ${tokenx.issuer}`);
+    idportenIssuer = await Issuer.discover(idportenConfig.discoveryUrl);
+    tokenxIssuer = await Issuer.discover(tokenxConfig.discoveryUrl);
+    logger.info(`discovered idporten @ ${idportenIssuer.issuer}`);
+    logger.info(`discovered tokenx @ ${tokenxIssuer.issuer}`);
 
     try {
         const idportenJwk = JSON.parse(idportenConfig.clientJwk);
         const tokenxJwk = JSON.parse(tokenxConfig.privateJwk);
 
-        idportenClient = new idporten.Client(
+        const idporten = new idportenIssuer.Client(
             {
                 client_id: idportenConfig.clientID,
                 token_endpoint_auth_method: 'private_key_jwt',
@@ -111,7 +109,7 @@ const init = async () => {
             }
         );
 
-        tokenxClient = new tokenx.Client(
+        const tokenx = new tokenxIssuer.Client(
             {
                 client_id: tokenxConfig.clientID,
                 token_endpoint_auth_method: 'private_key_jwt',
@@ -121,7 +119,7 @@ const init = async () => {
             }
         );
 
-        return Promise.resolve({ idporten: idportenClient, tokenx: tokenxClient });
+        return Promise.resolve({ idporten, tokenx });
     } catch (error) {
         logger.error('Error while initializing auth:', error);
         return Promise.reject(error);
