@@ -7,7 +7,7 @@ import { redirectLoginCookie } from 'utils/cookies';
 import { logApiError } from 'utils/logger';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const { LOGIN_URL } = window as any;
+// const { LOGIN_URL } = window as any;
 
 /*
  * AUTH
