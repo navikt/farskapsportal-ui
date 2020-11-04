@@ -29,6 +29,8 @@ export const authUrl = (session) =>
         response_mode: 'query',
         nonce: session.nonce,
         state: session.state,
+        resource: 'https://nav.no',
+        acr_values: 'Level4',
     });
 
 export const validateOidcCallback = async (req) => {

@@ -97,7 +97,7 @@ app.get('/oauth2/callback', (req, res) => {
 
 app.get('/api/kjoenn', checkAuth, async (req, res) => {
     try {
-        const accessToken = await auth.exchangeToken(req.session.tokens.id_token);
+        const accessToken = await auth.exchangeToken(req.session.tokens.access_token);
         const response = await fetch(`${apiUrl}/kjoenn`, {
             method: 'get',
             headers: {
@@ -114,7 +114,7 @@ app.get('/api/kjoenn', checkAuth, async (req, res) => {
 
 app.post('/api/kontroller', checkAuth, async (req, res) => {
     try {
-        const accessToken = await auth.exchangeToken(req.session.tokens.id_token);
+        const accessToken = await auth.exchangeToken(req.session.tokens.access_token);
         const response = await fetch(`${apiUrl}/kontrollere/far`, {
             method: 'post',
             headers: {
