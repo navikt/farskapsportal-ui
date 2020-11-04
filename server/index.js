@@ -97,6 +97,8 @@ app.get('/oauth2/callback', (req, res) => {
 
 app.get('/api/kjoenn', checkAuth, async (req, res) => {
     try {
+        console.log('req.session.tokens.access_token', req.session.tokens.access_token);
+        console.log('req.session.tokens.id_token', req.session.tokens.id_token);
         const accessToken = await auth.exchangeToken(req.session.tokens.access_token);
         const response = await fetch(`${apiUrl}/kjoenn`, {
             method: 'get',
@@ -108,8 +110,8 @@ app.get('/api/kjoenn', checkAuth, async (req, res) => {
         res.status(response.status).send(json);
     } catch (error) {
         logger.error('Error while calling api:', error);
-        res.status(500).send('En uventet feil har oppstått');
-        // res.sendStatus(500);
+        res.statusText = 'En uventet feil har oppstått.';
+        res.sendStatus(500);
     }
 });
 

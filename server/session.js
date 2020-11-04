@@ -36,7 +36,6 @@ const setupRedis = () => {
 
     client.unref();
     client.on('debug', console.log);
-    client.on('error', console.log);
 
     return new store({
         client: client,

@@ -53,7 +53,6 @@ export const validateOidcCallback = async (req) => {
 };
 
 export const exchangeToken = async (idportenToken) => {
-    logger.info('In exchangeToken', idportenToken);
     const now = Math.floor(Date.now() / 1000);
     // additional claims not set by openid-client
     const additionalClaims = {
