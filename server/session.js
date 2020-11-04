@@ -3,7 +3,6 @@ import redis from 'redis';
 import RedisStore from 'connect-redis';
 
 import * as config from './config.js';
-import { logger } from './logger.js';
 
 export const setupSession = () => {
     const options = {
@@ -36,8 +35,8 @@ const setupRedis = () => {
     });
 
     client.unref();
-    client.on('debug', logger.debug);
-    client.on('error', logger.error);
+    client.on('debug', console.log);
+    client.on('error', console.log);
 
     return new store({
         client: client,

@@ -108,7 +108,8 @@ app.get('/api/kjoenn', checkAuth, async (req, res) => {
         res.status(response.status).send(json);
     } catch (error) {
         logger.error('Error while calling api:', error);
-        res.sendStatus(500);
+        res.status(500).send('En uventet feil har oppstått');
+        // res.sendStatus(500);
     }
 });
 
