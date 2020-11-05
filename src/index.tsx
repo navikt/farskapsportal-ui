@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import * as Sentry from '@sentry/react';
 
 import './index.less';
 import App from './App';
@@ -12,6 +13,8 @@ import ScrollToTop from 'components/scroll-to-top/ScrollToTop';
 import IntlProvider from 'intl/IntlProvider';
 import { StoreProvider } from 'store/Context';
 import { initialState, reducer } from 'store/store';
+
+Sentry.init({ dsn: 'https://45feaf242d6e4c02b4b536ccc838eed1@sentry.gc.nav.no/48' });
 
 const init = async () => {
     if (process.env.NODE_ENV === 'development') {
@@ -40,6 +43,16 @@ const init = async () => {
                     <Router>
                         <ScrollToTop>
                             <App />
+                            <button
+                                onClick={() => {
+                                    const foo = undefined;
+                                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                                    // @ts-ignore
+                                    console.log(foo.bar);
+                                }}
+                            >
+                                Break the world
+                            </button>
                         </ScrollToTop>
                     </Router>
                 </IntlProvider>
