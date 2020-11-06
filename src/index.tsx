@@ -14,16 +14,16 @@ import IntlProvider from 'intl/IntlProvider';
 import { StoreProvider } from 'store/Context';
 import { initialState, reducer } from 'store/store';
 
-Sentry.init({ dsn: 'https://45feaf242d6e4c02b4b536ccc838eed1@sentry.gc.nav.no/48' });
+if (process.env.NODE_ENV === 'production') {
+    Sentry.init({
+        dsn: 'https://45feaf242d6e4c02b4b536ccc838eed1@sentry.gc.nav.no/48',
+        environment: window.location.hostname,
+    });
+}
 
 const init = async () => {
     if (process.env.NODE_ENV === 'development') {
         await import('./api/mock/app').then(({ setUpMock }) => setUpMock());
-
-        document.body.innerHTML = document.body.innerHTML.replace(
-            '{{{FRONTEND_LOGGER_SCRIPT}}}',
-            ''
-        );
 
         document.body.innerHTML = document.body.innerHTML.replace('{{{STYLES}}}', styles);
         document.body.innerHTML = document.body.innerHTML.replace('{{{HEADER}}}', header);
