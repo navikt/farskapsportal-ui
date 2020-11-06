@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Banner from 'components/banner/Banner';
@@ -11,6 +11,8 @@ import Soeknad from 'pages/mor/soeknad/Soeknad';
 import './App.less';
 
 function App() {
+    const [message, setMessage] = useState('Sentry test message');
+
     return (
         <div className="App">
             <LanguageToggle />
@@ -24,6 +26,26 @@ function App() {
                     </Switch>
                 </RedirectAfterLogin>
             </div>
+            <button
+                onClick={() => {
+                    const foo = undefined;
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    console.log(foo.bar);
+                }}
+            >
+                Break the world
+            </button>
+            <div>{message}</div>
+            <button
+                onClick={() => {
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
+                    setMessage({ text: 'Error' });
+                }}
+            >
+                Sentry test
+            </button>
         </div>
     );
 }

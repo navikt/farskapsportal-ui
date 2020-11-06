@@ -43,16 +43,6 @@ const init = async () => {
                     <Router>
                         <ScrollToTop>
                             <App />
-                            <button
-                                onClick={() => {
-                                    const foo = undefined;
-                                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-                                    // @ts-ignore
-                                    console.log(foo.bar);
-                                }}
-                            >
-                                Break the world
-                            </button>
                         </ScrollToTop>
                     </Router>
                 </IntlProvider>
