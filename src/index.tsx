@@ -38,15 +38,32 @@ const init = async () => {
 
     ReactDOM.render(
         <React.StrictMode>
-            <StoreProvider initialState={initialState} reducer={reducer}>
-                <IntlProvider>
-                    <Router>
-                        <ScrollToTop>
-                            <App />
-                        </ScrollToTop>
-                    </Router>
-                </IntlProvider>
-            </StoreProvider>
+            <Sentry.ErrorBoundary
+                fallback={({ error, componentStack, resetError }) => (
+                    <>
+                        <div>Feil!</div>
+                        <div>{error.toString()}</div>
+                        <div>{componentStack}</div>
+                        <button
+                            onClick={() => {
+                                resetError();
+                            }}
+                        >
+                            Reset error
+                        </button>
+                    </>
+                )}
+            >
+                <StoreProvider initialState={initialState} reducer={reducer}>
+                    <IntlProvider>
+                        <Router>
+                            <ScrollToTop>
+                                <App />
+                            </ScrollToTop>
+                        </Router>
+                    </IntlProvider>
+                </StoreProvider>
+            </Sentry.ErrorBoundary>
         </React.StrictMode>,
         document.getElementById('app')
     );
