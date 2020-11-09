@@ -9,6 +9,7 @@ import footer from 'api/mock/decorator/decorator-footer';
 import header from 'api/mock/decorator/decorator-header';
 import scripts from 'api/mock/decorator/decorator-scripts';
 import styles from 'api/mock/decorator/decorator-styles';
+import ErrorBoundary from 'components/error-boundary/ErrorBoundary';
 import ScrollToTop from 'components/scroll-to-top/ScrollToTop';
 import IntlProvider from 'intl/IntlProvider';
 import { StoreProvider } from 'store/Context';
@@ -38,22 +39,7 @@ const init = async () => {
 
     ReactDOM.render(
         <React.StrictMode>
-            <Sentry.ErrorBoundary
-                fallback={({ error, componentStack, resetError }) => (
-                    <>
-                        <div>Feil!</div>
-                        <div>{error.toString()}</div>
-                        <div>{componentStack}</div>
-                        <button
-                            onClick={() => {
-                                resetError();
-                            }}
-                        >
-                            Reset error
-                        </button>
-                    </>
-                )}
-            >
+            <ErrorBoundary>
                 <StoreProvider initialState={initialState} reducer={reducer}>
                     <IntlProvider>
                         <Router>
@@ -63,7 +49,7 @@ const init = async () => {
                         </Router>
                     </IntlProvider>
                 </StoreProvider>
-            </Sentry.ErrorBoundary>
+            </ErrorBoundary>
         </React.StrictMode>,
         document.getElementById('app')
     );
