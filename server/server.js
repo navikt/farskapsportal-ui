@@ -82,6 +82,7 @@ app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
             res.render('index.html', {
                 ...fragments,
                 LOGIN_URL: process.env.LOGINSERVICE_URL,
+                APP_VERSION: process.env.APP_VERSION,
             });
         })
         .catch((e) => {

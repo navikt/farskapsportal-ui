@@ -18,6 +18,8 @@ import { initialState, reducer } from 'store/store';
 if (process.env.NODE_ENV === 'production') {
     Sentry.init({
         dsn: 'https://45feaf242d6e4c02b4b536ccc838eed1@sentry.gc.nav.no/48',
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        release: (window as any).APP_VERSION,
         environment: window.location.hostname,
     });
 }
