@@ -1,4 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
+import 'jest-axe/extend-expect';
 import React, { ComponentType, ReactElement, ReactNode } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { render, RenderOptions } from '@testing-library/react';
