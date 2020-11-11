@@ -11,15 +11,8 @@
         <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
         {{{STYLES}}}
         <script type="application/javascript">
-            window.frontendlogger = {
-                info: function () {},
-                warn: function () {},
-                error: function () {},
-                event: function () {},
-            };
-            window.frontendlogger.appname = 'farskapsportal-ui';
+            window.APP_VERSION = '{{{APP_VERSION}}}';
         </script>
-        {{{FRONTEND_LOGGER_SCRIPT}}}
         <title>Farskapsportal - www.nav.no</title>
     </head>
     <body>

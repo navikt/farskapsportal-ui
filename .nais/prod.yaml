@@ -9,4 +9,3 @@ env:
   DEKORATOREN_URL: https://www.nav.no/dekoratoren
   FARSKAPSPORTAL_API_AUDIENCE: prod-gcp:farskapsportal:farskapsportal-api
   FARSKAPSPORTAL_API_URL: https://farskapsportal-api.nav.no
-  FRONTENDLOGGER_BASE_URL: https://www.nav.no/frontendlogger

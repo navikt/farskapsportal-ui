@@ -41,6 +41,8 @@ spec:
     - name: {{@key}}
       value: "{{this}}"
   {{/each}}
+    - name: APP_VERSION
+      value: {{ image }}
     - name: REDIS_HOST
       value: farskapsportal-ui-redis
 

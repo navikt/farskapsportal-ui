@@ -1,9 +1,7 @@
 module.exports = {
-    env: {
-        browser: true,
-        node: true,
-    },
     extends: [
+        'react-app',
+        'react-app/jest',
         'eslint:recommended',
         'plugin:react/recommended',
         'plugin:@typescript-eslint/recommended',
@@ -11,19 +9,9 @@ module.exports = {
         'plugin:prettier/recommended',
         'plugin:jsx-a11y/recommended',
     ],
-    parser: '@typescript-eslint/parser',
-    plugins: ['react', '@typescript-eslint', 'prettier', 'react-hooks'],
-    settings: {
-        react: {
-            version: 'detect',
-        },
-    },
     rules: {
         'prettier/prettier': 'warn',
-        'react/display-name': 'off',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
-        'react-hooks/rules-of-hooks': 'error',
-        'react-hooks/exhaustive-deps': 'warn',
     },
     overrides: [
         {

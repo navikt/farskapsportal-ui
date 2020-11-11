@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
+import * as Sentry from '@sentry/react';
 
 import './index.less';
 import App from './App';
@@ -8,19 +9,24 @@ import footer from 'api/mock/decorator/decorator-footer';
 import header from 'api/mock/decorator/decorator-header';
 import scripts from 'api/mock/decorator/decorator-scripts';
 import styles from 'api/mock/decorator/decorator-styles';
+import ErrorBoundary from 'components/error-boundary/ErrorBoundary';
 import ScrollToTop from 'components/scroll-to-top/ScrollToTop';
 import IntlProvider from 'intl/IntlProvider';
 import { StoreProvider } from 'store/Context';
 import { initialState, reducer } from 'store/store';
 
+if (process.env.NODE_ENV === 'production') {
+    Sentry.init({
+        dsn: 'https://45feaf242d6e4c02b4b536ccc838eed1@sentry.gc.nav.no/48',
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        release: (window as any).APP_VERSION,
+        environment: window.location.hostname,
+    });
+}
+
 const init = async () => {
     if (process.env.NODE_ENV === 'development') {
         await import('./api/mock/app').then(({ setUpMock }) => setUpMock());
-
-        document.body.innerHTML = document.body.innerHTML.replace(
-            '{{{FRONTEND_LOGGER_SCRIPT}}}',
-            ''
-        );
 
         document.body.innerHTML = document.body.innerHTML.replace('{{{STYLES}}}', styles);
         document.body.innerHTML = document.body.innerHTML.replace('{{{HEADER}}}', header);
@@ -35,15 +41,17 @@ const init = async () => {
 
     ReactDOM.render(
         <React.StrictMode>
-            <StoreProvider initialState={initialState} reducer={reducer}>
-                <IntlProvider>
-                    <Router>
-                        <ScrollToTop>
-                            <App />
-                        </ScrollToTop>
-                    </Router>
-                </IntlProvider>
-            </StoreProvider>
+            <ErrorBoundary>
+                <StoreProvider initialState={initialState} reducer={reducer}>
+                    <IntlProvider>
+                        <Router>
+                            <ScrollToTop>
+                                <App />
+                            </ScrollToTop>
+                        </Router>
+                    </IntlProvider>
+                </StoreProvider>
+            </ErrorBoundary>
         </React.StrictMode>,
         document.getElementById('app')
     );

@@ -1,0 +1,71 @@
+@import (reference) 'styles/assets';
+
+@blinkDuration: 6s;
+
+.Veileder {
+  #Background {
+    fill: @banner-color;
+  }
+
+  #Left-eye,
+  #Right-eye {
+    animation: eyeBlink @blinkDuration infinite;
+    animation-timing-function: ease;
+  }
+
+  #Nose {
+    stroke: #d1bfa3;
+    stroke-width: 0.2;
+    vector-effect: non-scaling-stroke;
+    animation: noseUp @blinkDuration infinite;
+    animation-timing-function: ease;
+  }
+
+  #Mouth-happy,
+  #Mouth-unsure,
+  #Mouth-hesitant {
+    opacity: 0;
+  }
+
+  &--happy #Mouth-happy {
+    opacity: 1;
+  }
+
+  &--unsure #Mouth-unsure {
+    opacity: 1;
+  }
+
+  &--hesitant #Mouth-hesitant {
+    opacity: 1;
+  }
+}
+
+@keyframes eyeBlink {
+  0% {
+    transform: scaleY(1);
+  }
+  79% {
+    transform: scaleY(1);
+  }
+  80% {
+    transform: translateY(3px) scaleY(0.1);
+  }
+  81.5% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes noseUp {
+  0% {
+    transform: scaleY(1);
+  }
+  79% {
+    transform: scaleY(1);
+  }
+  80% {
+    transform: translate(0, -0.4px);
+  }
+  81.5% {
+    transform: scaleY(1);
+  }
+}
