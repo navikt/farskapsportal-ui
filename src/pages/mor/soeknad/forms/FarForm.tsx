@@ -17,7 +17,7 @@ export interface FarFormInput {
     foedselsnummer: string;
 }
 
-interface FarFormProps {
+export interface FarFormProps {
     defaultNavn: string;
     defaultFoedselsnummer: string;
     onSubmit: (data: FarFormInput) => void;

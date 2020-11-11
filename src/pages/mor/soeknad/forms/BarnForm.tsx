@@ -19,7 +19,7 @@ export interface BarnFormInput {
     termindato: string;
 }
 
-interface BarnFormProps {
+export interface BarnFormProps {
     defaultTermindato: string;
     onSubmit: (data: BarnFormInput) => void;
     onCancel: () => void;
