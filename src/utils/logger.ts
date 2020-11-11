@@ -1,33 +1,21 @@
+import * as Sentry from '@sentry/react';
+
 import { AlertError } from 'types/error';
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const { frontendlogger } = window as any;
-
-export const logApiError = (url: string, err: AlertError) => {
-    switch (err.type) {
+export const logApiError = (url: string, error: AlertError) => {
+    switch (error.type) {
         case 'advarsel':
-            console.warn(url, err);
+            console.warn(url, error);
             break;
         case 'feil':
-            console.error(url, err);
+            console.error(url, error);
             break;
         default:
-            console.log(url, err);
+            console.log(url, error);
             break;
     }
 
-    const error = `Feil ved henting av data: ${url} - ${err.code} ${err.text}`;
-    const title = 'farskapsportal.apiclient.error';
+    const errorMessage = `Feil ved henting av data: ${url} - ${error.code} ${error.text}`;
 
-    const tags = {};
-    const fields = {
-        status: err.code,
-        statusText: err.text,
-        url,
-    };
-
-    if (frontendlogger) {
-        frontendlogger.error(error);
-        frontendlogger.event(title, fields, tags);
-    }
+    Sentry.captureMessage(errorMessage);
 };

@@ -3,20 +3,12 @@ import express from 'express';
 import mustacheExpress from 'mustache-express';
 import cookieParser from 'cookie-parser';
 import fetch from 'node-fetch';
-import jsdom from 'jsdom';
 import { getDecorator } from './decorator.js';
 
-const { JSDOM } = jsdom;
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
 const tokenName = 'selvbetjening-idtoken';
 const app = express();
-
-const frontendloggerScript = () => {
-    const scriptTag = `<div id="frontendlogger"><script type="application/javascript" src="${process.env.FRONTENDLOGGER_BASE_URL}/logger.js"></script></div>`;
-    const { document } = new JSDOM(scriptTag).window;
-    return document.getElementById('frontendlogger')['innerHTML'];
-};
 
 app.set('views', buildPath);
 app.set('view engine', 'mustache');
@@ -90,7 +82,7 @@ app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
             res.render('index.html', {
                 ...fragments,
                 LOGIN_URL: process.env.LOGINSERVICE_URL,
-                FRONTEND_LOGGER_SCRIPT: frontendloggerScript(),
+                APP_VERSION: process.env.APP_VERSION,
             });
         })
         .catch((e) => {
