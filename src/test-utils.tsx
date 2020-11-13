@@ -8,13 +8,7 @@ import IntlProvider from 'intl/IntlProvider';
 import { StoreProvider } from 'store/Context';
 import { initialState, reducer, Store } from 'store/store';
 
-const AllTheProviders = ({
-    children,
-    store,
-}: {
-    children: ReactNode;
-    store?: Partial<Store>;
-}): ReactElement => {
+function ProviderWrapper({ children, store }: { children: ReactNode; store?: Partial<Store> }) {
     return (
         <StoreProvider initialState={{ ...initialState, ...store }} reducer={reducer}>
             <IntlProvider>
@@ -22,12 +16,12 @@ const AllTheProviders = ({
             </IntlProvider>
         </StoreProvider>
     );
-};
+}
 
 const customRender = (
     ui: ReactElement,
     { store, ...options }: RenderOptions & { store?: Partial<Store> } = {}
-) => render(<AllTheProviders store={store}>{ui}</AllTheProviders>, { ...options });
+) => render(<ProviderWrapper store={store}>{ui}</ProviderWrapper>, { ...options });
 
 export * from '@testing-library/react';
 
