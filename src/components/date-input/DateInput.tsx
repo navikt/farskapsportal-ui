@@ -7,8 +7,8 @@ import {
     SkjemaGruppeFeilContextProps,
 } from 'nav-frontend-skjema';
 import cls from 'classnames';
-import 'moment/locale/nb';
-import 'moment/locale/nn';
+import 'dayjs/locale/nb';
+import 'dayjs/locale/nn';
 
 import { useStore } from 'store/Context';
 
