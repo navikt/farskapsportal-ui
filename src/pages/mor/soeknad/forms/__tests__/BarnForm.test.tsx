@@ -3,7 +3,6 @@ import { axe } from 'jest-axe';
 
 import { fireEvent, render, screen, waitFor } from 'test-utils';
 import { getNDaysAhead } from 'utils/date';
-
 import BarnForm, { BarnFormProps } from '../BarnForm';
 
 const defaultProps: BarnFormProps = {

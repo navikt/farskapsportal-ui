@@ -5,7 +5,7 @@ import VeilederBanner from 'components/veileder-banner/VeilederBanner';
 
 import './ErrorPage.less';
 
-interface ErrorPageProps {
+export interface ErrorPageProps {
     title: ReactNode;
     text: ReactNode;
     banner: {
