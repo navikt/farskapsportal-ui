@@ -3,12 +3,15 @@ import express from 'express';
 import mustacheExpress from 'mustache-express';
 import cookieParser from 'cookie-parser';
 import fetch from 'node-fetch';
+import compression from 'compression';
 import { getDecorator } from './decorator.js';
 
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
 const tokenName = 'selvbetjening-idtoken';
 const app = express();
+
+app.use(compression());
 
 app.set('views', buildPath);
 app.set('view engine', 'mustache');
