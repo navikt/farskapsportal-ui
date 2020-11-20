@@ -65,10 +65,10 @@
     "react-intl": "^5.10.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.0",
-    "typescript": "^4.0.5"
+    "typescript": "4.0.5"
   },
   "devDependencies": {
-    "prettier": "2.1.2",
+    "prettier": "2.2.0",
     "stylelint": "^13.8.0",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^20.0.0",
