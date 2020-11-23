@@ -48,7 +48,7 @@ test('should show error for date too far in the future', async () => {
 
     await waitFor(() => {
         expect(
-            screen.getByText('Du er i uke 12 i svangerskapet. Vent til uke 17 med å bekrefte far.')
+            screen.getByText('Du er i uke 12 i svangerskapet. Vent til uke 22 med å bekrefte far.')
         ).toBeInTheDocument();
     });
 });

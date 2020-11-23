@@ -4,7 +4,7 @@ import { SkjemaGruppe } from 'nav-frontend-skjema';
 
 import DateInput from 'components/date-input/DateInput';
 import FormButtons from 'components/form-buttons/FormButtons';
-import { DAYS_OF_PREGNANCY, DAYS_OF_SIXTEEN_WEEKS } from 'utils/constants';
+import { DAYS_OF_PREGNANCY, DAYS_OF_TWENTYONE_WEEKS } from 'utils/constants';
 import {
     getNDaysAhead,
     getToday,
@@ -64,14 +64,14 @@ function BarnForm({ defaultTermindato, onSubmit, onCancel }: BarnFormProps) {
                                     intl,
                                     'mor.soeknad.barn.form.termindato.validation.maxDate'
                                 ),
-                            beforeWeek17: (value) =>
+                            beforeWeek22: (value) =>
                                 isLessThanNDaysAhead(
                                     value,
-                                    DAYS_OF_PREGNANCY - DAYS_OF_SIXTEEN_WEEKS - 1
+                                    DAYS_OF_PREGNANCY - DAYS_OF_TWENTYONE_WEEKS - 1
                                 ) ||
                                 getMessage(
                                     intl,
-                                    'mor.soeknad.barn.form.termindato.validation.beforeWeek17',
+                                    'mor.soeknad.barn.form.termindato.validation.beforeWeek22',
                                     { weekNr: getWeekOfPregnancy(value) }
                                 ),
                         },
