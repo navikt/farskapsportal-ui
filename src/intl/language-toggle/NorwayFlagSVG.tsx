@@ -1,5 +1,3 @@
-import React from 'react';
-
 function NorwayFlagSVG() {
     return (
         <svg width={25} height={18}>

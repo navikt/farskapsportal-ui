@@ -1,4 +1,4 @@
-import React, { createContext, Dispatch, ReactNode, Reducer, useContext, useReducer } from 'react';
+import { createContext, Dispatch, ReactNode, Reducer, useContext, useReducer } from 'react';
 
 import { Action } from './actions';
 import { Store } from './store';

@@ -1,4 +1,3 @@
-import React from 'react';
 import NavFrontendSpinner from 'nav-frontend-spinner';
 
 import './Spinner.less';

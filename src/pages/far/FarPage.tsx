@@ -1,5 +1,3 @@
-import React from 'react';
-
 import WithKjoenn from 'store/providers/WithKjoenn';
 import { Kjoenn } from 'types/kjoenn';
 

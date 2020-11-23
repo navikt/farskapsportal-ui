@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useIntl } from 'react-intl';
 import { useForm } from 'react-hook-form';
 import { Feiloppsummering, Input, SkjemaGruppe } from 'nav-frontend-skjema';

@@ -12,6 +12,8 @@ module.exports = {
     rules: {
         'prettier/prettier': 'warn',
         '@typescript-eslint/explicit-module-boundary-types': 'off',
+        'react/react-in-jsx-scope': 'off',
+        'react/jsx-no-undef': 'off',
     },
     overrides: [
         {

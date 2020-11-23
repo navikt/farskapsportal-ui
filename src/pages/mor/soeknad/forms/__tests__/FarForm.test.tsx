@@ -1,4 +1,3 @@
-import React from 'react';
 import { axe } from 'jest-axe';
 
 import { fireEvent, render, screen, waitFor } from 'test-utils';

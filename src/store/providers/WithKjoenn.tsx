@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { AlertStripeFeil } from 'nav-frontend-alertstriper';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 function UKFlagSVG() {
     return (
         <svg width={25} height={18}>

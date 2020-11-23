@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 
 import SpeechBubble from './SpeechBubble';
 import Veileder, { VeilederProps } from './Veileder';

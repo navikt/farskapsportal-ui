@@ -1,4 +1,3 @@
-import React from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Element, Undertittel, Normaltekst } from 'nav-frontend-typografi';
 

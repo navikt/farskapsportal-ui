@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Ingress, Innholdstittel } from 'nav-frontend-typografi';
 
 import VeilederBanner from 'components/veileder-banner/VeilederBanner';
