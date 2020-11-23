@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { Datepicker } from 'nav-datovelger';
 import {
     Label,

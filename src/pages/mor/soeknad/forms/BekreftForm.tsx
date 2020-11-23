@@ -1,4 +1,3 @@
-import React from 'react';
 import { useIntl } from 'react-intl';
 import { useForm, Controller } from 'react-hook-form';
 import { BekreftCheckboksPanel, SkjemaGruppe } from 'nav-frontend-skjema';

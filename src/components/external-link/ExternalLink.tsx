@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import Lenke from 'nav-frontend-lenker';
 
 import { ReactComponent as ExternalSvg } from 'assets/icons/external.svg';

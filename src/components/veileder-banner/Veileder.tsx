@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ReactComponent as VeilederSvg } from 'assets/icons/veileder.svg';
 
 import './Veileder.less';

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { ReactComponent as CircleCheckSvg } from 'assets/icons/circle-check.svg';
 import { StepStatus } from 'types/form';
 

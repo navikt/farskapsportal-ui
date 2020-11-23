@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { IntlProvider as Provider } from 'react-intl';
 import '@formatjs/intl-numberformat/polyfill-force';
 import '@formatjs/intl-numberformat/locale-data/en';

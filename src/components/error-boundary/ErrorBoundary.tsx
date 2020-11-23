@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import { ReactNode } from 'react';
 import * as Sentry from '@sentry/react';
 
 import ErrorPage from 'components/error-page/ErrorPage';

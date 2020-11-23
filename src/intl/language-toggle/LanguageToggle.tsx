@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { IntlShape, useIntl } from 'react-intl';
 import { NedChevron } from 'nav-frontend-chevron';
 import { Wrapper, Button, Menu, MenuItem } from 'react-aria-menubutton';

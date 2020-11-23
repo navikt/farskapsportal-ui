@@ -1,4 +1,3 @@
-import React from 'react';
 import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
 
 import './FormButtons.less';

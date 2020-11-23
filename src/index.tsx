@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import { StrictMode } from 'react';
+import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import * as Sentry from '@sentry/react';
 
@@ -39,8 +39,8 @@ const init = async () => {
         document.body.appendChild(script);
     }
 
-    ReactDOM.render(
-        <React.StrictMode>
+    render(
+        <StrictMode>
             <ErrorBoundary>
                 <StoreProvider initialState={initialState} reducer={reducer}>
                     <IntlProvider>
@@ -52,7 +52,7 @@ const init = async () => {
                     </IntlProvider>
                 </StoreProvider>
             </ErrorBoundary>
-        </React.StrictMode>,
+        </StrictMode>,
         document.getElementById('app')
     );
 };

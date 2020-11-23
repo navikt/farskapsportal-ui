@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { fireEvent, render, screen, waitFor } from 'test-utils';
 import { Kjoenn } from 'types/kjoenn';
 import { getToday } from 'utils/date';
