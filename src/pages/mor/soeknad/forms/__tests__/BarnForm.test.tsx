@@ -1,7 +1,8 @@
 import { axe } from 'jest-axe';
 
 import { fireEvent, render, screen, waitFor } from 'test-utils';
-import { getNDaysAhead } from 'utils/date';
+import { DAYS_OF_THREE_WEEKS } from 'utils/constants';
+import { getNDaysInTheFuture, getNDaysInThePast } from 'utils/date';
 import BarnForm, { BarnFormProps } from '../BarnForm';
 
 const defaultProps: BarnFormProps = {
@@ -42,7 +43,7 @@ test('should show error for date too far in the future', async () => {
 
     // uses .focus() to trigger onBlur
     termindatoInput.focus();
-    fireEvent.change(termindatoInput, { target: { value: getNDaysAhead(200) } });
+    fireEvent.change(termindatoInput, { target: { value: getNDaysInTheFuture(200) } });
     submitButton.focus();
     fireEvent.click(submitButton);
 
@@ -61,11 +62,15 @@ test('should show error for date in the past', async () => {
 
     // uses .focus() to trigger onBlur
     termindatoInput.focus();
-    fireEvent.change(termindatoInput, { target: { value: getNDaysAhead(-1) } });
+    fireEvent.change(termindatoInput, {
+        target: { value: getNDaysInThePast(DAYS_OF_THREE_WEEKS + 1) },
+    });
     submitButton.focus();
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-        expect(screen.getByText('Kan ikke være før dagens dato')).toBeInTheDocument();
+        expect(
+            screen.getByText('Kan ikke være mer enn tre uker tilbake i tid')
+        ).toBeInTheDocument();
     });
 });

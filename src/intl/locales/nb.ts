@@ -43,7 +43,7 @@ export default {
     'mor.soeknad.barn.form.termindato.label': 'Termindato',
     'mor.soeknad.barn.form.termindato.validation.required': 'Termindato er påkrevd',
     'mor.soeknad.barn.form.termindato.validation.pattern': 'Ugyldig dato',
-    'mor.soeknad.barn.form.termindato.validation.minDate': 'Kan ikke være før dagens dato',
+    'mor.soeknad.barn.form.termindato.validation.minDate': 'Kan ikke være mer enn tre uker tilbake i tid',
     'mor.soeknad.barn.form.termindato.validation.maxDate': 'Datoen er mer enn 40 uker fram i tid. Vent til uke 22 av svangerskapet med å bekrefte far.',
     'mor.soeknad.barn.form.termindato.validation.beforeWeek22': 'Du er i uke {weekNr} i svangerskapet. Vent til uke 22 med å bekrefte far.',
     'mor.soeknad.barn.presentation.termindato.label': 'Termindato:',

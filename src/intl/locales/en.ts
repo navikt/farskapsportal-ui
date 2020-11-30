@@ -18,7 +18,7 @@ export default {
     'mor.soeknad.barn.form.termindato.label': 'Due date',
     'mor.soeknad.barn.form.termindato.validation.required': 'Due date is required',
     'mor.soeknad.barn.form.termindato.validation.pattern': 'Invalid date',
-    'mor.soeknad.barn.form.termindato.validation.minDate': 'Cannot be before today\'s date',
+    'mor.soeknad.barn.form.termindato.validation.minDate': 'Cannot be more than three weeks in the past',
     'mor.soeknad.barn.form.termindato.validation.maxDate': 'The date is more than 40 weeks ahead. Wait until week 22 of the pregnancy to confirm the father.',
     'mor.soeknad.barn.form.termindato.validation.beforeWeek22': 'You are in week {weekNr} of the pregnancy. Wait until week 22 of the pregnancy to confirm the father.',
     'mor.soeknad.barn.presentation.termindato.label': 'Due date:',

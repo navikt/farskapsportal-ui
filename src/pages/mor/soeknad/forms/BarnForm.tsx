@@ -4,13 +4,13 @@ import { SkjemaGruppe } from 'nav-frontend-skjema';
 
 import DateInput from 'components/date-input/DateInput';
 import FormButtons from 'components/form-buttons/FormButtons';
-import { DAYS_OF_PREGNANCY, DAYS_OF_TWENTYONE_WEEKS } from 'utils/constants';
+import { DAYS_OF_PREGNANCY, DAYS_OF_THREE_WEEKS, DAYS_OF_TWENTYONE_WEEKS } from 'utils/constants';
 import {
-    getNDaysAhead,
-    getToday,
+    getNDaysInTheFuture,
+    getNDaysInThePast,
     getWeekOfPregnancy,
-    isLessThanNDaysAhead,
-    isTodayOrAfter,
+    isLessThanNDaysInTheFuture,
+    isLessThanNDaysInThePast,
 } from 'utils/date';
 import { getMessage } from 'utils/intl';
 
@@ -53,19 +53,19 @@ function BarnForm({ defaultTermindato, onSubmit, onCancel }: BarnFormProps) {
                         },
                         validate: {
                             minDate: (value) =>
-                                isTodayOrAfter(value) ||
+                                isLessThanNDaysInThePast(value, DAYS_OF_THREE_WEEKS + 1) ||
                                 getMessage(
                                     intl,
                                     'mor.soeknad.barn.form.termindato.validation.minDate'
                                 ),
                             maxDate: (value) =>
-                                isLessThanNDaysAhead(value, DAYS_OF_PREGNANCY) ||
+                                isLessThanNDaysInTheFuture(value, DAYS_OF_PREGNANCY) ||
                                 getMessage(
                                     intl,
                                     'mor.soeknad.barn.form.termindato.validation.maxDate'
                                 ),
                             beforeWeek22: (value) =>
-                                isLessThanNDaysAhead(
+                                isLessThanNDaysInTheFuture(
                                     value,
                                     DAYS_OF_PREGNANCY - DAYS_OF_TWENTYONE_WEEKS - 1
                                 ) ||
@@ -84,8 +84,8 @@ function BarnForm({ defaultTermindato, onSubmit, onCancel }: BarnFormProps) {
                             value={value}
                             feil={errors.termindato?.message}
                             placeholder={getMessage(intl, 'form.date.placeholder')}
-                            minDate={getToday()}
-                            maxDate={getNDaysAhead(DAYS_OF_PREGNANCY)}
+                            minDate={getNDaysInThePast(DAYS_OF_THREE_WEEKS)}
+                            maxDate={getNDaysInTheFuture(DAYS_OF_PREGNANCY)}
                             showYearSelector={true}
                         />
                     )}
