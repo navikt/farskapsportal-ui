@@ -1,1 +1,8 @@
-"KVINNE"
+{
+  "kanOppretteFarskapserklaering": true,
+  "gyldigForelderrolle": true,
+  "forelderrolle": "MOR",
+  "farsVentendeFarskapserklaeringer": null,
+  "morsVentendeFarskapserklaeringer": null,
+  "fnrNyligFoedteBarnUtenRegistrertFar": null
+}

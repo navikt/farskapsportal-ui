@@ -2,7 +2,7 @@ import Cookies from 'js-cookie';
 
 import { OutboundFatherControl } from 'types/api';
 import { AlertError } from 'types/error';
-import { Kjoenn } from 'types/kjoenn';
+import { UserInfo } from 'types/user';
 import { redirectLoginCookie } from 'utils/cookies';
 import { logApiError } from 'utils/logger';
 
@@ -15,7 +15,7 @@ const { LOGIN_URL } = window as any;
  * Logger ikke 401 eller 403 feil da det forventes.
  * */
 export const checkAuthFetchUser = () => {
-    const url = '/api/kjoenn';
+    const url = '/api/brukerinformasjon';
 
     return fetch(url, {
         method: 'GET',
@@ -23,7 +23,7 @@ export const checkAuthFetchUser = () => {
     })
         .then(checkAuth)
         .then(checkHttpError)
-        .then((res) => res.text() as Promise<Kjoenn>)
+        .then((res) => res.json() as Promise<UserInfo>)
         .catch((err: string & AlertError) => {
             const error = {
                 code: err.code || 404,
@@ -63,7 +63,7 @@ export const checkAuthFetchUser = () => {
  *   POST
  */
 export const controlFatherInfo = (data: OutboundFatherControl) => {
-    const url = '/api/kontroller';
+    const url = '/api/personopplysninger/far';
 
     return fetch(url, {
         method: 'POST',

@@ -18,13 +18,13 @@ const mockGet = (
 
 const mockPost = (
     path: string,
-    response: Record<string, unknown>,
+    response: Record<string, unknown> | string,
     minDelay = 200,
     maxDelay = 750
 ) => fetchMock.post(path, () => delay(minDelay, maxDelay).then(() => response));
 
 export const setUpMock = async () => {
-    mockGet('/api/kjoenn', user);
+    mockGet('/api/brukerinformasjon', user);
 
-    mockPost('/api/kontroller', { statusType: 'OK' }, 2000, 3000);
+    mockPost('/api/personopplysninger/far', 'OK', 2000, 3000);
 };

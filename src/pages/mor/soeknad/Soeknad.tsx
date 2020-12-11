@@ -4,8 +4,8 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import { Innholdstittel } from 'nav-frontend-typografi';
 
 import WithKjoenn from 'store/providers/WithKjoenn';
+import { Foreldrerolle } from 'types/foreldrerolle';
 import { StepStatus } from 'types/form';
-import { Kjoenn } from 'types/kjoenn';
 import { getMessage } from 'utils/intl';
 import BarnForm, { BarnFormInput } from './forms/BarnForm';
 import BekreftForm from './forms/BekreftForm';
@@ -58,7 +58,7 @@ function Soeknad() {
     };
 
     return (
-        <WithKjoenn kjoenn={Kjoenn.Kvinne}>
+        <WithKjoenn foreldrerolle={Foreldrerolle.Mor}>
             <div className="Soeknad">
                 <Innholdstittel tag="h2">
                     <FormattedMessage id="mor.title" />

@@ -37,10 +37,10 @@ app.use(express.static(buildPath, { index: false }));
 app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 
 // Api calls
-app.get('/api/kjoenn', async (req, res) => {
+app.get('/api/brukerinformasjon', async (req, res) => {
     try {
         const token = req.cookies[tokenName];
-        const response = await fetch(`${apiUrl}/kjoenn`, {
+        const response = await fetch(`${apiUrl}/brukerinformasjon`, {
             method: 'get',
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -54,10 +54,10 @@ app.get('/api/kjoenn', async (req, res) => {
     }
 });
 
-app.post('/api/kontroller', async (req, res) => {
+app.post('/api/personopplysninger/far', async (req, res) => {
     try {
         const token = req.cookies[tokenName];
-        const response = await fetch(`${apiUrl}/kontrollere/far`, {
+        const response = await fetch(`${apiUrl}/personopplysninger/far`, {
             method: 'post',
             headers: {
                 Authorization: `Bearer ${token}`,

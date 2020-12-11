@@ -9,11 +9,11 @@ import Spinner from 'components/spinner/Spinner';
 import { setUserFailure, setUserSuccess } from 'store/actions';
 import { useStore } from 'store/Context';
 import { AlertError } from 'types/error';
-import { Kjoenn } from 'types/kjoenn';
+import { Foreldrerolle } from 'types/foreldrerolle';
 import { UserInfo } from 'types/user';
 
 interface Props {
-    kjoenn: Kjoenn;
+    foreldrerolle: Foreldrerolle;
     children: ReactNode;
 }
 
@@ -38,12 +38,12 @@ function WithKjoenn(props: Props) {
         case 'PENDING':
             return <Spinner />;
         case 'SUCCESS':
-            if (userInfo.data === props.kjoenn) {
+            if (userInfo.data.forelderrolle === props.foreldrerolle) {
                 return <>{props.children}</>;
             } else {
-                if (userInfo.data === Kjoenn.Kvinne) {
+                if (userInfo.data.forelderrolle === Foreldrerolle.Mor) {
                     return <Redirect to="/mor" />;
-                } else if (userInfo.data === Kjoenn.Mann) {
+                } else if (userInfo.data.forelderrolle === Foreldrerolle.Far) {
                     return <Redirect to="/far" />;
                 } else {
                     return (

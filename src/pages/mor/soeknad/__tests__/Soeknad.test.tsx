@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from 'test-utils';
-import { Kjoenn } from 'types/kjoenn';
+import { Foreldrerolle } from 'types/foreldrerolle';
 import { getToday } from 'utils/date';
 
 import Soeknad from '../Soeknad';
@@ -8,7 +8,19 @@ jest.mock('api/api', () => ({ controlFatherInfo: () => Promise.resolve() }));
 
 test('should display steps correctly', async () => {
     render(<Soeknad />, {
-        store: { userInfo: { status: 'SUCCESS', data: Kjoenn.Kvinne } },
+        store: {
+            userInfo: {
+                status: 'SUCCESS',
+                data: {
+                    kanOppretteFarskapserklaering: true,
+                    gyldigForelderrolle: true,
+                    forelderrolle: Foreldrerolle.Mor,
+                    farsVentendeFarskapserklaeringer: null,
+                    morsVentendeFarskapserklaeringer: null,
+                    fnrNyligFoedteBarnUtenRegistrertFar: null,
+                },
+            },
+        },
     });
 
     const termindatoInput = screen.getByLabelText(/termindato/i);
