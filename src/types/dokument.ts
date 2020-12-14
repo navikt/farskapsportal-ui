@@ -1,12 +1,10 @@
-import { URI } from './uri';
-
 export interface Dokument {
     dokumentnavn: string | null;
-    innhold: string | null; // TODO: byte[] ?
-    dokumentStatusUrl: URI | null;
-    padesUrl: URI | null;
-    redirectUrlMor: URI | null;
-    redirectUrlFar: URI | null;
+    innhold: string | null;
+    dokumentStatusUrl: string | null;
+    padesUrl: string | null;
+    redirectUrlMor: string | null;
+    redirectUrlFar: string | null;
     signertAvMor: string | null;
     signertAvFar: string | null;
 }

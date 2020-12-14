@@ -91,7 +91,8 @@ app.post('/api/farskapserklaering/ny', async (req, res) => {
         });
 
         if (response.status === 200) {
-            res.sendStatus(response.status);
+            const text = await response.text()
+            res.status(response.status).send(text);
         } else {
             const json = await response.json();
             res.status(response.status).send(json);
