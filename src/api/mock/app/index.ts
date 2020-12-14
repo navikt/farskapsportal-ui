@@ -27,4 +27,6 @@ export const setUpMock = async () => {
     mockGet('/api/brukerinformasjon', user);
 
     mockPost('/api/personopplysninger/far', 'OK', 2000, 3000);
+
+    mockPost('/api/farskapserklaering/ny', 'OK', 2000, 3000);
 };

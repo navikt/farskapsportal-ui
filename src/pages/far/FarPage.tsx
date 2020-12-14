@@ -1,8 +1,8 @@
-import WithKjoenn from 'store/providers/WithKjoenn';
+import WithForeldrerolle from 'store/providers/WithForeldrerolle';
 import { Foreldrerolle } from 'types/foreldrerolle';
 
 function FarPage() {
-    return <WithKjoenn foreldrerolle={Foreldrerolle.Far}>Far sin side</WithKjoenn>;
+    return <WithForeldrerolle foreldrerolle={Foreldrerolle.Far}>Far sin side</WithForeldrerolle>;
 }
 
 export default FarPage;

@@ -17,7 +17,7 @@ interface Props {
     children: ReactNode;
 }
 
-function WithKjoenn(props: Props) {
+function WithForeldrerolle(props: Props) {
     const [{ userInfo }, dispatch] = useStore();
 
     useEffect(() => {
@@ -58,4 +58,4 @@ function WithKjoenn(props: Props) {
     }
 }
 
-export default WithKjoenn;
+export default WithForeldrerolle;

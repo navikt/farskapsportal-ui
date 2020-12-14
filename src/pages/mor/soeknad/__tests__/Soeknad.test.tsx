@@ -53,10 +53,18 @@ test('should display steps correctly', async () => {
         fireEvent.click(submitButton);
 
         await waitFor(() => {
+            const farCorrectCheckbox = screen.getByLabelText(
+                /jeg godkjenner at opplysningene om far er korrekt/i
+            );
+            const cannotWithdrawCheckbox = screen.getByLabelText(
+                /jeg er kjent med at denne bekreftelsen ikke kan trekkes tilbake på et senere tidspunkt/i
+            );
+
             // only step 3 is displayed
             expect(screen.queryByLabelText(/termindato/i)).not.toBeInTheDocument();
             expect(screen.queryByLabelText(/navn/i)).not.toBeInTheDocument();
-            expect(screen.getByLabelText(/jeg godkjenner/i)).toBeInTheDocument();
+            expect(farCorrectCheckbox).toBeInTheDocument();
+            expect(cannotWithdrawCheckbox).toBeInTheDocument();
         });
     });
 });

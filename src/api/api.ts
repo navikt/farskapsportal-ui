@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-import { OutboundFatherControl } from 'types/api';
+import { Outbound, OutboundFatherControl, OutboundOpprettFarskapserklaering } from 'types/api';
 import { AlertError } from 'types/error';
 import { UserInfo } from 'types/user';
 import { redirectLoginCookie } from 'utils/cookies';
@@ -10,54 +10,38 @@ import { logApiError } from 'utils/logger';
 const { LOGIN_URL } = window as any;
 
 /*
- * AUTH
- * Henter informasjon om bruker.
- * Logger ikke 401 eller 403 feil da det forventes.
+ * GET
  * */
 export const checkAuthFetchUser = () => {
     const url = '/api/brukerinformasjon';
 
-    return fetch(url, {
+    // Logger ikke 401 eller 403 feil da det forventes.
+    const onlyLogErrorOn = (errorCode: number) => errorCode !== 401 && errorCode !== 403;
+
+    return checkAuthFetchJson(url, onlyLogErrorOn) as Promise<UserInfo>;
+};
+
+const checkAuthFetchJson = (url: string, onlyLogErrorOn?: (errorCode: number) => boolean) =>
+    fetch(url, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
     })
         .then(checkAuth)
         .then(checkHttpError)
-        .then((res) => res.json() as Promise<UserInfo>)
+        .then(parseJson)
         .catch((err: string & AlertError) => {
             const error = {
                 code: err.code || 404,
                 type: err.type || 'feil',
                 text: err.text || err,
             };
-            if (error.code !== 401 && error.code !== 403) {
+
+            if (!onlyLogErrorOn || onlyLogErrorOn(error.code)) {
                 logApiError(url, error);
             }
+
             throw error;
         });
-};
-
-/*
- * GET
- * */
-// const checkAuthFetchJson = (url: string) =>
-//     fetch(url, {
-//         method: 'GET',
-//         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
-//         credentials: 'include',
-//     })
-//         .then(checkAuth)
-//         .then(checkHttpError)
-//         .then(parseJson)
-//         .catch((err: string & AlertError) => {
-//             const error = {
-//                 code: err.code || 404,
-//                 type: err.type || 'feil',
-//                 text: err.text || err,
-//             };
-//             logApiError(url, error);
-//             throw error;
-//         });
 
 /*
  *   POST
@@ -65,6 +49,24 @@ export const checkAuthFetchUser = () => {
 export const controlFatherInfo = (data: OutboundFatherControl) => {
     const url = '/api/personopplysninger/far';
 
+    // TODO: endre kode?
+    // Logger ikke hvis det er forventet feil, f eks person er kvinne eller person er ikke funnet
+    const onlyLogErrorOn = (errorCode: number) => errorCode !== 400;
+
+    return checkAuthPostJson(url, data, onlyLogErrorOn);
+};
+
+export const opprettFarskapserklaering = (data: OutboundOpprettFarskapserklaering) => {
+    const url = '/api/farskapserklaering/ny';
+
+    return checkAuthPostJson(url, data);
+};
+
+const checkAuthPostJson = (
+    url: string,
+    data: Outbound,
+    onlyLogErrorOn?: (errorCode: number) => boolean
+) => {
     return fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
@@ -78,9 +80,11 @@ export const controlFatherInfo = (data: OutboundFatherControl) => {
                 type: err.type || 'feil',
                 text: err.text || err,
             };
-            if (error.code !== 400) {
+
+            if (!onlyLogErrorOn || onlyLogErrorOn(error.code)) {
                 logApiError(url, error);
             }
+
             throw error;
         });
 };

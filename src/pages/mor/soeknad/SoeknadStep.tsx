@@ -16,6 +16,7 @@ interface SoeknadStepProps {
     status: StepStatus;
     title?: string;
     onChange?: () => void;
+    isDisabled?: boolean;
 }
 
 function SoeknadStep(props: SoeknadStepProps) {
@@ -25,7 +26,11 @@ function SoeknadStep(props: SoeknadStepProps) {
                 return (
                     <div className="SoeknadStep__done">
                         {props.presentationComponent}
-                        <Flatknapp htmlType="button" onClick={props.onChange}>
+                        <Flatknapp
+                            htmlType="button"
+                            onClick={props.onChange}
+                            disabled={props.isDisabled}
+                        >
                             <FormattedMessage id="mor.presentation.change" />
                         </Flatknapp>
                     </div>

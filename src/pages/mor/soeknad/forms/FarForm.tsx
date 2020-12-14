@@ -51,6 +51,7 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
             })
             .catch((error: AlertError) => {
                 if (error.code === 400) {
+                    // TODO: match på kode etter at api oppdaterer
                     if (error.text.startsWith('Oppgitt far er ikke mann')) {
                         setIsControlErrorFemale(true);
                     }

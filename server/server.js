@@ -78,6 +78,30 @@ app.post('/api/personopplysninger/far', async (req, res) => {
     }
 });
 
+app.post('/api/farskapserklaering/ny', async (req, res) => {
+    try {
+        const token = req.cookies[tokenName];
+        const response = await fetch(`${apiUrl}/farskapserklaering/ny`, {
+            method: 'post',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify(req.body),
+        });
+
+        if (response.status === 200) {
+            res.sendStatus(response.status);
+        } else {
+            const json = await response.json();
+            res.status(response.status).send(json);
+        }
+    } catch (error) {
+        console.log(`Error while calling api: ${error}`);
+        res.sendStatus(500);
+    }
+});
+
 // Match everything except internal og static
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
     getDecorator()

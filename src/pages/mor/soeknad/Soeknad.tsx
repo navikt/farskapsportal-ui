@@ -3,7 +3,10 @@ import { useHistory } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Innholdstittel } from 'nav-frontend-typografi';
 
-import WithKjoenn from 'store/providers/WithKjoenn';
+import { opprettFarskapserklaering } from 'api/api';
+import Error from 'components/error/Error';
+import WithForeldrerolle from 'store/providers/WithForeldrerolle';
+import { AlertError } from 'types/error';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { StepStatus } from 'types/form';
 import { getMessage } from 'utils/intl';
@@ -20,6 +23,7 @@ type SoeknadData = BarnFormInput & FarFormInput;
 
 function Soeknad() {
     const intl = useIntl();
+    const history = useHistory();
     const [stepStatus, setStepStatus] = useState<{ step1: StepStatus; step2: StepStatus }>({
         step1: StepStatus.Active,
         step2: StepStatus.NotStarted,
@@ -29,9 +33,35 @@ function Soeknad() {
         foedselsnummer: '',
         navn: '',
     });
-    const history = useHistory();
+    const [isSubmitPending, setIsSubmitPending] = useState(false);
+    const [apiError, setApiError] = useState<AlertError>();
+
     const onCancel = () => history.push('/');
-    /* TODO */ const onSubmit = () => alert(JSON.stringify(soeknadData));
+
+    const onSubmit = () => {
+        setIsSubmitPending(true);
+
+        opprettFarskapserklaering({
+            barn: {
+                termindato: soeknadData.termindato,
+                foedselsnummer: null,
+            },
+            opplysningerOmFar: {
+                foedselsnummer: soeknadData.foedselsnummer,
+                navn: soeknadData.navn,
+            },
+        })
+            .then((response) => {
+                alert(JSON.stringify(response));
+                // Hent redirect til e-signering fra response og utfør redirect
+            })
+            .catch((error: AlertError) => {
+                setApiError(error);
+            })
+            .finally(() => {
+                setIsSubmitPending(false);
+            });
+    };
 
     const onSubmitBarnForm = (data: BarnFormInput) => {
         setSoeknadData((prevState) => ({ ...prevState, termindato: data.termindato }));
@@ -58,7 +88,7 @@ function Soeknad() {
     };
 
     return (
-        <WithKjoenn foreldrerolle={Foreldrerolle.Mor}>
+        <WithForeldrerolle foreldrerolle={Foreldrerolle.Mor}>
             <div className="Soeknad">
                 <Innholdstittel tag="h2">
                     <FormattedMessage id="mor.title" />
@@ -75,6 +105,7 @@ function Soeknad() {
                     presentationComponent={<BarnPresentation termindato={soeknadData.termindato} />}
                     status={stepStatus.step1}
                     onChange={onEndreBarnForm}
+                    isDisabled={isSubmitPending}
                 />
                 <SoeknadStep
                     stepNumber={2}
@@ -95,10 +126,17 @@ function Soeknad() {
                     title={getMessage(intl, 'mor.soeknad.far.title')}
                     status={stepStatus.step2}
                     onChange={onEndreFarForm}
+                    isDisabled={isSubmitPending}
                 />
                 <SoeknadStep
                     stepNumber={3}
-                    formComponent={<BekreftForm onSubmit={onSubmit} onCancel={onCancel} />}
+                    formComponent={
+                        <BekreftForm
+                            isPending={isSubmitPending}
+                            onSubmit={onSubmit}
+                            onCancel={onCancel}
+                        />
+                    }
                     title={getMessage(intl, 'mor.soeknad.confirm.title')}
                     status={
                         stepStatus.step1 === StepStatus.Done && stepStatus.step2 === StepStatus.Done
@@ -106,8 +144,9 @@ function Soeknad() {
                             : StepStatus.NotStarted
                     }
                 />
+                {apiError && <Error error={apiError} />}
             </div>
-        </WithKjoenn>
+        </WithForeldrerolle>
     );
 }
 

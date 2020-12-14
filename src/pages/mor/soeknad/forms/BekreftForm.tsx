@@ -13,11 +13,12 @@ export interface BekreftFormInput {
 }
 
 interface BekreftFormProps {
+    isPending: boolean;
     onSubmit: () => void;
     onCancel: () => void;
 }
 
-function BekreftForm({ onSubmit, onCancel }: BekreftFormProps) {
+function BekreftForm(props: BekreftFormProps) {
     const intl = useIntl();
     const { control, handleSubmit, errors } = useForm<BekreftFormInput>({
         defaultValues: {
@@ -28,7 +29,7 @@ function BekreftForm({ onSubmit, onCancel }: BekreftFormProps) {
     });
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className="BekreftForm">
+        <form onSubmit={handleSubmit(props.onSubmit)} className="BekreftForm">
             <SkjemaGruppe legend={getMessage(intl, 'mor.soeknad.confirm.title')}>
                 <Controller
                     name="farCorrect"
@@ -69,7 +70,8 @@ function BekreftForm({ onSubmit, onCancel }: BekreftFormProps) {
             <FormButtons
                 submitText={getMessage(intl, 'mor.form.buttons.submit')}
                 cancelText={getMessage(intl, 'mor.form.buttons.cancel')}
-                onCancel={onCancel}
+                onCancel={props.onCancel}
+                submitSpinner={props.isPending}
             />
         </form>
     );
