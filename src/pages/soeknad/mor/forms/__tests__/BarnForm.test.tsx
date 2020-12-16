@@ -1,7 +1,7 @@
 import { axe } from 'jest-axe';
 
 import { fireEvent, render, screen, waitFor } from 'test-utils';
-import { DAYS_OF_THREE_WEEKS } from 'utils/constants';
+import { DAYS_IN_THREE_WEEKS } from 'utils/constants';
 import { getNDaysInTheFuture, getNDaysInThePast } from 'utils/date';
 import BarnForm, { BarnFormProps } from '../BarnForm';
 
@@ -63,7 +63,7 @@ test('should show error for date in the past', async () => {
     // uses .focus() to trigger onBlur
     termindatoInput.focus();
     fireEvent.change(termindatoInput, {
-        target: { value: getNDaysInThePast(DAYS_OF_THREE_WEEKS + 1) },
+        target: { value: getNDaysInThePast(DAYS_IN_THREE_WEEKS + 1) },
     });
     submitButton.focus();
     fireEvent.click(submitButton);

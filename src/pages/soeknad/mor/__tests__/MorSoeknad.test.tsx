@@ -2,12 +2,12 @@ import { fireEvent, render, screen, waitFor } from 'test-utils';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { getToday } from 'utils/date';
 
-import Soeknad from '../Soeknad';
+import MorSoeknad from '../MorSoeknad';
 
 jest.mock('api/api', () => ({ controlFatherInfo: () => Promise.resolve() }));
 
 test('should display steps correctly', async () => {
-    render(<Soeknad />, {
+    render(<MorSoeknad />, {
         store: {
             userInfo: {
                 status: 'SUCCESS',

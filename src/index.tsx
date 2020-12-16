@@ -45,9 +45,8 @@ const init = async () => {
                 <StoreProvider initialState={initialState} reducer={reducer}>
                     <IntlProvider>
                         <Router>
-                            <ScrollToTop>
-                                <App />
-                            </ScrollToTop>
+                            <ScrollToTop />
+                            <App />
                         </Router>
                     </IntlProvider>
                 </StoreProvider>
