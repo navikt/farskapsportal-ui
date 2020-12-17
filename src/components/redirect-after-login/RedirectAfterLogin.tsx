@@ -1,4 +1,4 @@
-import { ReactNode, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
@@ -6,7 +6,7 @@ import Spinner from 'components/spinner/Spinner';
 import { redirectLoginCookie } from 'utils/cookies';
 
 interface RedirectAfterLoginProps {
-    children: ReactNode;
+    children: JSX.Element;
 }
 
 function RedirectAfterLogin(props: RedirectAfterLoginProps) {
@@ -22,7 +22,7 @@ function RedirectAfterLogin(props: RedirectAfterLoginProps) {
         setLoading(false);
     }, [history]);
 
-    return loading ? <Spinner /> : <>{props.children}</>;
+    return loading ? <Spinner /> : props.children;
 }
 
 export default RedirectAfterLogin;

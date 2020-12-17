@@ -5,50 +5,55 @@ import { Innholdstittel } from 'nav-frontend-typografi';
 
 import { opprettFarskapserklaering } from 'api/api';
 import Error from 'components/error/Error';
+import { OutboundOpprettFarskapserklaering } from 'types/api';
 import { AlertError } from 'types/error';
 import { StepStatus } from 'types/form';
+import { Path } from 'types/path';
 import { getMessage } from 'utils/intl';
-import BarnForm, { BarnFormInput } from './forms/BarnForm';
 import BekreftForm from './forms/BekreftForm';
 import FarForm, { FarFormInput } from './forms/FarForm';
+import SelectBarnForm, { SelectBarnFormInput } from './forms/SelectBarnForm';
+import TermindatoForm, { TermindatoFormInput } from './forms/TermindatoForm';
 import BarnPresentation from './presentation/BarnPresentation';
 import FarPresentation from './presentation/FarPresentation';
 import SoeknadStep from './SoeknadStep';
 
 import './MorSoeknad.less';
 
-type MorSoeknadData = BarnFormInput & FarFormInput;
+type MorSoeknadData = OutboundOpprettFarskapserklaering;
 
-function MorSoeknad() {
+interface MorSoeknadProps {
+    barn: string[] | null;
+}
+
+function MorSoeknad(props: MorSoeknadProps) {
+    const singleChildFoedselsnummer = props.barn?.length === 1 ? props.barn[0] : undefined;
+
     const intl = useIntl();
     const history = useHistory();
     const [stepStatus, setStepStatus] = useState<{ step1: StepStatus; step2: StepStatus }>({
-        step1: StepStatus.Active,
-        step2: StepStatus.NotStarted,
+        step1: singleChildFoedselsnummer ? StepStatus.Done : StepStatus.Active,
+        step2: singleChildFoedselsnummer ? StepStatus.Active : StepStatus.NotStarted,
     });
     const [soeknadData, setSoeknadData] = useState<MorSoeknadData>({
-        termindato: '',
-        foedselsnummer: '',
-        navn: '',
+        barn: {
+            termindato: null,
+            foedselsnummer: singleChildFoedselsnummer ?? null,
+        },
+        opplysningerOmFar: {
+            foedselsnummer: '',
+            navn: '',
+        },
     });
     const [isSubmitPending, setIsSubmitPending] = useState(false);
     const [apiError, setApiError] = useState<AlertError>();
 
-    const onCancel = () => history.push('/');
+    const onCancel = () => history.push(Path.Forside);
 
     const onSubmit = () => {
         setIsSubmitPending(true);
 
-        opprettFarskapserklaering({
-            barn: {
-                termindato: soeknadData.termindato,
-                foedselsnummer: null,
-            },
-            opplysningerOmFar: {
-                foedselsnummer: soeknadData.foedselsnummer,
-                navn: soeknadData.navn,
-            },
-        })
+        opprettFarskapserklaering(soeknadData)
             .then((response) => {
                 alert(JSON.stringify(response));
                 // Hent redirect til e-signering fra response og utfør redirect
@@ -61,8 +66,22 @@ function MorSoeknad() {
             });
     };
 
-    const onSubmitBarnForm = (data: BarnFormInput) => {
-        setSoeknadData((prevState) => ({ ...prevState, termindato: data.termindato }));
+    const onSubmitSelectBarnForm = (data: SelectBarnFormInput) => {
+        setSoeknadData((prevState) => ({
+            ...prevState,
+            barn: { foedselsnummer: data.foedselsnummer, termindato: null },
+        }));
+        setStepStatus((prevState) => ({
+            ...prevState,
+            step1: StepStatus.Done,
+            step2: prevState.step2 === StepStatus.Done ? StepStatus.Done : StepStatus.Active,
+        }));
+    };
+    const onSubmitTermindatoForm = (data: TermindatoFormInput) => {
+        setSoeknadData((prevState) => ({
+            ...prevState,
+            barn: { foedselsnummer: null, termindato: data.termindato },
+        }));
         setStepStatus((prevState) => ({
             ...prevState,
             step1: StepStatus.Done,
@@ -76,8 +95,10 @@ function MorSoeknad() {
     const onSubmitFarForm = (data: FarFormInput) => {
         setSoeknadData((prevState) => ({
             ...prevState,
-            foedselsnummer: data.foedselsnummer,
-            navn: data.navn,
+            opplysningerOmFar: {
+                foedselsnummer: data.foedselsnummer,
+                navn: data.navn,
+            },
         }));
         setStepStatus((prevState) => ({ ...prevState, step2: StepStatus.Done }));
     };
@@ -93,31 +114,46 @@ function MorSoeknad() {
             <SoeknadStep
                 stepNumber={1}
                 formComponent={
-                    <BarnForm
-                        defaultTermindato={soeknadData.termindato}
-                        onSubmit={onSubmitBarnForm}
-                        onCancel={onCancel}
+                    props.barn?.length ? (
+                        <SelectBarnForm
+                            defaultFoedselsnummer={soeknadData.barn.foedselsnummer}
+                            barn={props.barn}
+                            onSubmit={onSubmitSelectBarnForm}
+                            onCancel={onCancel}
+                        />
+                    ) : (
+                        <TermindatoForm
+                            defaultTermindato={soeknadData.barn.termindato}
+                            onSubmit={onSubmitTermindatoForm}
+                            onCancel={onCancel}
+                        />
+                    )
+                }
+                presentationComponent={
+                    <BarnPresentation
+                        isSingleChild={!!singleChildFoedselsnummer}
+                        foedselsnummer={soeknadData.barn.foedselsnummer}
+                        termindato={soeknadData.barn.termindato}
                     />
                 }
-                presentationComponent={<BarnPresentation termindato={soeknadData.termindato} />}
                 status={stepStatus.step1}
-                onChange={onEndreBarnForm}
+                onChange={singleChildFoedselsnummer ? undefined : onEndreBarnForm}
                 isDisabled={isSubmitPending}
             />
             <SoeknadStep
                 stepNumber={2}
                 formComponent={
                     <FarForm
-                        defaultNavn={soeknadData.navn}
-                        defaultFoedselsnummer={soeknadData.foedselsnummer}
+                        defaultNavn={soeknadData.opplysningerOmFar.navn}
+                        defaultFoedselsnummer={soeknadData.opplysningerOmFar.foedselsnummer}
                         onSubmit={onSubmitFarForm}
                         onCancel={onCancel}
                     />
                 }
                 presentationComponent={
                     <FarPresentation
-                        navn={soeknadData.navn}
-                        foedselsnummer={soeknadData.foedselsnummer}
+                        navn={soeknadData.opplysningerOmFar.navn}
+                        foedselsnummer={soeknadData.opplysningerOmFar.foedselsnummer}
                     />
                 }
                 title={getMessage(intl, 'mor.soeknad.far.title')}

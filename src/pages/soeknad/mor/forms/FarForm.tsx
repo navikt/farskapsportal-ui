@@ -27,6 +27,10 @@ export interface FarFormProps {
 function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: FarFormProps) {
     const intl = useIntl();
     const [feilRef, setFeiloppsummeringFocus] = useFocus();
+    const [isControlPending, setIsControlPending] = useState(false);
+    const [isControlError, setIsControlError] = useState(false);
+    const [isControlErrorFemale, setIsControlErrorFemale] = useState(false);
+    const [apiError, setApiError] = useState<AlertError>();
     const { register, handleSubmit, errors } = useForm<FarFormInput>({
         defaultValues: {
             navn: defaultNavn,
@@ -34,10 +38,6 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
         },
         shouldFocusError: false,
     });
-    const [isControlPending, setIsControlPending] = useState(false);
-    const [isControlError, setIsControlError] = useState(false);
-    const [isControlErrorFemale, setIsControlErrorFemale] = useState(false);
-    const [apiError, setApiError] = useState<AlertError>();
 
     const controlInfoAndSubmit = (data: FarFormInput) => {
         setIsControlPending(true);

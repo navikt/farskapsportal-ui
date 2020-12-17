@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 import WithUserInfo from 'store/providers/WithUserInfo';
 import { Foreldrerolle } from 'types/foreldrerolle';
+import { Path } from 'types/path';
 
 function Oversikt() {
     return (
@@ -14,7 +15,7 @@ function Oversikt() {
                     !userInfo.farsVentendeFarskapserklaeringer?.length;
 
                 if (canSkipToSoknad) {
-                    return <Redirect to="/soknad" />;
+                    return <Redirect to={Path.Soeknad} />;
                 }
 
                 return <Panel>Oversikt</Panel>;

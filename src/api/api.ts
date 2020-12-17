@@ -104,7 +104,7 @@ const checkAuth = (response: Response): Response => {
 
 const sendToLogin = () => {
     const to = window.location.pathname + window.location.hash;
-    const inFiveMinutes = new Date(new Date().getTime() + 5 * 60 * 1000);
+    const inFiveMinutes = new Date(Date.now() + 5 * 60 * 1000);
     const options = { expires: inFiveMinutes };
     Cookies.set(redirectLoginCookie, to, options);
     window.location.assign(`${LOGIN_URL}?redirect=${window.location.origin}`);

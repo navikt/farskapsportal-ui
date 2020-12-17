@@ -6,6 +6,7 @@ import Panel from 'nav-frontend-paneler';
 import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
 
 import ExternalLink from 'components/external-link/ExternalLink';
+import { Path } from 'types/path';
 
 import './Forside.less';
 
@@ -97,7 +98,7 @@ function Forside() {
                     </li>
                 </ol>
             </section>
-            <Hovedknapp onClick={() => history.push('/oversikt')}>
+            <Hovedknapp onClick={() => history.push(Path.Oversikt)}>
                 <FormattedMessage id="forside.login" />
             </Hovedknapp>
             <LenkepanelBase href="#" border={true}>

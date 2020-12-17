@@ -3,30 +3,30 @@ import { axe } from 'jest-axe';
 import { fireEvent, render, screen, waitFor } from 'test-utils';
 import { DAYS_IN_THREE_WEEKS } from 'utils/constants';
 import { getNDaysInTheFuture, getNDaysInThePast } from 'utils/date';
-import BarnForm, { BarnFormProps } from '../BarnForm';
+import TermindatoForm, { TermindatoFormProps } from '../TermindatoForm';
 
-const defaultProps: BarnFormProps = {
+const defaultProps: TermindatoFormProps = {
     defaultTermindato: '',
     onSubmit: () => undefined,
     onCancel: () => undefined,
 };
 
 test('should have no a11y violations', async () => {
-    const { container } = render(<BarnForm {...defaultProps} />);
+    const { container } = render(<TermindatoForm {...defaultProps} />);
 
     const results = await axe(container);
     expect(results).toHaveNoViolations();
 });
 
 test('should set default value', async () => {
-    render(<BarnForm {...defaultProps} defaultTermindato="2020-11-11" />);
+    render(<TermindatoForm {...defaultProps} defaultTermindato="2020-11-11" />);
 
     const termindatoInput = screen.getByLabelText(/termindato/i) as HTMLInputElement;
     expect(termindatoInput.value).toBe('11.11.2020');
 });
 
 test('should show required error', async () => {
-    render(<BarnForm {...defaultProps} />);
+    render(<TermindatoForm {...defaultProps} />);
 
     fireEvent.click(screen.getByText('Neste'));
 
@@ -36,7 +36,7 @@ test('should show required error', async () => {
 });
 
 test('should show error for date too far in the future', async () => {
-    render(<BarnForm {...defaultProps} />);
+    render(<TermindatoForm {...defaultProps} />);
 
     const termindatoInput = screen.getByLabelText(/termindato/i) as HTMLInputElement;
     const submitButton = screen.getByText('Neste');
@@ -55,7 +55,7 @@ test('should show error for date too far in the future', async () => {
 });
 
 test('should show error for date in the past', async () => {
-    render(<BarnForm {...defaultProps} />);
+    render(<TermindatoForm {...defaultProps} />);
 
     const termindatoInput = screen.getByLabelText(/termindato/i) as HTMLInputElement;
     const submitButton = screen.getByText('Neste');

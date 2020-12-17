@@ -7,7 +7,7 @@ import MorSoeknad from '../MorSoeknad';
 jest.mock('api/api', () => ({ controlFatherInfo: () => Promise.resolve() }));
 
 test('should display steps correctly', async () => {
-    render(<MorSoeknad />, {
+    render(<MorSoeknad barn={null} />, {
         store: {
             userInfo: {
                 status: 'SUCCESS',

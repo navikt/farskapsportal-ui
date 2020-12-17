@@ -6,15 +6,14 @@ import MorSoeknad from './mor/MorSoeknad';
 function Soeknad() {
     return (
         <WithUserInfo>
-            {({ forelderrolle }) => {
+            {({ forelderrolle, fnrNyligFoedteBarnUtenRegistrertFar }) => {
                 if (forelderrolle === Foreldrerolle.Far) {
                     return <FarSoeknad />;
                 } else if (forelderrolle === Foreldrerolle.Mor) {
-                    return <MorSoeknad />;
+                    return <MorSoeknad barn={fnrNyligFoedteBarnUtenRegistrertFar} />;
                 }
 
                 // TODO: handle foreldrerolle not Far or Mor
-
                 return null;
             }}
         </WithUserInfo>

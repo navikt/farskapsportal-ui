@@ -14,21 +14,21 @@ import {
 } from 'utils/date';
 import { getMessage } from 'utils/intl';
 
-export interface BarnFormInput {
+export interface TermindatoFormInput {
     termindato: string;
 }
 
-export interface BarnFormProps {
-    defaultTermindato: string;
-    onSubmit: (data: BarnFormInput) => void;
+export interface TermindatoFormProps {
+    defaultTermindato: string | null;
+    onSubmit: (data: TermindatoFormInput) => void;
     onCancel: () => void;
 }
 
-function BarnForm({ defaultTermindato, onSubmit, onCancel }: BarnFormProps) {
+function TermindatoForm({ defaultTermindato, onSubmit, onCancel }: TermindatoFormProps) {
     const intl = useIntl();
-    const { handleSubmit, errors, control } = useForm<BarnFormInput>({
+    const { handleSubmit, errors, control } = useForm<TermindatoFormInput>({
         defaultValues: {
-            termindato: defaultTermindato,
+            termindato: defaultTermindato ?? '',
         },
         shouldFocusError: false,
     });
@@ -100,4 +100,4 @@ function BarnForm({ defaultTermindato, onSubmit, onCancel }: BarnFormProps) {
     );
 }
 
-export default BarnForm;
+export default TermindatoForm;

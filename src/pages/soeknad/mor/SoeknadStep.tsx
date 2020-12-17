@@ -26,13 +26,15 @@ function SoeknadStep(props: SoeknadStepProps) {
                 return (
                     <div className="SoeknadStep__done">
                         {props.presentationComponent}
-                        <Flatknapp
-                            htmlType="button"
-                            onClick={props.onChange}
-                            disabled={props.isDisabled}
-                        >
-                            <FormattedMessage id="mor.presentation.change" />
-                        </Flatknapp>
+                        {props.onChange && (
+                            <Flatknapp
+                                htmlType="button"
+                                onClick={props.onChange}
+                                disabled={props.isDisabled}
+                            >
+                                <FormattedMessage id="mor.presentation.change" />
+                            </Flatknapp>
+                        )}
                     </div>
                 );
             case StepStatus.Active:

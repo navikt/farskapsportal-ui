@@ -6,6 +6,7 @@ import LanguageToggle from 'intl/language-toggle/LanguageToggle';
 import Forside from 'pages/forside/Forside';
 import Oversikt from 'pages/oversikt/Oversikt';
 import Soeknad from 'pages/soeknad/Soeknad';
+import { Path } from 'types/path';
 
 import './App.less';
 
@@ -17,10 +18,10 @@ function App() {
             <div role="main" className="App__content">
                 <RedirectAfterLogin>
                     <Switch>
-                        <Route path="/" exact={true} component={Forside} />
-                        <Route path="/oversikt" exact={true} component={Oversikt} />
-                        <Route path="/soknad" exact={true} component={Soeknad} />
-                        <Redirect to="/" />
+                        <Route path={Path.Forside} exact={true} component={Forside} />
+                        <Route path={Path.Oversikt} exact={true} component={Oversikt} />
+                        <Route path={Path.Soeknad} exact={true} component={Soeknad} />
+                        <Redirect to={Path.Forside} />
                     </Switch>
                 </RedirectAfterLogin>
             </div>
