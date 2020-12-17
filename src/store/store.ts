@@ -4,7 +4,7 @@ import { Action } from './actions';
 
 export const initialState: Store = {
     language: 'nb',
-    userInfo: { status: 'PENDING' } as FetchUserInfo,
+    userInfo: { status: 'PENDING' },
 };
 
 export interface Store {

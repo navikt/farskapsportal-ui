@@ -13,6 +13,10 @@ import './Forside.less';
 function Forside() {
     const history = useHistory();
 
+    const goToOversikt = () => {
+        history.push(Path.Oversikt);
+    };
+
     return (
         <Panel className="Forside">
             <section className="Forside__section">
@@ -98,7 +102,7 @@ function Forside() {
                     </li>
                 </ol>
             </section>
-            <Hovedknapp onClick={() => history.push(Path.Oversikt)}>
+            <Hovedknapp onClick={goToOversikt}>
                 <FormattedMessage id="forside.login" />
             </Hovedknapp>
             <LenkepanelBase href="#" border={true}>

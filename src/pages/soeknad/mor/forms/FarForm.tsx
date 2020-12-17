@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 import { useIntl } from 'react-intl';
 import { useForm } from 'react-hook-form';
 import { Feiloppsummering, Input, SkjemaGruppe } from 'nav-frontend-skjema';
@@ -11,6 +11,33 @@ import { AlertError } from 'types/error';
 import { mapErrors } from 'utils/form';
 import { useFocus } from 'utils/hooks';
 import { getMessage } from 'utils/intl';
+
+type FatherControlFailureType = 'NOT_FOUND' | 'FEMALE';
+
+type ActionType =
+    | { type: 'CONTROL_FATHER' }
+    | { type: 'CONTROL_FATHER_FAILURE'; payload: FatherControlFailureType }
+    | { type: 'API_ERROR'; payload: AlertError };
+
+interface StateType {
+    pending: boolean;
+    failureType?: FatherControlFailureType;
+    apiError?: AlertError;
+}
+
+const reducer = (state: StateType, action: ActionType): StateType => {
+    switch (action.type) {
+        case 'CONTROL_FATHER':
+            return { pending: true, failureType: undefined, apiError: undefined };
+        case 'CONTROL_FATHER_FAILURE':
+            return { pending: false, failureType: action.payload, apiError: undefined };
+        case 'API_ERROR':
+            return { pending: false, failureType: undefined, apiError: action.payload };
+    }
+};
+
+const getFailureTypeFromError = (error: AlertError): FatherControlFailureType =>
+    error.text.startsWith('Oppgitt far er ikke mann') ? 'FEMALE' : 'NOT_FOUND';
 
 export interface FarFormInput {
     navn: string;
@@ -27,10 +54,11 @@ export interface FarFormProps {
 function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: FarFormProps) {
     const intl = useIntl();
     const [feilRef, setFeiloppsummeringFocus] = useFocus();
-    const [isControlPending, setIsControlPending] = useState(false);
-    const [isControlError, setIsControlError] = useState(false);
-    const [isControlErrorFemale, setIsControlErrorFemale] = useState(false);
-    const [apiError, setApiError] = useState<AlertError>();
+    const [state, dispatch] = useReducer(reducer, {
+        pending: false,
+        failureType: undefined,
+        apiError: undefined,
+    });
     const { register, handleSubmit, errors } = useForm<FarFormInput>({
         defaultValues: {
             navn: defaultNavn,
@@ -40,10 +68,7 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
     });
 
     const controlInfoAndSubmit = (data: FarFormInput) => {
-        setIsControlPending(true);
-        setIsControlError(false);
-        setIsControlErrorFemale(false);
-        setApiError(undefined);
+        dispatch({ type: 'CONTROL_FATHER' });
 
         controlFatherInfo(data)
             .then(() => {
@@ -51,17 +76,13 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
             })
             .catch((error: AlertError) => {
                 if (error.code === 400) {
-                    // TODO: match på kode etter at api oppdaterer
-                    if (error.text.startsWith('Oppgitt far er ikke mann')) {
-                        setIsControlErrorFemale(true);
-                    }
-                    setIsControlError(true);
+                    dispatch({
+                        type: 'CONTROL_FATHER_FAILURE',
+                        payload: getFailureTypeFromError(error),
+                    });
                 } else {
-                    setApiError(error);
+                    dispatch({ type: 'API_ERROR', payload: error });
                 }
-            })
-            .finally(() => {
-                setIsControlPending(false);
             });
     };
 
@@ -76,10 +97,10 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
             <SkjemaGruppe
                 legend={getMessage(intl, 'mor.soeknad.far.title')}
                 feil={
-                    isControlError &&
+                    state.failureType &&
                     getMessage(
                         intl,
-                        isControlErrorFemale
+                        state.failureType === 'FEMALE'
                             ? 'mor.soeknad.far.form.error.female'
                             : 'mor.soeknad.far.form.error'
                     )
@@ -127,9 +148,9 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
                 submitText={getMessage(intl, 'mor.form.buttons.next')}
                 cancelText={getMessage(intl, 'mor.form.buttons.cancel')}
                 onCancel={onCancel}
-                submitSpinner={isControlPending}
+                submitSpinner={state.pending}
             />
-            {apiError && <Error error={apiError} />}
+            {state.apiError && <Error error={state.apiError} />}
         </form>
     );
 }

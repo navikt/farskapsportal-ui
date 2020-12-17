@@ -17,7 +17,9 @@ function BarnPresentation({ isSingleChild, foedselsnummer, termindato }: BarnPre
             </Undertittel>
             {foedselsnummer && (
                 <>
-                    {isSingleChild && <Normaltekst>Vi har funnet følgende barn fra folkeregisteret</Normaltekst>}
+                    {isSingleChild && (
+                        <Normaltekst>Vi har funnet følgende barn fra folkeregisteret</Normaltekst>
+                    )}
                     <Normaltekst>
                         {/*<FormattedMessage id="mor.soeknad.barn.presentation.foedselsnummer.label" />*/}
                         Fødselsnummer

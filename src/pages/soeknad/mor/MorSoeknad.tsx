@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Innholdstittel } from 'nav-frontend-typografi';
 
 import { opprettFarskapserklaering } from 'api/api';
 import Error from 'components/error/Error';
-import { OutboundOpprettFarskapserklaering } from 'types/api';
+import { OutboundFather, OutboundOpprettFarskapserklaering } from 'types/api';
+import { Barn } from 'types/barn';
 import { AlertError } from 'types/error';
 import { StepStatus } from 'types/form';
 import { Path } from 'types/path';
@@ -20,7 +21,68 @@ import SoeknadStep from './SoeknadStep';
 
 import './MorSoeknad.less';
 
-type MorSoeknadData = OutboundOpprettFarskapserklaering;
+type ActionType =
+    | { type: 'EDIT_BARN' }
+    | { type: 'SET_BARN'; payload: Barn }
+    | { type: 'EDIT_FAR' }
+    | { type: 'SET_FAR'; payload: OutboundFather }
+    | { type: 'SUBMIT' }
+    | { type: 'SUBMIT_SUCCESS' }
+    | { type: 'SUBMIT_FAILURE'; payload: AlertError };
+
+interface StateType {
+    erklaering: OutboundOpprettFarskapserklaering;
+    stepStatus: {
+        barn: StepStatus;
+        far: StepStatus;
+    };
+    submit: {
+        pending: boolean;
+        error?: AlertError;
+    };
+}
+
+const reducer = (state: StateType, action: ActionType): StateType => {
+    switch (action.type) {
+        case 'EDIT_BARN':
+            return { ...state, stepStatus: { ...state.stepStatus, barn: StepStatus.Active } };
+        case 'SET_BARN':
+            return {
+                ...state,
+                erklaering: {
+                    ...state.erklaering,
+                    barn: action.payload,
+                },
+                stepStatus: {
+                    barn: StepStatus.Done,
+                    far:
+                        state.stepStatus.far === StepStatus.Done
+                            ? StepStatus.Done
+                            : StepStatus.Active,
+                },
+            };
+        case 'EDIT_FAR':
+            return {
+                ...state,
+                stepStatus: { ...state.stepStatus, far: StepStatus.Active },
+            };
+        case 'SET_FAR':
+            return {
+                ...state,
+                erklaering: { ...state.erklaering, opplysningerOmFar: action.payload },
+                stepStatus: {
+                    ...state.stepStatus,
+                    far: StepStatus.Done,
+                },
+            };
+        case 'SUBMIT':
+            return { ...state, submit: { pending: true, error: undefined } };
+        case 'SUBMIT_SUCCESS':
+            return { ...state, submit: { pending: false, error: undefined } };
+        case 'SUBMIT_FAILURE':
+            return { ...state, submit: { pending: false, error: action.payload } };
+    }
+};
 
 interface MorSoeknadProps {
     barn: string[] | null;
@@ -31,79 +93,68 @@ function MorSoeknad(props: MorSoeknadProps) {
 
     const intl = useIntl();
     const history = useHistory();
-    const [stepStatus, setStepStatus] = useState<{ step1: StepStatus; step2: StepStatus }>({
-        step1: singleChildFoedselsnummer ? StepStatus.Done : StepStatus.Active,
-        step2: singleChildFoedselsnummer ? StepStatus.Active : StepStatus.NotStarted,
-    });
-    const [soeknadData, setSoeknadData] = useState<MorSoeknadData>({
-        barn: {
-            termindato: null,
-            foedselsnummer: singleChildFoedselsnummer ?? null,
+
+    const [state, dispatch] = useReducer(reducer, {
+        erklaering: {
+            barn: {
+                termindato: null,
+                foedselsnummer: singleChildFoedselsnummer ?? null,
+            },
+            opplysningerOmFar: {
+                foedselsnummer: '',
+                navn: '',
+            },
         },
-        opplysningerOmFar: {
-            foedselsnummer: '',
-            navn: '',
+        stepStatus: {
+            barn: singleChildFoedselsnummer ? StepStatus.Done : StepStatus.Active,
+            far: singleChildFoedselsnummer ? StepStatus.Active : StepStatus.NotStarted,
+        },
+        submit: {
+            pending: false,
+            error: undefined,
         },
     });
-    const [isSubmitPending, setIsSubmitPending] = useState(false);
-    const [apiError, setApiError] = useState<AlertError>();
 
     const onCancel = () => history.push(Path.Forside);
 
     const onSubmit = () => {
-        setIsSubmitPending(true);
+        dispatch({ type: 'SUBMIT' });
 
-        opprettFarskapserklaering(soeknadData)
+        opprettFarskapserklaering(state.erklaering)
             .then((response) => {
                 alert(JSON.stringify(response));
+                dispatch({ type: 'SUBMIT_SUCCESS' });
                 // Hent redirect til e-signering fra response og utfør redirect
             })
             .catch((error: AlertError) => {
-                setApiError(error);
-            })
-            .finally(() => {
-                setIsSubmitPending(false);
+                dispatch({ type: 'SUBMIT_FAILURE', payload: error });
             });
     };
 
     const onSubmitSelectBarnForm = (data: SelectBarnFormInput) => {
-        setSoeknadData((prevState) => ({
-            ...prevState,
-            barn: { foedselsnummer: data.foedselsnummer, termindato: null },
-        }));
-        setStepStatus((prevState) => ({
-            ...prevState,
-            step1: StepStatus.Done,
-            step2: prevState.step2 === StepStatus.Done ? StepStatus.Done : StepStatus.Active,
-        }));
+        dispatch({
+            type: 'SET_BARN',
+            payload: { foedselsnummer: data.foedselsnummer, termindato: null },
+        });
     };
+
     const onSubmitTermindatoForm = (data: TermindatoFormInput) => {
-        setSoeknadData((prevState) => ({
-            ...prevState,
-            barn: { foedselsnummer: null, termindato: data.termindato },
-        }));
-        setStepStatus((prevState) => ({
-            ...prevState,
-            step1: StepStatus.Done,
-            step2: prevState.step2 === StepStatus.Done ? StepStatus.Done : StepStatus.Active,
-        }));
+        dispatch({
+            type: 'SET_BARN',
+            payload: { foedselsnummer: null, termindato: data.termindato },
+        });
     };
+
     const onEndreBarnForm = () => {
-        setStepStatus((prevState) => ({ ...prevState, step1: StepStatus.Active }));
+        dispatch({ type: 'EDIT_BARN' });
     };
 
     const onSubmitFarForm = (data: FarFormInput) => {
-        setSoeknadData((prevState) => ({
-            ...prevState,
-            opplysningerOmFar: {
-                foedselsnummer: data.foedselsnummer,
-                navn: data.navn,
-            },
-        }));
-        setStepStatus((prevState) => ({ ...prevState, step2: StepStatus.Done }));
+        dispatch({ type: 'SET_FAR', payload: data });
     };
+
     const onEndreFarForm = () => {
-        setStepStatus((prevState) => ({ ...prevState, step2: StepStatus.Active }));
+        dispatch({ type: 'EDIT_FAR' });
     };
 
     return (
@@ -116,14 +167,14 @@ function MorSoeknad(props: MorSoeknadProps) {
                 formComponent={
                     props.barn?.length ? (
                         <SelectBarnForm
-                            defaultFoedselsnummer={soeknadData.barn.foedselsnummer}
+                            defaultFoedselsnummer={state.erklaering.barn.foedselsnummer}
                             barn={props.barn}
                             onSubmit={onSubmitSelectBarnForm}
                             onCancel={onCancel}
                         />
                     ) : (
                         <TermindatoForm
-                            defaultTermindato={soeknadData.barn.termindato}
+                            defaultTermindato={state.erklaering.barn.termindato}
                             onSubmit={onSubmitTermindatoForm}
                             onCancel={onCancel}
                         />
@@ -132,52 +183,53 @@ function MorSoeknad(props: MorSoeknadProps) {
                 presentationComponent={
                     <BarnPresentation
                         isSingleChild={!!singleChildFoedselsnummer}
-                        foedselsnummer={soeknadData.barn.foedselsnummer}
-                        termindato={soeknadData.barn.termindato}
+                        foedselsnummer={state.erklaering.barn.foedselsnummer}
+                        termindato={state.erklaering.barn.termindato}
                     />
                 }
-                status={stepStatus.step1}
+                status={state.stepStatus.barn}
                 onChange={singleChildFoedselsnummer ? undefined : onEndreBarnForm}
-                isDisabled={isSubmitPending}
+                isDisabled={state.submit.pending}
             />
             <SoeknadStep
                 stepNumber={2}
                 formComponent={
                     <FarForm
-                        defaultNavn={soeknadData.opplysningerOmFar.navn}
-                        defaultFoedselsnummer={soeknadData.opplysningerOmFar.foedselsnummer}
+                        defaultNavn={state.erklaering.opplysningerOmFar.navn}
+                        defaultFoedselsnummer={state.erklaering.opplysningerOmFar.foedselsnummer}
                         onSubmit={onSubmitFarForm}
                         onCancel={onCancel}
                     />
                 }
                 presentationComponent={
                     <FarPresentation
-                        navn={soeknadData.opplysningerOmFar.navn}
-                        foedselsnummer={soeknadData.opplysningerOmFar.foedselsnummer}
+                        navn={state.erklaering.opplysningerOmFar.navn}
+                        foedselsnummer={state.erklaering.opplysningerOmFar.foedselsnummer}
                     />
                 }
                 title={getMessage(intl, 'mor.soeknad.far.title')}
-                status={stepStatus.step2}
+                status={state.stepStatus.far}
                 onChange={onEndreFarForm}
-                isDisabled={isSubmitPending}
+                isDisabled={state.submit.pending}
             />
             <SoeknadStep
                 stepNumber={3}
                 formComponent={
                     <BekreftForm
-                        isPending={isSubmitPending}
+                        isPending={state.submit.pending}
                         onSubmit={onSubmit}
                         onCancel={onCancel}
                     />
                 }
                 title={getMessage(intl, 'mor.soeknad.confirm.title')}
                 status={
-                    stepStatus.step1 === StepStatus.Done && stepStatus.step2 === StepStatus.Done
+                    state.stepStatus.barn === StepStatus.Done &&
+                    state.stepStatus.far === StepStatus.Done
                         ? StepStatus.Active
                         : StepStatus.NotStarted
                 }
             />
-            {apiError && <Error error={apiError} />}
+            {state.submit.error && <Error error={state.submit.error} />}
         </div>
     );
 }

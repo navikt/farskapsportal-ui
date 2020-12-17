@@ -1,6 +1,6 @@
 import Cookies from 'js-cookie';
 
-import { Outbound, OutboundFatherControl, OutboundOpprettFarskapserklaering } from 'types/api';
+import { Outbound, OutboundFather, OutboundOpprettFarskapserklaering } from 'types/api';
 import { AlertError } from 'types/error';
 import { UserInfo } from 'types/user';
 import { redirectLoginCookie } from 'utils/cookies';
@@ -46,7 +46,7 @@ const checkAuthFetchJson = (url: string, onlyLogErrorOn?: (errorCode: number) =>
 /*
  *   POST
  */
-export const controlFatherInfo = (data: OutboundFatherControl) => {
+export const controlFatherInfo = (data: OutboundFather) => {
     const url = '/api/personopplysninger/far';
 
     // TODO: endre kode?
