@@ -9826,10 +9826,10 @@ react-app-polyfill@^2.0.0:
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
 
-react-aria-menubutton@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/react-aria-menubutton/-/react-aria-menubutton-7.0.0.tgz#3909216ed6ef115d850e206df9e197cabc4ebd49"
-  integrity sha512-5MiUnoEaC9WxFftKJp7BtBH8Mts758w5DN7jyr6iWJuVXn3AOvx7fdVN7ojQhqRy/CWK4w0xgjEyEPttjQg41w==
+react-aria-menubutton@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/react-aria-menubutton/-/react-aria-menubutton-7.0.1.tgz#698e78a56bee33035b7df89180060f4135ec021a"
+  integrity sha512-qhvTJEqnGGw8Seei+0kT6T1vX7maQ3tGRhUqpR9xJ2gJ/v6/YLcJRRvUL9qx/bpQO/7tCihJRgDvH0k+l5OChQ==
   dependencies:
     focus-group "^0.3.1"
     prop-types "^15.6.0"
@@ -9886,10 +9886,10 @@ react-error-overlay@^6.0.8:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.8.tgz#474ed11d04fc6bda3af643447d85e9127ed6b5de"
   integrity sha512-HvPuUQnLp5H7TouGq3kzBeioJmXms1wHy9EGjz2OURWBp4qZO6AfGEcnxts1D/CbwPLRAgTMPCEgYhA3sEM4vw==
 
-react-hook-form@^6.13.0:
-  version "6.13.0"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.13.0.tgz#91e6da52cd3a636724b38ad8bc3704d7bd8a2626"
-  integrity sha512-AADO0EtAGEggII3DNhBCwm7MSwkBWCVo72K32NY6YzhSTBL5bJsBfWJ4/PVGBer31js5ppt+I6/qUyLo8o8AvA==
+react-hook-form@^6.14.0:
+  version "6.14.0"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.14.0.tgz#d11f81f2d9d2b457806cb425a79954a1eeba1871"
+  integrity sha512-yj4aqASmyxFPyDtDLKBae+AazFv5vcC5CEpDlh1+r5k5BTH/J/CTG6q0H5lSinm0B0F6P7oTmXIYB75ZmuQz6g==
 
 react-intl@^5.10.12:
   version "5.10.12"
