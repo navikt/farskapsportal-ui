@@ -4174,10 +4174,10 @@ date-fns@^2.16.1:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.16.1.tgz#05775792c3f3331da812af253e1a935851d3834b"
   integrity sha512-sAJVKx/FqrLYHAQeN7VpJrPhagZc9R4ImZIWYRFZaaohR3KzmuK88touwsSwSVT8Qcbd4zoDsnGfX4GFB4imyQ==
 
-dayjs@^1.9.7:
-  version "1.9.7"
-  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.9.7.tgz#4b260bb17dceed2d5f29038dfee03c65a6786fc0"
-  integrity sha512-IC877KBdMhBrCfBfJXHQlo0G8keZ0Opy7YIIq5QKtUbCuHMzim8S4PyiVK4YmihI3iOF9lhfUBW4AQWHTR5WHA==
+dayjs@^1.10.1:
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.1.tgz#114f678624842035396667a24eb1436814bc16fd"
+  integrity sha512-2xg7JrHQeLBQFkvTumLoy62x1siyeocc98QwjtURgvRqOPYmAkMUdmSjrOA+MlmL6QMQn5MUhDf6rNZNuPc1LQ==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
@@ -8011,10 +8011,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-nav-datovelger@^8.0.4:
-  version "8.0.4"
-  resolved "https://registry.yarnpkg.com/nav-datovelger/-/nav-datovelger-8.0.4.tgz#2b4d29ea84115a69de06cf0d87ea6f72028cfc30"
-  integrity sha512-VrT0Q0BwIwB/FImlHEPkBhkZf3gj2fjmhGM7NYyssqENzvKJqMOMkwBKzXm2mkQHGUO6/PiN9XF2ugFw3TwCDw==
+nav-datovelger@^9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/nav-datovelger/-/nav-datovelger-9.0.1.tgz#d43a4b098c089eb300b0a437d8b2d0f9ef7a0501"
+  integrity sha512-Ffz2uaI7d88tmNRuDKoy6nmpBaVrsz3iZNMYaTE+E+9bs10z/TQx70J0Cr3TmsvWBREM0efMdtKvENTFvX96YQ==
   dependencies:
     focus-trap-react "^8.1.0"
 
