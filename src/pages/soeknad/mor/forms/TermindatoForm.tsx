@@ -24,17 +24,17 @@ export interface TermindatoFormProps {
     onCancel: () => void;
 }
 
-function TermindatoForm({ defaultTermindato, onSubmit, onCancel }: TermindatoFormProps) {
+function TermindatoForm(props: TermindatoFormProps) {
     const intl = useIntl();
     const { handleSubmit, errors, control } = useForm<TermindatoFormInput>({
         defaultValues: {
-            termindato: defaultTermindato ?? '',
+            termindato: props.defaultTermindato ?? '',
         },
         shouldFocusError: false,
     });
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(props.onSubmit)}>
             <SkjemaGruppe legend={getMessage(intl, 'mor.soeknad.barn.title')}>
                 <Controller
                     name="termindato"
@@ -94,7 +94,7 @@ function TermindatoForm({ defaultTermindato, onSubmit, onCancel }: TermindatoFor
             <FormButtons
                 submitText={getMessage(intl, 'mor.form.buttons.next')}
                 cancelText={getMessage(intl, 'mor.form.buttons.cancel')}
-                onCancel={onCancel}
+                onCancel={props.onCancel}
             />
         </form>
     );

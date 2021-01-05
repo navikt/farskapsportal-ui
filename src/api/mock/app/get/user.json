@@ -3,6 +3,31 @@
   "gyldigForelderrolle": true,
   "forelderrolle": "MOR",
   "farsVentendeFarskapserklaeringer": null,
-  "morsVentendeFarskapserklaeringer": null,
+  "morsVentendeFarskapserklaeringer": [
+    {
+      "barn": {
+        "termindato": "2020-12-21",
+        "foedselsnummer": null
+      },
+      "mor": {
+        "forelderRolle": "MOR",
+        "foedselsnummer": "123",
+        "fornavn": "foo",
+        "mellomnavn": null,
+        "etteranavn": "bar"
+      },
+      "far": null,
+      "dokument": {
+        "dokumentnavn": null,
+        "innhold": null,
+        "dokumentStatusUrl": null,
+        "padesUrl": null,
+        "redirectUrlMor": "https://foo.bar",
+        "redirectUrlFar": null,
+        "signertAvMor": null,
+        "signertAvFar": null
+      }
+    }
+  ],
   "fnrNyligFoedteBarnUtenRegistrertFar": null
 }

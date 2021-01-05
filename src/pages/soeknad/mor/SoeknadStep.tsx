@@ -20,7 +20,7 @@ interface SoeknadStepProps {
 }
 
 function SoeknadStep(props: SoeknadStepProps) {
-    const renderContent = (props: SoeknadStepProps) => {
+    const renderContent = () => {
         switch (props.status) {
             case StepStatus.Done:
                 return (
@@ -47,7 +47,7 @@ function SoeknadStep(props: SoeknadStepProps) {
     return (
         <section className="SoeknadStep">
             <StepIcon status={props.status} stepNumber={props.stepNumber} />
-            <Panel>{renderContent(props)}</Panel>
+            <Panel>{renderContent()}</Panel>
         </section>
     );
 }

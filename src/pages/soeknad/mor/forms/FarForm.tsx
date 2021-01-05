@@ -51,7 +51,7 @@ export interface FarFormProps {
     onCancel: () => void;
 }
 
-function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: FarFormProps) {
+function FarForm(props: FarFormProps) {
     const intl = useIntl();
     const [feilRef, setFeiloppsummeringFocus] = useFocus();
     const [state, dispatch] = useReducer(reducer, {
@@ -61,8 +61,8 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
     });
     const { register, handleSubmit, errors } = useForm<FarFormInput>({
         defaultValues: {
-            navn: defaultNavn,
-            foedselsnummer: defaultFoedselsnummer,
+            navn: props.defaultNavn,
+            foedselsnummer: props.defaultFoedselsnummer,
         },
         shouldFocusError: false,
     });
@@ -72,7 +72,7 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
 
         controlFatherInfo(data)
             .then(() => {
-                onSubmit(data);
+                props.onSubmit(data);
             })
             .catch((error: AlertError) => {
                 if (error.code === 400) {
@@ -147,7 +147,7 @@ function FarForm({ defaultNavn, defaultFoedselsnummer, onSubmit, onCancel }: Far
             <FormButtons
                 submitText={getMessage(intl, 'mor.form.buttons.next')}
                 cancelText={getMessage(intl, 'mor.form.buttons.cancel')}
-                onCancel={onCancel}
+                onCancel={props.onCancel}
                 submitSpinner={state.pending}
             />
             {state.apiError && <Error error={state.apiError} />}

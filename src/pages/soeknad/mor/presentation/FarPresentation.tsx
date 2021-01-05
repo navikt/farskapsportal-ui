@@ -8,7 +8,7 @@ interface FarPresentationProps {
     foedselsnummer: string;
 }
 
-function FarPresentation({ navn, foedselsnummer }: FarPresentationProps) {
+function FarPresentation(props: FarPresentationProps) {
     return (
         <div className="FarPresentation">
             <Undertittel>
@@ -18,13 +18,13 @@ function FarPresentation({ navn, foedselsnummer }: FarPresentationProps) {
                 <Normaltekst>
                     <FormattedMessage id="mor.soeknad.far.presentation.navn" />
                 </Normaltekst>
-                <Element>{navn}</Element>
+                <Element>{props.navn}</Element>
             </div>
             <div>
                 <Normaltekst>
                     <FormattedMessage id="mor.soeknad.far.presentation.foedselsnummer" />
                 </Normaltekst>
-                <Element>{foedselsnummer}</Element>
+                <Element>{props.foedselsnummer}</Element>
             </div>
         </div>
     );

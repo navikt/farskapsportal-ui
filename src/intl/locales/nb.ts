@@ -9,6 +9,9 @@ export default {
     'login.error': 'Finner ikke kjønn for innlogget bruker.',
     'api.error': 'Oisann, noe gikk galt ved henting av data!',
 
+    'oversikt.title': 'Oversikt',
+    'oversikt.goToSoeknadButton': 'Ny farskapserklæring',
+
     'forside.1.title': 'Hva innebærer det å erklære farskap?',
     'forside.1.desc': 'Hvis far og mor er gift, blir far automatisk registrert som far til barnet. Hvis far og mor ikke er gift må farskapet erklæres, helst innen barnets fødsel. Å erklære farskap gir far både rettigheter og plikter til barnet, som for eksempel:',
     'forside.1.li.1': 'Arverett',
@@ -46,6 +49,8 @@ export default {
     'mor.soeknad.barn.form.termindato.validation.minDate': 'Kan ikke være mer enn tre uker tilbake i tid',
     'mor.soeknad.barn.form.termindato.validation.maxDate': 'Datoen er mer enn 40 uker fram i tid. Vent til uke 22 av svangerskapet med å bekrefte far.',
     'mor.soeknad.barn.form.termindato.validation.beforeWeek22': 'Du er i uke {weekNr} i svangerskapet. Vent til uke 22 med å bekrefte far.',
+    'mor.soeknad.barn.presentation.single-child.label': 'Vi har funnet følgende barn fra folkeregisteret',
+    'mor.soeknad.barn.presentation.foedselsnummer.label': 'Fødselsnummer:',
     'mor.soeknad.barn.presentation.termindato.label': 'Termindato:',
     'mor.soeknad.far.title': 'Far til barn(a)',
     'mor.soeknad.far.form.navn.label': 'Navn til far (som det står i Folkeregisteret)',

@@ -9,7 +9,7 @@ interface StepIconProps {
 }
 
 function StepIcon(props: StepIconProps) {
-    const renderIcon = (props: StepIconProps) => {
+    const renderIcon = () => {
         switch (props.status) {
             case StepStatus.Done:
                 return <CircleCheckSvg />;
@@ -20,7 +20,7 @@ function StepIcon(props: StepIconProps) {
         }
     };
 
-    return <div className="StepIcon">{renderIcon(props)}</div>;
+    return <div className="StepIcon">{renderIcon()}</div>;
 }
 
 export default StepIcon;

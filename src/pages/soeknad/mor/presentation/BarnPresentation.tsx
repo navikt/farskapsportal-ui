@@ -9,32 +9,33 @@ interface BarnPresentationProps {
     termindato: string | null;
 }
 
-function BarnPresentation({ isSingleChild, foedselsnummer, termindato }: BarnPresentationProps) {
+function BarnPresentation(props: BarnPresentationProps) {
     return (
         <div className="BarnPresentation">
             <Undertittel>
                 <FormattedMessage id="mor.soeknad.barn.title" />
             </Undertittel>
-            {foedselsnummer && (
+            {props.foedselsnummer && (
                 <>
-                    {isSingleChild && (
-                        <Normaltekst>Vi har funnet følgende barn fra folkeregisteret</Normaltekst>
+                    {props.isSingleChild && (
+                        <Normaltekst>
+                            <FormattedMessage id="mor.soeknad.barn.presentation.single-child.label" />
+                        </Normaltekst>
                     )}
                     <Normaltekst>
-                        {/*<FormattedMessage id="mor.soeknad.barn.presentation.foedselsnummer.label" />*/}
-                        Fødselsnummer
+                        <FormattedMessage id="mor.soeknad.barn.presentation.foedselsnummer.label" />
                     </Normaltekst>
-                    <Element>{foedselsnummer}</Element>
+                    <Element>{props.foedselsnummer}</Element>
                 </>
             )}
-            {termindato && (
+            {props.termindato && (
                 <>
                     <Normaltekst>
                         <FormattedMessage id="mor.soeknad.barn.presentation.termindato.label" />
                     </Normaltekst>
                     <Element>
                         <FormattedDate
-                            value={termindato}
+                            value={props.termindato}
                             year="numeric"
                             month="long"
                             day="numeric"
