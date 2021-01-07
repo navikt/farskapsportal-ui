@@ -10,7 +10,14 @@ export default {
     'api.error': 'Oisann, noe gikk galt ved henting av data!',
 
     'oversikt.title': 'Oversikt',
-    'oversikt.goToSoeknadButton': 'Ny farskapserklæring',
+    'oversikt.erklaeringer.link.title': 'Farskapserklæring',
+    'oversikt.erklaeringer.link.termindato': 'Termindato: ',
+    'oversikt.erklaeringer.link.foedselsnummer': 'Fødselsnummer: ',
+    'oversikt.erklaeringer.link.forelder.far': 'fra ',
+    'oversikt.erklaeringer.link.forelder.mor': 'med ',
+    'oversikt.erklaeringer.link.status.signering': 'Venter på signering',
+    'oversikt.erklaeringer.link.status.fars-signering': 'Venter på fars signering',
+    'oversikt.goToSoeknadButton': 'Opprett farskapserklæring',
 
     'forside.1.title': 'Hva innebærer det å erklære farskap?',
     'forside.1.desc': 'Hvis far og mor er gift, blir far automatisk registrert som far til barnet. Hvis far og mor ikke er gift må farskapet erklæres, helst innen barnets fødsel. Å erklære farskap gir far både rettigheter og plikter til barnet, som for eksempel:',

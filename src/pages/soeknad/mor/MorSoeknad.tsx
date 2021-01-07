@@ -115,7 +115,7 @@ function MorSoeknad(props: MorSoeknadProps) {
         },
     });
 
-    const onCancel = () => history.push(Path.Forside);
+    const onCancel = () => history.push(Path.Oversikt);
 
     const onSubmit = () => {
         dispatch({ type: 'SUBMIT' });

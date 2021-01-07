@@ -1,6 +1,6 @@
 import fetchMock from 'fetch-mock';
 
-import user from './get/user.json';
+import user from './get/mor.json';
 
 fetchMock.config.fallbackToNetwork = true;
 

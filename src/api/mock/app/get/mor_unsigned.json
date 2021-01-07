@@ -6,17 +6,23 @@
   "morsVentendeFarskapserklaeringer": [
     {
       "barn": {
-        "termindato": "2020-12-21",
+        "termindato": "2021-04-01",
         "foedselsnummer": null
       },
       "mor": {
         "forelderRolle": "MOR",
-        "foedselsnummer": "123",
-        "fornavn": "foo",
+        "foedselsnummer": "12345678901",
+        "fornavn": "Kari",
         "mellomnavn": null,
-        "etteranavn": "bar"
+        "etternavn": "Nordmann"
       },
-      "far": null,
+      "far": {
+        "forelderRolle": "FAR",
+        "foedselsnummer": "12345678902",
+        "fornavn": "Ola",
+        "mellomnavn": null,
+        "etternavn": "Nordmann"
+      },
       "dokument": {
         "dokumentnavn": null,
         "innhold": null,
