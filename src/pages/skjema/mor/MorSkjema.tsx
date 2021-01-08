@@ -17,9 +17,9 @@ import SelectBarnForm, { SelectBarnFormInput } from './forms/SelectBarnForm';
 import TermindatoForm, { TermindatoFormInput } from './forms/TermindatoForm';
 import BarnPresentation from './presentation/BarnPresentation';
 import FarPresentation from './presentation/FarPresentation';
-import SoeknadStep from './SoeknadStep';
+import SkjemaStep from './SkjemaStep';
 
-import './MorSoeknad.less';
+import './MorSkjema.less';
 
 type ActionType =
     | { type: 'EDIT_BARN' }
@@ -84,11 +84,11 @@ const reducer = (state: StateType, action: ActionType): StateType => {
     }
 };
 
-interface MorSoeknadProps {
+interface MorSkjemaProps {
     barn: string[] | null;
 }
 
-function MorSoeknad(props: MorSoeknadProps) {
+function MorSkjema(props: MorSkjemaProps) {
     const singleChildFoedselsnummer = props.barn?.length === 1 ? props.barn[0] : undefined;
 
     const intl = useIntl();
@@ -158,11 +158,11 @@ function MorSoeknad(props: MorSoeknadProps) {
     };
 
     return (
-        <div className="MorSoeknad">
+        <div className="MorSkjema">
             <Innholdstittel tag="h2">
                 <FormattedMessage id="mor.title" />
             </Innholdstittel>
-            <SoeknadStep
+            <SkjemaStep
                 stepNumber={1}
                 formComponent={
                     props.barn?.length ? (
@@ -191,7 +191,7 @@ function MorSoeknad(props: MorSoeknadProps) {
                 onChange={singleChildFoedselsnummer ? undefined : onEndreBarnForm}
                 isDisabled={state.submit.pending}
             />
-            <SoeknadStep
+            <SkjemaStep
                 stepNumber={2}
                 formComponent={
                     <FarForm
@@ -207,12 +207,12 @@ function MorSoeknad(props: MorSoeknadProps) {
                         foedselsnummer={state.erklaering.opplysningerOmFar.foedselsnummer}
                     />
                 }
-                title={getMessage(intl, 'mor.soeknad.far.title')}
+                title={getMessage(intl, 'mor.skjema.far.title')}
                 status={state.stepStatus.far}
                 onChange={onEndreFarForm}
                 isDisabled={state.submit.pending}
             />
-            <SoeknadStep
+            <SkjemaStep
                 stepNumber={3}
                 formComponent={
                     <BekreftForm
@@ -221,7 +221,7 @@ function MorSoeknad(props: MorSoeknadProps) {
                         onCancel={onCancel}
                     />
                 }
-                title={getMessage(intl, 'mor.soeknad.confirm.title')}
+                title={getMessage(intl, 'mor.skjema.confirm.title')}
                 status={
                     state.stepStatus.barn === StepStatus.Done &&
                     state.stepStatus.far === StepStatus.Done
@@ -234,4 +234,4 @@ function MorSoeknad(props: MorSoeknadProps) {
     );
 }
 
-export default MorSoeknad;
+export default MorSkjema;

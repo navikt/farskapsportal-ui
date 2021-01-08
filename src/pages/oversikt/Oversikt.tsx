@@ -5,7 +5,7 @@ import { Innholdstittel } from 'nav-frontend-typografi';
 import WithUserInfo from 'store/providers/WithUserInfo';
 import FarErklaeringer from './FarErklaeringer';
 import MorErklaeringer from './MorErklaeringer';
-import ToSoeknadButton from './ToSoeknadButton';
+import ToSkjemaButton from './ToSkjemaButton';
 
 import './Oversikt.less';
 
@@ -19,7 +19,7 @@ function Oversikt() {
                     </Innholdstittel>
                     <MorErklaeringer userInfo={userInfo} />
                     <FarErklaeringer userInfo={userInfo} />
-                    <ToSoeknadButton userInfo={userInfo} />
+                    <ToSkjemaButton userInfo={userInfo} />
                 </Panel>
             )}
         </WithUserInfo>

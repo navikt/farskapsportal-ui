@@ -95,24 +95,24 @@ function FarForm(props: FarFormProps) {
     return (
         <form onSubmit={handleSubmit(controlInfoAndSubmit, onError)}>
             <SkjemaGruppe
-                legend={getMessage(intl, 'mor.soeknad.far.title')}
+                legend={getMessage(intl, 'mor.skjema.far.title')}
                 feil={
                     state.failureType &&
                     getMessage(
                         intl,
                         state.failureType === 'FEMALE'
-                            ? 'mor.soeknad.far.form.error.female'
-                            : 'mor.soeknad.far.form.error'
+                            ? 'mor.skjema.far.form.error.female'
+                            : 'mor.skjema.far.form.error'
                     )
                 }
             >
                 <Input
                     id="navn"
                     name="navn"
-                    label={getMessage(intl, 'mor.soeknad.far.form.navn.label')}
+                    label={getMessage(intl, 'mor.skjema.far.form.navn.label')}
                     bredde="XXL"
                     inputRef={register({
-                        required: getMessage(intl, 'mor.soeknad.far.form.navn.validation.required'),
+                        required: getMessage(intl, 'mor.skjema.far.form.navn.validation.required'),
                     })}
                     feil={errors.navn?.message}
                 />
@@ -123,16 +123,16 @@ function FarForm(props: FarFormProps) {
                     inputMode="numeric"
                     pattern="[0-9]*"
                     inputClassName="skjemaelement__input-fodselsnr"
-                    label={getMessage(intl, 'mor.soeknad.far.form.foedselsnummer.label')}
+                    label={getMessage(intl, 'mor.skjema.far.form.foedselsnummer.label')}
                     bredde="S"
                     inputRef={register({
                         required: getMessage(
                             intl,
-                            'mor.soeknad.far.form.foedselsnummer.validation.required'
+                            'mor.skjema.far.form.foedselsnummer.validation.required'
                         ),
                         validate: (value: string) =>
                             fnr(value).status === 'valid' ||
-                            getMessage(intl, 'mor.soeknad.far.form.foedselsnummer.validation.fnr'),
+                            getMessage(intl, 'mor.skjema.far.form.foedselsnummer.validation.fnr'),
                     })}
                     feil={errors.foedselsnummer?.message}
                 />

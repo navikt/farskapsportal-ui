@@ -1,6 +1,6 @@
 export enum Path {
     Forside = '/',
     Oversikt = '/oversikt',
-    Soeknad = '/soknad',
+    Skjema = '/skjema',
     Kvittering = '/kvittering', // TODO: rename
 }

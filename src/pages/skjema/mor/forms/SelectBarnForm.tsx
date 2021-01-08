@@ -27,7 +27,7 @@ function SelectBarnForm(props: SelectBarnFormProps) {
 
     return (
         <form onSubmit={handleSubmit(props.onSubmit)}>
-            <SkjemaGruppe legend={getMessage(intl, 'mor.soeknad.barn.title')}>
+            <SkjemaGruppe legend={getMessage(intl, 'mor.skjema.barn.title')}>
                 <Controller
                     name="foedselsnummer"
                     control={control}

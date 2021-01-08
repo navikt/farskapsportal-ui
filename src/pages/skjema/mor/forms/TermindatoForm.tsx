@@ -35,20 +35,20 @@ function TermindatoForm(props: TermindatoFormProps) {
 
     return (
         <form onSubmit={handleSubmit(props.onSubmit)}>
-            <SkjemaGruppe legend={getMessage(intl, 'mor.soeknad.barn.title')}>
+            <SkjemaGruppe legend={getMessage(intl, 'mor.skjema.barn.title')}>
                 <Controller
                     name="termindato"
                     control={control}
                     rules={{
                         required: getMessage(
                             intl,
-                            'mor.soeknad.barn.form.termindato.validation.required'
+                            'mor.skjema.barn.form.termindato.validation.required'
                         ),
                         pattern: {
                             value: /\d{4}-\d{2}-\d{2}/,
                             message: getMessage(
                                 intl,
-                                'mor.soeknad.barn.form.termindato.validation.pattern'
+                                'mor.skjema.barn.form.termindato.validation.pattern'
                             ),
                         },
                         validate: {
@@ -56,13 +56,13 @@ function TermindatoForm(props: TermindatoFormProps) {
                                 isLessThanNDaysInThePast(value, DAYS_IN_THREE_WEEKS + 1) ||
                                 getMessage(
                                     intl,
-                                    'mor.soeknad.barn.form.termindato.validation.minDate'
+                                    'mor.skjema.barn.form.termindato.validation.minDate'
                                 ),
                             maxDate: (value) =>
                                 isLessThanNDaysInTheFuture(value, DAYS_IN_PREGNANCY) ||
                                 getMessage(
                                     intl,
-                                    'mor.soeknad.barn.form.termindato.validation.maxDate'
+                                    'mor.skjema.barn.form.termindato.validation.maxDate'
                                 ),
                             beforeWeek22: (value) =>
                                 isLessThanNDaysInTheFuture(
@@ -71,7 +71,7 @@ function TermindatoForm(props: TermindatoFormProps) {
                                 ) ||
                                 getMessage(
                                     intl,
-                                    'mor.soeknad.barn.form.termindato.validation.beforeWeek22',
+                                    'mor.skjema.barn.form.termindato.validation.beforeWeek22',
                                     { weekNr: getWeekOfPregnancy(value) }
                                 ),
                         },
@@ -79,7 +79,7 @@ function TermindatoForm(props: TermindatoFormProps) {
                     render={({ onChange, value, name }) => (
                         <DateInput
                             id={name}
-                            label={getMessage(intl, 'mor.soeknad.barn.form.termindato.label')}
+                            label={getMessage(intl, 'mor.skjema.barn.form.termindato.label')}
                             onChange={onChange}
                             value={value}
                             feil={errors.termindato?.message}

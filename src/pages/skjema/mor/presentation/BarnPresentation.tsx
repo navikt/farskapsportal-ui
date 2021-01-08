@@ -13,17 +13,17 @@ function BarnPresentation(props: BarnPresentationProps) {
     return (
         <div className="BarnPresentation">
             <Undertittel>
-                <FormattedMessage id="mor.soeknad.barn.title" />
+                <FormattedMessage id="mor.skjema.barn.title" />
             </Undertittel>
             {props.foedselsnummer && (
                 <>
                     {props.isSingleChild && (
                         <Normaltekst>
-                            <FormattedMessage id="mor.soeknad.barn.presentation.single-child.label" />
+                            <FormattedMessage id="mor.skjema.barn.presentation.single-child.label" />
                         </Normaltekst>
                     )}
                     <Normaltekst>
-                        <FormattedMessage id="mor.soeknad.barn.presentation.foedselsnummer.label" />
+                        <FormattedMessage id="mor.skjema.barn.presentation.foedselsnummer.label" />
                     </Normaltekst>
                     <Element>{props.foedselsnummer}</Element>
                 </>
@@ -31,7 +31,7 @@ function BarnPresentation(props: BarnPresentationProps) {
             {props.termindato && (
                 <>
                     <Normaltekst>
-                        <FormattedMessage id="mor.soeknad.barn.presentation.termindato.label" />
+                        <FormattedMessage id="mor.skjema.barn.presentation.termindato.label" />
                     </Normaltekst>
                     <Element>
                         <FormattedDate

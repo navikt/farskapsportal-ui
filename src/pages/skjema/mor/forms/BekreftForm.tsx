@@ -30,16 +30,16 @@ function BekreftForm(props: BekreftFormProps) {
 
     return (
         <form onSubmit={handleSubmit(props.onSubmit)} className="BekreftForm">
-            <SkjemaGruppe legend={getMessage(intl, 'mor.soeknad.confirm.title')}>
+            <SkjemaGruppe legend={getMessage(intl, 'mor.skjema.confirm.title')}>
                 <Controller
                     name="farCorrect"
                     control={control}
                     rules={{
-                        required: getMessage(intl, 'mor.soeknad.confirm.form.validation.required'),
+                        required: getMessage(intl, 'mor.skjema.confirm.form.validation.required'),
                     }}
                     render={({ onChange, value, name }) => (
                         <BekreftCheckboksPanel
-                            label={getMessage(intl, 'mor.soeknad.confirm.form.farCorrect.label')}
+                            label={getMessage(intl, 'mor.skjema.confirm.form.farCorrect.label')}
                             checked={value}
                             onChange={(e) => onChange((e.target as HTMLInputElement).checked)}
                             feil={errors.farCorrect?.message}
@@ -51,14 +51,11 @@ function BekreftForm(props: BekreftFormProps) {
                     name="cannotWithdraw"
                     control={control}
                     rules={{
-                        required: getMessage(intl, 'mor.soeknad.confirm.form.validation.required'),
+                        required: getMessage(intl, 'mor.skjema.confirm.form.validation.required'),
                     }}
                     render={({ onChange, value, name }) => (
                         <BekreftCheckboksPanel
-                            label={getMessage(
-                                intl,
-                                'mor.soeknad.confirm.form.cannotWithdraw.label'
-                            )}
+                            label={getMessage(intl, 'mor.skjema.confirm.form.cannotWithdraw.label')}
                             checked={value}
                             onChange={(e) => onChange((e.target as HTMLInputElement).checked)}
                             feil={errors.cannotWithdraw?.message}

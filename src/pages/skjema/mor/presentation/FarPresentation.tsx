@@ -12,17 +12,17 @@ function FarPresentation(props: FarPresentationProps) {
     return (
         <div className="FarPresentation">
             <Undertittel>
-                <FormattedMessage id="mor.soeknad.far.title" />
+                <FormattedMessage id="mor.skjema.far.title" />
             </Undertittel>
             <div className="FarPresentation__navn">
                 <Normaltekst>
-                    <FormattedMessage id="mor.soeknad.far.presentation.navn" />
+                    <FormattedMessage id="mor.skjema.far.presentation.navn" />
                 </Normaltekst>
                 <Element>{props.navn}</Element>
             </div>
             <div>
                 <Normaltekst>
-                    <FormattedMessage id="mor.soeknad.far.presentation.foedselsnummer" />
+                    <FormattedMessage id="mor.skjema.far.presentation.foedselsnummer" />
                 </Normaltekst>
                 <Element>{props.foedselsnummer}</Element>
             </div>

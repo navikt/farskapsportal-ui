@@ -46,7 +46,7 @@ function ErklaeringLinkPanel({ erklaering, isFar }: ErklaeringLinkPanelProps) {
 
     const handleClick = () => {
         if (isFar) {
-            history.push(Path.Soeknad);
+            history.push(Path.Skjema);
         } else {
             history.push(Path.Kvittering);
         }

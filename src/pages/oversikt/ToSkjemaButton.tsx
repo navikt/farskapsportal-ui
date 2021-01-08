@@ -5,26 +5,26 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
 
-interface ToSoeknadButtonProps {
+interface ToSkjemaButtonProps {
     userInfo: UserInfo;
 }
 
-function ToSoeknadButton({ userInfo }: ToSoeknadButtonProps) {
+function ToSkjemaButton({ userInfo }: ToSkjemaButtonProps) {
     const history = useHistory();
 
     if (!userInfo.kanOppretteFarskapserklaering) {
         return null;
     }
 
-    const goToSoeknad = () => {
-        history.push(Path.Soeknad);
+    const goToSkjema = () => {
+        history.push(Path.Skjema);
     };
 
     return (
-        <Hovedknapp htmlType="button" onClick={goToSoeknad}>
-            <FormattedMessage id="oversikt.goToSoeknadButton" />
+        <Hovedknapp htmlType="button" onClick={goToSkjema}>
+            <FormattedMessage id="oversikt.goToSkjemaButton" />
         </Hovedknapp>
     );
 }
 
-export default ToSoeknadButton;
+export default ToSkjemaButton;

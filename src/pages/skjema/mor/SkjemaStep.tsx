@@ -7,9 +7,9 @@ import { Undertittel } from 'nav-frontend-typografi';
 import { StepStatus } from 'types/form';
 import StepIcon from './StepIcon';
 
-import './SoeknadStep.less';
+import './SkjemaStep.less';
 
-interface SoeknadStepProps {
+interface SkjemaStepProps {
     stepNumber: 1 | 2 | 3;
     formComponent: ReactNode;
     presentationComponent?: ReactNode;
@@ -19,12 +19,12 @@ interface SoeknadStepProps {
     isDisabled?: boolean;
 }
 
-function SoeknadStep(props: SoeknadStepProps) {
+function SkjemaStep(props: SkjemaStepProps) {
     const renderContent = () => {
         switch (props.status) {
             case StepStatus.Done:
                 return (
-                    <div className="SoeknadStep__done">
+                    <div className="SkjemaStep__done">
                         {props.presentationComponent}
                         {props.onChange && (
                             <Flatknapp
@@ -45,11 +45,11 @@ function SoeknadStep(props: SoeknadStepProps) {
     };
 
     return (
-        <section className="SoeknadStep">
+        <section className="SkjemaStep">
             <StepIcon status={props.status} stepNumber={props.stepNumber} />
             <Panel>{renderContent()}</Panel>
         </section>
     );
 }
 
-export default SoeknadStep;
+export default SkjemaStep;

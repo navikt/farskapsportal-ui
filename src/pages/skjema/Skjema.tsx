@@ -3,21 +3,21 @@ import { Redirect } from 'react-router-dom';
 import WithUserInfo from 'store/providers/WithUserInfo';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { Path } from 'types/path';
-import FarSoeknad from './far/FarSoeknad';
-import MorSoeknad from './mor/MorSoeknad';
+import FarSkjema from './far/FarSkjema';
+import MorSkjema from './mor/MorSkjema';
 
-function Soeknad() {
+function Skjema() {
     return (
         <WithUserInfo>
             {(userInfo) => {
                 if (userInfo.forelderrolle === Foreldrerolle.Far) {
-                    return <FarSoeknad />;
+                    return <FarSkjema />;
                 } else if (userInfo.forelderrolle === Foreldrerolle.Mor) {
                     if (!userInfo.kanOppretteFarskapserklaering) {
                         return <Redirect to={Path.Oversikt} />;
                     }
 
-                    return <MorSoeknad barn={userInfo.fnrNyligFoedteBarnUtenRegistrertFar} />;
+                    return <MorSkjema barn={userInfo.fnrNyligFoedteBarnUtenRegistrertFar} />;
                 }
 
                 // TODO: handle foreldrerolle not Far or Mor
@@ -27,4 +27,4 @@ function Soeknad() {
     );
 }
 
-export default Soeknad;
+export default Skjema;
