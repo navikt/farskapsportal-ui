@@ -2,8 +2,14 @@ import { Language } from 'types/intl';
 import { FetchUserInfo } from 'types/user';
 import { Action } from './actions';
 
+const initialLanguage = window.location.pathname.includes('/en/')
+    ? 'en'
+    : window.location.pathname.includes('/nn/')
+    ? 'nn'
+    : 'nb';
+
 export const initialState: Store = {
-    language: 'nb',
+    language: initialLanguage,
     userInfo: { status: 'PENDING' } as FetchUserInfo,
 };
 

@@ -10,15 +10,15 @@ import '@formatjs/intl-datetimeformat/locale-data/nb';
 import '@formatjs/intl-datetimeformat/locale-data/nn';
 
 import { useStore } from 'store/Context';
-import enMessages from './locales/en';
-import nbMessages from './locales/nb';
-import nnMessages from './locales/nn';
+import enMessages from 'texts/en';
+import nbMessages from 'texts/nb';
+import nnMessages from 'texts/nn';
 
-interface IntlProviderProps {
+interface LanguageProviderProps {
     children: ReactNode;
 }
 
-function IntlProvider({ children }: IntlProviderProps) {
+function LanguageProvider({ children }: LanguageProviderProps) {
     const [{ language }] = useStore();
 
     let messages = nbMessages;
@@ -35,4 +35,4 @@ function IntlProvider({ children }: IntlProviderProps) {
     );
 }
 
-export default IntlProvider;
+export default LanguageProvider;

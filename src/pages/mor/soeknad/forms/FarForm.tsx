@@ -9,7 +9,7 @@ import Error from 'components/error/Error';
 import FormButtons from 'components/form-buttons/FormButtons';
 import { AlertError } from 'types/error';
 import { mapErrors } from 'utils/form';
-import { useFocus } from 'utils/hooks';
+import { useFocus } from 'utils/hooks/useFocus';
 import { getMessage } from 'utils/intl';
 
 export interface FarFormInput {

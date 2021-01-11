@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Innholdstittel } from 'nav-frontend-typografi';
 
 import WithKjoenn from 'store/providers/WithKjoenn';
 import { StepStatus } from 'types/form';
 import { Kjoenn } from 'types/kjoenn';
+import { useRedirectTo } from 'utils/hooks/useRedirectTo';
 import { getMessage } from 'utils/intl';
 import BarnForm, { BarnFormInput } from './forms/BarnForm';
 import BekreftForm from './forms/BekreftForm';
@@ -29,8 +29,8 @@ function Soeknad() {
         foedselsnummer: '',
         navn: '',
     });
-    const history = useHistory();
-    const onCancel = () => history.push('/');
+    const redirectTo = useRedirectTo();
+    const onCancel = () => redirectTo('/');
     /* TODO */ const onSubmit = () => alert(JSON.stringify(soeknadData));
 
     const onSubmitBarnForm = (data: BarnFormInput) => {
