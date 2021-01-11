@@ -4155,10 +4155,10 @@ date-fns@^2.16.1:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.16.1.tgz#05775792c3f3331da812af253e1a935851d3834b"
   integrity sha512-sAJVKx/FqrLYHAQeN7VpJrPhagZc9R4ImZIWYRFZaaohR3KzmuK88touwsSwSVT8Qcbd4zoDsnGfX4GFB4imyQ==
 
-dayjs@^1.10.2:
-  version "1.10.2"
-  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.2.tgz#8f3a424ceb944a8193506804b0045a773d2d0672"
-  integrity sha512-h/YtykNNTR8Qgtd1Fxl5J1/SFP1b7SOk/M1P+Re+bCdFMV0IMkuKNgHPN7rlvvuhfw24w0LX78iYKt4YmePJNQ==
+dayjs@^1.10.3:
+  version "1.10.3"
+  resolved "https://registry.yarnpkg.com/dayjs/-/dayjs-1.10.3.tgz#cf3357c8e7f508432826371672ebf376cb7d619b"
+  integrity sha512-/2fdLN987N8Ki7Id8BUN2nhuiRyxTLumQnSQf9CNncFCyqFsSKb9TNhzRYcC8K8eJSJOKvbvkImo/MKKhNi4iw==
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
@@ -8086,10 +8086,10 @@ nav-frontend-skjema-style@^2.0.24:
   resolved "https://registry.yarnpkg.com/nav-frontend-skjema-style/-/nav-frontend-skjema-style-2.0.24.tgz#ca5d1b52f916b4869f92dc99200419a45bf2fdf5"
   integrity sha512-fIr1Cr6f+BzouOLK/L0kc5vAQB9lxCKjt3O3+jDPL3ksXx/j2ac1xnTp0FEOKSmLML6JC8bAXd17hUWwMkYGCQ==
 
-nav-frontend-skjema@^3.0.40:
-  version "3.0.40"
-  resolved "https://registry.yarnpkg.com/nav-frontend-skjema/-/nav-frontend-skjema-3.0.40.tgz#d6bb9bfe5ce353fdc573b5792a2fee85fca2afba"
-  integrity sha512-lqBkYox8QZjDH0h0fYJbx/dVa2nZRzeReIwFDQPaBGUjEAsP+1acoALsTste7LiLhyk+EfSB5dtwbkMC+An1VQ==
+nav-frontend-skjema@^3.0.41:
+  version "3.0.41"
+  resolved "https://registry.yarnpkg.com/nav-frontend-skjema/-/nav-frontend-skjema-3.0.41.tgz#0faf909eca2523e73c064d3eb2b643c922dad289"
+  integrity sha512-tCZXvgLEBh6+HAbdCOIkOnKVaN/dw93sn1aILc1mZB41mRalx/QhYhrWcnmy7YV5IpJ9Opi6XLAm8IjRTqoeTQ==
 
 nav-frontend-spinner-style@^0.2.9:
   version "0.2.9"
@@ -9872,10 +9872,10 @@ react-error-overlay@^6.0.8:
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-6.0.8.tgz#474ed11d04fc6bda3af643447d85e9127ed6b5de"
   integrity sha512-HvPuUQnLp5H7TouGq3kzBeioJmXms1wHy9EGjz2OURWBp4qZO6AfGEcnxts1D/CbwPLRAgTMPCEgYhA3sEM4vw==
 
-react-hook-form@^6.14.0:
-  version "6.14.0"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.14.0.tgz#d11f81f2d9d2b457806cb425a79954a1eeba1871"
-  integrity sha512-yj4aqASmyxFPyDtDLKBae+AazFv5vcC5CEpDlh1+r5k5BTH/J/CTG6q0H5lSinm0B0F6P7oTmXIYB75ZmuQz6g==
+react-hook-form@^6.14.1:
+  version "6.14.1"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.14.1.tgz#c15f03fe8a7df76232bd4ac07b87317acab0cbd8"
+  integrity sha512-Bf2fWcL2F34hUUqrx1rpgZ8ZErQ4/DvrPs6Je+lUYL59km8PXIQqyCTz/NbggC1RQUj7rChSmTx6eFap+mCttw==
 
 react-intl@^5.10.14:
   version "5.10.14"
