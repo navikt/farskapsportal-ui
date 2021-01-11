@@ -9,7 +9,7 @@ export default {
     'login.error': 'Finner ikke kjønn for innlogget bruker.',
     'api.error': 'Oisann, noe gikk galt ved henting av data!',
 
-    'oversikt.title': 'Oversikt',
+    'oversikt.title': 'Dine farskapserklæringer',
     'oversikt.erklaeringer.link.title': 'Farskapserklæring',
     'oversikt.erklaeringer.link.termindato': 'Termindato: ',
     'oversikt.erklaeringer.link.foedselsnummer': 'Fødselsnummer: ',

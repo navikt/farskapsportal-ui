@@ -1,8 +1,8 @@
 import { FormattedMessage } from 'react-intl';
-import Panel from 'nav-frontend-paneler';
 import { Innholdstittel } from 'nav-frontend-typografi';
 
 import WithUserInfo from 'store/providers/WithUserInfo';
+import InfoPanel from './info-panel/InfoPanel';
 import FarErklaeringer from './FarErklaeringer';
 import MorErklaeringer from './MorErklaeringer';
 import ToSkjemaButton from './ToSkjemaButton';
@@ -13,14 +13,15 @@ function Oversikt() {
     return (
         <WithUserInfo>
             {(userInfo) => (
-                <Panel className="Oversikt">
+                <div className="Oversikt">
                     <Innholdstittel>
                         <FormattedMessage id="oversikt.title" />
                     </Innholdstittel>
+                    <InfoPanel userInfo={userInfo} />
                     <MorErklaeringer userInfo={userInfo} />
                     <FarErklaeringer userInfo={userInfo} />
                     <ToSkjemaButton userInfo={userInfo} />
-                </Panel>
+                </div>
             )}
         </WithUserInfo>
     );
