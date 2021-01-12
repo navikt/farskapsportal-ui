@@ -11,8 +11,8 @@ import scripts from 'api/mock/decorator/decorator-scripts';
 import styles from 'api/mock/decorator/decorator-styles';
 import ErrorBoundary from 'components/error-boundary/ErrorBoundary';
 import ScrollToTop from 'components/scroll-to-top/ScrollToTop';
-import IntlProvider from 'intl/IntlProvider';
 import { StoreProvider } from 'store/Context';
+import LanguageProvider from 'store/providers/LanguageProvider';
 import { initialState, reducer } from 'store/store';
 
 if (process.env.NODE_ENV === 'production') {
@@ -43,13 +43,13 @@ const init = async () => {
         <StrictMode>
             <ErrorBoundary>
                 <StoreProvider initialState={initialState} reducer={reducer}>
-                    <IntlProvider>
+                    <LanguageProvider>
                         <Router>
                             <ScrollToTop>
                                 <App />
                             </ScrollToTop>
                         </Router>
-                    </IntlProvider>
+                    </LanguageProvider>
                 </StoreProvider>
             </ErrorBoundary>
         </StrictMode>,

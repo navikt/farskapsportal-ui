@@ -4,16 +4,16 @@ import { ReactElement, ReactNode } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { render, RenderOptions } from '@testing-library/react';
 
-import IntlProvider from 'intl/IntlProvider';
 import { StoreProvider } from 'store/Context';
+import LanguageProvider from 'store/providers/LanguageProvider';
 import { initialState, reducer, Store } from 'store/store';
 
 function ProviderWrapper({ children, store }: { children: ReactNode; store?: Partial<Store> }) {
     return (
         <StoreProvider initialState={{ ...initialState, ...store }} reducer={reducer}>
-            <IntlProvider>
+            <LanguageProvider>
                 <Router>{children}</Router>
-            </IntlProvider>
+            </LanguageProvider>
         </StoreProvider>
     );
 }

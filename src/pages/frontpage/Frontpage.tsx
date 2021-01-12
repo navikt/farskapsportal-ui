@@ -1,4 +1,3 @@
-import { useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Hovedknapp } from 'nav-frontend-knapper';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
@@ -6,11 +5,12 @@ import Panel from 'nav-frontend-paneler';
 import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
 
 import ExternalLink from 'components/external-link/ExternalLink';
+import { useRedirectTo } from 'utils/hooks/useRedirectTo';
 
 import './Frontpage.less';
 
 function Frontpage() {
-    const history = useHistory();
+    const redirectTo = useRedirectTo();
 
     return (
         <Panel className="Frontpage">
@@ -97,7 +97,7 @@ function Frontpage() {
                     </li>
                 </ol>
             </section>
-            <Hovedknapp onClick={() => history.push('/mor')}>
+            <Hovedknapp onClick={() => redirectTo('/mor')}>
                 <FormattedMessage id="frontpage.login" />
             </Hovedknapp>
             <LenkepanelBase href="#" border={true}>
