@@ -22,6 +22,7 @@ function App() {
             <div role="main" className="App__content">
                 <RedirectAfterLogin>
                     <Switch>
+                        <Redirect path="/" exact={true} to="/nb/" />
                         <Route
                             path={`${basePathWithLanguage}${Path.Forside}`}
                             exact={true}
@@ -42,7 +43,6 @@ function App() {
                             exact={true}
                             component={Kvittering}
                         />
-                        <Redirect to="/nb/" />
                     </Switch>
                 </RedirectAfterLogin>
             </div>
