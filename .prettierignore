@@ -1,4 +1,4 @@
 build
 
 .nais/nais.yaml
-src/intl/locales/*
+src/texts/*

@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import { IntlProvider as Provider } from 'react-intl';
 import '@formatjs/intl-numberformat/polyfill-force';
 import '@formatjs/intl-numberformat/locale-data/en';
@@ -21,6 +21,10 @@ interface LanguageProviderProps {
 function LanguageProvider({ children }: LanguageProviderProps) {
     const [{ language }] = useStore();
 
+    useEffect(() => {
+        document.documentElement.lang = language;
+    }, [language]);
+
     let messages = nbMessages;
     if (language === 'en') {
         messages = { ...nbMessages, ...enMessages };
@@ -30,7 +34,7 @@ function LanguageProvider({ children }: LanguageProviderProps) {
 
     return (
         <Provider locale={language} messages={messages || {}}>
-            <div lang={language}>{children}</div>
+            {children}
         </Provider>
     );
 }

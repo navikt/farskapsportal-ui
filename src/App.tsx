@@ -9,7 +9,7 @@ import { useDekoratorLanguage } from 'utils/hooks/useDekoratorLanguage';
 
 import './App.less';
 
-const basePathWithLocale = `/(nb|nn|en)`;
+const basePathWithLanguage = `/(nb|nn|en)`;
 
 function App() {
     useDekoratorLanguage();
@@ -21,14 +21,14 @@ function App() {
                 <RedirectAfterLogin>
                     <Switch>
                         <Redirect path="/" exact={true} to="/nb/" />
-                        <Route path={basePathWithLocale} exact={true} component={Frontpage} />
+                        <Route path={basePathWithLanguage} exact={true} component={Frontpage} />
                         <Route
-                            path={`${basePathWithLocale}/mor`}
+                            path={`${basePathWithLanguage}/mor`}
                             exact={true}
                             component={Soeknad}
                         />
                         <Route
-                            path={`${basePathWithLocale}/far`}
+                            path={`${basePathWithLanguage}/far`}
                             exact={true}
                             component={FarPage}
                         />
