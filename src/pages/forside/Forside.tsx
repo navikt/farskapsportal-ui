@@ -6,15 +6,15 @@ import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
 
 import ExternalLink from 'components/external-link/ExternalLink';
 import { Path } from 'types/path';
-import { useRedirectTo } from 'utils/hooks/useRedirectTo';
+import { useNavigateTo } from 'utils/hooks/useNavigateTo';
 
 import './Forside.less';
 
 function Forside() {
-    const redirectTo = useRedirectTo();
+    const navigateTo = useNavigateTo();
 
     const goToOversikt = () => {
-        redirectTo(Path.Oversikt);
+        navigateTo(Path.Oversikt);
     };
 
     return (

@@ -1,23 +1,23 @@
-import { useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Hovedknapp } from 'nav-frontend-knapper';
 
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
+import { useNavigateTo } from 'utils/hooks/useNavigateTo';
 
 interface ToSkjemaButtonProps {
     userInfo: UserInfo;
 }
 
 function ToSkjemaButton({ userInfo }: ToSkjemaButtonProps) {
-    const history = useHistory();
+    const navigateTo = useNavigateTo();
 
     if (!userInfo.kanOppretteFarskapserklaering) {
         return null;
     }
 
     const goToSkjema = () => {
-        history.push(Path.Skjema);
+        navigateTo(Path.Skjema);
     };
 
     return (

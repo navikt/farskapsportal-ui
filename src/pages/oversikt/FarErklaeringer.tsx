@@ -1,4 +1,3 @@
-import { useHistory } from 'react-router-dom';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import { EtikettFokus } from 'nav-frontend-etiketter';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
@@ -8,6 +7,7 @@ import { Farskapserklaering } from 'types/farskapserklaering';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
+import { useNavigateTo } from 'utils/hooks/useNavigateTo';
 import { getNameFromForelder } from 'utils/name';
 
 interface FarErklaeringerProps {
@@ -36,7 +36,7 @@ interface ErklaeringLinkPanelProps {
 }
 
 function ErklaeringLinkPanel({ erklaering, isFar }: ErklaeringLinkPanelProps) {
-    const history = useHistory();
+    const navigateTo = useNavigateTo();
 
     if (!erklaering.barn || !erklaering.dokument) {
         // TODO: handle
@@ -46,9 +46,9 @@ function ErklaeringLinkPanel({ erklaering, isFar }: ErklaeringLinkPanelProps) {
 
     const handleClick = () => {
         if (isFar) {
-            history.push(Path.Skjema);
+            navigateTo(Path.Skjema);
         } else {
-            history.push(Path.Kvittering);
+            navigateTo(Path.Kvittering);
         }
     };
 

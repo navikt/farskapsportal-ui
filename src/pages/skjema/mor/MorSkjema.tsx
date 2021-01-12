@@ -9,7 +9,7 @@ import { Barn } from 'types/barn';
 import { AlertError } from 'types/error';
 import { StepStatus } from 'types/form';
 import { Path } from 'types/path';
-import { useRedirectTo } from 'utils/hooks/useRedirectTo';
+import { useNavigateTo } from 'utils/hooks/useNavigateTo';
 import { getMessage } from 'utils/intl';
 import BekreftForm from './forms/BekreftForm';
 import FarForm, { FarFormInput } from './forms/FarForm';
@@ -92,7 +92,7 @@ function MorSkjema(props: MorSkjemaProps) {
     const singleChildFoedselsnummer = props.barn?.length === 1 ? props.barn[0] : undefined;
 
     const intl = useIntl();
-    const redirectTo = useRedirectTo();
+    const navigateTo = useNavigateTo();
 
     const [state, dispatch] = useReducer(reducer, {
         erklaering: {
@@ -116,7 +116,7 @@ function MorSkjema(props: MorSkjemaProps) {
     });
 
     const onCancel = () => {
-        redirectTo(Path.Oversikt);
+        navigateTo(Path.Oversikt);
     };
 
     const onSubmit = () => {
