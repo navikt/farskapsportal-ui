@@ -9,7 +9,7 @@ import { useDekoratorLanguage } from 'utils/hooks/useDekoratorLanguage';
 
 import './App.less';
 
-const basePathWithLanguage = `/(nb|nn|en)`;
+const basePathWithLanguage = '/(nb|nn|en)';
 
 function App() {
     useDekoratorLanguage();
