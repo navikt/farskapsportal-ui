@@ -1,5 +1,4 @@
 import { useReducer } from 'react';
-import { useHistory } from 'react-router-dom';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Innholdstittel } from 'nav-frontend-typografi';
 
@@ -10,6 +9,7 @@ import { Barn } from 'types/barn';
 import { AlertError } from 'types/error';
 import { StepStatus } from 'types/form';
 import { Path } from 'types/path';
+import { useRedirectTo } from 'utils/hooks/useRedirectTo';
 import { getMessage } from 'utils/intl';
 import BekreftForm from './forms/BekreftForm';
 import FarForm, { FarFormInput } from './forms/FarForm';
@@ -92,7 +92,7 @@ function MorSkjema(props: MorSkjemaProps) {
     const singleChildFoedselsnummer = props.barn?.length === 1 ? props.barn[0] : undefined;
 
     const intl = useIntl();
-    const history = useHistory();
+    const redirectTo = useRedirectTo();
 
     const [state, dispatch] = useReducer(reducer, {
         erklaering: {
@@ -115,7 +115,9 @@ function MorSkjema(props: MorSkjemaProps) {
         },
     });
 
-    const onCancel = () => history.push(Path.Oversikt);
+    const onCancel = () => {
+        redirectTo(Path.Oversikt);
+    };
 
     const onSubmit = () => {
         dispatch({ type: 'SUBMIT' });

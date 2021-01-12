@@ -1,4 +1,3 @@
-import { useHistory } from 'react-router-dom';
 import { FormattedMessage } from 'react-intl';
 import { Hovedknapp } from 'nav-frontend-knapper';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
@@ -7,14 +6,15 @@ import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
 
 import ExternalLink from 'components/external-link/ExternalLink';
 import { Path } from 'types/path';
+import { useRedirectTo } from 'utils/hooks/useRedirectTo';
 
 import './Forside.less';
 
 function Forside() {
-    const history = useHistory();
+    const redirectTo = useRedirectTo();
 
     const goToOversikt = () => {
-        history.push(Path.Oversikt);
+        redirectTo(Path.Oversikt);
     };
 
     return (
