@@ -3,11 +3,15 @@ export default {
     'languageToggle.nb': 'Bokmål',
     'languageToggle.nn': 'Nynorsk',
     'languageToggle.en': 'Engelsk',
-    'page.title': 'Farskapserklæring',
     'form.feiloppsummering': 'For å gå vidare må du retta opp følgjande:',
     'form.date.placeholder': 'dd.mm.åååå',
     'login.error': 'Finn ikkje kjønn for innlogga brukar.',
     'api.error': 'Oisann, noko gjekk gale ved henting av data!',
+
+    'header.forside': 'Farskapserklæring',
+    'header.oversikt': 'Dine farskapserklæringer',
+    'header.skjema': 'Opprett farskapserklæring',
+    'header.kvittering': 'Kvittering',
 
     'forside.1.title': 'Kva inneber det å erklæra farskap?',
     'forside.1.desc': 'Viss far og mor er gift, blir far automatisk registrert som far til barnet. Viss far og mor ikkje er gift må farskapet erklærast, helst innan fødselen til barnet. Å erklæra farskap gir far både rettar og plikter til barnet, som til dømes:',
@@ -34,7 +38,7 @@ export default {
     'forside.inperson.title': 'Erklæra farskapet gjennom oppmøte',
     'forside.inperson.desc': 'Viss de ikkje oppfyller krava til å erklæra farskapet elektronisk må de erklæra farskapet ved å møta opp.',
 
-    'mor.title': 'Opplysningar om barnet og faren til barnet',
+    'mor.title': 'Opplysningar om barnet og faren til barnet', // TODO: remove?
     'mor.form.buttons.next': 'Neste',
     'mor.form.buttons.submit': 'Stadfest farskap',
     'mor.form.buttons.cancel': 'Avbryt',

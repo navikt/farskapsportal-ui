@@ -1,5 +1,6 @@
 import { Redirect } from 'react-router-dom';
 
+import Page from 'components/page/Page';
 import { useStore } from 'store/Context';
 import WithUserInfo from 'store/providers/WithUserInfo';
 import { Foreldrerolle } from 'types/foreldrerolle';
@@ -11,22 +12,24 @@ function Skjema() {
     const [{ language }] = useStore();
 
     return (
-        <WithUserInfo>
-            {(userInfo) => {
-                if (userInfo.forelderrolle === Foreldrerolle.Far) {
-                    return <FarSkjema />;
-                } else if (userInfo.forelderrolle === Foreldrerolle.Mor) {
-                    if (!userInfo.kanOppretteFarskapserklaering) {
-                        return <Redirect to={`/${language}${Path.Oversikt}`} />;
+        <Page titleId="header.skjema">
+            <WithUserInfo>
+                {(userInfo) => {
+                    if (userInfo.forelderrolle === Foreldrerolle.Far) {
+                        return <FarSkjema />;
+                    } else if (userInfo.forelderrolle === Foreldrerolle.Mor) {
+                        if (!userInfo.kanOppretteFarskapserklaering) {
+                            return <Redirect to={`/${language}${Path.Oversikt}`} />;
+                        }
+
+                        return <MorSkjema barn={userInfo.fnrNyligFoedteBarnUtenRegistrertFar} />;
                     }
 
-                    return <MorSkjema barn={userInfo.fnrNyligFoedteBarnUtenRegistrertFar} />;
-                }
-
-                // TODO: handle foreldrerolle not Far or Mor
-                return null;
-            }}
-        </WithUserInfo>
+                    // TODO: handle foreldrerolle not Far or Mor
+                    return null;
+                }}
+            </WithUserInfo>
+        </Page>
     );
 }
 

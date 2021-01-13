@@ -1,19 +1,15 @@
-import { Innholdstittel } from 'nav-frontend-typografi';
-
+import Page from 'components/page/Page';
 import WithUserInfo from 'store/providers/WithUserInfo';
 
 function Kvittering() {
     return (
-        <WithUserInfo>
-            {(userInfo) => {
-                return (
-                    <div>
-                        <Innholdstittel>Kvittering</Innholdstittel>
-                        <div>{JSON.stringify(userInfo)}</div>
-                    </div>
-                );
-            }}
-        </WithUserInfo>
+        <Page titleId="header.kvittering">
+            <WithUserInfo>
+                {(userInfo) => {
+                    return <div>{JSON.stringify(userInfo)}</div>;
+                }}
+            </WithUserInfo>
+        </Page>
     );
 }
 

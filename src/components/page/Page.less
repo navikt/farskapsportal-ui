@@ -1,0 +1,13 @@
+@import (reference) 'styles/assets';
+
+.Page {
+  &__content {
+    max-width: @app-max-width;
+    padding: 1rem;
+    margin: 0 auto;
+
+    @media (min-width: @mobile-breakpoint) {
+      padding: 2rem;
+    }
+  }
+}

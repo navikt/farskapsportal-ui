@@ -1,15 +1,19 @@
 import { FormattedMessage } from 'react-intl';
-import { Sidetittel } from 'nav-frontend-typografi';
+import { Innholdstittel } from 'nav-frontend-typografi';
 
 import './Banner.less';
 
-function Banner() {
+interface BannerProps {
+    titleId: string;
+}
+
+function Banner({ titleId }: BannerProps) {
     return (
-        <header className="Banner">
-            <Sidetittel>
-                <FormattedMessage id="page.title" />
-            </Sidetittel>
-        </header>
+        <div className="Banner">
+            <Innholdstittel>
+                <FormattedMessage id={titleId} />
+            </Innholdstittel>
+        </div>
     );
 }
 

@@ -3,13 +3,17 @@ export default {
     'languageToggle.nb': 'Bokmål',
     'languageToggle.nn': 'Nynorsk',
     'languageToggle.en': 'English',
-    'page.title': 'Declaration of paternity',
     'form.feiloppsummering': 'To proceed, you must correct the following:',
     'form.date.placeholder': 'dd.mm.yyyy',
     'login.error': 'Cannot find the gender of the logged in user.',
     'api.error': 'Whoops, something went wrong while fetching data!',
 
-    'mor.title': 'Information about the child and the child\'s father',
+    'header.forside': 'Declaration of paternity',
+    'header.oversikt': 'Your paternity declarations',
+    'header.skjema': 'Create declaration of paternity',
+    'header.kvittering': 'Receipt',
+
+    'mor.title': 'Information about the child and the child\'s father', // TODO: remove?
     'mor.form.buttons.next': 'Next',
     'mor.form.buttons.submit': 'Confirm paternity',
     'mor.form.buttons.cancel': 'Cancel',

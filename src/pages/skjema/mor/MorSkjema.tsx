@@ -1,6 +1,5 @@
 import { useReducer } from 'react';
-import { FormattedMessage, useIntl } from 'react-intl';
-import { Innholdstittel } from 'nav-frontend-typografi';
+import { useIntl } from 'react-intl';
 
 import { opprettFarskapserklaering } from 'api/api';
 import Error from 'components/error/Error';
@@ -18,8 +17,6 @@ import TermindatoForm, { TermindatoFormInput } from './forms/TermindatoForm';
 import BarnPresentation from './presentation/BarnPresentation';
 import FarPresentation from './presentation/FarPresentation';
 import SkjemaStep from './SkjemaStep';
-
-import './MorSkjema.less';
 
 type ActionType =
     | { type: 'EDIT_BARN' }
@@ -161,9 +158,6 @@ function MorSkjema(props: MorSkjemaProps) {
 
     return (
         <div className="MorSkjema">
-            <Innholdstittel tag="h2">
-                <FormattedMessage id="mor.title" />
-            </Innholdstittel>
             <SkjemaStep
                 stepNumber={1}
                 formComponent={
