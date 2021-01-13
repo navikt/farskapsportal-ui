@@ -1207,10 +1207,10 @@
     "@formatjs/ecma402-abstract" "1.5.1"
     tslib "^2.0.1"
 
-"@formatjs/intl@1.5.1":
-  version "1.5.1"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-1.5.1.tgz#0e8ee6b18d06ab9c8116d70c09799f12d75c2e74"
-  integrity sha512-JBGb7ZieiC2v3154qgiO6kdUS5XSaBhb5OUy7bYHxq74G+RftSGt2vi9jv6SkLRcwECI0I3I6stg90QPA3rVKw==
+"@formatjs/intl@1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl/-/intl-1.6.1.tgz#6f6de1650136feb48c475409e7d77769ae851934"
+  integrity sha512-911RCkqyZuwbihUT98qBfVNsEmukdf5Y4DIVqAx+BGIyyPNUeS+JXpKx6M8awXx2L9UbeTHKKhjJbNzZlVFO+w==
   dependencies:
     "@formatjs/ecma402-abstract" "1.5.1"
     "@formatjs/intl-datetimeformat" "3.2.4"
@@ -1737,10 +1737,10 @@
     lz-string "^1.4.4"
     pretty-format "^26.6.2"
 
-"@testing-library/jest-dom@^5.11.8":
-  version "5.11.8"
-  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.11.8.tgz#433a84d6f9a089485101b9e112ef03e5c30bcbfc"
-  integrity sha512-ScyKrWQM5xNcr79PkSewnA79CLaoxVskE+f7knTOhDD9ftZSA1Jw8mj+pneqhEu3x37ncNfW84NUr7lqK+mXjA==
+"@testing-library/jest-dom@^5.11.9":
+  version "5.11.9"
+  resolved "https://registry.yarnpkg.com/@testing-library/jest-dom/-/jest-dom-5.11.9.tgz#e6b3cd687021f89f261bd53cbe367041fbd3e975"
+  integrity sha512-Mn2gnA9d1wStlAIT2NU8J15LNob0YFBVjs2aEQ3j8rsfRQo+lAs7/ui1i2TGaJjapLmuNPLTsrm+nPjmZDwpcQ==
   dependencies:
     "@babel/runtime" "^7.9.2"
     "@types/testing-library__jest-dom" "^5.9.1"
@@ -5368,7 +5368,7 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-focus-trap-react@^8.1.0:
+focus-trap-react@^8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-8.3.2.tgz#b319888b57c7d7e63ce9f5c9a3b687df64c03369"
   integrity sha512-sy4zUjlyC2szBejQ9RVf6WCeA+9fWbxrK6fo+jnrMvfiP5rbuzuK6461V6Q7YsEsHwZolVL3AthlfFfIvZrPwg==
@@ -7997,12 +7997,12 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-nav-datovelger@^9.0.1:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/nav-datovelger/-/nav-datovelger-9.0.1.tgz#d43a4b098c089eb300b0a437d8b2d0f9ef7a0501"
-  integrity sha512-Ffz2uaI7d88tmNRuDKoy6nmpBaVrsz3iZNMYaTE+E+9bs10z/TQx70J0Cr3TmsvWBREM0efMdtKvENTFvX96YQ==
+nav-datovelger@^10.1.0:
+  version "10.1.0"
+  resolved "https://registry.yarnpkg.com/nav-datovelger/-/nav-datovelger-10.1.0.tgz#5d694b1bd3951981c5e3ae8e28e264a25597c966"
+  integrity sha512-nx31CPr6r3NWyqGT+UGaF3yCV394hyVy9E4ah1JCk9JzCFwtJ+c9o00joLjVIkTNpPCfe0uVAYLOdXpFfemFzg==
   dependencies:
-    focus-trap-react "^8.1.0"
+    focus-trap-react "^8.3.2"
 
 nav-frontend-alertstriper-style@^2.0.30:
   version "2.0.30"
@@ -9863,13 +9863,13 @@ react-hook-form@^6.14.1:
   resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-6.14.1.tgz#c15f03fe8a7df76232bd4ac07b87317acab0cbd8"
   integrity sha512-Bf2fWcL2F34hUUqrx1rpgZ8ZErQ4/DvrPs6Je+lUYL59km8PXIQqyCTz/NbggC1RQUj7rChSmTx6eFap+mCttw==
 
-react-intl@^5.10.14:
-  version "5.10.14"
-  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.10.14.tgz#59610a78ac1ecce14eefb7e704e9123b5670c3f7"
-  integrity sha512-m2iDHwAGWDyPwfZIwCigIx8NEvQmrLjiFe+zh6kMxh19WgMp9mZ3RkPssuGItuNNguXbWvo5oSrjLtrbnubiQA==
+react-intl@^5.10.16:
+  version "5.10.16"
+  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-5.10.16.tgz#2ccde74acd26cbe4f9e6e42765048a7f2f40e645"
+  integrity sha512-Cp0p9MGGWYNsl3hamJcrRqKid2HZun4MsdIlHV9fdmYVoLOII1+YynH6UBBwLuDlrLi8JrSniH1G1pqUlwQZMw==
   dependencies:
     "@formatjs/ecma402-abstract" "1.5.1"
-    "@formatjs/intl" "1.5.1"
+    "@formatjs/intl" "1.6.1"
     "@formatjs/intl-displaynames" "4.0.4"
     "@formatjs/intl-listformat" "5.0.4"
     "@formatjs/intl-relativetimeformat" "8.0.3"
