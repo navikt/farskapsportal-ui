@@ -19,17 +19,17 @@ export const useDekoratorLanguage = () => {
     useEffect(() => {
         setAvailableLanguages([
             {
-                url: `${location.pathname.replace(/^\/(en|nn)\/?/, '/nb/')}`,
+                url: `${location.pathname.replace(/\/(en|nn)\//, '/nb/')}`,
                 locale: 'nb',
                 handleInApp: true,
             },
             {
-                url: `${location.pathname.replace(/^\/(en|nb)\/?/, '/nn/')}`,
+                url: `${location.pathname.replace(/\/(en|nb)\//, '/nn/')}`,
                 locale: 'nn',
                 handleInApp: true,
             },
             {
-                url: `${location.pathname.replace(/^\/(nb|nn)\/?/, '/en/')}`,
+                url: `${location.pathname.replace(/\/(nb|nn)\//, '/en/')}`,
                 locale: 'en',
                 handleInApp: true,
             },

@@ -5,11 +5,7 @@ import Cookies from 'js-cookie';
 import Spinner from 'components/spinner/Spinner';
 import { redirectLoginCookie } from 'utils/cookies';
 
-interface RedirectAfterLoginProps {
-    children: JSX.Element;
-}
-
-function RedirectAfterLogin(props: RedirectAfterLoginProps) {
+function RedirectAfterLogin(props: { children: JSX.Element }) {
     const [loading, setLoading] = useState(true);
     const history = useHistory();
 
