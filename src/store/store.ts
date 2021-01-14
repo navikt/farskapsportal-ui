@@ -2,9 +2,9 @@ import { Language } from 'types/intl';
 import { FetchUserInfo } from 'types/user';
 import { Action } from './actions';
 
-const initialLanguage = window.location.pathname.includes('/en/')
+const initialLanguage = window.location.pathname.includes('/en')
     ? 'en'
-    : window.location.pathname.includes('/nn/')
+    : window.location.pathname.includes('/nn')
     ? 'nn'
     : 'nb';
 

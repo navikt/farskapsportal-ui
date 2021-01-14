@@ -16,25 +16,25 @@ function App() {
     return (
         <RedirectAfterLogin>
             <Switch>
-                <Redirect path="/" exact={true} to="/nb/" />
+                <Redirect exact={true} from="/" to="/nb/" />
                 <Route
-                    path={`${basePathWithLanguage}${Path.Forside}`}
                     exact={true}
+                    path={`${basePathWithLanguage}${Path.Forside}`}
                     component={Forside}
                 />
                 <Route
-                    path={`${basePathWithLanguage}${Path.Oversikt}`}
                     exact={true}
+                    path={`${basePathWithLanguage}${Path.Oversikt}`}
                     component={Oversikt}
                 />
                 <Route
-                    path={`${basePathWithLanguage}${Path.Skjema}`}
                     exact={true}
+                    path={`${basePathWithLanguage}${Path.Skjema}`}
                     component={Skjema}
                 />
                 <Route
-                    path={`${basePathWithLanguage}${Path.Kvittering}`}
                     exact={true}
+                    path={`${basePathWithLanguage}${Path.Kvittering}`}
                     component={Kvittering}
                 />
             </Switch>
