@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
-// import { useLocation } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { useIntl } from 'react-intl';
-import { setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
+import { onBreadcrumbClick, setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 
 import { useStore } from 'store/Context';
 import { Breadcrumb } from 'types/breadcrumbs';
@@ -13,8 +13,12 @@ interface BreadcrumbsProps {
 
 function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
     const intl = useIntl();
+    const history = useHistory();
     const [{ language }] = useStore();
-    // const location = useLocation();
+
+    onBreadcrumbClick((breadcrumb) => {
+        history.push(breadcrumb.url);
+    });
 
     useEffect(() => {
         const baseBreadcrumbs = [
@@ -33,7 +37,7 @@ function Breadcrumbs({ breadcrumbs }: BreadcrumbsProps) {
             })) || [];
 
         setBreadcrumbs(baseBreadcrumbs.concat(appBreadcrumbs));
-    }, [intl, breadcrumbs, language /*, location*/]);
+    }, [intl, breadcrumbs, language]);
 
     return null;
 }
