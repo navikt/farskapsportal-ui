@@ -9,7 +9,7 @@ import './Oversikt.less';
 
 function Oversikt() {
     return (
-        <Page titleId="header.oversikt">
+        <Page titleId="header.oversikt" breadcrumbs={[{ titleId: 'breadcrumbs.oversikt' }]}>
             <WithUserInfo>
                 {(userInfo) => (
                     <div className="Oversikt">

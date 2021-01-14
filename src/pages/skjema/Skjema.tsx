@@ -12,7 +12,13 @@ function Skjema() {
     const [{ language }] = useStore();
 
     return (
-        <Page titleId="header.skjema">
+        <Page
+            titleId="header.skjema"
+            breadcrumbs={[
+                { titleId: 'breadcrumbs.oversikt', path: Path.Oversikt },
+                { titleId: 'breadcrumbs.skjema' },
+            ]}
+        >
             <WithUserInfo>
                 {(userInfo) => {
                     if (userInfo.forelderrolle === Foreldrerolle.Far) {

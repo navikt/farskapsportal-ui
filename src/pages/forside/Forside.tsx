@@ -19,7 +19,7 @@ function Forside() {
     };
 
     return (
-        <Page titleId="header.forside" className="Forside">
+        <Page className="Forside" titleId="header.forside">
             <Panel className="Forside__panel">
                 <section className="Forside__section">
                     <Undertittel tag="h2">

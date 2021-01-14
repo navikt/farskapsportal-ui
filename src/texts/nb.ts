@@ -8,6 +8,11 @@ export default {
     'login.error': 'Finner ikke kjønn for innlogget bruker.',
     'api.error': 'Oisann, noe gikk galt ved henting av data!',
 
+    'breadcrumbs.forside': 'Farskapserklæring',
+    'breadcrumbs.oversikt': 'Dine farskapserklæringer',
+    'breadcrumbs.skjema': 'Opprett farskapserklæring',
+    'breadcrumbs.kvittering': 'Kvittering',
+
     'header.forside': 'Farskapserklæring',
     'header.oversikt': 'Dine farskapserklæringer',
     'header.skjema': 'Opprett farskapserklæring',
