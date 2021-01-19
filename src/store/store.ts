@@ -10,7 +10,7 @@ const initialLanguage = window.location.pathname.includes('/en/')
 
 export const initialState: Store = {
     language: initialLanguage,
-    userInfo: { status: 'PENDING' } as FetchUserInfo,
+    userInfo: { status: 'PENDING' },
 };
 
 export interface Store {

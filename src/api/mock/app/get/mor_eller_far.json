@@ -1,0 +1,8 @@
+{
+  "kanOppretteFarskapserklaering": true,
+  "gyldigForelderrolle": true,
+  "forelderrolle": "MOR_ELLER_FAR",
+  "farsVentendeFarskapserklaeringer": null,
+  "morsVentendeFarskapserklaeringer": null,
+  "fnrNyligFoedteBarnUtenRegistrertFar": null
+}

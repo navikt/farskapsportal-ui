@@ -1,24 +1,14 @@
-import { ReactNode, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
-interface ScrollToTopProps {
-    children: ReactNode;
-}
-
-function ScrollToTop({ children }: ScrollToTopProps) {
-    const history = useHistory();
+function ScrollToTop() {
+    const { pathname } = useLocation();
 
     useEffect(() => {
-        const unlisten = history.listen(() => {
-            window.scrollTo(0, 0);
-        });
-        return () => {
-            unlisten();
-        };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
-    return <>{children}</>;
+    return null;
 }
 
 export default ScrollToTop;

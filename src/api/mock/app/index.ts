@@ -1,6 +1,10 @@
 import fetchMock from 'fetch-mock';
 
-import user from './get/user.json';
+// import user from './get/mor.json';
+// import user from './get/mor_child.json';
+// import user from './get/mor_twins.json';
+import user from './get/mor_twins_one_awaiting_far.json';
+// import user from './get/far_unsigned.json';
 
 fetchMock.config.fallbackToNetwork = true;
 
@@ -18,13 +22,15 @@ const mockGet = (
 
 const mockPost = (
     path: string,
-    response: Record<string, unknown>,
+    response: Record<string, unknown> | string,
     minDelay = 200,
     maxDelay = 750
 ) => fetchMock.post(path, () => delay(minDelay, maxDelay).then(() => response));
 
 export const setUpMock = async () => {
-    mockGet('/api/kjoenn', user);
+    mockGet('/api/brukerinformasjon', user);
 
-    mockPost('/api/kontroller', { statusType: 'OK' }, 2000, 3000);
+    mockPost('/api/personopplysninger/far', 'OK', 2000, 3000);
+
+    mockPost('/api/farskapserklaering/ny', 'OK', 2000, 3000);
 };

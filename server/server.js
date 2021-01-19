@@ -37,10 +37,10 @@ app.use(express.static(buildPath, { index: false }));
 app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 
 // Api calls
-app.get('/api/kjoenn', async (req, res) => {
+app.get('/api/brukerinformasjon', async (req, res) => {
     try {
         const token = req.cookies[tokenName];
-        const response = await fetch(`${apiUrl}/kjoenn`, {
+        const response = await fetch(`${apiUrl}/brukerinformasjon`, {
             method: 'get',
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -54,10 +54,10 @@ app.get('/api/kjoenn', async (req, res) => {
     }
 });
 
-app.post('/api/kontroller', async (req, res) => {
+app.post('/api/personopplysninger/far', async (req, res) => {
     try {
         const token = req.cookies[tokenName];
-        const response = await fetch(`${apiUrl}/kontrollere/far`, {
+        const response = await fetch(`${apiUrl}/personopplysninger/far`, {
             method: 'post',
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -68,6 +68,31 @@ app.post('/api/kontroller', async (req, res) => {
 
         if (response.status === 200) {
             res.sendStatus(response.status);
+        } else {
+            const json = await response.json();
+            res.status(response.status).send(json);
+        }
+    } catch (error) {
+        console.log(`Error while calling api: ${error}`);
+        res.sendStatus(500);
+    }
+});
+
+app.post('/api/farskapserklaering/ny', async (req, res) => {
+    try {
+        const token = req.cookies[tokenName];
+        const response = await fetch(`${apiUrl}/farskapserklaering/ny`, {
+            method: 'post',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify(req.body),
+        });
+
+        if (response.status === 200) {
+            const text = await response.text();
+            res.status(response.status).send(text);
         } else {
             const json = await response.json();
             res.status(response.status).send(json);

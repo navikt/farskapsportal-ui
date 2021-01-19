@@ -1,0 +1,69 @@
+{
+  "kanOppretteFarskapserklaering": true,
+  "gyldigForelderrolle": true,
+  "forelderrolle": "MOR_ELLER_FAR",
+  "farsVentendeFarskapserklaeringer": [
+    {
+      "barn": {
+        "termindato": "2021-04-01",
+        "foedselsnummer": null
+      },
+      "mor": {
+        "forelderRolle": "MOR_ELLER_FAR",
+        "foedselsnummer": "12345678901",
+        "fornavn": "Kåre",
+        "mellomnavn": null,
+        "etternavn": "Nordmann"
+      },
+      "far": {
+        "forelderRolle": "FAR",
+        "foedselsnummer": "12345678902",
+        "fornavn": "Ola",
+        "mellomnavn": null,
+        "etternavn": "Nordmann"
+      },
+      "dokument": {
+        "dokumentnavn": null,
+        "innhold": null,
+        "dokumentStatusUrl": null,
+        "padesUrl": null,
+        "redirectUrlMor": "https://foo.bar",
+        "redirectUrlFar": null,
+        "signertAvMor": "2020-12-31",
+        "signertAvFar": null
+      }
+    },
+    {
+      "barn": {
+        "termindato": "2021-05-01",
+        "foedselsnummer": null
+      },
+      "mor": {
+        "forelderRolle": "MOR_ELLER_FAR",
+        "foedselsnummer": "12345678905",
+        "fornavn": "Kari",
+        "mellomnavn": null,
+        "etternavn": "Nordmann"
+      },
+      "far": {
+        "forelderRolle": "MOR_ELLER_FAR",
+        "foedselsnummer": "12345678901",
+        "fornavn": "Kåre",
+        "mellomnavn": null,
+        "etternavn": "Nordmann"
+      },
+      "dokument": {
+        "dokumentnavn": null,
+        "innhold": null,
+        "dokumentStatusUrl": null,
+        "padesUrl": null,
+        "redirectUrlMor": "https://foo.bar",
+        "redirectUrlFar": null,
+        "signertAvMor": "2020-12-31",
+        "signertAvFar": null
+      }
+    }
+  ],
+  "morsVentendeFarskapserklaeringer": null,
+  "fnrNyligFoedteBarnUtenRegistrertFar": null
+}

@@ -7,7 +7,7 @@ import {
     subDays,
 } from 'date-fns';
 
-import { DAYS_OF_PREGNANCY } from './constants';
+import { DAYS_IN_PREGNANCY } from './constants';
 
 export const getToday = (): string => formatISO(new Date(), { representation: 'date' });
 
@@ -24,4 +24,4 @@ export const isLessThanNDaysInThePast = (date: string, numberOfDays: number): bo
     differenceInDays(new Date(), parseISO(date)) < numberOfDays;
 
 export const getWeekOfPregnancy = (date: string): number =>
-    differenceInWeeks(new Date(), subDays(parseISO(date), DAYS_OF_PREGNANCY - 1)) + 1;
+    differenceInWeeks(new Date(), subDays(parseISO(date), DAYS_IN_PREGNANCY - 1)) + 1;

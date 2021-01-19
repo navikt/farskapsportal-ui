@@ -1,6 +1,13 @@
-export type Outbound = OutboundFatherControl;
+import { Barn } from './barn';
 
-export interface OutboundFatherControl {
+export type Outbound = OutboundFather | OutboundOpprettFarskapserklaering;
+
+export interface OutboundFather {
     foedselsnummer: string;
     navn: string;
+}
+
+export interface OutboundOpprettFarskapserklaering {
+    barn: Barn;
+    opplysningerOmFar: OutboundFather;
 }
