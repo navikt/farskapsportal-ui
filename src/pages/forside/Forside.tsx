@@ -107,7 +107,7 @@ function Forside() {
                 <Hovedknapp onClick={goToOversikt}>
                     <FormattedMessage id="forside.login" />
                 </Hovedknapp>
-                <LenkepanelBase href="#" border={true}>
+                <LenkepanelBase href={'' /* TODO */} border={true}>
                     <div>
                         <Undertittel className="lenkepanel__heading">
                             <FormattedMessage id="forside.inperson.title" />
