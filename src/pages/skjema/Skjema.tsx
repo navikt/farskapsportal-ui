@@ -28,7 +28,7 @@ function Skjema() {
                             return <Redirect to={`/${language}${Path.Oversikt}`} />;
                         }
 
-                        return <MorSkjema barn={userInfo.fnrNyligFoedteBarnUtenRegistrertFar} />;
+                        return <MorSkjema />;
                     }
 
                     // TODO: handle foreldrerolle not Far or Mor

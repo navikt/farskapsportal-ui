@@ -1,6 +1,7 @@
 import Page from 'components/page/Page';
 import WithUserInfo from 'store/providers/WithUserInfo';
 import InfoPanel from './info-panel/InfoPanel';
+import BarnUtenErklaering from './BarnUtenErklaering';
 import FarErklaeringer from './FarErklaeringer';
 import MorErklaeringer from './MorErklaeringer';
 import ToSkjemaButton from './ToSkjemaButton';
@@ -14,6 +15,7 @@ function Oversikt() {
                 {(userInfo) => (
                     <div className="Oversikt">
                         <InfoPanel userInfo={userInfo} />
+                        <BarnUtenErklaering userInfo={userInfo} />
                         <MorErklaeringer userInfo={userInfo} />
                         <FarErklaeringer userInfo={userInfo} />
                         <ToSkjemaButton userInfo={userInfo} />

@@ -1,0 +1,39 @@
+{
+  "kanOppretteFarskapserklaering": true,
+  "gyldigForelderrolle": true,
+  "forelderrolle": "MOR",
+  "farsVentendeFarskapserklaeringer": null,
+  "morsVentendeFarskapserklaeringer": [
+    {
+      "barn": {
+        "termindato": null,
+        "foedselsnummer": "12345678903"
+      },
+      "mor": {
+        "forelderRolle": "MOR",
+        "foedselsnummer": "12345678901",
+        "fornavn": "Kari",
+        "mellomnavn": null,
+        "etternavn": "Nordmann"
+      },
+      "far": {
+        "forelderRolle": "FAR",
+        "foedselsnummer": "12345678902",
+        "fornavn": "Ola",
+        "mellomnavn": null,
+        "etternavn": "Nordmann"
+      },
+      "dokument": {
+        "dokumentnavn": null,
+        "innhold": null,
+        "dokumentStatusUrl": null,
+        "padesUrl": null,
+        "redirectUrlMor": "https://foo.bar",
+        "redirectUrlFar": null,
+        "signertAvMor": null,
+        "signertAvFar": null
+      }
+    }
+  ],
+  "fnrNyligFoedteBarnUtenRegistrertFar": ["12345678903", "12345678904"]
+}

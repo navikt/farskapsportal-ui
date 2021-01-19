@@ -1,13 +1,14 @@
+import { Link } from 'react-router-dom';
 import { FormattedDate, FormattedMessage } from 'react-intl';
 import { EtikettFokus } from 'nav-frontend-etiketter';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 
+import { useStore } from 'store/Context';
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
-import { useNavigateTo } from 'utils/hooks/useNavigateTo';
 import { getNameFromForelder } from 'utils/name';
 
 interface FarErklaeringerProps {
@@ -36,7 +37,7 @@ interface ErklaeringLinkPanelProps {
 }
 
 function ErklaeringLinkPanel({ erklaering, isFar }: ErklaeringLinkPanelProps) {
-    const navigateTo = useNavigateTo();
+    const [{ language }] = useStore();
 
     if (!erklaering.barn || !erklaering.dokument) {
         // TODO: handle
@@ -44,13 +45,7 @@ function ErklaeringLinkPanel({ erklaering, isFar }: ErklaeringLinkPanelProps) {
         return null;
     }
 
-    const handleClick = () => {
-        if (isFar) {
-            navigateTo(Path.Skjema);
-        } else {
-            navigateTo(Path.Kvittering);
-        }
-    };
+    const linkPath = `/${language}${isFar ? Path.Skjema : Path.Kvittering}`;
 
     const renderForelder = () =>
         isFar ? (
@@ -77,7 +72,11 @@ function ErklaeringLinkPanel({ erklaering, isFar }: ErklaeringLinkPanelProps) {
         );
 
     return (
-        <LenkepanelBase onClick={handleClick} border={true}>
+        <LenkepanelBase
+            href=""
+            linkCreator={(props) => <Link {...props} to={linkPath} />}
+            border={true}
+        >
             <div>
                 <Systemtittel className="lenkepanel__heading" tag="h3">
                     <FormattedMessage id="oversikt.erklaeringer.link.title" />

@@ -4,7 +4,6 @@ import { Element, Undertittel, Normaltekst } from 'nav-frontend-typografi';
 import './BarnPresentation.less';
 
 interface BarnPresentationProps {
-    isSingleChild: boolean;
     foedselsnummer: string | null;
     termindato: string | null;
 }
@@ -17,11 +16,6 @@ function BarnPresentation(props: BarnPresentationProps) {
             </Undertittel>
             {props.foedselsnummer && (
                 <>
-                    {props.isSingleChild && (
-                        <Normaltekst>
-                            <FormattedMessage id="mor.skjema.barn.presentation.single-child.label" />
-                        </Normaltekst>
-                    )}
                     <Normaltekst>
                         <FormattedMessage id="mor.skjema.barn.presentation.foedselsnummer.label" />
                     </Normaltekst>

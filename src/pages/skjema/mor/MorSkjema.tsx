@@ -9,10 +9,10 @@ import { AlertError } from 'types/error';
 import { StepStatus } from 'types/form';
 import { Path } from 'types/path';
 import { useNavigateTo } from 'utils/hooks/useNavigateTo';
+import { useQuery } from 'utils/hooks/useQuery';
 import { getMessage } from 'utils/intl';
 import BekreftForm from './forms/BekreftForm';
 import FarForm, { FarFormInput } from './forms/FarForm';
-import SelectBarnForm, { SelectBarnFormInput } from './forms/SelectBarnForm';
 import TermindatoForm, { TermindatoFormInput } from './forms/TermindatoForm';
 import BarnPresentation from './presentation/BarnPresentation';
 import FarPresentation from './presentation/FarPresentation';
@@ -81,12 +81,11 @@ const reducer = (state: StateType, action: ActionType): StateType => {
     }
 };
 
-interface MorSkjemaProps {
-    barn: string[] | null;
-}
-
-function MorSkjema(props: MorSkjemaProps) {
-    const singleChildFoedselsnummer = props.barn?.length === 1 ? props.barn[0] : undefined;
+function MorSkjema() {
+    const query = useQuery();
+    // TODO: check if foedselsnummer is correct?
+    // TODO: can we use foedselsnummer in url?
+    const barnFoedselsnummer = query.get('fnr');
 
     const intl = useIntl();
     const navigateTo = useNavigateTo();
@@ -95,7 +94,7 @@ function MorSkjema(props: MorSkjemaProps) {
         erklaering: {
             barn: {
                 termindato: null,
-                foedselsnummer: singleChildFoedselsnummer ?? null,
+                foedselsnummer: barnFoedselsnummer,
             },
             opplysningerOmFar: {
                 foedselsnummer: '',
@@ -103,8 +102,8 @@ function MorSkjema(props: MorSkjemaProps) {
             },
         },
         stepStatus: {
-            barn: singleChildFoedselsnummer ? StepStatus.Done : StepStatus.Active,
-            far: singleChildFoedselsnummer ? StepStatus.Active : StepStatus.NotStarted,
+            barn: barnFoedselsnummer ? StepStatus.Done : StepStatus.Active,
+            far: barnFoedselsnummer ? StepStatus.Active : StepStatus.NotStarted,
         },
         submit: {
             pending: false,
@@ -128,13 +127,6 @@ function MorSkjema(props: MorSkjemaProps) {
             .catch((error: AlertError) => {
                 dispatch({ type: 'SUBMIT_FAILURE', payload: error });
             });
-    };
-
-    const onSubmitSelectBarnForm = (data: SelectBarnFormInput) => {
-        dispatch({
-            type: 'SET_BARN',
-            payload: { foedselsnummer: data.foedselsnummer, termindato: null },
-        });
     };
 
     const onSubmitTermindatoForm = (data: TermindatoFormInput) => {
@@ -161,30 +153,20 @@ function MorSkjema(props: MorSkjemaProps) {
             <SkjemaStep
                 stepNumber={1}
                 formComponent={
-                    props.barn?.length ? (
-                        <SelectBarnForm
-                            defaultFoedselsnummer={state.erklaering.barn.foedselsnummer}
-                            barn={props.barn}
-                            onSubmit={onSubmitSelectBarnForm}
-                            onCancel={onCancel}
-                        />
-                    ) : (
-                        <TermindatoForm
-                            defaultTermindato={state.erklaering.barn.termindato}
-                            onSubmit={onSubmitTermindatoForm}
-                            onCancel={onCancel}
-                        />
-                    )
+                    <TermindatoForm
+                        defaultTermindato={state.erklaering.barn.termindato}
+                        onSubmit={onSubmitTermindatoForm}
+                        onCancel={onCancel}
+                    />
                 }
                 presentationComponent={
                     <BarnPresentation
-                        isSingleChild={!!singleChildFoedselsnummer}
                         foedselsnummer={state.erklaering.barn.foedselsnummer}
                         termindato={state.erklaering.barn.termindato}
                     />
                 }
                 status={state.stepStatus.barn}
-                onChange={singleChildFoedselsnummer ? undefined : onEndreBarnForm}
+                onChange={barnFoedselsnummer ? undefined : onEndreBarnForm}
                 isDisabled={state.submit.pending}
             />
             <SkjemaStep

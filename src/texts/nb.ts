@@ -39,9 +39,13 @@ export default {
     'forside.3.ol.2': 'Far bekrefter farskapserklæring på dittnav:',
     'forside.3.ol.2.li.1': 'Far logger inn og kontrollerer opplysningene.',
     'forside.3.ol.2.li.2': 'Far signerer farskapserklæringen.',
-    'forside.login': 'Fyll ut erklæring av farskap',
+    'forside.login': 'Logg inn',
     'forside.inperson.title': 'Erklære farskapet gjennom oppmøte',
     'forside.inperson.desc': 'Hvis dere ikke oppfyller kravene til å erklære farskapet elektronisk må dere erklære farskapet ved å møte opp.',
+
+    'oversikt.barn.link.title': 'Opprett farskapserklæring for barn',
+    'oversikt.barn.link.foedselsnummer': 'Fødselsnummer: ',
+    'oversikt.barn.link.status': 'Dette barnet har ikke en registrert far i Folkeregisteret',
 
     'oversikt.erklaeringer.link.title': 'Farskapserklæring',
     'oversikt.erklaeringer.link.termindato': 'Termindato: ',
@@ -64,7 +68,6 @@ export default {
     'mor.skjema.barn.form.termindato.validation.minDate': 'Kan ikke være mer enn tre uker tilbake i tid',
     'mor.skjema.barn.form.termindato.validation.maxDate': 'Datoen er mer enn 40 uker fram i tid. Vent til uke 22 av svangerskapet med å bekrefte far.',
     'mor.skjema.barn.form.termindato.validation.beforeWeek22': 'Du er i uke {weekNr} i svangerskapet. Vent til uke 22 med å bekrefte far.',
-    'mor.skjema.barn.presentation.single-child.label': 'Vi har funnet følgende barn fra folkeregisteret',
     'mor.skjema.barn.presentation.foedselsnummer.label': 'Fødselsnummer:',
     'mor.skjema.barn.presentation.termindato.label': 'Termindato:',
     'mor.skjema.far.title': 'Far til barn(a)',

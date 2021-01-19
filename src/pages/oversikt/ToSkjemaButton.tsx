@@ -12,7 +12,10 @@ interface ToSkjemaButtonProps {
 function ToSkjemaButton({ userInfo }: ToSkjemaButtonProps) {
     const navigateTo = useNavigateTo();
 
-    if (!userInfo.kanOppretteFarskapserklaering) {
+    if (
+        !userInfo.kanOppretteFarskapserklaering ||
+        userInfo.fnrNyligFoedteBarnUtenRegistrertFar?.length
+    ) {
         return null;
     }
 
