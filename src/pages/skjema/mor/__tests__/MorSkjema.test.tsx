@@ -7,7 +7,7 @@ import MorSkjema from '../MorSkjema';
 jest.mock('api/api', () => ({ controlFatherInfo: () => Promise.resolve() }));
 
 test('should display steps correctly', async () => {
-    render(<MorSkjema barn={null} />, {
+    render(<MorSkjema />, {
         store: {
             userInfo: {
                 status: 'SUCCESS',
