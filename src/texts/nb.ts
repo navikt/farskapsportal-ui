@@ -18,6 +18,16 @@ export default {
     'header.skjema': 'Opprett farskapserklæring',
     'header.kvittering': 'Kvittering',
 
+    'farskapserklaering.title': 'Farskapserklæring',
+    'farskapserklaering.aboutChildren': 'Gjelder barn',
+    'farskapserklaering.expectingChildren': 'Venter barn',
+    'farskapserklaering.termindato': 'Termindato',
+    'farskapserklaering.bornChildren': 'Født(e) barn',
+    'farskapserklaering.foedselsnummer': 'Fødselsnummer',
+    'farskapserklaering.parents': 'Foreldre',
+    'farskapserklaering.mother': 'Mor',
+    'farskapserklaering.father': 'Far',
+
     'forside.1.title': 'Hva innebærer det å erklære farskap?',
     'forside.1.desc': 'Hvis far og mor er gift, blir far automatisk registrert som far til barnet. Hvis far og mor ikke er gift må farskapet erklæres, helst innen barnets fødsel. Å erklære farskap gir far både rettigheter og plikter til barnet, som for eksempel:',
     'forside.1.li.1': 'Arverett',
@@ -83,5 +93,13 @@ export default {
     'mor.skjema.confirm.title': 'Bekreft farskap',
     'mor.skjema.confirm.form.validation.required': 'Du må bekrefte før søknaden kan sendes inn.',
     'mor.skjema.confirm.form.farCorrect.label': 'Jeg godkjenner at opplysningene om far er korrekt.',
-    'mor.skjema.confirm.form.cannotWithdraw.label': 'Jeg er kjent med at denne bekreftelsen ikke kan trekkes tilbake på et senere tidspunkt.'
+    'mor.skjema.confirm.form.cannotWithdraw.label': 'Jeg er kjent med at denne bekreftelsen ikke kan trekkes tilbake på et senere tidspunkt.',
+    'mor.skjema.confirm.form.liveTogether.label': 'Jeg bor sammen med barnets far.',
+
+    'far.skjema.validation.required': 'Du må bekrefte før søknaden kan sendes inn.',
+    'far.skjema.readAndUnderstood.label': 'Jeg har lest og forstått hva farksapserklæringen innebærer.',
+    'far.skjema.cannotWithdraw.label': 'Jeg er kjent med at denne bekreftelsen ikke kan trekkes tilbake på et senere tidspunkt.',
+    'far.skjema.liveTogether.label': 'Jeg bor sammen med barnets mor.',
+    'far.skjema.buttons.submit': 'Signer farskapserklæring',
+    'far.skjema.buttons.cancel': 'Avbryt',
 }

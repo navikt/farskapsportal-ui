@@ -1,8 +1,9 @@
-import { FormattedDate, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { EtikettFokus } from 'nav-frontend-etiketter';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 
+import DatePresentation from 'components/date-presentation/DatePresentation';
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { UserInfo } from 'types/user';
 
@@ -44,12 +45,7 @@ function ErklaeringLinkPanel({ erklaering }: ErklaeringLinkPanelProps) {
                     {erklaering.barn.termindato ? (
                         <>
                             <FormattedMessage id="oversikt.erklaeringer.link.termindato" />
-                            <FormattedDate
-                                value={erklaering.barn.termindato}
-                                year="numeric"
-                                month="long"
-                                day="numeric"
-                            />
+                            <DatePresentation date={erklaering.barn.termindato} />
                         </>
                     ) : (
                         <>

@@ -11,7 +11,7 @@ import { Path } from 'types/path';
 import { useNavigateTo } from 'utils/hooks/useNavigateTo';
 import { useQuery } from 'utils/hooks/useQuery';
 import { getMessage } from 'utils/intl';
-import BekreftForm from './forms/BekreftForm';
+import MorBekreftForm from './forms/MorBekreftForm';
 import FarForm, { FarFormInput } from './forms/FarForm';
 import TermindatoForm, { TermindatoFormInput } from './forms/TermindatoForm';
 import BarnPresentation from './presentation/BarnPresentation';
@@ -193,7 +193,7 @@ function MorSkjema() {
             <SkjemaStep
                 stepNumber={3}
                 formComponent={
-                    <BekreftForm
+                    <MorBekreftForm
                         isPending={state.submit.pending}
                         onSubmit={onSubmit}
                         onCancel={onCancel}

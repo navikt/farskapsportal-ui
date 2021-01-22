@@ -22,7 +22,7 @@ function Skjema() {
             <WithUserInfo>
                 {(userInfo) => {
                     if (userInfo.forelderrolle === Foreldrerolle.Far) {
-                        return <FarSkjema />;
+                        return <FarSkjema userInfo={userInfo} />;
                     } else if (userInfo.forelderrolle === Foreldrerolle.Mor) {
                         if (!userInfo.kanOppretteFarskapserklaering) {
                             return <Redirect to={`/${language}${Path.Oversikt}`} />;

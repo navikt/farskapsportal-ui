@@ -3,8 +3,8 @@ import fetchMock from 'fetch-mock';
 // import user from './get/mor.json';
 // import user from './get/mor_child.json';
 // import user from './get/mor_twins.json';
-import user from './get/mor_twins_one_awaiting_far.json';
-// import user from './get/far_unsigned.json';
+// import user from './get/mor_twins_one_awaiting_far.json';
+import user from './get/far_unsigned.json';
 
 fetchMock.config.fallbackToNetwork = true;
 

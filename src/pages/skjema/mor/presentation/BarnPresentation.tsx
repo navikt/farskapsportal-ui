@@ -1,5 +1,7 @@
-import { FormattedMessage, FormattedDate } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { Element, Undertittel, Normaltekst } from 'nav-frontend-typografi';
+
+import DatePresentation from 'components/date-presentation/DatePresentation';
 
 import './BarnPresentation.less';
 
@@ -28,12 +30,7 @@ function BarnPresentation(props: BarnPresentationProps) {
                         <FormattedMessage id="mor.skjema.barn.presentation.termindato.label" />
                     </Normaltekst>
                     <Element>
-                        <FormattedDate
-                            value={props.termindato}
-                            year="numeric"
-                            month="long"
-                            day="numeric"
-                        />
+                        <DatePresentation date={props.termindato} />
                     </Element>
                 </>
             )}

@@ -1,0 +1,36 @@
+@import (reference) 'styles/assets';
+
+.FarskapserklaeringPresentation {
+  padding: 2rem;
+
+  &__title {
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .typo-undertittel {
+    margin-bottom: 1rem;
+  }
+
+  &__barn {
+    margin-bottom: 2rem;
+  }
+
+  &__foreldre {
+    display: flex;
+    flex-direction: column;
+
+    &__mor {
+      margin-bottom: 1rem;
+    }
+
+    @media (min-width: @mobile-breakpoint) {
+      flex-direction: row;
+
+      &__mor {
+        margin-right: 1rem;
+        margin-bottom: 0;
+      }
+    }
+  }
+}

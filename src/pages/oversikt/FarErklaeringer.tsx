@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
-import { FormattedDate, FormattedMessage } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { EtikettFokus } from 'nav-frontend-etiketter';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
 import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 
+import DatePresentation from 'components/date-presentation/DatePresentation';
 import { useStore } from 'store/Context';
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { Foreldrerolle } from 'types/foreldrerolle';
@@ -25,7 +26,12 @@ function FarErklaeringer({ userInfo }: FarErklaeringerProps) {
     return (
         <>
             {userInfo.farsVentendeFarskapserklaeringer.map((erklaering, index) => (
-                <ErklaeringLinkPanel key={index} erklaering={erklaering} isFar={isFar} />
+                <ErklaeringLinkPanel
+                    key={index}
+                    erklaering={erklaering}
+                    isFar={isFar}
+                    index={index}
+                />
             ))}
         </>
     );
@@ -34,9 +40,10 @@ function FarErklaeringer({ userInfo }: FarErklaeringerProps) {
 interface ErklaeringLinkPanelProps {
     erklaering: Farskapserklaering;
     isFar: boolean;
+    index: number; // TODO: remove. Replace with ID when available from API
 }
 
-function ErklaeringLinkPanel({ erklaering, isFar }: ErklaeringLinkPanelProps) {
+function ErklaeringLinkPanel({ erklaering, isFar, index }: ErklaeringLinkPanelProps) {
     const [{ language }] = useStore();
 
     if (!erklaering.barn || !erklaering.dokument) {
@@ -45,7 +52,7 @@ function ErklaeringLinkPanel({ erklaering, isFar }: ErklaeringLinkPanelProps) {
         return null;
     }
 
-    const linkPath = `/${language}${isFar ? Path.Skjema : Path.Kvittering}`;
+    const linkPath = `/${language}${isFar ? `${Path.Skjema}?id=${index}` : Path.Kvittering}`;
 
     const renderForelder = () =>
         isFar ? (
@@ -86,12 +93,7 @@ function ErklaeringLinkPanel({ erklaering, isFar }: ErklaeringLinkPanelProps) {
                     {erklaering.barn.termindato ? (
                         <>
                             <FormattedMessage id="oversikt.erklaeringer.link.termindato" />
-                            <FormattedDate
-                                value={erklaering.barn.termindato}
-                                year="numeric"
-                                month="long"
-                                day="numeric"
-                            />
+                            <DatePresentation date={erklaering.barn.termindato} />
                         </>
                     ) : (
                         <>
