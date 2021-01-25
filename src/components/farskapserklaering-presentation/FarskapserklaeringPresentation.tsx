@@ -16,7 +16,7 @@ function FarskapserklaeringPresentation({
     farskapserklaering,
 }: FarskapserklaeringPresentationProps) {
     return (
-        <Panel className="FarskapserklaeringPresentation">
+        <Panel className="FarskapserklaeringPresentation" border={true}>
             <Innholdstittel tag="h2" className="FarskapserklaeringPresentation__title">
                 <FormattedMessage id="farskapserklaering.title" />
             </Innholdstittel>

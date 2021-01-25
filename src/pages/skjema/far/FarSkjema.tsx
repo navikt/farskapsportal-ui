@@ -1,3 +1,5 @@
+import Panel from 'nav-frontend-paneler';
+
 import FarskapserklaeringPresentation from 'components/farskapserklaering-presentation/FarskapserklaeringPresentation';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
@@ -38,10 +40,10 @@ function FarSkjema({ userInfo }: FarSkjemaProps) {
     };
 
     return (
-        <div className="FarSkjema">
+        <Panel className="FarSkjema">
             <FarskapserklaeringPresentation farskapserklaering={farskapserklaering} />
             <FarBekreftForm onSubmit={onSubmit} onCancel={onCancel} />
-        </div>
+        </Panel>
     );
 }
 
