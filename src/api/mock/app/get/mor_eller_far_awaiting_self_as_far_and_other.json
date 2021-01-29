@@ -4,19 +4,20 @@
   "forelderrolle": "MOR_ELLER_FAR",
   "farsVentendeFarskapserklaeringer": [
     {
+      "idFarskapserklaering": 0,
       "barn": {
         "termindato": "2021-04-01",
         "foedselsnummer": null
       },
       "mor": {
-        "forelderRolle": "MOR_ELLER_FAR",
+        "forelderrolle": "MOR_ELLER_FAR",
         "foedselsnummer": "12345678901",
         "fornavn": "Kåre",
         "mellomnavn": null,
         "etternavn": "Nordmann"
       },
       "far": {
-        "forelderRolle": "FAR",
+        "forelderrolle": "FAR",
         "foedselsnummer": "12345678902",
         "fornavn": "Ola",
         "mellomnavn": null,
@@ -34,19 +35,20 @@
       }
     },
     {
+      "idFarskapserklaering": 1,
       "barn": {
         "termindato": "2021-05-01",
         "foedselsnummer": null
       },
       "mor": {
-        "forelderRolle": "MOR_ELLER_FAR",
+        "forelderrolle": "MOR_ELLER_FAR",
         "foedselsnummer": "12345678905",
         "fornavn": "Kari",
         "mellomnavn": null,
         "etternavn": "Nordmann"
       },
       "far": {
-        "forelderRolle": "MOR_ELLER_FAR",
+        "forelderrolle": "MOR_ELLER_FAR",
         "foedselsnummer": "12345678901",
         "fornavn": "Kåre",
         "mellomnavn": null,

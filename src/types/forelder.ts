@@ -1,9 +1,9 @@
 import { Foreldrerolle } from './foreldrerolle';
 
 export interface Forelder {
-    forelderRolle: Foreldrerolle | null;
+    etternavn: string;
     foedselsnummer: string;
+    forelderrolle: Foreldrerolle | null;
     fornavn: string;
     mellomnavn: string | null;
-    etternavn: string;
 }

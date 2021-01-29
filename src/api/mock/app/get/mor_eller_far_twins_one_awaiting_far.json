@@ -4,19 +4,20 @@
   "forelderrolle": "MOR_ELLER_FAR",
   "farsVentendeFarskapserklaeringer": [
     {
+      "idFarskapserklaering": 0,
       "barn": {
         "termindato": null,
         "foedselsnummer": "12345678903"
       },
       "mor": {
-        "forelderRolle": "MOR_ELLER_FAR",
+        "forelderrolle": "MOR_ELLER_FAR",
         "foedselsnummer": "12345678901",
         "fornavn": "Kåre",
         "mellomnavn": null,
         "etternavn": "Nordmann"
       },
       "far": {
-        "forelderRolle": "FAR",
+        "forelderrolle": "FAR",
         "foedselsnummer": "12345678902",
         "fornavn": "Ola",
         "mellomnavn": null,

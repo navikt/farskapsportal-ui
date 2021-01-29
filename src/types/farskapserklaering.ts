@@ -4,7 +4,8 @@ import { Forelder } from './forelder';
 
 export interface Farskapserklaering {
     barn: Barn | null;
-    mor: Forelder | null;
-    far: Forelder | null;
     dokument: Dokument | null;
+    far: Forelder | null;
+    idFarskapserklaering: number;
+    mor: Forelder | null;
 }

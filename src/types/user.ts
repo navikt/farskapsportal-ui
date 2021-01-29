@@ -8,10 +8,10 @@ export type FetchUserInfo =
     | { status: 'FAILURE'; error: HTTPError };
 
 export interface UserInfo {
-    kanOppretteFarskapserklaering: boolean;
-    gyldigForelderrolle: boolean;
-    forelderrolle: Foreldrerolle;
     farsVentendeFarskapserklaeringer: Farskapserklaering[] | null;
-    morsVentendeFarskapserklaeringer: Farskapserklaering[] | null;
     fnrNyligFoedteBarnUtenRegistrertFar: string[] | null;
+    forelderrolle: Foreldrerolle;
+    gyldigForelderrolle: boolean;
+    kanOppretteFarskapserklaering: boolean;
+    morsVentendeFarskapserklaeringer: Farskapserklaering[] | null;
 }

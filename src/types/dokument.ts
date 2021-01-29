@@ -1,10 +1,10 @@
 export interface Dokument {
+    dokumentStatusUrl: string | null;
     dokumentnavn: string | null;
     innhold: string | null;
-    dokumentStatusUrl: string | null;
     padesUrl: string | null;
-    redirectUrlMor: string | null;
     redirectUrlFar: string | null;
-    signertAvMor: string | null;
+    redirectUrlMor: string | null;
     signertAvFar: string | null;
+    signertAvMor: string | null;
 }

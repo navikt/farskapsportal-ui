@@ -23,10 +23,12 @@ function FarSkjema({ userInfo }: FarSkjemaProps) {
         return null;
     }
 
-    // TODO: use ID when available from API
-    const farskapserklaering = userInfo.farsVentendeFarskapserklaeringer?.[parseInt(id)];
+    const farskapserklaering = userInfo.farsVentendeFarskapserklaeringer?.find(
+        (erklaering) => erklaering.idFarskapserklaering === parseInt(id)
+    );
 
     if (!farskapserklaering) {
+        // TODO: handle missing farskapserklaering
         return null;
     }
 

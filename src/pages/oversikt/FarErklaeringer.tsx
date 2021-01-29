@@ -25,12 +25,11 @@ function FarErklaeringer({ userInfo }: FarErklaeringerProps) {
 
     return (
         <>
-            {userInfo.farsVentendeFarskapserklaeringer.map((erklaering, index) => (
+            {userInfo.farsVentendeFarskapserklaeringer.map((erklaering) => (
                 <ErklaeringLinkPanel
-                    key={index}
+                    key={erklaering.idFarskapserklaering}
                     erklaering={erklaering}
                     isFar={isFar}
-                    index={index}
                 />
             ))}
         </>
@@ -40,10 +39,9 @@ function FarErklaeringer({ userInfo }: FarErklaeringerProps) {
 interface ErklaeringLinkPanelProps {
     erklaering: Farskapserklaering;
     isFar: boolean;
-    index: number; // TODO: remove. Replace with ID when available from API
 }
 
-function ErklaeringLinkPanel({ erklaering, isFar, index }: ErklaeringLinkPanelProps) {
+function ErklaeringLinkPanel({ erklaering, isFar }: ErklaeringLinkPanelProps) {
     const [{ language }] = useStore();
 
     if (!erklaering.barn || !erklaering.dokument) {
@@ -52,7 +50,9 @@ function ErklaeringLinkPanel({ erklaering, isFar, index }: ErklaeringLinkPanelPr
         return null;
     }
 
-    const linkPath = `/${language}${isFar ? `${Path.Skjema}?id=${index}` : Path.Kvittering}`;
+    const linkPath = `/${language}${
+        isFar ? `${Path.Skjema}?id=${erklaering.idFarskapserklaering}` : Path.Kvittering
+    }`;
 
     const renderForelder = () =>
         isFar ? (
