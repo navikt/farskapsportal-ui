@@ -74,6 +74,7 @@ const checkAuthPostJson = (
     })
         .then(checkAuth)
         .then(checkHttpError)
+        .then(parseJson)
         .catch((err: string & AlertError) => {
             const error = {
                 code: err.code || 404,
