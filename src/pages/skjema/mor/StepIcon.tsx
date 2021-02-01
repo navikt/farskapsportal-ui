@@ -1,4 +1,5 @@
-import { ReactComponent as CircleCheckSvg } from 'assets/icons/circle-check.svg';
+import { SuccessFilled } from '@navikt/ds-icons';
+
 import { StepStatus } from 'types/form';
 
 import './StepIcon.less';
@@ -12,7 +13,7 @@ function StepIcon(props: StepIconProps) {
     const renderIcon = () => {
         switch (props.status) {
             case StepStatus.Done:
-                return <CircleCheckSvg />;
+                return <SuccessFilled aria-label="OK icon" role="img" focusable={false} />;
             case StepStatus.Active:
                 return <div className="StepIcon__active">{props.stepNumber}</div>;
             case StepStatus.NotStarted:

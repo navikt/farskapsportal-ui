@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import Lenke from 'nav-frontend-lenker';
-
-import { ReactComponent as ExternalSvg } from 'assets/icons/external.svg';
+import { ExternalLink as ExternalSvg } from '@navikt/ds-icons';
 
 interface ExternalLinkProps {
     href: string;
