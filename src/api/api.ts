@@ -115,6 +115,10 @@ const checkHttpError = async (response: Response): Promise<Response> => {
         return response;
     } else {
         const responseErrorData = await parseJson(response);
+        console.log('responseErrorData');
+        console.log(responseErrorData);
+        console.log('response');
+        console.log(response);
         const error = {
             code: response.status,
             text: response.headers.get('Warning')?.[0] ?? responseErrorData.body,
