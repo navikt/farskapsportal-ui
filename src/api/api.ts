@@ -117,7 +117,7 @@ const checkHttpError = async (response: Response): Promise<Response> => {
         const responseErrorData = await parseJson(response);
         const error = {
             code: response.status,
-            text: responseErrorData.body,
+            text: responseErrorData.headers.Warning?.[0] ?? responseErrorData.body,
         };
         throw error;
     }
