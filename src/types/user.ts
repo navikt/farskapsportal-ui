@@ -1,5 +1,6 @@
 import { HTTPError } from './error';
 import { Farskapserklaering } from './farskapserklaering';
+import { Feilkode } from './feilkode';
 import { Foreldrerolle } from './foreldrerolle';
 
 export type FetchUserInfo =
@@ -9,6 +10,7 @@ export type FetchUserInfo =
 
 export interface UserInfo {
     farsVentendeFarskapserklaeringer: Farskapserklaering[] | null;
+    feilkodeTilgang: Feilkode | null;
     fnrNyligFoedteBarnUtenRegistrertFar: string[] | null;
     forelderrolle: Foreldrerolle;
     gyldigForelderrolle: boolean;

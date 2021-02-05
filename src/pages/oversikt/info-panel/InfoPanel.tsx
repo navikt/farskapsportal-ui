@@ -2,10 +2,11 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import Veilederpanel from 'nav-frontend-veilederpanel';
 
 import { ReactComponent as VeilederSvg } from 'assets/icons/veileder.svg';
+import { Feilkode } from 'types/feilkode';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { UserInfo } from 'types/user';
-
-// import MorGiftPartner from './content/MorGiftPartner';
+import IkkeMyndig from './content/IkkeMyndig';
+import MorGiftPartner from './content/MorGiftPartner';
 
 interface InfoPanelProps {
     userInfo: UserInfo;
@@ -13,10 +14,18 @@ interface InfoPanelProps {
 
 function InfoPanel({ userInfo }: InfoPanelProps) {
     const renderContent = () => {
+        if (userInfo.feilkodeTilgang === Feilkode.IkkeMyndig) {
+            return <IkkeMyndig />;
+        }
+
         if (userInfo.forelderrolle === Foreldrerolle.Mor) {
-            // if gift/partner
-            // return <MorGiftPartner />
-            //
+            if (
+                userInfo.feilkodeTilgang === Feilkode.MorSivilstandGift ||
+                userInfo.feilkodeTilgang === Feilkode.MorSivilstandRegistrertPartner
+            ) {
+                return <MorGiftPartner />;
+            }
+
             // if ikke signert
             // if (!!userInfo.morsVentendeFarskapserklaeringer?.length)
             // return <MorNotSigned userInfo={userInfo} />

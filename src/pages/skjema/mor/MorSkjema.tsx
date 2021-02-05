@@ -207,7 +207,9 @@ function MorSkjema() {
                         : StepStatus.NotStarted
                 }
             />
-            {state.submit.error && <Error error={state.submit.error} />}
+            <div aria-live="polite">
+                {state.submit.error && <Error error={state.submit.error} />}
+            </div>
         </div>
     );
 }

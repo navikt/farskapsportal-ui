@@ -150,7 +150,7 @@ function FarForm(props: FarFormProps) {
                 onCancel={props.onCancel}
                 submitSpinner={state.pending}
             />
-            {state.apiError && <Error error={state.apiError} />}
+            <div aria-live="polite">{state.apiError && <Error error={state.apiError} />}</div>
         </form>
     );
 }
