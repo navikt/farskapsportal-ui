@@ -1,39 +1,9 @@
 {
+  "feilkodeTilgang": null,
   "kanOppretteFarskapserklaering": true,
   "gyldigForelderrolle": true,
   "forelderrolle": "MOR_ELLER_FAR",
-  "farsVentendeFarskapserklaeringer": [
-    {
-      "idFarskapserklaering": 0,
-      "barn": {
-        "termindato": "2021-04-01",
-        "foedselsnummer": null
-      },
-      "mor": {
-        "forelderrolle": "MOR_ELLER_FAR",
-        "foedselsnummer": "12345678901",
-        "fornavn": "Kåre",
-        "mellomnavn": null,
-        "etternavn": "Nordmann"
-      },
-      "far": {
-        "forelderrolle": "FAR",
-        "foedselsnummer": "12345678902",
-        "fornavn": "Ola",
-        "mellomnavn": null,
-        "etternavn": "Nordmann"
-      },
-      "dokument": {
-        "dokumentnavn": null,
-        "innhold": null,
-        "dokumentStatusUrl": null,
-        "padesUrl": null,
-        "redirectUrlMor": "https://foo.bar",
-        "redirectUrlFar": null,
-        "signertAvMor": "2020-12-31",
-        "signertAvFar": null
-      }
-    },
+  "avventerSigneringBruker": [
     {
       "idFarskapserklaering": 1,
       "barn": {
@@ -66,6 +36,39 @@
       }
     }
   ],
-  "morsVentendeFarskapserklaeringer": null,
+  "avventerSigneringMotpart": [
+    {
+      "idFarskapserklaering": 0,
+      "barn": {
+        "termindato": "2021-04-01",
+        "foedselsnummer": null
+      },
+      "mor": {
+        "forelderrolle": "MOR_ELLER_FAR",
+        "foedselsnummer": "12345678901",
+        "fornavn": "Kåre",
+        "mellomnavn": null,
+        "etternavn": "Nordmann"
+      },
+      "far": {
+        "forelderrolle": "FAR",
+        "foedselsnummer": "12345678902",
+        "fornavn": "Ola",
+        "mellomnavn": null,
+        "etternavn": "Nordmann"
+      },
+      "dokument": {
+        "dokumentnavn": null,
+        "innhold": null,
+        "dokumentStatusUrl": null,
+        "padesUrl": null,
+        "redirectUrlMor": "https://foo.bar",
+        "redirectUrlFar": null,
+        "signertAvMor": "2020-12-31",
+        "signertAvFar": null
+      }
+    }
+  ],
+  "avventerRegistrering": null,
   "fnrNyligFoedteBarnUtenRegistrertFar": null
 }

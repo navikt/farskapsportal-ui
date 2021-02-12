@@ -1,11 +1,22 @@
 import fetchMock from 'fetch-mock';
 
+// import user from './get/far.json';
+// import user from './get/far_both_signed.json';
+// import user from './get/far_twins.json';
+// import user from './get/far_unsigned.json';
 import user from './get/mor.json';
+// import user from './get/mor_awaiting_far.json';
+// import user from './get/mor_both_signed.json';
 // import user from './get/mor_child.json';
+// import user from './get/mor_eller_far.json';
+// import user from './get/mor_eller_far_awaiting_self_as_far_and_other.json';
+// import user from './get/mor_eller_far_child.json';
+// import user from './get/mor_eller_far_twins_one_awaiting_far.json';
+// import user from './get/mor_eller_far_twins_one_unsigned.json';
 // import user from './get/mor_twins.json';
 // import user from './get/mor_twins_one_awaiting_far.json';
-// import user from './get/far_unsigned.json';
-// import user from './get/far_twins.json';
+// import user from './get/mor_twins_one_unsigned.json';
+// import user from './get/mor_unsigned.json';
 
 fetchMock.config.fallbackToNetwork = true;
 

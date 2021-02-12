@@ -15,15 +15,14 @@ interface FarSkjemaProps {
 
 function FarSkjema({ userInfo }: FarSkjemaProps) {
     const navigateTo = useNavigateTo();
-    const query = useQuery();
-    const id = query.get('id');
+    const id = useQuery().get('id');
 
     if (!id) {
         // TODO: handle missing id
         return null;
     }
 
-    const farskapserklaering = userInfo.farsVentendeFarskapserklaeringer?.find(
+    const farskapserklaering = userInfo.avventerSigneringBruker?.find(
         (erklaering) => erklaering.idFarskapserklaering === parseInt(id)
     );
 

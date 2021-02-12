@@ -1,9 +1,7 @@
+import { Normaltekst } from 'nav-frontend-typografi';
 import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router-dom';
-import { EtikettInfo } from 'nav-frontend-etiketter';
-import { LenkepanelBase } from 'nav-frontend-lenkepanel';
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 
+import LinkPanel from 'components/link-panel/LinkPanel';
 import { useStore } from 'store/Context';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
@@ -12,16 +10,22 @@ interface BarnUtenErklaeringProps {
     userInfo: UserInfo;
 }
 
-function BarnUtenErklaering({ userInfo }: BarnUtenErklaeringProps) {
-    const barnMedErklaering = (userInfo.morsVentendeFarskapserklaeringer ?? [])
-        .concat(userInfo.farsVentendeFarskapserklaeringer ?? [])
+const getBarnUtenErklaering = (userInfo: UserInfo): string[] => {
+    const barnMedErklaering = (userInfo.avventerSigneringBruker ?? [])
+        .concat(userInfo.avventerSigneringMotpart ?? [])
         .map((erklaering) => erklaering.barn?.foedselsnummer ?? '');
 
-    const barnUtenErklaering = userInfo.fnrNyligFoedteBarnUtenRegistrertFar?.filter(
-        (fnr) => !barnMedErklaering.includes(fnr)
+    return (
+        userInfo.fnrNyligFoedteBarnUtenRegistrertFar?.filter(
+            (fnr) => !barnMedErklaering.includes(fnr)
+        ) ?? []
     );
+};
 
-    if (!barnUtenErklaering?.length) {
+function BarnUtenErklaering({ userInfo }: BarnUtenErklaeringProps) {
+    const barnUtenErklaering = getBarnUtenErklaering(userInfo);
+
+    if (!barnUtenErklaering.length) {
         return null;
     }
 
@@ -37,27 +41,20 @@ function BarnUtenErklaering({ userInfo }: BarnUtenErklaeringProps) {
 function BarnLinkPanel({ foedselsnummer }: { foedselsnummer: string }) {
     const [{ language }] = useStore();
 
+    const linkPath = `/${language}${Path.Skjema}?fnr=${foedselsnummer}`;
+
     return (
-        <LenkepanelBase
-            href=""
-            linkCreator={(props) => (
-                <Link {...props} to={`/${language}${Path.Skjema}?fnr=${foedselsnummer}`} />
-            )}
-            border={true}
+        <LinkPanel
+            linkPath={linkPath}
+            titleId="oversikt.barn.link.title"
+            etikettType="info"
+            etikettId="oversikt.barn.link.status"
         >
-            <div>
-                <Systemtittel className="lenkepanel__heading" tag="h3">
-                    <FormattedMessage id="oversikt.barn.link.title" />
-                </Systemtittel>
-                <Normaltekst>
-                    <FormattedMessage id="oversikt.barn.link.foedselsnummer" />
-                    {foedselsnummer}
-                </Normaltekst>
-                <EtikettInfo>
-                    <FormattedMessage id="oversikt.barn.link.status" />
-                </EtikettInfo>
-            </div>
-        </LenkepanelBase>
+            <Normaltekst>
+                <FormattedMessage id="oversikt.barn.link.foedselsnummer" />
+                {foedselsnummer}
+            </Normaltekst>
+        </LinkPanel>
     );
 }
 

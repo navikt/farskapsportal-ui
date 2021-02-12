@@ -59,7 +59,7 @@ export const controlFatherInfo = (data: OutboundFather) => {
 export const opprettFarskapserklaering = (data: OutboundOpprettFarskapserklaering) => {
     const url = '/api/farskapserklaering/ny';
 
-    return checkAuthPostJson(url, data);
+    return checkAuthPostJson(url, data).then(parseJson);
 };
 
 const checkAuthPostJson = (
@@ -74,7 +74,6 @@ const checkAuthPostJson = (
     })
         .then(checkAuth)
         .then(checkHttpError)
-        .then(parseJson)
         .catch((err: string & AlertError) => {
             const error = {
                 code: err.code || 404,

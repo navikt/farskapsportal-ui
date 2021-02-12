@@ -2,8 +2,9 @@ import Page from 'components/page/Page';
 import WithUserInfo from 'store/providers/WithUserInfo';
 import InfoPanel from './info-panel/InfoPanel';
 import BarnUtenErklaering from './BarnUtenErklaering';
-import FarErklaeringer from './FarErklaeringer';
-import MorErklaeringer from './MorErklaeringer';
+import ErklaeringerAvventerBruker from './ErklaeringerAvventerBruker';
+import ErklaeringerAvventerMotpart from './ErklaeringerAvventerMotpart';
+import ErklaeringerAvventerRegistrering from './ErklaeringerAvventerRegistrering';
 import ToSkjemaButton from './ToSkjemaButton';
 
 import './Oversikt.less';
@@ -16,8 +17,9 @@ function Oversikt() {
                     <div className="Oversikt">
                         <InfoPanel userInfo={userInfo} />
                         <BarnUtenErklaering userInfo={userInfo} />
-                        <MorErklaeringer userInfo={userInfo} />
-                        <FarErklaeringer userInfo={userInfo} />
+                        <ErklaeringerAvventerBruker userInfo={userInfo} />
+                        <ErklaeringerAvventerMotpart userInfo={userInfo} />
+                        <ErklaeringerAvventerRegistrering userInfo={userInfo} />
                         <ToSkjemaButton userInfo={userInfo} />
                     </div>
                 )}

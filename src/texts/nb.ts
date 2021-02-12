@@ -93,10 +93,11 @@ export default {
     'oversikt.erklaeringer.link.title': 'Farskapserklæring',
     'oversikt.erklaeringer.link.termindato': 'Termindato: ',
     'oversikt.erklaeringer.link.foedselsnummer': 'Fødselsnummer: ',
-    'oversikt.erklaeringer.link.forelder.far': 'fra ',
-    'oversikt.erklaeringer.link.forelder.mor': 'med ',
-    'oversikt.erklaeringer.link.status.signering': 'Venter på signering',
-    'oversikt.erklaeringer.link.status.fars-signering': 'Venter på fars signering',
+    'oversikt.erklaeringer.link.forelder.mor': 'fra ',
+    'oversikt.erklaeringer.link.forelder.far': 'med ',
+    'oversikt.erklaeringer.link.status.signering-bruker': 'Venter på din signering',
+    'oversikt.erklaeringer.link.status.signering-motpart': 'Venter på motparts signering',
+    'oversikt.erklaeringer.link.status.registrering': 'Venter på registrering i Folkeregisteret',
     'oversikt.goToSkjemaButton': 'Opprett farskapserklæring',
 
     'mor.title': 'Opplysninger om barnet og barnets far', // TODO: remove?

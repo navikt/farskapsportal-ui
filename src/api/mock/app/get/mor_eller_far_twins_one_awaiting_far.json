@@ -1,8 +1,10 @@
 {
+  "feilkodeTilgang": null,
   "kanOppretteFarskapserklaering": true,
   "gyldigForelderrolle": true,
   "forelderrolle": "MOR_ELLER_FAR",
-  "farsVentendeFarskapserklaeringer": [
+  "avventerSigneringBruker": null,
+  "avventerSigneringMotpart": [
     {
       "idFarskapserklaering": 0,
       "barn": {
@@ -35,6 +37,6 @@
       }
     }
   ],
-  "morsVentendeFarskapserklaeringer": null,
+  "avventerRegistrering": null,
   "fnrNyligFoedteBarnUtenRegistrertFar": ["12345678903", "12345678904"]
 }

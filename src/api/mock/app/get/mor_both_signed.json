@@ -3,7 +3,9 @@
   "kanOppretteFarskapserklaering": true,
   "gyldigForelderrolle": true,
   "forelderrolle": "MOR",
-  "avventerSigneringBruker": [
+  "avventerSigneringBruker": null,
+  "avventerSigneringMotpart": null,
+  "avventerRegistrering": [
     {
       "idFarskapserklaering": 0,
       "barn": {
@@ -31,12 +33,10 @@
         "padesUrl": null,
         "redirectUrlMor": "https://foo.bar",
         "redirectUrlFar": null,
-        "signertAvMor": null,
-        "signertAvFar": null
+        "signertAvMor": "2020-12-31",
+        "signertAvFar": "2020-12-31"
       }
     }
   ],
-  "avventerSigneringMotpart": null,
-  "avventerRegistrering": null,
   "fnrNyligFoedteBarnUtenRegistrertFar": null
 }
