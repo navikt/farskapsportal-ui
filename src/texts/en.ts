@@ -8,6 +8,11 @@ export default {
     'login.error': 'Cannot find the gender of the logged in user.',
     'api.error': 'Whoops, something went wrong while fetching data!',
 
+    'withUserInfoError.banner.title': 'Whoops,',
+    'withUserInfoError.banner.text': 'something went wrong.',
+    'withUserInfoError.title': 'An error occured while fetching user info',
+    'withUserInfoError.text': 'Please try again at a later time.',
+
     'breadcrumbs.forside': 'Declaration of paternity',
     'breadcrumbs.oversikt': 'Your paternity declarations',
     'breadcrumbs.skjema': 'Create declaration of paternity',

@@ -12,12 +12,12 @@ function ErrorBoundary({ children }: ErrorBoundaryProps) {
         <Sentry.ErrorBoundary
             fallback={
                 <ErrorPage
-                    title="Det oppstod en feil"
-                    text="Noe gikk galt dessverre. Vennligst prøv igjen senere."
                     banner={{
                         title: 'Oops,',
                         text: 'noe gikk galt.',
                     }}
+                    title="Det oppstod en ukjent feil"
+                    text="Vennligst prøv igjen senere."
                 />
             }
         >

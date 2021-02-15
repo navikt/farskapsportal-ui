@@ -1,18 +1,21 @@
 import { useEffect } from 'react';
+import { useIntl } from 'react-intl';
 
 import { checkAuthFetchUser } from 'api/api';
-import Error from 'components/error/Error';
+import ErrorPage from 'components/error-page/ErrorPage';
 import Spinner from 'components/spinner/Spinner';
 import { setUserFailure, setUserSuccess } from 'store/actions';
 import { useStore } from 'store/Context';
 import { AlertError } from 'types/error';
 import { UserInfo } from 'types/user';
+import { getMessage } from 'utils/intl';
 
 interface Props {
     children: (data: UserInfo) => JSX.Element | null;
 }
 
 function WithUserInfo(props: Props) {
+    const intl = useIntl();
     const [{ userInfo }, dispatch] = useStore();
 
     useEffect(() => {
@@ -33,7 +36,16 @@ function WithUserInfo(props: Props) {
         case 'PENDING':
             return <Spinner />;
         case 'FAILURE':
-            return <Error error={userInfo.error} />;
+            return (
+                <ErrorPage
+                    banner={{
+                        title: getMessage(intl, 'withUserInfoError.banner.title'),
+                        text: getMessage(intl, 'withUserInfoError.banner.text'),
+                    }}
+                    title={getMessage(intl, 'withUserInfoError.title')}
+                    text={getMessage(intl, 'withUserInfoError.text')}
+                />
+            );
         case 'SUCCESS':
             return props.children(userInfo.data);
     }
