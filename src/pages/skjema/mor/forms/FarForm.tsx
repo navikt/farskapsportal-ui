@@ -40,13 +40,13 @@ const getFailureTypeFromError = (error: AlertError): FatherControlFailureType =>
     error.text.startsWith('Oppgitt far er ikke mann') ? 'FEMALE' : 'NOT_FOUND';
 
 export interface FarFormInput {
-    navn: string;
-    foedselsnummer: string;
+    navn: string | null;
+    foedselsnummer: string | null;
 }
 
 export interface FarFormProps {
-    defaultNavn: string;
-    defaultFoedselsnummer: string;
+    defaultNavn: string | null;
+    defaultFoedselsnummer: string | null;
     onSubmit: (data: FarFormInput) => void;
     onCancel: () => void;
 }
@@ -70,7 +70,7 @@ function FarForm(props: FarFormProps) {
     const controlInfoAndSubmit = (data: FarFormInput) => {
         dispatch({ type: 'CONTROL_FATHER' });
 
-        controlFatherInfo(data)
+        controlFatherInfo({ navn: data.navn ?? '', foedselsnummer: data.foedselsnummer ?? '' })
             .then(() => {
                 props.onSubmit(data);
             })

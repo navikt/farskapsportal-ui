@@ -15,7 +15,7 @@ import {
 import { getMessage } from 'utils/intl';
 
 export interface TermindatoFormInput {
-    termindato: string;
+    termindato: string | null;
 }
 
 export interface TermindatoFormProps {

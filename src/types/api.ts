@@ -10,4 +10,5 @@ export interface OutboundFather {
 export interface OutboundOpprettFarskapserklaering {
     barn: Barn;
     opplysningerOmFar: OutboundFather;
+    borSammen: boolean;
 }

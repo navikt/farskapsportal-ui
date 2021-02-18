@@ -1,11 +1,14 @@
 import { axe } from 'jest-axe';
 
 import { render, screen } from 'test-utils';
+import texts from 'texts/nb';
 import App from '../App';
+
+const headerText = texts['header.forside'];
 
 test('should render app with header', () => {
     render(<App />);
-    const headerElement = screen.getByText('Farskapserklæring');
+    const headerElement = screen.getByText(headerText);
     expect(headerElement).toBeInTheDocument();
 });
 
