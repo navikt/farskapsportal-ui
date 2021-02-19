@@ -1,6 +1,11 @@
 import Cookies from 'js-cookie';
 
-import { Outbound, OutboundFather, OutboundOpprettFarskapserklaering } from 'types/api';
+import {
+    Outbound,
+    KontrollerePersonopplysningerRequest,
+    OppretteFarskaperklaeringRequest,
+    OppretteFarskapserklaeringResponse,
+} from 'types/api';
 import { AlertError } from 'types/error';
 import { UserInfo } from 'types/user';
 import { redirectLoginCookie } from 'utils/cookies';
@@ -11,7 +16,7 @@ const { LOGIN_URL } = window as any;
 
 /*
  * GET
- * */
+ */
 export const checkAuthFetchUser = () => {
     const url = '/api/brukerinformasjon';
 
@@ -46,7 +51,7 @@ const checkAuthFetchJson = (url: string, onlyLogErrorOn?: (errorCode: number) =>
 /*
  *   POST
  */
-export const controlFatherInfo = (data: OutboundFather) => {
+export const controlFatherInfo = (data: KontrollerePersonopplysningerRequest) => {
     const url = '/api/personopplysninger/far';
 
     // TODO: endre kode?
@@ -56,10 +61,12 @@ export const controlFatherInfo = (data: OutboundFather) => {
     return checkAuthPostJson(url, data, onlyLogErrorOn);
 };
 
-export const opprettFarskapserklaering = (data: OutboundOpprettFarskapserklaering) => {
+export const opprettFarskapserklaering = (data: OppretteFarskaperklaeringRequest) => {
     const url = '/api/farskapserklaering/ny';
 
-    return checkAuthPostJson(url, data).then(parseJson);
+    return checkAuthPostJson(url, data).then(
+        parseJson
+    ) as Promise<OppretteFarskapserklaeringResponse>;
 };
 
 const checkAuthPostJson = (

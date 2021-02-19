@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 
 import { opprettFarskapserklaering } from 'api/api';
 import Error from 'components/error/Error';
-import { OutboundFather, OutboundOpprettFarskapserklaering } from 'types/api';
+import { KontrollerePersonopplysningerRequest, OppretteFarskaperklaeringRequest } from 'types/api';
 import { Barn } from 'types/barn';
 import { AlertError } from 'types/error';
 import { StepStatus } from 'types/form';
@@ -22,13 +22,13 @@ type ActionType =
     | { type: 'EDIT_BARN' }
     | { type: 'SET_BARN'; payload: Barn }
     | { type: 'EDIT_FAR' }
-    | { type: 'SET_FAR'; payload: OutboundFather }
+    | { type: 'SET_FAR'; payload: KontrollerePersonopplysningerRequest }
     | { type: 'SUBMIT' }
     | { type: 'SUBMIT_SUCCESS' }
     | { type: 'SUBMIT_FAILURE'; payload: AlertError };
 
 interface StateType {
-    erklaering: OutboundOpprettFarskapserklaering;
+    erklaering: OppretteFarskaperklaeringRequest;
     stepStatus: {
         barn: StepStatus;
         far: StepStatus;
@@ -120,9 +120,8 @@ function MorSkjema() {
 
         opprettFarskapserklaering(state.erklaering)
             .then((response) => {
-                alert(JSON.stringify(response));
                 dispatch({ type: 'SUBMIT_SUCCESS' });
-                // Hent redirect til e-signering fra response og utfør redirect
+                window.location.assign(response.redirectUrlForSigneringMor);
             })
             .catch((error: AlertError) => {
                 dispatch({ type: 'SUBMIT_FAILURE', payload: error });
