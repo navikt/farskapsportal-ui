@@ -1,3 +1,4 @@
+import ContentContainer from 'components/content-container/ContentContainer';
 import Page from 'components/page/Page';
 import WithUserInfo from 'store/providers/WithUserInfo';
 import { Path } from 'types/path';
@@ -13,7 +14,7 @@ function Kvittering() {
         >
             <WithUserInfo>
                 {(userInfo) => {
-                    return <div>{JSON.stringify(userInfo)}</div>;
+                    return <ContentContainer>{JSON.stringify(userInfo)}</ContentContainer>;
                 }}
             </WithUserInfo>
         </Page>

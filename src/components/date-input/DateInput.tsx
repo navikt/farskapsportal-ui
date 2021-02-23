@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import classNames from 'classnames';
 import { Datepicker } from 'nav-datovelger';
 import {
     Label,
@@ -6,7 +6,7 @@ import {
     SkjemaGruppeFeilContext,
     SkjemaGruppeFeilContextProps,
 } from 'nav-frontend-skjema';
-import cls from 'classnames';
+import { ReactNode } from 'react';
 import 'dayjs/locale/nb';
 import 'dayjs/locale/nn';
 
@@ -34,7 +34,7 @@ function DateInput(props: DateInputProps) {
                 const feilmelding = context.feil || props.feil;
 
                 return (
-                    <div className={cls('skjemaelement', props.className)}>
+                    <div className={classNames('skjemaelement', props.className)}>
                         <Label htmlFor={props.id}>{props.label}</Label>
                         <Datepicker
                             inputId={props.id}
