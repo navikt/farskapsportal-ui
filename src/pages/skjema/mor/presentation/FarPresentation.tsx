@@ -1,5 +1,7 @@
-import { FormattedMessage } from 'react-intl';
 import { Element, Undertittel, Normaltekst } from 'nav-frontend-typografi';
+import { FormattedMessage } from 'react-intl';
+
+import { formatFoedselsnummer } from 'utils/foedselsnummer';
 
 import './FarPresentation.less';
 
@@ -24,7 +26,7 @@ function FarPresentation(props: FarPresentationProps) {
                 <Normaltekst>
                     <FormattedMessage id="mor.skjema.far.presentation.foedselsnummer" />
                 </Normaltekst>
-                <Element>{props.foedselsnummer}</Element>
+                <Element>{formatFoedselsnummer(props.foedselsnummer)}</Element>
             </div>
         </div>
     );

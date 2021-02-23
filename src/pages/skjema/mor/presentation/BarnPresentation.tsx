@@ -1,7 +1,8 @@
-import { FormattedMessage } from 'react-intl';
 import { Element, Undertittel, Normaltekst } from 'nav-frontend-typografi';
+import { FormattedMessage } from 'react-intl';
 
 import DatePresentation from 'components/date-presentation/DatePresentation';
+import { formatFoedselsnummer } from 'utils/foedselsnummer';
 
 import './BarnPresentation.less';
 
@@ -21,7 +22,7 @@ function BarnPresentation(props: BarnPresentationProps) {
                     <Normaltekst>
                         <FormattedMessage id="mor.skjema.barn.presentation.foedselsnummer.label" />
                     </Normaltekst>
-                    <Element>{props.foedselsnummer}</Element>
+                    <Element>{formatFoedselsnummer(props.foedselsnummer)}</Element>
                 </>
             )}
             {props.termindato && (

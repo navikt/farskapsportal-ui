@@ -46,7 +46,7 @@ test('should show invalid foedselsnummer error', async () => {
     fireEvent.click(screen.getByText('Neste'));
 
     await waitFor(() => {
-        expect(foedselsnummerInput.value).toBe('12345678910');
+        expect(foedselsnummerInput.value).toBe('123456 78910');
         expect(screen.getAllByText('Ugyldig fødselsnummer')).toHaveLength(2);
     });
 });

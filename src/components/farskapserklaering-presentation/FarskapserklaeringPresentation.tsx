@@ -1,9 +1,10 @@
-import { FormattedMessage } from 'react-intl';
 import Panel from 'nav-frontend-paneler';
 import { Element, Innholdstittel, Normaltekst, Undertittel } from 'nav-frontend-typografi';
+import { FormattedMessage } from 'react-intl';
 
 import DatePresentation from 'components/date-presentation/DatePresentation';
 import { Farskapserklaering } from 'types/farskapserklaering';
+import { formatFoedselsnummer } from 'utils/foedselsnummer';
 import { getNameFromForelder } from 'utils/name';
 
 import './FarskapserklaeringPresentation.less';
@@ -40,11 +41,8 @@ function FarskapserklaeringPresentation({
                             <FormattedMessage id="farskapserklaering.bornChildren" />
                         </Element>
                         <Normaltekst>
-                            <FormattedMessage id="farskapserklaering.foedselsnummer" />
-                            {
-                                ' ' + farskapserklaering.barn?.foedselsnummer ??
-                                    '' /* TODO: handle? */
-                            }
+                            <FormattedMessage id="farskapserklaering.foedselsnummer" />{' '}
+                            {formatFoedselsnummer(farskapserklaering.barn?.foedselsnummer ?? '')}
                         </Normaltekst>
                     </>
                 )}
@@ -58,14 +56,18 @@ function FarskapserklaeringPresentation({
                         <FormattedMessage id="farskapserklaering.mother" />
                     </Element>
                     <Normaltekst>{getNameFromForelder(farskapserklaering.mor)}</Normaltekst>
-                    <Normaltekst>{farskapserklaering.mor?.foedselsnummer ?? ''}</Normaltekst>
+                    <Normaltekst>
+                        {formatFoedselsnummer(farskapserklaering.mor?.foedselsnummer ?? '')}
+                    </Normaltekst>
                 </div>
                 <div>
                     <Element>
                         <FormattedMessage id="farskapserklaering.father" />
                     </Element>
                     <Normaltekst>{getNameFromForelder(farskapserklaering.far)}</Normaltekst>
-                    <Normaltekst>{farskapserklaering.far?.foedselsnummer ?? ''}</Normaltekst>
+                    <Normaltekst>
+                        {formatFoedselsnummer(farskapserklaering.far?.foedselsnummer ?? '')}
+                    </Normaltekst>
                 </div>
             </div>
         </Panel>
