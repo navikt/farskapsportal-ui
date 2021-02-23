@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import DatePresentation from 'components/date-presentation/DatePresentation';
 import LinkPanel from 'components/link-panel/LinkPanel';
 import { Farskapserklaering } from 'types/farskapserklaering';
+import { formatFoedselsnummer } from 'utils/foedselsnummer';
 import { getNameFromForelder } from 'utils/name';
 
 interface ErklaeringLinkPanelProps {
@@ -59,7 +60,7 @@ function ErklaeringLinkPanel({
                 ) : (
                     <>
                         <FormattedMessage id="oversikt.erklaeringer.link.foedselsnummer" />
-                        {erklaering.barn.foedselsnummer}
+                        {formatFoedselsnummer(erklaering.barn.foedselsnummer ?? '')}
                     </>
                 )}
             </Normaltekst>

@@ -14,8 +14,8 @@ const invalidFoedselsnummerErrorMessage =
 const submitButtonLabel = texts['mor.form.buttons.next'];
 
 const defaultProps: FarFormProps = {
-    defaultNavn: null,
-    defaultFoedselsnummer: null,
+    defaultNavn: '',
+    defaultFoedselsnummer: '',
     onSubmit: () => undefined,
     onCancel: () => undefined,
 };
@@ -57,7 +57,8 @@ test('should show invalid foedselsnummer error', async () => {
     fireEvent.click(screen.getByText(submitButtonLabel));
 
     await waitFor(() => {
-        expect(foedselsnummerInput.value).toBe('12345678910');
+        expect(foedselsnummerInput.value).toBe('123456 78910');
+        // expect to find errors 2 times, one below field and one in Feiloppsummering
         expect(screen.getAllByText(invalidFoedselsnummerErrorMessage)).toHaveLength(2);
     });
 });

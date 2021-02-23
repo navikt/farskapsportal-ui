@@ -5,6 +5,7 @@ import LinkPanel from 'components/link-panel/LinkPanel';
 import { useStore } from 'store/Context';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
+import { formatFoedselsnummer } from 'utils/foedselsnummer';
 
 interface BarnUtenErklaeringProps {
     userInfo: UserInfo;
@@ -52,7 +53,7 @@ function BarnLinkPanel({ foedselsnummer }: { foedselsnummer: string }) {
         >
             <Normaltekst>
                 <FormattedMessage id="oversikt.barn.link.foedselsnummer" />
-                {foedselsnummer}
+                {formatFoedselsnummer(foedselsnummer)}
             </Normaltekst>
         </LinkPanel>
     );

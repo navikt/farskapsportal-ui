@@ -1,5 +1,6 @@
 import Panel from 'nav-frontend-paneler';
 
+import ContentContainer from 'components/content-container/ContentContainer';
 import Page from 'components/page/Page';
 import ForsideInfo from './ForsideInfo';
 import LoginButton from './LoginButton';
@@ -9,12 +10,14 @@ import './Forside.less';
 
 function Forside() {
     return (
-        <Page className="Forside" titleId="header.forside">
-            <Panel>
-                <ForsideInfo />
-                <LoginButton />
-                <OppmoeteLink />
-            </Panel>
+        <Page titleId="header.forside">
+            <ContentContainer className="Forside">
+                <Panel>
+                    <ForsideInfo />
+                    <LoginButton />
+                    <OppmoeteLink />
+                </Panel>
+            </ContentContainer>
         </Page>
     );
 }

@@ -124,11 +124,11 @@ function MorSkjema() {
     const [state, dispatch] = useReducer(reducer, {
         formValues: {
             termindato: {
-                termindato: null,
+                termindato: '',
             },
             far: {
-                navn: null,
-                foedselsnummer: null,
+                navn: '',
+                foedselsnummer: '',
             },
             borSammen: {
                 borSammen: null,
@@ -158,15 +158,14 @@ function MorSkjema() {
                 termindato: barnFoedselsnummer ? null : state.formValues.termindato.termindato,
             },
             opplysningerOmFar: {
-                foedselsnummer: state.formValues.far.foedselsnummer ?? '',
-                navn: state.formValues.far.navn ?? '',
+                foedselsnummer: state.formValues.far.foedselsnummer,
+                navn: state.formValues.far.navn,
             },
             borSammen: state.formValues.borSammen.borSammen === 'YES',
         })
             .then((response) => {
-                alert(JSON.stringify(response));
                 dispatch({ type: 'SUBMIT_SUCCESS' });
-                // Hent redirect til e-signering fra response og utfør redirect
+                window.location.assign(response.redirectUrlForSigneringMor);
             })
             .catch((error: AlertError) => {
                 dispatch({ type: 'SUBMIT_FAILURE', payload: error });
@@ -233,8 +232,8 @@ function MorSkjema() {
                 }
                 presentationComponent={
                     <FarPresentation
-                        navn={state.formValues.far.navn ?? ''}
-                        foedselsnummer={state.formValues.far.foedselsnummer ?? ''}
+                        navn={state.formValues.far.navn}
+                        foedselsnummer={state.formValues.far.foedselsnummer}
                     />
                 }
                 title={getMessage(intl, 'mor.skjema.far.title')}

@@ -1,3 +1,4 @@
+import ContentContainer from 'components/content-container/ContentContainer';
 import Page from 'components/page/Page';
 import WithUserInfo from 'store/providers/WithUserInfo';
 import InfoPanel from './info-panel/InfoPanel';
@@ -14,14 +15,14 @@ function Oversikt() {
         <Page titleId="header.oversikt" breadcrumbs={[{ titleId: 'breadcrumbs.oversikt' }]}>
             <WithUserInfo>
                 {(userInfo) => (
-                    <div className="Oversikt">
+                    <ContentContainer className="Oversikt">
                         <InfoPanel userInfo={userInfo} />
                         <BarnUtenErklaering userInfo={userInfo} />
                         <ErklaeringerAvventerBruker userInfo={userInfo} />
                         <ErklaeringerAvventerMotpart userInfo={userInfo} />
                         <ErklaeringerAvventerRegistrering userInfo={userInfo} />
                         <ToSkjemaButton userInfo={userInfo} />
-                    </div>
+                    </ContentContainer>
                 )}
             </WithUserInfo>
         </Page>

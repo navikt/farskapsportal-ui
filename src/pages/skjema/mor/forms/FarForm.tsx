@@ -1,16 +1,19 @@
-import { useReducer } from 'react';
-import { useIntl } from 'react-intl';
-import { useForm } from 'react-hook-form';
-import { Feiloppsummering, Input, SkjemaGruppe } from 'nav-frontend-skjema';
 import { fnr } from '@navikt/fnrvalidator';
+import { Feiloppsummering, Input, SkjemaGruppe } from 'nav-frontend-skjema';
+import { useReducer } from 'react';
+import { Controller, useForm } from 'react-hook-form';
+import { useIntl } from 'react-intl';
 
 import { controlFatherInfo } from 'api/api';
 import Error from 'components/error/Error';
 import FormButtons from 'components/form-buttons/FormButtons';
+import { KontrollerePersonopplysningerRequest } from 'types/api';
 import { AlertError } from 'types/error';
+import { formatFoedselsnummer } from 'utils/foedselsnummer';
 import { mapErrors } from 'utils/form';
 import { useFocus } from 'utils/hooks/useFocus';
 import { getMessage } from 'utils/intl';
+import { removeWhitespace } from 'utils/string';
 
 type FatherControlFailureType = 'NOT_FOUND' | 'FEMALE';
 
@@ -40,13 +43,13 @@ const getFailureTypeFromError = (error: AlertError): FatherControlFailureType =>
     error.text.startsWith('Oppgitt far er ikke mann') ? 'FEMALE' : 'NOT_FOUND';
 
 export interface FarFormInput {
-    navn: string | null;
-    foedselsnummer: string | null;
+    navn: string;
+    foedselsnummer: string;
 }
 
 export interface FarFormProps {
-    defaultNavn: string | null;
-    defaultFoedselsnummer: string | null;
+    defaultNavn: string;
+    defaultFoedselsnummer: string;
     onSubmit: (data: FarFormInput) => void;
     onCancel: () => void;
 }
@@ -59,7 +62,7 @@ function FarForm(props: FarFormProps) {
         failureType: undefined,
         apiError: undefined,
     });
-    const { register, handleSubmit, errors } = useForm<FarFormInput>({
+    const { control, register, handleSubmit, errors } = useForm<FarFormInput>({
         defaultValues: {
             navn: props.defaultNavn,
             foedselsnummer: props.defaultFoedselsnummer,
@@ -67,10 +70,15 @@ function FarForm(props: FarFormProps) {
         shouldFocusError: false,
     });
 
-    const controlInfoAndSubmit = (data: FarFormInput) => {
+    const controlInfoAndSubmit = (inputValues: FarFormInput) => {
         dispatch({ type: 'CONTROL_FATHER' });
 
-        controlFatherInfo({ navn: data.navn ?? '', foedselsnummer: data.foedselsnummer ?? '' })
+        const data: KontrollerePersonopplysningerRequest = {
+            navn: inputValues.navn,
+            foedselsnummer: removeWhitespace(inputValues.foedselsnummer),
+        };
+
+        controlFatherInfo(data)
             .then(() => {
                 props.onSubmit(data);
             })
@@ -116,25 +124,38 @@ function FarForm(props: FarFormProps) {
                     })}
                     feil={errors.navn?.message}
                 />
-                <Input
-                    id="foedselsnummer"
+                <Controller
                     name="foedselsnummer"
-                    type="text"
-                    inputMode="numeric"
-                    pattern="[0-9]*"
-                    inputClassName="skjemaelement__input-fodselsnr"
-                    label={getMessage(intl, 'mor.skjema.far.form.foedselsnummer.label')}
-                    bredde="S"
-                    inputRef={register({
+                    control={control}
+                    rules={{
                         required: getMessage(
                             intl,
                             'mor.skjema.far.form.foedselsnummer.validation.required'
                         ),
-                        validate: (value: string) =>
-                            fnr(value).status === 'valid' ||
-                            getMessage(intl, 'mor.skjema.far.form.foedselsnummer.validation.fnr'),
-                    })}
-                    feil={errors.foedselsnummer?.message}
+                        validate: (value: string) => {
+                            return (
+                                fnr(removeWhitespace(value)).status === 'valid' ||
+                                getMessage(
+                                    intl,
+                                    'mor.skjema.far.form.foedselsnummer.validation.fnr'
+                                )
+                            );
+                        },
+                    }}
+                    render={({ onChange, value, name }) => (
+                        <Input
+                            id={name}
+                            name={name}
+                            label={getMessage(intl, 'mor.skjema.far.form.foedselsnummer.label')}
+                            value={value}
+                            onChange={(e) => onChange(formatFoedselsnummer(e.target.value))}
+                            feil={errors.foedselsnummer?.message}
+                            inputClassName="skjemaelement__input-fodselsnr"
+                            bredde="S"
+                            type="text"
+                            inputMode="numeric"
+                        />
+                    )}
                 />
             </SkjemaGruppe>
             {!!feil.length && (

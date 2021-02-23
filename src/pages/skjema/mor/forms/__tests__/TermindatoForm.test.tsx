@@ -13,7 +13,7 @@ const minDateErrorMessage = texts['mor.skjema.barn.form.termindato.validation.mi
 const submitButtonLabel = texts['mor.form.buttons.next'];
 
 const defaultProps: TermindatoFormProps = {
-    defaultTermindato: null,
+    defaultTermindato: '',
     onSubmit: () => undefined,
     onCancel: () => undefined,
 };

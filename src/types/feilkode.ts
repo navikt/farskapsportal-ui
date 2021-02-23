@@ -10,4 +10,5 @@ export enum Feilkode {
     MorSivilstandRegistrertPartner = 'MOR_SIVILSTAND_REGISTRERT_PARTNER', // Mor kan ikke opprette farskapserklæring dersom hun er registrert partner
     MorSivilstandUoppgitt = 'MOR_SIVILSTAND_UOPPGITT', // Mor kan ikke opprette farskapserklæring dersom hun har sivilstand uoppgitt
     NyfoedtErForGammel = 'NYFODT_ER_FOR_GAMMEL', // Gyldighetsperioden for å erklære farskap er utløpt for oppgitt barn
+    OppretteSigneringsjobb = 'OPPRETTE_SIGNERINGSJOBB', // Feil oppstod ved opprettelse av signeringsjobb mot Posten
 }
