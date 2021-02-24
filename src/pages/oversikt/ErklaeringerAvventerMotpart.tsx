@@ -32,7 +32,7 @@ function LinkKvittering({ erklaering }: { erklaering: Farskapserklaering }) {
             linkPath={linkPath}
             erklaering={erklaering}
             displayFar={true}
-            etikettType="info"
+            etikettType="fokus"
             etikettId="oversikt.erklaeringer.link.status.signering-motpart"
         />
     );
