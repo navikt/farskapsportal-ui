@@ -1,18 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import Cookies from 'js-cookie';
 
 import Spinner from 'components/spinner/Spinner';
-import { redirectLoginCookie } from 'utils/cookies';
+import { getCookie, redirectLoginCookie, removeCookie } from 'utils/cookies';
 
 function RedirectAfterLogin(props: { children: JSX.Element }) {
     const [loading, setLoading] = useState(true);
     const history = useHistory();
 
     useEffect(() => {
-        const redirectTo = Cookies.get(redirectLoginCookie);
+        const redirectTo = getCookie(redirectLoginCookie);
         if (redirectTo) {
-            Cookies.remove(redirectLoginCookie);
+            removeCookie(redirectLoginCookie);
             history.replace(redirectTo);
         }
         setLoading(false);

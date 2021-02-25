@@ -1,5 +1,3 @@
-import Cookies from 'js-cookie';
-
 import {
     Outbound,
     KontrollerePersonopplysningerRequest,
@@ -8,7 +6,7 @@ import {
 } from 'types/api';
 import { AlertError } from 'types/error';
 import { UserInfo } from 'types/user';
-import { redirectLoginCookie } from 'utils/cookies';
+import { redirectLoginCookie, setCookie } from 'utils/cookies';
 import { logApiError } from 'utils/logger';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -110,10 +108,9 @@ const checkAuth = (response: Response): Response => {
 };
 
 const sendToLogin = () => {
-    const to = window.location.pathname + window.location.hash;
+    const redirectTo = window.location.pathname + window.location.search + window.location.hash;
     const inFiveMinutes = new Date(Date.now() + 5 * 60 * 1000);
-    const options = { expires: inFiveMinutes };
-    Cookies.set(redirectLoginCookie, to, options);
+    setCookie(redirectLoginCookie, redirectTo, inFiveMinutes);
     window.location.assign(`${LOGIN_URL}?redirect=${window.location.origin}`);
 };
 
