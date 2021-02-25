@@ -24,7 +24,7 @@ function LanguageProvider({ children }: LanguageProviderProps) {
 
     useEffect(() => {
         document.documentElement.lang = language;
-        setCookie(languageCookie, language);
+        setCookie(languageCookie, language, 1);
     }, [language]);
 
     let messages = nbMessages;
