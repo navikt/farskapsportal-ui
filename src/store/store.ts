@@ -1,15 +1,31 @@
 import { Language } from 'types/intl';
 import { FetchUserInfo } from 'types/user';
+import { getCookie, languageCookie } from 'utils/cookies';
 import { Action } from './actions';
 
-const initialLanguage = window.location.pathname.includes('/en/')
-    ? 'en'
-    : window.location.pathname.includes('/nn/')
-    ? 'nn'
-    : 'nb';
+const getInitialLanguage = () => {
+    if (window.location.pathname.includes('/en/')) {
+        return 'en';
+    }
+
+    if (window.location.pathname.includes('/nn/')) {
+        return 'nn';
+    }
+
+    if (window.location.pathname.includes('/nb/')) {
+        return 'nb';
+    }
+
+    const languageFromCookie = getCookie(languageCookie);
+    if (languageFromCookie) {
+        return languageFromCookie as Language;
+    }
+
+    return 'nb';
+};
 
 export const initialState: Store = {
-    language: initialLanguage,
+    language: getInitialLanguage(),
     userInfo: { status: 'PENDING' },
 };
 
