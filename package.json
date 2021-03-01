@@ -96,7 +96,7 @@
   },
   "jest": {
     "transformIgnorePatterns": [
-      "/node_modules/(?!(@navikt/ds-icons)|(?!nav-frontend-spinner-style)|(?!nav-frontend-typografi-style))"
+      "/node_modules/(?!@navikt/ds-.*|nav-frontend-.*|nav-datovelger)"
     ]
   },
   "browserslist": {
