@@ -2,6 +2,7 @@ import { useStore } from 'store/Context';
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
+import { isSignedByMor } from 'utils/farskapserklaering';
 import ErklaeringLinkPanel from './ErklaeringLinkPanel';
 
 interface ErklaeringerAvventerBrukerProps {
@@ -15,15 +16,13 @@ function ErklaeringerAvventerBruker({ userInfo }: ErklaeringerAvventerBrukerProp
 
     return (
         <>
-            {userInfo.avventerSigneringBruker.map((erklaering) => {
-                const isSignedByMor = !!erklaering.dokument?.signertAvMor;
-
-                return isSignedByMor ? (
+            {userInfo.avventerSigneringBruker.map((erklaering) =>
+                isSignedByMor(erklaering) ? (
                     <LinkSkjema erklaering={erklaering} />
                 ) : (
                     <LinkESignering erklaering={erklaering} />
-                );
-            })}
+                )
+            )}
         </>
     );
 }

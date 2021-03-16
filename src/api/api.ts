@@ -5,6 +5,7 @@ import {
     OppretteFarskapserklaeringResponse,
 } from 'types/api';
 import { AlertError } from 'types/error';
+import { Farskapserklaering } from 'types/farskapserklaering';
 import { UserInfo } from 'types/user';
 import { redirectLoginCookie, setCookie } from 'utils/cookies';
 import { logApiError } from 'utils/logger';
@@ -22,6 +23,12 @@ export const checkAuthFetchUser = () => {
     const onlyLogErrorOn = (errorCode: number) => errorCode !== 401 && errorCode !== 403;
 
     return checkAuthFetchJson(url, onlyLogErrorOn) as Promise<UserInfo>;
+};
+
+export const checkAuthSetSigneringStatusToken = (statusToken: string) => {
+    const url = `/api/farskapserklaering/redirect?status_query_token=${statusToken}`;
+
+    return checkAuthFetchJson(url) as Promise<Farskapserklaering>;
 };
 
 const checkAuthFetchJson = (url: string, onlyLogErrorOn?: (errorCode: number) => boolean) =>
@@ -71,8 +78,8 @@ const checkAuthPostJson = (
     url: string,
     data: Outbound,
     onlyLogErrorOn?: (errorCode: number) => boolean
-) => {
-    return fetch(url, {
+) =>
+    fetch(url, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
@@ -92,7 +99,6 @@ const checkAuthPostJson = (
 
             throw error;
         });
-};
 
 /*
  * UTILS

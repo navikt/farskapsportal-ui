@@ -1,12 +1,10 @@
 import { useEffect } from 'react';
 import { useIntl } from 'react-intl';
 
-import { checkAuthFetchUser } from 'api/api';
+import { fetchUser } from 'api/fetchUser';
 import ErrorPage from 'components/error-page/ErrorPage';
 import Spinner from 'components/spinner/Spinner';
-import { setUserFailure, setUserSuccess } from 'store/actions';
 import { useStore } from 'store/Context';
-import { AlertError } from 'types/error';
 import { UserInfo } from 'types/user';
 import { getMessage } from 'utils/intl';
 
@@ -20,15 +18,7 @@ function WithUserInfo(props: Props) {
 
     useEffect(() => {
         if (userInfo.status === 'PENDING') {
-            checkAuthFetchUser()
-                .then((userInfo: UserInfo) => {
-                    dispatch(setUserSuccess(userInfo));
-                })
-                .catch((error: AlertError) => {
-                    if (error.code !== 401 && error.code !== 403) {
-                        dispatch(setUserFailure(error));
-                    }
-                });
+            fetchUser(dispatch);
         }
     }, [userInfo, dispatch]);
 

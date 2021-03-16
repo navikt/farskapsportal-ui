@@ -5,23 +5,12 @@ import LinkPanel from 'components/link-panel/LinkPanel';
 import { useStore } from 'store/Context';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
+import { getBarnUtenErklaering } from 'utils/farskapserklaering';
 import { formatFoedselsnummer } from 'utils/foedselsnummer';
 
 interface BarnUtenErklaeringProps {
     userInfo: UserInfo;
 }
-
-const getBarnUtenErklaering = (userInfo: UserInfo): string[] => {
-    const barnMedErklaering = (userInfo.avventerSigneringBruker ?? [])
-        .concat(userInfo.avventerSigneringMotpart ?? [])
-        .map((erklaering) => erklaering.barn?.foedselsnummer ?? '');
-
-    return (
-        userInfo.fnrNyligFoedteBarnUtenRegistrertFar?.filter(
-            (fnr) => !barnMedErklaering.includes(fnr)
-        ) ?? []
-    );
-};
 
 function BarnUtenErklaering({ userInfo }: BarnUtenErklaeringProps) {
     const barnUtenErklaering = getBarnUtenErklaering(userInfo);

@@ -54,6 +54,23 @@ app.get('/api/brukerinformasjon', async (req, res) => {
     }
 });
 
+app.get('/api/farskapserklaering/redirect', async (req, res) => {
+    try {
+        const token = req.cookies[tokenName];
+        const response = await fetch(`${apiUrl}/farskapserklaering/redirect`, {
+            method: 'get',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        const text = await response.text();
+        res.status(response.status).send(text);
+    } catch (error) {
+        console.log(`Error while calling api: ${error}`);
+        res.sendStatus(500);
+    }
+});
+
 app.post('/api/personopplysninger/far', async (req, res) => {
     try {
         const token = req.cookies[tokenName];
