@@ -1,0 +1,16 @@
+@import 'styles/assets';
+
+.BorSammenForm {
+  // Override small legend from Designsystem
+  .skjemagruppe.inputPanelGruppe {
+    .skjemagruppe__legend {
+      .typo-ingress-mixin();
+    }
+  }
+
+  @media (min-width: @mobile-breakpoint) {
+    .inputPanel {
+      max-width: 11rem;
+    }
+  }
+}
