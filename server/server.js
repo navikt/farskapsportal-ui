@@ -1,10 +1,9 @@
 import 'dotenv/config.js';
 import express from 'express';
-import mustacheExpress from 'mustache-express';
 import cookieParser from 'cookie-parser';
 import fetch from 'node-fetch';
 import compression from 'compression';
-import { getDecorator } from './decorator.js';
+import { getHtmlWithDekorator } from './dekorator.js';
 
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
@@ -12,11 +11,6 @@ const tokenName = 'selvbetjening-idtoken';
 const app = express();
 
 app.use(compression());
-
-app.set('views', buildPath);
-app.set('view engine', 'mustache');
-app.engine('html', mustacheExpress());
-
 app.use(cookieParser());
 
 // Parse application/json
@@ -117,13 +111,13 @@ app.post('/api/farskapserklaering/ny', async (req, res) => {
 
 // Match everything except internal og static
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
-    getDecorator()
-        .then((fragments) => {
-            res.render('index.html', {
-                ...fragments,
-                LOGIN_URL: process.env.LOGINSERVICE_URL,
-                APP_VERSION: process.env.APP_VERSION,
-            });
+    getHtmlWithDekorator(`${buildPath}/index.html`)
+        .then((html) => {
+            res.send(
+                html
+                    .replace('{{{LOGIN_URL}}}', process.env.LOGINSERVICE_URL)
+                    .replace('{{{APP_VERSION}}}', process.env.APP_VERSION)
+            );
         })
         .catch((e) => {
             const error = `Failed to get decorator: ${e}`;
