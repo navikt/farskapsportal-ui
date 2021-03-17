@@ -1,5 +1,5 @@
-import { RadioPanelGruppe } from 'nav-frontend-skjema';
-import { Controller, useForm } from 'react-hook-form';
+import { Radio, RadioGruppe } from 'nav-frontend-skjema';
+import { useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
 import FormButtons from 'components/form-buttons/FormButtons';
@@ -21,7 +21,7 @@ export interface BorSammenFormProps {
 
 function BorSammenForm(props: BorSammenFormProps) {
     const intl = useIntl();
-    const { handleSubmit, errors, control } = useForm<BorSammenFormInput>({
+    const { handleSubmit, errors, register } = useForm<BorSammenFormInput>({
         defaultValues: {
             borSammen: props.defaultBorSammen,
         },
@@ -30,34 +30,25 @@ function BorSammenForm(props: BorSammenFormProps) {
 
     return (
         <form onSubmit={handleSubmit(props.onSubmit)} className="BorSammenForm">
-            <Controller
-                name="borSammen"
-                control={control}
-                rules={{
-                    required: getMessage(intl, 'mor.skjema.borSammen.validation.required'),
-                }}
-                render={({ onChange, value, name }) => (
-                    <RadioPanelGruppe
-                        name={name}
-                        legend={getMessage(intl, 'mor.skjema.borSammen.title')}
-                        radios={[
-                            {
-                                label: getMessage(intl, 'mor.skjema.borSammen.label.yes'),
-                                value: 'YES',
-                                id: 'yes',
-                            },
-                            {
-                                label: getMessage(intl, 'mor.skjema.borSammen.label.no'),
-                                value: 'NO',
-                                id: 'no',
-                            },
-                        ]}
-                        checked={value}
-                        onChange={onChange}
-                        feil={errors.borSammen?.message}
-                    />
-                )}
-            />
+            <RadioGruppe
+                legend={getMessage(intl, 'mor.skjema.borSammen.title')}
+                feil={errors.borSammen?.message}
+            >
+                <Radio
+                    name="borSammen"
+                    value="YES"
+                    label={getMessage(intl, 'mor.skjema.borSammen.label.yes')}
+                    radioRef={register}
+                />
+                <Radio
+                    name="borSammen"
+                    value="NO"
+                    label={getMessage(intl, 'mor.skjema.borSammen.label.no')}
+                    radioRef={register({
+                        required: getMessage(intl, 'mor.skjema.borSammen.validation.required'),
+                    })}
+                />
+            </RadioGruppe>
             <FormButtons
                 submitText={getMessage(intl, 'mor.form.buttons.next')}
                 cancelText={getMessage(intl, 'mor.form.buttons.cancel')}
