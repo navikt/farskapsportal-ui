@@ -5,6 +5,7 @@ import {
     OppretteFarskapserklaeringResponse,
 } from 'types/api';
 import { AlertError } from 'types/error';
+import { Farskapserklaering } from 'types/farskapserklaering';
 import { UserInfo } from 'types/user';
 import { redirectLoginCookie, setCookie } from 'utils/cookies';
 import { logApiError } from 'utils/logger';
@@ -67,14 +68,20 @@ export const opprettFarskapserklaering = (data: OppretteFarskaperklaeringRequest
     ) as Promise<OppretteFarskapserklaeringResponse>;
 };
 
+export const setSigneringStatusToken = (statusToken: string) => {
+    const url = `/api/farskapserklaering/redirect?status_query_token=${statusToken}`;
+
+    return checkAuthPostJson(url).then(parseJson) as Promise<Farskapserklaering>;
+};
+
 const checkAuthPostJson = (
     url: string,
-    data: Outbound,
+    data?: Outbound,
     onlyLogErrorOn?: (errorCode: number) => boolean
-) => {
-    return fetch(url, {
+) =>
+    fetch(url, {
         method: 'POST',
-        body: JSON.stringify(data),
+        body: data ? JSON.stringify(data) : undefined,
         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
     })
         .then(checkAuth)
@@ -92,7 +99,6 @@ const checkAuthPostJson = (
 
             throw error;
         });
-};
 
 /*
  * UTILS

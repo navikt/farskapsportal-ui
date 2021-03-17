@@ -5,7 +5,6 @@ export default {
     'languageToggle.en': 'English',
     'form.feiloppsummering': 'To proceed, you must correct the following:',
     'form.date.placeholder': 'dd.mm.yyyy',
-    'login.error': 'Cannot find the gender of the logged in user.',
     'api.error': 'Whoops, something went wrong while fetching data!',
 
     'withUserInfoError.banner.title': 'Whoops,',
@@ -16,7 +15,7 @@ export default {
     'breadcrumbs.forside': 'Declaration of paternity',
     'breadcrumbs.oversikt': 'Your paternity declarations',
     'breadcrumbs.skjema': 'Create declaration of paternity',
-    'breadcrumbs.kvittering': 'Receipt',
+    'breadcrumbs.kvittering': 'Confirmation',
 
     'header.forside': 'Declaration of paternity',
     'header.oversikt': 'Your paternity declarations',
@@ -49,5 +48,17 @@ export default {
     'mor.skjema.confirm.title': 'Confirm paternity',
     'mor.skjema.confirm.form.validation.required': 'You must confirm before the application can be submitted.',
     'mor.skjema.confirm.form.farCorrect.label': 'I agree that the information about the father is correct.',
-    'mor.skjema.confirm.form.cannotWithdraw.label': 'I am aware that this confirmation cannot be withdrawn at a later date.'
+    'mor.skjema.confirm.form.cannotWithdraw.label': 'I am aware that this confirmation cannot be withdrawn at a later date.',
+
+    'kvittering.hvaSkjerVidere.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/',
+
+    'kvittering.ytelserOgTjenester.foreldrepengerSvangerskapspengerEngangsstoenad.link': 'https://familie.nav.no',
+
+    'kvittering.ytelserOgTjenester.barnetrygd.link': 'https://www.nav.no/en/home/benefits-and-services/relatert-informasjon/child-benefit#chapter-1',
+
+    'kvittering.ytelserOgTjenester.utvidetBarnetrygd.link': 'https://www.nav.no/en/home/benefits-and-services/relatert-informasjon/child-benefit#chapter-1',
+
+    'kvittering.ytelserOgTjenester.barnebidrag.link': 'https://www.nav.no/en/home/benefits-and-services/relatert-informasjon/child-benefit#chapter-1',
+
+    'kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.link': 'https://www.nav.no/familie/alene-med-barn',
 };

@@ -5,7 +5,6 @@ export default {
     'languageToggle.en': 'Engelsk',
     'form.feiloppsummering': 'For å gå vidare må du retta opp følgjande:',
     'form.date.placeholder': 'dd.mm.åååå',
-    'login.error': 'Finn ikkje kjønn for innlogga brukar.',
     'api.error': 'Oisann, noko gjekk gale ved henting av data!',
 
     'breadcrumbs.forside': 'Farskapserklæring',
@@ -44,5 +43,17 @@ export default {
     'mor.skjema.confirm.title': 'Stadfest farskap',
     'mor.skjema.confirm.form.validation.required': 'Du må stadfesta før søknaden kan sendast inn.',
     'mor.skjema.confirm.form.farCorrect.label': 'Eg godkjenner at opplysningane om far er korrekt.',
-    'mor.skjema.confirm.form.cannotWithdraw.label': 'Eg er kjent med at denne stadfestinga ikkje kan trekkast tilbake på eit seinare tidspunkt.'
+    'mor.skjema.confirm.form.cannotWithdraw.label': 'Eg er kjent med at denne stadfestinga ikkje kan trekkast tilbake på eit seinare tidspunkt.',
+
+    'kvittering.hvaSkjerVidere.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/',
+
+    'kvittering.ytelserOgTjenester.foreldrepengerSvangerskapspengerEngangsstoenad.link': 'https://familie.nav.no',
+
+    'kvittering.ytelserOgTjenester.barnetrygd.link': 'https://www.nav.no/no/person/familie/barnetrygd-og-kontantstotte/nynorsk/barnetrygd#chapter-1',
+
+    'kvittering.ytelserOgTjenester.utvidetBarnetrygd.link': 'https://www.nav.no/no/person/familie/barnetrygd-og-kontantstotte/nynorsk/barnetrygd#chapter-1',
+
+    'kvittering.ytelserOgTjenester.barnebidrag.link': 'https://www.nav.no/no/person/familie/barnetrygd-og-kontantstotte/nynorsk/barnetrygd#chapter-1',
+
+    'kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.link': 'https://www.nav.no/familie/alene-med-barn',
 };

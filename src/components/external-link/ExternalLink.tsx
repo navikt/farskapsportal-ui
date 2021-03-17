@@ -4,13 +4,13 @@ import { ExternalLink as ExternalSvg } from '@navikt/ds-icons';
 
 interface ExternalLinkProps {
     href: string;
-    children: ReactNode;
+    children?: ReactNode;
 }
 
 function ExternalLink({ href, children }: ExternalLinkProps) {
     return (
         <Lenke href={href} target="_blank" rel="noopener noreferrer">
-            <span>{children}</span>
+            <span>{children ?? href}</span>
             <ExternalSvg />
         </Lenke>
     );

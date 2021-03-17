@@ -1,4 +1,4 @@
-import fetchMock from 'fetch-mock';
+import fetchMock, { MockResponse, MockResponseFunction } from 'fetch-mock';
 
 // import user from './get/far.json';
 // import user from './get/far_both_signed.json';
@@ -20,24 +20,21 @@ import user from './get/mor.json';
 
 fetchMock.config.fallbackToNetwork = true;
 
-const delay = (min: number, max: number) =>
-    new Promise((resolve) => {
-        setTimeout(resolve, Math.random() * (max - min) + min);
-    });
+const getDelay = (min: number, max: number) => Math.random() * (max - min) + min;
 
 const mockGet = (
     path: string,
-    response: Record<string, unknown> | string,
+    response: MockResponse | MockResponseFunction,
     minDelay = 200,
     maxDelay = 750
-) => fetchMock.get(path, () => delay(minDelay, maxDelay).then(() => response));
+) => fetchMock.get(path, response, { delay: getDelay(minDelay, maxDelay) });
 
 const mockPost = (
     path: string,
     response: Record<string, unknown> | string,
     minDelay = 200,
     maxDelay = 750
-) => fetchMock.post(path, () => delay(minDelay, maxDelay).then(() => response));
+) => fetchMock.post(path, response, { delay: getDelay(minDelay, maxDelay) });
 
 export const setUpMock = async () => {
     mockGet('/api/brukerinformasjon', user);
@@ -46,8 +43,19 @@ export const setUpMock = async () => {
 
     mockPost(
         '/api/farskapserklaering/ny',
-        { redirectUrlForSigneringMor: 'https://farskapsportal.no/redirectMor', feilkode: null },
+        {
+            redirectUrlForSigneringMor: 'http://localhost:3000/suksess?status_query_token=123',
+            feilkode: null,
+        },
         2000,
         3000
     );
+
+    mockPost('begin:/api/farskapserklaering/redirect', {
+        barn: null,
+        dokument: {},
+        far: null,
+        idFarskapserklaering: 0,
+        mor: null,
+    });
 };

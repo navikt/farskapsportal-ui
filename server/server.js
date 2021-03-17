@@ -92,6 +92,23 @@ app.post('/api/farskapserklaering/ny', async (req, res) => {
     }
 });
 
+app.post('/api/farskapserklaering/redirect', async (req, res) => {
+    try {
+        const token = req.cookies[tokenName];
+        const response = await fetch(`${apiUrl}/farskapserklaering/redirect`, {
+            method: 'post',
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        });
+        const text = await response.text();
+        res.status(response.status).send(text);
+    } catch (error) {
+        console.log(`Error while calling api: ${error}`);
+        res.sendStatus(500);
+    }
+});
+
 // Match everything except internal og static
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
     getHtmlWithDekorator(`${buildPath}/index.html`)
