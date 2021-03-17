@@ -48,7 +48,7 @@ function BarnLinkPanel({ foedselsnummer }: { foedselsnummer: string }) {
         <LinkPanel
             linkPath={linkPath}
             titleId="oversikt.barn.link.title"
-            etikettType="info"
+            etikettType="fokus"
             etikettId="oversikt.barn.link.status"
         >
             <Normaltekst>

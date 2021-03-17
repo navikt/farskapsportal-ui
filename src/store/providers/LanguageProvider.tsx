@@ -13,6 +13,7 @@ import { useStore } from 'store/Context';
 import enMessages from 'texts/en';
 import nbMessages from 'texts/nb';
 import nnMessages from 'texts/nn';
+import { languageCookie, setCookie } from 'utils/cookies';
 
 interface LanguageProviderProps {
     children: ReactNode;
@@ -23,6 +24,7 @@ function LanguageProvider({ children }: LanguageProviderProps) {
 
     useEffect(() => {
         document.documentElement.lang = language;
+        setCookie(languageCookie, language);
     }, [language]);
 
     let messages = nbMessages;

@@ -2,9 +2,10 @@ name: farskapsportal-ui
 ingresses:
   - https://farskapsportal.nav.no
 host:
-  - www.nav.no
+  - nav.no
   - farskapsportal-api.nav.no
 env:
+  ENV: prod
   DEKORATOREN_URL: https://www.nav.no/dekoratoren
   FARSKAPSPORTAL_API_URL: https://farskapsportal-api.nav.no
   LOGINSERVICE_URL: https://loginservice.nav.no/login

@@ -12,11 +12,11 @@ function RedirectToLanguage(props: { children: JSX.Element }) {
         const urlHasLanguage = ['/en/', '/nb/', '/nn/'].some((l) => location.pathname.includes(l));
 
         if (!urlHasLanguage) {
-            const redirectTo = `/${language}${location.pathname}${location.hash}`;
-
+            const redirectTo = `/${language}${location.pathname}${location.search}${location.hash}`;
             history.replace(redirectTo);
         }
     }, [language, location, history]);
+
     return props.children;
 }
 
