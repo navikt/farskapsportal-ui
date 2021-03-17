@@ -6090,10 +6090,10 @@ flush-write-stream@^1.0.0:
     inherits "^2.0.3"
     readable-stream "^2.3.6"
 
-focus-trap-react@^8.3.2:
-  version "8.4.1"
-  resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-8.4.1.tgz#b9d05e547f7bccf20a401dfb991a40ceac62be57"
-  integrity sha512-qMyVJ9WUQuyOQnTBL017xsruxeijd58+bND45XI2k9cRP8zAB811IfX97NfWo5JY5pAz5rUwa5F9XNDocPTbKw==
+focus-trap-react@^8.4.2:
+  version "8.4.2"
+  resolved "https://registry.yarnpkg.com/focus-trap-react/-/focus-trap-react-8.4.2.tgz#5b313605e0789a7beee1467785e455dc63388a98"
+  integrity sha512-yuItOIwgriOBMrbHDqbWMpQjGVs9SbtugYrT0vs0yPjHiPKja3NZ9dBMxDQrV1JhyojGK5d6j7ayqBS7Kcm9xQ==
   dependencies:
     focus-trap "^6.3.0"
 
@@ -8730,12 +8730,12 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-nav-datovelger@^10.1.1:
-  version "10.1.1"
-  resolved "https://registry.yarnpkg.com/nav-datovelger/-/nav-datovelger-10.1.1.tgz#9fa9a88da865dd1adf60a09e4c6f892ab61c0693"
-  integrity sha512-LIwZkfUbF0aONsVFIPMSuZWojQkOR7MluYU2Mmb4ujEJYqIV4ntKXpol2MwGOpq3qlEir+c17afxKGQuOqModw==
+nav-datovelger@^10.1.2:
+  version "10.1.2"
+  resolved "https://registry.yarnpkg.com/nav-datovelger/-/nav-datovelger-10.1.2.tgz#4512fbda5a894b4eb5959d97946e2de4d78a01ad"
+  integrity sha512-DE2jUjq+uv2AAHLrXfLW+oljhKGgpi8hyJU/PwgLYk1ByRNf5zJzYZAApddJhzJJXr5XnhvgLwQ3elct3GLZbQ==
   dependencies:
-    focus-trap-react "^8.3.2"
+    focus-trap-react "^8.4.2"
 
 nav-frontend-alertstriper-style@^2.0.38:
   version "2.0.38"
