@@ -39,14 +39,6 @@ const mockPost = (
 export const setUpMock = async () => {
     mockGet('/api/brukerinformasjon', () => user);
 
-    mockGet('begin:/api/farskapserklaering/redirect', {
-        barn: null,
-        dokument: {},
-        far: null,
-        idFarskapserklaering: 0,
-        mor: null,
-    });
-
     mockPost('/api/personopplysninger/far', 'OK', 2000, 3000);
 
     mockPost(
@@ -58,4 +50,12 @@ export const setUpMock = async () => {
         2000,
         3000
     );
+
+    mockPost('begin:/api/farskapserklaering/redirect', {
+        barn: null,
+        dokument: {},
+        far: null,
+        idFarskapserklaering: 0,
+        mor: null,
+    });
 };

@@ -25,12 +25,6 @@ export const checkAuthFetchUser = () => {
     return checkAuthFetchJson(url, onlyLogErrorOn) as Promise<UserInfo>;
 };
 
-export const checkAuthSetSigneringStatusToken = (statusToken: string) => {
-    const url = `/api/farskapserklaering/redirect?status_query_token=${statusToken}`;
-
-    return checkAuthFetchJson(url) as Promise<Farskapserklaering>;
-};
-
 const checkAuthFetchJson = (url: string, onlyLogErrorOn?: (errorCode: number) => boolean) =>
     fetch(url, {
         method: 'GET',
@@ -74,14 +68,20 @@ export const opprettFarskapserklaering = (data: OppretteFarskaperklaeringRequest
     ) as Promise<OppretteFarskapserklaeringResponse>;
 };
 
+export const setSigneringStatusToken = (statusToken: string) => {
+    const url = `/api/farskapserklaering/redirect?status_query_token=${statusToken}`;
+
+    return checkAuthPostJson(url).then(parseJson) as Promise<Farskapserklaering>;
+};
+
 const checkAuthPostJson = (
     url: string,
-    data: Outbound,
+    data?: Outbound,
     onlyLogErrorOn?: (errorCode: number) => boolean
 ) =>
     fetch(url, {
         method: 'POST',
-        body: JSON.stringify(data),
+        body: data ? JSON.stringify(data) : undefined,
         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
     })
         .then(checkAuth)

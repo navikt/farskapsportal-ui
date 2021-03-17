@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
 
-import { checkAuthSetSigneringStatusToken } from 'api/api';
+import { setSigneringStatusToken } from 'api/api';
 import { fetchUser } from 'api/fetchUser';
 import Spinner from 'components/spinner/Spinner';
 import { useStore } from 'store/Context';
@@ -16,7 +16,7 @@ function Suksess() {
 
     useEffect(() => {
         if (statusQueryToken) {
-            checkAuthSetSigneringStatusToken(statusQueryToken)
+            setSigneringStatusToken(statusQueryToken)
                 .then((res) => {
                     fetchUser(dispatch);
                     history.replace(
