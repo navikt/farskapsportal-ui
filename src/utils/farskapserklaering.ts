@@ -33,5 +33,5 @@ export const isSignedByFar = (erklaering: Farskapserklaering): boolean =>
 export const isTermindatoErklaering = (erklaering: Farskapserklaering): boolean =>
     !!erklaering.barn?.termindato;
 
-// TODO
-export const isBorSammen = (erklaering: Farskapserklaering): boolean => true;
+export const isBorSammen = (erklaering: Farskapserklaering, isFar: boolean): boolean =>
+    isFar ? !!erklaering.farBorSammenMedMor : !!erklaering.morBorSammenMedFar;

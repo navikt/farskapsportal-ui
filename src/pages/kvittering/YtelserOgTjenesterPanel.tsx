@@ -14,7 +14,7 @@ interface YtelserOgTjenesterPanelProps {
 
 function YtelserOgTjenesterPanel({ erklaering }: YtelserOgTjenesterPanelProps) {
     const isFar = isSignedByFar(erklaering);
-    const borSammen = isBorSammen(erklaering);
+    const borSammen = isBorSammen(erklaering, isFar);
 
     const renderContent = () => {
         if (borSammen) {

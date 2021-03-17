@@ -19,8 +19,6 @@ const introFarText = texts['kvittering.intro.far'];
 const morAlertText = texts['kvittering.morAlert'];
 const hvaSkjerVidereTitle = texts['kvittering.hvaSkjerVidere.title'];
 const hvaSkjerHvisTitle = texts['kvittering.hvaSkjerHvis.title'];
-// TODO: venter på bor sammen
-// const farSignererIkkeTitle = texts['kvittering.hvaSkjerHvis.farSignererIkke.title'];
 const farSignererIkkeTermindatoText =
     texts['kvittering.hvaSkjerHvis.farSignererIkke.termindato.text'];
 const farSignererIkkeFoedselsnummerText =
@@ -31,11 +29,10 @@ const ytelserOgTjenesterTitle = texts['kvittering.ytelserOgTjenester.title'];
 const foreldrepengerSvangerskapspengerEngangsstoenadTitle =
     texts['kvittering.ytelserOgTjenester.foreldrepengerSvangerskapspengerEngangsstoenad.title'];
 const barnetrygdTitle = texts['kvittering.ytelserOgTjenester.barnetrygd.title'];
-// TODO: venter på bor sammen
-// const utvidetBarnetrygdTitle = texts['kvittering.ytelserOgTjenester.utvidetBarnetrygd.title'];
-// const barnebidragTitle = texts['kvittering.ytelserOgTjenester.barnebidrag.title'];
-// const stoenadTilEnsligMorEllerFarTitle =
-//     texts['kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.title'];
+const utvidetBarnetrygdTitle = texts['kvittering.ytelserOgTjenester.utvidetBarnetrygd.title'];
+const barnebidragTitle = texts['kvittering.ytelserOgTjenester.barnebidrag.title'];
+const stoenadTilEnsligMorEllerFarTitle =
+    texts['kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.title'];
 
 const getStore = ({
     foreldrerolle,
@@ -43,14 +40,16 @@ const getStore = ({
     signertAvFar = null,
     termindato = null,
     foedselsnummer = null,
-    borSammen = true, // TODO
+    farBorSammenMedMor = null,
+    morBorSammenMedFar = null,
 }: {
     foreldrerolle: Foreldrerolle;
     signertAvMor?: string | null;
     signertAvFar?: string | null;
     termindato?: string | null;
     foedselsnummer?: string | null;
-    borSammen?: boolean;
+    farBorSammenMedMor?: boolean | null;
+    morBorSammenMedFar?: boolean | null;
 }): Partial<Store> => ({
     userInfo: {
         status: 'SUCCESS',
@@ -77,8 +76,10 @@ const getStore = ({
                         signertAvMor: signertAvMor,
                     },
                     far: null,
+                    farBorSammenMedMor: farBorSammenMedMor,
                     idFarskapserklaering: ERKLAERING_ID,
                     mor: null,
+                    morBorSammenMedFar: morBorSammenMedFar,
                 },
             ],
             avventerRegistrering: null,
@@ -87,13 +88,13 @@ const getStore = ({
     },
 });
 
-test('should render info for mor with termindato erklaering and bor sammen', async () => {
+test('should render info for mor with termindato erklaering and bor sammen true', async () => {
     const { container } = render(<Kvittering />, {
         store: getStore({
             foreldrerolle: Foreldrerolle.Mor,
             signertAvMor: '2021-03-17',
             termindato: '2021-03-17',
-            borSammen: true,
+            morBorSammenMedFar: true,
         }),
     });
 
@@ -119,15 +120,18 @@ test('should render info for mor with termindato erklaering and bor sammen', asy
         screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)
     ).toBeInTheDocument();
     expect(screen.getByText(barnetrygdTitle)).toBeInTheDocument();
+    expect(screen.queryByText(utvidetBarnetrygdTitle)).not.toBeInTheDocument();
+    expect(screen.queryByText(barnebidragTitle)).not.toBeInTheDocument();
+    expect(screen.queryByText(stoenadTilEnsligMorEllerFarTitle)).not.toBeInTheDocument();
 });
 
-test('should render info for mor with foedselsnummer erklaering and bor sammen', async () => {
+test('should render info for mor with foedselsnummer erklaering and bor sammen true', async () => {
     const { container } = render(<Kvittering />, {
         store: getStore({
             foreldrerolle: Foreldrerolle.Mor,
             signertAvMor: '2021-03-17',
             foedselsnummer: '12345678901',
-            borSammen: true,
+            morBorSammenMedFar: true,
         }),
     });
 
@@ -153,16 +157,56 @@ test('should render info for mor with foedselsnummer erklaering and bor sammen',
         screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)
     ).toBeInTheDocument();
     expect(screen.getByText(barnetrygdTitle)).toBeInTheDocument();
+    expect(screen.queryByText(utvidetBarnetrygdTitle)).not.toBeInTheDocument();
+    expect(screen.queryByText(barnebidragTitle)).not.toBeInTheDocument();
+    expect(screen.queryByText(stoenadTilEnsligMorEllerFarTitle)).not.toBeInTheDocument();
 });
 
-test('should render info for far with termindato erklaering and bor sammen', async () => {
+test('should render info for mor with termindato erklaering and bor sammen false', async () => {
+    const { container } = render(<Kvittering />, {
+        store: getStore({
+            foreldrerolle: Foreldrerolle.Mor,
+            signertAvMor: '2021-03-17',
+            termindato: '2021-03-17',
+            morBorSammenMedFar: false,
+        }),
+    });
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+
+    expect(screen.getByText(introMorText)).toBeInTheDocument();
+    expect(screen.queryByText(introFarText)).not.toBeInTheDocument();
+    expect(screen.getByText(morAlertText)).toBeInTheDocument();
+    expect(screen.getByText(hvaSkjerVidereTitle)).toBeInTheDocument();
+    expect(screen.getByText(hvaSkjerHvisTitle)).toBeInTheDocument();
+    expect(screen.getByText(ytelserOgTjenesterTitle)).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText(hvaSkjerHvisTitle));
+    fireEvent.click(screen.getByText(ytelserOgTjenesterTitle));
+
+    expect(screen.getByText(farSignererIkkeTermindatoText)).toBeInTheDocument();
+    expect(screen.queryByText(farSignererIkkeFoedselsnummerText)).not.toBeInTheDocument();
+    expect(screen.getByText(foedtIUtlandetTitle)).toBeInTheDocument();
+    expect(screen.getByText(barnetDoerTitle)).toBeInTheDocument();
+
+    expect(
+        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)
+    ).toBeInTheDocument();
+    expect(screen.getByText(barnetrygdTitle)).toBeInTheDocument();
+    expect(screen.getByText(utvidetBarnetrygdTitle)).toBeInTheDocument();
+    expect(screen.getByText(barnebidragTitle)).toBeInTheDocument();
+    expect(screen.getByText(stoenadTilEnsligMorEllerFarTitle)).toBeInTheDocument();
+});
+
+test('should render info for far with termindato erklaering and bor sammen true', async () => {
     const { container } = render(<Kvittering />, {
         store: getStore({
             foreldrerolle: Foreldrerolle.Far,
             signertAvMor: '2021-03-17',
             signertAvFar: '2021-03-17',
             termindato: '2021-03-17',
-            borSammen: true,
+            farBorSammenMedMor: true,
         }),
     });
 
@@ -186,16 +230,17 @@ test('should render info for far with termindato erklaering and bor sammen', asy
         screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)
     ).toBeInTheDocument();
     expect(screen.getByText(barnetrygdTitle)).toBeInTheDocument();
+    expect(screen.queryByText(barnebidragTitle)).not.toBeInTheDocument();
 });
 
-test('should render info for far with foedselsnummer erklaering and bor sammen', async () => {
+test('should render info for far with foedselsnummer erklaering and bor sammen true', async () => {
     const { container } = render(<Kvittering />, {
         store: getStore({
             foreldrerolle: Foreldrerolle.Far,
             signertAvMor: '2021-03-17',
             signertAvFar: '2021-03-17',
             foedselsnummer: '12345678901',
-            borSammen: true,
+            farBorSammenMedMor: true,
         }),
     });
 
@@ -215,4 +260,39 @@ test('should render info for far with foedselsnummer erklaering and bor sammen',
         screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)
     ).toBeInTheDocument();
     expect(screen.getByText(barnetrygdTitle)).toBeInTheDocument();
+    expect(screen.queryByText(barnebidragTitle)).not.toBeInTheDocument();
+});
+
+test('should render info for far with termindato erklaering and bor sammen false', async () => {
+    const { container } = render(<Kvittering />, {
+        store: getStore({
+            foreldrerolle: Foreldrerolle.Far,
+            signertAvMor: '2021-03-17',
+            signertAvFar: '2021-03-17',
+            termindato: '2021-03-17',
+            farBorSammenMedMor: false,
+        }),
+    });
+
+    const results = await axe(container);
+    expect(results).toHaveNoViolations();
+
+    expect(screen.queryByText(introMorText)).not.toBeInTheDocument();
+    expect(screen.getByText(new RegExp(introFarText))).toBeInTheDocument(); // Date is added to string in document
+    expect(screen.queryByText(morAlertText)).not.toBeInTheDocument();
+    expect(screen.getByText(hvaSkjerVidereTitle)).toBeInTheDocument();
+    expect(screen.getByText(hvaSkjerHvisTitle)).toBeInTheDocument();
+    expect(screen.getByText(ytelserOgTjenesterTitle)).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText(hvaSkjerHvisTitle));
+    fireEvent.click(screen.getByText(ytelserOgTjenesterTitle));
+
+    expect(screen.getByText(foedtIUtlandetTitle)).toBeInTheDocument();
+    expect(screen.getByText(barnetDoerTitle)).toBeInTheDocument();
+
+    expect(
+        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)
+    ).toBeInTheDocument();
+    expect(screen.getByText(barnetrygdTitle)).toBeInTheDocument();
+    expect(screen.getByText(barnebidragTitle)).toBeInTheDocument();
 });
