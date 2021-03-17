@@ -37,6 +37,6 @@ export interface KontrollerePersonopplysningerRequest {
 
 export interface OppretteFarskaperklaeringRequest {
     barn: Barn;
+    morBorSammenMedFar: boolean;
     opplysningerOmFar: KontrollerePersonopplysningerRequest;
-    borSammen: boolean;
 }

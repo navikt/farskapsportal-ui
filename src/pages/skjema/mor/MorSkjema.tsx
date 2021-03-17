@@ -157,11 +157,11 @@ function MorSkjema() {
                 foedselsnummer: barnFoedselsnummer,
                 termindato: barnFoedselsnummer ? null : state.formValues.termindato.termindato,
             },
+            morBorSammenMedFar: state.formValues.borSammen.borSammen === 'YES',
             opplysningerOmFar: {
                 foedselsnummer: state.formValues.far.foedselsnummer,
                 navn: state.formValues.far.navn,
             },
-            borSammen: state.formValues.borSammen.borSammen === 'YES',
         })
             .then((response) => {
                 dispatch({ type: 'SUBMIT_SUCCESS' });
