@@ -154,7 +154,7 @@ export default {
     'kvittering.hvaSkjerHvis.title': 'Hva skjer hvis?',
     'kvittering.hvaSkjerHvis.farSignererIkke.title': 'Oppgitt far ikke signerer erklæringen',
     'kvittering.hvaSkjerHvis.farSignererIkke.termindato.text': 'Hvis oppgitt far ikke har signert erklæringen innen en måned etter fødsel, vil du bli kontaktet av NAV for å få farskapet fastsatt. Hvis far glemmer å signere erklæringen ber vi om at du minner han på dette.',
-    'kvittering.hvaSkjerHvis.farSignererIkke.foedselsnummer.text': 'Hvis oppgitt far ikke har signert erklæringen innen en måned etter fødsel, vil du bli kontaktet av NAV for å få farskapet fastsatt. Hvis far glemmer å signere erklæringen ber vi om at du minner han på dette.',
+    'kvittering.hvaSkjerHvis.farSignererIkke.foedselsnummer.text': 'Hvis oppgitt far ikke signerer erklæringen innen en måned, vil du bli kontaktet av NAV for å få farskapet fastsatt. Hvis far har glemt å signere erklæringen ber vi om at du minner han på dette.',
     'kvittering.hvaSkjerHvis.foedtIUtlandet.title': 'Barnet blir født i utlandet',
     'kvittering.hvaSkjerHvis.foedtIUtlandet.text': 'Den elektroniske erklæringen er ikke gyldig hvis barnet blir født i utlandet. Hvis dette skjer, må farskap erklæres på nytt på papir.',
     'kvittering.hvaSkjerHvis.barnetDoer.title': 'Barnet dør',
