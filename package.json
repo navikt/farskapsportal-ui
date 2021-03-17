@@ -20,7 +20,7 @@
     "@craco/craco": "^6.1.1",
     "@formatjs/intl-datetimeformat": "^3.2.13",
     "@formatjs/intl-numberformat": "^6.2.3",
-    "@navikt/ds-icons": "^0.1.5",
+    "@navikt/ds-icons": "^0.2.0",
     "@navikt/fnrvalidator": "^1.1.3",
     "@navikt/nav-dekoratoren-moduler": "^1.2.9",
     "@sentry/react": "^6.2.2",
@@ -95,9 +95,9 @@
     "stylelint-prettier": "^1.2.0"
   },
   "jest": {
-    "transformIgnorePatterns": [
-      "/node_modules/(?!@navikt/ds-.*|nav-frontend-.*|nav-datovelger)"
-    ]
+    "moduleNameMapper": {
+      "@navikt/ds-icons(.*)": "@navikt/ds-icons/cjs$1"
+    }
   },
   "browserslist": {
     "production": [
