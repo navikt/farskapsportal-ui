@@ -2,7 +2,7 @@ name: farskapsportal-ui
 ingresses:
   - https://farskapsportal.nav.no
 host:
-  - www.nav.no
+  - nav.no
   - farskapsportal-api.nav.no
 env:
   ENV: prod

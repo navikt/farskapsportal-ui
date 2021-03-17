@@ -13,10 +13,10 @@ spec:
     max: 2
     cpuThresholdPercentage: 50
   liveness:
-    path: internal/isAlive
+    path: /internal/isAlive
     initialDelay: 10
   readiness:
-    path: internal/isReady
+    path: /internal/isReady
     initialDelay: 10
   ingresses:
   {{#each ingresses as |url|}}
