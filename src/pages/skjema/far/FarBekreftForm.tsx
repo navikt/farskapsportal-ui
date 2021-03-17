@@ -10,7 +10,6 @@ import './FarBekreftForm.less';
 interface FarBekreftFormInput {
     readAndUnderstood: boolean;
     cannotWithdraw: boolean;
-    liveTogether: boolean;
 }
 
 interface FarBekreftFormProps {
@@ -18,11 +17,7 @@ interface FarBekreftFormProps {
     onCancel: () => void;
 }
 
-const checkboxIds: (keyof FarBekreftFormInput)[] = [
-    'readAndUnderstood',
-    'cannotWithdraw',
-    'liveTogether',
-];
+const checkboxIds: (keyof FarBekreftFormInput)[] = ['readAndUnderstood', 'cannotWithdraw'];
 
 function FarBekreftForm(props: FarBekreftFormProps) {
     const intl = useIntl();
@@ -30,7 +25,6 @@ function FarBekreftForm(props: FarBekreftFormProps) {
         defaultValues: {
             readAndUnderstood: false,
             cannotWithdraw: false,
-            liveTogether: false,
         },
         shouldFocusError: false,
     });

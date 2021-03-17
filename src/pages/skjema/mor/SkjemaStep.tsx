@@ -10,7 +10,7 @@ import StepIcon from './StepIcon';
 import './SkjemaStep.less';
 
 interface SkjemaStepProps {
-    stepNumber: 1 | 2 | 3;
+    stepNumber: 1 | 2 | 3 | 4;
     formComponent: ReactNode;
     presentationComponent?: ReactNode;
     status: StepStatus;

@@ -19,7 +19,7 @@ export interface TermindatoFormInput {
 }
 
 export interface TermindatoFormProps {
-    defaultTermindato: string | null;
+    defaultTermindato: string;
     onSubmit: (data: TermindatoFormInput) => void;
     onCancel: () => void;
 }
@@ -28,7 +28,7 @@ function TermindatoForm(props: TermindatoFormProps) {
     const intl = useIntl();
     const { handleSubmit, errors, control } = useForm<TermindatoFormInput>({
         defaultValues: {
-            termindato: props.defaultTermindato ?? '',
+            termindato: props.defaultTermindato,
         },
         shouldFocusError: false,
     });

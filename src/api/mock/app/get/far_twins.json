@@ -24,6 +24,8 @@
         "mellomnavn": null,
         "etternavn": "Nordmann"
       },
+      "morBorSammenMedFar": true,
+      "farBorSammenMedMor": null,
       "dokument": {
         "dokumentnavn": null,
         "innhold": null,
@@ -55,6 +57,8 @@
         "mellomnavn": null,
         "etternavn": "Nordmann"
       },
+      "morBorSammenMedFar": true,
+      "farBorSammenMedMor": null,
       "dokument": {
         "dokumentnavn": null,
         "innhold": null,

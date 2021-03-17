@@ -3,35 +3,42 @@ import { useIntl } from 'react-intl';
 
 import { opprettFarskapserklaering } from 'api/api';
 import Error from 'components/error/Error';
-import { KontrollerePersonopplysningerRequest, OppretteFarskaperklaeringRequest } from 'types/api';
-import { Barn } from 'types/barn';
 import { AlertError } from 'types/error';
 import { StepStatus } from 'types/form';
 import { Path } from 'types/path';
 import { useNavigateTo } from 'utils/hooks/useNavigateTo';
 import { useQuery } from 'utils/hooks/useQuery';
 import { getMessage } from 'utils/intl';
-import MorBekreftForm from './forms/MorBekreftForm';
+import BorSammenForm, { BorSammenFormInput } from './forms/BorSammenForm';
 import FarForm, { FarFormInput } from './forms/FarForm';
+import MorBekreftForm from './forms/MorBekreftForm';
 import TermindatoForm, { TermindatoFormInput } from './forms/TermindatoForm';
 import BarnPresentation from './presentation/BarnPresentation';
+import BorSammenPresentation from './presentation/BorSammenPresentation';
 import FarPresentation from './presentation/FarPresentation';
 import SkjemaStep from './SkjemaStep';
 
 type ActionType =
-    | { type: 'EDIT_BARN' }
-    | { type: 'SET_BARN'; payload: Barn }
+    | { type: 'EDIT_TERMINDATO' }
+    | { type: 'SET_TERMINDATO'; payload: TermindatoFormInput }
     | { type: 'EDIT_FAR' }
-    | { type: 'SET_FAR'; payload: KontrollerePersonopplysningerRequest }
+    | { type: 'SET_FAR'; payload: FarFormInput }
+    | { type: 'EDIT_BOR_SAMMEN' }
+    | { type: 'SET_BOR_SAMMEN'; payload: BorSammenFormInput }
     | { type: 'SUBMIT' }
     | { type: 'SUBMIT_SUCCESS' }
     | { type: 'SUBMIT_FAILURE'; payload: AlertError };
 
 interface StateType {
-    erklaering: OppretteFarskaperklaeringRequest;
+    formValues: {
+        termindato: TermindatoFormInput;
+        far: FarFormInput;
+        borSammen: BorSammenFormInput;
+    };
     stepStatus: {
         barn: StepStatus;
         far: StepStatus;
+        borSammen: StepStatus;
     };
     submit: {
         pending: boolean;
@@ -41,14 +48,14 @@ interface StateType {
 
 const reducer = (state: StateType, action: ActionType): StateType => {
     switch (action.type) {
-        case 'EDIT_BARN':
+        case 'EDIT_TERMINDATO':
             return { ...state, stepStatus: { ...state.stepStatus, barn: StepStatus.Active } };
-        case 'SET_BARN':
+        case 'SET_TERMINDATO':
             return {
                 ...state,
-                erklaering: {
-                    ...state.erklaering,
-                    barn: action.payload,
+                formValues: {
+                    ...state.formValues,
+                    termindato: action.payload,
                 },
                 stepStatus: {
                     barn: StepStatus.Done,
@@ -56,6 +63,12 @@ const reducer = (state: StateType, action: ActionType): StateType => {
                         state.stepStatus.far === StepStatus.Done
                             ? StepStatus.Done
                             : StepStatus.Active,
+                    borSammen:
+                        state.stepStatus.borSammen === StepStatus.Done
+                            ? StepStatus.Done
+                            : state.stepStatus.far === StepStatus.Done
+                            ? StepStatus.Active
+                            : StepStatus.NotStarted,
                 },
             };
         case 'EDIT_FAR':
@@ -66,10 +79,28 @@ const reducer = (state: StateType, action: ActionType): StateType => {
         case 'SET_FAR':
             return {
                 ...state,
-                erklaering: { ...state.erklaering, opplysningerOmFar: action.payload },
+                formValues: { ...state.formValues, far: action.payload },
                 stepStatus: {
                     ...state.stepStatus,
                     far: StepStatus.Done,
+                    borSammen:
+                        state.stepStatus.borSammen === StepStatus.Done
+                            ? StepStatus.Done
+                            : StepStatus.Active,
+                },
+            };
+        case 'EDIT_BOR_SAMMEN':
+            return {
+                ...state,
+                stepStatus: { ...state.stepStatus, borSammen: StepStatus.Active },
+            };
+        case 'SET_BOR_SAMMEN':
+            return {
+                ...state,
+                formValues: { ...state.formValues, borSammen: action.payload },
+                stepStatus: {
+                    ...state.stepStatus,
+                    borSammen: StepStatus.Done,
                 },
             };
         case 'SUBMIT':
@@ -91,19 +122,22 @@ function MorSkjema() {
     const navigateTo = useNavigateTo();
 
     const [state, dispatch] = useReducer(reducer, {
-        erklaering: {
-            barn: {
-                termindato: null,
-                foedselsnummer: barnFoedselsnummer,
+        formValues: {
+            termindato: {
+                termindato: '',
             },
-            opplysningerOmFar: {
-                foedselsnummer: '',
+            far: {
                 navn: '',
+                foedselsnummer: '',
+            },
+            borSammen: {
+                borSammen: null,
             },
         },
         stepStatus: {
             barn: barnFoedselsnummer ? StepStatus.Done : StepStatus.Active,
             far: barnFoedselsnummer ? StepStatus.Active : StepStatus.NotStarted,
+            borSammen: StepStatus.NotStarted,
         },
         submit: {
             pending: false,
@@ -118,7 +152,17 @@ function MorSkjema() {
     const onSubmit = () => {
         dispatch({ type: 'SUBMIT' });
 
-        opprettFarskapserklaering(state.erklaering)
+        opprettFarskapserklaering({
+            barn: {
+                foedselsnummer: barnFoedselsnummer,
+                termindato: barnFoedselsnummer ? null : state.formValues.termindato.termindato,
+            },
+            morBorSammenMedFar: state.formValues.borSammen.borSammen === 'YES',
+            opplysningerOmFar: {
+                foedselsnummer: state.formValues.far.foedselsnummer,
+                navn: state.formValues.far.navn,
+            },
+        })
             .then((response) => {
                 dispatch({ type: 'SUBMIT_SUCCESS' });
                 window.location.assign(response.redirectUrlForSigneringMor);
@@ -130,13 +174,13 @@ function MorSkjema() {
 
     const onSubmitTermindatoForm = (data: TermindatoFormInput) => {
         dispatch({
-            type: 'SET_BARN',
-            payload: { foedselsnummer: null, termindato: data.termindato },
+            type: 'SET_TERMINDATO',
+            payload: data,
         });
     };
 
     const onEndreBarnForm = () => {
-        dispatch({ type: 'EDIT_BARN' });
+        dispatch({ type: 'EDIT_TERMINDATO' });
     };
 
     const onSubmitFarForm = (data: FarFormInput) => {
@@ -147,21 +191,29 @@ function MorSkjema() {
         dispatch({ type: 'EDIT_FAR' });
     };
 
+    const onSubmitBorSammenForm = (data: BorSammenFormInput) => {
+        dispatch({ type: 'SET_BOR_SAMMEN', payload: data });
+    };
+
+    const onEndreBorSammenForm = () => {
+        dispatch({ type: 'EDIT_BOR_SAMMEN' });
+    };
+
     return (
         <div className="MorSkjema">
             <SkjemaStep
                 stepNumber={1}
                 formComponent={
                     <TermindatoForm
-                        defaultTermindato={state.erklaering.barn.termindato}
+                        defaultTermindato={state.formValues.termindato.termindato}
                         onSubmit={onSubmitTermindatoForm}
                         onCancel={onCancel}
                     />
                 }
                 presentationComponent={
                     <BarnPresentation
-                        foedselsnummer={state.erklaering.barn.foedselsnummer}
-                        termindato={state.erklaering.barn.termindato}
+                        foedselsnummer={barnFoedselsnummer}
+                        termindato={state.formValues.termindato.termindato}
                     />
                 }
                 status={state.stepStatus.barn}
@@ -172,16 +224,16 @@ function MorSkjema() {
                 stepNumber={2}
                 formComponent={
                     <FarForm
-                        defaultNavn={state.erklaering.opplysningerOmFar.navn}
-                        defaultFoedselsnummer={state.erklaering.opplysningerOmFar.foedselsnummer}
+                        defaultNavn={state.formValues.far.navn}
+                        defaultFoedselsnummer={state.formValues.far.foedselsnummer}
                         onSubmit={onSubmitFarForm}
                         onCancel={onCancel}
                     />
                 }
                 presentationComponent={
                     <FarPresentation
-                        navn={state.erklaering.opplysningerOmFar.navn}
-                        foedselsnummer={state.erklaering.opplysningerOmFar.foedselsnummer}
+                        navn={state.formValues.far.navn}
+                        foedselsnummer={state.formValues.far.foedselsnummer}
                     />
                 }
                 title={getMessage(intl, 'mor.skjema.far.title')}
@@ -192,6 +244,23 @@ function MorSkjema() {
             <SkjemaStep
                 stepNumber={3}
                 formComponent={
+                    <BorSammenForm
+                        defaultBorSammen={state.formValues.borSammen.borSammen}
+                        onSubmit={onSubmitBorSammenForm}
+                        onCancel={onCancel}
+                    />
+                }
+                presentationComponent={
+                    <BorSammenPresentation borSammen={state.formValues.borSammen.borSammen} />
+                }
+                title={getMessage(intl, 'mor.skjema.borSammen.title')}
+                status={state.stepStatus.borSammen}
+                onChange={onEndreBorSammenForm}
+                isDisabled={state.submit.pending}
+            />
+            <SkjemaStep
+                stepNumber={4}
+                formComponent={
                     <MorBekreftForm
                         isPending={state.submit.pending}
                         onSubmit={onSubmit}
@@ -201,7 +270,8 @@ function MorSkjema() {
                 title={getMessage(intl, 'mor.skjema.confirm.title')}
                 status={
                     state.stepStatus.barn === StepStatus.Done &&
-                    state.stepStatus.far === StepStatus.Done
+                    state.stepStatus.far === StepStatus.Done &&
+                    state.stepStatus.borSammen === StepStatus.Done
                         ? StepStatus.Active
                         : StepStatus.NotStarted
                 }

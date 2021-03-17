@@ -1,10 +1,18 @@
 import { fireEvent, render, screen, waitFor } from 'test-utils';
+import texts from 'texts/nb';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { getToday } from 'utils/date';
 
 import MorSkjema from '../MorSkjema';
 
 jest.mock('api/api', () => ({ controlFatherInfo: () => Promise.resolve() }));
+
+const termindatoLabel = texts['mor.skjema.barn.form.termindato.label'];
+const navnLabel = texts['mor.skjema.far.form.navn.label'];
+const foedselsnummerLabel = texts['mor.skjema.far.form.foedselsnummer.label'];
+const borSammenYesLabel = texts['mor.skjema.borSammen.label.yes'];
+const farCorrectLabel = texts['mor.skjema.confirm.form.farCorrect.label'];
+const submitButtonLabel = texts['mor.form.buttons.next'];
 
 test('should display steps correctly', async () => {
     render(<MorSkjema />, {
@@ -25,13 +33,14 @@ test('should display steps correctly', async () => {
         },
     });
 
-    const termindatoInput = screen.getByLabelText(/termindato/i);
-    const submitButton = screen.getByText('Neste');
+    const termindatoInput = screen.getByLabelText(termindatoLabel);
+    const submitButton = screen.getByText(submitButtonLabel);
 
     // only step 1 is displayed
     expect(termindatoInput).toBeInTheDocument();
-    expect(screen.queryByLabelText(/navn/i)).not.toBeInTheDocument();
-    expect(screen.queryByLabelText(/jeg godkjenner/i)).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(navnLabel)).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(borSammenYesLabel)).not.toBeInTheDocument();
+    expect(screen.queryByLabelText(farCorrectLabel)).not.toBeInTheDocument();
 
     // fill out step 1
     termindatoInput.focus();
@@ -40,34 +49,45 @@ test('should display steps correctly', async () => {
     fireEvent.click(submitButton);
 
     await waitFor(async () => {
-        const navnInput = screen.getByLabelText(/navn/i);
-        const foedselsnummerInput = screen.getByLabelText(/fødselsnummer/i);
-        const submitButton = screen.getByText('Neste');
+        const navnInput = screen.getByLabelText(navnLabel);
+        const foedselsnummerInput = screen.getByLabelText(foedselsnummerLabel);
+        const submitButton = screen.getByText(submitButtonLabel);
 
         // only step 2 is displayed
-        expect(screen.queryByLabelText(/termindato/i)).not.toBeInTheDocument();
+        expect(screen.queryByLabelText(termindatoLabel)).not.toBeInTheDocument();
         expect(navnInput).toBeInTheDocument();
-        expect(screen.queryByLabelText(/jeg godkjenner/i)).not.toBeInTheDocument();
+        expect(screen.queryByLabelText(borSammenYesLabel)).not.toBeInTheDocument();
+        expect(screen.queryByLabelText(farCorrectLabel)).not.toBeInTheDocument();
 
         // fill out step 2
         fireEvent.change(navnInput, { target: { value: 'TEST' } });
         foedselsnummerInput.focus();
         fireEvent.change(foedselsnummerInput, { target: { value: '03119022621' } });
         fireEvent.click(submitButton);
+    });
 
-        await waitFor(() => {
-            const farCorrectCheckbox = screen.getByLabelText(
-                /jeg godkjenner at opplysningene om far er korrekt/i
-            );
-            const cannotWithdrawCheckbox = screen.getByLabelText(
-                /jeg er kjent med at denne bekreftelsen ikke kan trekkes tilbake på et senere tidspunkt/i
-            );
+    await waitFor(async () => {
+        const jaRadioInput = screen.getByLabelText(borSammenYesLabel);
+        const submitButton = screen.getByText(submitButtonLabel);
 
-            // only step 3 is displayed
-            expect(screen.queryByLabelText(/termindato/i)).not.toBeInTheDocument();
-            expect(screen.queryByLabelText(/navn/i)).not.toBeInTheDocument();
-            expect(farCorrectCheckbox).toBeInTheDocument();
-            expect(cannotWithdrawCheckbox).toBeInTheDocument();
-        });
+        // only step 3 is displayed
+        expect(screen.queryByLabelText(termindatoLabel)).not.toBeInTheDocument();
+        expect(screen.queryByLabelText(navnLabel)).not.toBeInTheDocument();
+        expect(jaRadioInput).toBeInTheDocument();
+        expect(screen.queryByLabelText(farCorrectLabel)).not.toBeInTheDocument();
+
+        // fill out step 3
+        fireEvent.click(jaRadioInput);
+        fireEvent.click(submitButton);
+    });
+
+    await waitFor(() => {
+        const farCorrectCheckbox = screen.getByLabelText(farCorrectLabel);
+
+        // only step 4 is displayed
+        expect(screen.queryByLabelText(termindatoLabel)).not.toBeInTheDocument();
+        expect(screen.queryByLabelText(navnLabel)).not.toBeInTheDocument();
+        expect(screen.queryByLabelText(borSammenYesLabel)).not.toBeInTheDocument();
+        expect(farCorrectCheckbox).toBeInTheDocument();
     });
 });

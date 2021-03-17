@@ -10,7 +10,6 @@ import './MorBekreftForm.less';
 interface MorBekreftFormInput {
     farCorrect: boolean;
     cannotWithdraw: boolean;
-    liveTogether: boolean;
 }
 
 interface MorBekreftFormProps {
@@ -19,7 +18,7 @@ interface MorBekreftFormProps {
     onCancel: () => void;
 }
 
-const checkboxIds: (keyof MorBekreftFormInput)[] = ['farCorrect', 'cannotWithdraw', 'liveTogether'];
+const checkboxIds: (keyof MorBekreftFormInput)[] = ['farCorrect', 'cannotWithdraw'];
 
 function MorBekreftForm(props: MorBekreftFormProps) {
     const intl = useIntl();
@@ -27,7 +26,6 @@ function MorBekreftForm(props: MorBekreftFormProps) {
         defaultValues: {
             farCorrect: false,
             cannotWithdraw: false,
-            liveTogether: false,
         },
         shouldFocusError: false,
     });

@@ -6,6 +6,8 @@ export interface Farskapserklaering {
     barn: Barn | null;
     dokument: Dokument | null;
     far: Forelder | null;
+    farBorSammenMedMor: boolean | null;
     idFarskapserklaering: number;
     mor: Forelder | null;
+    morBorSammenMedFar: boolean | null;
 }
