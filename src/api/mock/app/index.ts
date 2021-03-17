@@ -37,7 +37,7 @@ const mockPost = (
 ) => fetchMock.post(path, response, { delay: getDelay(minDelay, maxDelay) });
 
 export const setUpMock = async () => {
-    mockGet('/api/brukerinformasjon', () => user);
+    mockGet('/api/brukerinformasjon', user);
 
     mockPost('/api/personopplysninger/far', 'OK', 2000, 3000);
 
