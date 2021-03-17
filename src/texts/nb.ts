@@ -15,12 +15,12 @@ export default {
     'breadcrumbs.forside': 'Farskapserklæring',
     'breadcrumbs.oversikt': 'Dine farskapserklæringer',
     'breadcrumbs.skjema': 'Opprett farskapserklæring',
-    'breadcrumbs.kvittering': 'Bekreftelse på innsending',
+    'breadcrumbs.kvittering': 'Bekreftelse på innsendt farskapserklæring',
 
     'header.forside': 'Farskapserklæring',
     'header.oversikt': 'Dine farskapserklæringer',
     'header.skjema': 'Opprett farskapserklæring',
-    'header.kvittering': 'Bekreftelse på innsending',
+    'header.kvittering': 'Bekreftelse på innsendt farskapserklæring',
 
     'farskapserklaering.title': 'Farskapserklæring',
     'farskapserklaering.aboutChildren': 'Gjelder barn',
