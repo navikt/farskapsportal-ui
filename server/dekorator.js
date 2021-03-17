@@ -1,4 +1,4 @@
-import { injectDecoratorServerSide } from '@navikt/nav-dekoratoren-moduler/ssr';
+import { injectDecoratorServerSide } from '@navikt/nav-dekoratoren-moduler/ssr/index.js';
 
 export const getHtmlWithDekorator = (filePath) =>
     injectDecoratorServerSide({
