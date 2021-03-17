@@ -118,6 +118,7 @@ function FarForm(props: FarFormProps) {
                     id="navn"
                     name="navn"
                     label={getMessage(intl, 'mor.skjema.far.form.navn.label')}
+                    description={getMessage(intl, 'mor.skjema.far.form.navn.description')}
                     bredde="XXL"
                     inputRef={register({
                         required: getMessage(intl, 'mor.skjema.far.form.navn.validation.required'),
