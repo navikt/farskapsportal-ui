@@ -2,14 +2,14 @@ import AlertStripe from 'nav-frontend-alertstriper';
 import { FormattedMessage } from 'react-intl';
 
 import { Farskapserklaering } from 'types/farskapserklaering';
-import { isSignedByFar } from 'utils/farskapserklaering';
+import { isBrukerFar, isSignedByFar } from 'utils/farskapserklaering';
 
 interface MorAlertProps {
     erklaering: Farskapserklaering;
 }
 
 function MorAlert({ erklaering }: MorAlertProps) {
-    if (isSignedByFar(erklaering)) {
+    if (isBrukerFar(erklaering) || isSignedByFar(erklaering)) {
         return null;
     }
 

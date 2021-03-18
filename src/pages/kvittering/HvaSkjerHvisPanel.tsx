@@ -2,7 +2,7 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import { FormattedMessage } from 'react-intl';
 
 import { Farskapserklaering } from 'types/farskapserklaering';
-import { isSignedByFar, isTermindatoErklaering } from 'utils/farskapserklaering';
+import { isBrukerFar, isTermindatoErklaering } from 'utils/farskapserklaering';
 import KvitteringInfoPanel from './KvitteringInfoPanel';
 import KvitteringInfoPanelContent from './KvitteringInfoPanelContent';
 
@@ -11,7 +11,7 @@ interface HvaSkjerHvisPanelProps {
 }
 
 function HvaSkjerHvisPanel({ erklaering }: HvaSkjerHvisPanelProps) {
-    const isFar = isSignedByFar(erklaering);
+    const isFar = isBrukerFar(erklaering);
     const isTermindato = isTermindatoErklaering(erklaering);
 
     if (isFar && !isTermindato) {

@@ -6,6 +6,7 @@
   "avventerSigneringBruker": [
     {
       "idFarskapserklaering": 1,
+      "paaloggetBrukersRolle": "FAR",
       "barn": {
         "termindato": "2021-05-01",
         "foedselsnummer": null
@@ -41,6 +42,7 @@
   "avventerSigneringMotpart": [
     {
       "idFarskapserklaering": 0,
+      "paaloggetBrukersRolle": "MOR",
       "barn": {
         "termindato": "2021-04-01",
         "foedselsnummer": null

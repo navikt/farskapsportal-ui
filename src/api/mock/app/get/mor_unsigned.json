@@ -6,6 +6,7 @@
   "avventerSigneringBruker": [
     {
       "idFarskapserklaering": 0,
+      "paaloggetBrukersRolle": "MOR",
       "barn": {
         "termindato": "2021-04-01",
         "foedselsnummer": null

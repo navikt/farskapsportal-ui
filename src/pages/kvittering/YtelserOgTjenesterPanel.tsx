@@ -3,7 +3,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 
 import ExternalLink from 'components/external-link/ExternalLink';
 import { Farskapserklaering } from 'types/farskapserklaering';
-import { isBorSammen, isSignedByFar } from 'utils/farskapserklaering';
+import { isBorSammen, isBrukerFar } from 'utils/farskapserklaering';
 import { getMessage } from 'utils/intl';
 import KvitteringInfoPanel from './KvitteringInfoPanel';
 import KvitteringInfoPanelContent from './KvitteringInfoPanelContent';
@@ -13,8 +13,8 @@ interface YtelserOgTjenesterPanelProps {
 }
 
 function YtelserOgTjenesterPanel({ erklaering }: YtelserOgTjenesterPanelProps) {
-    const isFar = isSignedByFar(erklaering);
-    const borSammen = isBorSammen(erklaering, isFar);
+    const isFar = isBrukerFar(erklaering);
+    const borSammen = isBorSammen(erklaering);
 
     const renderContent = () => {
         if (borSammen) {

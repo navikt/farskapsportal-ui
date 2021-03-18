@@ -5,7 +5,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import DatePresentation from 'components/date-presentation/DatePresentation';
 import ExternalLink from 'components/external-link/ExternalLink';
 import { Farskapserklaering } from 'types/farskapserklaering';
-import { isSignedByFar } from 'utils/farskapserklaering';
+import { isBrukerFar } from 'utils/farskapserklaering';
 import { getMessage } from 'utils/intl';
 
 import './KvitteringIntro.less';
@@ -18,7 +18,7 @@ function KvitteringIntro({ erklaering }: KvitteringIntroProps) {
     return (
         <section className="KvitteringIntro">
             <Success id="success-icon" aria-label="Success icon" role="img" focusable={false} />
-            {isSignedByFar(erklaering) ? (
+            {isBrukerFar(erklaering) ? (
                 <KvitteringIntroFar erklaering={erklaering} />
             ) : (
                 <KvitteringIntroMor erklaering={erklaering} />

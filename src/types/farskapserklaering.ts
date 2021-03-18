@@ -10,4 +10,10 @@ export interface Farskapserklaering {
     idFarskapserklaering: number;
     mor: Forelder | null;
     morBorSammenMedFar: boolean | null;
+    paaloggetBrukersRolle: Rolle | null;
+}
+
+export enum Rolle {
+    Far = 'FAR',
+    Mor = 'MOR',
 }

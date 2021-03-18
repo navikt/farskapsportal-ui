@@ -1,4 +1,4 @@
-import { Farskapserklaering } from 'types/farskapserklaering';
+import { Farskapserklaering, Rolle } from 'types/farskapserklaering';
 import { UserInfo } from 'types/user';
 
 const getEveryFarskapserklaering = (userInfo: UserInfo): Farskapserklaering[] =>
@@ -30,8 +30,11 @@ export const isSignedByMor = (erklaering: Farskapserklaering): boolean =>
 export const isSignedByFar = (erklaering: Farskapserklaering): boolean =>
     !!erklaering.dokument?.signertAvFar;
 
+export const isBrukerFar = (erklaering: Farskapserklaering): boolean =>
+    erklaering.paaloggetBrukersRolle === Rolle.Far;
+
 export const isTermindatoErklaering = (erklaering: Farskapserklaering): boolean =>
     !!erklaering.barn?.termindato;
 
-export const isBorSammen = (erklaering: Farskapserklaering, isFar: boolean): boolean =>
-    isFar ? !!erklaering.farBorSammenMedMor : !!erklaering.morBorSammenMedFar;
+export const isBorSammen = (erklaering: Farskapserklaering): boolean =>
+    isBrukerFar(erklaering) ? !!erklaering.farBorSammenMedMor : !!erklaering.morBorSammenMedFar;
