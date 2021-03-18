@@ -2461,10 +2461,10 @@
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^7.28.1"
 
-"@testing-library/user-event@^13.0.0":
-  version "13.0.0"
-  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-13.0.0.tgz#c39451b9c11ec2ef7ae0743dfda96decba1f3c56"
-  integrity sha512-At8SFGsb6kLgXU6NYU/IJGiKWULTklu8FlqTtaxvR9emnGDYlVhQ1xxjchpOifh1Ao6SjKu5vgDc7ioiUfw5oQ==
+"@testing-library/user-event@^13.0.1":
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-13.0.1.tgz#a1c0727ca3eefa6f9bd0ccce98d02770e6446e8f"
+  integrity sha512-7n3Y5Vohib6yVFW60JlCvQOqBDIlE1SRyo78nmoHwePAg3SVhnfyOI30RYNj3yFF7qy7e0uVlewzTyvNxyJjEA==
   dependencies:
     "@babel/runtime" "^7.12.5"
 
@@ -2594,10 +2594,18 @@
     "@types/jest" "*"
     axe-core "^3.5.5"
 
-"@types/jest@*", "@types/jest@^26.0.20":
+"@types/jest@*":
   version "26.0.20"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.20.tgz#cd2f2702ecf69e86b586e1f5223a60e454056307"
   integrity sha512-9zi2Y+5USJRxd0FsahERhBwlcvFh6D2GLQnY2FH2BzK8J9s9omvNHIbvABwIluXa0fD8XVKMLTO0aOEuUfACAA==
+  dependencies:
+    jest-diff "^26.0.0"
+    pretty-format "^26.0.0"
+
+"@types/jest@^26.0.21":
+  version "26.0.21"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.21.tgz#3a73c2731e7e4f0fbaea56ce7ff8c79cf812bd24"
+  integrity sha512-ab9TyM/69yg7eew9eOwKMUmvIZAKEGZYlq/dhe5/0IMUd/QLJv5ldRMdddSn+u22N13FP3s5jYyktxuBwY0kDA==
   dependencies:
     jest-diff "^26.0.0"
     pretty-format "^26.0.0"
@@ -8730,10 +8738,10 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-nav-datovelger@^10.1.2:
-  version "10.1.2"
-  resolved "https://registry.yarnpkg.com/nav-datovelger/-/nav-datovelger-10.1.2.tgz#4512fbda5a894b4eb5959d97946e2de4d78a01ad"
-  integrity sha512-DE2jUjq+uv2AAHLrXfLW+oljhKGgpi8hyJU/PwgLYk1ByRNf5zJzYZAApddJhzJJXr5XnhvgLwQ3elct3GLZbQ==
+nav-datovelger@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/nav-datovelger/-/nav-datovelger-11.0.0.tgz#e6a85c3296f34f9c7b15b281b62a39112a4ce612"
+  integrity sha512-DxBdC4/7EnH0ykOzTMZtYCVy0zuhwp4sDhoPnRmPYUxUJkLLlZ9fXAPV0O9PzIDU+cgBhha8rQOXT3/AeDDU2w==
   dependencies:
     focus-trap-react "^8.4.2"
 
