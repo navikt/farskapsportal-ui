@@ -35,7 +35,10 @@ function TermindatoForm(props: TermindatoFormProps) {
 
     return (
         <form onSubmit={handleSubmit(props.onSubmit)}>
-            <SkjemaGruppe legend={getMessage(intl, 'mor.skjema.barn.title')}>
+            <SkjemaGruppe
+                legend={getMessage(intl, 'mor.skjema.barn.title')}
+                description={getMessage(intl, 'mor.skjema.barn.description')}
+            >
                 <Controller
                     name="termindato"
                     control={control}

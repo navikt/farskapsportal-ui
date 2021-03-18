@@ -18,6 +18,7 @@ function Suksess() {
         if (statusQueryToken) {
             setSigneringStatusToken(statusQueryToken)
                 .then((res) => {
+                    // TODO: er denne nødvendig? Ved redirect til kvittering vil brukerinfo hentes?
                     fetchUser(dispatch);
                     history.replace(
                         `/${language}${Path.Kvittering}?id=${res.idFarskapserklaering}`

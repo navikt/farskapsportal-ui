@@ -2,7 +2,7 @@ import { fnr } from '@navikt/fnrvalidator';
 import { Feiloppsummering, Input, SkjemaGruppe } from 'nav-frontend-skjema';
 import { useReducer } from 'react';
 import { Controller, useForm } from 'react-hook-form';
-import { useIntl } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import { controlFatherInfo } from 'api/api';
 import Error from 'components/error/Error';
@@ -118,7 +118,13 @@ function FarForm(props: FarFormProps) {
                     id="navn"
                     name="navn"
                     label={getMessage(intl, 'mor.skjema.far.form.navn.label')}
-                    description={getMessage(intl, 'mor.skjema.far.form.navn.description')}
+                    description={
+                        <>
+                            <FormattedMessage id="mor.skjema.far.form.navn.description.1" />
+                            <br />
+                            <FormattedMessage id="mor.skjema.far.form.navn.description.2" />
+                        </>
+                    }
                     bredde="XXL"
                     inputRef={register({
                         required: getMessage(intl, 'mor.skjema.far.form.navn.validation.required'),

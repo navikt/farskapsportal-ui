@@ -32,6 +32,7 @@ function BorSammenForm(props: BorSammenFormProps) {
         <form onSubmit={handleSubmit(props.onSubmit)} className="BorSammenForm">
             <RadioGruppe
                 legend={getMessage(intl, 'mor.skjema.borSammen.title')}
+                description={getMessage(intl, 'mor.skjema.borSammen.description')}
                 feil={errors.borSammen?.message}
             >
                 <Radio

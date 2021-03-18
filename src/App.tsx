@@ -12,7 +12,7 @@ import Suksess from 'pages/suksess/Suksess';
 import { Path } from 'types/path';
 import { useDekoratorLanguage } from 'utils/hooks/useDekoratorLanguage';
 
-const basePathWithLanguage = '/(nb|nn|en)';
+const basePathWithLanguage = '/(nb|nn|en)?';
 
 function App() {
     useDekoratorLanguage();

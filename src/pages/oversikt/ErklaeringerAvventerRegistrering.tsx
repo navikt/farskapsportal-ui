@@ -25,7 +25,7 @@ function ErklaeringerAvventerRegistrering({ userInfo }: ErklaeringerAvventerRegi
 function LinkKvittering({ erklaering }: { erklaering: Farskapserklaering }) {
     const [{ language }] = useStore();
 
-    const linkPath = `/${language}${Path.Kvittering}`;
+    const linkPath = `/${language}${Path.Kvittering}?id=${erklaering.idFarskapserklaering}`;
 
     return (
         <ErklaeringLinkPanel
