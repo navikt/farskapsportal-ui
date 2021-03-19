@@ -18,9 +18,7 @@ export const fetchUser = (dispatch: Dispatch<Action>) => {
             if (error.feilkode && isUserNotPermitted(error)) {
                 console.log('SetUserNotPermitted');
                 dispatch(setUserNotPermitted(error.feilkode));
-            }
-
-            if (error.code !== 401 && error.code !== 403) {
+            } else if (error.code !== 401 && error.code !== 403) {
                 dispatch(setUserFailure(error));
             }
         });
