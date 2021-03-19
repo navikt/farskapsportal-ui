@@ -177,7 +177,7 @@ function FarForm(props: FarFormProps) {
                     )}
                 />
                 <div aria-live="polite">
-                    {!state.pending && !!state.antallResterendeForsoek && (
+                    {!state.pending && (
                         <FarFormValidationResterendeForsoek
                             antallResterendeForsoek={state.antallResterendeForsoek}
                         />

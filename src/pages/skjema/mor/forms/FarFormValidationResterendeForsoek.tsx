@@ -2,13 +2,17 @@ import AlertStripe from 'nav-frontend-alertstriper';
 import { FormattedMessage } from 'react-intl';
 
 interface FarFormValidationResterendeForsoekProps {
-    antallResterendeForsoek: number;
+    antallResterendeForsoek?: number | null;
 }
 
 function FarFormValidationResterendeForsoek({
     antallResterendeForsoek,
 }: FarFormValidationResterendeForsoekProps) {
-    if (antallResterendeForsoek > 2) {
+    if (
+        antallResterendeForsoek === null ||
+        antallResterendeForsoek === undefined ||
+        antallResterendeForsoek > 2
+    ) {
         return null;
     }
 
