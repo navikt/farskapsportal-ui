@@ -116,8 +116,15 @@ function FarForm(props: FarFormProps) {
         <form onSubmit={handleSubmit(controlInfoAndSubmit, onError)}>
             <SkjemaGruppe
                 legend={getMessage(intl, 'mor.skjema.far.title')}
-                feil={!!state.feilkode}
-                feilmeldingId="far-form-validation-error"
+                feil={
+                    !state.pending &&
+                    state.feilkode && (
+                        <FarFormValidationError
+                            id="far-form-validation-error"
+                            feilkode={state.feilkode}
+                        />
+                    )
+                }
             >
                 <Input
                     id="navn"
@@ -170,12 +177,12 @@ function FarForm(props: FarFormProps) {
                     )}
                 />
                 <div aria-live="polite">
-                    {!state.pending && state.feilkode && (
-                        <FarFormValidationError
-                            id="far-form-validation-error"
-                            feilkode={state.feilkode}
-                        />
-                    )}
+                    {/*{!state.pending && state.feilkode && (*/}
+                    {/*    <FarFormValidationError*/}
+                    {/*        id="far-form-validation-error"*/}
+                    {/*        feilkode={state.feilkode}*/}
+                    {/*    />*/}
+                    {/*)}*/}
                     {!state.pending && state.antallResterendeForsoek && (
                         <FarFormValidationResterendeForsoek
                             antallResterendeForsoek={state.antallResterendeForsoek}
