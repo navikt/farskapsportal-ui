@@ -1,24 +1,16 @@
 import AlertStripe from 'nav-frontend-alertstriper';
 import { Normaltekst } from 'nav-frontend-typografi';
-import Veilederpanel from 'nav-frontend-veilederpanel';
 import { FormattedMessage } from 'react-intl';
 
-import { ReactComponent as FamilieSvg } from 'assets/icons/familie.svg';
 import ContentContainer from 'components/content-container/ContentContainer';
-import Page from 'components/page/Page';
+import InfoPanel from 'components/info-panel/InfoPanel';
 import { Feilkode } from 'types/feilkode';
 
-import './IkkeTilgang.less';
-
-interface IkkeTilgangProps {
+interface NotPermittedProps {
     feilkode: Feilkode;
 }
 
-function IkkeTilgang({ feilkode }: IkkeTilgangProps) {
-    console.log('render IkkeTilgang');
-    console.log('feilkode');
-    console.log(feilkode);
-
+function NotPermitted({ feilkode }: NotPermittedProps) {
     const renderContent = () => {
         switch (feilkode) {
             case Feilkode.FeilRolle:
@@ -38,18 +30,16 @@ function IkkeTilgang({ feilkode }: IkkeTilgangProps) {
     };
 
     return (
-        <Page titleId="header.oversikt" breadcrumbs={[{ titleId: 'breadcrumbs.oversikt' }]}>
-            <ContentContainer className="IkkeTilgang">
-                <Veilederpanel type="plakat" svg={<FamilieSvg />} kompakt={true}>
-                    <AlertStripe type="advarsel">
-                        <Normaltekst>{renderContent()}</Normaltekst>
-                        <Normaltekst>
-                            <FormattedMessage id="ikkeTilgang.kontakt" />
-                        </Normaltekst>
-                    </AlertStripe>
-                </Veilederpanel>
-            </ContentContainer>
-        </Page>
+        <ContentContainer className="IkkeTilgang">
+            <InfoPanel>
+                <AlertStripe type="advarsel">
+                    <Normaltekst>{renderContent()}</Normaltekst>
+                    <Normaltekst>
+                        <FormattedMessage id="ikkeTilgang.kontakt" />
+                    </Normaltekst>
+                </AlertStripe>
+            </InfoPanel>
+        </ContentContainer>
     );
 }
 
@@ -73,4 +63,4 @@ function MorSivilstandUoppgitt() {
     return <FormattedMessage id="ikkeTilgang.morSivilstandUoppgitt" />;
 }
 
-export default IkkeTilgang;
+export default NotPermitted;
