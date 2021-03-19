@@ -15,6 +15,10 @@ interface IkkeTilgangProps {
 }
 
 function IkkeTilgang({ feilkode }: IkkeTilgangProps) {
+    console.log('render IkkeTilgang');
+    console.log('feilkode');
+    console.log(feilkode);
+
     const renderContent = () => {
         switch (feilkode) {
             case Feilkode.FeilRolle:
@@ -28,6 +32,8 @@ function IkkeTilgang({ feilkode }: IkkeTilgangProps) {
                 return <MorSivilstandGiftPartner />;
             case Feilkode.MorSivilstandUoppgitt:
                 return <MorSivilstandUoppgitt />;
+            default:
+                return null;
         }
     };
 

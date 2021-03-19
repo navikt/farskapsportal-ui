@@ -12,7 +12,11 @@ export const fetchUser = (dispatch: Dispatch<Action>) => {
             dispatch(setUserSuccess(userInfo));
         })
         .catch((error: AlertError) => {
+            console.log('In fetchUser catch');
+            console.log('error');
+            console.log(error);
             if (error.feilkode && isUserNotPermitted(error)) {
+                console.log('SetUserNotPermitted');
                 dispatch(setUserNotPermitted(error.feilkode));
             }
 
