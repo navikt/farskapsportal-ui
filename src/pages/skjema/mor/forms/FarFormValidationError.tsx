@@ -63,8 +63,12 @@ function ForskjelligeFedre() {
 function IkkeMyndig() {
     return (
         <>
-            <FormattedMessage id="mor.skjema.far.form.validation.ikkeMyndig" />{' '}
-            <FormattedMessage id="error.taKontakt" />
+            <Normaltekst>
+                <FormattedMessage id="mor.skjema.far.form.validation.ikkeMyndig" />{' '}
+            </Normaltekst>
+            <Normaltekst>
+                <FormattedMessage id="error.taKontakt" />
+            </Normaltekst>
         </>
     );
 }
@@ -72,10 +76,18 @@ function IkkeMyndig() {
 function MaksAntallForsoek() {
     return (
         <>
-            <FormattedMessage id="mor.skjema.far.form.validation.maksAntallForsoek.1" />
-            <FormattedMessage id="mor.skjema.far.form.validation.maksAntallForsoek.2" />
-            <FormattedMessage id="mor.skjema.far.form.validation.maksAntallForsoek.3" />
-            <FormattedMessage id="mor.skjema.far.form.validation.maksAntallForsoek.4" />
+            <Normaltekst>
+                <FormattedMessage id="mor.skjema.far.form.validation.maksAntallForsoek.1" />
+            </Normaltekst>
+            <Normaltekst>
+                <FormattedMessage id="mor.skjema.far.form.validation.maksAntallForsoek.2" />
+            </Normaltekst>
+            <Normaltekst>
+                <FormattedMessage id="mor.skjema.far.form.validation.maksAntallForsoek.3" />
+            </Normaltekst>
+            <Normaltekst>
+                <FormattedMessage id="mor.skjema.far.form.validation.maksAntallForsoek.4" />
+            </Normaltekst>
         </>
     );
 }
@@ -83,8 +95,12 @@ function MaksAntallForsoek() {
 function NavnStemmerIkkeMedRegister() {
     return (
         <>
-            <FormattedMessage id="mor.skjema.far.form.validation.navnStemmerIkkeMedRegister.1" />
-            <FormattedMessage id="mor.skjema.far.form.validation.navnStemmerIkkeMedRegister.2" />
+            <Normaltekst>
+                <FormattedMessage id="mor.skjema.far.form.validation.navnStemmerIkkeMedRegister.1" />
+            </Normaltekst>
+            <Normaltekst>
+                <FormattedMessage id="mor.skjema.far.form.validation.navnStemmerIkkeMedRegister.2" />
+            </Normaltekst>
         </>
     );
 }
