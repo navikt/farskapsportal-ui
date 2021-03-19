@@ -8,6 +8,7 @@ import { AlertError } from 'types/error';
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { UserInfo } from 'types/user';
 import { redirectLoginCookie, setCookie } from 'utils/cookies';
+import { isUserNotPermitted } from 'utils/feilkoder';
 import { logApiError } from 'utils/logger';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -19,13 +20,20 @@ const { LOGIN_URL } = window as any;
 export const checkAuthFetchUser = () => {
     const url = '/api/brukerinformasjon';
 
-    // Logger ikke 401 eller 403 feil da det forventes.
-    const onlyLogErrorOn = (errorCode: number) => errorCode !== 401 && errorCode !== 403;
+    const onlyLogErrorOn = (error: AlertError) => {
+        // Logger ikke 400 hvis feilkoden er forventet. F.eks. bruker er under 18 år eller gift
+        if (isUserNotPermitted(error)) {
+            return false;
+        }
+
+        // Logger ikke 401 eller 403 feil da det forventes.
+        return error.code !== 401 && error.code !== 403;
+    };
 
     return checkAuthFetchJson(url, onlyLogErrorOn) as Promise<UserInfo>;
 };
 
-const checkAuthFetchJson = (url: string, onlyLogErrorOn?: (errorCode: number) => boolean) =>
+const checkAuthFetchJson = (url: string, onlyLogErrorOn?: (error: AlertError) => boolean) =>
     fetch(url, {
         method: 'GET',
         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
@@ -36,11 +44,12 @@ const checkAuthFetchJson = (url: string, onlyLogErrorOn?: (errorCode: number) =>
         .catch((err: string & AlertError) => {
             const error = {
                 code: err.code || 404,
-                type: err.type || 'feil',
                 text: err.text || err,
+                type: err.type || 'feil',
+                feilkode: err.feilkode,
             };
 
-            if (!onlyLogErrorOn || onlyLogErrorOn(error.code)) {
+            if (!onlyLogErrorOn || onlyLogErrorOn(error)) {
                 logApiError(url, error);
             }
 
@@ -55,7 +64,7 @@ export const controlFatherInfo = (data: KontrollerePersonopplysningerRequest) =>
 
     // TODO: endre kode?
     // Logger ikke hvis det er forventet feil, f eks person er kvinne eller person er ikke funnet
-    const onlyLogErrorOn = (errorCode: number) => errorCode !== 400;
+    const onlyLogErrorOn = (error: AlertError) => error.code !== 400;
 
     return checkAuthPostJson(url, data, onlyLogErrorOn);
 };
@@ -77,7 +86,7 @@ export const setSigneringStatusToken = (statusToken: string) => {
 const checkAuthPostJson = (
     url: string,
     data?: Outbound,
-    onlyLogErrorOn?: (errorCode: number) => boolean
+    onlyLogErrorOn?: (error: AlertError) => boolean
 ) =>
     fetch(url, {
         method: 'POST',
@@ -89,11 +98,12 @@ const checkAuthPostJson = (
         .catch((err: string & AlertError) => {
             const error = {
                 code: err.code || 404,
-                type: err.type || 'feil',
                 text: err.text || err,
+                type: err.type || 'feil',
+                feilkode: err.feilkode,
             };
 
-            if (!onlyLogErrorOn || onlyLogErrorOn(error.code)) {
+            if (!onlyLogErrorOn || onlyLogErrorOn(error)) {
                 logApiError(url, error);
             }
 
@@ -127,7 +137,8 @@ const checkHttpError = async (response: Response): Promise<Response> => {
         const responseErrorData = await parseJson(response);
         const error = {
             code: response.status,
-            text: responseErrorData.headers?.['Warning']?.[0] ?? '',
+            text: responseErrorData.body.feilkodebeskrivelse,
+            feilkode: responseErrorData.body.feilkode,
         };
         throw error;
     }

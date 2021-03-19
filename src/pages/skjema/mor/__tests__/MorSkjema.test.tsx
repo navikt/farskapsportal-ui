@@ -20,7 +20,6 @@ test('should display steps correctly', async () => {
             userInfo: {
                 status: 'SUCCESS',
                 data: {
-                    feilkodeTilgang: null,
                     kanOppretteFarskapserklaering: true,
                     gyldigForelderrolle: true,
                     forelderrolle: Foreldrerolle.Mor,

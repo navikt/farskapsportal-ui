@@ -1,11 +1,11 @@
 import ContentContainer from 'components/content-container/ContentContainer';
 import Page from 'components/page/Page';
 import WithUserInfo from 'store/providers/WithUserInfo';
-import InfoPanel from './info-panel/InfoPanel';
 import BarnUtenErklaering from './BarnUtenErklaering';
 import ErklaeringerAvventerBruker from './ErklaeringerAvventerBruker';
 import ErklaeringerAvventerMotpart from './ErklaeringerAvventerMotpart';
 import ErklaeringerAvventerRegistrering from './ErklaeringerAvventerRegistrering';
+import InfoPanel from './InfoPanel';
 import ToSkjemaButton from './ToSkjemaButton';
 
 import './Oversikt.less';

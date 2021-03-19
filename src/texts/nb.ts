@@ -90,6 +90,13 @@ export default {
 
     'forside.loginButton': 'Fyll ut erklæring om farskap',
 
+    'ikkeTilgang.kontakt': 'Ta gjerne kontakt med oss på telefon 55 55 33 33 for å få informasjon om hvordan du skal gå frem for å få fastsatt farskap.',
+    'ikkeTilgang.feilRolle': 'Pålogget person kan verken opptre som mor eller far i løsningen', // TODO: endre tekst
+    'ikkeTilgang.ikkeMyndig': 'For at farskap skal kunne erklæres elektronisk, må begge foreldrene være over 18 år.',
+    'ikkeTilgang.medmorEllerUkjent': 'Medmor eller person med ukjent rolle kan ikke benytte løsningen', // TODO
+    'ikkeTilgang.morSivilstandGiftPartner': 'Du er registrert som gift/partner og farskapet til barn du føder følger direkte av loven. Hvis en annen mann enn din ektefelle er far må farskapet endres. Dette kan ikke gjøres automatisk.', // TODO
+    'ikkeTilgang.morSivilstandUoppgitt': 'Mor kan ikke opprette farskapserklæring dersom hun har sivilstand uoppgitt', // TODO
+
     'oversikt.barn.link.title': 'Opprett farskapserklæring for barn',
     'oversikt.barn.link.foedselsnummer': 'Fødselsnummer: ',
     'oversikt.barn.link.status': 'Dette barnet har ikke en registrert far i Folkeregisteret',
