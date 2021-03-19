@@ -5,7 +5,7 @@ export default {
     'languageToggle.en': 'English',
     'form.feiloppsummering': 'To proceed, you must correct the following:',
     'form.date.placeholder': 'dd.mm.yyyy',
-    'api.error': 'Whoops, something went wrong while fetching data!',
+    'api.error': 'Whoops, something went wrong!',
 
     'withUserInfoError.banner.title': 'Whoops,',
     'withUserInfoError.banner.text': 'something went wrong.',
@@ -41,8 +41,7 @@ export default {
     'mor.skjema.far.form.foedselsnummer.label': 'National identity number of father (11 digits)',
     'mor.skjema.far.form.foedselsnummer.validation.required': 'National identity number is required',
     'mor.skjema.far.form.foedselsnummer.validation.fnr': 'Invalid national identity number',
-    'mor.skjema.far.form.error': 'Check that the information is correct. We cannot find any person with this information. Both name and birth number must match what is registered in the National Population Register.',
-    'mor.skjema.far.form.error.female': 'The specified person is registered as a woman.',
+    'mor.skjema.far.form.validation.feilRolleFar.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/application-for-joint-maternity/',
     'mor.skjema.far.presentation.navn': 'Name:',
     'mor.skjema.far.presentation.foedselsnummer': 'National identity number:',
     'mor.skjema.confirm.title': 'Confirm paternity',

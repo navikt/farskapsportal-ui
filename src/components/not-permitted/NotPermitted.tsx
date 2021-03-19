@@ -37,7 +37,7 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
                 <AlertStripe type="advarsel">
                     <Normaltekst>{renderContent()}</Normaltekst>
                     <Normaltekst>
-                        <FormattedMessage id="notPermitted.kontakt" />
+                        <FormattedMessage id="error.taKontakt" />
                     </Normaltekst>
                 </AlertStripe>
             </InfoPanel>

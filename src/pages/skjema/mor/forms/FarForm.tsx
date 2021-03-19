@@ -9,38 +9,46 @@ import Error from 'components/error/Error';
 import FormButtons from 'components/form-buttons/FormButtons';
 import { KontrollerePersonopplysningerRequest } from 'types/api';
 import { AlertError } from 'types/error';
+import { Feilkode } from 'types/feilkode';
+import { isControlFatherValidationError } from 'utils/feilkoder';
 import { formatFoedselsnummer } from 'utils/foedselsnummer';
 import { mapErrors } from 'utils/form';
 import { useFocus } from 'utils/hooks/useFocus';
 import { getMessage } from 'utils/intl';
 import { removeWhitespace } from 'utils/string';
-
-type FatherControlFailureType = 'NOT_FOUND' | 'FEMALE';
+import FarFormValidationError from './FarFormValidationError';
+import FarFormValidationResterendeForsoek from './FarFormValidationResterendeForsoek';
 
 type ActionType =
     | { type: 'CONTROL_FATHER' }
-    | { type: 'CONTROL_FATHER_FAILURE'; payload: FatherControlFailureType }
+    | {
+          type: 'CONTROL_FATHER_FAILURE';
+          payload: { feilkode: Feilkode | null; antallResterendeForsoek: number | null };
+      }
     | { type: 'API_ERROR'; payload: AlertError };
 
 interface StateType {
     pending: boolean;
-    failureType?: FatherControlFailureType;
+    feilkode?: Feilkode | null;
+    antallResterendeForsoek?: number | null;
     apiError?: AlertError;
 }
 
 const reducer = (state: StateType, action: ActionType): StateType => {
     switch (action.type) {
         case 'CONTROL_FATHER':
-            return { pending: true, failureType: undefined, apiError: undefined };
+            return { pending: true, feilkode: undefined, apiError: undefined };
         case 'CONTROL_FATHER_FAILURE':
-            return { pending: false, failureType: action.payload, apiError: undefined };
+            return {
+                pending: false,
+                feilkode: action.payload.feilkode,
+                antallResterendeForsoek: action.payload.antallResterendeForsoek,
+                apiError: undefined,
+            };
         case 'API_ERROR':
-            return { pending: false, failureType: undefined, apiError: action.payload };
+            return { pending: false, feilkode: undefined, apiError: action.payload };
     }
 };
-
-const getFailureTypeFromError = (error: AlertError): FatherControlFailureType =>
-    error.text.startsWith('Oppgitt far er ikke mann') ? 'FEMALE' : 'NOT_FOUND';
 
 export interface FarFormInput {
     navn: string;
@@ -59,7 +67,8 @@ function FarForm(props: FarFormProps) {
     const [feilRef, setFeiloppsummeringFocus] = useFocus();
     const [state, dispatch] = useReducer(reducer, {
         pending: false,
-        failureType: undefined,
+        feilkode: undefined,
+        antallResterendeForsoek: undefined,
         apiError: undefined,
     });
     const { control, register, handleSubmit, errors } = useForm<FarFormInput>({
@@ -83,10 +92,13 @@ function FarForm(props: FarFormProps) {
                 props.onSubmit(data);
             })
             .catch((error: AlertError) => {
-                if (error.code === 400) {
+                if (error.feilkode && isControlFatherValidationError(error)) {
                     dispatch({
                         type: 'CONTROL_FATHER_FAILURE',
-                        payload: getFailureTypeFromError(error),
+                        payload: {
+                            feilkode: error.feilkode,
+                            antallResterendeForsoek: error.antallResterendeForsoek,
+                        },
                     });
                 } else {
                     dispatch({ type: 'API_ERROR', payload: error });
@@ -104,15 +116,8 @@ function FarForm(props: FarFormProps) {
         <form onSubmit={handleSubmit(controlInfoAndSubmit, onError)}>
             <SkjemaGruppe
                 legend={getMessage(intl, 'mor.skjema.far.title')}
-                feil={
-                    state.failureType &&
-                    getMessage(
-                        intl,
-                        state.failureType === 'FEMALE'
-                            ? 'mor.skjema.far.form.error.female'
-                            : 'mor.skjema.far.form.error'
-                    )
-                }
+                feil={!!state.feilkode}
+                feilmeldingId="far-form-validation-error"
             >
                 <Input
                     id="navn"
@@ -164,6 +169,19 @@ function FarForm(props: FarFormProps) {
                         />
                     )}
                 />
+                <div aria-live="polite">
+                    {!state.pending && state.feilkode && (
+                        <FarFormValidationError
+                            id="far-form-validation-error"
+                            feilkode={state.feilkode}
+                        />
+                    )}
+                    {!state.pending && state.antallResterendeForsoek && (
+                        <FarFormValidationResterendeForsoek
+                            antallResterendeForsoek={state.antallResterendeForsoek}
+                        />
+                    )}
+                </div>
             </SkjemaGruppe>
             {!!feil.length && (
                 <Feiloppsummering
@@ -172,13 +190,15 @@ function FarForm(props: FarFormProps) {
                     innerRef={feilRef}
                 />
             )}
+            <div aria-live="polite">
+                {!state.pending && state.apiError && <Error error={state.apiError} />}
+            </div>
             <FormButtons
                 submitText={getMessage(intl, 'mor.form.buttons.next')}
                 cancelText={getMessage(intl, 'mor.form.buttons.cancel')}
                 onCancel={props.onCancel}
                 submitSpinner={state.pending}
             />
-            <div aria-live="polite">{state.apiError && <Error error={state.apiError} />}</div>
         </form>
     );
 }

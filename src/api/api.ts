@@ -47,6 +47,7 @@ const checkAuthFetchJson = (url: string, onlyLogErrorOn?: (error: AlertError) =>
                 text: err.text || err,
                 type: err.type || 'feil',
                 feilkode: err.feilkode,
+                antallResterendeForsoek: err.antallResterendeForsoek,
             };
 
             if (!onlyLogErrorOn || onlyLogErrorOn(error)) {
@@ -101,6 +102,7 @@ const checkAuthPostJson = (
                 text: err.text || err,
                 type: err.type || 'feil',
                 feilkode: err.feilkode,
+                antallResterendeForsoek: err.antallResterendeForsoek,
             };
 
             if (!onlyLogErrorOn || onlyLogErrorOn(error)) {
@@ -139,6 +141,7 @@ const checkHttpError = async (response: Response): Promise<Response> => {
             code: response.status,
             text: responseErrorData.feilkodebeskrivelse,
             feilkode: responseErrorData.feilkode,
+            antallResterendeForsoek: responseErrorData.antallResterendeForsoek,
         };
         throw error;
     }

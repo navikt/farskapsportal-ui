@@ -9,5 +9,6 @@ export interface HTTPError {
 
 export interface AlertError extends HTTPError {
     type: AlertStripeType;
-    feilkode?: Feilkode;
+    feilkode?: Feilkode | null;
+    antallResterendeForsoek: number | null;
 }

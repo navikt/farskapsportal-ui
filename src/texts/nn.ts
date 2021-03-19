@@ -5,7 +5,7 @@ export default {
     'languageToggle.en': 'Engelsk',
     'form.feiloppsummering': 'For å gå vidare må du retta opp følgjande:',
     'form.date.placeholder': 'dd.mm.åååå',
-    'api.error': 'Oisann, noko gjekk gale ved henting av data!',
+    'api.error': 'Oisann, noko gjekk gale!',
 
     'breadcrumbs.forside': 'Farskapserklæring',
     'breadcrumbs.oversikt': 'Dine farskapserklæringer',
@@ -36,8 +36,7 @@ export default {
     'mor.skjema.far.form.foedselsnummer.label': 'Fødselsnummer til far (11 siffer)',
     'mor.skjema.far.form.foedselsnummer.validation.required': 'Fødselsnummer er påkravd',
     'mor.skjema.far.form.foedselsnummer.validation.fnr': 'Ugyldig fødselsnummer',
-    'mor.skjema.far.form.error': 'Kontroller at opplysningane stemmer. Vi finn ingen person med desse opplysningane. Både namn og fødselsnummer må stemma overeins med det som er registrert i Folkreregisteret.',
-    'mor.skjema.far.form.error.female': 'Angitt person er registrert som kvinne.',
+    'mor.skjema.far.form.validation.feilRolleFar.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/soknad-om-medmorskap/',
     'mor.skjema.far.presentation.navn': 'Namn:',
     'mor.skjema.far.presentation.foedselsnummer': 'Fødselsnummer:',
     'mor.skjema.confirm.title': 'Stadfest farskap',
