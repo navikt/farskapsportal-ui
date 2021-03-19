@@ -8,15 +8,23 @@ interface FarFormValidationResterendeForsoekProps {
 function FarFormValidationResterendeForsoek({
     antallResterendeForsoek,
 }: FarFormValidationResterendeForsoekProps) {
-    if (antallResterendeForsoek === 0 || antallResterendeForsoek > 3) {
+    if (antallResterendeForsoek > 2) {
         return null;
+    }
+
+    if (antallResterendeForsoek === 0) {
+        return (
+            <AlertStripe type="advarsel">
+                <FormattedMessage id="mor.skjema.far.form.validation.resterendeForsoek.siste" />
+            </AlertStripe>
+        );
     }
 
     return (
         <AlertStripe type="advarsel">
             <FormattedMessage
                 id="mor.skjema.far.form.validation.resterendeForsoek"
-                values={{ antallResterendeForsoek }}
+                values={{ antallResterendeForsoek: antallResterendeForsoek + 1 }}
             />
         </AlertStripe>
     );

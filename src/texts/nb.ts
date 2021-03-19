@@ -148,6 +148,7 @@ export default {
     'mor.skjema.far.form.validation.navnStemmerIkkeMedRegister.1': 'Navn til far og fødselsnummer til far gir feil.',
     'mor.skjema.far.form.validation.navnStemmerIkkeMedRegister.2': 'Sjekk at navnet er stavet riktig og fødselsnummer stemmer.',
     'mor.skjema.far.form.validation.resterendeForsoek': 'Du har {antallResterendeForsoek} forsøk igjen.', // TODO: endre tekst
+    'mor.skjema.far.form.validation.resterendeForsoek.siste': 'Du har kun ett forsøk igjen. Handlingen vil bli låst i én dag ved feil.', // TODO: endre tekst
     'mor.skjema.far.presentation.navn': 'Navn:',
     'mor.skjema.far.presentation.foedselsnummer': 'Fødselsnummer:',
     'mor.skjema.borSammen.title': 'Bor du sammen med far?',

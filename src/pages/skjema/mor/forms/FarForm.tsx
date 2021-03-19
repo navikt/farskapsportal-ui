@@ -177,13 +177,7 @@ function FarForm(props: FarFormProps) {
                     )}
                 />
                 <div aria-live="polite">
-                    {/*{!state.pending && state.feilkode && (*/}
-                    {/*    <FarFormValidationError*/}
-                    {/*        id="far-form-validation-error"*/}
-                    {/*        feilkode={state.feilkode}*/}
-                    {/*    />*/}
-                    {/*)}*/}
-                    {!state.pending && state.antallResterendeForsoek && (
+                    {!state.pending && !!state.antallResterendeForsoek && (
                         <FarFormValidationResterendeForsoek
                             antallResterendeForsoek={state.antallResterendeForsoek}
                         />
