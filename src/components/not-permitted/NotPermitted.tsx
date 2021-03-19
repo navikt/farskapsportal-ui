@@ -6,6 +6,8 @@ import ContentContainer from 'components/content-container/ContentContainer';
 import InfoPanel from 'components/info-panel/InfoPanel';
 import { Feilkode } from 'types/feilkode';
 
+import './NotPermitted.less';
+
 interface NotPermittedProps {
     feilkode: Feilkode;
 }
@@ -30,12 +32,12 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
     };
 
     return (
-        <ContentContainer className="IkkeTilgang">
+        <ContentContainer className="NotPermitted">
             <InfoPanel>
                 <AlertStripe type="advarsel">
                     <Normaltekst>{renderContent()}</Normaltekst>
                     <Normaltekst>
-                        <FormattedMessage id="ikkeTilgang.kontakt" />
+                        <FormattedMessage id="notPermitted.kontakt" />
                     </Normaltekst>
                 </AlertStripe>
             </InfoPanel>
@@ -44,23 +46,23 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
 }
 
 function FeilRolle() {
-    return <FormattedMessage id="ikkeTilgang.feilRolle" />;
+    return <FormattedMessage id="notPermitted.feilRolle" />;
 }
 
 function IkkeMyndig() {
-    return <FormattedMessage id="ikkeTilgang.ikkeMyndig" />;
+    return <FormattedMessage id="notPermitted.ikkeMyndig" />;
 }
 
 function MedmorEllerUkjent() {
-    return <FormattedMessage id="ikkeTilgang.medmorEllerUkjent" />;
+    return <FormattedMessage id="notPermitted.medmorEllerUkjent" />;
 }
 
 function MorSivilstandGiftPartner() {
-    return <FormattedMessage id="ikkeTilgang.morSivilstandGiftPartner" />;
+    return <FormattedMessage id="notPermitted.morSivilstandGiftPartner" />;
 }
 
 function MorSivilstandUoppgitt() {
-    return <FormattedMessage id="ikkeTilgang.morSivilstandUoppgitt" />;
+    return <FormattedMessage id="notPermitted.morSivilstandUoppgitt" />;
 }
 
 export default NotPermitted;

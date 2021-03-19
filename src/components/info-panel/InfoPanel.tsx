@@ -3,6 +3,8 @@ import { ReactNode } from 'react';
 
 import { ReactComponent as FamilieSvg } from 'assets/icons/familie.svg';
 
+import './InfoPanel.less';
+
 interface InfoPanelProps {
     children: ReactNode;
 }

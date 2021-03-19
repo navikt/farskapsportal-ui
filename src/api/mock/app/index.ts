@@ -6,7 +6,7 @@ import fetchMock, { MockResponse, MockResponseFunction } from 'fetch-mock';
 // import user from './get/far_unsigned.json';
 import user from './get/mor.json';
 // import user from './get/mor_awaiting_far.json';
-// import user from './get/mor_both_signed.json';
+import user from './get/mor_both_signed.json';
 // import user from './get/mor_child.json';
 // import user from './get/mor_eller_far.json';
 // import user from './get/mor_eller_far_awaiting_self_as_far_and_other.json';
