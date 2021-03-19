@@ -38,7 +38,7 @@ function IkkeTilgang({ feilkode }: IkkeTilgangProps) {
                     <AlertStripe type="advarsel">
                         <Normaltekst>{renderContent()}</Normaltekst>
                         <Normaltekst>
-                            <FormattedMessage id="" />
+                            <FormattedMessage id="ikkeTilgang.kontakt" />
                         </Normaltekst>
                     </AlertStripe>
                 </Veilederpanel>

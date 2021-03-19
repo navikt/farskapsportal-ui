@@ -135,7 +135,6 @@ const checkHttpError = async (response: Response): Promise<Response> => {
         return response;
     } else {
         const responseErrorData = await parseJson(response);
-        console.log(responseErrorData);
         const error = {
             code: response.status,
             text: responseErrorData.feilkodebeskrivelse,
