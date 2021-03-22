@@ -2,7 +2,6 @@ import { AlertError } from 'types/error';
 import { Feilkode } from 'types/feilkode';
 
 const EXPECTED_FEILKODER_FETCH_USER = [
-    Feilkode.FeilRolle,
     Feilkode.IkkeMyndig,
     Feilkode.MedmorEllerUkjent,
     Feilkode.MorSivilstandGift,
@@ -18,10 +17,12 @@ const EXPECTED_FEILKODER_CONTROL_FATHER = [
     Feilkode.NavnStemmerIkkeMedRegister,
 ];
 
-export const isUserNotPermitted = (error: AlertError) =>
-    error.code === 400 && error.feilkode && EXPECTED_FEILKODER_FETCH_USER.includes(error.feilkode);
-
-export const isControlFatherValidationError = (error: AlertError) =>
+export const isUserNotPermitted = (error: AlertError): boolean =>
     error.code === 400 &&
-    error.feilkode &&
+    !!error.feilkode &&
+    EXPECTED_FEILKODER_FETCH_USER.includes(error.feilkode);
+
+export const isControlFatherValidationError = (error: AlertError): boolean =>
+    error.code === 400 &&
+    !!error.feilkode &&
     EXPECTED_FEILKODER_CONTROL_FATHER.includes(error.feilkode);

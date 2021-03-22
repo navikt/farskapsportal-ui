@@ -7,8 +7,8 @@ import { Foreldrerolle } from './foreldrerolle';
  * INBOUND
  */
 export interface FarskapserklaeringFeilResponse {
-    feilkode: Feilkode | null; // TODO: kan denne være null?
-    feilkodebeskrivelse: string | null; // TODO: kan denne være null?
+    feilkode: Feilkode | null;
+    feilkodebeskrivelse: string | null;
     antallResterendeForsoek: number | null;
 }
 

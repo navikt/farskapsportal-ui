@@ -92,11 +92,10 @@ export default {
 
     'forside.loginButton': 'Fyll ut erklæring om farskap',
 
-    'notPermitted.feilRolle': 'Pålogget person kan verken opptre som mor eller far i løsningen', // TODO: endre tekst
     'notPermitted.ikkeMyndig': 'For at farskap skal kunne erklæres elektronisk, må begge foreldrene være over 18 år.',
-    'notPermitted.medmorEllerUkjent': 'Medmor eller person med ukjent rolle kan ikke benytte løsningen', // TODO
+    'notPermitted.medmorEllerUkjent': 'Medmor eller person med ukjent rolle kan ikke benytte løsningen', // TODO: endre tekst
     'notPermitted.morSivilstandGiftPartner': 'Du er registrert som gift/partner og farskapet til barn du føder følger direkte av loven. Hvis en annen mann enn din ektefelle er far må farskapet endres. Dette kan ikke gjøres automatisk.', // TODO
-    'notPermitted.morSivilstandUoppgitt': 'Mor kan ikke opprette farskapserklæring dersom hun har sivilstand uoppgitt', // TODO
+    'notPermitted.morSivilstandUoppgitt': 'Mor kan ikke opprette farskapserklæring dersom hun har sivilstand uoppgitt', // TODO: endre tekst
 
     'oversikt.barn.link.title': 'Opprett farskapserklæring for barn',
     'oversikt.barn.link.foedselsnummer': 'Fødselsnummer: ',

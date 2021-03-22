@@ -8,7 +8,7 @@ import { AlertError } from 'types/error';
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { UserInfo } from 'types/user';
 import { redirectLoginCookie, setCookie } from 'utils/cookies';
-import { isUserNotPermitted } from 'utils/feilkoder';
+import { isControlFatherValidationError, isUserNotPermitted } from 'utils/feilkoder';
 import { logApiError } from 'utils/logger';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -63,9 +63,8 @@ const checkAuthFetchJson = (url: string, onlyLogErrorOn?: (error: AlertError) =>
 export const controlFatherInfo = (data: KontrollerePersonopplysningerRequest) => {
     const url = '/api/personopplysninger/far';
 
-    // TODO: endre kode?
     // Logger ikke hvis det er forventet feil, f eks person er kvinne eller person er ikke funnet
-    const onlyLogErrorOn = (error: AlertError) => error.code !== 400;
+    const onlyLogErrorOn = (error: AlertError) => !isControlFatherValidationError(error);
 
     return checkAuthPostJson(url, data, onlyLogErrorOn);
 };

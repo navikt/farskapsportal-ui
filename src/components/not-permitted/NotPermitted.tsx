@@ -15,8 +15,6 @@ interface NotPermittedProps {
 function NotPermitted({ feilkode }: NotPermittedProps) {
     const renderContent = () => {
         switch (feilkode) {
-            case Feilkode.FeilRolle:
-                return <FeilRolle />;
             case Feilkode.IkkeMyndig:
                 return <IkkeMyndig />;
             case Feilkode.MedmorEllerUkjent:
@@ -43,10 +41,6 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
             </InfoPanel>
         </ContentContainer>
     );
-}
-
-function FeilRolle() {
-    return <FormattedMessage id="notPermitted.feilRolle" />;
 }
 
 function IkkeMyndig() {
