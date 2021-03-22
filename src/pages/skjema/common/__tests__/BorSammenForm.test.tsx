@@ -4,11 +4,12 @@ import { fireEvent, render, screen, waitFor } from 'test-utils';
 import texts from 'texts/nb';
 import BorSammenForm, { BorSammenFormProps } from '../BorSammenForm';
 
-const borSammenYesLabel = texts['mor.skjema.borSammen.label.yes'];
-const submitButtonLabel = texts['mor.form.buttons.next'];
-const requiredErrorMessage = texts['mor.skjema.borSammen.validation.required'];
+const borSammenYesLabel = texts['skjema.borSammen.label.yes'];
+const submitButtonLabel = texts['skjema.next'];
+const requiredErrorMessage = texts['skjema.borSammen.validation.required'];
 
 const defaultProps: BorSammenFormProps = {
+    titleId: 'skjema.mor.borSammen.title',
     defaultBorSammen: null,
     onSubmit: () => undefined,
     onCancel: () => undefined,

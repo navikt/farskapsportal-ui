@@ -15,12 +15,12 @@ function BarnPresentation(props: BarnPresentationProps) {
     return (
         <div className="BarnPresentation">
             <Undertittel>
-                <FormattedMessage id="mor.skjema.barn.title" />
+                <FormattedMessage id="skjema.mor.barn.title" />
             </Undertittel>
             {props.foedselsnummer && (
                 <>
                     <Normaltekst>
-                        <FormattedMessage id="mor.skjema.barn.presentation.foedselsnummer.label" />
+                        <FormattedMessage id="skjema.presentation.foedselsnummer" />
                     </Normaltekst>
                     <Element>{formatFoedselsnummer(props.foedselsnummer)}</Element>
                 </>
@@ -28,7 +28,7 @@ function BarnPresentation(props: BarnPresentationProps) {
             {props.termindato && (
                 <>
                     <Normaltekst>
-                        <FormattedMessage id="mor.skjema.barn.presentation.termindato.label" />
+                        <FormattedMessage id="skjema.presentation.termindato" />
                     </Normaltekst>
                     <Element>
                         <DatePresentation date={props.termindato} />

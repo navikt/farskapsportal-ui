@@ -4,14 +4,13 @@ import { fireEvent, render, screen, waitFor } from 'test-utils';
 import texts from 'texts/nb';
 import FarForm, { FarFormProps } from '../FarForm';
 
-const navnLabel = texts['mor.skjema.far.form.navn.label'];
-const foedselsnummerLabel = texts['mor.skjema.far.form.foedselsnummer.label'];
-const navnRequiredErrorMessage = texts['mor.skjema.far.form.navn.validation.required'];
+const navnLabel = texts['skjema.mor.far.navn.label'];
+const foedselsnummerLabel = texts['skjema.mor.far.foedselsnummer.label'];
+const navnRequiredErrorMessage = texts['skjema.mor.far.navn.validation.required'];
 const foedselsnummerRequiredErrorMessage =
-    texts['mor.skjema.far.form.foedselsnummer.validation.required'];
-const invalidFoedselsnummerErrorMessage =
-    texts['mor.skjema.far.form.foedselsnummer.validation.fnr'];
-const submitButtonLabel = texts['mor.form.buttons.next'];
+    texts['skjema.mor.far.foedselsnummer.validation.required'];
+const invalidFoedselsnummerErrorMessage = texts['skjema.mor.far.foedselsnummer.validation.fnr'];
+const submitButtonLabel = texts['skjema.next'];
 
 const defaultProps: FarFormProps = {
     defaultNavn: '',

@@ -7,12 +7,12 @@ import MorSkjema from '../MorSkjema';
 
 jest.mock('api/api', () => ({ controlFatherInfo: () => Promise.resolve() }));
 
-const termindatoLabel = texts['mor.skjema.barn.form.termindato.label'];
-const navnLabel = texts['mor.skjema.far.form.navn.label'];
-const foedselsnummerLabel = texts['mor.skjema.far.form.foedselsnummer.label'];
-const borSammenYesLabel = texts['mor.skjema.borSammen.label.yes'];
-const farCorrectLabel = texts['mor.skjema.confirm.form.farCorrect.label'];
-const submitButtonLabel = texts['mor.form.buttons.next'];
+const termindatoLabel = texts['skjema.mor.barn.termindato.label'];
+const navnLabel = texts['skjema.mor.far.navn.label'];
+const foedselsnummerLabel = texts['skjema.mor.far.foedselsnummer.label'];
+const borSammenYesLabel = texts['skjema.borSammen.label.yes'];
+const farCorrectLabel = texts['skjema.mor.confirm.farCorrect.label'];
+const submitButtonLabel = texts['skjema.next'];
 
 test('should display steps correctly', async () => {
     render(<MorSkjema />, {

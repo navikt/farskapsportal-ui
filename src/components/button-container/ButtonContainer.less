@@ -1,6 +1,6 @@
 @import (reference) 'styles/assets';
 
-.FormButtons {
+.ButtonContainer {
   margin-top: 2rem;
 
   .knapp {
@@ -10,7 +10,7 @@
       width: unset;
     }
 
-    &--standard {
+    &:not(:first-child) {
       margin-top: 1rem;
 
       @media (min-width: @mobile-breakpoint) {

@@ -1,6 +1,6 @@
-import { useIntl } from 'react-intl';
-import { Controller, useForm } from 'react-hook-form';
 import { SkjemaGruppe } from 'nav-frontend-skjema';
+import { Controller, useForm } from 'react-hook-form';
+import { useIntl } from 'react-intl';
 
 import DateInput from 'components/date-input/DateInput';
 import FormButtons from 'components/form-buttons/FormButtons';
@@ -36,8 +36,8 @@ function TermindatoForm(props: TermindatoFormProps) {
     return (
         <form onSubmit={handleSubmit(props.onSubmit)}>
             <SkjemaGruppe
-                legend={getMessage(intl, 'mor.skjema.barn.title')}
-                description={getMessage(intl, 'mor.skjema.barn.description')}
+                legend={getMessage(intl, 'skjema.mor.barn.title')}
+                description={getMessage(intl, 'skjema.mor.barn.description')}
             >
                 <Controller
                     name="termindato"
@@ -45,28 +45,22 @@ function TermindatoForm(props: TermindatoFormProps) {
                     rules={{
                         required: getMessage(
                             intl,
-                            'mor.skjema.barn.form.termindato.validation.required'
+                            'skjema.mor.barn.termindato.validation.required'
                         ),
                         pattern: {
                             value: /\d{4}-\d{2}-\d{2}/,
                             message: getMessage(
                                 intl,
-                                'mor.skjema.barn.form.termindato.validation.pattern'
+                                'skjema.mor.barn.termindato.validation.pattern'
                             ),
                         },
                         validate: {
                             minDate: (value) =>
                                 isLessThanNDaysInThePast(value, DAYS_IN_THREE_WEEKS + 1) ||
-                                getMessage(
-                                    intl,
-                                    'mor.skjema.barn.form.termindato.validation.minDate'
-                                ),
+                                getMessage(intl, 'skjema.mor.barn.termindato.validation.minDate'),
                             maxDate: (value) =>
                                 isLessThanNDaysInTheFuture(value, DAYS_IN_PREGNANCY) ||
-                                getMessage(
-                                    intl,
-                                    'mor.skjema.barn.form.termindato.validation.maxDate'
-                                ),
+                                getMessage(intl, 'skjema.mor.barn.termindato.validation.maxDate'),
                             beforeWeek22: (value) =>
                                 isLessThanNDaysInTheFuture(
                                     value,
@@ -74,7 +68,7 @@ function TermindatoForm(props: TermindatoFormProps) {
                                 ) ||
                                 getMessage(
                                     intl,
-                                    'mor.skjema.barn.form.termindato.validation.beforeWeek22',
+                                    'skjema.mor.barn.termindato.validation.beforeWeek22',
                                     { weekNr: getWeekOfPregnancy(value) }
                                 ),
                         },
@@ -82,7 +76,7 @@ function TermindatoForm(props: TermindatoFormProps) {
                     render={({ onChange, value, name }) => (
                         <DateInput
                             id={name}
-                            label={getMessage(intl, 'mor.skjema.barn.form.termindato.label')}
+                            label={getMessage(intl, 'skjema.mor.barn.termindato.label')}
                             onChange={onChange}
                             value={value}
                             feil={errors.termindato?.message}
@@ -95,8 +89,8 @@ function TermindatoForm(props: TermindatoFormProps) {
                 />
             </SkjemaGruppe>
             <FormButtons
-                submitText={getMessage(intl, 'mor.form.buttons.next')}
-                cancelText={getMessage(intl, 'mor.form.buttons.cancel')}
+                submitText={getMessage(intl, 'skjema.next')}
+                cancelText={getMessage(intl, 'skjema.cancel')}
                 onCancel={props.onCancel}
             />
         </form>

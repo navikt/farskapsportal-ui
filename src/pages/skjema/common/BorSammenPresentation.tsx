@@ -1,26 +1,27 @@
 import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
 import { FormattedMessage } from 'react-intl';
 
-import { BorSammenValue } from '../forms/BorSammenForm';
+import { BorSammenValue } from './BorSammenForm';
 
 import './BorSammenPresentation.less';
 
 interface BorSammenPresentationProps {
+    titleId: string;
     borSammen: BorSammenValue;
 }
 
-function BorSammenPresentation(props: BorSammenPresentationProps) {
+function BorSammenPresentation({ titleId, borSammen }: BorSammenPresentationProps) {
     return (
         <div className="BorSammenPresentation">
             <Undertittel>
-                <FormattedMessage id="mor.skjema.borSammen.title" />
+                <FormattedMessage id={titleId} />
             </Undertittel>
             <Normaltekst>
                 <FormattedMessage
                     id={
-                        props.borSammen === 'YES'
-                            ? 'mor.skjema.borSammen.label.yes'
-                            : 'mor.skjema.borSammen.label.no'
+                        borSammen === 'YES'
+                            ? 'skjema.borSammen.label.yes'
+                            : 'skjema.borSammen.label.no'
                     }
                 />
             </Normaltekst>

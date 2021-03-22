@@ -9,14 +9,14 @@ import { Path } from 'types/path';
 import { useNavigateTo } from 'utils/hooks/useNavigateTo';
 import { useQuery } from 'utils/hooks/useQuery';
 import { getMessage } from 'utils/intl';
-import BorSammenForm, { BorSammenFormInput } from './forms/BorSammenForm';
+import BorSammenForm, { BorSammenFormInput } from '../common/BorSammenForm';
+import BorSammenPresentation from '../common/BorSammenPresentation';
+import SkjemaStep from '../common/SkjemaStep';
 import FarForm, { FarFormInput } from './forms/FarForm';
 import MorBekreftForm from './forms/MorBekreftForm';
 import TermindatoForm, { TermindatoFormInput } from './forms/TermindatoForm';
 import BarnPresentation from './presentation/BarnPresentation';
-import BorSammenPresentation from './presentation/BorSammenPresentation';
 import FarPresentation from './presentation/FarPresentation';
-import SkjemaStep from './SkjemaStep';
 
 type ActionType =
     | { type: 'EDIT_TERMINDATO' }
@@ -113,10 +113,9 @@ const reducer = (state: StateType, action: ActionType): StateType => {
 };
 
 function MorSkjema() {
-    const query = useQuery();
     // TODO: check if foedselsnummer is correct?
     // TODO: can we use foedselsnummer in url?
-    const barnFoedselsnummer = query.get('fnr');
+    const barnFoedselsnummer = useQuery().get('fnr');
 
     const intl = useIntl();
     const navigateTo = useNavigateTo();
@@ -200,7 +199,7 @@ function MorSkjema() {
     };
 
     return (
-        <div className="MorSkjema">
+        <div>
             <SkjemaStep
                 stepNumber={1}
                 formComponent={
@@ -236,7 +235,7 @@ function MorSkjema() {
                         foedselsnummer={state.formValues.far.foedselsnummer}
                     />
                 }
-                title={getMessage(intl, 'mor.skjema.far.title')}
+                title={getMessage(intl, 'skjema.mor.far.title')}
                 status={state.stepStatus.far}
                 onChange={onEndreFarForm}
                 isDisabled={state.submit.pending}
@@ -245,15 +244,19 @@ function MorSkjema() {
                 stepNumber={3}
                 formComponent={
                     <BorSammenForm
+                        titleId="skjema.mor.borSammen.title"
                         defaultBorSammen={state.formValues.borSammen.borSammen}
                         onSubmit={onSubmitBorSammenForm}
                         onCancel={onCancel}
                     />
                 }
                 presentationComponent={
-                    <BorSammenPresentation borSammen={state.formValues.borSammen.borSammen} />
+                    <BorSammenPresentation
+                        titleId="skjema.mor.borSammen.title"
+                        borSammen={state.formValues.borSammen.borSammen}
+                    />
                 }
-                title={getMessage(intl, 'mor.skjema.borSammen.title')}
+                title={getMessage(intl, 'skjema.mor.borSammen.title')}
                 status={state.stepStatus.borSammen}
                 onChange={onEndreBorSammenForm}
                 isDisabled={state.submit.pending}
@@ -267,7 +270,7 @@ function MorSkjema() {
                         onCancel={onCancel}
                     />
                 }
-                title={getMessage(intl, 'mor.skjema.confirm.title')}
+                title={getMessage(intl, 'skjema.mor.confirm.title')}
                 status={
                     state.stepStatus.barn === StepStatus.Done &&
                     state.stepStatus.far === StepStatus.Done &&

@@ -6,11 +6,11 @@ import { DAYS_IN_THREE_WEEKS } from 'utils/constants';
 import { getNDaysInTheFuture, getNDaysInThePast } from 'utils/date';
 import TermindatoForm, { TermindatoFormProps } from '../TermindatoForm';
 
-const termindatoLabel = texts['mor.skjema.barn.form.termindato.label'];
-const requiredErrorMessage = texts['mor.skjema.barn.form.termindato.validation.required'];
-const invalidDateErrorMessage = texts['mor.skjema.barn.form.termindato.validation.pattern'];
-const minDateErrorMessage = texts['mor.skjema.barn.form.termindato.validation.minDate'];
-const submitButtonLabel = texts['mor.form.buttons.next'];
+const termindatoLabel = texts['skjema.mor.barn.termindato.label'];
+const requiredErrorMessage = texts['skjema.mor.barn.termindato.validation.required'];
+const invalidDateErrorMessage = texts['skjema.mor.barn.termindato.validation.pattern'];
+const minDateErrorMessage = texts['skjema.mor.barn.termindato.validation.minDate'];
+const submitButtonLabel = texts['skjema.next'];
 
 const defaultProps: TermindatoFormProps = {
     defaultTermindato: '',

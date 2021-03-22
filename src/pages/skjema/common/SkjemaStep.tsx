@@ -1,8 +1,8 @@
+import { Flatknapp } from 'nav-frontend-knapper';
+import Panel from 'nav-frontend-paneler';
+import { Undertittel } from 'nav-frontend-typografi';
 import { ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
-import Panel from 'nav-frontend-paneler';
-import { Flatknapp } from 'nav-frontend-knapper';
-import { Undertittel } from 'nav-frontend-typografi';
 
 import { StepStatus } from 'types/form';
 import StepIcon from './StepIcon';
@@ -32,7 +32,7 @@ function SkjemaStep(props: SkjemaStepProps) {
                                 onClick={props.onChange}
                                 disabled={props.isDisabled}
                             >
-                                <FormattedMessage id="mor.presentation.change" />
+                                <FormattedMessage id="skjema.edit" />
                             </Flatknapp>
                         )}
                     </div>

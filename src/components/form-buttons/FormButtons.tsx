@@ -1,6 +1,6 @@
 import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
 
-import './FormButtons.less';
+import ButtonContainer from 'components/button-container/ButtonContainer';
 
 interface FormButtonsProps {
     submitText: string;
@@ -11,14 +11,14 @@ interface FormButtonsProps {
 
 function FormButtons({ submitText, cancelText, onCancel, submitSpinner }: FormButtonsProps) {
     return (
-        <div className="FormButtons">
+        <ButtonContainer>
             <Hovedknapp htmlType="submit" spinner={submitSpinner} autoDisableVedSpinner={true}>
                 {submitText}
             </Hovedknapp>
             <Knapp htmlType="button" onClick={onCancel}>
                 {cancelText}
             </Knapp>
-        </div>
+        </ButtonContainer>
     );
 }
 
