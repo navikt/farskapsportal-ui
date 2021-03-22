@@ -25,10 +25,17 @@ export interface OppretteFarskapserklaeringResponse extends FarskapserklaeringRe
     redirectUrlForSigneringMor: string;
 }
 
+export interface OppdatereFarskapserklaeringResponse {
+    oppdatertFarskapserklaeringDto: Farskapserklaering;
+}
+
 /*
  * OUTBOUND
  */
-export type Outbound = KontrollerePersonopplysningerRequest | OppretteFarskaperklaeringRequest;
+export type Outbound =
+    | KontrollerePersonopplysningerRequest
+    | OppretteFarskaperklaeringRequest
+    | OppdatereFarskapserklaeringRequest;
 
 export interface KontrollerePersonopplysningerRequest {
     foedselsnummer: string;
@@ -39,4 +46,9 @@ export interface OppretteFarskaperklaeringRequest {
     barn: Barn;
     morBorSammenMedFar: boolean;
     opplysningerOmFar: KontrollerePersonopplysningerRequest;
+}
+
+export interface OppdatereFarskapserklaeringRequest {
+    borSammen: boolean;
+    idFarskapserklaering: number;
 }

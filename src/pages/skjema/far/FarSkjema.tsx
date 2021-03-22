@@ -1,6 +1,7 @@
 import { useReducer } from 'react';
 import { useIntl } from 'react-intl';
 
+import { oppdaterFarskapserklaering } from 'api/api';
 import Error from 'components/error/Error';
 import { AlertError } from 'types/error';
 import { StepStatus } from 'types/form';
@@ -109,8 +110,19 @@ function FarSkjema({ userInfo }: FarSkjemaProps) {
 
     const onSubmit = () => {
         dispatch({ type: 'SUBMIT' });
-        // redirect to e-sign
-        alert('Redirect');
+        oppdaterFarskapserklaering({
+            borSammen: state.formValues.borSammen.borSammen === 'YES',
+            idFarskapserklaering: parseInt(id),
+        })
+            .then((response) => {
+                dispatch({ type: 'SUBMIT_SUCCESS' });
+                window.location.assign(
+                    response.oppdatertFarskapserklaeringDto.dokument?.redirectUrlFar ?? ''
+                ); // TODO: hva er riktig her?
+            })
+            .catch((error: AlertError) => {
+                dispatch({ type: 'SUBMIT_FAILURE', payload: error });
+            });
     };
 
     const onSubmitLesOpplysninger = () => {

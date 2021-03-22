@@ -3,6 +3,8 @@ import {
     KontrollerePersonopplysningerRequest,
     OppretteFarskaperklaeringRequest,
     OppretteFarskapserklaeringResponse,
+    OppdatereFarskapserklaeringRequest,
+    OppdatereFarskapserklaeringResponse,
 } from 'types/api';
 import { AlertError } from 'types/error';
 import { Farskapserklaering } from 'types/farskapserklaering';
@@ -22,30 +24,11 @@ export const checkAuthFetchUser = () => {
     // Logger ikke 401 eller 403 feil da det forventes.
     const onlyLogErrorOn = (errorCode: number) => errorCode !== 401 && errorCode !== 403;
 
-    return checkAuthFetchJson(url, onlyLogErrorOn) as Promise<UserInfo>;
+    return performGet(url, onlyLogErrorOn) as Promise<UserInfo>;
 };
 
-const checkAuthFetchJson = (url: string, onlyLogErrorOn?: (errorCode: number) => boolean) =>
-    fetch(url, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json;charset=UTF-8' },
-    })
-        .then(checkAuth)
-        .then(checkHttpError)
-        .then(parseJson)
-        .catch((err: string & AlertError) => {
-            const error = {
-                code: err.code || 404,
-                type: err.type || 'feil',
-                text: err.text || err,
-            };
-
-            if (!onlyLogErrorOn || onlyLogErrorOn(error.code)) {
-                logApiError(url, error);
-            }
-
-            throw error;
-        });
+const performGet = (url: string, onlyLogErrorOn?: (errorCode: number) => boolean) =>
+    performApiCall('GET', url, undefined, onlyLogErrorOn).then(parseJson);
 
 /*
  *   POST
@@ -57,30 +40,53 @@ export const controlFatherInfo = (data: KontrollerePersonopplysningerRequest) =>
     // Logger ikke hvis det er forventet feil, f eks person er kvinne eller person er ikke funnet
     const onlyLogErrorOn = (errorCode: number) => errorCode !== 400;
 
-    return checkAuthPostJson(url, data, onlyLogErrorOn);
+    return performPost(url, data, onlyLogErrorOn);
 };
 
 export const opprettFarskapserklaering = (data: OppretteFarskaperklaeringRequest) => {
     const url = '/api/farskapserklaering/ny';
 
-    return checkAuthPostJson(url, data).then(
-        parseJson
-    ) as Promise<OppretteFarskapserklaeringResponse>;
+    return performPost(url, data).then(parseJson) as Promise<OppretteFarskapserklaeringResponse>;
 };
 
 export const setSigneringStatusToken = (statusToken: string) => {
     const url = `/api/farskapserklaering/redirect?status_query_token=${statusToken}`;
 
-    return checkAuthPostJson(url).then(parseJson) as Promise<Farskapserklaering>;
+    return performPost(url).then(parseJson) as Promise<Farskapserklaering>;
 };
 
-const checkAuthPostJson = (
+const performPost = (
+    url: string,
+    data?: Outbound,
+    onlyLogErrorOn?: (errorCode: number) => boolean
+) => performApiCall('POST', url, data, onlyLogErrorOn);
+
+/*
+ *   PUT
+ */
+export const oppdaterFarskapserklaering = (data: OppdatereFarskapserklaeringRequest) => {
+    const url = '/api/farskapserklaering/oppdatere';
+
+    return performPut(url, data).then(parseJson) as Promise<OppdatereFarskapserklaeringResponse>;
+};
+
+const performPut = (
+    url: string,
+    data?: Outbound,
+    onlyLogErrorOn?: (errorCode: number) => boolean
+) => performApiCall('PUT', url, data, onlyLogErrorOn);
+
+/*
+ * UTILS
+ */
+const performApiCall = (
+    method: 'GET' | 'PUT' | 'POST',
     url: string,
     data?: Outbound,
     onlyLogErrorOn?: (errorCode: number) => boolean
 ) =>
     fetch(url, {
-        method: 'POST',
+        method: method,
         body: data ? JSON.stringify(data) : undefined,
         headers: { 'Content-Type': 'application/json;charset=UTF-8' },
     })
@@ -100,9 +106,6 @@ const checkAuthPostJson = (
             throw error;
         });
 
-/*
- * UTILS
- */
 const parseJson = (response: Response) => response.json();
 
 const checkAuth = (response: Response): Response => {
