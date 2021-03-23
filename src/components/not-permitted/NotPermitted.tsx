@@ -49,7 +49,7 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
 function IkkeMyndig() {
     return (
         <Normaltekst>
-            <FormattedMessage id="notPermitted.ikkeMyndig" />;
+            <FormattedMessage id="notPermitted.ikkeMyndig" />
         </Normaltekst>
     );
 }
@@ -57,7 +57,7 @@ function IkkeMyndig() {
 function MedmorEllerUkjent() {
     return (
         <Normaltekst>
-            <FormattedMessage id="notPermitted.medmorEllerUkjent" />;
+            <FormattedMessage id="notPermitted.medmorEllerUkjent" />
         </Normaltekst>
     );
 }
@@ -104,7 +104,7 @@ function MorSivilstandPartner() {
 function MorSivilstandUoppgitt() {
     return (
         <Normaltekst>
-            <FormattedMessage id="notPermitted.morSivilstandUoppgitt" />;
+            <FormattedMessage id="notPermitted.morSivilstandUoppgitt" />
         </Normaltekst>
     );
 }
