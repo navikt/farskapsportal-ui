@@ -1,11 +1,9 @@
 /* eslint-disable */
 export default {
-    'languageToggle.nb': 'Bokmål',
-    'languageToggle.nn': 'Nynorsk',
-    'languageToggle.en': 'Engelsk',
+    'api.error': 'Oisann, noko gjekk gale!',
+
     'form.feiloppsummering': 'For å gå vidare må du retta opp følgjande:',
     'form.date.placeholder': 'dd.mm.åååå',
-    'api.error': 'Oisann, noko gjekk gale ved henting av data!',
 
     'breadcrumbs.forside': 'Farskapserklæring',
     'breadcrumbs.oversikt': 'Dine farskapserklæringer',
@@ -16,6 +14,10 @@ export default {
     'header.oversikt': 'Dine farskapserklæringer',
     'header.skjema': 'Opprett farskapserklæring',
     'header.kvittering': 'Kvittering',
+
+    'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/soknad-om-medmorskap/',
+
+    'skjema.mor.far.validation.feilRolleFar.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/soknad-om-medmorskap/',
 
     'kvittering.hvaSkjerVidere.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/',
 

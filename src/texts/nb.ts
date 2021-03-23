@@ -1,11 +1,14 @@
 /* eslint-disable */
 export default {
-    'languageToggle.nb': 'Bokmål',
-    'languageToggle.nn': 'Nynorsk',
-    'languageToggle.en': 'Engelsk',
+    'two': 'to',
+    'three': 'tre',
+
+    'api.error': 'Oisann, noe gikk galt!',
+
     'form.feiloppsummering': 'For å gå videre må du rette opp følgende:',
     'form.date.placeholder': 'dd.mm.åååå',
-    'api.error': 'Oisann, noe gikk galt ved henting av data!',
+
+    'error.taKontakt': 'Ta gjerne kontakt med oss på telefon 55 55 33 33 for å få informasjon om hvordan du skal gå frem for å få fastsatt farskap.',
 
     'withUserInfoError.banner.title': 'Oops,',
     'withUserInfoError.banner.text': 'noe gikk galt.',
@@ -90,6 +93,19 @@ export default {
 
     'forside.loginButton': 'Fyll ut erklæring om farskap',
 
+    'notPermitted.ikkeMyndig': 'For at farskap skal kunne erklæres elektronisk, må begge foreldrene være over 18 år.',
+    'notPermitted.medmorEllerUkjent': 'Medmor eller person med ukjent rolle kan ikke benytte løsningen', // TODO: endre tekst
+    'notPermitted.morSivilstandGift.1': 'Du er gift og ektefellen din blir automatisk registrert som far til barn du føder.',
+    'notPermitted.morSivilstandGift.2': 'Hvis det er en annen mann enn ektefellen din som er barnets far, kan farskapet endres. Dette kan ikke gjøres elektronisk. Du finner mer informasjon om endring av farskap',
+    'notPermitted.morSivilstandGift.3': 'Du er også velkommen til å kontakte oss på telefon 55 55 33 33.',
+    'notPermitted.morSivilstandGift.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap',
+    'notPermitted.morSivilstandGift.linkLabel': 'her.',
+    'notPermitted.morSivilstandPartner.1': 'Du er gift/registrert partner og du og ektefellen/partneren din må sende en søknad til skatteetaten for å få medmorskap registret.',
+    'notPermitted.morSivilstandPartner.2': 'Du finner informasjon og søknadsskjema',
+    'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/soknad-om-medmorskap/',
+    'notPermitted.morSivilstandPartner.linkLabel': 'her.',
+    'notPermitted.morSivilstandUoppgitt': 'Mor kan ikke opprette farskapserklæring dersom hun har sivilstand uoppgitt', // TODO: endre tekst
+
     'oversikt.barn.link.title': 'Opprett farskapserklæring for barn',
     'oversikt.barn.link.foedselsnummer': 'Fødselsnummer: ',
     'oversikt.barn.link.status': 'Dette barnet har ikke en registrert far i Folkeregisteret',
@@ -136,6 +152,18 @@ export default {
     'skjema.mor.far.foedselsnummer.label': 'Fødselsnummer til far (11 siffer)',
     'skjema.mor.far.foedselsnummer.validation.required': 'Fødselsnummer er påkrevd',
     'skjema.mor.far.foedselsnummer.validation.fnr': 'Ugyldig fødselsnummer',
+    'skjema.mor.far.validation.feilRolleFar.1': 'Medmorskap kan ikke erklæres elektronisk. Hvis du er samboer med en kvinne, kan dere søke skatteetaten om medmorskap hvis barnet har blitt til ved hjelp av assistert befruktning.',
+    'skjema.mor.far.validation.feilRolleFar.2': 'Du finner informasjon og søknadsskjema',
+    'skjema.mor.far.validation.feilRolleFar.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/soknad-om-medmorskap/',
+    'skjema.mor.far.validation.feilRolleFar.linkLabel': 'her',
+    'skjema.mor.far.validation.forskjelligeFedre': 'Du kan ikke opprette farskapserklæringer med forskjellige fedre for samme kull nyfødte', // TODO: skal denne kunne oppstå? Kanskje ikke tillate mor å taste inn annen far?
+    'skjema.mor.far.validation.ikkeMyndig': 'Oppgitt far er ikke myndig. For at farskap skal kunne erklæres elektronisk, må begge foreldrene være over 18 år.',
+    'skjema.mor.far.validation.maksAntallForsoek.1': 'Du har tastet feil fødselsnummer/navn på oppgitt far fem ganger og har nå blitt blokkert fra løsningen.',
+    'skjema.mor.far.validation.maksAntallForsoek.2': 'Du kan prøve på nytt i morgen.',
+    'skjema.mor.far.validation.navnStemmerIkkeMedRegister.1': 'Navn til far og fødselsnummer til far gir feil.',
+    'skjema.mor.far.validation.navnStemmerIkkeMedRegister.2': 'Sjekk at navnet er stavet riktig og fødselsnummer stemmer.',
+    'skjema.mor.far.validation.resterendeForsoek': 'Du har tastet feil fødselsnummer/navn på oppgitt far {incorrectAttempts} ganger. Vennligst be far sjekke hvordan navnet hans er skrevet i folkeregisteret før du prøver på nytt. Hvis du taster feil fem ganger vil du bli blokkert fra løsningen.',
+    'skjema.mor.far.validation.resterendeForsoek.final': 'Du har tastet feil fødselsnummer/navn på oppgitt far fire ganger og har bare ett forsøk igjen før du vil bli blokkert fra løsningen.',
     'skjema.mor.borSammen.title': 'Bor du sammen med far?',
     'skjema.mor.confirm.title': 'Bekreft opplysninger om far',
     'skjema.mor.confirm.farCorrect.label': 'Jeg godkjenner at opplysningene om far er korrekt.',
@@ -146,10 +174,6 @@ export default {
     'skjema.far.confirm.title': 'Signer farskapserklæring',
     'skjema.far.confirm.readAndUnderstood.label': 'Jeg har lest og forstått hva farksapserklæringen innebærer.',
     'skjema.far.confirm.cannotWithdraw.label': 'Jeg er kjent med at denne bekreftelsen ikke kan trekkes tilbake på et senere tidspunkt.',
-
-    // TODO: fjern
-    'mor.skjema.far.form.error': 'Kontroller at opplysningene stemmer. Vi finner ingen person med disse opplysningene. Både navn og fødselsnummer må stemme overens med det som er registrert i Folkreregisteret.',
-    'mor.skjema.far.form.error.female': 'Angitt person er registrert som kvinne.',
 
     'kvittering.intro.mor.1': 'Vi har mottat dine opplysninger om far',
     'kvittering.intro.mor.2': 'Erklæringen vil bli videresendt til han for godkjenning og signering.',

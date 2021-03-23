@@ -1,11 +1,9 @@
 /* eslint-disable */
 export default {
-    'languageToggle.nb': 'Bokmål',
-    'languageToggle.nn': 'Nynorsk',
-    'languageToggle.en': 'English',
+    'api.error': 'Whoops, something went wrong!',
+
     'form.feiloppsummering': 'To proceed, you must correct the following:',
     'form.date.placeholder': 'dd.mm.yyyy',
-    'api.error': 'Whoops, something went wrong while fetching data!',
 
     'withUserInfoError.banner.title': 'Whoops,',
     'withUserInfoError.banner.text': 'something went wrong.',
@@ -21,6 +19,10 @@ export default {
     'header.oversikt': 'Your paternity declarations',
     'header.skjema': 'Create declaration of paternity',
     'header.kvittering': 'Receipt',
+
+    'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/application-for-joint-maternity/',
+
+    'skjema.mor.far.validation.feilRolleFar.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/application-for-joint-maternity/',
 
     'kvittering.hvaSkjerVidere.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/',
 
