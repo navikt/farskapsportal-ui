@@ -35,9 +35,6 @@ export const checkAuthFetchUser = () => {
     return performGet(url, onlyLogErrorOn) as Promise<UserInfo>;
 };
 
-const performGet = (url: string, onlyLogErrorOn?: (error: AlertError) => boolean) =>
-    performApiCall('GET', url, undefined, onlyLogErrorOn).then(parseJson);
-
 /*
  *   POST
  */
@@ -62,12 +59,6 @@ export const setSigneringStatusToken = (statusToken: string) => {
     return performPost(url).then(parseJson) as Promise<Farskapserklaering>;
 };
 
-const performPost = (
-    url: string,
-    data?: Outbound,
-    onlyLogErrorOn?: (error: AlertError) => boolean
-) => performApiCall('POST', url, data, onlyLogErrorOn);
-
 /*
  *   PUT
  */
@@ -77,15 +68,24 @@ export const oppdaterFarskapserklaering = (data: OppdatereFarskapserklaeringRequ
     return performPut(url, data).then(parseJson) as Promise<OppdatereFarskapserklaeringResponse>;
 };
 
+/*
+ * UTILS
+ */
+const performGet = (url: string, onlyLogErrorOn?: (error: AlertError) => boolean) =>
+    performApiCall('GET', url, undefined, onlyLogErrorOn).then(parseJson);
+
+const performPost = (
+    url: string,
+    data?: Outbound,
+    onlyLogErrorOn?: (error: AlertError) => boolean
+) => performApiCall('POST', url, data, onlyLogErrorOn);
+
 const performPut = (
     url: string,
     data?: Outbound,
     onlyLogErrorOn?: (error: AlertError) => boolean
 ) => performApiCall('PUT', url, data, onlyLogErrorOn);
 
-/*
- * UTILS
- */
 const performApiCall = (
     method: 'GET' | 'PUT' | 'POST',
     url: string,
