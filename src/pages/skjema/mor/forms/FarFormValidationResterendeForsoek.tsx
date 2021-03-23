@@ -1,13 +1,25 @@
 import AlertStripe from 'nav-frontend-alertstriper';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
+
+import { getMessage } from 'utils/intl';
 
 interface FarFormValidationResterendeForsoekProps {
     antallResterendeForsoek?: number | null;
 }
 
+const getIncorrectAttemptsTextId = (antallResterendeForsoek: number) => {
+    if (antallResterendeForsoek === 1) {
+        return 'three';
+    } else {
+        return 'two';
+    }
+};
+
 function FarFormValidationResterendeForsoek({
     antallResterendeForsoek,
 }: FarFormValidationResterendeForsoekProps) {
+    const intl = useIntl();
+
     if (
         antallResterendeForsoek === null ||
         antallResterendeForsoek === undefined ||
@@ -19,7 +31,7 @@ function FarFormValidationResterendeForsoek({
     if (antallResterendeForsoek === 0) {
         return (
             <AlertStripe type="advarsel">
-                <FormattedMessage id="mor.skjema.far.form.validation.resterendeForsoek.siste" />
+                <FormattedMessage id="mor.skjema.far.form.validation.resterendeForsoek.final" />
             </AlertStripe>
         );
     }
@@ -28,7 +40,12 @@ function FarFormValidationResterendeForsoek({
         <AlertStripe type="advarsel">
             <FormattedMessage
                 id="mor.skjema.far.form.validation.resterendeForsoek"
-                values={{ antallResterendeForsoek: antallResterendeForsoek + 1 }}
+                values={{
+                    incorrectAttempts: getMessage(
+                        intl,
+                        getIncorrectAttemptsTextId(antallResterendeForsoek)
+                    ),
+                }}
             />
         </AlertStripe>
     );

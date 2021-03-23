@@ -1,10 +1,12 @@
 import AlertStripe from 'nav-frontend-alertstriper';
 import { Normaltekst } from 'nav-frontend-typografi';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import ContentContainer from 'components/content-container/ContentContainer';
+import ExternalLink from 'components/external-link/ExternalLink';
 import InfoPanel from 'components/info-panel/InfoPanel';
 import { Feilkode } from 'types/feilkode';
+import { getMessage } from 'utils/intl';
 
 import './NotPermitted.less';
 
@@ -20,8 +22,9 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
             case Feilkode.MedmorEllerUkjent:
                 return <MedmorEllerUkjent />;
             case Feilkode.MorSivilstandGift:
+                return <MorSivilstandGift />;
             case Feilkode.MorSivilstandRegistrertPartner:
-                return <MorSivilstandGiftPartner />;
+                return <MorSivilstandPartner />;
             case Feilkode.MorSivilstandUoppgitt:
                 return <MorSivilstandUoppgitt />;
             default:
@@ -33,7 +36,7 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
         <ContentContainer className="NotPermitted">
             <InfoPanel>
                 <AlertStripe type="advarsel">
-                    <Normaltekst>{renderContent()}</Normaltekst>
+                    {renderContent()}
                     <Normaltekst>
                         <FormattedMessage id="error.taKontakt" />
                     </Normaltekst>
@@ -44,19 +47,66 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
 }
 
 function IkkeMyndig() {
-    return <FormattedMessage id="notPermitted.ikkeMyndig" />;
+    return (
+        <Normaltekst>
+            <FormattedMessage id="notPermitted.ikkeMyndig" />;
+        </Normaltekst>
+    );
 }
 
 function MedmorEllerUkjent() {
-    return <FormattedMessage id="notPermitted.medmorEllerUkjent" />;
+    return (
+        <Normaltekst>
+            <FormattedMessage id="notPermitted.medmorEllerUkjent" />;
+        </Normaltekst>
+    );
 }
 
-function MorSivilstandGiftPartner() {
-    return <FormattedMessage id="notPermitted.morSivilstandGiftPartner" />;
+// TODO: endre når api endres, skal være for kvinne gift med mann
+function MorSivilstandGift() {
+    const intl = useIntl();
+
+    return (
+        <>
+            <Normaltekst>
+                <FormattedMessage id="notPermitted.morSivilstandGift.1" />
+            </Normaltekst>
+            <Normaltekst>
+                <FormattedMessage id="notPermitted.morSivilstandGift.2" />{' '}
+                <ExternalLink href={getMessage(intl, 'notPermitted.morSivilstandGift.link')}>
+                    <FormattedMessage id="notPermitted.morSivilstandGift.linkLabel" />
+                </ExternalLink>{' '}
+                <FormattedMessage id="notPermitted.morSivilstandGift.3" />
+            </Normaltekst>
+        </>
+    );
+}
+
+// TODO: endre når api endres, skal være for kvinne gift med kvinne
+function MorSivilstandPartner() {
+    const intl = useIntl();
+
+    return (
+        <>
+            <Normaltekst>
+                <FormattedMessage id="notPermitted.morSivilstandPartner.1" />
+            </Normaltekst>
+            <Normaltekst>
+                <FormattedMessage id="notPermitted.morSivilstandPartner.2" />{' '}
+                <ExternalLink href={getMessage(intl, 'notPermitted.morSivilstandPartner.link')}>
+                    <FormattedMessage id="notPermitted.morSivilstandPartner.linkLabel" />
+                </ExternalLink>
+            </Normaltekst>
+        </>
+    );
 }
 
 function MorSivilstandUoppgitt() {
-    return <FormattedMessage id="notPermitted.morSivilstandUoppgitt" />;
+    return (
+        <Normaltekst>
+            <FormattedMessage id="notPermitted.morSivilstandUoppgitt" />;
+        </Normaltekst>
+    );
 }
 
 export default NotPermitted;

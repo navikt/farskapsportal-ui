@@ -17,6 +17,8 @@ export default {
     'header.skjema': 'Opprett farskapserklæring',
     'header.kvittering': 'Kvittering',
 
+    'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/soknad-om-medmorskap/',
+
     'mor.title': 'Opplysningar om barnet og faren til barnet', // TODO: remove?
     'mor.form.buttons.next': 'Neste',
     'mor.form.buttons.submit': 'Stadfest farskap',

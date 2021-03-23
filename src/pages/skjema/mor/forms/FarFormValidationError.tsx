@@ -82,12 +82,6 @@ function MaksAntallForsoek() {
             <Normaltekst>
                 <FormattedMessage id="mor.skjema.far.form.validation.maksAntallForsoek.2" />
             </Normaltekst>
-            <Normaltekst>
-                <FormattedMessage id="mor.skjema.far.form.validation.maksAntallForsoek.3" />
-            </Normaltekst>
-            <Normaltekst>
-                <FormattedMessage id="mor.skjema.far.form.validation.maksAntallForsoek.4" />
-            </Normaltekst>
         </>
     );
 }

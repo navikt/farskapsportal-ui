@@ -6,6 +6,8 @@ export default {
     'form.feiloppsummering': 'For å gå videre må du rette opp følgende:',
     'form.date.placeholder': 'dd.mm.åååå',
     'api.error': 'Oisann, noe gikk galt!',
+    'two': 'to',
+    'three': 'tre',
 
     'error.taKontakt': 'Ta gjerne kontakt med oss på telefon 55 55 33 33 for å få informasjon om hvordan du skal gå frem for å få fastsatt farskap.',
 
@@ -94,6 +96,15 @@ export default {
 
     'notPermitted.ikkeMyndig': 'For at farskap skal kunne erklæres elektronisk, må begge foreldrene være over 18 år.',
     'notPermitted.medmorEllerUkjent': 'Medmor eller person med ukjent rolle kan ikke benytte løsningen', // TODO: endre tekst
+    'notPermitted.morSivilstandGift.1': 'Du er gift og ektefellen din blir automatisk registrert som far til barn du føder.',
+    'notPermitted.morSivilstandGift.2': 'Hvis det er en annen mann enn ektefellen din som er barnets far, kan farskapet endres. Dette kan ikke gjøres elektronisk. Du finner mer informasjon om endring av farskap',
+    'notPermitted.morSivilstandGift.3': 'Du er også velkommen til å kontakte oss på telefon 55 55 33 33.',
+    'notPermitted.morSivilstandGift.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap',
+    'notPermitted.morSivilstandGift.linkLabel': 'her.',
+    'notPermitted.morSivilstandPartner.1': 'Du er gift/registrert partner og du og ektefellen/partneren din må sende en søknad til skatteetaten for å få medmorskap registret.',
+    'notPermitted.morSivilstandPartner.2': 'Du finner informasjon og søknadsskjema',
+    'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/soknad-om-medmorskap/',
+    'notPermitted.morSivilstandPartner.linkLabel': 'her.',
     'notPermitted.morSivilstandGiftPartner': 'Du er registrert som gift/partner og farskapet til barn du føder følger direkte av loven. Hvis en annen mann enn din ektefelle er far må farskapet endres. Dette kan ikke gjøres automatisk.', // TODO
     'notPermitted.morSivilstandUoppgitt': 'Mor kan ikke opprette farskapserklæring dersom hun har sivilstand uoppgitt', // TODO: endre tekst
 
@@ -140,14 +151,12 @@ export default {
     'mor.skjema.far.form.validation.feilRolleFar.linkLabel': 'her',
     'mor.skjema.far.form.validation.forskjelligeFedre': 'Du kan ikke opprette farskapserklæringer med forskjellige fedre for samme kull nyfødte', // TODO: skal denne kunne oppstå? Kanskje ikke tillate mor å taste inn annen far?
     'mor.skjema.far.form.validation.ikkeMyndig': 'Oppgitt far er ikke myndig. For at farskap skal kunne erklæres elektronisk, må begge foreldrene være over 18 år.',
-    'mor.skjema.far.form.validation.maksAntallForsoek.1': 'Navn til far og fødselsnummer til far gir feil.',
-    'mor.skjema.far.form.validation.maksAntallForsoek.2': 'Du har skrevet ugyldig kombinasjon av navn og fødselsnummer fem ganger.',
-    'mor.skjema.far.form.validation.maksAntallForsoek.3': 'Be far å logge inn på Folkeregisteret og kontrollere hvordan navnet hans er skrevet.',
-    'mor.skjema.far.form.validation.maksAntallForsoek.4': 'Du får mulighet til å prøve på nytt i morgen.',
+    'mor.skjema.far.form.validation.maksAntallForsoek.1': 'Du har tastet feil fødselsnummer/navn på oppgitt far fem ganger og har nå blitt blokkert fra løsningen.',
+    'mor.skjema.far.form.validation.maksAntallForsoek.2': 'Du kan prøve på nytt i morgen.',
     'mor.skjema.far.form.validation.navnStemmerIkkeMedRegister.1': 'Navn til far og fødselsnummer til far gir feil.',
     'mor.skjema.far.form.validation.navnStemmerIkkeMedRegister.2': 'Sjekk at navnet er stavet riktig og fødselsnummer stemmer.',
-    'mor.skjema.far.form.validation.resterendeForsoek': 'Du har {antallResterendeForsoek} forsøk igjen.', // TODO: endre tekst
-    'mor.skjema.far.form.validation.resterendeForsoek.siste': 'Du har kun ett forsøk igjen. Handlingen vil bli låst i én dag ved feil.', // TODO: endre tekst
+    'mor.skjema.far.form.validation.resterendeForsoek': 'Du har tastet feil fødselsnummer/navn på oppgitt far {incorrectAttempts} ganger. Vennligst be far sjekke hvordan navnet hans er skrevet i folkeregisteret før du prøver på nytt. Hvis du taster feil fem ganger vil du bli blokkert fra løsningen.',
+    'mor.skjema.far.form.validation.resterendeForsoek.final': 'Du har tastet feil fødselsnummer/navn på oppgitt far fire ganger og har bare ett forsøk igjen før du vil bli blokkert fra løsningen.',
     'mor.skjema.far.presentation.navn': 'Navn:',
     'mor.skjema.far.presentation.foedselsnummer': 'Fødselsnummer:',
     'mor.skjema.borSammen.title': 'Bor du sammen med far?',

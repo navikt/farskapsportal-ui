@@ -22,6 +22,8 @@ export default {
     'header.skjema': 'Create declaration of paternity',
     'header.kvittering': 'Receipt',
 
+    'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/application-for-joint-maternity/',
+
     'mor.title': 'Information about the child and the child\'s father', // TODO: remove?
     'mor.form.buttons.next': 'Next',
     'mor.form.buttons.submit': 'Confirm paternity',
