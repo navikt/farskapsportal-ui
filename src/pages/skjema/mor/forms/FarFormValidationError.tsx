@@ -9,9 +9,14 @@ import { getMessage } from 'utils/intl';
 interface FarFormValidationErrorProps {
     id: string;
     feilkode: Feilkode;
+    antallResterendeForsoek?: number | null;
 }
 
-function FarFormValidationError({ id, feilkode }: FarFormValidationErrorProps) {
+function FarFormValidationError({
+    id,
+    feilkode,
+    antallResterendeForsoek,
+}: FarFormValidationErrorProps) {
     const renderContent = () => {
         switch (feilkode) {
             case Feilkode.FeilRolleFar:
@@ -23,7 +28,11 @@ function FarFormValidationError({ id, feilkode }: FarFormValidationErrorProps) {
             case Feilkode.MaksAntallForsoek:
                 return <MaksAntallForsoek />;
             case Feilkode.NavnStemmerIkkeMedRegister:
-                return <NavnStemmerIkkeMedRegister />;
+                if (antallResterendeForsoek === 0) {
+                    return <MaksAntallForsoek />;
+                } else {
+                    return <NavnStemmerIkkeMedRegister />;
+                }
             default:
                 return null;
         }

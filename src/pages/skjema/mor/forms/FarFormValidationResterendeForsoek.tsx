@@ -8,7 +8,7 @@ interface FarFormValidationResterendeForsoekProps {
 }
 
 const getIncorrectAttemptsTextId = (antallResterendeForsoek: number) => {
-    if (antallResterendeForsoek === 1) {
+    if (antallResterendeForsoek === 2) {
         return 'three';
     } else {
         return 'two';
@@ -20,15 +20,11 @@ function FarFormValidationResterendeForsoek({
 }: FarFormValidationResterendeForsoekProps) {
     const intl = useIntl();
 
-    if (
-        antallResterendeForsoek === null ||
-        antallResterendeForsoek === undefined ||
-        antallResterendeForsoek > 2
-    ) {
+    if (!antallResterendeForsoek || antallResterendeForsoek > 3) {
         return null;
     }
 
-    if (antallResterendeForsoek === 0) {
+    if (antallResterendeForsoek === 1) {
         return (
             <AlertStripe type="advarsel">
                 <FormattedMessage id="mor.skjema.far.form.validation.resterendeForsoek.final" />

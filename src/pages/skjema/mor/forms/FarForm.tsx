@@ -122,6 +122,7 @@ function FarForm(props: FarFormProps) {
                         <FarFormValidationError
                             id="far-form-validation-error"
                             feilkode={state.feilkode}
+                            antallResterendeForsoek={state.antallResterendeForsoek}
                         />
                     )
                 }
