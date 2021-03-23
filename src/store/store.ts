@@ -49,6 +49,14 @@ export const reducer = (state: Store, action: Action): Store => {
                     data: action.payload,
                 },
             };
+        case 'SET_USER_NOT_PERMITTED':
+            return {
+                ...state,
+                userInfo: {
+                    status: 'NOT_PERMITTED',
+                    data: action.payload,
+                },
+            };
         case 'SET_USER_FAILURE':
             return {
                 ...state,

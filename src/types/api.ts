@@ -6,22 +6,23 @@ import { Foreldrerolle } from './foreldrerolle';
 /*
  * INBOUND
  */
+export interface FarskapserklaeringFeilResponse {
+    feilkode: Feilkode | null;
+    feilkodebeskrivelse: string | null;
+    antallResterendeForsoek: number | null;
+}
+
 export interface BrukerinformasjonResponse {
     avventerSigneringBruker: Farskapserklaering[] | null;
     avventerSigneringMotpart: Farskapserklaering[] | null;
     avventerRegistrering: Farskapserklaering[] | null;
-    feilkodeTilgang: Feilkode | null;
     fnrNyligFoedteBarnUtenRegistrertFar: string[] | null;
     forelderrolle: Foreldrerolle;
     gyldigForelderrolle: boolean;
     kanOppretteFarskapserklaering: boolean;
 }
 
-interface FarskapserklaeringResponse {
-    feilkodeTilgang: Feilkode | null;
-}
-
-export interface OppretteFarskapserklaeringResponse extends FarskapserklaeringResponse {
+export interface OppretteFarskapserklaeringResponse {
     redirectUrlForSigneringMor: string;
 }
 

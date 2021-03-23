@@ -1,11 +1,11 @@
 import ContentContainer from 'components/content-container/ContentContainer';
 import Page from 'components/page/Page';
 import WithUserInfo from 'store/providers/WithUserInfo';
-import InfoPanel from './info-panel/InfoPanel';
 import BarnUtenErklaering from './BarnUtenErklaering';
 import ErklaeringerAvventerBruker from './ErklaeringerAvventerBruker';
 import ErklaeringerAvventerMotpart from './ErklaeringerAvventerMotpart';
 import ErklaeringerAvventerRegistrering from './ErklaeringerAvventerRegistrering';
+import OversiktInfoPanel from './OversiktInfoPanel';
 import ToSkjemaButton from './ToSkjemaButton';
 
 import './Oversikt.less';
@@ -16,7 +16,7 @@ function Oversikt() {
             <WithUserInfo>
                 {(userInfo) => (
                     <ContentContainer className="Oversikt">
-                        <InfoPanel userInfo={userInfo} />
+                        <OversiktInfoPanel userInfo={userInfo} />
                         <BarnUtenErklaering userInfo={userInfo} />
                         <ErklaeringerAvventerBruker userInfo={userInfo} />
                         <ErklaeringerAvventerMotpart userInfo={userInfo} />

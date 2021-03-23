@@ -3,6 +3,7 @@ import { useIntl } from 'react-intl';
 
 import { fetchUser } from 'api/fetchUser';
 import ErrorPage from 'components/error-page/ErrorPage';
+import NotPermitted from 'components/not-permitted/NotPermitted';
 import Spinner from 'components/spinner/Spinner';
 import { useStore } from 'store/Context';
 import { UserInfo } from 'types/user';
@@ -25,6 +26,8 @@ function WithUserInfo(props: Props) {
     switch (userInfo.status) {
         case 'PENDING':
             return <Spinner />;
+        case 'NOT_PERMITTED':
+            return <NotPermitted feilkode={userInfo.data} />;
         case 'FAILURE':
             return (
                 <ErrorPage
