@@ -24,7 +24,6 @@ type ActionType =
     | { type: 'EDIT_BOR_SAMMEN' }
     | { type: 'SET_BOR_SAMMEN'; payload: BorSammenFormInput }
     | { type: 'SUBMIT' }
-    | { type: 'SUBMIT_SUCCESS' }
     | { type: 'SUBMIT_FAILURE'; payload: AlertError };
 
 interface StateType {
@@ -58,8 +57,6 @@ const reducer = (state: StateType, action: ActionType): StateType => {
             };
         case 'SUBMIT':
             return { ...state, submit: { pending: true, error: undefined } };
-        case 'SUBMIT_SUCCESS':
-            return { ...state, submit: { pending: false, error: undefined } };
         case 'SUBMIT_FAILURE':
             return { ...state, submit: { pending: false, error: action.payload } };
     }
@@ -115,10 +112,13 @@ function FarSkjema({ userInfo }: FarSkjemaProps) {
             idFarskapserklaering: parseInt(id),
         })
             .then((response) => {
-                dispatch({ type: 'SUBMIT_SUCCESS' });
-                window.location.assign(
-                    response.oppdatertFarskapserklaeringDto.dokument?.redirectUrlFar ?? ''
-                ); // TODO: hva er riktig her?
+                const redirectUrl =
+                    response.oppdatertFarskapserklaeringDto.dokument?.redirectUrlFar;
+                if (redirectUrl) {
+                    window.location.assign(redirectUrl);
+                } else {
+                    // TODO: handle error
+                }
             })
             .catch((error: AlertError) => {
                 dispatch({ type: 'SUBMIT_FAILURE', payload: error });
