@@ -95,14 +95,37 @@ app.post('/api/farskapserklaering/ny', async (req, res) => {
 app.post('/api/farskapserklaering/redirect', async (req, res) => {
     try {
         const token = req.cookies[tokenName];
-        const response = await fetch(`${apiUrl}/farskapserklaering/redirect`, {
-            method: 'post',
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
+        const response = await fetch(
+            `${apiUrl}/farskapserklaering/redirect?status_query_token=${req.query.status_query_token}`,
+            {
+                method: 'post',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
         const json = await response.json();
         res.status(response.status).send(json);
+    } catch (error) {
+        console.log(`Error while calling api: ${error}`);
+        res.sendStatus(500);
+    }
+});
+
+app.post('/api/redirect-url/ny', async (req, res) => {
+    try {
+        const token = req.cookies[tokenName];
+        const response = await fetch(
+            `${apiUrl}/redirect-url/ny?id_farskapserklaering=${req.query.id_farskapserklaering}`,
+            {
+                method: 'post',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                },
+            }
+        );
+        const text = await response.text();
+        res.status(response.status).send(text);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
         res.sendStatus(500);

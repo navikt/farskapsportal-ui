@@ -3,6 +3,7 @@ export enum Path {
     Oversikt = '/oversikt',
     Skjema = '/skjema',
     Kvittering = '/kvittering',
+    Signer = '/signer',
     Suksess = '/suksess',
     Avbrutt = '/avbrutt',
     Feilet = '/feilet',

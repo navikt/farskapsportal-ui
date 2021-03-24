@@ -44,7 +44,7 @@ export const setUpMock = async () => {
     mockPost(
         '/api/farskapserklaering/ny',
         {
-            redirectUrlForSigneringMor: 'http://localhost:3000/suksess?status_query_token=123',
+            redirectUrlForSigneringMor: '/suksess?status_query_token=123',
             feilkode: null,
         },
         2000,
@@ -58,4 +58,6 @@ export const setUpMock = async () => {
         idFarskapserklaering: 0,
         mor: null,
     });
+
+    mockPost('begin:/api/redirect-url/ny', '/suksess?status_query_token=123');
 };

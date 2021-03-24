@@ -7,6 +7,7 @@ import Forside from 'pages/forside/Forside';
 import Kvittering from 'pages/kvittering/Kvittering';
 import Oversikt from 'pages/oversikt/Oversikt';
 import PageNotFound from 'pages/page-not-found/PageNotFound';
+import Signer from 'pages/signer/Signer';
 import Skjema from 'pages/skjema/Skjema';
 import Suksess from 'pages/suksess/Suksess';
 import { Path } from 'types/path';
@@ -40,6 +41,11 @@ function App() {
                         exact={true}
                         path={`${basePathWithLanguage}${Path.Kvittering}`}
                         component={Kvittering}
+                    />
+                    <Route
+                        exact={true}
+                        path={`${basePathWithLanguage}${Path.Signer}`}
+                        component={Signer}
                     />
                     <Route
                         exact={true}

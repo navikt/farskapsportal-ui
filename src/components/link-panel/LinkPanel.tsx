@@ -6,7 +6,6 @@ import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
 interface LinkPanelProps {
-    href?: string;
     linkPath?: string;
     titleId: string;
     children: ReactNode;
@@ -14,14 +13,7 @@ interface LinkPanelProps {
     etikettId: string;
 }
 
-function LinkPanel({
-    href = '',
-    linkPath,
-    titleId,
-    children,
-    etikettType,
-    etikettId,
-}: LinkPanelProps) {
+function LinkPanel({ linkPath, titleId, children, etikettType, etikettId }: LinkPanelProps) {
     const linkCreator = linkPath
         ? (props: AnchorHTMLAttributes<HTMLAnchorElement>) => (
               <Link {...props} to={linkPath ?? ''} />
@@ -29,7 +21,7 @@ function LinkPanel({
         : undefined;
 
     return (
-        <LenkepanelBase href={href} linkCreator={linkCreator} border={true}>
+        <LenkepanelBase href="" linkCreator={linkCreator} border={true}>
             <div>
                 <Systemtittel className="lenkepanel__heading" tag="h3">
                     <FormattedMessage id={titleId} />

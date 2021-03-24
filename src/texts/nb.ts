@@ -19,11 +19,13 @@ export default {
     'breadcrumbs.oversikt': 'Dine farskapserklæringer',
     'breadcrumbs.skjema': 'Opprett farskapserklæring',
     'breadcrumbs.kvittering': 'Bekreftelse på innsendt farskapserklæring',
+    'breadcrumbs.signer': 'Signer farskapserklæring',
 
     'header.forside': 'Farskapserklæring',
     'header.oversikt': 'Dine farskapserklæringer',
     'header.skjema': 'Opprett farskapserklæring',
     'header.kvittering': 'Bekreftelse på innsendt farskapserklæring',
+    'header.signer': 'Signer farskapserklæring',
 
     'farskapserklaering.title': 'Farskapserklæring',
     'farskapserklaering.aboutChildren': 'Gjelder barn',
@@ -209,4 +211,9 @@ export default {
     'kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.title': 'Stønad til enslig mor eller far',
     'kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.text': 'Hvis du er alene med barn finnes det ulike støtteordninger du kan ha rett til. Du finner mer informasjon her:',
     'kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.link': 'https://www.nav.no/familie/alene-med-barn',
+
+    'signer.alert.1': 'Du har fylt ut opplysninger om far og barn, men har ikke signert skjema. Sjekk om opplysningene stemmer og signer skjema.',
+    'signer.alert.2': 'Vil du slette/endre erklæringen, ta kontakt med NAV på telefon 55 55 33 33.',
+    'signer.submit': 'Signer',
+    'signer.cancel': 'Avbryt',
 }

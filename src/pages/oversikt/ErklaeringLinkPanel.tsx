@@ -8,7 +8,6 @@ import { formatFoedselsnummer } from 'utils/foedselsnummer';
 import { getNameFromForelder } from 'utils/name';
 
 interface ErklaeringLinkPanelProps {
-    href?: string;
     linkPath?: string;
     etikettType: 'suksess' | 'info' | 'fokus';
     etikettId: string;
@@ -18,7 +17,6 @@ interface ErklaeringLinkPanelProps {
 }
 
 function ErklaeringLinkPanel({
-    href = '',
     linkPath,
     etikettType,
     etikettId,
@@ -33,7 +31,6 @@ function ErklaeringLinkPanel({
 
     return (
         <LinkPanel
-            href={href}
             linkPath={linkPath}
             titleId="oversikt.erklaeringer.link.title"
             etikettType={etikettType}
