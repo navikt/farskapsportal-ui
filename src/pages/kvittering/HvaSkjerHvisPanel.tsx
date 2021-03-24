@@ -18,7 +18,7 @@ function HvaSkjerHvisPanel({ erklaering }: HvaSkjerHvisPanelProps) {
         return null;
     }
 
-    if (!isFar && isSignedByFar(erklaering)) {
+    if (!isFar && !isTermindato && isSignedByFar(erklaering)) {
         return null;
     }
 

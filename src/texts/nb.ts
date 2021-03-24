@@ -184,7 +184,7 @@ export default {
     'kvittering.intro.mor.3': 'Du kan ikke endre opplysningene du har gitt.',
     'kvittering.intro.mor.4': 'Du kan gjenfinne erklæringene her',
     'kvittering.intro.mor.link': '[lenke]', // TODO
-    'kvittering.intro.mor.farSignert': 'Far har {date} erklært farskap for barn', // TODO
+    'kvittering.intro.mor.farSignert': 'Far har {date} erklært farskap for barn',
 
     'kvittering.intro.far.1': 'Du har signert farskapserklæring {date} for barn',
     'kvittering.intro.far.2': 'Erklæringen er endelig og kan ikke endres.',
