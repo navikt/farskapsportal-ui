@@ -1,11 +1,9 @@
 /* eslint-disable */
 export default {
-    'languageToggle.nb': 'Bokmål',
-    'languageToggle.nn': 'Nynorsk',
-    'languageToggle.en': 'English',
+    'api.error': 'Whoops, something went wrong!',
+
     'form.feiloppsummering': 'To proceed, you must correct the following:',
     'form.date.placeholder': 'dd.mm.yyyy',
-    'api.error': 'Whoops, something went wrong!',
 
     'withUserInfoError.banner.title': 'Whoops,',
     'withUserInfoError.banner.text': 'something went wrong.',
@@ -24,32 +22,7 @@ export default {
 
     'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/application-for-joint-maternity/',
 
-    'mor.title': 'Information about the child and the child\'s father', // TODO: remove?
-    'mor.form.buttons.next': 'Next',
-    'mor.form.buttons.submit': 'Confirm paternity',
-    'mor.form.buttons.cancel': 'Cancel',
-    'mor.presentation.change': 'Change',
-    'mor.skjema.barn.title': 'About the child/children',
-    'mor.skjema.barn.form.termindato.label': 'Due date',
-    'mor.skjema.barn.form.termindato.validation.required': 'Due date is required',
-    'mor.skjema.barn.form.termindato.validation.pattern': 'Invalid date',
-    'mor.skjema.barn.form.termindato.validation.minDate': 'Cannot be more than three weeks in the past',
-    'mor.skjema.barn.form.termindato.validation.maxDate': 'The date is more than 40 weeks ahead. Wait until week 22 of the pregnancy to confirm the father.',
-    'mor.skjema.barn.form.termindato.validation.beforeWeek22': 'You are in week {weekNr} of the pregnancy. Wait until week 22 of the pregnancy to confirm the father.',
-    'mor.skjema.barn.presentation.termindato.label': 'Due date:',
-    'mor.skjema.far.title': 'Father of the child/children',
-    'mor.skjema.far.form.navn.label': 'Name of father (as listed in the National Population Register)',
-    'mor.skjema.far.form.navn.validation.required': 'Name of father is required',
-    'mor.skjema.far.form.foedselsnummer.label': 'National identity number of father (11 digits)',
-    'mor.skjema.far.form.foedselsnummer.validation.required': 'National identity number is required',
-    'mor.skjema.far.form.foedselsnummer.validation.fnr': 'Invalid national identity number',
-    'mor.skjema.far.form.validation.feilRolleFar.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/application-for-joint-maternity/',
-    'mor.skjema.far.presentation.navn': 'Name:',
-    'mor.skjema.far.presentation.foedselsnummer': 'National identity number:',
-    'mor.skjema.confirm.title': 'Confirm paternity',
-    'mor.skjema.confirm.form.validation.required': 'You must confirm before the application can be submitted.',
-    'mor.skjema.confirm.form.farCorrect.label': 'I agree that the information about the father is correct.',
-    'mor.skjema.confirm.form.cannotWithdraw.label': 'I am aware that this confirmation cannot be withdrawn at a later date.',
+    'skjema.mor.far.validation.feilRolleFar.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/application-for-joint-maternity/',
 
     'kvittering.hvaSkjerVidere.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/',
 

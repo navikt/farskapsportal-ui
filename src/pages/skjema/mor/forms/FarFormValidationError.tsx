@@ -51,14 +51,14 @@ function FeilRolleFar() {
     return (
         <>
             <Normaltekst>
-                <FormattedMessage id="mor.skjema.far.form.validation.feilRolleFar.1" />
+                <FormattedMessage id="skjema.mor.far.validation.feilRolleFar.1" />
             </Normaltekst>
             <Normaltekst>
-                <FormattedMessage id="mor.skjema.far.form.validation.feilRolleFar.2" />{' '}
+                <FormattedMessage id="skjema.mor.far.validation.feilRolleFar.2" />{' '}
                 <ExternalLink
-                    href={getMessage(intl, 'mor.skjema.far.form.validation.feilRolleFar.link')}
+                    href={getMessage(intl, 'skjema.mor.far.validation.feilRolleFar.link')}
                 >
-                    <FormattedMessage id="mor.skjema.far.form.validation.feilRolleFar.linkLabel" />
+                    <FormattedMessage id="skjema.mor.far.validation.feilRolleFar.linkLabel" />
                 </ExternalLink>
             </Normaltekst>
         </>
@@ -66,14 +66,14 @@ function FeilRolleFar() {
 }
 
 function ForskjelligeFedre() {
-    return <FormattedMessage id="mor.skjema.far.form.validation.forskjelligeFedre" />;
+    return <FormattedMessage id="skjema.mor.far.validation.forskjelligeFedre" />;
 }
 
 function IkkeMyndig() {
     return (
         <>
             <Normaltekst>
-                <FormattedMessage id="mor.skjema.far.form.validation.ikkeMyndig" />{' '}
+                <FormattedMessage id="skjema.mor.far.validation.ikkeMyndig" />{' '}
             </Normaltekst>
             <Normaltekst>
                 <FormattedMessage id="error.taKontakt" />
@@ -86,10 +86,10 @@ function MaksAntallForsoek() {
     return (
         <>
             <Normaltekst>
-                <FormattedMessage id="mor.skjema.far.form.validation.maksAntallForsoek.1" />
+                <FormattedMessage id="skjema.mor.far.validation.maksAntallForsoek.1" />
             </Normaltekst>
             <Normaltekst>
-                <FormattedMessage id="mor.skjema.far.form.validation.maksAntallForsoek.2" />
+                <FormattedMessage id="skjema.mor.far.validation.maksAntallForsoek.2" />
             </Normaltekst>
         </>
     );
@@ -99,10 +99,10 @@ function NavnStemmerIkkeMedRegister() {
     return (
         <>
             <Normaltekst>
-                <FormattedMessage id="mor.skjema.far.form.validation.navnStemmerIkkeMedRegister.1" />
+                <FormattedMessage id="skjema.mor.far.validation.navnStemmerIkkeMedRegister.1" />
             </Normaltekst>
             <Normaltekst>
-                <FormattedMessage id="mor.skjema.far.form.validation.navnStemmerIkkeMedRegister.2" />
+                <FormattedMessage id="skjema.mor.far.validation.navnStemmerIkkeMedRegister.2" />
             </Normaltekst>
         </>
     );

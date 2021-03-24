@@ -115,7 +115,7 @@ function FarForm(props: FarFormProps) {
     return (
         <form onSubmit={handleSubmit(controlInfoAndSubmit, onError)}>
             <SkjemaGruppe
-                legend={getMessage(intl, 'mor.skjema.far.title')}
+                legend={getMessage(intl, 'skjema.mor.far.title')}
                 feil={
                     !state.pending &&
                     state.feilkode && (
@@ -130,17 +130,17 @@ function FarForm(props: FarFormProps) {
                 <Input
                     id="navn"
                     name="navn"
-                    label={getMessage(intl, 'mor.skjema.far.form.navn.label')}
+                    label={getMessage(intl, 'skjema.mor.far.navn.label')}
                     description={
                         <>
-                            <FormattedMessage id="mor.skjema.far.form.navn.description.1" />
+                            <FormattedMessage id="skjema.mor.far.navn.description.1" />
                             <br />
-                            <FormattedMessage id="mor.skjema.far.form.navn.description.2" />
+                            <FormattedMessage id="skjema.mor.far.navn.description.2" />
                         </>
                     }
                     bredde="XXL"
                     inputRef={register({
-                        required: getMessage(intl, 'mor.skjema.far.form.navn.validation.required'),
+                        required: getMessage(intl, 'skjema.mor.far.navn.validation.required'),
                     })}
                     feil={errors.navn?.message}
                 />
@@ -150,15 +150,12 @@ function FarForm(props: FarFormProps) {
                     rules={{
                         required: getMessage(
                             intl,
-                            'mor.skjema.far.form.foedselsnummer.validation.required'
+                            'skjema.mor.far.foedselsnummer.validation.required'
                         ),
                         validate: (value: string) => {
                             return (
                                 fnr(removeWhitespace(value)).status === 'valid' ||
-                                getMessage(
-                                    intl,
-                                    'mor.skjema.far.form.foedselsnummer.validation.fnr'
-                                )
+                                getMessage(intl, 'skjema.mor.far.foedselsnummer.validation.fnr')
                             );
                         },
                     }}
@@ -166,7 +163,7 @@ function FarForm(props: FarFormProps) {
                         <Input
                             id={name}
                             name={name}
-                            label={getMessage(intl, 'mor.skjema.far.form.foedselsnummer.label')}
+                            label={getMessage(intl, 'skjema.mor.far.foedselsnummer.label')}
                             value={value}
                             onChange={(e) => onChange(formatFoedselsnummer(e.target.value))}
                             feil={errors.foedselsnummer?.message}
@@ -196,8 +193,8 @@ function FarForm(props: FarFormProps) {
                 {!state.pending && state.apiError && <Error error={state.apiError} />}
             </div>
             <FormButtons
-                submitText={getMessage(intl, 'mor.form.buttons.next')}
-                cancelText={getMessage(intl, 'mor.form.buttons.cancel')}
+                submitText={getMessage(intl, 'skjema.next')}
+                cancelText={getMessage(intl, 'skjema.cancel')}
                 onCancel={props.onCancel}
                 submitSpinner={state.pending}
             />

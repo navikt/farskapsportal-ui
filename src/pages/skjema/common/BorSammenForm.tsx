@@ -14,6 +14,7 @@ export interface BorSammenFormInput {
 }
 
 export interface BorSammenFormProps {
+    titleId: string;
     defaultBorSammen: BorSammenValue;
     onSubmit: (data: BorSammenFormInput) => void;
     onCancel: () => void;
@@ -31,28 +32,28 @@ function BorSammenForm(props: BorSammenFormProps) {
     return (
         <form onSubmit={handleSubmit(props.onSubmit)} className="BorSammenForm">
             <RadioGruppe
-                legend={getMessage(intl, 'mor.skjema.borSammen.title')}
-                description={getMessage(intl, 'mor.skjema.borSammen.description')}
+                legend={getMessage(intl, props.titleId)}
+                description={getMessage(intl, 'skjema.borSammen.description')}
                 feil={errors.borSammen?.message}
             >
                 <Radio
                     name="borSammen"
                     value="YES"
-                    label={getMessage(intl, 'mor.skjema.borSammen.label.yes')}
+                    label={getMessage(intl, 'skjema.borSammen.label.yes')}
                     radioRef={register}
                 />
                 <Radio
                     name="borSammen"
                     value="NO"
-                    label={getMessage(intl, 'mor.skjema.borSammen.label.no')}
+                    label={getMessage(intl, 'skjema.borSammen.label.no')}
                     radioRef={register({
-                        required: getMessage(intl, 'mor.skjema.borSammen.validation.required'),
+                        required: getMessage(intl, 'skjema.borSammen.validation.required'),
                     })}
                 />
             </RadioGruppe>
             <FormButtons
-                submitText={getMessage(intl, 'mor.form.buttons.next')}
-                cancelText={getMessage(intl, 'mor.form.buttons.cancel')}
+                submitText={getMessage(intl, 'skjema.next')}
+                cancelText={getMessage(intl, 'skjema.cancel')}
                 onCancel={props.onCancel}
             />
         </form>

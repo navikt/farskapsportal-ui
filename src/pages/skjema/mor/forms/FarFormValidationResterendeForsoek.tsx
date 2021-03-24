@@ -27,7 +27,7 @@ function FarFormValidationResterendeForsoek({
     if (antallResterendeForsoek === 1) {
         return (
             <AlertStripe type="advarsel">
-                <FormattedMessage id="mor.skjema.far.form.validation.resterendeForsoek.final" />
+                <FormattedMessage id="skjema.mor.far.validation.resterendeForsoek.final" />
             </AlertStripe>
         );
     }
@@ -35,7 +35,7 @@ function FarFormValidationResterendeForsoek({
     return (
         <AlertStripe type="advarsel">
             <FormattedMessage
-                id="mor.skjema.far.form.validation.resterendeForsoek"
+                id="skjema.mor.far.validation.resterendeForsoek"
                 values={{
                     incorrectAttempts: getMessage(
                         intl,

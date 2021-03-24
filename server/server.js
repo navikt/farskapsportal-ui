@@ -101,8 +101,28 @@ app.post('/api/farskapserklaering/redirect', async (req, res) => {
                 Authorization: `Bearer ${token}`,
             },
         });
-        const text = await response.text();
-        res.status(response.status).send(text);
+        const json = await response.json();
+        res.status(response.status).send(json);
+    } catch (error) {
+        console.log(`Error while calling api: ${error}`);
+        res.sendStatus(500);
+    }
+});
+
+app.put('/api/farskapserklaering/oppdatere', async (req, res) => {
+    try {
+        const token = req.cookies[tokenName];
+        const response = await fetch(`${apiUrl}/farskapserklaering/oppdatere`, {
+            method: 'put',
+            headers: {
+                Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json;charset=UTF-8',
+            },
+            body: JSON.stringify(req.body),
+        });
+
+        const json = await response.json();
+        res.status(response.status).send(json);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
         res.sendStatus(500);

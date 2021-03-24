@@ -17,11 +17,11 @@ function FarskapserklaeringPresentation({
     farskapserklaering,
 }: FarskapserklaeringPresentationProps) {
     return (
-        <Panel className="FarskapserklaeringPresentation" border={true}>
-            <Innholdstittel tag="h2" className="FarskapserklaeringPresentation__title">
+        <Panel className="FarskapserklaeringPresentation">
+            <Innholdstittel tag="p" className="FarskapserklaeringPresentation__title">
                 <FormattedMessage id="farskapserklaering.title" />
             </Innholdstittel>
-            <Undertittel tag="h3">
+            <Undertittel tag="p">
                 <FormattedMessage id="farskapserklaering.aboutChildren" />
             </Undertittel>
             <div className="FarskapserklaeringPresentation__barn">
@@ -47,7 +47,7 @@ function FarskapserklaeringPresentation({
                     </>
                 )}
             </div>
-            <Undertittel tag="h3">
+            <Undertittel tag="p">
                 <FormattedMessage id="farskapserklaering.parents" />
             </Undertittel>
             <div className="FarskapserklaeringPresentation__foreldre">
