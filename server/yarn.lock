@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@navikt/nav-dekoratoren-moduler@^1.2.9":
-  version "1.2.9"
-  resolved "https://registry.yarnpkg.com/@navikt/nav-dekoratoren-moduler/-/nav-dekoratoren-moduler-1.2.9.tgz#f237b783d306d20a6045c238c98907bbaabc1ddc"
-  integrity sha512-Es6hBBYZoo+FHOYCoFQ5Mnzp4mB4Mz+JIuoU0IkmKEuWRA5MxqhkXgCvBN+IY7QmxWasJZcGjpdbhdPr3NNPiw==
+"@navikt/nav-dekoratoren-moduler@^1.2.10":
+  version "1.2.10"
+  resolved "https://registry.yarnpkg.com/@navikt/nav-dekoratoren-moduler/-/nav-dekoratoren-moduler-1.2.10.tgz#1b6d2427b4e23cf62fe224861375e0a31ed9b41f"
+  integrity sha512-2jH4r3UN3zOr2A4ZzCcL+5kesccZ8E7S0rXS6txMm9AdfWMQQ8Dy8B/8fAJrzbrfQUoMIaWMI9+AaRdYg/9eAw==
   dependencies:
     nav-frontend-ikoner-assets "^2.0.10"
 
