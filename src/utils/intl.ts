@@ -7,3 +7,6 @@ export const getMessage = (
     id: string,
     value?: { [key: string]: MessageValue }
 ): string => intl.formatMessage({ id }, value);
+
+export const formatDate = (intl: IntlShape, date: string): string =>
+    intl.formatDate(date, { year: 'numeric', month: 'long', day: 'numeric' });

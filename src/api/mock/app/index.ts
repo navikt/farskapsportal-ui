@@ -31,10 +31,17 @@ const mockGet = (
 
 const mockPost = (
     path: string,
-    response: Record<string, unknown> | string,
+    response: MockResponse | MockResponseFunction,
     minDelay = 200,
     maxDelay = 750
 ) => fetchMock.post(path, response, { delay: getDelay(minDelay, maxDelay) });
+
+const mockPut = (
+    path: string,
+    response: MockResponse | MockResponseFunction,
+    minDelay = 200,
+    maxDelay = 750
+) => fetchMock.put(path, response, { delay: getDelay(minDelay, maxDelay) });
 
 export const setUpMock = async () => {
     mockGet('/api/brukerinformasjon', user);
@@ -44,7 +51,7 @@ export const setUpMock = async () => {
     mockPost(
         '/api/farskapserklaering/ny',
         {
-            redirectUrlForSigneringMor: 'http://localhost:3000/suksess?status_query_token=123',
+            redirectUrlForSigneringMor: '/suksess?status_query_token=123',
             feilkode: null,
         },
         2000,
@@ -52,6 +59,16 @@ export const setUpMock = async () => {
     );
 
     mockPost('begin:/api/farskapserklaering/redirect', {
+        barn: null,
+        dokument: {},
+        far: null,
+        idFarskapserklaering: 0,
+        mor: null,
+    });
+
+    mockPost('begin:/api/redirect-url/ny', '/suksess?status_query_token=123');
+
+    mockPut('/api/farskapserklaering/oppdatere', {
         barn: null,
         dokument: {},
         far: null,

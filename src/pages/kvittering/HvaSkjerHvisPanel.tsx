@@ -2,7 +2,7 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import { FormattedMessage } from 'react-intl';
 
 import { Farskapserklaering } from 'types/farskapserklaering';
-import { isBrukerFar, isTermindatoErklaering } from 'utils/farskapserklaering';
+import { isBrukerFar, isSignedByFar, isTermindatoErklaering } from 'utils/farskapserklaering';
 import KvitteringInfoPanel from './KvitteringInfoPanel';
 import KvitteringInfoPanelContent from './KvitteringInfoPanelContent';
 
@@ -18,6 +18,10 @@ function HvaSkjerHvisPanel({ erklaering }: HvaSkjerHvisPanelProps) {
         return null;
     }
 
+    if (!isFar && !isTermindato && isSignedByFar(erklaering)) {
+        return null;
+    }
+
     const renderContent = () => {
         if (isFar) {
             return (
@@ -30,7 +34,7 @@ function HvaSkjerHvisPanel({ erklaering }: HvaSkjerHvisPanelProps) {
             if (isTermindato) {
                 return (
                     <>
-                        <FarSignererIkkeTermindato />
+                        {!isSignedByFar(erklaering) && <FarSignererIkkeTermindato />}
                         <FoedtIUtlandet />
                         <BarnetDoer />
                     </>

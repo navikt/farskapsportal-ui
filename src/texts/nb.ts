@@ -19,11 +19,13 @@ export default {
     'breadcrumbs.oversikt': 'Dine farskapserklæringer',
     'breadcrumbs.skjema': 'Opprett farskapserklæring',
     'breadcrumbs.kvittering': 'Bekreftelse på innsendt farskapserklæring',
+    'breadcrumbs.signer': 'Signer farskapserklæring',
 
     'header.forside': 'Farskapserklæring',
     'header.oversikt': 'Dine farskapserklæringer',
     'header.skjema': 'Opprett farskapserklæring',
     'header.kvittering': 'Bekreftelse på innsendt farskapserklæring',
+    'header.signer': 'Signer farskapserklæring',
 
     'farskapserklaering.title': 'Farskapserklæring',
     'farskapserklaering.aboutChildren': 'Gjelder barn',
@@ -175,11 +177,19 @@ export default {
     'skjema.far.confirm.readAndUnderstood.label': 'Jeg har lest og forstått hva farksapserklæringen innebærer.',
     'skjema.far.confirm.cannotWithdraw.label': 'Jeg er kjent med at denne bekreftelsen ikke kan trekkes tilbake på et senere tidspunkt.',
 
-    'kvittering.intro.mor.1': 'Vi har mottat dine opplysninger om far',
+    'kvittering.intro.foedselsnummer': 'med fødselsnummer {fnr}.',
+    'kvittering.intro.termindato': 'forventet født {termindato}.',
+    'kvittering.intro.mor.1': 'Vi har mottatt dine opplysninger om far {date}.',
     'kvittering.intro.mor.2': 'Erklæringen vil bli videresendt til han for godkjenning og signering.',
-    'kvittering.intro.mor.3': 'Du kan ikke endre opplysningene du har gitt. Du kan gjenfinne erklæringene her',
-    'kvittering.intro.mor.link': '[lenke]',
-    'kvittering.intro.far': 'Du har signert farskapserklæring',
+    'kvittering.intro.mor.3': 'Du kan ikke endre opplysningene du har gitt.',
+    'kvittering.intro.mor.4': 'Du kan gjenfinne erklæringene her',
+    'kvittering.intro.mor.link': '[lenke]', // TODO
+    'kvittering.intro.mor.farSignert': 'Far har {date} erklært farskap for barn',
+
+    'kvittering.intro.far.1': 'Du har signert farskapserklæring {date} for barn',
+    'kvittering.intro.far.2': 'Erklæringen er endelig og kan ikke endres.',
+    'kvittering.intro.far.3': 'Du kan gjenfinne erklæringer her',
+    'kvittering.intro.far.link': '[lenke]', // TODO
     'kvittering.morAlert': 'Erklæringen er ikke gyldig før oppgitt far har signert. Han kan allerede nå logge seg inn på dittnav og signere erklæringen. Du bør gjøre han oppmerksom på dette. Hvis ikke far har signert etter tre dager vil vi sende han en påminnelse per sms.',
     'kvittering.hvaSkjerVidere.title': 'Hva skjer videre',
     'kvittering.hvaSkjerVidere.1': 'Det er Skatteetaten ved folkeregisteret som har ansvar for å registrere og arkivere farskapserklæringer. Når erklæringen er signert av dere begge vil den derfor bli oversendt til dem. Etter at dere har valgt navn til barnet vil du motta en bekreftelse på registrering av fødselsnummer og navn. Bekreftelsen mottar du i din innboks i Altinn.',
@@ -209,4 +219,9 @@ export default {
     'kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.title': 'Stønad til enslig mor eller far',
     'kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.text': 'Hvis du er alene med barn finnes det ulike støtteordninger du kan ha rett til. Du finner mer informasjon her:',
     'kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.link': 'https://www.nav.no/familie/alene-med-barn',
+
+    'signer.alert.1': 'Du har fylt ut opplysninger om far og barn, men har ikke signert skjema. Sjekk om opplysningene stemmer og signer skjema.',
+    'signer.alert.2': 'Vil du slette/endre erklæringen, ta kontakt med NAV på telefon 55 55 33 33.',
+    'signer.submit': 'Signer',
+    'signer.cancel': 'Avbryt',
 }

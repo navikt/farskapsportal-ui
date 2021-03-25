@@ -18,9 +18,9 @@ function ErklaeringerAvventerBruker({ userInfo }: ErklaeringerAvventerBrukerProp
         <>
             {userInfo.avventerSigneringBruker.map((erklaering) =>
                 isSignedByMor(erklaering) ? (
-                    <LinkSkjema erklaering={erklaering} />
+                    <LinkSkjema key={erklaering.idFarskapserklaering} erklaering={erklaering} />
                 ) : (
-                    <LinkESignering erklaering={erklaering} />
+                    <LinkSigner key={erklaering.idFarskapserklaering} erklaering={erklaering} />
                 )
             )}
         </>
@@ -43,10 +43,14 @@ function LinkSkjema({ erklaering }: { erklaering: Farskapserklaering }) {
     );
 }
 
-function LinkESignering({ erklaering }: { erklaering: Farskapserklaering }) {
+function LinkSigner({ erklaering }: { erklaering: Farskapserklaering }) {
+    const [{ language }] = useStore();
+
+    const linkPath = `/${language}${Path.Signer}?id=${erklaering.idFarskapserklaering}`;
+
     return (
         <ErklaeringLinkPanel
-            href={erklaering.dokument?.redirectUrlMor ?? ''}
+            linkPath={linkPath}
             erklaering={erklaering}
             etikettType="fokus"
             etikettId="oversikt.erklaeringer.link.status.signering-bruker"

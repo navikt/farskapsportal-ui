@@ -59,6 +59,12 @@ export const setSigneringStatusToken = (statusToken: string) => {
     return performPost(url).then(parseJson) as Promise<Farskapserklaering>;
 };
 
+export const getNewRedirectUrl = (erklaeringId: string) => {
+    const url = `/api/redirect-url/ny?id_farskapserklaering=${erklaeringId}`;
+
+    return performPost(url).then((res) => res.text()) as Promise<string>;
+};
+
 /*
  *   PUT
  */

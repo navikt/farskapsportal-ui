@@ -15,8 +15,8 @@ jest.mock('utils/hooks/useQuery', () => ({
     }),
 }));
 
-const introMorText = texts['kvittering.intro.mor.2'];
-const introFarText = texts['kvittering.intro.far'];
+const introMorText = texts['kvittering.intro.mor.4'];
+const introFarText = texts['kvittering.intro.far.2'];
 const morAlertText = texts['kvittering.morAlert'];
 const hvaSkjerVidereTitle = texts['kvittering.hvaSkjerVidere.title'];
 const hvaSkjerHvisTitle = texts['kvittering.hvaSkjerHvis.title'];
@@ -230,7 +230,7 @@ test('should render info for mor with termindato erklaering and bor sammen true 
     fireEvent.click(screen.getByText(hvaSkjerHvisTitle));
     fireEvent.click(screen.getByText(ytelserOgTjenesterTitle));
 
-    expect(screen.getByText(farSignererIkkeTermindatoText)).toBeInTheDocument();
+    expect(screen.queryByText(farSignererIkkeTermindatoText)).not.toBeInTheDocument();
     expect(screen.queryByText(farSignererIkkeFoedselsnummerText)).not.toBeInTheDocument();
     expect(screen.getByText(foedtIUtlandetTitle)).toBeInTheDocument();
     expect(screen.getByText(barnetDoerTitle)).toBeInTheDocument();

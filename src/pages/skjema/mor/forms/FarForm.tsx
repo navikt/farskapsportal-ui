@@ -189,9 +189,7 @@ function FarForm(props: FarFormProps) {
                     innerRef={feilRef}
                 />
             )}
-            <div aria-live="polite">
-                {!state.pending && state.apiError && <Error error={state.apiError} />}
-            </div>
+            <div aria-live="polite">{state.apiError && <Error error={state.apiError} />}</div>
             <FormButtons
                 submitText={getMessage(intl, 'skjema.next')}
                 cancelText={getMessage(intl, 'skjema.cancel')}

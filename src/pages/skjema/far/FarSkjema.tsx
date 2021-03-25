@@ -1,7 +1,7 @@
 import { useReducer } from 'react';
 import { useIntl } from 'react-intl';
 
-import { oppdaterFarskapserklaering } from 'api/api';
+import { getNewRedirectUrl, oppdaterFarskapserklaering } from 'api/api';
 import Error from 'components/error/Error';
 import { AlertError } from 'types/error';
 import { StepStatus } from 'types/form';
@@ -69,12 +69,23 @@ interface FarSkjemaProps {
 function FarSkjema({ userInfo }: FarSkjemaProps) {
     const intl = useIntl();
     const navigateTo = useNavigateTo();
-    const id = useQuery().get('id');
+    const erklaeringId = useQuery().get('id');
+
+    const farskapserklaering = userInfo.avventerSigneringBruker?.find(
+        (erklaering) => erklaering.idFarskapserklaering === parseInt(erklaeringId ?? '')
+    );
 
     const [state, dispatch] = useReducer(reducer, {
         formValues: {
             borSammen: {
-                borSammen: null,
+                // Setter default om bruker kommer tilbake etter avbrutt signering.
+                // TODO: skal dette håndteres på en annen måte? Skal bruker kunne endre svaret sitt her?
+                borSammen:
+                    farskapserklaering?.farBorSammenMedMor === true
+                        ? 'YES'
+                        : farskapserklaering?.farBorSammenMedMor === false
+                        ? 'NO'
+                        : null,
             },
         },
         stepStatus: {
@@ -87,14 +98,10 @@ function FarSkjema({ userInfo }: FarSkjemaProps) {
         },
     });
 
-    if (!id) {
-        // TODO: handle missing id
+    if (!erklaeringId) {
+        // TODO: handle missing erklaeringId
         return null;
     }
-
-    const farskapserklaering = userInfo.avventerSigneringBruker?.find(
-        (erklaering) => erklaering.idFarskapserklaering === parseInt(id)
-    );
 
     if (!farskapserklaering) {
         // TODO: handle missing farskapserklaering
@@ -109,16 +116,16 @@ function FarSkjema({ userInfo }: FarSkjemaProps) {
         dispatch({ type: 'SUBMIT' });
         oppdaterFarskapserklaering({
             borSammen: state.formValues.borSammen.borSammen === 'YES',
-            idFarskapserklaering: parseInt(id),
+            idFarskapserklaering: parseInt(erklaeringId),
         })
-            .then((response) => {
-                const redirectUrl =
-                    response.oppdatertFarskapserklaeringDto.dokument?.redirectUrlFar;
-                if (redirectUrl) {
-                    window.location.assign(redirectUrl);
-                } else {
-                    // TODO: handle error
-                }
+            .then(() => {
+                getNewRedirectUrl(erklaeringId)
+                    .then((redirectUrl) => {
+                        window.location.assign(redirectUrl);
+                    })
+                    .catch((error: AlertError) => {
+                        dispatch({ type: 'SUBMIT_FAILURE', payload: error });
+                    });
             })
             .catch((error: AlertError) => {
                 dispatch({ type: 'SUBMIT_FAILURE', payload: error });
