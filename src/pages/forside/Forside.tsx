@@ -1,10 +1,16 @@
 import Panel from 'nav-frontend-paneler';
+import { Systemtittel } from 'nav-frontend-typografi';
+import { FormattedMessage } from 'react-intl';
 
 import ContentContainer from 'components/content-container/ContentContainer';
 import Page from 'components/page/Page';
-import ForsideInfo from './ForsideInfo';
+import AlleredeRegistrert from './info-content/AlleredeRegistrert';
+import Hvem from './info-content/Hvem';
+import Hvordan from './info-content/Hvordan';
+import Naar from './info-content/Naar';
+import NaarErklaeres from './info-content/NaarErklaeres';
+import Rettigheter from './info-content/Rettigheter';
 import LoginButton from './LoginButton';
-import OppmoeteLink from './OppmoeteLink';
 
 import './Forside.less';
 
@@ -13,9 +19,16 @@ function Forside() {
         <Page titleId="header.forside">
             <ContentContainer className="Forside">
                 <Panel>
-                    <ForsideInfo />
+                    <Systemtittel>
+                        <FormattedMessage id="forside.title" />
+                    </Systemtittel>
+                    <NaarErklaeres />
+                    <Rettigheter />
+                    <Hvem />
+                    <Naar />
+                    <Hvordan />
                     <LoginButton />
-                    <OppmoeteLink />
+                    <AlleredeRegistrert />
                 </Panel>
             </ContentContainer>
         </Page>

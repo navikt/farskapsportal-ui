@@ -2,8 +2,42 @@
   .panel {
     padding: 2rem;
 
-    .ForsideInfo {
+    .typo-systemtittel {
       margin-bottom: 2rem;
+    }
+
+    .typo-normal {
+      margin-bottom: 0.5rem;
+    }
+
+    section {
+      margin-bottom: 1.5rem;
+    }
+
+    section > .typo-undertittel {
+      margin-bottom: 0.5rem;
+    }
+
+    .InfoExpandablePanel {
+      margin-bottom: 1rem;
+
+      ol {
+        margin: 0;
+
+        .typo-element {
+          margin-bottom: 0.5rem;
+        }
+
+        ul {
+          li {
+            list-style-type: disc;
+          }
+        }
+
+        & > li:not(:last-child) {
+          margin-bottom: 0.5rem;
+        }
+      }
     }
 
     .LoginButton {
