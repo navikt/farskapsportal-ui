@@ -16,7 +16,7 @@ interface NotPermittedProps {
 const showAlertFor = [Feilkode.IkkeMyndig /* TODO: DNR, bor i utlandet */];
 
 function NotPermitted({ feilkode }: NotPermittedProps) {
-    const renderMessage = () => {
+    const renderContent = () => {
         switch (feilkode) {
             case Feilkode.IkkeMyndig:
                 return <IkkeMyndig />;
@@ -33,15 +33,6 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
         }
     };
 
-    const renderContent = () => (
-        <>
-            {renderMessage()}
-            <Normaltekst>
-                <FormattedMessage id="error.taKontakt" />
-            </Normaltekst>
-        </>
-    );
-
     return (
         <ContentContainer className="NotPermitted">
             <InfoPanel>
@@ -57,12 +48,18 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
 
 function IkkeMyndig() {
     return (
-        <Normaltekst>
-            <FormattedMessage id="notPermitted.ikkeMyndig" />
-        </Normaltekst>
+        <>
+            <Normaltekst>
+                <FormattedMessage id="notPermitted.ikkeMyndig" />
+            </Normaltekst>
+            <Normaltekst>
+                <FormattedMessage id="error.taKontakt" />
+            </Normaltekst>
+        </>
     );
 }
 
+// TODO: skal endres, skille medmor fra ukjent og nye tekster
 function MedmorEllerUkjent() {
     return (
         <Normaltekst>
