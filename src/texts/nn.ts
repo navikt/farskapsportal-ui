@@ -17,6 +17,10 @@ export default {
 
     'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/soknad-om-medmorskap/',
 
+    'forside.rettigheter.link': '', // TODO
+
+    'forside.alleredeRegistrert.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/farskap/',
+
     'oversikt.moreInfoPanels.erFarskapRegistrert.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/barn-fodt-i-norge/',
     'oversikt.moreInfoPanels.medmor.content.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/soknad-om-medmorskap/',
     'oversikt.moreInfoPanels.hvaSkjerNaa.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/barn-fodt-i-norge/',
