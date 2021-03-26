@@ -2,10 +2,10 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import ExternalLink from 'components/external-link/ExternalLink';
+import InfoExpandablePanel from 'components/info-expandable-panel/InfoExpandablePanel';
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { isBorSammen, isBrukerFar } from 'utils/farskapserklaering';
 import { getMessage } from 'utils/intl';
-import KvitteringInfoPanel from './KvitteringInfoPanel';
 import KvitteringInfoPanelContent from './KvitteringInfoPanelContent';
 
 interface YtelserOgTjenesterPanelProps {
@@ -48,9 +48,9 @@ function YtelserOgTjenesterPanel({ erklaering }: YtelserOgTjenesterPanelProps) {
     };
 
     return (
-        <KvitteringInfoPanel titleId="kvittering.ytelserOgTjenester.title">
+        <InfoExpandablePanel titleId="kvittering.ytelserOgTjenester.title">
             {renderContent()}
-        </KvitteringInfoPanel>
+        </InfoExpandablePanel>
     );
 }
 

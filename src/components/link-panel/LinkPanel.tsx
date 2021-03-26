@@ -5,6 +5,8 @@ import { AnchorHTMLAttributes, ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
+import './LinkPanel.less';
+
 interface LinkPanelProps {
     linkPath?: string;
     titleId: string;
@@ -21,9 +23,9 @@ function LinkPanel({ linkPath, titleId, children, etikettType, etikettId }: Link
         : undefined;
 
     return (
-        <LenkepanelBase href="" linkCreator={linkCreator} border={true}>
+        <LenkepanelBase className="LinkPanel" href="" linkCreator={linkCreator} border={true}>
             <div>
-                <Systemtittel className="lenkepanel__heading" tag="h3">
+                <Systemtittel className="lenkepanel__heading">
                     <FormattedMessage id={titleId} />
                 </Systemtittel>
                 {children}

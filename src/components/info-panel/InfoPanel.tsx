@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import Veilederpanel from 'nav-frontend-veilederpanel';
 import { ReactNode } from 'react';
 
@@ -7,11 +8,12 @@ import './InfoPanel.less';
 
 interface InfoPanelProps {
     children: ReactNode;
+    className?: string;
 }
 
-function InfoPanel({ children }: InfoPanelProps) {
+function InfoPanel({ children, className }: InfoPanelProps) {
     return (
-        <div className="InfoPanel">
+        <div className={classNames('InfoPanel', className)}>
             <Veilederpanel type="plakat" svg={<FamilieSvg />} kompakt={true}>
                 {children}
             </Veilederpanel>

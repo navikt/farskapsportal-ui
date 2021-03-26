@@ -76,7 +76,7 @@ function TermindatoForm(props: TermindatoFormProps) {
                     render={({ onChange, value, name }) => (
                         <DateInput
                             id={name}
-                            label={getMessage(intl, 'skjema.mor.barn.termindato.label')}
+                            label={getMessage(intl, 'termindato')}
                             onChange={onChange}
                             value={value}
                             feil={errors.termindato?.message}

@@ -20,7 +20,10 @@ function LesOpplysningerForm({ farskapserklaering, onCancel, onSubmit }: LesOppl
             <Undertittel>
                 <FormattedMessage id="skjema.far.lesOpplysninger.title" />
             </Undertittel>
-            <FarskapserklaeringPresentation farskapserklaering={farskapserklaering} />
+            <FarskapserklaeringPresentation
+                farskapserklaering={farskapserklaering}
+                showBorSammen={false}
+            />
             <ButtonContainer>
                 <Hovedknapp htmlType="button" onClick={onSubmit}>
                     <FormattedMessage id="skjema.next" />

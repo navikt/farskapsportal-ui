@@ -1,10 +1,9 @@
 import AlertStripe from 'nav-frontend-alertstriper';
 import { Normaltekst } from 'nav-frontend-typografi';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
-import ExternalLink from 'components/external-link/ExternalLink';
+import FormattedMessageWithExternalLink from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
 import { Feilkode } from 'types/feilkode';
-import { getMessage } from 'utils/intl';
 
 interface FarFormValidationErrorProps {
     id: string;
@@ -46,20 +45,16 @@ function FarFormValidationError({
 }
 
 function FeilRolleFar() {
-    const intl = useIntl();
-
     return (
         <>
             <Normaltekst>
                 <FormattedMessage id="skjema.mor.far.validation.feilRolleFar.1" />
             </Normaltekst>
             <Normaltekst>
-                <FormattedMessage id="skjema.mor.far.validation.feilRolleFar.2" />{' '}
-                <ExternalLink
-                    href={getMessage(intl, 'skjema.mor.far.validation.feilRolleFar.link')}
-                >
-                    <FormattedMessage id="skjema.mor.far.validation.feilRolleFar.linkLabel" />
-                </ExternalLink>
+                <FormattedMessageWithExternalLink
+                    textId="skjema.mor.far.validation.feilRolleFar.2"
+                    linkId="skjema.mor.far.validation.feilRolleFar.link"
+                />
             </Normaltekst>
         </>
     );

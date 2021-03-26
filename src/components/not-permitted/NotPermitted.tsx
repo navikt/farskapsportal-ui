@@ -1,12 +1,11 @@
 import AlertStripe from 'nav-frontend-alertstriper';
 import { Normaltekst } from 'nav-frontend-typografi';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 
 import ContentContainer from 'components/content-container/ContentContainer';
-import ExternalLink from 'components/external-link/ExternalLink';
+import FormattedMessageWithExternalLink from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
 import InfoPanel from 'components/info-panel/InfoPanel';
 import { Feilkode } from 'types/feilkode';
-import { getMessage } from 'utils/intl';
 
 import './NotPermitted.less';
 
@@ -14,8 +13,10 @@ interface NotPermittedProps {
     feilkode: Feilkode;
 }
 
+const showAlertFor = [Feilkode.IkkeMyndig /* TODO: DNR, bor i utlandet */];
+
 function NotPermitted({ feilkode }: NotPermittedProps) {
-    const renderContent = () => {
+    const renderMessage = () => {
         switch (feilkode) {
             case Feilkode.IkkeMyndig:
                 return <IkkeMyndig />;
@@ -32,15 +33,23 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
         }
     };
 
+    const renderContent = () => (
+        <>
+            {renderMessage()}
+            <Normaltekst>
+                <FormattedMessage id="error.taKontakt" />
+            </Normaltekst>
+        </>
+    );
+
     return (
         <ContentContainer className="NotPermitted">
             <InfoPanel>
-                <AlertStripe type="advarsel">
-                    {renderContent()}
-                    <Normaltekst>
-                        <FormattedMessage id="error.taKontakt" />
-                    </Normaltekst>
-                </AlertStripe>
+                {showAlertFor.includes(feilkode) ? (
+                    <AlertStripe type="advarsel">{renderContent()}</AlertStripe>
+                ) : (
+                    renderContent()
+                )}
             </InfoPanel>
         </ContentContainer>
     );
@@ -64,19 +73,16 @@ function MedmorEllerUkjent() {
 
 // TODO: endre når api endres, skal være for kvinne gift med mann
 function MorSivilstandGift() {
-    const intl = useIntl();
-
     return (
         <>
             <Normaltekst>
                 <FormattedMessage id="notPermitted.morSivilstandGift.1" />
             </Normaltekst>
             <Normaltekst>
-                <FormattedMessage id="notPermitted.morSivilstandGift.2" />{' '}
-                <ExternalLink href={getMessage(intl, 'notPermitted.morSivilstandGift.link')}>
-                    <FormattedMessage id="notPermitted.morSivilstandGift.linkLabel" />
-                </ExternalLink>{' '}
-                <FormattedMessage id="notPermitted.morSivilstandGift.3" />
+                <FormattedMessageWithExternalLink
+                    textId="notPermitted.morSivilstandGift.2"
+                    linkId="notPermitted.morSivilstandGift.link"
+                />
             </Normaltekst>
         </>
     );
@@ -84,18 +90,16 @@ function MorSivilstandGift() {
 
 // TODO: endre når api endres, skal være for kvinne gift med kvinne
 function MorSivilstandPartner() {
-    const intl = useIntl();
-
     return (
         <>
             <Normaltekst>
                 <FormattedMessage id="notPermitted.morSivilstandPartner.1" />
             </Normaltekst>
             <Normaltekst>
-                <FormattedMessage id="notPermitted.morSivilstandPartner.2" />{' '}
-                <ExternalLink href={getMessage(intl, 'notPermitted.morSivilstandPartner.link')}>
-                    <FormattedMessage id="notPermitted.morSivilstandPartner.linkLabel" />
-                </ExternalLink>
+                <FormattedMessageWithExternalLink
+                    textId="notPermitted.morSivilstandPartner.2"
+                    linkId="notPermitted.morSivilstandPartner.link"
+                />
             </Normaltekst>
         </>
     );

@@ -22,6 +22,12 @@ export default {
 
     'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/application-for-joint-maternity/',
 
+    'oversikt.moreInfoPanels.erFarskapRegistrert.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/children-born-in-norway/',
+    'oversikt.moreInfoPanels.medmor.content.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/application-for-joint-maternity/',
+    'oversikt.moreInfoPanels.hvaSkjerNaa.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/children-born-in-norway/',
+    'oversikt.moreInfoPanels.erklaereUtenMor.content.2.link': '', // TODO
+    'oversikt.moreInfoPanels.alleredeErklaert.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/children-born-in-norway/',
+
     'skjema.mor.far.validation.feilRolleFar.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/application-for-joint-maternity/',
 
     'kvittering.hvaSkjerVidere.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/',

@@ -1,4 +1,5 @@
 import { Success } from '@navikt/ds-icons';
+import Panel from 'nav-frontend-paneler';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -15,7 +16,7 @@ interface KvitteringIntroProps {
 
 function KvitteringIntro({ erklaering }: KvitteringIntroProps) {
     return (
-        <section className="KvitteringIntro">
+        <Panel className="KvitteringIntro" border={true}>
             <Success id="success-icon" aria-label="Success icon" role="img" focusable={false} />
             <div>
                 {isBrukerFar(erklaering) ? (
@@ -24,7 +25,7 @@ function KvitteringIntro({ erklaering }: KvitteringIntroProps) {
                     <KvitteringIntroMor erklaering={erklaering} />
                 )}
             </div>
-        </section>
+        </Panel>
     );
 }
 
@@ -56,8 +57,8 @@ function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) 
             </Normaltekst>
             <Normaltekst>
                 <FormattedMessage id="kvittering.intro.mor.4" />
-                <ExternalLink href={getMessage(intl, 'kvittering.intro.mor.link')} />
             </Normaltekst>
+            <ExternalLink href={getMessage(intl, 'kvittering.intro.mor.link')} />
         </>
     );
 
@@ -78,8 +79,8 @@ function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) 
                 </Normaltekst>
                 <Normaltekst>
                     <FormattedMessage id="kvittering.intro.mor.4" />
-                    <ExternalLink href={getMessage(intl, 'kvittering.intro.mor.link')} />
                 </Normaltekst>
+                <ExternalLink href={getMessage(intl, 'kvittering.intro.mor.link')} />
             </>
         );
     };
@@ -120,8 +121,8 @@ function KvitteringIntroFar({ erklaering }: { erklaering: Farskapserklaering }) 
             </Normaltekst>
             <Normaltekst>
                 <FormattedMessage id="kvittering.intro.far.3" />
-                <ExternalLink href={getMessage(intl, 'kvittering.intro.far.link')} />
             </Normaltekst>
+            <ExternalLink href={getMessage(intl, 'kvittering.intro.far.link')} />
         </>
     );
 }

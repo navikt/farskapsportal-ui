@@ -32,7 +32,7 @@ function ErklaeringLinkPanel({
     return (
         <LinkPanel
             linkPath={linkPath}
-            titleId="oversikt.erklaeringer.link.title"
+            titleId="farskapserklaering"
             etikettType={etikettType}
             etikettId={etikettId}
         >
@@ -51,12 +51,12 @@ function ErklaeringLinkPanel({
             <Normaltekst>
                 {erklaering.barn.termindato ? (
                     <>
-                        <FormattedMessage id="oversikt.erklaeringer.link.termindato" />
+                        <FormattedMessage id="termindato" />:{' '}
                         <DatePresentation date={erklaering.barn.termindato} />
                     </>
                 ) : (
                     <>
-                        <FormattedMessage id="oversikt.erklaeringer.link.foedselsnummer" />
+                        <FormattedMessage id="foedselsnummer" />:{' '}
                         {formatFoedselsnummer(erklaering.barn.foedselsnummer ?? '')}
                     </>
                 )}
