@@ -28,7 +28,6 @@ function ErklaereUtenMor() {
                 </li>
             </ul>
             <Normaltekst>
-                <FormattedMessage id="oversikt.moreInfoPanels.erklaereUtenMor.content.2" />
                 <FormattedMessageWithExternalLink
                     textId="oversikt.moreInfoPanels.erklaereUtenMor.content.2"
                     linkId="oversikt.moreInfoPanels.erklaereUtenMor.content.2.link"
