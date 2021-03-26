@@ -7,7 +7,7 @@ import MorSkjema from '../MorSkjema';
 
 jest.mock('api/api', () => ({ controlFatherInfo: () => Promise.resolve() }));
 
-const termindatoLabel = texts['skjema.mor.barn.termindato.label'];
+const termindatoLabel = texts['termindato'];
 const navnLabel = texts['skjema.mor.far.navn.label'];
 const foedselsnummerLabel = texts['skjema.mor.far.foedselsnummer.label'];
 const borSammenYesLabel = texts['skjema.borSammen.label.yes'];

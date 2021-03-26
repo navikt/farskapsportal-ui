@@ -2,8 +2,8 @@ import { Normaltekst } from 'nav-frontend-typografi';
 import { FormattedMessage } from 'react-intl';
 
 import { Farskapserklaering } from 'types/farskapserklaering';
+import InfoExpandablePanel from 'components/info-expandable-panel/InfoExpandablePanel';
 import { isBrukerFar, isSignedByFar, isTermindatoErklaering } from 'utils/farskapserklaering';
-import KvitteringInfoPanel from './KvitteringInfoPanel';
 import KvitteringInfoPanelContent from './KvitteringInfoPanelContent';
 
 interface HvaSkjerHvisPanelProps {
@@ -46,9 +46,9 @@ function HvaSkjerHvisPanel({ erklaering }: HvaSkjerHvisPanelProps) {
     };
 
     return (
-        <KvitteringInfoPanel titleId="kvittering.hvaSkjerHvis.title">
+        <InfoExpandablePanel titleId="kvittering.hvaSkjerHvis.title">
             {renderContent()}
-        </KvitteringInfoPanel>
+        </InfoExpandablePanel>
     );
 }
 

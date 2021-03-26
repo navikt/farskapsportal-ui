@@ -20,7 +20,7 @@ function BarnPresentation(props: BarnPresentationProps) {
             {props.foedselsnummer && (
                 <>
                     <Normaltekst>
-                        <FormattedMessage id="skjema.presentation.foedselsnummer" />
+                        <FormattedMessage id="foedselsnummer" />:
                     </Normaltekst>
                     <Element>{formatFoedselsnummer(props.foedselsnummer)}</Element>
                 </>
@@ -28,7 +28,7 @@ function BarnPresentation(props: BarnPresentationProps) {
             {props.termindato && (
                 <>
                     <Normaltekst>
-                        <FormattedMessage id="skjema.presentation.termindato" />
+                        <FormattedMessage id="termindato" />:
                     </Normaltekst>
                     <Element>
                         <DatePresentation date={props.termindato} />

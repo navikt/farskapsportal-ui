@@ -1,7 +1,6 @@
-import Panel from 'nav-frontend-paneler';
-
 import ContentContainer from 'components/content-container/ContentContainer';
 import ErrorPage from 'components/error-page/ErrorPage';
+import FarskapserklaeringPresentation from 'components/farskapserklaering-presentation/FarskapserklaeringPresentation';
 import Page from 'components/page/Page';
 import WithUserInfo from 'store/providers/WithUserInfo';
 import { Path } from 'types/path';
@@ -47,13 +46,15 @@ function Kvittering() {
 
                     return (
                         <ContentContainer className="Kvittering">
-                            <Panel>
-                                <KvitteringIntro erklaering={erklaering} />
-                                <MorAlert erklaering={erklaering} />
-                                <HvaSkjerViderePanel />
-                                <HvaSkjerHvisPanel erklaering={erklaering} />
-                                <YtelserOgTjenesterPanel erklaering={erklaering} />
-                            </Panel>
+                            <KvitteringIntro erklaering={erklaering} />
+                            <MorAlert erklaering={erklaering} />
+                            <FarskapserklaeringPresentation
+                                farskapserklaering={erklaering}
+                                border={true}
+                            />
+                            <HvaSkjerViderePanel />
+                            <HvaSkjerHvisPanel erklaering={erklaering} />
+                            <YtelserOgTjenesterPanel erklaering={erklaering} />
                         </ContentContainer>
                     );
                 }}

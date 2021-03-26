@@ -4,6 +4,7 @@ import { FormattedMessage } from 'react-intl';
 
 import DatePresentation from 'components/date-presentation/DatePresentation';
 import { Farskapserklaering } from 'types/farskapserklaering';
+import { isBorSammen } from 'utils/farskapserklaering';
 import { formatFoedselsnummer } from 'utils/foedselsnummer';
 import { getNameFromForelder } from 'utils/name';
 
@@ -11,15 +12,19 @@ import './FarskapserklaeringPresentation.less';
 
 interface FarskapserklaeringPresentationProps {
     farskapserklaering: Farskapserklaering;
+    showBorSammen?: boolean;
+    border?: boolean;
 }
 
 function FarskapserklaeringPresentation({
     farskapserklaering,
+    showBorSammen = true,
+    border,
 }: FarskapserklaeringPresentationProps) {
     return (
-        <Panel className="FarskapserklaeringPresentation">
+        <Panel className="FarskapserklaeringPresentation" border={border}>
             <Innholdstittel tag="p" className="FarskapserklaeringPresentation__title">
-                <FormattedMessage id="farskapserklaering.title" />
+                <FormattedMessage id="farskapserklaering" />
             </Innholdstittel>
             <Undertittel tag="p">
                 <FormattedMessage id="farskapserklaering.aboutChildren" />
@@ -31,7 +36,7 @@ function FarskapserklaeringPresentation({
                             <FormattedMessage id="farskapserklaering.expectingChildren" />
                         </Element>
                         <Normaltekst>
-                            <FormattedMessage id="farskapserklaering.termindato" />{' '}
+                            <FormattedMessage id="termindato" />{' '}
                             <DatePresentation date={farskapserklaering.barn.termindato} />
                         </Normaltekst>
                     </>
@@ -41,7 +46,7 @@ function FarskapserklaeringPresentation({
                             <FormattedMessage id="farskapserklaering.bornChildren" />
                         </Element>
                         <Normaltekst>
-                            <FormattedMessage id="farskapserklaering.foedselsnummer" />{' '}
+                            <FormattedMessage id="foedselsnummer" />{' '}
                             {formatFoedselsnummer(farskapserklaering.barn?.foedselsnummer ?? '')}
                         </Normaltekst>
                     </>
@@ -53,7 +58,7 @@ function FarskapserklaeringPresentation({
             <div className="FarskapserklaeringPresentation__foreldre">
                 <div className="FarskapserklaeringPresentation__foreldre__mor">
                     <Element>
-                        <FormattedMessage id="farskapserklaering.mother" />
+                        <FormattedMessage id="mor" />
                     </Element>
                     <Normaltekst>{getNameFromForelder(farskapserklaering.mor)}</Normaltekst>
                     <Normaltekst>
@@ -62,7 +67,7 @@ function FarskapserklaeringPresentation({
                 </div>
                 <div>
                     <Element>
-                        <FormattedMessage id="farskapserklaering.father" />
+                        <FormattedMessage id="far" />
                     </Element>
                     <Normaltekst>{getNameFromForelder(farskapserklaering.far)}</Normaltekst>
                     <Normaltekst>
@@ -70,6 +75,22 @@ function FarskapserklaeringPresentation({
                     </Normaltekst>
                 </div>
             </div>
+            {showBorSammen && (
+                <>
+                    <Undertittel tag="p" className="FarskapserklaeringPresentation__borSammen">
+                        <FormattedMessage id="farskapserklaering.borSammen" />
+                    </Undertittel>
+                    <Normaltekst>
+                        <FormattedMessage
+                            id={
+                                isBorSammen(farskapserklaering)
+                                    ? 'farskapserklaering.borSammen.yes'
+                                    : 'farskapserklaering.borSammen.no'
+                            }
+                        />
+                    </Normaltekst>
+                </>
+            )}
         </Panel>
     );
 }

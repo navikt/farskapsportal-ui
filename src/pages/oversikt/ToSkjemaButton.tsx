@@ -3,7 +3,10 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
+import { hasStartedTermindatoErklaering } from 'utils/farskapserklaering';
 import { useNavigateTo } from 'utils/hooks/useNavigateTo';
+
+import './ToSkjemaButton.less';
 
 interface ToSkjemaButtonProps {
     userInfo: UserInfo;
@@ -14,7 +17,8 @@ function ToSkjemaButton({ userInfo }: ToSkjemaButtonProps) {
 
     if (
         !userInfo.kanOppretteFarskapserklaering ||
-        userInfo.fnrNyligFoedteBarnUtenRegistrertFar?.length
+        userInfo.fnrNyligFoedteBarnUtenRegistrertFar?.length ||
+        hasStartedTermindatoErklaering(userInfo)
     ) {
         return null;
     }
@@ -24,7 +28,7 @@ function ToSkjemaButton({ userInfo }: ToSkjemaButtonProps) {
     };
 
     return (
-        <Hovedknapp htmlType="button" onClick={goToSkjema}>
+        <Hovedknapp className="ToSkjemaButton" htmlType="button" onClick={goToSkjema}>
             <FormattedMessage id="oversikt.goToSkjemaButton" />
         </Hovedknapp>
     );

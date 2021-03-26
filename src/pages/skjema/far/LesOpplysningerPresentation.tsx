@@ -16,7 +16,10 @@ function LesOpplysningerPresentation({ farskapserklaering }: LesOpplysningerPres
             <Undertittel>
                 <FormattedMessage id="skjema.far.lesOpplysninger.title" />
             </Undertittel>
-            <FarskapserklaeringPresentation farskapserklaering={farskapserklaering} />
+            <FarskapserklaeringPresentation
+                farskapserklaering={farskapserklaering}
+                showBorSammen={false}
+            />
         </div>
     );
 }

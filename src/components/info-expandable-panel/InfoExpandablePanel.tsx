@@ -1,23 +1,23 @@
 import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
-import { Systemtittel } from 'nav-frontend-typografi';
+import { Undertittel } from 'nav-frontend-typografi';
 import { ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import './KvitteringInfoPanel.less';
+import './InfoExpandablePanel.less';
 
-interface KvitteringInfoPanelProps {
+interface InfoExpandablePanelProps {
     children: ReactNode;
     titleId: string;
 }
 
-function KvitteringInfoPanel({ children, titleId }: KvitteringInfoPanelProps) {
+function InfoExpandablePanel({ children, titleId }: InfoExpandablePanelProps) {
     return (
         <Ekspanderbartpanel
-            className="KvitteringInfoPanel"
+            className="InfoExpandablePanel"
             tittel={
-                <Systemtittel>
+                <Undertittel>
                     <FormattedMessage id={titleId} />
-                </Systemtittel>
+                </Undertittel>
             }
         >
             {children}
@@ -25,4 +25,4 @@ function KvitteringInfoPanel({ children, titleId }: KvitteringInfoPanelProps) {
     );
 }
 
-export default KvitteringInfoPanel;
+export default InfoExpandablePanel;

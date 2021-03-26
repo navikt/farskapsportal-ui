@@ -41,8 +41,7 @@ function BarnLinkPanel({ foedselsnummer }: { foedselsnummer: string }) {
             etikettId="oversikt.barn.link.status"
         >
             <Normaltekst>
-                <FormattedMessage id="oversikt.barn.link.foedselsnummer" />
-                {formatFoedselsnummer(foedselsnummer)}
+                <FormattedMessage id="foedselsnummer" />: {formatFoedselsnummer(foedselsnummer)}
             </Normaltekst>
         </LinkPanel>
     );

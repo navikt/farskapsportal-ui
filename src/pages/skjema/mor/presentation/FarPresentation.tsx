@@ -18,13 +18,13 @@ function FarPresentation(props: FarPresentationProps) {
             </Undertittel>
             <div className="FarPresentation__navn">
                 <Normaltekst>
-                    <FormattedMessage id="skjema.presentation.navn" />
+                    <FormattedMessage id="navn" />:
                 </Normaltekst>
                 <Element>{props.navn}</Element>
             </div>
             <div>
                 <Normaltekst>
-                    <FormattedMessage id="skjema.presentation.foedselsnummer" />
+                    <FormattedMessage id="foedselsnummer" />:
                 </Normaltekst>
                 <Element>{formatFoedselsnummer(props.foedselsnummer)}</Element>
             </div>
