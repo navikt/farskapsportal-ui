@@ -4,6 +4,7 @@ import FarskapserklaeringPresentation from 'components/farskapserklaering-presen
 import Page from 'components/page/Page';
 import WithUserInfo from 'store/providers/WithUserInfo';
 import { Path } from 'types/path';
+import { ERKLAERING_ID } from 'utils/constants';
 import { getFarskapserklaeringForId } from 'utils/farskapserklaering';
 import { useQuery } from 'utils/hooks/useQuery';
 import HvaSkjerHvisPanel from './HvaSkjerHvisPanel';
@@ -15,7 +16,7 @@ import YtelserOgTjenesterPanel from './YtelserOgTjenesterPanel';
 import './Kvittering.less';
 
 function Kvittering() {
-    const erklaeringId = useQuery().get('id');
+    const erklaeringId = useQuery().get(ERKLAERING_ID);
 
     return (
         <Page

@@ -12,13 +12,14 @@ import WithUserInfo from 'store/providers/WithUserInfo';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
+import { ERKLAERING_ID } from 'utils/constants';
 import { getFarskapserklaeringForId } from 'utils/farskapserklaering';
 import { useQuery } from 'utils/hooks/useQuery';
 import SignerButtons from './SignerButtons';
 
 function Signer() {
     const [{ language }] = useStore();
-    const erklaeringId = useQuery().get('id');
+    const erklaeringId = useQuery().get(ERKLAERING_ID);
 
     const renderContent = (userInfo: UserInfo) => {
         if (userInfo.forelderrolle === Foreldrerolle.Far) {

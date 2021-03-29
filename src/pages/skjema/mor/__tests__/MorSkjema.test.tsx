@@ -15,22 +15,19 @@ const farCorrectLabel = texts['skjema.mor.confirm.farCorrect.label'];
 const submitButtonLabel = texts['skjema.next'];
 
 test('should display steps correctly', async () => {
-    render(<MorSkjema />, {
-        store: {
-            userInfo: {
-                status: 'SUCCESS',
-                data: {
-                    kanOppretteFarskapserklaering: true,
-                    gyldigForelderrolle: true,
-                    forelderrolle: Foreldrerolle.Mor,
-                    avventerSigneringBruker: null,
-                    avventerSigneringMotpart: null,
-                    avventerRegistrering: null,
-                    fnrNyligFoedteBarnUtenRegistrertFar: null,
-                },
-            },
-        },
-    });
+    render(
+        <MorSkjema
+            userInfo={{
+                kanOppretteFarskapserklaering: true,
+                gyldigForelderrolle: true,
+                forelderrolle: Foreldrerolle.Mor,
+                avventerSigneringBruker: null,
+                avventerSigneringMotpart: null,
+                avventerRegistrering: null,
+                fnrNyligFoedteBarnUtenRegistrertFar: null,
+            }}
+        />
+    );
 
     const termindatoInput = screen.getByLabelText(termindatoLabel);
     const submitButton = screen.getByText(submitButtonLabel);

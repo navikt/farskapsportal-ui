@@ -2,6 +2,7 @@ import { useStore } from 'store/Context';
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
+import { ERKLAERING_ID } from 'utils/constants';
 import ErklaeringLinkPanel from './ErklaeringLinkPanel';
 
 interface ErklaeringerAvventerRegistreringProps {
@@ -25,7 +26,7 @@ function ErklaeringerAvventerRegistrering({ userInfo }: ErklaeringerAvventerRegi
 function LinkKvittering({ erklaering }: { erklaering: Farskapserklaering }) {
     const [{ language }] = useStore();
 
-    const linkPath = `/${language}${Path.Kvittering}?id=${erklaering.idFarskapserklaering}`;
+    const linkPath = `/${language}${Path.Kvittering}?${ERKLAERING_ID}=${erklaering.idFarskapserklaering}`;
 
     return (
         <ErklaeringLinkPanel

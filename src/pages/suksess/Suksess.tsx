@@ -6,6 +6,7 @@ import { fetchUser } from 'api/fetchUser';
 import Spinner from 'components/spinner/Spinner';
 import { useStore } from 'store/Context';
 import { Path } from 'types/path';
+import { ERKLAERING_ID } from 'utils/constants';
 import { useQuery } from 'utils/hooks/useQuery';
 
 function Suksess() {
@@ -21,7 +22,7 @@ function Suksess() {
                     // TODO: er denne nødvendig? Ved redirect til kvittering vil brukerinfo hentes?
                     fetchUser(dispatch);
                     history.replace(
-                        `/${language}${Path.Kvittering}?id=${res.idFarskapserklaering}`
+                        `/${language}${Path.Kvittering}?${ERKLAERING_ID}=${res.idFarskapserklaering}`
                     );
                 })
                 .catch(() => {

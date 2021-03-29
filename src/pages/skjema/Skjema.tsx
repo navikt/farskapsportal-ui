@@ -7,13 +7,14 @@ import WithUserInfo from 'store/providers/WithUserInfo';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
+import { ERKLAERING_ID } from 'utils/constants';
 import { useQuery } from 'utils/hooks/useQuery';
 import FarSkjema from './far/FarSkjema';
 import MorSkjema from './mor/MorSkjema';
 
 function Skjema() {
     const [{ language }] = useStore();
-    const erklaeringId = useQuery().get('id');
+    const erklaeringId = useQuery().get(ERKLAERING_ID);
 
     const renderContent = (userInfo: UserInfo) => {
         if (userInfo.forelderrolle === Foreldrerolle.Far) {
@@ -23,13 +24,13 @@ function Skjema() {
                 return <Redirect to={`/${language}${Path.Oversikt}`} />;
             }
 
-            return <MorSkjema />;
+            return <MorSkjema userInfo={userInfo} />;
         } else if (userInfo.forelderrolle === Foreldrerolle.MorEllerFar) {
             // TODO: rework logic?
             if (erklaeringId) {
                 return <FarSkjema userInfo={userInfo} />;
             } else if (userInfo.kanOppretteFarskapserklaering) {
-                return <MorSkjema />;
+                return <MorSkjema userInfo={userInfo} />;
             }
         }
 

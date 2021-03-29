@@ -6,6 +6,8 @@ import Error from 'components/error/Error';
 import { AlertError } from 'types/error';
 import { StepStatus } from 'types/form';
 import { Path } from 'types/path';
+import { UserInfo } from 'types/user';
+import { FNR_ID } from 'utils/constants';
 import { useNavigateTo } from 'utils/hooks/useNavigateTo';
 import { useQuery } from 'utils/hooks/useQuery';
 import { getMessage } from 'utils/intl';
@@ -109,10 +111,15 @@ const reducer = (state: StateType, action: ActionType): StateType => {
     }
 };
 
-function MorSkjema() {
-    // TODO: check if foedselsnummer is correct?
-    // TODO: can we use foedselsnummer in url?
-    const barnFoedselsnummer = useQuery().get('fnr');
+interface MorSkjemaProps {
+    userInfo: UserInfo;
+}
+
+function MorSkjema({ userInfo }: MorSkjemaProps) {
+    const fnrId = useQuery().get(FNR_ID);
+    const barnFoedselsnummer = fnrId
+        ? userInfo.fnrNyligFoedteBarnUtenRegistrertFar?.[parseInt(fnrId)] ?? null
+        : null;
 
     const intl = useIntl();
     const navigateTo = useNavigateTo();

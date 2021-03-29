@@ -5,6 +5,7 @@ import LinkPanel from 'components/link-panel/LinkPanel';
 import { useStore } from 'store/Context';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
+import { FNR_ID } from 'utils/constants';
 import { getBarnUtenErklaering } from 'utils/farskapserklaering';
 import { formatFoedselsnummer } from 'utils/foedselsnummer';
 
@@ -21,17 +22,17 @@ function BarnUtenErklaering({ userInfo }: BarnUtenErklaeringProps) {
 
     return (
         <>
-            {barnUtenErklaering.map((fnr) => (
-                <BarnLinkPanel key={fnr} foedselsnummer={fnr} />
+            {barnUtenErklaering.map((fnr, index) => (
+                <BarnLinkPanel key={fnr} foedselsnummer={fnr} index={index} />
             ))}
         </>
     );
 }
 
-function BarnLinkPanel({ foedselsnummer }: { foedselsnummer: string }) {
+function BarnLinkPanel({ foedselsnummer, index }: { foedselsnummer: string; index: number }) {
     const [{ language }] = useStore();
 
-    const linkPath = `/${language}${Path.Skjema}?fnr=${foedselsnummer}`;
+    const linkPath = `/${language}${Path.Skjema}?${FNR_ID}=${index}`;
 
     return (
         <LinkPanel

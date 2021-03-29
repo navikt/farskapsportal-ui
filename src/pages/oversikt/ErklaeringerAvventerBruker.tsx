@@ -2,6 +2,7 @@ import { useStore } from 'store/Context';
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
+import { ERKLAERING_ID } from 'utils/constants';
 import { isSignedByMor } from 'utils/farskapserklaering';
 import ErklaeringLinkPanel from './ErklaeringLinkPanel';
 
@@ -30,7 +31,7 @@ function ErklaeringerAvventerBruker({ userInfo }: ErklaeringerAvventerBrukerProp
 function LinkSkjema({ erklaering }: { erklaering: Farskapserklaering }) {
     const [{ language }] = useStore();
 
-    const linkPath = `/${language}${Path.Skjema}?id=${erklaering.idFarskapserklaering}`;
+    const linkPath = `/${language}${Path.Skjema}?${ERKLAERING_ID}=${erklaering.idFarskapserklaering}`;
 
     return (
         <ErklaeringLinkPanel
@@ -46,7 +47,7 @@ function LinkSkjema({ erklaering }: { erklaering: Farskapserklaering }) {
 function LinkSigner({ erklaering }: { erklaering: Farskapserklaering }) {
     const [{ language }] = useStore();
 
-    const linkPath = `/${language}${Path.Signer}?id=${erklaering.idFarskapserklaering}`;
+    const linkPath = `/${language}${Path.Signer}?${ERKLAERING_ID}=${erklaering.idFarskapserklaering}`;
 
     return (
         <ErklaeringLinkPanel

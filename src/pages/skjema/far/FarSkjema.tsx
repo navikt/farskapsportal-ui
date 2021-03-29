@@ -7,6 +7,7 @@ import { AlertError } from 'types/error';
 import { StepStatus } from 'types/form';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
+import { ERKLAERING_ID } from 'utils/constants';
 import { useNavigateTo } from 'utils/hooks/useNavigateTo';
 import { useQuery } from 'utils/hooks/useQuery';
 import { getMessage } from 'utils/intl';
@@ -69,7 +70,7 @@ interface FarSkjemaProps {
 function FarSkjema({ userInfo }: FarSkjemaProps) {
     const intl = useIntl();
     const navigateTo = useNavigateTo();
-    const erklaeringId = useQuery().get('id');
+    const erklaeringId = useQuery().get(ERKLAERING_ID);
 
     const farskapserklaering = userInfo.avventerSigneringBruker?.find(
         (erklaering) => erklaering.idFarskapserklaering === parseInt(erklaeringId ?? '')
