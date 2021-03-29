@@ -187,14 +187,14 @@ export default {
 
     'skjema.confirm.validation.required': 'Du må bekrefte før søknaden kan sendes inn.',
 
-    'skjema.mor.barn.title': 'Gjelder barn(a)',
+    'skjema.mor.barn.title': 'Gjelder barn',
     'skjema.mor.barn.description': 'Legg inn termindatoen slik den er beregnet i ultralydundersøkelsen. Hvis du har fått en dato for planlagt keisersnitt, legger du inn denne datoen som termindato.',
     'skjema.mor.barn.termindato.validation.required': 'Termindato er påkrevd',
     'skjema.mor.barn.termindato.validation.pattern': 'Ugyldig dato',
     'skjema.mor.barn.termindato.validation.minDate': 'Kan ikke være mer enn tre uker tilbake i tid',
     'skjema.mor.barn.termindato.validation.maxDate': 'Datoen er mer enn 40 uker fram i tid. Vent til uke 22 av svangerskapet med å bekrefte far.',
     'skjema.mor.barn.termindato.validation.beforeWeek22': 'Du er i uke {weekNr} i svangerskapet. Vent til uke 22 med å bekrefte far.',
-    'skjema.mor.far.title': 'Far til barn(a)',
+    'skjema.mor.far.title': 'Far til barn',
     'skjema.mor.far.navn.label': 'Navn til far',
     'skjema.mor.far.navn.description.1': 'Oppgi fullt navn slik det står i Folkeregisteret',
     'skjema.mor.far.navn.description.2': 'Skriv navnet slik: fornavn mellomnavn etternavn.',

@@ -1,6 +1,6 @@
 import Etikett from 'nav-frontend-etiketter';
 import { LenkepanelBase } from 'nav-frontend-lenkepanel';
-import { Systemtittel } from 'nav-frontend-typografi';
+import { Undertittel } from 'nav-frontend-typografi';
 import { AnchorHTMLAttributes, ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
@@ -25,9 +25,9 @@ function LinkPanel({ linkPath, titleId, children, etikettType, etikettId }: Link
     return (
         <LenkepanelBase className="LinkPanel" href="" linkCreator={linkCreator} border={true}>
             <div>
-                <Systemtittel className="lenkepanel__heading">
+                <Undertittel className="lenkepanel__heading">
                     <FormattedMessage id={titleId} />
-                </Systemtittel>
+                </Undertittel>
                 {children}
                 <Etikett type={etikettType}>
                     <FormattedMessage id={etikettId} />

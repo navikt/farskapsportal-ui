@@ -53,6 +53,7 @@ function LinkSigner({ erklaering }: { erklaering: Farskapserklaering }) {
         <ErklaeringLinkPanel
             linkPath={linkPath}
             erklaering={erklaering}
+            displayFar={true}
             etikettType="fokus"
             etikettId="oversikt.erklaeringer.link.status.signering-bruker"
         />
