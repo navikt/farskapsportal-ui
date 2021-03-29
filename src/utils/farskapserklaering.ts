@@ -24,10 +24,8 @@ export const getBarnUtenErklaering = (userInfo: UserInfo): string[] => {
     );
 };
 
-export const hasStartedTermindatoErklaering = (userInfo: UserInfo): boolean =>
-    !!(userInfo.avventerSigneringBruker ?? [])
-        .concat(userInfo.avventerSigneringMotpart ?? [])
-        .find((erklaering) => !!erklaering.barn?.termindato);
+export const hasOngoingTermindatoErklaering = (userInfo: UserInfo): boolean =>
+    getEveryFarskapserklaering(userInfo).some(isTermindatoErklaering);
 
 export const isSignedByMor = (erklaering: Farskapserklaering): boolean =>
     !!erklaering.dokument?.signertAvMor;

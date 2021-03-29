@@ -3,7 +3,7 @@ import { Hovedknapp } from 'nav-frontend-knapper';
 
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
-import { hasStartedTermindatoErklaering } from 'utils/farskapserklaering';
+import { hasOngoingTermindatoErklaering } from 'utils/farskapserklaering';
 import { useNavigateTo } from 'utils/hooks/useNavigateTo';
 
 import './ToSkjemaButton.less';
@@ -18,7 +18,7 @@ function ToSkjemaButton({ userInfo }: ToSkjemaButtonProps) {
     if (
         !userInfo.kanOppretteFarskapserklaering ||
         userInfo.fnrNyligFoedteBarnUtenRegistrertFar?.length ||
-        hasStartedTermindatoErklaering(userInfo)
+        hasOngoingTermindatoErklaering(userInfo)
     ) {
         return null;
     }
