@@ -8,8 +8,8 @@ import { formatFoedselsnummer } from 'utils/foedselsnummer';
 import { getNameFromForelder } from 'utils/name';
 
 interface ErklaeringLinkPanelProps {
-    linkPath?: string;
-    etikettType: 'suksess' | 'info' | 'fokus';
+    linkPath: string;
+    etikettType: 'suksess' | 'fokus';
     etikettId: string;
     erklaering: Farskapserklaering;
     displayMor?: boolean;

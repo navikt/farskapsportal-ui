@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import './LinkPanel.less';
 
 interface LinkPanelProps {
-    linkPath?: string;
+    linkPath: string;
     titleId: string;
     children: ReactNode;
     etikettType: 'suksess' | 'info' | 'advarsel' | 'fokus';
@@ -16,11 +16,9 @@ interface LinkPanelProps {
 }
 
 function LinkPanel({ linkPath, titleId, children, etikettType, etikettId }: LinkPanelProps) {
-    const linkCreator = linkPath
-        ? (props: AnchorHTMLAttributes<HTMLAnchorElement>) => (
-              <Link {...props} to={linkPath ?? ''} />
-          )
-        : undefined;
+    const linkCreator = (props: AnchorHTMLAttributes<HTMLAnchorElement>) => (
+        <Link {...props} to={linkPath} />
+    );
 
     return (
         <LenkepanelBase className="LinkPanel" href="" linkCreator={linkCreator} border={true}>
