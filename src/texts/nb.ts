@@ -230,7 +230,7 @@ export default {
     'kvittering.intro.mor.1': 'Vi har mottatt dine opplysninger om far {date}.',
     'kvittering.intro.mor.2': 'Erklæringen vil bli videresendt til han for godkjenning og signering.',
     'kvittering.intro.mor.3': 'Du kan ikke endre opplysningene du har gitt.',
-    'kvittering.intro.mor.4': 'Du kan finne igjen erklæringer her:',
+    'kvittering.intro.mor.4': 'Du kan finne igjen erklæringene her:',
     'kvittering.intro.mor.link': '[lenke]', // TODO
     'kvittering.intro.mor.farSignert': 'Far har {date} erklært farskap for barn',
 
