@@ -58,7 +58,7 @@ export const setUpMock = async () => {
         3000
     );
 
-    mockPost('begin:/api/farskapserklaering/redirect', {
+    mockPut('begin:/api/farskapserklaering/redirect', {
         barn: null,
         dokument: {},
         far: null,

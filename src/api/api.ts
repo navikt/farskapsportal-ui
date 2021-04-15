@@ -56,7 +56,7 @@ export const opprettFarskapserklaering = (data: OppretteFarskaperklaeringRequest
 export const setSigneringStatusToken = (statusToken: string) => {
     const url = `/api/farskapserklaering/redirect?status_query_token=${statusToken}`;
 
-    return performPost(url).then(parseJson) as Promise<Farskapserklaering>;
+    return performPut(url).then(parseJson) as Promise<Farskapserklaering>;
 };
 
 export const getNewRedirectUrl = (erklaeringId: string) => {
