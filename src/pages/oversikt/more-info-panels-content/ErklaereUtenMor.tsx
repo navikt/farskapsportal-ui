@@ -28,9 +28,12 @@ function ErklaereUtenMor() {
                 </li>
             </ul>
             <Normaltekst>
+                <FormattedMessage id="oversikt.moreInfoPanels.erklaereUtenMor.content.2" />
+            </Normaltekst>
+            <Normaltekst>
                 <FormattedMessageWithExternalLink
-                    textId="oversikt.moreInfoPanels.erklaereUtenMor.content.2"
-                    linkId="oversikt.moreInfoPanels.erklaereUtenMor.content.2.link"
+                    textId="oversikt.moreInfoPanels.erklaereUtenMor.content.3"
+                    linkId="oversikt.moreInfoPanels.erklaereUtenMor.content.3.link"
                 />
             </Normaltekst>
         </InfoExpandablePanel>
