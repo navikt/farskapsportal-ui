@@ -92,7 +92,7 @@ app.post('/api/farskapserklaering/ny', async (req, res) => {
     }
 });
 
-app.post('/api/farskapserklaering/redirect', async (req, res) => {
+app.put('/api/farskapserklaering/redirect', async (req, res) => {
     try {
         const token = req.cookies[tokenName];
         const response = await fetch(
