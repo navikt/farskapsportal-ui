@@ -98,7 +98,7 @@ app.put('/api/farskapserklaering/redirect', async (req, res) => {
         const response = await fetch(
             `${apiUrl}/farskapserklaering/redirect?status_query_token=${req.query.status_query_token}`,
             {
-                method: 'post',
+                method: 'put',
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

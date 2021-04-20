@@ -53,12 +53,6 @@ export const opprettFarskapserklaering = (data: OppretteFarskaperklaeringRequest
     return performPost(url, data).then(parseJson) as Promise<OppretteFarskapserklaeringResponse>;
 };
 
-export const setSigneringStatusToken = (statusToken: string) => {
-    const url = `/api/farskapserklaering/redirect?status_query_token=${statusToken}`;
-
-    return performPut(url).then(parseJson) as Promise<Farskapserklaering>;
-};
-
 export const getNewRedirectUrl = (erklaeringId: string) => {
     const url = `/api/redirect-url/ny?id_farskapserklaering=${erklaeringId}`;
 
@@ -68,6 +62,12 @@ export const getNewRedirectUrl = (erklaeringId: string) => {
 /*
  *   PUT
  */
+export const setSigneringStatusToken = (statusToken: string) => {
+    const url = `/api/farskapserklaering/redirect?status_query_token=${statusToken}`;
+
+    return performPut(url).then(parseJson) as Promise<Farskapserklaering>;
+};
+
 export const oppdaterFarskapserklaering = (data: OppdatereFarskapserklaeringRequest) => {
     const url = '/api/farskapserklaering/oppdatere';
 
