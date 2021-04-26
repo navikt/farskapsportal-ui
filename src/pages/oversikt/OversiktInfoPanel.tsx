@@ -67,7 +67,7 @@ function OversiktInfoPanel({ userInfo }: OversiktInfoPanelProps) {
     return (
         <InfoPanel className="OversiktInfoPanel">
             <Innholdstittel tag="h2">
-                <FormattedMessage id="oversikt.infoPanel.greeting" />
+                <FormattedMessage id="oversikt.infoPanel.greeting" values={{fornavn: userInfo.fornavn}}/>
             </Innholdstittel>
             {renderContent()}
             <ToSkjemaButton userInfo={userInfo} />

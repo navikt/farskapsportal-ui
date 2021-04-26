@@ -18,6 +18,7 @@ export interface BrukerinformasjonResponse {
     avventerRegistrering: Farskapserklaering[] | null;
     fnrNyligFoedteBarnUtenRegistrertFar: string[] | null;
     forelderrolle: Foreldrerolle;
+    fornavn: string | null;
     gyldigForelderrolle: boolean;
     kanOppretteFarskapserklaering: boolean;
 }
