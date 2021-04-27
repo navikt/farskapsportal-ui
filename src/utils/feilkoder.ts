@@ -15,6 +15,7 @@ const EXPECTED_FEILKODER_CONTROL_FATHER = [
     Feilkode.IkkeMyndig,
     Feilkode.MaksAntallForsoek,
     Feilkode.NavnStemmerIkkeMedRegister,
+    Feilkode.PdlPersonIkkeFunnet,
 ];
 
 export const isUserNotPermitted = (error: AlertError): boolean =>
