@@ -69,7 +69,7 @@ function OversiktInfoPanel({ userInfo }: OversiktInfoPanelProps) {
             <Innholdstittel tag="h2">
                 <FormattedMessage
                     id="oversikt.infoPanel.greeting"
-                    values={{ fornavn: userInfo.fornavn }}
+                    values={{ fornavn: userInfo.brukersFornavn }}
                 />
             </Innholdstittel>
             {renderContent()}
