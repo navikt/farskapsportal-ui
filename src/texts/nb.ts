@@ -61,7 +61,7 @@ export default {
     'forside.rettigheter.samvaer.content.1': 'Barnet har rett til samvær med begge foreldrene selv om de lever hver for seg. Foreldrene har gjensidig ansvar for at samværsretten blir oppfylt.',
     'forside.rettigheter.samvaer.content.2': 'En avtale om foreldreansvar, samvær eller hvor barnet skal bo fast, kan endres ved ny avtale mellom foreldrene. Dersom foreldrene ikke blir enige, kan de bringe saken inn for retten.',
     'forside.rettigheter.linkLabel': '<a>Les mer om loven om farskap</a>',
-    'forside.rettigheter.link': 'todo', // TODO
+    'forside.rettigheter.link': 'https://lovdata.no/dokument/NL/lov/1981-04-08-7',
 
     'forside.hvem.title': 'Hvem kan erklære?',
     'forside.hvem.content.1': 'Begge foreldrene må ha norsk fødsels- og personnummer',
@@ -118,7 +118,7 @@ export default {
     'oversikt.infoPanel.common.forBarn.termindato': 'forventet født {termindato}',
     'oversikt.infoPanel.common.forBarn.foedselsnummer': 'med fødselsnummer {fnr}',
 
-    'oversikt.infoPanel.mor.utenBarn.1': 'Hvis du er minimum 20 uker på vei kan du oppgi termindatoen og gi opplysninger om barnets far slik at han kan erklære farskapet elektronisk.',
+    'oversikt.infoPanel.mor.utenBarn.1': 'Hvis du er minimum 22 uker på vei kan du oppgi termindatoen og gi opplysninger om barnets far slik at han kan erklære farskapet elektronisk.',
     'oversikt.infoPanel.mor.utenBarn.2': 'Du må ha fullt navn og fødselsnummer til mannen du oppgir som faren til barnet.',
     'oversikt.infoPanel.mor.medBarn.1.single': 'Vi har fått opplysninger om barnet du nettopp har født:',
     'oversikt.infoPanel.mor.medBarn.1.multiple': 'Vi har fått opplysninger om dine nylige fødte barn:',
@@ -157,8 +157,8 @@ export default {
     'oversikt.moreInfoPanels.erklaereUtenMor.content.li.4': 'Dommer',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.li.5': 'Norsk diplomatisk eller konsulær tjenestemann, hvis du er i utlandet',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.2': 'Husk å ta med legitimasjon.',
-    'oversikt.moreInfoPanels.erklaereUtenMor.content.3': 'For mer informasjon se informasjon om <a>her</a> eller kontakt oss på telefon 55 55 33 33.',
-    'oversikt.moreInfoPanels.erklaereUtenMor.content.3.link': '', // TODO
+    'oversikt.moreInfoPanels.erklaereUtenMor.content.3': 'For mer informasjon se <a>farskap og foreldreskap</a> eller kontakt oss på telefon 55 55 33 33. Vi gjør oppmerksom på moren må ha oppgitt deg som faren til barnet før du kan erklære farskap hvis barnet er født i utlandet.',
+    'oversikt.moreInfoPanels.erklaereUtenMor.content.3.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap/farskap-og-foreldreansvar',
     'oversikt.moreInfoPanels.alleredeErklaert.title': 'Har du allerede erklært farskap og lurer på hva som skjer nå?',
     'oversikt.moreInfoPanels.alleredeErklaert.content.1': 'Det er Skatteetaten ved Folkeregisteret som er ansvarlig for å registrere og arkivere farskapserklæringer. Når dere melder inn opplysninger om barnets navn til dem vil du motta en bekreftelse på registrering av fødselsnummer og navn. Bekreftelsen mottar du i innboksen din i Altinn.',
     'oversikt.moreInfoPanels.alleredeErklaert.content.2': ' Du finner mer informasjon om registrering av farskap og navnevalg <a>her</a>.',
