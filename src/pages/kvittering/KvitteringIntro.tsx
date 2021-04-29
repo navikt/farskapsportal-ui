@@ -1,15 +1,15 @@
-import {Success} from '@navikt/ds-icons';
+import { Success } from '@navikt/ds-icons';
 import Panel from 'nav-frontend-paneler';
-import {Normaltekst} from 'nav-frontend-typografi';
-import {FormattedMessage, useIntl} from 'react-intl';
+import { Normaltekst } from 'nav-frontend-typografi';
+import { FormattedMessage, useIntl } from 'react-intl';
 
 import ExternalLink from 'components/external-link/ExternalLink';
-import {Farskapserklaering} from 'types/farskapserklaering';
-import {isBrukerFar} from 'utils/farskapserklaering';
-import {formatDate, getMessage} from 'utils/intl';
+import { Farskapserklaering } from 'types/farskapserklaering';
+import { isBrukerFar } from 'utils/farskapserklaering';
+import { formatDate, getMessage } from 'utils/intl';
 
-import {useStore} from "../../store/Context";
-import {Path} from "../../types/path";
+import { useStore } from '../../store/Context';
+import { Path } from '../../types/path';
 
 import './KvitteringIntro.less';
 
@@ -62,10 +62,8 @@ function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) 
                 )}
             </Normaltekst>
             <Normaltekst>
-                <FormattedMessage id="kvittering.intro.mor.4"/>
-                <a href={oversiktLinkPath} >
-                    {getMessage(intl, 'kvittering.intro.mor.link')}
-                </a>
+                <FormattedMessage id="kvittering.intro.mor.4" />
+                <a href={oversiktLinkPath}>{getMessage(intl, 'kvittering.intro.mor.link')}</a>
             </Normaltekst>
         </>
     );
@@ -87,9 +85,7 @@ function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) 
                 </Normaltekst>
                 <Normaltekst>
                     <FormattedMessage id="kvittering.intro.mor.4" />
-                    <a href={oversiktLinkPath}>
-                        {getMessage(intl, 'kvittering.intro.mor.link')}
-                    </a>
+                    <a href={oversiktLinkPath}>{getMessage(intl, 'kvittering.intro.mor.link')}</a>
                 </Normaltekst>
                 <ExternalLink href={getMessage(intl, 'kvittering.intro.mor.link')} />
             </>
@@ -135,9 +131,7 @@ function KvitteringIntroFar({ erklaering }: { erklaering: Farskapserklaering }) 
             </Normaltekst>
             <Normaltekst>
                 <FormattedMessage id="kvittering.intro.far.3" />
-                <a href={oversiktLinkPath}>
-                    {getMessage(intl, 'kvittering.intro.far.link')}
-                </a>
+                <a href={oversiktLinkPath}>{getMessage(intl, 'kvittering.intro.far.link')}</a>
             </Normaltekst>
         </>
     );
