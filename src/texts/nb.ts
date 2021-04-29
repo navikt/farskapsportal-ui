@@ -148,7 +148,7 @@ export default {
     'oversikt.moreInfoPanels.hvaSkjerNaa.content': 'Det er Skatteetaten ved Folkeregisteret som er ansvarlig for å registrere og arkivere farskapserklæringer. Når dere melder inn opplysninger om barnets navn til dem vil du motta en bekreftelse på registrering av fødselsnummer og navn. Bekreftelsen mottar du i innboksen din i Altinn. Du finner mer informasjon om registrering av farskap og navnevalg <a>her</a>.',
     'oversikt.moreInfoPanels.hvaSkjerNaa.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/barn-fodt-i-norge/',
     'oversikt.moreInfoPanels.farErklaererIkke.title': 'Hva skjer hvis faren du har oppgitt ikke erklærer farskapet?',
-    'oversikt.moreInfoPanels.farErklaererIkke.content': 'Hvis faren du har oppgitt ikke erklærer farskapet, har NAV ansvaret for å fastsette det. Det kan da være aktuelt å kalle inn partene og bekrefte farskapet ved bruk av DNA-analyse. Du finner ytterligere informasjon på nav.no eller du kan kontakte oss på telefon 55 55 33 33.',
+    'oversikt.moreInfoPanels.farErklaererIkke.content': 'Hvis faren du har oppgitt ikke erklærer farskapet, har NAV ansvaret for å fastsette det. Det kan da være aktuelt å kalle inn partene og bekrefte farskapet ved bruk av DNA-analyse. For ytterligere informasjon kan du kontakte oss på telefon 55 55 33 33.',
     'oversikt.moreInfoPanels.erklaereUtenMor.title': 'Vil du erklære farskap for et barn uten at barnets mor har oppgitt deg som faren til barnet?',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.1': 'Hvis du ønsker å erklære farskap for et barn og du ikke er blitt oppgitt som far, kan du møte personlig på ett av disse stedene:',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.li.1': 'Lege/jordmor i forbindelse med svangerskapskontroll/fødsel',
@@ -164,7 +164,7 @@ export default {
     'oversikt.moreInfoPanels.alleredeErklaert.content.2': ' Du finner mer informasjon om registrering av farskap og navnevalg <a>her</a>.',
     'oversikt.moreInfoPanels.alleredeErklaert.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/barn-fodt-i-norge/',
     'oversikt.moreInfoPanels.erJegFar.title': 'Hva gjør jeg hvis jeg er usikker på om jeg er faren til barnet?',
-    'oversikt.moreInfoPanels.erJegFar.content': 'Hvis du erklærer farskap for barnet kan du ikke senere trekke erklæringen tilbake. Hvis du er usikker på om du er barnets far bør du derfor ikke signere erklæringen. NAV vil da ta ansvar for at farskapet blir fastsatt. Du kan i så fall bli innkalt og bedt om å gi prøve til DNA-analyse. Du finner ytterligere informasjon på nav.no eller du kan kontakte oss på telefon 55 55 33 33.',
+    'oversikt.moreInfoPanels.erJegFar.content': 'Hvis du erklærer farskap for barnet kan du ikke senere trekke erklæringen tilbake. Hvis du er usikker på om du er barnets far bør du derfor ikke signere erklæringen. NAV vil da ta ansvar for at farskapet blir fastsatt. Du kan i så fall bli innkalt og bedt om å gi prøve til DNA-analyse. For ytterligere informasjon kan du kontakte oss på telefon 55 55 33 33.',
 
     'oversikt.barn.link.title': 'Opprett farskapserklæring for barn',
     'oversikt.barn.link.status': 'Dette barnet har ikke en registrert far i Folkeregisteret',
