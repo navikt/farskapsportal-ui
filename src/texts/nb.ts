@@ -61,7 +61,7 @@ export default {
     'forside.rettigheter.samvaer.content.1': 'Barnet har rett til samvær med begge foreldrene selv om de lever hver for seg. Foreldrene har gjensidig ansvar for at samværsretten blir oppfylt.',
     'forside.rettigheter.samvaer.content.2': 'En avtale om foreldreansvar, samvær eller hvor barnet skal bo fast, kan endres ved ny avtale mellom foreldrene. Dersom foreldrene ikke blir enige, kan de bringe saken inn for retten.',
     'forside.rettigheter.linkLabel': '<a>Les mer om loven om farskap</a>',
-    'forside.rettigheter.link': 'todo', // TODO
+    'forside.rettigheter.link': 'https://lovdata.no/dokument/NL/lov/1981-04-08-7',
 
     'forside.hvem.title': 'Hvem kan erklære?',
     'forside.hvem.content.1': 'Begge foreldrene må ha norsk fødsels- og personnummer',
@@ -118,7 +118,7 @@ export default {
     'oversikt.infoPanel.common.forBarn.termindato': 'forventet født {termindato}',
     'oversikt.infoPanel.common.forBarn.foedselsnummer': 'med fødselsnummer {fnr}',
 
-    'oversikt.infoPanel.mor.utenBarn.1': 'Hvis du er minimum 20 uker på vei kan du oppgi termindatoen og gi opplysninger om barnets far slik at han kan erklære farskapet elektronisk.',
+    'oversikt.infoPanel.mor.utenBarn.1': 'Hvis du er minimum 22 uker på vei kan du oppgi termindatoen og gi opplysninger om barnets far slik at han kan erklære farskapet elektronisk.',
     'oversikt.infoPanel.mor.utenBarn.2': 'Du må ha fullt navn og fødselsnummer til mannen du oppgir som faren til barnet.',
     'oversikt.infoPanel.mor.medBarn.1.single': 'Vi har fått opplysninger om barnet du nettopp har født:',
     'oversikt.infoPanel.mor.medBarn.1.multiple': 'Vi har fått opplysninger om dine nylige fødte barn:',
@@ -148,7 +148,7 @@ export default {
     'oversikt.moreInfoPanels.hvaSkjerNaa.content': 'Det er Skatteetaten ved Folkeregisteret som er ansvarlig for å registrere og arkivere farskapserklæringer. Når dere melder inn opplysninger om barnets navn til dem vil du motta en bekreftelse på registrering av fødselsnummer og navn. Bekreftelsen mottar du i innboksen din i Altinn. Du finner mer informasjon om registrering av farskap og navnevalg <a>her</a>.',
     'oversikt.moreInfoPanels.hvaSkjerNaa.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/barn-fodt-i-norge/',
     'oversikt.moreInfoPanels.farErklaererIkke.title': 'Hva skjer hvis faren du har oppgitt ikke erklærer farskapet?',
-    'oversikt.moreInfoPanels.farErklaererIkke.content': 'Hvis faren du har oppgitt ikke erklærer farskapet, har NAV ansvaret for å fastsette det. Det kan da være aktuelt å kalle inn partene og bekrefte farskapet ved bruk av DNA-analyse. Du finner ytterligere informasjon på nav.no eller du kan kontakte oss på telefon 55 55 33 33.',
+    'oversikt.moreInfoPanels.farErklaererIkke.content': 'Hvis faren du har oppgitt ikke erklærer farskapet, har NAV ansvaret for å fastsette det. Det kan da være aktuelt å kalle inn partene og bekrefte farskapet ved bruk av DNA-analyse. For ytterligere informasjon kan du kontakte oss på telefon 55 55 33 33.',
     'oversikt.moreInfoPanels.erklaereUtenMor.title': 'Vil du erklære farskap for et barn uten at barnets mor har oppgitt deg som faren til barnet?',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.1': 'Hvis du ønsker å erklære farskap for et barn og du ikke er blitt oppgitt som far, kan du møte personlig på ett av disse stedene:',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.li.1': 'Lege/jordmor i forbindelse med svangerskapskontroll/fødsel',
@@ -157,14 +157,14 @@ export default {
     'oversikt.moreInfoPanels.erklaereUtenMor.content.li.4': 'Dommer',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.li.5': 'Norsk diplomatisk eller konsulær tjenestemann, hvis du er i utlandet',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.2': 'Husk å ta med legitimasjon.',
-    'oversikt.moreInfoPanels.erklaereUtenMor.content.3': 'For mer informasjon se informasjon om <a>her</a> eller kontakt oss på telefon 55 55 33 33.',
-    'oversikt.moreInfoPanels.erklaereUtenMor.content.3.link': '', // TODO
+    'oversikt.moreInfoPanels.erklaereUtenMor.content.3': 'For mer informasjon se <a>farskap og foreldreskap</a> eller kontakt oss på telefon 55 55 33 33. Vi gjør oppmerksom på moren må ha oppgitt deg som faren til barnet før du kan erklære farskap hvis barnet er født i utlandet.',
+    'oversikt.moreInfoPanels.erklaereUtenMor.content.3.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap/farskap-og-foreldreansvar',
     'oversikt.moreInfoPanels.alleredeErklaert.title': 'Har du allerede erklært farskap og lurer på hva som skjer nå?',
     'oversikt.moreInfoPanels.alleredeErklaert.content.1': 'Det er Skatteetaten ved Folkeregisteret som er ansvarlig for å registrere og arkivere farskapserklæringer. Når dere melder inn opplysninger om barnets navn til dem vil du motta en bekreftelse på registrering av fødselsnummer og navn. Bekreftelsen mottar du i innboksen din i Altinn.',
     'oversikt.moreInfoPanels.alleredeErklaert.content.2': ' Du finner mer informasjon om registrering av farskap og navnevalg <a>her</a>.',
     'oversikt.moreInfoPanels.alleredeErklaert.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/barn-fodt-i-norge/',
     'oversikt.moreInfoPanels.erJegFar.title': 'Hva gjør jeg hvis jeg er usikker på om jeg er faren til barnet?',
-    'oversikt.moreInfoPanels.erJegFar.content': 'Hvis du erklærer farskap for barnet kan du ikke senere trekke erklæringen tilbake. Hvis du er usikker på om du er barnets far bør du derfor ikke signere erklæringen. NAV vil da ta ansvar for at farskapet blir fastsatt. Du kan i så fall bli innkalt og bedt om å gi prøve til DNA-analyse. Du finner ytterligere informasjon på nav.no eller du kan kontakte oss på telefon 55 55 33 33.',
+    'oversikt.moreInfoPanels.erJegFar.content': 'Hvis du erklærer farskap for barnet kan du ikke senere trekke erklæringen tilbake. Hvis du er usikker på om du er barnets far bør du derfor ikke signere erklæringen. NAV vil da ta ansvar for at farskapet blir fastsatt. Du kan i så fall bli innkalt og bedt om å gi prøve til DNA-analyse. For ytterligere informasjon kan du kontakte oss på telefon 55 55 33 33.',
 
     'oversikt.barn.link.title': 'Opprett farskapserklæring for barn',
     'oversikt.barn.link.status': 'Dette barnet har ikke en registrert far i Folkeregisteret',
@@ -230,14 +230,14 @@ export default {
     'kvittering.intro.mor.1': 'Vi har mottatt dine opplysninger om far {date}.',
     'kvittering.intro.mor.2': 'Erklæringen vil bli videresendt til han for godkjenning og signering.',
     'kvittering.intro.mor.3': 'Du kan ikke endre opplysningene du har gitt.',
-    'kvittering.intro.mor.4': 'Du kan finne igjen erklæringene her:',
-    'kvittering.intro.mor.link': '[lenke]', // TODO
+    'kvittering.intro.mor.4': 'Du kan finne igjen erklæringene her: ',
+    'kvittering.intro.mor.link': 'Dine farskapserklæringer', // TODO ?
     'kvittering.intro.mor.farSignert': 'Far har {date} erklært farskap for barn',
 
     'kvittering.intro.far.1': 'Du har signert farskapserklæring {date} for barn',
     'kvittering.intro.far.2': 'Erklæringen er endelig og kan ikke endres.',
-    'kvittering.intro.far.3': 'Du kan finne igjen erklæringer her:',
-    'kvittering.intro.far.link': '[lenke]', // TODO
+    'kvittering.intro.far.3': 'Du kan finne igjen erklæringer her: ',
+    'kvittering.intro.far.link': 'Dine farskapserklæringer', // TODO ?
     'kvittering.morAlert': 'Erklæringen er ikke gyldig før oppgitt far har signert. Han kan allerede nå logge seg inn på Ditt NAV og signere erklæringen. Du bør gjøre ham oppmerksom på dette. Hvis faren til barnet ikke har signert innen 3 dager, vil vi sende ham en påminnelse på SMS.',
     'kvittering.hvaSkjerVidere.title': 'Hva skjer videre?',
     'kvittering.hvaSkjerVidere.1': 'Det er Skatteetaten ved Folkeregisteret som har ansvaret for å registrere og arkivere farskapserklæringer. Dere vil få oversendt erklæringen når dere begge har signert den. Etter at dere har valgt navnet til barnet vil du motta en bekreftelse på registrering av fødselsnummer og navn. Bekreftelsen mottar du i innboksen din i Altinn.',

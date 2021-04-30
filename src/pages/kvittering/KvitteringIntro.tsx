@@ -8,6 +8,9 @@ import { Farskapserklaering } from 'types/farskapserklaering';
 import { isBrukerFar } from 'utils/farskapserklaering';
 import { formatDate, getMessage } from 'utils/intl';
 
+import { useStore } from '../../store/Context';
+import { Path } from '../../types/path';
+
 import './KvitteringIntro.less';
 
 interface KvitteringIntroProps {
@@ -29,8 +32,11 @@ function KvitteringIntro({ erklaering }: KvitteringIntroProps) {
     );
 }
 
+// TODO: change oversikt link ?
 function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) {
     const intl = useIntl();
+    const [{ language }] = useStore();
+    const oversiktLinkPath = `/${language}${Path.Oversikt}`;
 
     const farSignert = (signertAvFar: string) => (
         <>
@@ -57,8 +63,8 @@ function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) 
             </Normaltekst>
             <Normaltekst>
                 <FormattedMessage id="kvittering.intro.mor.4" />
+                <a href={oversiktLinkPath}>{getMessage(intl, 'kvittering.intro.mor.link')}</a>
             </Normaltekst>
-            <ExternalLink href={getMessage(intl, 'kvittering.intro.mor.link')} />
         </>
     );
 
@@ -79,6 +85,7 @@ function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) 
                 </Normaltekst>
                 <Normaltekst>
                     <FormattedMessage id="kvittering.intro.mor.4" />
+                    <a href={oversiktLinkPath}>{getMessage(intl, 'kvittering.intro.mor.link')}</a>
                 </Normaltekst>
                 <ExternalLink href={getMessage(intl, 'kvittering.intro.mor.link')} />
             </>
@@ -90,8 +97,11 @@ function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) 
         : farIkkeSignert();
 }
 
+// TODO: change oversikt link ?
 function KvitteringIntroFar({ erklaering }: { erklaering: Farskapserklaering }) {
     const intl = useIntl();
+    const [{ language }] = useStore();
+    const oversiktLinkPath = `/${language}${Path.Oversikt}`;
 
     return (
         <>
@@ -121,8 +131,8 @@ function KvitteringIntroFar({ erklaering }: { erklaering: Farskapserklaering }) 
             </Normaltekst>
             <Normaltekst>
                 <FormattedMessage id="kvittering.intro.far.3" />
+                <a href={oversiktLinkPath}>{getMessage(intl, 'kvittering.intro.far.link')}</a>
             </Normaltekst>
-            <ExternalLink href={getMessage(intl, 'kvittering.intro.far.link')} />
         </>
     );
 }
