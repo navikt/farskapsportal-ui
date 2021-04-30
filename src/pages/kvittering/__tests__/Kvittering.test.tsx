@@ -15,7 +15,7 @@ jest.mock('utils/hooks/useQuery', () => ({
     }),
 }));
 
-const introMorText = texts['kvittering.intro.mor.4'];
+const introMorText = texts['kvittering.intro.mor.4'].trim();
 const introFarText = texts['kvittering.intro.far.2'];
 const morAlertText = texts['kvittering.morAlert'];
 const hvaSkjerVidereTitle = texts['kvittering.hvaSkjerVidere.title'];
