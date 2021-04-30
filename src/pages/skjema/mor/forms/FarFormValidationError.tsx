@@ -32,6 +32,8 @@ function FarFormValidationError({
                 } else {
                     return <NavnStemmerIkkeMedRegister />;
                 }
+            case Feilkode.PdlPersonIkkeFunnet:
+                return <PdlPersonIkkeFunnet />;
             default:
                 return null;
         }
@@ -98,6 +100,16 @@ function NavnStemmerIkkeMedRegister() {
             </Normaltekst>
             <Normaltekst>
                 <FormattedMessage id="skjema.mor.far.validation.navnStemmerIkkeMedRegister.2" />
+            </Normaltekst>
+        </>
+    );
+}
+
+function PdlPersonIkkeFunnet() {
+    return (
+        <>
+            <Normaltekst>
+                <FormattedMessage id="skjema.mor.far.validation.pdlPersonIkkeFunnet" />
             </Normaltekst>
         </>
     );
