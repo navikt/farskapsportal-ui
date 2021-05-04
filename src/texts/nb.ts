@@ -189,7 +189,7 @@ export default {
     'skjema.confirm.validation.required': 'Du må bekrefte før søknaden kan sendes inn.',
 
     'skjema.mor.barn.title': 'Gjelder barn',
-    'skjema.mor.barn.description': 'Legg inn termindatoen slik den er beregnet i ultralydundersøkelsen. Hvis du har fått en dato for planlagt keisersnitt, legger du inn denne datoen som termindato.',
+    'skjema.mor.barn.description': 'Legg inn termindatoen slik den er beregnet i ultralydundersøkelsen. Hvis du har fått en dato for planlagt keisersnitt, legger du inn denne datoen som termindato. Du må være minst 22 uker på vei for å opprette en erklæring.',
     'skjema.mor.barn.termindato.validation.required': 'Termindato er påkrevd',
     'skjema.mor.barn.termindato.validation.pattern': 'Ugyldig dato',
     'skjema.mor.barn.termindato.validation.minDate': 'Kan ikke være mer enn tre uker tilbake i tid',
