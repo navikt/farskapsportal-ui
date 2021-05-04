@@ -4,7 +4,11 @@ import { useIntl } from 'react-intl';
 
 import DateInput from 'components/date-input/DateInput';
 import FormButtons from 'components/form-buttons/FormButtons';
-import { DAYS_IN_PREGNANCY, DAYS_IN_THREE_WEEKS, DAYS_IN_TWENTYONE_WEEKS } from 'utils/constants';
+import {
+    DAYS_IN_EIGHTEEN_WEEKS_PLUS_3,
+    DAYS_IN_PREGNANCY,
+    DAYS_IN_THREE_WEEKS,
+} from 'utils/constants';
 import {
     getNDaysInTheFuture,
     getNDaysInThePast,
@@ -64,7 +68,7 @@ function TermindatoForm(props: TermindatoFormProps) {
                             beforeWeek22: (value) =>
                                 isLessThanNDaysInTheFuture(
                                     value,
-                                    DAYS_IN_PREGNANCY - DAYS_IN_TWENTYONE_WEEKS - 1
+                                    DAYS_IN_EIGHTEEN_WEEKS_PLUS_3 - 1
                                 ) ||
                                 getMessage(
                                     intl,
@@ -82,7 +86,7 @@ function TermindatoForm(props: TermindatoFormProps) {
                             feil={errors.termindato?.message}
                             placeholder={getMessage(intl, 'form.date.placeholder')}
                             minDate={getNDaysInThePast(DAYS_IN_THREE_WEEKS)}
-                            maxDate={getNDaysInTheFuture(DAYS_IN_PREGNANCY)}
+                            maxDate={getNDaysInTheFuture(DAYS_IN_EIGHTEEN_WEEKS_PLUS_3 - 1)}
                             showYearSelector={true}
                         />
                     )}
