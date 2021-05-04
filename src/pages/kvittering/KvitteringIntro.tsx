@@ -3,7 +3,6 @@ import Panel from 'nav-frontend-paneler';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { FormattedMessage, useIntl } from 'react-intl';
 
-import ExternalLink from 'components/external-link/ExternalLink';
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { isBrukerFar } from 'utils/farskapserklaering';
 import { formatDate, getMessage } from 'utils/intl';
@@ -32,7 +31,7 @@ function KvitteringIntro({ erklaering }: KvitteringIntroProps) {
     );
 }
 
-// TODO: change oversikt link ?
+// TODO: change link -> download pdf (if signed by both)
 function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) {
     const intl = useIntl();
     const [{ language }] = useStore();
@@ -87,7 +86,6 @@ function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) 
                     <FormattedMessage id="kvittering.intro.mor.4" />
                     <a href={oversiktLinkPath}>{getMessage(intl, 'kvittering.intro.mor.link')}</a>
                 </Normaltekst>
-                <ExternalLink href={getMessage(intl, 'kvittering.intro.mor.link')} />
             </>
         );
     };
@@ -97,7 +95,7 @@ function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) 
         : farIkkeSignert();
 }
 
-// TODO: change oversikt link ?
+// TODO: change link -> download pdf
 function KvitteringIntroFar({ erklaering }: { erklaering: Farskapserklaering }) {
     const intl = useIntl();
     const [{ language }] = useStore();

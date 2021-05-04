@@ -56,7 +56,7 @@ export default {
     'forside.rettigheter.foreldreansvar.content.2': 'For barn som blir født etter 1. januar 2020 får mor og far felles foreldreansvar. Dette gjelder barn som har gifte foreldre, barn som har samboende foreldre og barn som har foreldre som ikke bor sammen.',
     'forside.rettigheter.foreldreansvar.content.3': 'Dersom mor ønsker å ha foreldreansvaret alene må hun melde fra til Folkeregisteret om det innen ett år fra den dagen farskapet er fastsatt. Dersom far ikke ønsker å ha foreldreansvar må han melde fra til Folkeregisteret om det innen ett år fra den dagen farskapet er fastsatt. Dersom mor har meldt inn at hun ønsker foreldreansvaret alene og far ønsker foreldreansvaret eller delt foreldreansvar må han selv ta saken til domstolen.',
     'forside.rettigheter.barnebidrag.title': 'Barnebidrag',
-    'forside.rettigheter.barnebidrag.content': 'Begge foreldrene har plikt til å sørge for underholdet av barnet sitt etter evne. Når foreldrene ikke bor sammen, må den som ikke bor fast sammen med barnet betale barnebidrag. Foreldrene kan inngå avtale om barnebidragets størrelse. Dersom foreldrene ikke blir enige, kan hver av dem kreve at NAV fastsetter størrelsen på barnebidraget. Dersom foreldrene ikke lever sammen når barnet blir født, og de ikke har gjort avtale om bidraget, skal NAV av eget tiltak fastsette bidrag til barnet.',
+    'forside.rettigheter.barnebidrag.content': 'Begge foreldrene har plikt til å sørge for underholdet av barnet sitt etter evne. Når foreldrene ikke bor sammen, må den som ikke bor fast sammen med barnet betale barnebidrag. Foreldrene kan inngå avtale om barnebidragets størrelse. Dersom foreldrene ikke blir enige, kan hver av dem kreve at NAV fastsetter størrelsen på barnebidraget. Dersom foreldrene ikke lever sammen når barnet blir født, og de ikke har gjort avtale om barnebidraget, skal NAV av eget tiltak fastsette barnebidrag til barnet.',
     'forside.rettigheter.samvaer.title': 'Samvær',
     'forside.rettigheter.samvaer.content.1': 'Barnet har rett til samvær med begge foreldrene selv om de lever hver for seg. Foreldrene har gjensidig ansvar for at samværsretten blir oppfylt.',
     'forside.rettigheter.samvaer.content.2': 'En avtale om foreldreansvar, samvær eller hvor barnet skal bo fast, kan endres ved ny avtale mellom foreldrene. Dersom foreldrene ikke blir enige, kan de bringe saken inn for retten.',
@@ -181,7 +181,7 @@ export default {
     'skjema.edit': 'Endre',
     'skjema.submit': 'Signer farskapserklæring',
 
-    'skjema.borSammen.description': 'Foreldre som ikke bor sammen med barnet har plikt til å betale bidrag.',
+    'skjema.borSammen.description': 'Foreldre som ikke bor sammen med barnet har plikt til å betale barnebidrag.',
     'skjema.borSammen.label.yes': 'Ja',
     'skjema.borSammen.label.no': 'Nei',
     'skjema.borSammen.validation.required': 'Opplysningen er påkrevd',
@@ -189,7 +189,7 @@ export default {
     'skjema.confirm.validation.required': 'Du må bekrefte før søknaden kan sendes inn.',
 
     'skjema.mor.barn.title': 'Gjelder barn',
-    'skjema.mor.barn.description': 'Legg inn termindatoen slik den er beregnet i ultralydundersøkelsen. Hvis du har fått en dato for planlagt keisersnitt, legger du inn denne datoen som termindato.',
+    'skjema.mor.barn.description': 'Legg inn termindatoen slik den er beregnet i ultralydundersøkelsen. Hvis du har fått en dato for planlagt keisersnitt, legger du inn denne datoen som termindato. Du må være minst 22 uker på vei for å opprette en erklæring.',
     'skjema.mor.barn.termindato.validation.required': 'Termindato er påkrevd',
     'skjema.mor.barn.termindato.validation.pattern': 'Ugyldig dato',
     'skjema.mor.barn.termindato.validation.minDate': 'Kan ikke være mer enn tre uker tilbake i tid',

@@ -57,6 +57,7 @@ const getStore = ({
     userInfo: {
         status: 'SUCCESS',
         data: {
+            brukersFornavn: null,
             kanOppretteFarskapserklaering: true,
             gyldigForelderrolle: true,
             forelderrolle: foreldrerolle,

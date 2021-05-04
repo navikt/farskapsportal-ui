@@ -24,4 +24,4 @@ export const isLessThanNDaysInThePast = (date: string, numberOfDays: number): bo
     differenceInDays(new Date(), parseISO(date)) < numberOfDays;
 
 export const getWeekOfPregnancy = (date: string): number =>
-    differenceInWeeks(new Date(), subDays(parseISO(date), DAYS_IN_PREGNANCY - 1)) + 1;
+    differenceInWeeks(new Date(), subDays(parseISO(date), DAYS_IN_PREGNANCY + 2)); // TODO: korrekt antall uker?
