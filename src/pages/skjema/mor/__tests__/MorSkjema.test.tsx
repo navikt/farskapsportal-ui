@@ -18,6 +18,7 @@ test('should display steps correctly', async () => {
     render(
         <MorSkjema
             userInfo={{
+                brukersFornavn: null,
                 kanOppretteFarskapserklaering: true,
                 gyldigForelderrolle: true,
                 forelderrolle: Foreldrerolle.Mor,
