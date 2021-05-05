@@ -4,10 +4,9 @@ import { useIntl } from 'react-intl';
 
 import FormButtons from 'components/form-buttons/FormButtons';
 import { getMessage } from 'utils/intl';
+import EkspanderbarInformasjon from './EkspanderbarInformasjon';
 
 import './BorSammenForm.less';
-import Ekspanderbartpanel from "nav-frontend-ekspanderbartpanel";
-import EkspanderbarInformasjon from "./EkspanderbarInformasjon";
 
 export type BorSammenValue = 'YES' | 'NO' | null;
 
