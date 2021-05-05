@@ -6,6 +6,8 @@ import FormButtons from 'components/form-buttons/FormButtons';
 import { getMessage } from 'utils/intl';
 
 import './BorSammenForm.less';
+import Ekspanderbartpanel from "nav-frontend-ekspanderbartpanel";
+import EkspanderbarInformasjon from "./EkspanderbarInformasjon";
 
 export type BorSammenValue = 'YES' | 'NO' | null;
 
@@ -33,7 +35,12 @@ function BorSammenForm(props: BorSammenFormProps) {
         <form onSubmit={handleSubmit(props.onSubmit)} className="BorSammenForm">
             <RadioGruppe
                 legend={getMessage(intl, props.titleId)}
-                description={getMessage(intl, 'skjema.borSammen.description')}
+                description={
+                    <EkspanderbarInformasjon
+                        introText={getMessage(intl, 'skjema.borSammen.description.intro')}
+                        contentText={getMessage(intl, 'skjema.borSammen.description.content')}
+                    />
+                }
                 feil={errors.borSammen?.message}
             >
                 <Radio
