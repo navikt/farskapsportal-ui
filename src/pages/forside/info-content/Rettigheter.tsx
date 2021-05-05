@@ -38,6 +38,14 @@ function Rettigheter() {
                     <FormattedMessage id="forside.rettigheter.samvaer.content.2" />
                 </Normaltekst>
             </InfoExpandablePanel>
+            <InfoExpandablePanel titleId="forside.rettigheter.navn.title">
+                <Normaltekst>
+                    <FormattedMessageWithExternalLink
+                        textId="forside.rettigheter.navn.content"
+                        linkId="forside.rettigheter.navn.link"
+                    />
+                </Normaltekst>
+            </InfoExpandablePanel>
             <Normaltekst>
                 <FormattedMessageWithExternalLink
                     textId="forside.rettigheter.linkLabel"

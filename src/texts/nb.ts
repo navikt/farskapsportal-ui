@@ -60,6 +60,9 @@ export default {
     'forside.rettigheter.samvaer.title': 'Samvær',
     'forside.rettigheter.samvaer.content.1': 'Barnet har rett til samvær med begge foreldrene selv om de lever hver for seg. Foreldrene har gjensidig ansvar for at samværsretten blir oppfylt.',
     'forside.rettigheter.samvaer.content.2': 'En avtale om foreldreansvar, samvær eller hvor barnet skal bo fast, kan endres ved ny avtale mellom foreldrene. Dersom foreldrene ikke blir enige, kan de bringe saken inn for retten.',
+    'forside.rettigheter.navn.title': 'Navn',
+    'forside.rettigheter.navn.content': 'Foreldre med foreldreansvar kan velge navn til barnet. De må sende melding om navnet til <a>Folkeregisteret</a> (Skatteetaten). Hvis foreldrene ikke gir melding om etternavn innen 6 måneder, får barnet morens etternavn.',
+    'forside.rettigheter.navn.link': 'https://www.skatteetaten.no/skjema/navnevalg/',
     'forside.rettigheter.linkLabel': '<a>Les mer om loven om farskap</a>',
     'forside.rettigheter.link': 'https://lovdata.no/dokument/NL/lov/1981-04-08-7',
 
