@@ -138,6 +138,8 @@ export default {
     'oversikt.infoPanel.far.ikkeSignert': 'Du er oppgitt som faren til barnet.', // TODO
     'oversikt.infoPanel.far.signert': 'Du har erklært farskap og erklæringen er oversendt til Folkeregisteret for registrering. En kopi av erklæringen er også sendt til adressen du har registret hos NAV.', // TODO
 
+    'oversikt.ventendeErklaeringer.title': 'Oversikt',
+
     'oversikt.moreInfoPanels.erFarskapRegistrert.title': 'Er du usikker på om farskapet for barnet er registrert?',
     'oversikt.moreInfoPanels.erFarskapRegistrert.content': 'Hvis du allerede har født et barn og lurer på om farskapet er registrert ber vi deg ta kontakt med Skatteetaten. Du finner mer informasjon om registrering av farskap <a>her</a>. Hvis du tidligere har erklært farskap elektronisk skal erklæringen ha blitt sendt til e-postadressen du har registrert hos NAV.',
     'oversikt.moreInfoPanels.erFarskapRegistrert.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/barn-fodt-i-norge/',

@@ -1,12 +1,9 @@
 import ContentContainer from 'components/content-container/ContentContainer';
 import Page from 'components/page/Page';
 import WithUserInfo from 'store/providers/WithUserInfo';
-import BarnUtenErklaering from './BarnUtenErklaering';
-import ErklaeringerAvventerBruker from './ErklaeringerAvventerBruker';
-import ErklaeringerAvventerMotpart from './ErklaeringerAvventerMotpart';
-import ErklaeringerAvventerRegistrering from './ErklaeringerAvventerRegistrering';
 import MoreInfoPanels from './MoreInfoPanels';
 import OversiktInfoPanel from './OversiktInfoPanel';
+import VentendeErklaeringer from './VentendeErklaeringer';
 
 import './Oversikt.less';
 
@@ -18,10 +15,7 @@ function Oversikt() {
                     <ContentContainer className="Oversikt">
                         <OversiktInfoPanel userInfo={userInfo} />
                         <MoreInfoPanels userInfo={userInfo} />
-                        <BarnUtenErklaering userInfo={userInfo} />
-                        <ErklaeringerAvventerBruker userInfo={userInfo} />
-                        <ErklaeringerAvventerMotpart userInfo={userInfo} />
-                        <ErklaeringerAvventerRegistrering userInfo={userInfo} />
+                        <VentendeErklaeringer userInfo={userInfo} />
                     </ContentContainer>
                 )}
             </WithUserInfo>
