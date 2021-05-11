@@ -3,7 +3,7 @@ import Page from 'components/page/Page';
 import WithUserInfo from 'store/providers/WithUserInfo';
 import MoreInfoPanels from './MoreInfoPanels';
 import OversiktInfoPanel from './OversiktInfoPanel';
-import VentendeErklaeringer from "./VentendeErklaeringer";
+import VentendeErklaeringer from './VentendeErklaeringer';
 
 import './Oversikt.less';
 
