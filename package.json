@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@craco/craco": "^6.1.1",
-    "@formatjs/intl-datetimeformat": "^3.3.2",
+    "@formatjs/intl-datetimeformat": "^3.3.3",
     "@formatjs/intl-numberformat": "^6.2.6",
     "@navikt/ds-icons": "^0.2.1",
     "@navikt/fnrvalidator": "^1.1.3",

@@ -1871,6 +1871,13 @@
   dependencies:
     tslib "^2.1.0"
 
+"@formatjs/ecma402-abstract@1.7.1":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@formatjs/ecma402-abstract/-/ecma402-abstract-1.7.1.tgz#1459a9dad654d5d5ec34765965b8e4f22ad6ff81"
+  integrity sha512-FjewVLB2DVEVCvvC7IMffzXVhysvi442i6ed0H7qcrT6xtUpO4vr0oZgpOmsv6D9I4Io0GVebIuySwteS/k3gg==
+  dependencies:
+    tslib "^2.1.0"
+
 "@formatjs/fast-memoize@1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@formatjs/fast-memoize/-/fast-memoize-1.1.1.tgz#3006b58aca1e39a98aca213356b42da5d173f26b"
@@ -1893,12 +1900,12 @@
     "@formatjs/ecma402-abstract" "1.6.5"
     tslib "^2.1.0"
 
-"@formatjs/intl-datetimeformat@^3.3.2":
-  version "3.3.2"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl-datetimeformat/-/intl-datetimeformat-3.3.2.tgz#b50a92012b4e62b267b1300f5f8aca6c1dffc7fc"
-  integrity sha512-nlZ7Iq7C5AsbFpz4hIx8k/WW4latObe0xCXKheZjhKcfsw3kvc2mzTVvz/Ta8zRbJMEX2oMFYFjHGKcmQHmv1g==
+"@formatjs/intl-datetimeformat@^3.3.3":
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-datetimeformat/-/intl-datetimeformat-3.3.5.tgz#c812452bfddda88efa1ff554dc80f24abdbcbab6"
+  integrity sha512-JbjkS2OHSyrNgHBiELmaywZ9Yy03HwRj69adWrc9N6baAl/sN6INtyxU+uv3MhTjOEyMtw5FrFO5Juk9VY5o5A==
   dependencies:
-    "@formatjs/ecma402-abstract" "1.6.5"
+    "@formatjs/ecma402-abstract" "1.7.1"
     tslib "^2.1.0"
 
 "@formatjs/intl-displaynames@4.0.13":
