@@ -1,7 +1,12 @@
 /* eslint-disable */
 export default {
+    'one': 'en',
     'two': 'to',
     'three': 'tre',
+    'four': 'fire',
+    'five': 'fem',
+    'hours': 'timer',
+    'minutes': 'minutter',
     'foedselsnummer': 'Fødselsnummer',
     'termindato': 'Termindato',
     'navn': 'Navn',
