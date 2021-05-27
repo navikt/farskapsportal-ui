@@ -23,7 +23,11 @@ type ActionType =
     | { type: 'CONTROL_FATHER' }
     | {
           type: 'CONTROL_FATHER_FAILURE';
-          payload: { feilkode: Feilkode | null; antallResterendeForsoek: number | null; tidspunktForNullstillingAvForsoek: string | null };
+          payload: {
+              feilkode: Feilkode | null;
+              antallResterendeForsoek: number | null;
+              tidspunktForNullstillingAvForsoek: string | null;
+          };
       }
     | { type: 'API_ERROR'; payload: AlertError };
 
@@ -101,7 +105,8 @@ function FarForm(props: FarFormProps) {
                         payload: {
                             feilkode: error.feilkode,
                             antallResterendeForsoek: error.antallResterendeForsoek,
-                            tidspunktForNullstillingAvForsoek: error.tidspunktForNullstillingAvForsoek,
+                            tidspunktForNullstillingAvForsoek:
+                                error.tidspunktForNullstillingAvForsoek,
                         },
                     });
                 } else {
@@ -127,7 +132,9 @@ function FarForm(props: FarFormProps) {
                             id="far-form-validation-error"
                             feilkode={state.feilkode}
                             antallResterendeForsoek={state.antallResterendeForsoek}
-                            tidspunktForNullstillingAvForsoek={state.tidspunktForNullstillingAvForsoek}
+                            tidspunktForNullstillingAvForsoek={
+                                state.tidspunktForNullstillingAvForsoek
+                            }
                         />
                     )
                 }

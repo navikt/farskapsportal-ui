@@ -1,11 +1,10 @@
 import AlertStripe from 'nav-frontend-alertstriper';
-import {Normaltekst} from 'nav-frontend-typografi';
-import {FormattedMessage} from 'react-intl';
+import { Normaltekst } from 'nav-frontend-typografi';
+import { FormattedMessage } from 'react-intl';
 
-import FormattedMessageWithExternalLink
-    from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
-import {Feilkode} from 'types/feilkode';
-import FarFormValidationMaksAntallForsoek from "./FarFormValidationMaksAntallForsoek";
+import FormattedMessageWithExternalLink from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
+import { Feilkode } from 'types/feilkode';
+import FarFormValidationMaksAntallForsoek from './FarFormValidationMaksAntallForsoek';
 
 interface FarFormValidationErrorProps {
     id: string;
@@ -29,10 +28,18 @@ function FarFormValidationError({
             case Feilkode.IkkeMyndig:
                 return <IkkeMyndig />;
             case Feilkode.MaksAntallForsoek:
-                return <FarFormValidationMaksAntallForsoek tidspunktForNullstillingAvForsoek={tidspunktForNullstillingAvForsoek}/>;
+                return (
+                    <FarFormValidationMaksAntallForsoek
+                        tidspunktForNullstillingAvForsoek={tidspunktForNullstillingAvForsoek}
+                    />
+                );
             case Feilkode.NavnStemmerIkkeMedRegister:
                 if (antallResterendeForsoek === 0) {
-                    return <FarFormValidationMaksAntallForsoek tidspunktForNullstillingAvForsoek={tidspunktForNullstillingAvForsoek}/>;
+                    return (
+                        <FarFormValidationMaksAntallForsoek
+                            tidspunktForNullstillingAvForsoek={tidspunktForNullstillingAvForsoek}
+                        />
+                    );
                 } else {
                     return <NavnStemmerIkkeMedRegister />;
                 }
