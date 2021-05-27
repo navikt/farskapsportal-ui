@@ -7,25 +7,6 @@ interface MaksAntallForsoekProps {
     tidspunktForNullstillingAvForsoek?: string | null;
 }
 
-const getAntallResterendeTimerEllerMinutterTextId = (
-    antallResterendeTimerEllerMinutter: number
-): string => {
-    switch (antallResterendeTimerEllerMinutter) {
-        case 1:
-            return 'one';
-        case 2:
-            return 'two';
-        case 3:
-            return 'three';
-        case 4:
-            return 'four';
-        case 5:
-            return 'five';
-        default:
-            return antallResterendeTimerEllerMinutter.toString();
-    }
-};
-
 function FarFormValidationMaksAntallForsoek({
     tidspunktForNullstillingAvForsoek,
 }: MaksAntallForsoekProps) {
@@ -41,6 +22,15 @@ function FarFormValidationMaksAntallForsoek({
             ? timerIgjenForNullstillingAvForsoek
             : getMinutesUntil(tidspunktForNullstillingAvForsoek);
 
+    const tidsEnhetTextId =
+        timerIgjenForNullstillingAvForsoek > 0
+            ? timerIgjenForNullstillingAvForsoek > 1
+                ? 'hours'
+                : 'hour'
+            : timerEllerMinutterIgjenForNullstillingAvForsoek > 1
+            ? 'minutes'
+            : 'minute';
+
     return (
         <>
             <Normaltekst>
@@ -50,16 +40,8 @@ function FarFormValidationMaksAntallForsoek({
                 <FormattedMessage
                     id="skjema.mor.far.validation.maksAntallForsoek.2"
                     values={{
-                        timerEllerMinutterIgjenForNullstillingAvForsoek: getMessage(
-                            intl,
-                            getAntallResterendeTimerEllerMinutterTextId(
-                                timerEllerMinutterIgjenForNullstillingAvForsoek
-                            )
-                        ),
-                        tidsEnhet: getMessage(
-                            intl,
-                            timerIgjenForNullstillingAvForsoek > 0 ? 'hours' : 'minutes'
-                        ),
+                        timerEllerMinutterIgjenForNullstillingAvForsoek: timerEllerMinutterIgjenForNullstillingAvForsoek,
+                        tidsEnhet: getMessage(intl, tidsEnhetTextId),
                     }}
                 />
             </Normaltekst>

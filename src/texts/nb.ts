@@ -1,11 +1,10 @@
 /* eslint-disable */
 export default {
-    'one': 'en',
     'two': 'to',
     'three': 'tre',
-    'four': 'fire',
-    'five': 'fem',
+    'hour': 'time',
     'hours': 'timer',
+    'minute': 'minutt',
     'minutes': 'minutter',
     'foedselsnummer': 'Fødselsnummer',
     'termindato': 'Termindato',
