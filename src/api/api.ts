@@ -149,6 +149,7 @@ const checkHttpError = async (response: Response): Promise<Response> => {
             text: responseErrorData.feilkodebeskrivelse,
             feilkode: responseErrorData.feilkode,
             antallResterendeForsoek: responseErrorData.antallResterendeForsoek,
+            tidspunktForNullstillingAvForsoek: responseErrorData.tidspunktForNullstillingAvForsoek,
         };
         throw error;
     }
