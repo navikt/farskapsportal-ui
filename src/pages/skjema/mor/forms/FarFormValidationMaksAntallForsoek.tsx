@@ -58,7 +58,7 @@ function FarFormValidationMaksAntallForsoek({
                         ),
                         tidsEnhet: getMessage(
                             intl,
-                            timerIgjenForNullstillingAvForsoek > 0 ? 'timer' : 'minutter'
+                            timerIgjenForNullstillingAvForsoek > 0 ? 'hours' : 'minutes'
                         ),
                     }}
                 />

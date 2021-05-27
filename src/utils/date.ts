@@ -28,7 +28,7 @@ export const getWeekOfPregnancy = (date: string): number =>
     differenceInWeeks(new Date(), subDays(parseISO(date), DAYS_IN_PREGNANCY + 2)); // TODO: korrekt antall uker?
 
 export const getHoursUntil = (date: string): number =>
-    differenceInHours(new Date(), parseISO(date));
+    differenceInHours(parseISO(date), new Date());
 
 export const getMinutesUntil = (date: string): number =>
-    differenceInHours(new Date(), parseISO(date));
+    differenceInHours(parseISO(date), new Date());
