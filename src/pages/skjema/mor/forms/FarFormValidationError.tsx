@@ -1,20 +1,24 @@
 import AlertStripe from 'nav-frontend-alertstriper';
-import { Normaltekst } from 'nav-frontend-typografi';
-import { FormattedMessage } from 'react-intl';
+import {Normaltekst} from 'nav-frontend-typografi';
+import {FormattedMessage} from 'react-intl';
 
-import FormattedMessageWithExternalLink from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
-import { Feilkode } from 'types/feilkode';
+import FormattedMessageWithExternalLink
+    from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
+import {Feilkode} from 'types/feilkode';
+import FarFormValidationMaksAntallForsoek from "./FarFormValidationMaksAntallForsoek";
 
 interface FarFormValidationErrorProps {
     id: string;
     feilkode: Feilkode;
     antallResterendeForsoek?: number | null;
+    tidspunktForNullstillingAvForsoek?: string | null;
 }
 
 function FarFormValidationError({
     id,
     feilkode,
     antallResterendeForsoek,
+    tidspunktForNullstillingAvForsoek,
 }: FarFormValidationErrorProps) {
     const renderContent = () => {
         switch (feilkode) {
@@ -25,10 +29,10 @@ function FarFormValidationError({
             case Feilkode.IkkeMyndig:
                 return <IkkeMyndig />;
             case Feilkode.MaksAntallForsoek:
-                return <MaksAntallForsoek />;
+                return <FarFormValidationMaksAntallForsoek tidspunktForNullstillingAvForsoek={tidspunktForNullstillingAvForsoek}/>;
             case Feilkode.NavnStemmerIkkeMedRegister:
                 if (antallResterendeForsoek === 0) {
-                    return <MaksAntallForsoek />;
+                    return <FarFormValidationMaksAntallForsoek tidspunktForNullstillingAvForsoek={tidspunktForNullstillingAvForsoek}/>;
                 } else {
                     return <NavnStemmerIkkeMedRegister />;
                 }
@@ -74,19 +78,6 @@ function IkkeMyndig() {
             </Normaltekst>
             <Normaltekst>
                 <FormattedMessage id="error.taKontakt" />
-            </Normaltekst>
-        </>
-    );
-}
-
-function MaksAntallForsoek() {
-    return (
-        <>
-            <Normaltekst>
-                <FormattedMessage id="skjema.mor.far.validation.maksAntallForsoek.1" />
-            </Normaltekst>
-            <Normaltekst>
-                <FormattedMessage id="skjema.mor.far.validation.maksAntallForsoek.2" />
             </Normaltekst>
         </>
     );

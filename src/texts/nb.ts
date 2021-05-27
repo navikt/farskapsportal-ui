@@ -216,7 +216,7 @@ export default {
     'skjema.mor.far.validation.ikkeMyndig': 'Faren du har oppgitt er ikke myndig. For at farskapet skal kunne erklæres elektronisk, må begge foreldrene være over 18 år.',
     'skjema.mor.far.validation.pdlPersonIkkeFunnet': 'Fødselsnummeret du har oppgitt finnes ikke i Folkeregisteret.',
     'skjema.mor.far.validation.maksAntallForsoek.1': 'Du har tastet feil fødselsnummer/navn på oppgitt far fem ganger og har nå blitt blokkert fra løsningen.',
-    'skjema.mor.far.validation.maksAntallForsoek.2': 'Du kan prøve på nytt i morgen.',
+    'skjema.mor.far.validation.maksAntallForsoek.2': 'Du kan prøve på nytt igjen fra {tidspunktForNullstillingAvForsoek}.',
     'skjema.mor.far.validation.navnStemmerIkkeMedRegister.1': 'Navnet og/eller fødselsnummeret til faren til barnet er feil.',
     'skjema.mor.far.validation.navnStemmerIkkeMedRegister.2': 'Sjekk at navnet er stavet riktig og at fødselsnummeret stemmer.',
     'skjema.mor.far.validation.resterendeForsoek': 'Du har tastet feil fødselsnummer/navn på oppgitt far {incorrectAttempts} ganger. Vennligst be faren til barnet om å sjekke hvordan navnet hans er skrevet i Folkeregisteret før du prøver på nytt. Hvis du taster feil fem ganger vil du bli blokkert fra løsningen.',
