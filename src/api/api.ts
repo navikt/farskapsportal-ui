@@ -112,6 +112,7 @@ const performApiCall = (
                 type: err.type || 'feil',
                 feilkode: err.feilkode,
                 antallResterendeForsoek: err.antallResterendeForsoek,
+                tidspunktForNullstillingAvForsoek: err.tidspunktForNullstillingAvForsoek,
             };
 
             if (!onlyLogErrorOn || onlyLogErrorOn(error)) {
