@@ -225,6 +225,7 @@ export default {
     'skjema.mor.confirm.title': 'Bekreft opplysninger om faren til barnet',
     'skjema.mor.confirm.farCorrect.label': 'Jeg godkjenner at opplysningene om faren til barnet er korrekt.',
     'skjema.mor.confirm.cannotWithdraw.label': 'Jeg er klar over at jeg ikke kan trekke tilbake denne bekreftelsen senere.',
+    'skjema.confirm.signeringPostenInfo': 'Du blir videresendt til Posten sin løsning for signering',
 
     'skjema.far.borSammen.title': 'Bor du sammen med moren til barnet?',
     'skjema.far.lesOpplysninger.title': 'Les opplysninger oppgitt av moren til barnet',

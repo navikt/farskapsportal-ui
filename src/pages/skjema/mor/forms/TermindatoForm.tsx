@@ -17,6 +17,7 @@ import {
     isLessThanNDaysInThePast,
 } from 'utils/date';
 import { getMessage } from 'utils/intl';
+import {Systemtittel} from "nav-frontend-typografi";
 
 export interface TermindatoFormInput {
     termindato: string;
@@ -40,7 +41,7 @@ function TermindatoForm(props: TermindatoFormProps) {
     return (
         <form onSubmit={handleSubmit(props.onSubmit)}>
             <SkjemaGruppe
-                legend={getMessage(intl, 'skjema.mor.barn.title')}
+                legend={<Systemtittel>{getMessage(intl, 'skjema.mor.barn.title')}</Systemtittel>}
                 description={getMessage(intl, 'skjema.mor.barn.description')}
             >
                 <Controller

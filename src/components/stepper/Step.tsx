@@ -3,9 +3,10 @@ import cl from "classnames";
 import React, { forwardRef } from "react";
 import { StepContext } from "./Stepper";
 
-import "@navikt/ds-css/button/index.css";
-import "@navikt/ds-css/stepper/index.css";
 import {OverridableComponent} from "./OverridableComponent";
+
+import "./button/index.less";
+import "./index.less";
 
 export interface StepperStepProps {
   props: {
@@ -18,6 +19,7 @@ export interface StepperStepProps {
   defaultComponent: "span";
 }
 
+/* eslint-disable */
 const StepperStep: OverridableComponent<StepperStepProps> = forwardRef(
   (
     {
@@ -35,7 +37,7 @@ const StepperStep: OverridableComponent<StepperStepProps> = forwardRef(
     const getIndicator = () => {
       switch (status) {
         case "finished":
-          return <SuccessFilled />;
+          return <SuccessFilled style={{color: '#0067C5'}}/>;
         case "warning":
           return <WarningFilled />;
         case "inProgress":

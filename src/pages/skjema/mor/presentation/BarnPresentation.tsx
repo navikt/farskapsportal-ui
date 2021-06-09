@@ -1,8 +1,8 @@
-import { Element, Undertittel, Normaltekst } from 'nav-frontend-typografi';
-import { FormattedMessage } from 'react-intl';
+import {Element, Normaltekst, Systemtittel} from 'nav-frontend-typografi';
+import {FormattedMessage} from 'react-intl';
 
 import DatePresentation from 'components/date-presentation/DatePresentation';
-import { formatFoedselsnummer } from 'utils/foedselsnummer';
+import {formatFoedselsnummer} from 'utils/foedselsnummer';
 
 import './BarnPresentation.less';
 
@@ -14,9 +14,9 @@ interface BarnPresentationProps {
 function BarnPresentation(props: BarnPresentationProps) {
     return (
         <div className="BarnPresentation">
-            <Undertittel>
+            <Systemtittel>
                 <FormattedMessage id="skjema.mor.barn.title" />
-            </Undertittel>
+            </Systemtittel>
             {props.foedselsnummer && (
                 <>
                     <Normaltekst>

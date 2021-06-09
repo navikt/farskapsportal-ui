@@ -1,3 +1,17 @@
+@navOransje: #ff9100;
+@navGronn: #06893a;
+@navBla: #0067c5;
+
+@color-blue-60: mix(@navBla, #3e3832, 40%);
+@color-orange-40: mix(@navOransje, #fff, 60%);
+@color-darkgray: #3e3832;
+@color-green-50: @navGronn;
+@shadow-focus: 0 0 0 3px mix(@navBla, #3e3832, 20%);
+@color-gray-40: #A0A0A0;
+@navLysGra: #F1F1F1;
+@color-blue-50: @navBla;
+@color-disabled: @color-gray-40;
+
 /* Step */
 .navds-step {
   position: relative;
@@ -10,22 +24,22 @@
 }
 
 .navds-stepper--colorful > * .navds-step--inProgress > * svg {
-  color: var(--navds-color-blue-60);
+  color: @color-blue-60;
   background-color: #fff;
 }
 
 .navds-stepper--colorful > * .navds-step--warning > * svg {
-  color: var(--navds-color-orange-40);
+  color: @color-orange-40;
   background: radial-gradient(
     circle,
-    var(--navds-color-darkgray) 50%,
+    @color-darkgray 50%,
     0,
     transparent
   );
 }
 
 .navds-stepper--colorful > * .navds-step--finished > * svg {
-  color: var(--navds-color-green-50);
+  color: @color-green-50;
   background-color: #fff;
 }
 
@@ -48,13 +62,12 @@
 }
 
 .navds-step > * svg {
-  color: var(--navds-color-darkgray);
-  background-color: #fff;
+  color: @navLysGra;
 }
 
 a.navds-step > * svg,
 button.navds-step > * svg {
-  color: var(--navds-color-blue-50);
+  color: @color-blue-50;
 }
 
 button.navds-step.navds-step--active,
@@ -65,7 +78,7 @@ a.navds-step.navds-step--active {
 button.navds-step:focus,
 a.navds-step:focus {
   outline: none;
-  box-shadow: var(--navds-shadow-focus);
+  box-shadow: @shadow-focus;
 }
 
 .navds-step__indicator {
@@ -76,7 +89,7 @@ a.navds-step:focus {
   justify-content: center;
   align-items: center;
   border-radius: 1rem;
-  box-shadow: 0 0 0 2px var(--navds-color-darkgray) inset;
+  box-shadow: 0 0 0 2px @color-gray-40 inset;
   background-color: #fff;
 }
 
@@ -94,7 +107,7 @@ a.navds-step:focus {
 
   /* this just works. not sure why */
   height: calc(100% + 8px);
-  background-color: var(--navds-color-gray-40);
+  background-color: @color-gray-40;
   z-index: 1;
   border-radius: 0.5rem;
 }
@@ -117,7 +130,7 @@ a.navds-step:focus {
 
 /* prettier-ignore */
 .navds-stepper > li:not(:last-child) > .navds-step.navds-step--before-active::before {
-  background-color: var(--navds-color-darkgray);
+  background-color: @color-darkgray;
 }
 
 /* prettier-ignore */
@@ -134,7 +147,7 @@ a.navds-step:focus {
 
   /* this just works. not sure why */
   height: 35%;
-  background-color: var(--navds-color-darkgray);
+  background-color: @navLysGra;
   border-radius: 0.5rem;
 }
 
@@ -151,14 +164,14 @@ a.navds-step:focus {
 a.navds-step--inProgress.navds-step.navds-step--active:not(.navds-step--disabled) > .navds-step__indicator::before,
 button.navds-step--inProgress.navds-step.navds-step--active:not(.navds-step--disabled) > .navds-step__indicator::before,
 .navds-stepper--colorful > * .navds-step--inProgress.navds-step.navds-step--active:not(.navds-step--disabled) > .navds-step__indicator::before {
-  background-color: var(--navds-color-blue-60);
+  background-color: @color-blue-60;
 }
 
 .navds-stepper.navds-stepper--arrow > li:last-child > .navds-step::after {
   content: "";
   border-style: solid;
   border-width: 0 0 2px 2px;
-  border-color: var(--navds-color-gray-40);
+  border-color: @color-gray-40;
   height: 10px;
   width: 10px;
   transform: rotate(-45deg);
@@ -171,6 +184,8 @@ button.navds-step--inProgress.navds-step.navds-step--active:not(.navds-step--dis
 .navds-stepper > * .navds-step__indicator {
   margin-right: 0.5rem;
   float: left;
+  background-color: @navLysGra; // TODO remove?
+  color: @color-gray-40; // TODO remove?
 }
 
 .navds-step__indicator > svg {
@@ -178,54 +193,53 @@ button.navds-step--inProgress.navds-step.navds-step--active:not(.navds-step--dis
 }
 
 .navds-step--active > .navds-step__indicator {
-  background-color: var(--navds-color-darkgray);
-  box-shadow: none;
-  color: #fff;
+  background-color: @navLysGra;
+  color: @color-gray-40;
 }
 
 button.navds-step > * .navds-step__indicator,
 button.navds-step > .navds-step__indicator,
 a.navds-step > * .navds-step__indicator,
 a.navds-step > .navds-step__indicator {
-  color: var(--navds-color-blue-60);
-  box-shadow: 0 0 0 2px var(--navds-color-blue-60) inset;
+  color: @color-blue-60;
+  box-shadow: 0 0 0 2px @color-blue-60 inset;
 }
 
 button.navds-step.navds-step--active > .navds-step__indicator,
 a.navds-step.navds-step--active > .navds-step__indicator {
-  background-color: var(--navds-color-blue-50);
-  box-shadow: 0 0 0 2px var(--navds-color-blue-50) inset;
+  background-color: @color-blue-50;
+  box-shadow: 0 0 0 2px @color-blue-50 inset;
   color: #fff;
 }
 
 .navds-stepper > * .navds-step__label {
-  overflow: hidden;
   box-sizing: border-box;
   margin-top: 3px;
+  width: 100%;
 }
 
 button.navds-step,
 a.navds-step {
   background: none;
   text-decoration: underline;
-  color: var(--navds-color-blue-50);
+  color: @color-blue-50;
   text-align: left;
 }
 
 .navds-step--active > .navds-step__label {
-  color: var(--navds-color-darkgray);
+  color: @color-darkgray;
   text-decoration: none;
 }
 
 .navds-step--disabled.navds-step--inProgress > * svg,
 .navds-step--disabled.navds-step--warning > * svg,
 .navds-step--disabled.navds-step--finished > * svg {
-  color: var(--navds-color-disabled);
+  color: @color-disabled;
   background: #fff;
 }
 
 .navds-step--disabled > .navds-step__label {
-  color: var(--navds-color-gray-40);
+  color: @color-gray-40;
   text-decoration: none;
 }
 
@@ -235,7 +249,7 @@ a.navds-step {
 
 a.navds-step:hover:not(.navds-step--disabled),
 button.navds-step:hover:not(.navds-step--disabled) {
-  border: 2px solid var(--navds-color-blue-50);
+  border: 2px solid @color-blue-50;
   text-decoration: none;
   cursor: pointer;
 }
@@ -247,18 +261,18 @@ a.navds-step:hover:not(.navds-step--disabled) {
 }
 
 .navds-step--disabled > .navds-step__indicator {
-  box-shadow: 0 0 0 2px var(--navds-color-gray-40) inset;
-  color: var(--navds-color-gray-40);
+  box-shadow: 0 0 0 2px @color-gray-40 inset;
+  color: @color-gray-40;
   background-color: #fff;
 }
 
 .navds-step.navds-step--disabled > .navds-step__indicator {
-  box-shadow: 0 0 0 2px var(--navds-color-gray-40) inset;
-  color: var(--navds-color-gray-40);
+  box-shadow: 0 0 0 2px @color-gray-40 inset;
+  color: @color-gray-40;
 }
 
 .navds-step.navds-step--disabled.navds-step--active > .navds-step__indicator {
-  background-color: var(--navds-color-gray-40);
+  background-color: @color-gray-40;
   color: #fff;
   box-shadow: none;
 }
@@ -269,5 +283,5 @@ a.navds-step.navds-step--disabled {
 }
 
 .navds-step--disabled.navds-step--active > .navds-step__label {
-  color: var(--navds-color-disabled);
+  color: @color-disabled;
 }

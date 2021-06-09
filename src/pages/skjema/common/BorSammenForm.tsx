@@ -7,6 +7,7 @@ import { getMessage } from 'utils/intl';
 import EkspanderbarInformasjon from './EkspanderbarInformasjon';
 
 import './BorSammenForm.less';
+import {Systemtittel} from "nav-frontend-typografi";
 
 export type BorSammenValue = 'YES' | 'NO' | null;
 
@@ -33,7 +34,7 @@ function BorSammenForm(props: BorSammenFormProps) {
     return (
         <form onSubmit={handleSubmit(props.onSubmit)} className="BorSammenForm">
             <RadioGruppe
-                legend={getMessage(intl, props.titleId)}
+                legend={<Systemtittel>{getMessage(intl, props.titleId)}</Systemtittel>}
                 description={
                     <EkspanderbarInformasjon
                         introText={getMessage(intl, 'skjema.borSammen.description.intro')}

@@ -1,7 +1,8 @@
-import "./index.css";
 import cl from "classnames";
 import React, { createContext, forwardRef } from "react";
 import StepperStep from "./Step";
+
+import "./index.less";
 
 // TODO: Denne komponenten er under utvikling, så denne koden er bare kopiert fra tilhørende branch
 //  på nav-frontend-moduler repo. Bytt ut med bruk av riktig package når den blir tilgjengelig.
@@ -19,6 +20,7 @@ export const StepContext = createContext({
   activeStep: 0,
 });
 
+/* eslint-disable */
 const Stepper = forwardRef<HTMLOListElement, StepperProps>(
   (
     {

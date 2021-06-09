@@ -1,11 +1,13 @@
 import { BekreftCheckboksPanel, SkjemaGruppe } from 'nav-frontend-skjema';
 import { useForm, Controller } from 'react-hook-form';
-import { useIntl } from 'react-intl';
+import {FormattedMessage, useIntl} from 'react-intl';
 
 import FormButtons from 'components/form-buttons/FormButtons';
 import { getMessage } from 'utils/intl';
 
 import './MorBekreftForm.less';
+import {Normaltekst, Systemtittel} from "nav-frontend-typografi";
+import AlertStripe from "nav-frontend-alertstriper";
 
 interface MorBekreftFormInput {
     farCorrect: boolean;
@@ -32,7 +34,7 @@ function MorBekreftForm(props: MorBekreftFormProps) {
 
     return (
         <form onSubmit={handleSubmit(props.onSubmit)} className="MorBekreftForm">
-            <SkjemaGruppe legend={getMessage(intl, 'skjema.mor.confirm.title')}>
+            <SkjemaGruppe legend={<Systemtittel>{getMessage(intl, 'skjema.mor.confirm.title')}</Systemtittel>}>
                 {checkboxIds.map((id) => (
                     <Controller
                         key={id}
@@ -53,6 +55,11 @@ function MorBekreftForm(props: MorBekreftFormProps) {
                     />
                 ))}
             </SkjemaGruppe>
+            <AlertStripe type="info">
+                <Normaltekst>
+                    <FormattedMessage id="skjema.confirm.signeringPostenInfo"/>
+                </Normaltekst>
+            </AlertStripe>
             <FormButtons
                 submitText={getMessage(intl, 'skjema.submit')}
                 cancelText={getMessage(intl, 'skjema.cancel')}
