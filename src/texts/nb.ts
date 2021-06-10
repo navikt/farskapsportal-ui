@@ -247,6 +247,9 @@ export default {
     'kvittering.intro.far.3': 'Du kan finne igjen erklæringer her: ',
     'kvittering.intro.far.link': 'Dine farskapserklæringer', // TODO ?
     'kvittering.morAlert': 'Erklæringen er ikke gyldig før oppgitt far har signert. Han kan allerede nå logge seg inn på Ditt NAV og signere erklæringen. Du bør gjøre ham oppmerksom på dette. Hvis faren til barnet ikke har signert innen 3 dager, vil vi sende ham en påminnelse på SMS.',
+    'kvittering.prosessIndikator.step.1': '1. Mor oppgir far',
+    'kvittering.prosessIndikator.step.2': '2. Far erklærer farskap',
+    'kvittering.prosessIndikator.step.3': '3. Erklæringen oversendes folkeregisteret for registering og arkivering',
     'kvittering.hvaSkjerVidere.title': 'Hva skjer videre?',
     'kvittering.hvaSkjerVidere.1': 'Det er Skatteetaten ved Folkeregisteret som har ansvaret for å registrere og arkivere farskapserklæringer. Dere vil få oversendt erklæringen når dere begge har signert den. Etter at dere har valgt navnet til barnet vil du motta en bekreftelse på registrering av fødselsnummer og navn. Bekreftelsen mottar du i innboksen din i Altinn.',
     'kvittering.hvaSkjerVidere.2': 'Flere opplysninger finner du her:',

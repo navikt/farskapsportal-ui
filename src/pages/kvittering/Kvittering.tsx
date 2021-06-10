@@ -12,6 +12,8 @@ import HvaSkjerViderePanel from './HvaSkjerViderePanel';
 import KvitteringIntro from './KvitteringIntro';
 import MorAlert from './MorAlert';
 import YtelserOgTjenesterPanel from './YtelserOgTjenesterPanel';
+import ProsessIndikator from "./ProsessIndikator";
+import {SuccessFilled} from "@navikt/ds-icons";
 
 import './Kvittering.less';
 
@@ -47,15 +49,21 @@ function Kvittering() {
 
                     return (
                         <ContentContainer className="Kvittering">
-                            <KvitteringIntro erklaering={erklaering} />
-                            <MorAlert erklaering={erklaering} />
-                            <FarskapserklaeringPresentation
-                                farskapserklaering={erklaering}
-                                border={true}
-                            />
-                            <HvaSkjerViderePanel />
-                            <HvaSkjerHvisPanel erklaering={erklaering} />
-                            <YtelserOgTjenesterPanel erklaering={erklaering} />
+                            <div className="Kvittering__sidebar">
+                                <SuccessFilled aria-label="OK icon" role="img" focusable={false} />
+                            </div>
+                            <div className="Kvittering__content">
+                                <KvitteringIntro erklaering={erklaering} />
+                                <MorAlert erklaering={erklaering} />
+                                <ProsessIndikator erklaering={erklaering}/>
+                                {/*<FarskapserklaeringPresentation*/}
+                                {/*    farskapserklaering={erklaering}*/}
+                                {/*    border={true}*/}
+                                {/*/>*/}
+                                <HvaSkjerViderePanel />
+                                <HvaSkjerHvisPanel erklaering={erklaering} />
+                                <YtelserOgTjenesterPanel erklaering={erklaering} />
+                            </div>
                         </ContentContainer>
                     );
                 }}
