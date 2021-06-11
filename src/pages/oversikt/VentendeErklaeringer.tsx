@@ -25,7 +25,7 @@ function VentendeErklaeringer({ userInfo }: VentendeErklaeringerProps) {
     }
 
     return (
-        <Panel className="VentendeErklaeringer">
+        <Panel className="VentendeErklaeringer" border>
             <Systemtittel tag="h2">
                 <FormattedMessage id="oversikt.ventendeErklaeringer.title" />
             </Systemtittel>

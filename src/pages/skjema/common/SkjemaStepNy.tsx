@@ -9,7 +9,6 @@ import {StepStatus} from 'types/form';
 import './SkjemaStepNy.less';
 
 interface SkjemaStepProps {
-    stepNumber: 1 | 2 | 3 | 4;
     formComponent: ReactNode;
     presentationComponent?: ReactNode;
     status: StepStatus;

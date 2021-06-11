@@ -1,10 +1,11 @@
-import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
-import { Undertittel } from 'nav-frontend-typografi';
-import { FormattedMessage } from 'react-intl';
+import {Hovedknapp, Knapp} from 'nav-frontend-knapper';
+import {Systemtittel} from 'nav-frontend-typografi';
+import {FormattedMessage} from 'react-intl';
 
 import ButtonContainer from 'components/button-container/ButtonContainer';
 import FarskapserklaeringPresentation from 'components/farskapserklaering-presentation/FarskapserklaeringPresentation';
-import { Farskapserklaering } from 'types/farskapserklaering';
+import {Farskapserklaering} from 'types/farskapserklaering';
+import Panel from "nav-frontend-paneler";
 
 import './LesOpplysningerForm.less';
 
@@ -17,13 +18,16 @@ interface LesOpplysningerFormProps {
 function LesOpplysningerForm({ farskapserklaering, onCancel, onSubmit }: LesOpplysningerFormProps) {
     return (
         <div className="LesOpplysningerForm">
-            <Undertittel>
+            <Systemtittel>
                 <FormattedMessage id="skjema.far.lesOpplysninger.title" />
-            </Undertittel>
-            <FarskapserklaeringPresentation
-                farskapserklaering={farskapserklaering}
-                showBorSammen={false}
-            />
+            </Systemtittel>
+            <Panel border>
+                <FarskapserklaeringPresentation
+                    farskapserklaering={farskapserklaering}
+                    showBorSammen={false}
+                    showTitle={false}
+                />
+            </Panel>
             <ButtonContainer>
                 <Hovedknapp htmlType="button" onClick={onSubmit}>
                     <FormattedMessage id="skjema.next" />

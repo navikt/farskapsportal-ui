@@ -1,10 +1,11 @@
-import { Undertittel } from 'nav-frontend-typografi';
-import { FormattedMessage } from 'react-intl';
+import {Systemtittel} from 'nav-frontend-typografi';
+import {FormattedMessage} from 'react-intl';
 
 import FarskapserklaeringPresentation from 'components/farskapserklaering-presentation/FarskapserklaeringPresentation';
-import { Farskapserklaering } from 'types/farskapserklaering';
+import {Farskapserklaering} from 'types/farskapserklaering';
 
 import './LesOpplysningerPresentation.less';
+import Panel from "nav-frontend-paneler";
 
 interface LesOpplysningerPresentationProps {
     farskapserklaering: Farskapserklaering;
@@ -13,13 +14,20 @@ interface LesOpplysningerPresentationProps {
 function LesOpplysningerPresentation({ farskapserklaering }: LesOpplysningerPresentationProps) {
     return (
         <div className="LesOpplysningerPresentation">
-            <Undertittel>
+            <Systemtittel>
                 <FormattedMessage id="skjema.far.lesOpplysninger.title" />
-            </Undertittel>
-            <FarskapserklaeringPresentation
-                farskapserklaering={farskapserklaering}
-                showBorSammen={false}
-            />
+            </Systemtittel>
+            <br />
+            <Panel border>
+                <br/>
+                <FarskapserklaeringPresentation
+                    farskapserklaering={farskapserklaering}
+                    showBorSammen={false}
+                    showTitle={false}
+                />
+                <br/>
+            </Panel>
+
         </div>
     );
 }

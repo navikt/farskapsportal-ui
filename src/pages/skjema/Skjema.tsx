@@ -1,17 +1,16 @@
-import { Redirect } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 import ContentContainer from 'components/content-container/ContentContainer';
 import Page from 'components/page/Page';
-import { useStore } from 'store/Context';
+import {useStore} from 'store/Context';
 import WithUserInfo from 'store/providers/WithUserInfo';
-import { Foreldrerolle } from 'types/foreldrerolle';
-import { Path } from 'types/path';
-import { UserInfo } from 'types/user';
-import { ERKLAERING_ID } from 'utils/constants';
-import { useQuery } from 'utils/hooks/useQuery';
-import FarSkjema from './far/FarSkjema';
-import MorSkjema from './mor/MorSkjema';
+import {Foreldrerolle} from 'types/foreldrerolle';
+import {Path} from 'types/path';
+import {UserInfo} from 'types/user';
+import {ERKLAERING_ID} from 'utils/constants';
+import {useQuery} from 'utils/hooks/useQuery';
 import MorSkjemaNy from "./mor/MorSkjemaNy";
+import FarskjemaNy from "./far/FarskjemaNy";
 
 function Skjema() {
     const [{ language }] = useStore();
@@ -19,20 +18,19 @@ function Skjema() {
 
     const renderContent = (userInfo: UserInfo) => {
         if (userInfo.forelderrolle === Foreldrerolle.Far) {
-            return <FarSkjema userInfo={userInfo} />;
+            return <FarskjemaNy userInfo={userInfo} />;
         } else if (userInfo.forelderrolle === Foreldrerolle.Mor) {
             if (!userInfo.kanOppretteFarskapserklaering) {
                 return <Redirect to={`/${language}${Path.Oversikt}`} />;
             }
 
-            //return <MorSkjema userInfo={userInfo} />;
             return <MorSkjemaNy userInfo={userInfo} />;
         } else if (userInfo.forelderrolle === Foreldrerolle.MorEllerFar) {
             // TODO: rework logic?
             if (erklaeringId) {
-                return <FarSkjema userInfo={userInfo} />;
+                return <FarskjemaNy userInfo={userInfo} />;
             } else if (userInfo.kanOppretteFarskapserklaering) {
-                return <MorSkjema userInfo={userInfo} />;
+                return <MorSkjemaNy userInfo={userInfo} />;
             }
         }
 

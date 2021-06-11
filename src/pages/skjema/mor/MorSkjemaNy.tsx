@@ -226,7 +226,6 @@ function MorSkjemaNy({ userInfo }: MorSkjemaNyProps) {
                     status={mapStepStatusToStepperState(state.stepStatus.barn)}
                 >
                     <SkjemaStepNy
-                        stepNumber={1}
                         formComponent={
                             <TermindatoForm
                                 defaultTermindato={state.formValues.termindato.termindato}
@@ -249,7 +248,6 @@ function MorSkjemaNy({ userInfo }: MorSkjemaNyProps) {
                     status={mapStepStatusToStepperState(state.stepStatus.far)}
                 >
                     <SkjemaStepNy
-                        stepNumber={2}
                         formComponent={
                             <FarForm
                                 defaultNavn={state.formValues.far.navn}
@@ -274,7 +272,6 @@ function MorSkjemaNy({ userInfo }: MorSkjemaNyProps) {
                     status={mapStepStatusToStepperState(state.stepStatus.borSammen)}
                 >
                     <SkjemaStepNy
-                        stepNumber={3}
                         formComponent={
                             <BorSammenForm
                                 titleId="skjema.mor.borSammen.title"
@@ -297,7 +294,6 @@ function MorSkjemaNy({ userInfo }: MorSkjemaNyProps) {
                 </StepperStep>
                 <StepperStep>
                     <SkjemaStepNy
-                        stepNumber={4}
                         formComponent={
                             <MorBekreftForm
                                 isPending={state.submit.pending}
