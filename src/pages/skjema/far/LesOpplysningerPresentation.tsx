@@ -5,7 +5,6 @@ import FarskapserklaeringPresentation from 'components/farskapserklaering-presen
 import {Farskapserklaering} from 'types/farskapserklaering';
 
 import './LesOpplysningerPresentation.less';
-import Panel from "nav-frontend-paneler";
 
 interface LesOpplysningerPresentationProps {
     farskapserklaering: Farskapserklaering;
@@ -17,17 +16,12 @@ function LesOpplysningerPresentation({ farskapserklaering }: LesOpplysningerPres
             <Systemtittel>
                 <FormattedMessage id="skjema.far.lesOpplysninger.title" />
             </Systemtittel>
-            <br />
-            <Panel border>
-                <br/>
                 <FarskapserklaeringPresentation
                     farskapserklaering={farskapserklaering}
                     showBorSammen={false}
                     showTitle={false}
+                    border={true}
                 />
-                <br/>
-            </Panel>
-
         </div>
     );
 }

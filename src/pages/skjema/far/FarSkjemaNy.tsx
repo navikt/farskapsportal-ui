@@ -19,7 +19,7 @@ import LesOpplysningerPresentation from './LesOpplysningerPresentation';
 import {Stepper, StepperStep} from "../../../components/stepper";
 import SkjemaStepNy from "../common/SkjemaStepNy";
 
-import './FarskjemaNy.less';
+import './FarSkjemaNy.less';
 
 type ActionType =
     | { type: 'SET_LES_OPPLYSNINGER' }
@@ -80,7 +80,7 @@ interface FarskjemaNyProps {
     userInfo: UserInfo;
 }
 
-function FarskjemaNy({ userInfo }: FarskjemaNyProps) {
+function FarSkjemaNy({ userInfo }: FarskjemaNyProps) {
     const intl = useIntl();
     const navigateTo = useNavigateTo();
     const erklaeringId = useQuery().get(ERKLAERING_ID);
@@ -160,7 +160,7 @@ function FarskjemaNy({ userInfo }: FarskjemaNyProps) {
     };
 
     return (
-        <div>
+        <div className="FarSkjemaNy">
             <Stepper activeStep={state.activeStep} colorful>
                 <StepperStep status={mapStepStatusToStepperState(state.stepStatus.lesOpplysninger)}>
                     <SkjemaStepNy
@@ -227,4 +227,4 @@ function FarskjemaNy({ userInfo }: FarskjemaNyProps) {
     );
 }
 
-export default FarskjemaNy;
+export default FarSkjemaNy;

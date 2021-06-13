@@ -10,7 +10,7 @@ import {UserInfo} from 'types/user';
 import {ERKLAERING_ID} from 'utils/constants';
 import {useQuery} from 'utils/hooks/useQuery';
 import MorSkjemaNy from "./mor/MorSkjemaNy";
-import FarskjemaNy from "./far/FarskjemaNy";
+import FarSkjemaNy from "./far/FarSkjemaNy";
 
 function Skjema() {
     const [{ language }] = useStore();
@@ -18,7 +18,7 @@ function Skjema() {
 
     const renderContent = (userInfo: UserInfo) => {
         if (userInfo.forelderrolle === Foreldrerolle.Far) {
-            return <FarskjemaNy userInfo={userInfo} />;
+            return <FarSkjemaNy userInfo={userInfo} />;
         } else if (userInfo.forelderrolle === Foreldrerolle.Mor) {
             if (!userInfo.kanOppretteFarskapserklaering) {
                 return <Redirect to={`/${language}${Path.Oversikt}`} />;
@@ -28,7 +28,7 @@ function Skjema() {
         } else if (userInfo.forelderrolle === Foreldrerolle.MorEllerFar) {
             // TODO: rework logic?
             if (erklaeringId) {
-                return <FarskjemaNy userInfo={userInfo} />;
+                return <FarSkjemaNy userInfo={userInfo} />;
             } else if (userInfo.kanOppretteFarskapserklaering) {
                 return <MorSkjemaNy userInfo={userInfo} />;
             }

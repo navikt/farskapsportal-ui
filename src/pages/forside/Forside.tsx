@@ -18,7 +18,7 @@ function Forside() {
     return (
         <Page titleId="header.forside">
             <ContentContainer className="Forside">
-                <Panel>
+                <Panel border>
                     <Systemtittel>
                         <FormattedMessage id="forside.title" />
                     </Systemtittel>
