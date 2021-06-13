@@ -11,8 +11,6 @@ import {FNR_ID} from 'utils/constants';
 import {useNavigateTo} from 'utils/hooks/useNavigateTo';
 import {useQuery} from 'utils/hooks/useQuery';
 import {getMessage} from 'utils/intl';
-import BorSammenForm, {BorSammenFormInput} from '../common/BorSammenForm';
-import BorSammenPresentation from '../common/BorSammenPresentation';
 import FarForm, {FarFormInput} from './forms/FarForm';
 import MorBekreftForm from './forms/MorBekreftForm';
 import TermindatoForm, {TermindatoFormInput} from './forms/TermindatoForm';
@@ -27,8 +25,6 @@ type ActionType =
     | { type: 'SET_TERMINDATO'; payload: TermindatoFormInput }
     | { type: 'EDIT_FAR' }
     | { type: 'SET_FAR'; payload: FarFormInput }
-    | { type: 'EDIT_BOR_SAMMEN' }
-    | { type: 'SET_BOR_SAMMEN'; payload: BorSammenFormInput }
     | { type: 'SUBMIT' }
     | { type: 'SUBMIT_FAILURE'; payload: AlertError };
 
@@ -36,13 +32,11 @@ interface StateType {
     formValues: {
         termindato: TermindatoFormInput;
         far: FarFormInput;
-        borSammen: BorSammenFormInput;
     };
     activeStep: number;
     stepStatus: {
         barn: StepStatus;
         far: StepStatus;
-        borSammen: StepStatus;
     };
     submit: {
         pending: boolean;
@@ -68,12 +62,6 @@ const reducer = (state: StateType, action: ActionType): StateType => {
                         state.stepStatus.far === StepStatus.Done
                             ? StepStatus.Done
                             : StepStatus.Active,
-                    borSammen:
-                        state.stepStatus.borSammen === StepStatus.Done
-                            ? StepStatus.Done
-                            : state.stepStatus.far === StepStatus.Done
-                            ? StepStatus.Active
-                            : StepStatus.NotStarted,
                 },
             };
         case 'EDIT_FAR':
@@ -90,26 +78,6 @@ const reducer = (state: StateType, action: ActionType): StateType => {
                 stepStatus: {
                     ...state.stepStatus,
                     far: StepStatus.Done,
-                    borSammen:
-                        state.stepStatus.borSammen === StepStatus.Done
-                            ? StepStatus.Done
-                            : StepStatus.Active,
-                },
-            };
-        case 'EDIT_BOR_SAMMEN':
-            return {
-                ...state,
-                activeStep: 2,
-                stepStatus: { ...state.stepStatus, borSammen: StepStatus.Active },
-            };
-        case 'SET_BOR_SAMMEN':
-            return {
-                ...state,
-                formValues: { ...state.formValues, borSammen: action.payload },
-                activeStep: 3,
-                stepStatus: {
-                    ...state.stepStatus,
-                    borSammen: StepStatus.Done,
                 },
             };
         case 'SUBMIT':
@@ -150,15 +118,11 @@ function MorSkjemaNy({ userInfo }: MorSkjemaNyProps) {
                 navn: '',
                 foedselsnummer: '',
             },
-            borSammen: {
-                borSammen: null,
-            },
         },
         activeStep: barnFoedselsnummer ? 1 : 0,
         stepStatus: {
             barn: barnFoedselsnummer ? StepStatus.Done : StepStatus.Active,
             far: barnFoedselsnummer ? StepStatus.Active : StepStatus.NotStarted,
-            borSammen: StepStatus.NotStarted,
         },
         submit: {
             pending: false,
@@ -178,7 +142,7 @@ function MorSkjemaNy({ userInfo }: MorSkjemaNyProps) {
                 foedselsnummer: barnFoedselsnummer,
                 termindato: barnFoedselsnummer ? null : state.formValues.termindato.termindato,
             },
-            morBorSammenMedFar: state.formValues.borSammen.borSammen === 'YES',
+            morBorSammenMedFar: true,
             opplysningerOmFar: {
                 foedselsnummer: state.formValues.far.foedselsnummer,
                 navn: state.formValues.far.navn,
@@ -209,14 +173,6 @@ function MorSkjemaNy({ userInfo }: MorSkjemaNyProps) {
 
     const onEndreFarForm = () => {
         dispatch({ type: 'EDIT_FAR' });
-    };
-
-    const onSubmitBorSammenForm = (data: BorSammenFormInput) => {
-        dispatch({ type: 'SET_BOR_SAMMEN', payload: data });
-    };
-
-    const onEndreBorSammenForm = () => {
-        dispatch({ type: 'EDIT_BOR_SAMMEN' });
     };
 
     return (
@@ -268,30 +224,6 @@ function MorSkjemaNy({ userInfo }: MorSkjemaNyProps) {
                         isDisabled={state.submit.pending}
                     />
                 </StepperStep>
-                <StepperStep
-                    status={mapStepStatusToStepperState(state.stepStatus.borSammen)}
-                >
-                    <SkjemaStepNy
-                        formComponent={
-                            <BorSammenForm
-                                titleId="skjema.mor.borSammen.title"
-                                defaultBorSammen={state.formValues.borSammen.borSammen}
-                                onSubmit={onSubmitBorSammenForm}
-                                onCancel={onCancel}
-                            />
-                        }
-                        presentationComponent={
-                            <BorSammenPresentation
-                                titleId="skjema.mor.borSammen.title"
-                                borSammen={state.formValues.borSammen.borSammen}
-                            />
-                        }
-                        title={getMessage(intl, 'skjema.mor.borSammen.title')}
-                        status={state.stepStatus.borSammen}
-                        onChange={onEndreBorSammenForm}
-                        isDisabled={state.submit.pending}
-                    />
-                </StepperStep>
                 <StepperStep>
                     <SkjemaStepNy
                         formComponent={
@@ -304,8 +236,7 @@ function MorSkjemaNy({ userInfo }: MorSkjemaNyProps) {
                         title={getMessage(intl, 'skjema.mor.confirm.title')}
                         status={
                             state.stepStatus.barn === StepStatus.Done &&
-                            state.stepStatus.far === StepStatus.Done &&
-                            state.stepStatus.borSammen === StepStatus.Done
+                            state.stepStatus.far === StepStatus.Done
                                 ? StepStatus.Active
                                 : StepStatus.NotStarted
                         }
