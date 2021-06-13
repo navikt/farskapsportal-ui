@@ -1,6 +1,5 @@
 import ContentContainer from 'components/content-container/ContentContainer';
 import ErrorPage from 'components/error-page/ErrorPage';
-import FarskapserklaeringPresentation from 'components/farskapserklaering-presentation/FarskapserklaeringPresentation';
 import Page from 'components/page/Page';
 import WithUserInfo from 'store/providers/WithUserInfo';
 import { Path } from 'types/path';
@@ -12,11 +11,10 @@ import HvaSkjerViderePanel from './HvaSkjerViderePanel';
 import KvitteringIntro from './KvitteringIntro';
 import MorAlert from './MorAlert';
 import YtelserOgTjenesterPanel from './YtelserOgTjenesterPanel';
-import ProsessIndikator from "./ProsessIndikator";
-import {SuccessFilled} from "@navikt/ds-icons";
+import ProsessIndikator from './ProsessIndikator';
 
 import './Kvittering.less';
-import KvitteringGjenfinnErklaeringer from "./KvitteringGjenfinnErklaeringer";
+import KvitteringGjenfinnErklaeringer from './KvitteringGjenfinnErklaeringer';
 
 function Kvittering() {
     const erklaeringId = useQuery().get(ERKLAERING_ID);
@@ -50,17 +48,17 @@ function Kvittering() {
 
                     return (
                         <ContentContainer className="Kvittering">
-                                <KvitteringIntro erklaering={erklaering} />
-                                <KvitteringGjenfinnErklaeringer />
-                                <MorAlert erklaering={erklaering} />
-                                <ProsessIndikator erklaering={erklaering}/>
-                                {/*<FarskapserklaeringPresentation*/}
-                                {/*    farskapserklaering={erklaering}*/}
-                                {/*    border={true}*/}
-                                {/*/>*/}
-                                <HvaSkjerViderePanel />
-                                <HvaSkjerHvisPanel erklaering={erklaering} />
-                                <YtelserOgTjenesterPanel erklaering={erklaering} />
+                            <KvitteringIntro erklaering={erklaering} />
+                            <KvitteringGjenfinnErklaeringer />
+                            <MorAlert erklaering={erklaering} />
+                            <ProsessIndikator erklaering={erklaering} />
+                            {/*<FarskapserklaeringPresentation*/}
+                            {/*    farskapserklaering={erklaering}*/}
+                            {/*    border={true}*/}
+                            {/*/>*/}
+                            <HvaSkjerViderePanel />
+                            <HvaSkjerHvisPanel erklaering={erklaering} />
+                            <YtelserOgTjenesterPanel erklaering={erklaering} />
                         </ContentContainer>
                     );
                 }}

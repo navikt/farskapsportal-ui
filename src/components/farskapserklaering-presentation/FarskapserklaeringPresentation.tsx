@@ -25,10 +25,11 @@ function FarskapserklaeringPresentation({
 }: FarskapserklaeringPresentationProps) {
     return (
         <Panel className="FarskapserklaeringPresentation" border={border}>
-            {showTitle &&
-            <Innholdstittel tag="p" className="FarskapserklaeringPresentation__title">
-                <FormattedMessage id="farskapserklaering" />
-            </Innholdstittel>}
+            {showTitle && (
+                <Innholdstittel tag="p" className="FarskapserklaeringPresentation__title">
+                    <FormattedMessage id="farskapserklaering" />
+                </Innholdstittel>
+            )}
             <Undertittel tag="p">
                 <FormattedMessage id="farskapserklaering.aboutChildren" />
             </Undertittel>

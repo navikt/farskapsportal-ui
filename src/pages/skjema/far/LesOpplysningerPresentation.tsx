@@ -1,8 +1,8 @@
-import {Systemtittel} from 'nav-frontend-typografi';
-import {FormattedMessage} from 'react-intl';
+import { Systemtittel } from 'nav-frontend-typografi';
+import { FormattedMessage } from 'react-intl';
 
 import FarskapserklaeringPresentation from 'components/farskapserklaering-presentation/FarskapserklaeringPresentation';
-import {Farskapserklaering} from 'types/farskapserklaering';
+import { Farskapserklaering } from 'types/farskapserklaering';
 
 import './LesOpplysningerPresentation.less';
 
@@ -16,12 +16,12 @@ function LesOpplysningerPresentation({ farskapserklaering }: LesOpplysningerPres
             <Systemtittel>
                 <FormattedMessage id="skjema.far.lesOpplysninger.title" />
             </Systemtittel>
-                <FarskapserklaeringPresentation
-                    farskapserklaering={farskapserklaering}
-                    showBorSammen={false}
-                    showTitle={false}
-                    border={true}
-                />
+            <FarskapserklaeringPresentation
+                farskapserklaering={farskapserklaering}
+                showBorSammen={false}
+                showTitle={false}
+                border={true}
+            />
         </div>
     );
 }

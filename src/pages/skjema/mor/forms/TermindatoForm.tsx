@@ -17,7 +17,7 @@ import {
     isLessThanNDaysInThePast,
 } from 'utils/date';
 import { getMessage } from 'utils/intl';
-import {Systemtittel} from "nav-frontend-typografi";
+import { Systemtittel } from 'nav-frontend-typografi';
 
 export interface TermindatoFormInput {
     termindato: string;

@@ -1,24 +1,23 @@
-import {useReducer} from 'react';
-import {useIntl} from 'react-intl';
+import { useReducer } from 'react';
+import { useIntl } from 'react-intl';
 
-import {opprettFarskapserklaering} from 'api/api';
+import { opprettFarskapserklaering } from 'api/api';
 import Error from 'components/error/Error';
-import {AlertError} from 'types/error';
-import {StepStatus} from 'types/form';
-import {Path} from 'types/path';
-import {UserInfo} from 'types/user';
-import {FNR_ID} from 'utils/constants';
-import {useNavigateTo} from 'utils/hooks/useNavigateTo';
-import {useQuery} from 'utils/hooks/useQuery';
-import {getMessage} from 'utils/intl';
-import FarForm, {FarFormInput} from './forms/FarForm';
+import { AlertError } from 'types/error';
+import { StepStatus } from 'types/form';
+import { Path } from 'types/path';
+import { UserInfo } from 'types/user';
+import { FNR_ID } from 'utils/constants';
+import { useNavigateTo } from 'utils/hooks/useNavigateTo';
+import { useQuery } from 'utils/hooks/useQuery';
+import { getMessage } from 'utils/intl';
+import FarForm, { FarFormInput } from './forms/FarForm';
 import MorBekreftForm from './forms/MorBekreftForm';
-import TermindatoForm, {TermindatoFormInput} from './forms/TermindatoForm';
+import TermindatoForm, { TermindatoFormInput } from './forms/TermindatoForm';
 import BarnPresentation from './presentation/BarnPresentation';
 import FarPresentation from './presentation/FarPresentation';
-import {Stepper, StepperStep} from "../../../components/stepper";
-import SkjemaStep from "../common/SkjemaStep";
-
+import { Stepper, StepperStep } from '../../../components/stepper';
+import SkjemaStep from '../common/SkjemaStep';
 
 type ActionType =
     | { type: 'EDIT_TERMINDATO' }
@@ -47,7 +46,11 @@ interface StateType {
 const reducer = (state: StateType, action: ActionType): StateType => {
     switch (action.type) {
         case 'EDIT_TERMINDATO':
-            return { ...state, activeStep: 0, stepStatus: { ...state.stepStatus, barn: StepStatus.Active } };
+            return {
+                ...state,
+                activeStep: 0,
+                stepStatus: { ...state.stepStatus, barn: StepStatus.Active },
+            };
         case 'SET_TERMINDATO':
             return {
                 ...state,
@@ -87,12 +90,12 @@ const reducer = (state: StateType, action: ActionType): StateType => {
     }
 };
 
-function mapStepStatusToStepperState(stepStatus: StepStatus): "none" | "finished" | "inProgress" {
+function mapStepStatusToStepperState(stepStatus: StepStatus): 'none' | 'finished' | 'inProgress' {
     switch (stepStatus) {
         case StepStatus.Done:
-            return "finished"
+            return 'finished';
         default:
-            return "none"
+            return 'none';
     }
 }
 
@@ -178,9 +181,7 @@ function MorSkjema({ userInfo }: MorSkjemaProps) {
     return (
         <div>
             <Stepper activeStep={state.activeStep} colorful>
-                <StepperStep
-                    status={mapStepStatusToStepperState(state.stepStatus.barn)}
-                >
+                <StepperStep status={mapStepStatusToStepperState(state.stepStatus.barn)}>
                     <SkjemaStep
                         formComponent={
                             <TermindatoForm
@@ -200,9 +201,7 @@ function MorSkjema({ userInfo }: MorSkjemaProps) {
                         isDisabled={state.submit.pending}
                     />
                 </StepperStep>
-                <StepperStep
-                    status={mapStepStatusToStepperState(state.stepStatus.far)}
-                >
+                <StepperStep status={mapStepStatusToStepperState(state.stepStatus.far)}>
                     <SkjemaStep
                         formComponent={
                             <FarForm

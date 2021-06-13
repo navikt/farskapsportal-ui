@@ -2,10 +2,10 @@ import { ReactNode } from 'react';
 
 import { Breadcrumb } from 'types/breadcrumbs';
 import { useDekoratorBreadcrumbs } from 'utils/hooks/useDekoratorBreadcrumbs';
-import {Sidetittel} from "nav-frontend-typografi";
-import {FormattedMessage} from "react-intl";
+import { Sidetittel } from 'nav-frontend-typografi';
+import { FormattedMessage } from 'react-intl';
 
-import './Page.less'
+import './Page.less';
 
 interface PageProps {
     children: ReactNode;
@@ -19,7 +19,7 @@ function Page({ breadcrumbs, children, titleId }: PageProps) {
     return (
         <div className="Page">
             <Sidetittel>
-                <FormattedMessage id={titleId}/>
+                <FormattedMessage id={titleId} />
             </Sidetittel>
             <div role="main">{children}</div>
         </div>

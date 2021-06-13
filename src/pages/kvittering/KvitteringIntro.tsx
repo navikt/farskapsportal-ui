@@ -1,14 +1,11 @@
-import {Success, SuccessFilled} from '@navikt/ds-icons';
+import { SuccessFilled } from '@navikt/ds-icons';
 import Panel from 'nav-frontend-paneler';
-import {Normaltekst, Systemtittel} from 'nav-frontend-typografi';
+import { Systemtittel } from 'nav-frontend-typografi';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { isBrukerFar } from 'utils/farskapserklaering';
-import { formatDate, getMessage } from 'utils/intl';
-
-import { useStore } from '../../store/Context';
-import { Path } from '../../types/path';
+import { formatDate } from 'utils/intl';
 
 import './KvitteringIntro.less';
 
@@ -19,7 +16,12 @@ interface KvitteringIntroProps {
 function KvitteringIntro({ erklaering }: KvitteringIntroProps) {
     return (
         <Panel className="KvitteringIntro" border={true}>
-            <SuccessFilled id="success-icon" aria-label="Success icon" role="img" focusable={false} />
+            <SuccessFilled
+                id="success-icon"
+                aria-label="Success icon"
+                role="img"
+                focusable={false}
+            />
             <div>
                 {isBrukerFar(erklaering) ? (
                     <KvitteringIntroFar erklaering={erklaering} />

@@ -18,7 +18,7 @@ import { getMessage } from 'utils/intl';
 import { removeWhitespace } from 'utils/string';
 import FarFormValidationError from './FarFormValidationError';
 import FarFormValidationResterendeForsoek from './FarFormValidationResterendeForsoek';
-import {Systemtittel} from "nav-frontend-typografi";
+import { Systemtittel } from 'nav-frontend-typografi';
 
 type ActionType =
     | { type: 'CONTROL_FATHER' }

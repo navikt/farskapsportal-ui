@@ -1,4 +1,4 @@
-import {Element, Undertittel, Normaltekst, Systemtittel} from 'nav-frontend-typografi';
+import { Element, Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import { FormattedMessage } from 'react-intl';
 
 import { formatFoedselsnummer } from 'utils/foedselsnummer';

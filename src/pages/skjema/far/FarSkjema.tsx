@@ -16,8 +16,8 @@ import BorSammenPresentation from '../common/BorSammenPresentation';
 import FarBekreftForm from './FarBekreftForm';
 import LesOpplysningerForm from './LesOpplysningerForm';
 import LesOpplysningerPresentation from './LesOpplysningerPresentation';
-import {Stepper, StepperStep} from "../../../components/stepper";
-import SkjemaStep from "../common/SkjemaStep";
+import { Stepper, StepperStep } from '../../../components/stepper';
+import SkjemaStep from '../common/SkjemaStep';
 
 import './FarSkjema.less';
 
@@ -52,7 +52,11 @@ const reducer = (state: StateType, action: ActionType): StateType => {
                 stepStatus: { lesOpplysninger: StepStatus.Done, borSammen: StepStatus.Active },
             };
         case 'EDIT_BOR_SAMMEN':
-            return { ...state, activeStep: 1, stepStatus: { ...state.stepStatus, borSammen: StepStatus.Active } };
+            return {
+                ...state,
+                activeStep: 1,
+                stepStatus: { ...state.stepStatus, borSammen: StepStatus.Active },
+            };
         case 'SET_BOR_SAMMEN':
             return {
                 ...state,
@@ -67,12 +71,12 @@ const reducer = (state: StateType, action: ActionType): StateType => {
     }
 };
 
-function mapStepStatusToStepperState(stepStatus: StepStatus): "none" | "finished" | "inProgress" {
+function mapStepStatusToStepperState(stepStatus: StepStatus): 'none' | 'finished' | 'inProgress' {
     switch (stepStatus) {
         case StepStatus.Done:
-            return "finished"
+            return 'finished';
         default:
-            return "none"
+            return 'none';
     }
 }
 

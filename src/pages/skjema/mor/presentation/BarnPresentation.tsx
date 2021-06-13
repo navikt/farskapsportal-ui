@@ -1,8 +1,8 @@
-import {Element, Normaltekst, Systemtittel} from 'nav-frontend-typografi';
-import {FormattedMessage} from 'react-intl';
+import { Element, Normaltekst, Systemtittel } from 'nav-frontend-typografi';
+import { FormattedMessage } from 'react-intl';
 
 import DatePresentation from 'components/date-presentation/DatePresentation';
-import {formatFoedselsnummer} from 'utils/foedselsnummer';
+import { formatFoedselsnummer } from 'utils/foedselsnummer';
 
 import './BarnPresentation.less';
 

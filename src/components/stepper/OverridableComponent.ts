@@ -1,16 +1,18 @@
-import React from "react";
+/* eslint-disable */
+
+import React from 'react';
 
 /**
  * A component whose root component can be controlled via a `component` prop.
  */
 export interface OverridableComponent<M extends OverridableTypeMap> {
-  (props: DefaultComponentProps<M>): React.ReactElement | null;
+    (props: DefaultComponentProps<M>): React.ReactElement | null;
 
-  <C extends React.ElementType>(
-    props: {
-      component: C;
-    } & OverrideProps<M, C>
-  ): React.ReactElement | null;
+    <C extends React.ElementType>(
+        props: {
+            component: C;
+        } & OverrideProps<M, C>
+    ): React.ReactElement | null;
 }
 
 /**
@@ -39,9 +41,9 @@ export type DefaultComponentProps<
 /**
  * Props defined on the component.
  */
-export type BaseProps<M extends OverridableTypeMap> = M["props"];
+export type BaseProps<M extends OverridableTypeMap> = M['props'];
 
 export interface OverridableTypeMap {
-  props: {};
-  defaultComponent: React.ElementType;
+    props: {};
+    defaultComponent: React.ElementType;
 }

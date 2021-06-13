@@ -1,3 +1,5 @@
+/* stylelint-disable */
+
 @navOransje: #ff9100;
 @navGronn: #06893a;
 @navBla: #0067c5;
@@ -7,8 +9,8 @@
 @color-darkgray: #3e3832;
 @color-green-50: @navGronn;
 @shadow-focus: 0 0 0 3px mix(@navBla, #3e3832, 20%);
-@color-gray-40: #A0A0A0;
-@navLysGra: #F1F1F1;
+@color-gray-40: #a0a0a0;
+@navLysGra: #f1f1f1;
 @color-blue-50: @navBla;
 @color-disabled: @color-gray-40;
 
@@ -30,12 +32,7 @@
 
 .navds-stepper--colorful > * .navds-step--warning > * svg {
   color: @color-orange-40;
-  background: radial-gradient(
-    circle,
-    @color-darkgray 50%,
-    0,
-    transparent
-  );
+  background: radial-gradient(circle, @color-darkgray 50%, 0, transparent);
 }
 
 .navds-stepper--colorful > * .navds-step--finished > * svg {
@@ -95,7 +92,7 @@ a.navds-step:focus {
 
 .navds-stepper > li:not(:last-child) > .navds-step::before,
 .navds-stepper--arrow > li:last-child > .navds-step::before {
-  content: "";
+  content: '';
   position: absolute;
 
   /* left padding + indicator width/2 - line width/2 */
@@ -168,7 +165,7 @@ button.navds-step--inProgress.navds-step.navds-step--active:not(.navds-step--dis
 }
 
 .navds-stepper.navds-stepper--arrow > li:last-child > .navds-step::after {
-  content: "";
+  content: '';
   border-style: solid;
   border-width: 0 0 2px 2px;
   border-color: @color-gray-40;

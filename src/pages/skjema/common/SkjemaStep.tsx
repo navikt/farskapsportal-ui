@@ -1,10 +1,10 @@
-import {Knapp} from 'nav-frontend-knapper';
+import { Knapp } from 'nav-frontend-knapper';
 import Panel from 'nav-frontend-paneler';
-import {Systemtittel} from 'nav-frontend-typografi';
-import {ReactNode} from 'react';
-import {FormattedMessage} from 'react-intl';
+import { Systemtittel } from 'nav-frontend-typografi';
+import { ReactNode } from 'react';
+import { FormattedMessage } from 'react-intl';
 
-import {StepStatus} from 'types/form';
+import { StepStatus } from 'types/form';
 
 import './SkjemaStep.less';
 

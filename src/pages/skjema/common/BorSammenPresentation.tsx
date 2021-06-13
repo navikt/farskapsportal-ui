@@ -1,7 +1,7 @@
-import {Normaltekst, Systemtittel} from 'nav-frontend-typografi';
-import {FormattedMessage} from 'react-intl';
+import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
+import { FormattedMessage } from 'react-intl';
 
-import {BorSammenValue} from './BorSammenForm';
+import { BorSammenValue } from './BorSammenForm';
 
 import './BorSammenPresentation.less';
 

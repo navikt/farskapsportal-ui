@@ -5,9 +5,9 @@ import { useIntl } from 'react-intl';
 import FormButtons from 'components/form-buttons/FormButtons';
 import { getMessage } from 'utils/intl';
 import EkspanderbarInformasjon from './EkspanderbarInformasjon';
+import { Systemtittel } from 'nav-frontend-typografi';
 
 import './BorSammenForm.less';
-import {Systemtittel} from "nav-frontend-typografi";
 
 export type BorSammenValue = 'YES' | 'NO' | null;
 
