@@ -15,9 +15,10 @@ jest.mock('utils/hooks/useQuery', () => ({
     }),
 }));
 
-const introMorText = texts['kvittering.intro.mor.4'].trim();
-const introFarText = texts['kvittering.intro.far.2'];
-const morAlertText = texts['kvittering.morAlert'];
+const introMorText = new RegExp(texts['kvittering.intro.mor.1'].substring(0, 30));
+const introMorFarSignertText = new RegExp(texts['kvittering.intro.mor.farSignert'].substring(0, 7));
+const introFarText = new RegExp(texts['kvittering.intro.far.1'].substring(0, 30));
+const morAlertText = texts['kvittering.morAlert.1'];
 const hvaSkjerVidereTitle = texts['kvittering.hvaSkjerVidere.title'];
 const hvaSkjerHvisTitle = texts['kvittering.hvaSkjerHvis.title'];
 const farSignererIkkeTermindatoText =
@@ -221,7 +222,7 @@ test('should render info for mor with termindato erklaering and bor sammen true 
     const results = await axe(container);
     expect(results).toHaveNoViolations();
 
-    expect(screen.getByText(introMorText)).toBeInTheDocument();
+    expect(screen.getByText(introMorFarSignertText)).toBeInTheDocument();
     expect(screen.queryByText(introFarText)).not.toBeInTheDocument();
     expect(screen.queryByText(morAlertText)).not.toBeInTheDocument();
     expect(screen.getByText(hvaSkjerVidereTitle)).toBeInTheDocument();
