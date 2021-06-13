@@ -1,6 +1,6 @@
-import { Success } from '@navikt/ds-icons';
+import {Success, SuccessFilled} from '@navikt/ds-icons';
 import Panel from 'nav-frontend-paneler';
-import { Normaltekst } from 'nav-frontend-typografi';
+import {Normaltekst, Systemtittel} from 'nav-frontend-typografi';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import { Farskapserklaering } from 'types/farskapserklaering';
@@ -19,7 +19,7 @@ interface KvitteringIntroProps {
 function KvitteringIntro({ erklaering }: KvitteringIntroProps) {
     return (
         <Panel className="KvitteringIntro" border={true}>
-            <Success id="success-icon" aria-label="Success icon" role="img" focusable={false} />
+            <SuccessFilled id="success-icon" aria-label="Success icon" role="img" focusable={false} />
             <div>
                 {isBrukerFar(erklaering) ? (
                     <KvitteringIntroFar erklaering={erklaering} />
@@ -31,15 +31,12 @@ function KvitteringIntro({ erklaering }: KvitteringIntroProps) {
     );
 }
 
-// TODO: change link -> download pdf (if signed by both)
 function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) {
     const intl = useIntl();
-    const [{ language }] = useStore();
-    const oversiktLinkPath = `/${language}${Path.Oversikt}`;
 
     const farSignert = (signertAvFar: string) => (
         <>
-            <Normaltekst>
+            <Systemtittel>
                 <FormattedMessage
                     id="kvittering.intro.mor.farSignert"
                     values={{ date: formatDate(intl, signertAvFar) }}
@@ -59,33 +56,25 @@ function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) 
                         />
                     </>
                 )}
-            </Normaltekst>
-            <Normaltekst>
-                <FormattedMessage id="kvittering.intro.mor.4" />
-                <a href={oversiktLinkPath}>{getMessage(intl, 'kvittering.intro.mor.link')}</a>
-            </Normaltekst>
+            </Systemtittel>
         </>
     );
 
     const farIkkeSignert = () => {
         return (
             <>
-                <Normaltekst>
+                <Systemtittel>
                     <FormattedMessage
                         id="kvittering.intro.mor.1"
                         values={{ date: formatDate(intl, erklaering.dokument?.signertAvMor ?? '') }}
                     />
-                </Normaltekst>
-                <Normaltekst>
-                    <FormattedMessage id="kvittering.intro.mor.2" />
-                </Normaltekst>
-                <Normaltekst>
-                    <FormattedMessage id="kvittering.intro.mor.3" />
-                </Normaltekst>
-                <Normaltekst>
-                    <FormattedMessage id="kvittering.intro.mor.4" />
-                    <a href={oversiktLinkPath}>{getMessage(intl, 'kvittering.intro.mor.link')}</a>
-                </Normaltekst>
+                </Systemtittel>
+                {/*<Normaltekst>*/}
+                {/*    <FormattedMessage id="kvittering.intro.mor.2" />*/}
+                {/*</Normaltekst>*/}
+                {/*<Normaltekst>*/}
+                {/*    <FormattedMessage id="kvittering.intro.mor.3" />*/}
+                {/*</Normaltekst>*/}
             </>
         );
     };
@@ -95,15 +84,12 @@ function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) 
         : farIkkeSignert();
 }
 
-// TODO: change link -> download pdf
 function KvitteringIntroFar({ erklaering }: { erklaering: Farskapserklaering }) {
     const intl = useIntl();
-    const [{ language }] = useStore();
-    const oversiktLinkPath = `/${language}${Path.Oversikt}`;
 
     return (
         <>
-            <Normaltekst>
+            <Systemtittel>
                 <FormattedMessage
                     id="kvittering.intro.far.1"
                     values={{ date: formatDate(intl, erklaering.dokument?.signertAvFar ?? '') }}
@@ -123,14 +109,10 @@ function KvitteringIntroFar({ erklaering }: { erklaering: Farskapserklaering }) 
                         />
                     </>
                 )}
-            </Normaltekst>
-            <Normaltekst>
-                <FormattedMessage id="kvittering.intro.far.2" />
-            </Normaltekst>
-            <Normaltekst>
-                <FormattedMessage id="kvittering.intro.far.3" />
-                <a href={oversiktLinkPath}>{getMessage(intl, 'kvittering.intro.far.link')}</a>
-            </Normaltekst>
+            </Systemtittel>
+            {/*<Normaltekst>*/}
+            {/*    <FormattedMessage id="kvittering.intro.far.2" />*/}
+            {/*</Normaltekst>*/}
         </>
     );
 }

@@ -16,6 +16,7 @@ import ProsessIndikator from "./ProsessIndikator";
 import {SuccessFilled} from "@navikt/ds-icons";
 
 import './Kvittering.less';
+import KvitteringGjenfinnErklaeringer from "./KvitteringGjenfinnErklaeringer";
 
 function Kvittering() {
     const erklaeringId = useQuery().get(ERKLAERING_ID);
@@ -49,11 +50,8 @@ function Kvittering() {
 
                     return (
                         <ContentContainer className="Kvittering">
-                            <div className="Kvittering__sidebar">
-                                <SuccessFilled aria-label="OK icon" role="img" focusable={false} />
-                            </div>
-                            <div className="Kvittering__content">
                                 <KvitteringIntro erklaering={erklaering} />
+                                <KvitteringGjenfinnErklaeringer />
                                 <MorAlert erklaering={erklaering} />
                                 <ProsessIndikator erklaering={erklaering}/>
                                 {/*<FarskapserklaeringPresentation*/}
@@ -63,7 +61,6 @@ function Kvittering() {
                                 <HvaSkjerViderePanel />
                                 <HvaSkjerHvisPanel erklaering={erklaering} />
                                 <YtelserOgTjenesterPanel erklaering={erklaering} />
-                            </div>
                         </ContentContainer>
                     );
                 }}

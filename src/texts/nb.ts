@@ -24,7 +24,7 @@ export default {
     'breadcrumbs.forside': 'Farskapserklæring',
     'breadcrumbs.oversikt': 'Dine farskapserklæringer',
     'breadcrumbs.skjema': 'Skjema: Farskapserklæring',
-    'breadcrumbs.kvittering': 'Bekreftelse på innsendt farskapserklæring',
+    'breadcrumbs.kvittering': 'Kvittering',
     'breadcrumbs.signer': 'Signer farskapserklæring',
 
     'header.forside': 'Farskapserklæring',
@@ -246,7 +246,8 @@ export default {
     'kvittering.intro.far.2': 'Erklæringen er endelig og kan ikke endres.',
     'kvittering.intro.far.3': 'Du kan finne igjen erklæringer her: ',
     'kvittering.intro.far.link': 'Dine farskapserklæringer', // TODO ?
-    'kvittering.morAlert': 'Erklæringen er ikke gyldig før oppgitt far har signert. Han kan allerede nå logge seg inn på Ditt NAV og signere erklæringen. Du bør gjøre ham oppmerksom på dette. Hvis faren til barnet ikke har signert innen 3 dager, vil vi sende ham en påminnelse på SMS.',
+    'kvittering.morAlert.1': 'Erklæringen er ikke gyldig før oppgitt far har signert.',
+    'kvittering.morAlert.2': 'Han kan allerede nå logge seg inn på Ditt NAV og signere erklæringen. Du bør gjøre ham oppmerksom på dette. Hvis faren til barnet ikke har signert innen 3 dager, vil vi sende ham en påminnelse på SMS.',
     'kvittering.prosessIndikator.step.1': '1. Mor oppgir far',
     'kvittering.prosessIndikator.step.2': '2. Far erklærer farskap',
     'kvittering.prosessIndikator.step.3': '3. Erklæringen oversendes folkeregisteret for registering og arkivering',
