@@ -13,11 +13,16 @@ import Rettigheter from './info-content/Rettigheter';
 import LoginButton from './LoginButton';
 
 import './Forside.less';
+import AlertStripe from 'nav-frontend-alertstriper';
 
 function Forside() {
     return (
         <Page titleId="header.forside">
             <ContentContainer className="Forside">
+                <AlertStripe type="info">
+                    Hei! Takk for at du tester ut den nye løsningen for registrering av farskap!
+                </AlertStripe>
+                <br />
                 <Panel border>
                     <Systemtittel>
                         <FormattedMessage id="forside.title" />

@@ -32,7 +32,7 @@ function Signer() {
             return (
                 <Panel>
                     <IkkeSignertAlert />
-                    <FarskapserklaeringPresentation farskapserklaering={erklaering} />
+                    <FarskapserklaeringPresentation border farskapserklaering={erklaering} />
                     <SignerButtons erklaeringId={erklaeringId} />
                 </Panel>
             );
