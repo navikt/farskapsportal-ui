@@ -15,6 +15,8 @@ import ProsessIndikator from './ProsessIndikator';
 
 import './Kvittering.less';
 import KvitteringGjenfinnErklaeringer from './KvitteringGjenfinnErklaeringer';
+import FarskapserklaeringPresentation
+    from "../../components/farskapserklaering-presentation/FarskapserklaeringPresentation";
 
 function Kvittering() {
     const erklaeringId = useQuery().get(ERKLAERING_ID);
@@ -52,10 +54,10 @@ function Kvittering() {
                             <KvitteringGjenfinnErklaeringer />
                             <MorAlert erklaering={erklaering} />
                             <ProsessIndikator erklaering={erklaering} />
-                            {/*<FarskapserklaeringPresentation*/}
-                            {/*    farskapserklaering={erklaering}*/}
-                            {/*    border={true}*/}
-                            {/*/>*/}
+                            <FarskapserklaeringPresentation
+                                farskapserklaering={erklaering}
+                                border={true}
+                            />
                             <HvaSkjerViderePanel />
                             <HvaSkjerHvisPanel erklaering={erklaering} />
                             <YtelserOgTjenesterPanel erklaering={erklaering} />

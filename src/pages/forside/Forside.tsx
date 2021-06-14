@@ -20,7 +20,8 @@ function Forside() {
         <Page titleId="header.forside">
             <ContentContainer className="Forside">
                 <AlertStripe type="info">
-                    Hei! Takk for at du tester ut den nye løsningen for registrering av farskap!
+                    Tusen takk for at du deltar i piloten. Vi håper du kan besvare noen spørsmål om løsningen
+                    etter at du har fylt inn og signert farskapserklæringen.
                 </AlertStripe>
                 <br />
                 <Panel border>

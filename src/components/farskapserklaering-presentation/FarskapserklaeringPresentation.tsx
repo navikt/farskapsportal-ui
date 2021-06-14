@@ -79,7 +79,7 @@ function FarskapserklaeringPresentation({
                     </Normaltekst>
                 </div>
             </div>
-            {showBorSammen && (
+            {showBorSammen && farskapserklaering.dokument?.signertAvFar && (
                 <>
                     <Undertittel tag="p" className="FarskapserklaeringPresentation__borSammen">
                         <FormattedMessage id="farskapserklaering.borSammen" />
