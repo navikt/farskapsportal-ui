@@ -9,8 +9,8 @@ import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
 import { ERKLAERING_ID } from 'utils/constants';
 import { useQuery } from 'utils/hooks/useQuery';
-import FarSkjema from './far/FarSkjema';
 import MorSkjema from './mor/MorSkjema';
+import FarSkjema from './far/FarSkjema';
 
 function Skjema() {
     const [{ language }] = useStore();

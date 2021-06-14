@@ -5,6 +5,7 @@ import { useIntl } from 'react-intl';
 import FormButtons from 'components/form-buttons/FormButtons';
 import { getMessage } from 'utils/intl';
 import EkspanderbarInformasjon from './EkspanderbarInformasjon';
+import { Systemtittel } from 'nav-frontend-typografi';
 
 import './BorSammenForm.less';
 
@@ -33,7 +34,7 @@ function BorSammenForm(props: BorSammenFormProps) {
     return (
         <form onSubmit={handleSubmit(props.onSubmit)} className="BorSammenForm">
             <RadioGruppe
-                legend={getMessage(intl, props.titleId)}
+                legend={<Systemtittel>{getMessage(intl, props.titleId)}</Systemtittel>}
                 description={
                     <EkspanderbarInformasjon
                         introText={getMessage(intl, 'skjema.borSammen.description.intro')}

@@ -13,10 +13,11 @@ import { useQuery } from 'utils/hooks/useQuery';
 import { getMessage } from 'utils/intl';
 import BorSammenForm, { BorSammenFormInput } from '../common/BorSammenForm';
 import BorSammenPresentation from '../common/BorSammenPresentation';
-import SkjemaStep from '../common/SkjemaStep';
 import FarBekreftForm from './FarBekreftForm';
 import LesOpplysningerForm from './LesOpplysningerForm';
 import LesOpplysningerPresentation from './LesOpplysningerPresentation';
+import { Stepper, StepperStep } from '../../../components/stepper';
+import SkjemaStep from '../common/SkjemaStep';
 
 import './FarSkjema.less';
 
@@ -31,6 +32,7 @@ interface StateType {
     formValues: {
         borSammen: BorSammenFormInput;
     };
+    activeStep: number;
     stepStatus: {
         lesOpplysninger: StepStatus;
         borSammen: StepStatus;
@@ -46,13 +48,19 @@ const reducer = (state: StateType, action: ActionType): StateType => {
         case 'SET_LES_OPPLYSNINGER':
             return {
                 ...state,
+                activeStep: state.stepStatus.borSammen === StepStatus.Done ? 2 : 1,
                 stepStatus: { lesOpplysninger: StepStatus.Done, borSammen: StepStatus.Active },
             };
         case 'EDIT_BOR_SAMMEN':
-            return { ...state, stepStatus: { ...state.stepStatus, borSammen: StepStatus.Active } };
+            return {
+                ...state,
+                activeStep: 1,
+                stepStatus: { ...state.stepStatus, borSammen: StepStatus.Active },
+            };
         case 'SET_BOR_SAMMEN':
             return {
                 ...state,
+                activeStep: 2,
                 formValues: { borSammen: action.payload },
                 stepStatus: { ...state.stepStatus, borSammen: StepStatus.Done },
             };
@@ -63,11 +71,20 @@ const reducer = (state: StateType, action: ActionType): StateType => {
     }
 };
 
-interface FarSkjemaProps {
+function mapStepStatusToStepperState(stepStatus: StepStatus): 'none' | 'finished' | 'inProgress' {
+    switch (stepStatus) {
+        case StepStatus.Done:
+            return 'finished';
+        default:
+            return 'none';
+    }
+}
+
+interface FarskjemaProps {
     userInfo: UserInfo;
 }
 
-function FarSkjema({ userInfo }: FarSkjemaProps) {
+function FarSkjema({ userInfo }: FarskjemaProps) {
     const intl = useIntl();
     const navigateTo = useNavigateTo();
     const erklaeringId = useQuery().get(ERKLAERING_ID);
@@ -89,6 +106,7 @@ function FarSkjema({ userInfo }: FarSkjemaProps) {
                         : null,
             },
         },
+        activeStep: 0,
         stepStatus: {
             lesOpplysninger: StepStatus.Active,
             borSammen: StepStatus.NotStarted,
@@ -146,61 +164,66 @@ function FarSkjema({ userInfo }: FarSkjemaProps) {
     };
 
     return (
-        <div>
-            <SkjemaStep
-                stepNumber={1}
-                formComponent={
-                    <LesOpplysningerForm
-                        farskapserklaering={farskapserklaering}
-                        onSubmit={onSubmitLesOpplysninger}
-                        onCancel={onCancel}
+        <div className="FarSkjema">
+            <Stepper activeStep={state.activeStep} colorful>
+                <StepperStep status={mapStepStatusToStepperState(state.stepStatus.lesOpplysninger)}>
+                    <SkjemaStep
+                        formComponent={
+                            <LesOpplysningerForm
+                                farskapserklaering={farskapserklaering}
+                                onSubmit={onSubmitLesOpplysninger}
+                                onCancel={onCancel}
+                            />
+                        }
+                        presentationComponent={
+                            <LesOpplysningerPresentation farskapserklaering={farskapserklaering} />
+                        }
+                        status={state.stepStatus.lesOpplysninger}
                     />
-                }
-                presentationComponent={
-                    <LesOpplysningerPresentation farskapserklaering={farskapserklaering} />
-                }
-                status={state.stepStatus.lesOpplysninger}
-            />
-            <SkjemaStep
-                stepNumber={2}
-                formComponent={
-                    <BorSammenForm
-                        titleId="skjema.far.borSammen.title"
-                        defaultBorSammen={state.formValues.borSammen.borSammen}
-                        onSubmit={onSubmitBorSammenForm}
-                        onCancel={onCancel}
+                </StepperStep>
+                <StepperStep status={mapStepStatusToStepperState(state.stepStatus.borSammen)}>
+                    <SkjemaStep
+                        formComponent={
+                            <BorSammenForm
+                                titleId="skjema.far.borSammen.title"
+                                defaultBorSammen={state.formValues.borSammen.borSammen}
+                                onSubmit={onSubmitBorSammenForm}
+                                onCancel={onCancel}
+                            />
+                        }
+                        presentationComponent={
+                            <BorSammenPresentation
+                                titleId="skjema.far.borSammen.title"
+                                borSammen={state.formValues.borSammen.borSammen}
+                            />
+                        }
+                        title={getMessage(intl, 'skjema.far.borSammen.title')}
+                        status={state.stepStatus.borSammen}
+                        onChange={onEndreBorSammenForm}
+                        isDisabled={state.submit.pending}
                     />
-                }
-                presentationComponent={
-                    <BorSammenPresentation
-                        titleId="skjema.far.borSammen.title"
-                        borSammen={state.formValues.borSammen.borSammen}
+                </StepperStep>
+                <StepperStep>
+                    <SkjemaStep
+                        formComponent={
+                            <FarBekreftForm
+                                isPending={state.submit.pending}
+                                onSubmit={onSubmit}
+                                onCancel={onCancel}
+                            />
+                        }
+                        title={getMessage(intl, 'skjema.far.confirm.title')}
+                        status={
+                            state.stepStatus.lesOpplysninger === StepStatus.Done &&
+                            state.stepStatus.borSammen === StepStatus.Done
+                                ? StepStatus.Active
+                                : StepStatus.NotStarted
+                        }
+                        onChange={onEndreBorSammenForm}
+                        isDisabled={state.submit.pending}
                     />
-                }
-                title={getMessage(intl, 'skjema.far.borSammen.title')}
-                status={state.stepStatus.borSammen}
-                onChange={onEndreBorSammenForm}
-                isDisabled={state.submit.pending}
-            />
-            <SkjemaStep
-                stepNumber={3}
-                formComponent={
-                    <FarBekreftForm
-                        isPending={state.submit.pending}
-                        onSubmit={onSubmit}
-                        onCancel={onCancel}
-                    />
-                }
-                title={getMessage(intl, 'skjema.far.confirm.title')}
-                status={
-                    state.stepStatus.lesOpplysninger === StepStatus.Done &&
-                    state.stepStatus.borSammen === StepStatus.Done
-                        ? StepStatus.Active
-                        : StepStatus.NotStarted
-                }
-                onChange={onEndreBorSammenForm}
-                isDisabled={state.submit.pending}
-            />
+                </StepperStep>
+            </Stepper>
             <div aria-live="polite">
                 {state.submit.error && <Error error={state.submit.error} />}
             </div>

@@ -4,6 +4,8 @@ import { FormattedMessage } from 'react-intl';
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { isBrukerFar, isSignedByFar } from 'utils/farskapserklaering';
 
+import './MorAlert.less';
+
 interface MorAlertProps {
     erklaering: Farskapserklaering;
 }
@@ -14,8 +16,11 @@ function MorAlert({ erklaering }: MorAlertProps) {
     }
 
     return (
-        <AlertStripe type="advarsel">
-            <FormattedMessage id="kvittering.morAlert" />
+        <AlertStripe type="advarsel" className="MorAlert">
+            <div className="MorAlert__boldtext">
+                <FormattedMessage id="kvittering.morAlert.1" />
+            </div>
+            <FormattedMessage id="kvittering.morAlert.2" />
         </AlertStripe>
     );
 }

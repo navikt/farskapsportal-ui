@@ -16,6 +16,7 @@ import MorUtenBarn from './info-panel-content/mor/MorUtenBarn';
 import ToSkjemaButton from './ToSkjemaButton';
 
 import './OversiktInfoPanel.less';
+import { capitalizeFirsLetterOnly } from '../../utils/string';
 
 interface OversiktInfoPanelProps {
     userInfo: UserInfo;
@@ -69,7 +70,7 @@ function OversiktInfoPanel({ userInfo }: OversiktInfoPanelProps) {
             <Innholdstittel tag="h2">
                 <FormattedMessage
                     id="oversikt.infoPanel.greeting"
-                    values={{ fornavn: userInfo.brukersFornavn }}
+                    values={{ fornavn: capitalizeFirsLetterOnly(userInfo.brukersFornavn) }}
                 />
             </Innholdstittel>
             {renderContent()}

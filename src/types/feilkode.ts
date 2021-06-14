@@ -33,5 +33,6 @@ export enum Feilkode {
     PdlPersonIkkeFunnet = 'PDL_PERSON_IKKE_FUNNET', // Fant ikke person i PDL
     PdlSivilstandIkkeFunnet = 'PDL_SIVILSTAND_IKKE_FUNNET', // Fant ikke informasjon om personens sivilstand i PDL
     PersonIkkePartIFarskapserklaering = 'PERSON_IKKE_PART_I_FARSKAPSERKLAERING', // Pålogget person er ikke forelder i oppgitt farskapserklaering
+    PersonErDoed = 'PERSON_ER_DOED', // Død person kan ikke opptre som forelder i løsningen
     TermindatoUgyldig = 'TERMINDATO_UGYLDIG', // Oppgitt termindato er ikke innenfor godkjent intervall
 }

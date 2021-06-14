@@ -7,6 +7,8 @@ interface BannerProps {
     titleId: string;
 }
 
+// TODO: deprecated
+
 function Banner({ titleId }: BannerProps) {
     return (
         <div className="Banner">

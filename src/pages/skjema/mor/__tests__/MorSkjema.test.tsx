@@ -63,25 +63,10 @@ test('should display steps correctly', async () => {
         fireEvent.click(submitButton);
     });
 
-    await waitFor(async () => {
-        const jaRadioInput = screen.getByLabelText(borSammenYesLabel);
-        const submitButton = screen.getByText(submitButtonLabel);
-
-        // only step 3 is displayed
-        expect(screen.queryByLabelText(termindatoLabel)).not.toBeInTheDocument();
-        expect(screen.queryByLabelText(navnLabel)).not.toBeInTheDocument();
-        expect(jaRadioInput).toBeInTheDocument();
-        expect(screen.queryByLabelText(farCorrectLabel)).not.toBeInTheDocument();
-
-        // fill out step 3
-        fireEvent.click(jaRadioInput);
-        fireEvent.click(submitButton);
-    });
-
     await waitFor(() => {
         const farCorrectCheckbox = screen.getByLabelText(farCorrectLabel);
 
-        // only step 4 is displayed
+        // only step 3 is displayed
         expect(screen.queryByLabelText(termindatoLabel)).not.toBeInTheDocument();
         expect(screen.queryByLabelText(navnLabel)).not.toBeInTheDocument();
         expect(screen.queryByLabelText(borSammenYesLabel)).not.toBeInTheDocument();
