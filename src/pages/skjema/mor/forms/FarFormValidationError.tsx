@@ -34,7 +34,7 @@ function FarFormValidationError({
                 return <PdlPersonIkkeFunnet />;
             case Feilkode.IkkeMyndig:
             case Feilkode.PersonErDoed:
-                return <DefaultUgyldigFarMessage />
+                return <DefaultUgyldigFarMessage />;
             default:
                 return null;
         }
@@ -110,7 +110,7 @@ function DefaultUgyldigFarMessage() {
                 <FormattedMessage id="skjema.mor.far.validation.defaultUgyldigFarMessage" />
             </Normaltekst>
         </>
-    )
+    );
 }
 
 export default FarFormValidationError;

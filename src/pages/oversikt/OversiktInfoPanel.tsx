@@ -16,7 +16,7 @@ import MorUtenBarn from './info-panel-content/mor/MorUtenBarn';
 import ToSkjemaButton from './ToSkjemaButton';
 
 import './OversiktInfoPanel.less';
-import {capitalizeFirsLetterOnly} from "../../utils/string";
+import { capitalizeFirsLetterOnly } from '../../utils/string';
 
 interface OversiktInfoPanelProps {
     userInfo: UserInfo;

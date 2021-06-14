@@ -19,7 +19,7 @@
   position: relative;
   text-align: left;
   line-height: 1.5;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 0;
   margin-bottom: 2.75rem;
   border: 2px solid transparent;
   display: flex;
@@ -86,8 +86,9 @@ a.navds-step:focus {
   justify-content: center;
   align-items: center;
   border-radius: 1rem;
-  box-shadow: 0 0 0 2px @color-gray-40 inset;
+  box-shadow: 0 0 0 2px @navBla inset;
   background-color: #fff;
+  color: @navBla;
 }
 
 .navds-stepper > li:not(:last-child) > .navds-step::before,
@@ -96,7 +97,7 @@ a.navds-step:focus {
   position: absolute;
 
   /* left padding + indicator width/2 - line width/2 */
-  left: calc(0.5rem + 2rem / 2 - 2px / 2);
+  left: calc(0.5rem + 1rem / 2 - 2px / 2);
 
   /* top padding + indicator width - line padding */
   top: calc(0.5rem + 2rem + 4px);
@@ -188,8 +189,8 @@ button.navds-step--inProgress.navds-step.navds-step--active:not(.navds-step--dis
 }
 
 .navds-step--active > .navds-step__indicator {
-  background-color: @navLysGra;
-  color: @color-gray-40;
+  background-color: @navBla;
+  color: @white;
 }
 
 button.navds-step > * .navds-step__indicator,

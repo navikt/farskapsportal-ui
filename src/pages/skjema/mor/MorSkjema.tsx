@@ -58,7 +58,7 @@ const reducer = (state: StateType, action: ActionType): StateType => {
                     ...state.formValues,
                     termindato: action.payload,
                 },
-                activeStep: 1,
+                activeStep: state.stepStatus.far === StepStatus.Done ? 2 : 1,
                 stepStatus: {
                     barn: StepStatus.Done,
                     far:

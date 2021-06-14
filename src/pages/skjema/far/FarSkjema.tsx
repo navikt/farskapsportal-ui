@@ -48,7 +48,7 @@ const reducer = (state: StateType, action: ActionType): StateType => {
         case 'SET_LES_OPPLYSNINGER':
             return {
                 ...state,
-                activeStep: 1,
+                activeStep: state.stepStatus.borSammen === StepStatus.Done ? 2 : 1,
                 stepStatus: { lesOpplysninger: StepStatus.Done, borSammen: StepStatus.Active },
             };
         case 'EDIT_BOR_SAMMEN':

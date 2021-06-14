@@ -15,8 +15,7 @@ import ProsessIndikator from './ProsessIndikator';
 
 import './Kvittering.less';
 import KvitteringGjenfinnErklaeringer from './KvitteringGjenfinnErklaeringer';
-import FarskapserklaeringPresentation
-    from "../../components/farskapserklaering-presentation/FarskapserklaeringPresentation";
+import FarskapserklaeringPresentation from '../../components/farskapserklaering-presentation/FarskapserklaeringPresentation';
 
 function Kvittering() {
     const erklaeringId = useQuery().get(ERKLAERING_ID);

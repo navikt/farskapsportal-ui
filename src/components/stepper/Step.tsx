@@ -5,7 +5,6 @@ import { StepContext } from './Stepper';
 
 import { OverridableComponent } from './OverridableComponent';
 
-import './button/index.less';
 import './index.less';
 
 export interface StepperStepProps {
