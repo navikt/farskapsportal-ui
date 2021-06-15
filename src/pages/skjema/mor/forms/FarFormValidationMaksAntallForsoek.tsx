@@ -40,7 +40,8 @@ function FarFormValidationMaksAntallForsoek({
                 <FormattedMessage
                     id="skjema.mor.far.validation.maksAntallForsoek.2"
                     values={{
-                        timerEllerMinutterIgjenForNullstillingAvForsoek: timerEllerMinutterIgjenForNullstillingAvForsoek,
+                        timerEllerMinutterIgjenForNullstillingAvForsoek:
+                            timerEllerMinutterIgjenForNullstillingAvForsoek,
                         tidsEnhet: getMessage(intl, tidsEnhetTextId),
                     }}
                 />
