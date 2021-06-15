@@ -112,6 +112,7 @@ const performApiCall = (
                 type: err.type || 'feil',
                 feilkode: err.feilkode,
                 antallResterendeForsoek: err.antallResterendeForsoek,
+                tidspunktForNullstillingAvForsoek: err.tidspunktForNullstillingAvForsoek,
             };
 
             if (!onlyLogErrorOn || onlyLogErrorOn(error)) {
@@ -148,6 +149,7 @@ const checkHttpError = async (response: Response): Promise<Response> => {
             text: responseErrorData.feilkodebeskrivelse,
             feilkode: responseErrorData.feilkode,
             antallResterendeForsoek: responseErrorData.antallResterendeForsoek,
+            tidspunktForNullstillingAvForsoek: responseErrorData.tidspunktForNullstillingAvForsoek,
         };
         throw error;
     }

@@ -24,7 +24,11 @@ type ActionType =
     | { type: 'CONTROL_FATHER' }
     | {
           type: 'CONTROL_FATHER_FAILURE';
-          payload: { feilkode: Feilkode | null; antallResterendeForsoek: number | null };
+          payload: {
+              feilkode: Feilkode | null;
+              antallResterendeForsoek: number | null;
+              tidspunktForNullstillingAvForsoek: string | null;
+          };
       }
     | { type: 'API_ERROR'; payload: AlertError };
 
@@ -32,6 +36,7 @@ interface StateType {
     pending: boolean;
     feilkode?: Feilkode | null;
     antallResterendeForsoek?: number | null;
+    tidspunktForNullstillingAvForsoek?: string | null;
     apiError?: AlertError;
 }
 
@@ -44,6 +49,7 @@ const reducer = (state: StateType, action: ActionType): StateType => {
                 pending: false,
                 feilkode: action.payload.feilkode,
                 antallResterendeForsoek: action.payload.antallResterendeForsoek,
+                tidspunktForNullstillingAvForsoek: action.payload.tidspunktForNullstillingAvForsoek,
                 apiError: undefined,
             };
         case 'API_ERROR':
@@ -70,6 +76,7 @@ function FarForm(props: FarFormProps) {
         pending: false,
         feilkode: undefined,
         antallResterendeForsoek: undefined,
+        tidspunktForNullstillingAvForsoek: undefined,
         apiError: undefined,
     });
     const { control, register, handleSubmit, errors } = useForm<FarFormInput>({
@@ -99,6 +106,8 @@ function FarForm(props: FarFormProps) {
                         payload: {
                             feilkode: error.feilkode,
                             antallResterendeForsoek: error.antallResterendeForsoek,
+                            tidspunktForNullstillingAvForsoek:
+                                error.tidspunktForNullstillingAvForsoek,
                         },
                     });
                 } else {
@@ -124,6 +133,9 @@ function FarForm(props: FarFormProps) {
                             id="far-form-validation-error"
                             feilkode={state.feilkode}
                             antallResterendeForsoek={state.antallResterendeForsoek}
+                            tidspunktForNullstillingAvForsoek={
+                                state.tidspunktForNullstillingAvForsoek
+                            }
                         />
                     )
                 }

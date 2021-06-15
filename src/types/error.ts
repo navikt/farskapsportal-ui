@@ -11,4 +11,5 @@ export interface AlertError extends HTTPError {
     type: AlertStripeType;
     feilkode?: Feilkode | null;
     antallResterendeForsoek: number | null;
+    tidspunktForNullstillingAvForsoek: string | null;
 }

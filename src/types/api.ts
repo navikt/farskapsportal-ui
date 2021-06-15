@@ -10,6 +10,7 @@ export interface FarskapserklaeringFeilResponse {
     feilkode: Feilkode | null;
     feilkodebeskrivelse: string | null;
     antallResterendeForsoek: number | null;
+    tidspunktForNullstillingAvForsoek: string | null;
 }
 
 export interface BrukerinformasjonResponse {

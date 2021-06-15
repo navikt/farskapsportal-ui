@@ -4,17 +4,20 @@ import { FormattedMessage } from 'react-intl';
 
 import FormattedMessageWithExternalLink from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
 import { Feilkode } from 'types/feilkode';
+import FarFormValidationMaksAntallForsoek from './FarFormValidationMaksAntallForsoek';
 
 interface FarFormValidationErrorProps {
     id: string;
     feilkode: Feilkode;
     antallResterendeForsoek?: number | null;
+    tidspunktForNullstillingAvForsoek?: string | null;
 }
 
 function FarFormValidationError({
     id,
     feilkode,
     antallResterendeForsoek,
+    tidspunktForNullstillingAvForsoek,
 }: FarFormValidationErrorProps) {
     const renderContent = () => {
         switch (feilkode) {
@@ -23,10 +26,18 @@ function FarFormValidationError({
             case Feilkode.ForskjelligeFedre:
                 return <ForskjelligeFedre />;
             case Feilkode.MaksAntallForsoek:
-                return <MaksAntallForsoek />;
+                return (
+                    <FarFormValidationMaksAntallForsoek
+                        tidspunktForNullstillingAvForsoek={tidspunktForNullstillingAvForsoek}
+                    />
+                );
             case Feilkode.NavnStemmerIkkeMedRegister:
                 if (antallResterendeForsoek === 0) {
-                    return <MaksAntallForsoek />;
+                    return (
+                        <FarFormValidationMaksAntallForsoek
+                            tidspunktForNullstillingAvForsoek={tidspunktForNullstillingAvForsoek}
+                        />
+                    );
                 } else {
                     return <NavnStemmerIkkeMedRegister />;
                 }
@@ -65,19 +76,6 @@ function FeilRolleFar() {
 
 function ForskjelligeFedre() {
     return <FormattedMessage id="skjema.mor.far.validation.forskjelligeFedre" />;
-}
-
-function MaksAntallForsoek() {
-    return (
-        <>
-            <Normaltekst>
-                <FormattedMessage id="skjema.mor.far.validation.maksAntallForsoek.1" />
-            </Normaltekst>
-            <Normaltekst>
-                <FormattedMessage id="skjema.mor.far.validation.maksAntallForsoek.2" />
-            </Normaltekst>
-        </>
-    );
 }
 
 function NavnStemmerIkkeMedRegister() {
