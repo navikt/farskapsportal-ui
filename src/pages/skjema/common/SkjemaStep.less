@@ -3,7 +3,6 @@
 .SkjemaStep {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1rem;
 
   @media (min-width: @mobile-breakpoint) {
     flex-direction: row;
@@ -13,20 +12,14 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-
-    .knapp {
-      @media (min-width: @mobile-breakpoint) {
-        margin-right: -1rem;
-      }
-    }
   }
 
   .panel {
     width: 100%;
-    padding: 1rem;
+    padding: 0 1rem;
 
     @media (min-width: @mobile-breakpoint) {
-      padding: 1rem 2rem;
+      padding: 0 2rem;
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Normaltekst, Undertittel } from 'nav-frontend-typografi';
+import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import { FormattedMessage } from 'react-intl';
 
 import { BorSammenValue } from './BorSammenForm';
@@ -13,9 +13,9 @@ interface BorSammenPresentationProps {
 function BorSammenPresentation({ titleId, borSammen }: BorSammenPresentationProps) {
     return (
         <div className="BorSammenPresentation">
-            <Undertittel>
+            <Systemtittel>
                 <FormattedMessage id={titleId} />
-            </Undertittel>
+            </Systemtittel>
             <Normaltekst>
                 <FormattedMessage
                     id={

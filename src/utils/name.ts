@@ -1,4 +1,5 @@
 import { Forelder } from 'types/forelder';
+import { capitalizeFirsLetterOnly } from './string';
 
 export const getNameFromForelder = (forelder?: Forelder | null) => {
     if (!forelder) {
@@ -6,7 +7,7 @@ export const getNameFromForelder = (forelder?: Forelder | null) => {
         return '';
     }
 
-    return `${forelder.fornavn}${forelder.mellomnavn ? ' ' + forelder.mellomnavn : ''} ${
-        forelder.etternavn
-    }`;
+    return `${capitalizeFirsLetterOnly(forelder.fornavn)}${
+        forelder.mellomnavn ? ' ' + capitalizeFirsLetterOnly(forelder.mellomnavn) : ''
+    } ${capitalizeFirsLetterOnly(forelder.etternavn)}`;
 };

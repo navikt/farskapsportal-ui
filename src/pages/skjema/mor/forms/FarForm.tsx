@@ -18,6 +18,7 @@ import { getMessage } from 'utils/intl';
 import { removeWhitespace } from 'utils/string';
 import FarFormValidationError from './FarFormValidationError';
 import FarFormValidationResterendeForsoek from './FarFormValidationResterendeForsoek';
+import { Systemtittel } from 'nav-frontend-typografi';
 
 type ActionType =
     | { type: 'CONTROL_FATHER' }
@@ -124,7 +125,7 @@ function FarForm(props: FarFormProps) {
     return (
         <form onSubmit={handleSubmit(controlInfoAndSubmit, onError)}>
             <SkjemaGruppe
-                legend={getMessage(intl, 'skjema.mor.far.title')}
+                legend={<Systemtittel>{getMessage(intl, 'skjema.mor.far.title')}</Systemtittel>}
                 feil={
                     !state.pending &&
                     state.feilkode && (
@@ -211,5 +212,7 @@ function FarForm(props: FarFormProps) {
         </form>
     );
 }
+
+// TODO: Ikke vis apiError ved feil
 
 export default FarForm;

@@ -1,5 +1,4 @@
 import AlertStripe from 'nav-frontend-alertstriper';
-import Panel from 'nav-frontend-paneler';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { FormattedMessage } from 'react-intl';
 import { Redirect } from 'react-router-dom';
@@ -17,6 +16,8 @@ import { getFarskapserklaeringForId } from 'utils/farskapserklaering';
 import { useQuery } from 'utils/hooks/useQuery';
 import SignerButtons from './SignerButtons';
 
+import './Signer.less';
+
 function Signer() {
     const [{ language }] = useStore();
     const erklaeringId = useQuery().get(ERKLAERING_ID);
@@ -30,11 +31,11 @@ function Signer() {
 
         if (erklaering && erklaeringId) {
             return (
-                <Panel>
+                <>
                     <IkkeSignertAlert />
-                    <FarskapserklaeringPresentation farskapserklaering={erklaering} />
+                    <FarskapserklaeringPresentation border farskapserklaering={erklaering} />
                     <SignerButtons erklaeringId={erklaeringId} />
-                </Panel>
+                </>
             );
         } else {
             // TODO: handle missing erklaering && erklaeringId
@@ -59,7 +60,7 @@ function Signer() {
 
 function IkkeSignertAlert() {
     return (
-        <AlertStripe type="advarsel">
+        <AlertStripe type="advarsel" className="IkkeSignertAlert">
             <Normaltekst>
                 <FormattedMessage id="signer.alert.1" />
             </Normaltekst>

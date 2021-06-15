@@ -1,0 +1,65 @@
+@import (reference) 'styles/assets';
+
+.ProsessIndikator {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem 0.5rem 2.5rem 0.5rem;
+
+  &__line {
+    height: 50px;
+    width: 2px;
+    background-color: @navGra20;
+    margin-left: 6.5px;
+  }
+}
+
+.Step {
+  display: flex;
+  align-items: center;
+
+  &__label {
+    margin-left: 1rem;
+    display: inline;
+  }
+
+  .bold {
+    font-weight: 600;
+  }
+}
+
+.ProsessStegIcon {
+  display: flex;
+  align-items: center;
+  color: @navGra60;
+  width: 1rem;
+
+  &__circle {
+    height: 1rem;
+    min-width: 1rem;
+    background-color: @navGra60;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__inner {
+      height: 0.5rem;
+      min-width: 0.5rem;
+      background-color: @navBakgrunn;
+      border-radius: 50%;
+    }
+  }
+}
+
+.dot {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+
+.gray {
+  background-color: @navGra60;
+}
+
+.white {
+  background-color: @navBakgrunn;
+}

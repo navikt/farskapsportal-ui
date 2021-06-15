@@ -12,20 +12,24 @@ import './FarskapserklaeringPresentation.less';
 
 interface FarskapserklaeringPresentationProps {
     farskapserklaering: Farskapserklaering;
+    showTitle?: boolean;
     showBorSammen?: boolean;
     border?: boolean;
 }
 
 function FarskapserklaeringPresentation({
     farskapserklaering,
+    showTitle = true,
     showBorSammen = true,
     border,
 }: FarskapserklaeringPresentationProps) {
     return (
         <Panel className="FarskapserklaeringPresentation" border={border}>
-            <Innholdstittel tag="p" className="FarskapserklaeringPresentation__title">
-                <FormattedMessage id="farskapserklaering" />
-            </Innholdstittel>
+            {showTitle && (
+                <Innholdstittel tag="p" className="FarskapserklaeringPresentation__title">
+                    <FormattedMessage id="farskapserklaering" />
+                </Innholdstittel>
+            )}
             <Undertittel tag="p">
                 <FormattedMessage id="farskapserklaering.aboutChildren" />
             </Undertittel>
@@ -75,7 +79,7 @@ function FarskapserklaeringPresentation({
                     </Normaltekst>
                 </div>
             </div>
-            {showBorSammen && (
+            {showBorSammen && farskapserklaering.dokument?.signertAvFar && (
                 <>
                     <Undertittel tag="p" className="FarskapserklaeringPresentation__borSammen">
                         <FormattedMessage id="farskapserklaering.borSammen" />

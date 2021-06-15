@@ -25,8 +25,6 @@ function FarFormValidationError({
                 return <FeilRolleFar />;
             case Feilkode.ForskjelligeFedre:
                 return <ForskjelligeFedre />;
-            case Feilkode.IkkeMyndig:
-                return <IkkeMyndig />;
             case Feilkode.MaksAntallForsoek:
                 return (
                     <FarFormValidationMaksAntallForsoek
@@ -45,6 +43,9 @@ function FarFormValidationError({
                 }
             case Feilkode.PdlPersonIkkeFunnet:
                 return <PdlPersonIkkeFunnet />;
+            case Feilkode.IkkeMyndig:
+            case Feilkode.PersonErDoed:
+                return <DefaultUgyldigFarMessage />;
             default:
                 return null;
         }
@@ -77,19 +78,6 @@ function ForskjelligeFedre() {
     return <FormattedMessage id="skjema.mor.far.validation.forskjelligeFedre" />;
 }
 
-function IkkeMyndig() {
-    return (
-        <>
-            <Normaltekst>
-                <FormattedMessage id="skjema.mor.far.validation.ikkeMyndig" />{' '}
-            </Normaltekst>
-            <Normaltekst>
-                <FormattedMessage id="error.taKontakt" />
-            </Normaltekst>
-        </>
-    );
-}
-
 function NavnStemmerIkkeMedRegister() {
     return (
         <>
@@ -108,6 +96,16 @@ function PdlPersonIkkeFunnet() {
         <>
             <Normaltekst>
                 <FormattedMessage id="skjema.mor.far.validation.pdlPersonIkkeFunnet" />
+            </Normaltekst>
+        </>
+    );
+}
+
+function DefaultUgyldigFarMessage() {
+    return (
+        <>
+            <Normaltekst>
+                <FormattedMessage id="skjema.mor.far.validation.defaultUgyldigFarMessage" />
             </Normaltekst>
         </>
     );

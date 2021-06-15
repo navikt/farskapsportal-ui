@@ -1,5 +1,5 @@
 import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
-import { Undertittel } from 'nav-frontend-typografi';
+import { Systemtittel } from 'nav-frontend-typografi';
 import { FormattedMessage } from 'react-intl';
 
 import ButtonContainer from 'components/button-container/ButtonContainer';
@@ -17,12 +17,14 @@ interface LesOpplysningerFormProps {
 function LesOpplysningerForm({ farskapserklaering, onCancel, onSubmit }: LesOpplysningerFormProps) {
     return (
         <div className="LesOpplysningerForm">
-            <Undertittel>
+            <Systemtittel>
                 <FormattedMessage id="skjema.far.lesOpplysninger.title" />
-            </Undertittel>
+            </Systemtittel>
             <FarskapserklaeringPresentation
                 farskapserklaering={farskapserklaering}
                 showBorSammen={false}
+                showTitle={false}
+                border={true}
             />
             <ButtonContainer>
                 <Hovedknapp htmlType="button" onClick={onSubmit}>

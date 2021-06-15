@@ -1,8 +1,11 @@
 import { ReactNode } from 'react';
 
-import Banner from 'components/banner/Banner';
 import { Breadcrumb } from 'types/breadcrumbs';
 import { useDekoratorBreadcrumbs } from 'utils/hooks/useDekoratorBreadcrumbs';
+import { Sidetittel } from 'nav-frontend-typografi';
+import { FormattedMessage } from 'react-intl';
+
+import './Page.less';
 
 interface PageProps {
     children: ReactNode;
@@ -14,10 +17,12 @@ function Page({ breadcrumbs, children, titleId }: PageProps) {
     useDekoratorBreadcrumbs(breadcrumbs);
 
     return (
-        <>
-            <Banner titleId={titleId} />
+        <div className="Page">
+            <Sidetittel>
+                <FormattedMessage id={titleId} />
+            </Sidetittel>
             <div role="main">{children}</div>
-        </>
+        </div>
     );
 }
 

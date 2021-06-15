@@ -1,4 +1,4 @@
-import { Element, Undertittel, Normaltekst } from 'nav-frontend-typografi';
+import { Element, Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import { FormattedMessage } from 'react-intl';
 
 import { formatFoedselsnummer } from 'utils/foedselsnummer';
@@ -13,9 +13,9 @@ interface FarPresentationProps {
 function FarPresentation(props: FarPresentationProps) {
     return (
         <div className="FarPresentation">
-            <Undertittel>
+            <Systemtittel>
                 <FormattedMessage id="skjema.mor.far.title" />
-            </Undertittel>
+            </Systemtittel>
             <div className="FarPresentation__navn">
                 <Normaltekst>
                     <FormattedMessage id="navn" />:
