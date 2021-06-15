@@ -46,6 +46,8 @@ const mockPut = (
 export const setUpMock = async () => {
     mockGet('/api/brukerinformasjon', user);
 
+    mockGet('begin:/api/farskapserklaering/dokument', new Blob([''], { type: 'blob' }));
+
     mockPost('/api/personopplysninger/far', 'OK', 2000, 3000);
 
     mockPost(
