@@ -4,8 +4,6 @@ export default {
     'three': 'tre',
     'hour': 'time',
     'hours': 'timer',
-    'minute': 'minutt',
-    'minutes': 'minutter',
     'foedselsnummer': 'Fødselsnummer',
     'termindato': 'Termindato',
     'navn': 'Navn',

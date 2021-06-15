@@ -1,7 +1,7 @@
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { getMessage } from '../../../../utils/intl';
-import { getHoursUntil, getMinutesUntil } from '../../../../utils/date';
+import { getHoursUntil } from '../../../../utils/date';
 
 interface MaksAntallForsoekProps {
     tidspunktForNullstillingAvForsoek?: string | null;
@@ -16,20 +16,9 @@ function FarFormValidationMaksAntallForsoek({
         return null;
     }
 
-    const timerIgjenForNullstillingAvForsoek = getHoursUntil(tidspunktForNullstillingAvForsoek);
-    const timerEllerMinutterIgjenForNullstillingAvForsoek =
-        timerIgjenForNullstillingAvForsoek > 0
-            ? timerIgjenForNullstillingAvForsoek
-            : getMinutesUntil(tidspunktForNullstillingAvForsoek);
+    const timerIgjenForNullstillingAvForsoek = getHoursUntil(tidspunktForNullstillingAvForsoek) + 1;
 
-    const tidsEnhetTextId =
-        timerIgjenForNullstillingAvForsoek > 0
-            ? timerIgjenForNullstillingAvForsoek > 1
-                ? 'hours'
-                : 'hour'
-            : timerEllerMinutterIgjenForNullstillingAvForsoek > 1
-            ? 'minutes'
-            : 'minute';
+    const tidsEnhetTextId = timerIgjenForNullstillingAvForsoek > 1 ? 'hours' : 'hour';
 
     return (
         <>
@@ -40,8 +29,7 @@ function FarFormValidationMaksAntallForsoek({
                 <FormattedMessage
                     id="skjema.mor.far.validation.maksAntallForsoek.2"
                     values={{
-                        timerEllerMinutterIgjenForNullstillingAvForsoek:
-                            timerEllerMinutterIgjenForNullstillingAvForsoek,
+                        timerIgjenForNullstillingAvForsoek: timerIgjenForNullstillingAvForsoek,
                         tidsEnhet: getMessage(intl, tidsEnhetTextId),
                     }}
                 />

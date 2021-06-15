@@ -2,7 +2,6 @@ import {
     addDays,
     differenceInDays,
     differenceInHours,
-    differenceInMinutes,
     differenceInWeeks,
     formatISO,
     parseISO,
@@ -30,6 +29,3 @@ export const getWeekOfPregnancy = (date: string): number =>
 
 export const getHoursUntil = (date: string): number =>
     differenceInHours(parseISO(date), new Date());
-
-export const getMinutesUntil = (date: string): number =>
-    differenceInMinutes(parseISO(date), new Date());
