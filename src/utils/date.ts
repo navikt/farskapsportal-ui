@@ -1,7 +1,8 @@
 import {
     addDays,
     differenceInDays,
-    differenceInHours, differenceInMinutes,
+    differenceInHours,
+    differenceInMinutes,
     differenceInWeeks,
     formatISO,
     parseISO,
