@@ -14,7 +14,7 @@ import YtelserOgTjenesterPanel from './YtelserOgTjenesterPanel';
 import ProsessIndikator from './ProsessIndikator';
 
 import './Kvittering.less';
-import KvitteringGjenfinnErklaeringer from './KvitteringGjenfinnErklaeringer';
+import KvitteringLastNedErklaering from './KvitteringLastNedErklaering';
 import FarskapserklaeringPresentation from '../../components/farskapserklaering-presentation/FarskapserklaeringPresentation';
 
 function Kvittering() {
@@ -50,7 +50,7 @@ function Kvittering() {
                     return (
                         <ContentContainer className="Kvittering">
                             <KvitteringIntro erklaering={erklaering} />
-                            <KvitteringGjenfinnErklaeringer />
+                            <KvitteringLastNedErklaering erklaering={erklaering} />
                             <MorAlert erklaering={erklaering} />
                             <ProsessIndikator erklaering={erklaering} />
                             <FarskapserklaeringPresentation
