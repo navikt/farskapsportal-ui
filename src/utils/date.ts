@@ -1,7 +1,7 @@
 import {
     addDays,
     differenceInDays,
-    differenceInHours,
+    differenceInHours, differenceInMinutes,
     differenceInWeeks,
     formatISO,
     parseISO,
@@ -31,4 +31,4 @@ export const getHoursUntil = (date: string): number =>
     differenceInHours(parseISO(date), new Date());
 
 export const getMinutesUntil = (date: string): number =>
-    differenceInHours(parseISO(date), new Date());
+    differenceInMinutes(parseISO(date), new Date());
