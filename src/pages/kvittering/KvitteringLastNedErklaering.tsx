@@ -3,7 +3,7 @@ import { getMessage } from '../../utils/intl';
 import { Normaltekst } from 'nav-frontend-typografi';
 import { Farskapserklaering } from '../../types/farskapserklaering';
 import { downloadSignedDocument } from '../../api/api';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 interface KvitteringLastNedErklaeringProps {
     erklaering: Farskapserklaering;
@@ -14,7 +14,7 @@ function KvitteringLastNedErklaering({ erklaering }: KvitteringLastNedErklaering
     const [pdfDownloadUrl, setPdfDownloaddUrl] = useState<string | undefined>();
     const beggeParterSignert = erklaering.dokument?.signertAvFar;
 
-    if (beggeParterSignert) {
+    useEffect(() => {
         downloadSignedDocument(erklaering.idFarskapserklaering)
             .then((blob) => {
                 setPdfDownloaddUrl(window.URL.createObjectURL(blob));
@@ -22,19 +22,23 @@ function KvitteringLastNedErklaering({ erklaering }: KvitteringLastNedErklaering
             .catch(() => {
                 setPdfDownloaddUrl(undefined);
             });
-    }
+    }, [erklaering]);
 
     const pdfName = getMessage(intl, 'kvittering.intro.pdfName');
 
+    if (!pdfDownloadUrl) {
+        return null;
+    }
+
     return beggeParterSignert ? (
-        <Normaltekst>
+        <Normaltekst className="KvitteringLastNedErklaering">
             <FormattedMessage id="kvittering.intro.downloadPdf" />
             <a href={pdfDownloadUrl} download={pdfName}>
                 {pdfName}
             </a>
         </Normaltekst>
     ) : (
-        <Normaltekst>
+        <Normaltekst className="KvitteringLastNedErklaering">
             <FormattedMessage id="kvittering.intro.downloadPdfNotSigned" />
         </Normaltekst>
     );
