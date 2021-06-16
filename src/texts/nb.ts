@@ -239,7 +239,7 @@ export default {
     'kvittering.intro.termindato': 'forventet født {termindato}.',
     'kvittering.intro.downloadPdfNotSigned': 'Du kan laste ned farskapserklæringen som en pdf på denne siden etter at begge parter har signert.',
     'kvittering.intro.downloadPdf': 'Last ned ferdig signert farskapserklæring som pdf her: ',
-    'kvittering.intro.pdfName': 'Farskapserklaering.pdf',
+    'kvittering.intro.pdfName': 'Farskapserklæring.pdf',
     'kvittering.intro.mor.1': 'Vi har mottatt dine opplysninger om far {date}.',
     'kvittering.intro.mor.2': 'Erklæringen vil bli videresendt til han for godkjenning og signering.',
     'kvittering.intro.mor.3': 'Du kan ikke endre opplysningene du har gitt.',
