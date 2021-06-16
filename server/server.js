@@ -152,6 +152,26 @@ app.put('/api/farskapserklaering/oppdatere', async (req, res) => {
     }
 });
 
+app.get('/api/farskapserklaering/:erklaeringId/dokument', async (req, res) => {
+    try {
+        const token = req.cookies[tokenName];
+        const response = await fetch(
+            `${apiUrl}/farskapserklaering/${req.params.erklaeringId}/dokument`,
+            {
+                method: 'get',
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    responseType: 'blob',
+                },
+            }
+        );
+        res.status(response.status).send(response);
+    } catch (error) {
+        console.log(`Error while calling api: ${error}`);
+        res.sendStatus(500);
+    }
+});
+
 // Match everything except internal og static
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
     getHtmlWithDekorator(`${buildPath}/index.html`)

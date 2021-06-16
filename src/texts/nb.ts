@@ -237,17 +237,18 @@ export default {
 
     'kvittering.intro.foedselsnummer': 'med fødselsnummer {fnr}.',
     'kvittering.intro.termindato': 'forventet født {termindato}.',
+    'kvittering.intro.downloadPdfNotSigned': 'Du kan laste ned farskapserklæringen som en pdf på denne siden etter at begge parter har signert.',
+    'kvittering.intro.downloadPdf': 'Last ned ferdig signert farskapserklæring som pdf her: ',
+    'kvittering.intro.pdfName': 'Farskapserklæring.pdf',
     'kvittering.intro.mor.1': 'Vi har mottatt dine opplysninger om far {date}.',
     'kvittering.intro.mor.2': 'Erklæringen vil bli videresendt til han for godkjenning og signering.',
     'kvittering.intro.mor.3': 'Du kan ikke endre opplysningene du har gitt.',
     'kvittering.intro.mor.4': 'Du kan finne igjen erklæringene her: ',
-    'kvittering.intro.mor.link': 'Dine farskapserklæringer', // TODO ?
     'kvittering.intro.mor.farSignert': 'Far har {date} erklært farskap for barn',
 
     'kvittering.intro.far.1': 'Du har signert farskapserklæring {date} for barn',
     'kvittering.intro.far.2': 'Erklæringen er endelig og kan ikke endres.',
     'kvittering.intro.far.3': 'Du kan finne igjen erklæringer her: ',
-    'kvittering.intro.far.link': 'Dine farskapserklæringer', // TODO ?
     'kvittering.morAlert.1': 'Erklæringen er ikke gyldig før oppgitt far har signert.',
     'kvittering.morAlert.2': 'Han kan allerede nå logge seg inn på Ditt NAV og signere erklæringen. Du bør gjøre ham oppmerksom på dette. Hvis faren til barnet ikke har signert innen 3 dager, vil vi sende ham en påminnelse på SMS.',
     'kvittering.prosessIndikator.step.1': '1. Mor oppgir far',

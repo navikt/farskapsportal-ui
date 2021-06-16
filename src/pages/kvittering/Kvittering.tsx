@@ -12,10 +12,10 @@ import KvitteringIntro from './KvitteringIntro';
 import MorAlert from './MorAlert';
 import YtelserOgTjenesterPanel from './YtelserOgTjenesterPanel';
 import ProsessIndikator from './ProsessIndikator';
+import KvitteringLastNedErklaering from './KvitteringLastNedErklaering';
+import FarskapserklaeringPresentation from '../../components/farskapserklaering-presentation/FarskapserklaeringPresentation';
 
 import './Kvittering.less';
-import KvitteringGjenfinnErklaeringer from './KvitteringGjenfinnErklaeringer';
-import FarskapserklaeringPresentation from '../../components/farskapserklaering-presentation/FarskapserklaeringPresentation';
 
 function Kvittering() {
     const erklaeringId = useQuery().get(ERKLAERING_ID);
@@ -50,13 +50,13 @@ function Kvittering() {
                     return (
                         <ContentContainer className="Kvittering">
                             <KvitteringIntro erklaering={erklaering} />
-                            <KvitteringGjenfinnErklaeringer />
                             <MorAlert erklaering={erklaering} />
                             <ProsessIndikator erklaering={erklaering} />
                             <FarskapserklaeringPresentation
                                 farskapserklaering={erklaering}
                                 border={true}
                             />
+                            <KvitteringLastNedErklaering erklaering={erklaering} />
                             <HvaSkjerViderePanel />
                             <HvaSkjerHvisPanel erklaering={erklaering} />
                             <YtelserOgTjenesterPanel erklaering={erklaering} />
