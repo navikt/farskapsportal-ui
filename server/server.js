@@ -155,6 +155,9 @@ app.put('/api/farskapserklaering/oppdatere', async (req, res) => {
 app.get('/api/farskapserklaering/:erklaeringId/dokument', async (req, res) => {
     try {
         const token = req.cookies[tokenName];
+        console.log(
+            `URL ENDPOINT: ${apiUrl}/farskapserklaering/${req.params.erklaeringId}/dokument`
+        );
         const response = await fetch(
             `${apiUrl}/farskapserklaering/${req.params.erklaeringId}/dokument`,
             {
@@ -165,6 +168,7 @@ app.get('/api/farskapserklaering/:erklaeringId/dokument', async (req, res) => {
                 },
             }
         );
+        console.log('RESPONSE:' + res);
         res.status(response.status).send(response);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
