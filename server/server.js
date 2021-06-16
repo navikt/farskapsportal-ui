@@ -152,11 +152,11 @@ app.put('/api/farskapserklaering/oppdatere', async (req, res) => {
     }
 });
 
-app.get('/api/farskapserklaering/dokument', async (req, res) => {
+app.get('/api/farskapserklaering/:erklaeringId/dokument', async (req, res) => {
     try {
         const token = req.cookies[tokenName];
         const response = await fetch(
-            `${apiUrl}/farskapserklaering/${req.query.id_farskapserklaering}/dokument`,
+            `${apiUrl}/farskapserklaering/${req.params.erklaeringId}/dokument`,
             {
                 method: 'get',
                 headers: {

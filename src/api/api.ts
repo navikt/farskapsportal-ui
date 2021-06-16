@@ -36,7 +36,7 @@ export const checkAuthFetchUser = () => {
 };
 
 export const downloadSignedDocument = (erklaeringId: number) => {
-    const url = `/api/farskapserklaering/dokument?id_farskapserklaering=${erklaeringId}`;
+    const url = `/api/farskapserklaering/${erklaeringId}/dokument`;
 
     return performGet(url).then(
         (res) => new Blob([res], { type: 'application/pdf' })
