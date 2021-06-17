@@ -30,6 +30,9 @@ app.use(express.static(buildPath, { index: false }));
 // Nais functions
 app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 
+// Document endpoint always returns 304
+app.disable('etag');
+
 // Api calls
 app.get('/api/brukerinformasjon', async (req, res) => {
     try {
