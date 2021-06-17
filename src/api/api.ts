@@ -88,7 +88,7 @@ const performGet = (
     onlyLogErrorOn?: (error: AlertError) => boolean,
     blobResponse?: boolean
 ) =>
-    performApiCall('GET', url, undefined, onlyLogErrorOn).then((res) =>
+    performApiCall('GET', url, undefined, onlyLogErrorOn, blobResponse).then((res) =>
         blobResponse ? parseBlob(res) : parseJson(res)
     );
 
@@ -108,12 +108,17 @@ const performApiCall = (
     method: 'GET' | 'PUT' | 'POST',
     url: string,
     data?: Outbound,
-    onlyLogErrorOn?: (error: AlertError) => boolean
+    onlyLogErrorOn?: (error: AlertError) => boolean,
+    blobResponse?: boolean
 ) =>
     fetch(url, {
         method: method,
         body: data ? JSON.stringify(data) : undefined,
-        headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+        headers: {
+            'Content-Type': blobResponse
+                ? 'application/octet-stream'
+                : 'application/json;charset=UTF-8',
+        },
     })
         .then(checkAuth)
         .then(checkHttpError)
