@@ -165,7 +165,8 @@ app.get('/api/farskapserklaering/:erklaeringId/dokument', async (req, res) => {
                 responseType: 'blob',
             }
         );
-        res.status(response.status).send(response);
+        const blob = await response;
+        res.status(response.status).send(blob);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
         res.sendStatus(500);

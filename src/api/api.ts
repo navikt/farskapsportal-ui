@@ -39,8 +39,7 @@ export const downloadSignedDocument = (erklaeringId: number) => {
     const url = `/api/farskapserklaering/${erklaeringId}/dokument`;
 
     return performGet(url).then((res) => {
-        console.log('RESPONSE CODE: ' + res.code);
-        console.log('RESPONSE AS STRING: ' + res.toString());
+        console.log('RESPONSE JSON: ' + res.json());
         return new Blob([res], { type: 'application/pdf' });
     }) as Promise<Blob>;
 };
