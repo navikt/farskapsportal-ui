@@ -155,20 +155,16 @@ app.put('/api/farskapserklaering/oppdatere', async (req, res) => {
 app.get('/api/farskapserklaering/:erklaeringId/dokument', async (req, res) => {
     try {
         const token = req.cookies[tokenName];
-        console.log(
-            `URL ENDPOINT: ${apiUrl}/farskapserklaering/${req.params.erklaeringId}/dokument`
-        );
         const response = await fetch(
             `${apiUrl}/farskapserklaering/${req.params.erklaeringId}/dokument`,
             {
                 method: 'get',
                 headers: {
                     Authorization: `Bearer ${token}`,
-                    responseType: 'blob',
                 },
+                responseType: 'arraybuffer',
             }
         );
-        console.log('RESPONSE:' + res);
         res.status(response.status).send(response);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
