@@ -164,7 +164,8 @@ app.get('/api/farskapserklaering/:erklaeringId/dokument', async (req, res) => {
                 method: 'get',
                 headers: {
                     Authorization: `Bearer ${token}`,
-                    Accept: 'application/octet-stream',
+                    Accept: 'application/pdf',
+                    'Content-Type': 'application/pdf',
                 },
                 responseType: 'blob',
             }

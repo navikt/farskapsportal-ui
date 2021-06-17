@@ -116,7 +116,7 @@ const performApiCall = (
         body: data ? JSON.stringify(data) : undefined,
         headers: {
             'Content-Type': blobResponse
-                ? 'application/octet-stream'
+                ? 'application/pdf'
                 : 'application/json;charset=UTF-8',
         },
     })
