@@ -40,7 +40,7 @@ export const downloadSignedDocument = (erklaeringId: number) => {
 
     return performGet(url).then((res) => {
         console.log('RESPONSE CODE: ' + res.code);
-        console.log('RAW RESPONSE: ' + res);
+        console.log('RESPONSE AS STRING: ' + res.toString());
         return new Blob([res], { type: 'application/pdf' });
     }) as Promise<Blob>;
 };

@@ -12,7 +12,7 @@ interface KvitteringLastNedErklaeringProps {
 function KvitteringLastNedErklaering({ erklaering }: KvitteringLastNedErklaeringProps) {
     const intl = useIntl();
     const [pdfDownloadUrl, setPdfDownloaddUrl] = useState<string | undefined>();
-    const beggeParterSignert = erklaering.dokument?.signertAvFar;
+    const beggeParterSignert = !!erklaering.dokument?.signertAvFar;
 
     useEffect(() => {
         downloadSignedDocument(erklaering.idFarskapserklaering)

@@ -162,7 +162,7 @@ app.get('/api/farskapserklaering/:erklaeringId/dokument', async (req, res) => {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
-                responseType: 'arraybuffer',
+                responseType: 'blob',
             }
         );
         res.status(response.status).send(response);
