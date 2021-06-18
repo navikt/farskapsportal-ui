@@ -32,15 +32,13 @@ export const checkAuthFetchUser = () => {
         return error.code !== 401 && error.code !== 403;
     };
 
-    return performGet(url, onlyLogErrorOn) as Promise<UserInfo>;
+    return performGet(url, onlyLogErrorOn).then(parseJson) as Promise<UserInfo>;
 };
 
 export const downloadSignedDocument = (erklaeringId: number) => {
     const url = `/api/farskapserklaering/${erklaeringId}/dokument`;
 
-    return performGet(url).then(
-        (res) => new Blob([res], { type: 'application/pdf' })
-    ) as Promise<Blob>;
+    return performGet(url, undefined).then(parseBlob) as Promise<Blob>;
 };
 
 /*
@@ -86,7 +84,7 @@ export const oppdaterFarskapserklaering = (data: OppdatereFarskapserklaeringRequ
  * UTILS
  */
 const performGet = (url: string, onlyLogErrorOn?: (error: AlertError) => boolean) =>
-    performApiCall('GET', url, undefined, onlyLogErrorOn).then(parseJson);
+    performApiCall('GET', url, undefined, onlyLogErrorOn);
 
 const performPost = (
     url: string,
@@ -131,6 +129,8 @@ const performApiCall = (
         });
 
 const parseJson = (response: Response) => response.json();
+
+const parseBlob = (response: Response) => response.blob();
 
 const checkAuth = (response: Response): Response => {
     if (response.status === 401 || response.status === 403) {
