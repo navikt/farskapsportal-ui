@@ -167,8 +167,9 @@ app.get('/api/farskapserklaering/:erklaeringId/dokument', async (req, res) => {
                 },
             }
         );
+        const buffer = await response.buffer();
         res.contentType('application/pdf');
-        res.status(response.status).send(response.buffer());
+        res.status(response.status).send(buffer);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
         res.sendStatus(500);
