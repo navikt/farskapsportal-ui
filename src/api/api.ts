@@ -32,13 +32,13 @@ export const checkAuthFetchUser = () => {
         return error.code !== 401 && error.code !== 403;
     };
 
-    return performGet(url, onlyLogErrorOn) as Promise<UserInfo>;
+    return performGet(url, onlyLogErrorOn).then(parseJson) as Promise<UserInfo>;
 };
 
 export const downloadSignedDocument = (erklaeringId: number) => {
     const url = `/api/farskapserklaering/${erklaeringId}/dokument`;
 
-    return performGet(url, undefined, true) as Promise<Blob>;
+    return performGet(url, undefined).then(parseBlob) as Promise<Blob>;
 };
 
 /*
@@ -83,14 +83,8 @@ export const oppdaterFarskapserklaering = (data: OppdatereFarskapserklaeringRequ
 /*
  * UTILS
  */
-const performGet = (
-    url: string,
-    onlyLogErrorOn?: (error: AlertError) => boolean,
-    blobResponse?: boolean
-) =>
-    performApiCall('GET', url, undefined, onlyLogErrorOn, blobResponse).then((res) =>
-        blobResponse ? parseBlob(res) : parseJson(res)
-    );
+const performGet = (url: string, onlyLogErrorOn?: (error: AlertError) => boolean) =>
+    performApiCall('GET', url, undefined, onlyLogErrorOn);
 
 const performPost = (
     url: string,
@@ -108,17 +102,12 @@ const performApiCall = (
     method: 'GET' | 'PUT' | 'POST',
     url: string,
     data?: Outbound,
-    onlyLogErrorOn?: (error: AlertError) => boolean,
-    blobResponse?: boolean
+    onlyLogErrorOn?: (error: AlertError) => boolean
 ) =>
     fetch(url, {
         method: method,
         body: data ? JSON.stringify(data) : undefined,
-        headers: {
-            'Content-Type': blobResponse
-                ? 'application/pdf'
-                : 'application/json;charset=UTF-8',
-        },
+        headers: { 'Content-Type': 'application/json;charset=UTF-8' },
     })
         .then(checkAuth)
         .then(checkHttpError)
