@@ -5,7 +5,7 @@ import { FormattedMessage, useIntl } from 'react-intl';
 import FormButtons from 'components/form-buttons/FormButtons';
 import { getMessage } from 'utils/intl';
 
-import { Normaltekst } from 'nav-frontend-typografi';
+import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import AlertStripe from 'nav-frontend-alertstriper';
 
 import './FarBekreftForm.less';
@@ -35,7 +35,9 @@ function FarBekreftForm(props: FarBekreftFormProps) {
 
     return (
         <form onSubmit={handleSubmit(props.onSubmit)} className="FarBekreftForm">
-            <SkjemaGruppe legend={getMessage(intl, 'skjema.far.confirm.title')}>
+            <SkjemaGruppe
+                legend={<Systemtittel>{getMessage(intl, 'skjema.far.confirm.title')}</Systemtittel>}
+            >
                 {checkboxIds.map((id) => (
                     <Controller
                         key={id}
