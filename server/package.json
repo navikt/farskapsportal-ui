@@ -12,7 +12,7 @@
     "@navikt/nav-dekoratoren-moduler": "^1.2.10",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
-    "dotenv": "^8.2.0",
+    "dotenv": "^8.6.0",
     "express": "^4.17.1",
     "jsdom": "^16.5.2",
     "node-cache": "^5.1.2",
