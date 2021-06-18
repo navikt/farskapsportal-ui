@@ -14,7 +14,7 @@ app.use(compression());
 app.use(cookieParser());
 
 // Parse application/json
-app.use(express.json());
+//app.use(express.json());
 app.use((req, res, next) => {
     res.removeHeader('X-Powered-By');
     res.set('X-Frame-Options', 'SAMEORIGIN');
@@ -169,6 +169,12 @@ app.get('/api/farskapserklaering/:erklaeringId/dokument', async (req, res) => {
                 responseType: 'blob',
             }
         );
+        console.log(
+            'debgug - URL: ' + `${apiUrl}/farskapserklaering/${req.params.erklaeringId}/dokument`
+        );
+        console.log('debgug - RESPONSE JSON: ' + response.json());
+        console.log('debgug - RESPONSE SIZE: ' + response.size());
+        console.log('debgug - RESPONSE BLOB: ' + response.blob());
         const blob = await response.blob();
         res.contentType('application/pdf');
         res.status(response.status).send(blob);
