@@ -164,14 +164,11 @@ app.get('/api/farskapserklaering/:erklaeringId/dokument', async (req, res) => {
                 method: 'get',
                 headers: {
                     Authorization: `Bearer ${token}`,
-                    Accept: 'application/pdf',
                 },
-                responseType: 'blob',
             }
         );
-        console.log('DEBUG: Content-Length: ' + response.headers.get('Content-Length'));
         res.contentType('application/pdf');
-        res.status(response.status).send(response);
+        res.status(response.status).send(response.buffer());
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
         res.sendStatus(500);
