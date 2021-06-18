@@ -14,7 +14,7 @@ app.use(compression());
 app.use(cookieParser());
 
 // Parse application/json
-//app.use(express.json());
+app.use(express.json());
 app.use((req, res, next) => {
     res.removeHeader('X-Powered-By');
     res.set('X-Frame-Options', 'SAMEORIGIN');
@@ -29,9 +29,6 @@ app.use(express.static(buildPath, { index: false }));
 
 // Nais functions
 app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
-
-// Document endpoint always returns 304
-app.disable('etag');
 
 // Api calls
 app.get('/api/brukerinformasjon', async (req, res) => {
