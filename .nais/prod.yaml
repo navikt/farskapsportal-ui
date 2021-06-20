@@ -8,5 +8,5 @@ host:
 env:
   ENV: prod
   DEKORATOREN_URL: https://www.nav.no/dekoratoren
-  FARSKAPSPORTAL_API_URL: https://farskapsportal-api.nav.no
+  FARSKAPSPORTAL_API_URL: https://farskapsportal-api.svc.cluster.local
   LOGINSERVICE_URL: https://loginservice.nav.no/login
