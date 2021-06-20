@@ -31,6 +31,8 @@ spec:
       value: {{ image }}
   accessPolicy:
     outbound:
+      rules:
+        - application: farskapsportal-api
       external:
       {{#each host}}
         - host: "{{this}}"
