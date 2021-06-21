@@ -19,6 +19,11 @@ function Forside() {
     return (
         <Page titleId="header.forside">
             <ContentContainer className="Forside">
+                <AlertStripe type="advarsel">
+                    Oops! Vi opplever for tiden tekniske problemer i forbindelse med signering hos
+                    posten. Det jobbes med en fiks nå! Vennligst prøv igjen i morgen :)
+                </AlertStripe>
+                <br />
                 <AlertStripe type="info">
                     Tusen takk for at du deltar i piloten. Vi håper du kan besvare noen spørsmål om
                     løsningen etter at du har fylt inn og signert farskapserklæringen.
