@@ -14,9 +14,9 @@ import MorIkkeSignert from './info-panel-content/mor/MorIkkeSignert';
 import MorMedBarn from './info-panel-content/mor/MorMedBarn';
 import MorUtenBarn from './info-panel-content/mor/MorUtenBarn';
 import ToSkjemaButton from './ToSkjemaButton';
+import { capitalizeFirsLetterInEveryWord } from '../../utils/string';
 
 import './OversiktInfoPanel.less';
-import { capitalizeFirsLetterOnly } from '../../utils/string';
 
 interface OversiktInfoPanelProps {
     userInfo: UserInfo;
@@ -70,7 +70,7 @@ function OversiktInfoPanel({ userInfo }: OversiktInfoPanelProps) {
             <Innholdstittel tag="h2">
                 <FormattedMessage
                     id="oversikt.infoPanel.greeting"
-                    values={{ fornavn: capitalizeFirsLetterOnly(userInfo.brukersFornavn) }}
+                    values={{ fornavn: capitalizeFirsLetterInEveryWord(userInfo.brukersFornavn) }}
                 />
             </Innholdstittel>
             {renderContent()}
