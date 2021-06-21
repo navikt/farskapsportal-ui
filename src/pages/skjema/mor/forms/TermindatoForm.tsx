@@ -19,6 +19,8 @@ import {
 import { getMessage } from 'utils/intl';
 import { Systemtittel } from 'nav-frontend-typografi';
 
+import './TermindatoForm.less';
+
 export interface TermindatoFormInput {
     termindato: string;
 }
@@ -39,7 +41,7 @@ function TermindatoForm(props: TermindatoFormProps) {
     });
 
     return (
-        <form onSubmit={handleSubmit(props.onSubmit)}>
+        <form onSubmit={handleSubmit(props.onSubmit)} className="TermindatoForm">
             <SkjemaGruppe
                 legend={<Systemtittel>{getMessage(intl, 'skjema.mor.barn.title')}</Systemtittel>}
                 description={getMessage(intl, 'skjema.mor.barn.description')}
