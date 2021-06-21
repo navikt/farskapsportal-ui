@@ -28,7 +28,12 @@ function ToSkjemaButton({ userInfo }: ToSkjemaButtonProps) {
     };
 
     return (
-        <Hovedknapp className="ToSkjemaButton" htmlType="button" onClick={goToSkjema}>
+        <Hovedknapp
+            disabled={true}
+            className="ToSkjemaButton"
+            htmlType="button"
+            onClick={goToSkjema}
+        >
             <FormattedMessage id="oversikt.goToSkjemaButton" />
         </Hovedknapp>
     );

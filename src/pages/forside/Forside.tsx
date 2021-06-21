@@ -20,8 +20,8 @@ function Forside() {
         <Page titleId="header.forside">
             <ContentContainer className="Forside">
                 <AlertStripe type="advarsel">
-                    Oops! Det har oppstått midlertidige tekniske problemer i frobindelse med
-                    signering. Det jobbes med en fiks nå! Vennligst prøv igjen i morgen:)
+                    Oops! Vi opplever for tiden tekniske problemer i forbindelse med signering hos
+                    posten. Det jobbes med en fiks nå! Vennligst prøv igjen i morgen :)
                 </AlertStripe>
                 <br />
                 <AlertStripe type="info">
