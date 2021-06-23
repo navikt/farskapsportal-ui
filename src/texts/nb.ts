@@ -250,7 +250,7 @@ export default {
     'kvittering.intro.far.2': 'Erklæringen er endelig og kan ikke endres.',
     'kvittering.intro.far.3': 'Du kan finne igjen erklæringer her: ',
     'kvittering.morAlert.1': 'Erklæringen er ikke gyldig før oppgitt far har signert.',
-    'kvittering.morAlert.2': 'Han kan allerede nå logge seg inn på Ditt NAV og signere erklæringen. Du bør gjøre ham oppmerksom på dette. Hvis faren til barnet ikke har signert innen 3 dager, vil vi sende ham en påminnelse på SMS.',
+    'kvittering.morAlert.2': 'Han kan allerede nå logge seg inn på Ditt NAV og signere erklæringen. Vi vil også sende ham en påminnelse på e-post og/eller sms. (OBS! Brukernotifikasjoner dukker ikke opp under pilottesten nå, far må også logge inn på farskapsportal.nav.no)',
     'kvittering.prosessIndikator.step.1': '1. Mor oppgir far',
     'kvittering.prosessIndikator.step.2': '2. Far erklærer farskap',
     'kvittering.prosessIndikator.step.3': '3. Erklæringen oversendes folkeregisteret for registering og arkivering',
