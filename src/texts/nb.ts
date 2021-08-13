@@ -28,12 +28,14 @@ export default {
     'breadcrumbs.skjema': 'Skjema: Farskapserklæring',
     'breadcrumbs.kvittering': 'Kvittering',
     'breadcrumbs.signer': 'Signer farskapserklæring',
+    'breadcrumbs.avbrutt': 'Signering avbrutt',
 
     'header.forside': 'Farskapserklæring',
     'header.oversikt': 'Dine farskapserklæringer',
     'header.skjema': 'Skjema: Farskapserklæring',
     'header.kvittering': 'Bekreftelse på innsendt farskapserklæring',
     'header.signer': 'Signer farskapserklæring',
+    'header.avbrutt': 'Signering er avbrutt',
 
     'farskapserklaering.aboutChildren': 'Gjelder barn',
     'farskapserklaering.expectingChildren': 'Venter barn',
@@ -287,4 +289,7 @@ export default {
     'signer.alert.2': 'Vil du slette eller endre erklæringen, ta kontakt med NAV på nav.no/kontakt eller telefon 55 55 33 33.',
     'signer.submit': 'Signer',
     'signer.cancel': 'Avbryt',
+
+    'avbrutt.alert.mor': 'Du har avbrutt signeringen og den påbegynte erklæringen er slettet. For å opprette en ny farskapserklæringen, må du starte prosesen på nytt.',
+    'avbrutt.alert.far': 'Du har avbrutt signeringen og den påbegynte erklæringen er slettet. For å opprette en ny farskapserklæringen, må moren til barnet starte prosesen på nytt.',
 }

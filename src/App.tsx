@@ -1,4 +1,4 @@
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import RedirectAfterLogin from 'components/redirect-after-login/RedirectAfterLogin';
 import RedirectToLanguage from 'components/redirect-to-language/RedirectToLanguage';
@@ -10,6 +10,7 @@ import PageNotFound from 'pages/page-not-found/PageNotFound';
 import Signer from 'pages/signer/Signer';
 import Skjema from 'pages/skjema/Skjema';
 import Suksess from 'pages/suksess/Suksess';
+import Avbrutt from './pages/avbrutt/Avbrutt';
 import { Path } from 'types/path';
 import { useDekoratorLanguage } from 'utils/hooks/useDekoratorLanguage';
 
@@ -57,7 +58,11 @@ function App() {
                         path={`${basePathWithLanguage}${Path.Feilet}`}
                         component={Feilet}
                     />
-                    <Redirect from={`${basePathWithLanguage}${Path.Avbrutt}`} to={Path.Oversikt} />
+                    <Route
+                        exact={true}
+                        path={`${basePathWithLanguage}${Path.Avbrutt}`}
+                        component={Avbrutt}
+                    />
                     <Route component={PageNotFound} />
                 </Switch>
             </RedirectToLanguage>
