@@ -290,5 +290,6 @@ export default {
     'signer.submit': 'Signer',
     'signer.cancel': 'Avbryt',
 
-    'avbrutt.alert': 'Du har avbrutt signeringen og den påbegynte erklæringen er slettet. For å opprette en ny farskapserklæringen, må du starte prosesen på nytt.'
+    'avbrutt.alert.mor': 'Du har avbrutt signeringen og den påbegynte erklæringen er slettet. For å opprette en ny farskapserklæringen, må du starte prosesen på nytt.',
+    'avbrutt.alert.far': 'Du har avbrutt signeringen og den påbegynte erklæringen er slettet. For å opprette en ny farskapserklæringen, må moren til barnet starte prosesen på nytt.',
 }

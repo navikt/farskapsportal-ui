@@ -6,6 +6,7 @@ import MoreInfoPanels from '../oversikt/MoreInfoPanels';
 import VentendeErklaeringer from '../oversikt/VentendeErklaeringer';
 import AlertStripe from 'nav-frontend-alertstriper';
 import { FormattedMessage } from 'react-intl';
+import { Foreldrerolle } from '../../types/foreldrerolle';
 
 import './Avbrutt.less';
 
@@ -16,7 +17,11 @@ function Avbrutt() {
                 {(userInfo) => (
                     <ContentContainer className="Avbrutt">
                         <AlertStripe type="advarsel">
-                            <FormattedMessage id="avbrutt.alert" />
+                            {userInfo.forelderrolle === Foreldrerolle.Mor ? (
+                                <FormattedMessage id="avbrutt.alert.mor" />
+                            ) : (
+                                <FormattedMessage id="avbrutt.alert.far" />
+                            )}
                         </AlertStripe>
                         <OversiktInfoPanel userInfo={userInfo} />
                         <MoreInfoPanels userInfo={userInfo} />
