@@ -10,7 +10,7 @@ import PageNotFound from 'pages/page-not-found/PageNotFound';
 import Signer from 'pages/signer/Signer';
 import Skjema from 'pages/skjema/Skjema';
 import Suksess from 'pages/suksess/Suksess';
-import Avbrutt from "./pages/avbrutt/Avbrutt";
+import Avbrutt from './pages/avbrutt/Avbrutt';
 import { Path } from 'types/path';
 import { useDekoratorLanguage } from 'utils/hooks/useDekoratorLanguage';
 
