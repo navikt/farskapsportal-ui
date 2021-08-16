@@ -1,36 +1,37 @@
-import Page from '../../components/page/Page';
-import ContentContainer from '../../components/content-container/ContentContainer';
-import WithUserInfo from '../../store/providers/WithUserInfo';
-import OversiktInfoPanel from '../oversikt/OversiktInfoPanel';
-import MoreInfoPanels from '../oversikt/MoreInfoPanels';
-import VentendeErklaeringer from '../oversikt/VentendeErklaeringer';
-import AlertStripe from 'nav-frontend-alertstriper';
-import { FormattedMessage } from 'react-intl';
-import { Foreldrerolle } from '../../types/foreldrerolle';
+import { useEffect, useState } from 'react';
+import { Redirect, useHistory } from 'react-router-dom';
 
-import './Avbrutt.less';
+import { setSigneringStatusToken } from 'api/api';
+import Spinner from 'components/spinner/Spinner';
+import { useStore } from 'store/Context';
+import { Path } from 'types/path';
+import { useQuery } from 'utils/hooks/useQuery';
 
 function Avbrutt() {
-    return (
-        <Page titleId="header.avbrutt" breadcrumbs={[{ titleId: 'breadcrumbs.avbrutt' }]}>
-            <WithUserInfo>
-                {(userInfo) => (
-                    <ContentContainer className="Avbrutt">
-                        <AlertStripe type="advarsel">
-                            {userInfo.forelderrolle === Foreldrerolle.Mor ? (
-                                <FormattedMessage id="avbrutt.alert.mor" />
-                            ) : (
-                                <FormattedMessage id="avbrutt.alert.far" />
-                            )}
-                        </AlertStripe>
-                        <OversiktInfoPanel userInfo={userInfo} />
-                        <MoreInfoPanels userInfo={userInfo} />
-                        <VentendeErklaeringer userInfo={userInfo} />
-                    </ContentContainer>
-                )}
-            </WithUserInfo>
-        </Page>
-    );
+    const history = useHistory();
+    const [{ language }, dispatch] = useStore();
+    const statusQueryToken = useQuery().get('status_query_token');
+    const [isError, setIsError] = useState(false);
+
+    useEffect(() => {
+        if (statusQueryToken) {
+            setSigneringStatusToken(statusQueryToken).catch((e) => {
+                if (e.status === '410') {
+                    history.replace(`/${language}${Path.AvbruttOversikt}`);
+                } else {
+                    console.log(e);
+                }
+                // TODO: rework?
+                setIsError(true);
+            });
+        } else {
+            // TODO: rework?
+            setIsError(true);
+        }
+    }, [statusQueryToken, history, language, dispatch]);
+
+    // TODO: show error instead of redirecting?
+    return isError ? <Redirect to={Path.Feilet} /> : <Spinner />;
 }
 
 export default Avbrutt;

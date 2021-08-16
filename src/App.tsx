@@ -11,6 +11,7 @@ import Signer from 'pages/signer/Signer';
 import Skjema from 'pages/skjema/Skjema';
 import Suksess from 'pages/suksess/Suksess';
 import Avbrutt from './pages/avbrutt/Avbrutt';
+import AvbruttOversikt from './pages/avbruttoversikt/AvbruttOversikt';
 import { Path } from 'types/path';
 import { useDekoratorLanguage } from 'utils/hooks/useDekoratorLanguage';
 
@@ -62,6 +63,11 @@ function App() {
                         exact={true}
                         path={`${basePathWithLanguage}${Path.Avbrutt}`}
                         component={Avbrutt}
+                    />
+                    <Route
+                        exact={true}
+                        path={`${basePathWithLanguage}${Path.AvbruttOversikt}`}
+                        component={AvbruttOversikt}
                     />
                     <Route component={PageNotFound} />
                 </Switch>

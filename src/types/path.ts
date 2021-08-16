@@ -6,5 +6,6 @@ export enum Path {
     Signer = '/signer',
     Suksess = '/suksess',
     Avbrutt = '/avbrutt',
+    AvbruttOversikt = '/avbruttoversikt',
     Feilet = '/feilet',
 }
