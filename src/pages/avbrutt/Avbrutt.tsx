@@ -6,6 +6,7 @@ import Spinner from 'components/spinner/Spinner';
 import { useStore } from 'store/Context';
 import { Path } from 'types/path';
 import { useQuery } from 'utils/hooks/useQuery';
+import { AlertError } from '../../types/error';
 
 function Avbrutt() {
     const history = useHistory();
@@ -15,14 +16,13 @@ function Avbrutt() {
 
     useEffect(() => {
         if (statusQueryToken) {
-            setSigneringStatusToken(statusQueryToken).catch((e) => {
-                if (e.status === '410') {
+            setSigneringStatusToken(statusQueryToken).catch((error: AlertError) => {
+                if (error.code === 410) {
                     history.replace(`/${language}${Path.AvbruttOversikt}`);
                 } else {
-                    console.log(e);
+                    // TODO: rework?
+                    setIsError(true);
                 }
-                // TODO: rework?
-                setIsError(true);
             });
         } else {
             // TODO: rework?
