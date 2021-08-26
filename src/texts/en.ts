@@ -18,7 +18,7 @@ export default {
 
     'error.taKontakt': 'Feel free to contact us at nav.no/contact or phone +47 55 55 33 33 for information on how to proceed to establish paternity',
 
-    'withUserInfoError.banner.title': 'Whoops',
+    'withUserInfoError.banner.title': 'Whoops, ',
     'withUserInfoError.banner.text': 'something went wrong',
     'withUserInfoError.title': 'An error occurred while retrieving user information',
     'withUserInfoError.text': 'Please try again later',
@@ -289,6 +289,6 @@ export default {
     'signer.submit': 'Sign',
     'signer.cancel': 'Cancel',
 
-    'avbrutt.alert.mor': 'Du har avbrutt signeringen og den påbegynte erklæringen er slettet. For å opprette en ny farskapserklæringen, må du starte prosesen på nytt.', // TODO missing
-    'avbrutt.alert.far': 'Du har avbrutt signeringen og den påbegynte erklæringen er slettet. For å opprette en ny farskapserklæringen, må moren til barnet starte prosesen på nytt.', // TODO missing
+    'avbrutt.alert.mor': '', // TODO missing
+    'avbrutt.alert.far': '', // TODO missing
 };
