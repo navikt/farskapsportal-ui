@@ -26,14 +26,14 @@ export default {
     'breadcrumbs.forside': 'Declaration of paternity',
     'breadcrumbs.oversikt': 'Your declarations of paternity',
     'breadcrumbs.skjema': 'Declaration of paternity',
-    'breadcrumbs.kvittering': 'Receipt',
+    'breadcrumbs.kvittering': 'Confirmation', // TODO receipt??
     'breadcrumbs.signer': 'Sign declaration of paternity',
     'breadcrumbs.avbrutt': 'Signing canceled', // TODO ok translation?
 
     'header.forside': 'Declaration of paternity',
     'header.oversikt': 'Your declarations of paternity',
     'header.skjema': 'Declaration of paternity',
-    'header.kvittering': 'Receipt', // TODO confirmation?
+    'header.kvittering': 'Confirmation', // TODO receipt??
     'header.signer': 'Sign declaration of paternity',
     'header.avbrutt': 'Signing was canceled', // TODO ok translation?
 
@@ -121,7 +121,7 @@ export default {
 
     'oversikt.infoPanel.greeting': 'Hi, {fornavn}',
 
-    'oversikt.infoPanel.common.forBarn.termindato': 'expected date of birth {termindato}',
+    'oversikt.infoPanel.common.forBarn.termindato': 'expected to be born {termindato}',
     'oversikt.infoPanel.common.forBarn.foedselsnummer': 'with national identity number {fnr}',
 
     'oversikt.infoPanel.mor.utenBarn.1': 'If you\'re at least 22 weeks pregnant, you can enter the due date and provide information about the child\'s father so he can declare paternity electronically.',
@@ -134,7 +134,7 @@ export default {
     'oversikt.infoPanel.mor.farIkkeSignert.1': 'You have previously provided information about the father of the child',
     'oversikt.infoPanel.mor.farIkkeSignert.2': 'The father you have listed has not declared the paternity of the child. When he declares paternity, the declaration is sent to the Norwegian Tax Administration for registration. A copy of the declaration will also be sent to the address you have registered with NAV.',
     'oversikt.infoPanel.mor.farSignert.1': 'You have provided information about the father of the child who is',
-    'oversikt.infoPanel.mor.farSignert.2': 'and stated that the father has declared paternity of the child.',
+    'oversikt.infoPanel.mor.farSignert.2': ', and stated that the father has declared paternity of the child.',
     'oversikt.infoPanel.mor.farSignert.3': 'The declaration has been submitted to the Norwegian Tax Administration for registration. A copy of the declaration has been sent to the e-mail address you have registered with NAV.',
 
     'oversikt.infoPanel.far.utenErklaering': 'No paternity declaration is waiting for your signature. In order for you to declare paternity electronically, the child\'s mother must first list you as the father of the child.',
@@ -169,7 +169,7 @@ export default {
     'oversikt.moreInfoPanels.erklaereUtenMor.content.3.link': '', // TODO
     'oversikt.moreInfoPanels.alleredeErklaert.title': 'Have you already declared paternity and wonder what happens next?',
     'oversikt.moreInfoPanels.alleredeErklaert.content.1': 'The Norwegian Tax Administration is responsible for registering and filing paternity certificates in the National Population Register. When you submit information about your child\'s name to them, you will receive confirmation of the registration of the child\'s national identity number and name. You will receive the confirmation in your Altinn inbox',
-    'oversikt.moreInfoPanels.alleredeErklaert.content.2': 'You can find more information about registering paternity and choice of name <a>here</a>',
+    'oversikt.moreInfoPanels.alleredeErklaert.content.2': ' You can find more information about registering paternity and choice of name <a>here</a>',
     'oversikt.moreInfoPanels.alleredeErklaert.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/children-born-in-norway/',
     'oversikt.moreInfoPanels.erJegFar.title': 'What do I do if I\'m unsure whether I\'m the father of the child?',
     'oversikt.moreInfoPanels.erJegFar.content': 'If you declare paternity of the child, you cannot withdraw the declaration at a later time. If you are unsure whether you are the child\'s father, you should therefore not sign the declaration. NAV will then take responsibility for ensuring that the paternity is established. In this case, you may be summoned and requested to provide samples for DNA analysis. For further information, please contact us at nav.no/contact or phone +47 55 55 33 33.',
@@ -239,17 +239,17 @@ export default {
     'kvittering.intro.foedselsnummer': 'with national identity number',
     'kvittering.intro.termindato': 'expected date of birth',
     'kvittering.intro.downloadPdfNotSigned': 'You can download the paternity declaration as a pdf on this page after both parties have signed.',
-    'kvittering.intro.downloadPdf': 'Download the signed paternity declaration as a pdf here:',
+    'kvittering.intro.downloadPdf': 'Download the signed paternity declaration as a pdf here: ',
     'kvittering.intro.pdfName': 'Farskapserklæring.pdf',
     'kvittering.intro.mor.1': 'We have received your information about the father',
     'kvittering.intro.mor.2': 'The declaration will be forwarded to him for approval and signing.',
     'kvittering.intro.mor.3': 'You cannot change the information you have provided.',
-    'kvittering.intro.mor.4': 'You can find the declarations here:',
+    'kvittering.intro.mor.4': 'You can find the declarations here: ',
     'kvittering.intro.mor.farSignert': 'The father declared paternity of the child(ren) on {date}',
 
     'kvittering.intro.far.1': 'You have signed a paternity declaration {date} for the child(ren)',
     'kvittering.intro.far.2': 'The declaration is final and can\'t be changed.',
-    'kvittering.intro.far.3': 'You can find declarations here:',
+    'kvittering.intro.far.3': 'You can find declarations here: ',
     'kvittering.morAlert.1': 'The declaration is not valid until the listed father has signed.',
     'kvittering.morAlert.2': 'He can log in already now to Your NAV (Ditt NAV) and sign the declaration. We will also send him a reminder by e-mail and/or sms.',
     'kvittering.prosessIndikator.step.1': 'The mother lists the father',

@@ -122,7 +122,7 @@ export default {
 
     'oversikt.infoPanel.greeting': 'Hei, {fornavn}',
 
-    'oversikt.infoPanel.common.forBarn.termindato': 'forventa født (termindato)',
+    'oversikt.infoPanel.common.forBarn.termindato': 'forventa født {termindato}',
     'oversikt.infoPanel.common.forBarn.foedselsnummer': 'med fødselsnr. {fnr}',
 
     'oversikt.infoPanel.mor.utenBarn.1': 'Dersom du er minimum 22 veker på veg, kan du gi opp termindatoen og gi opplysningar om far til barnet slik at han kan erklære farskapen elektronisk.',
@@ -135,7 +135,7 @@ export default {
     'oversikt.infoPanel.mor.farIkkeSignert.1': 'Du har tidlegare gitt opplysningar om far til barn.',
     'oversikt.infoPanel.mor.farIkkeSignert.2': 'Faren du har gitt opp, har ikkje erklært farskapen til barnet. Når han erklærer farskapen, blir erklæringa send over til Skatteetaten for å bli registrert. Ein kopi av erklæringa blir også send til adressa du har registrert hos NAV.',
     'oversikt.infoPanel.mor.farSignert.1': 'Du har gitt opplysningar om far til barnet, som er',
-    'oversikt.infoPanel.mor.farSignert.2': 'og gitt opp at faren har erklært farskap for barnet.',
+    'oversikt.infoPanel.mor.farSignert.2': ', og oppgitt far har erklært farskap for barnet.',
     'oversikt.infoPanel.mor.farSignert.3': 'Erklæringa er send over til Skatteetaten for å bli registrert. Ein kopi av erklæringa er send til e-postadressa du har registrert hos NAV.',
 
     'oversikt.infoPanel.far.utenErklaering': 'Det er inga farskapserklæring som ventar på signaturen din. For at du skal kunne erklære farskap elektronisk, må mor til barnet først gi opp det som far til barnet.',
@@ -170,7 +170,7 @@ export default {
     'oversikt.moreInfoPanels.erklaereUtenMor.content.3.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap/farskap-og-foreldreansvar',
     'oversikt.moreInfoPanels.alleredeErklaert.title': 'Har du allereie erklært farskap og lurer på kva som skjer no?',
     'oversikt.moreInfoPanels.alleredeErklaert.content.1': 'Det er Skatteetaten ved Folkeregisteret som er ansvarleg for å registrere og arkivere farskapserklæringar. Når de melder inn opplysningar om namnet på barnet til dei, vil du få ei stadfesting på at fødselsnummeret og namnet er registrert. Stadfestinga får du i innboksen din i Altinn.',
-    'oversikt.moreInfoPanels.alleredeErklaert.content.2': 'Du finn meir informasjon om å registrere farskap og å velje namn <a>her</a>.',
+    'oversikt.moreInfoPanels.alleredeErklaert.content.2': ' Du finn meir informasjon om å registrere farskap og å velje namn <a>her</a>.',
     'oversikt.moreInfoPanels.alleredeErklaert.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/barn-fodt-i-norge/',
     'oversikt.moreInfoPanels.erJegFar.title': 'Kva gjer eg dersom eg er usikker på om eg er far til barnet?',
     'oversikt.moreInfoPanels.erJegFar.content': 'Dersom du erklærer farskap for barnet, kan du ikkje seinare trekkje erklæringa tilbake. Dersom du er usikker på om du er far til barnet, bør du derfor ikkje signere erklæringa. NAV vil då ta ansvar for at farskapen blir fastsett. Du kan i så fall bli kalla inn og beden om å gi prøve til DNA-analyse. For meir informasjon kan du kontakte oss på nav.no/kontakt eller telefon 55 55 33 33.',
@@ -240,17 +240,17 @@ export default {
     'kvittering.intro.foedselsnummer': 'med fødselsnummer',
     'kvittering.intro.termindato': 'forventa født',
     'kvittering.intro.downloadPdfNotSigned': 'Du kan laste ned farskapserklæringa som ein pdf på denne sida etter at begge partane har signert.',
-    'kvittering.intro.downloadPdf': 'Last ned ferdig signert farskapserklæring som pdf her:',
+    'kvittering.intro.downloadPdf': 'Last ned ferdig signert farskapserklæring som pdf her: ',
     'kvittering.intro.pdfName': 'Farskapserklæring.pdf',
     'kvittering.intro.mor.1': 'Vi har fått opplysningane dine om far.',
     'kvittering.intro.mor.2': 'Erklæringa blir send vidare til han for å bli godkjend og signert.',
     'kvittering.intro.mor.3': 'Du kan ikkje endre opplysningane du har gitt.',
-    'kvittering.intro.mor.4': 'Du kan finne igjen erklæringane her:',
+    'kvittering.intro.mor.4': 'Du kan finne igjen erklæringane her: ',
     'kvittering.intro.mor.farSignert': 'Far har {date} erklært farskap for barn.',
 
     'kvittering.intro.far.1': 'Du har signert farskapserklæring {date} for barn.',
     'kvittering.intro.far.2': 'Erklæringa er endeleg og kan ikkje endrast.',
-    'kvittering.intro.far.3': 'Du kan finne igjen erklæringa her:',
+    'kvittering.intro.far.3': 'Du kan finne igjen erklæringa her: ',
     'kvittering.morAlert.1': 'Erklæringa er ikkje gyldig før oppgitt far har signert.',
     'kvittering.morAlert.2': 'Han kan allereie no logge seg inn på Ditt NAV og signere erklæringa. Vi vil også sende han ei påminning på e-post og/eller sms.',
     'kvittering.prosessIndikator.step.1': 'Mor oppgir far.',
