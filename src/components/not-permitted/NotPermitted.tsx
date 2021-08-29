@@ -18,6 +18,8 @@ const showAlertFor = [Feilkode.IkkeMyndig /* TODO: DNR, bor i utlandet */];
 function NotPermitted({ feilkode }: NotPermittedProps) {
     const renderContent = () => {
         switch (feilkode) {
+            case Feilkode.ForelderHarVerge:
+                return <ForelderHarVerge />;
             case Feilkode.IkkeMyndig:
                 return <IkkeMyndig />;
             case Feilkode.MedmorEllerUkjent:
@@ -43,6 +45,19 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
                 )}
             </InfoPanel>
         </ContentContainer>
+    );
+}
+
+function ForelderHarVerge() {
+    return (
+        <>
+            <Normaltekst>
+                <FormattedMessage id="notPermitted.forelderHarVerge" />
+            </Normaltekst>
+            <Normaltekst>
+                <FormattedMessage id="error.taKontakt" />
+            </Normaltekst>
+        </>
     );
 }
 
