@@ -13,7 +13,7 @@ function MorFarSignert({ signertErklaeringer }: MorFarSignertProps) {
         <>
             <Normaltekst>
                 <FormattedMessage id="oversikt.infoPanel.mor.farSignert.1" />{' '}
-                <ForBarn erklaeringer={signertErklaeringer} />{' '}
+                <ForBarn erklaeringer={signertErklaeringer} />
                 <FormattedMessage id="oversikt.infoPanel.mor.farSignert.2" />
             </Normaltekst>
             <Normaltekst>

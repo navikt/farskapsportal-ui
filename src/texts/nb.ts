@@ -135,7 +135,7 @@ export default {
     'oversikt.infoPanel.mor.farIkkeSignert.1': 'Du har tidligere gitt opplysninger om far til barn',
     'oversikt.infoPanel.mor.farIkkeSignert.2': 'Faren du har oppgitt har ikke erklært farskapet til barnet. Når han erklærer farskapet, blir erklæringen oversendt til Skatteetaten for registrering. En kopi av erklæringen blir også sendt til adressen du har registret hos NAV.',
     'oversikt.infoPanel.mor.farSignert.1': 'Du har gitt opplysninger om faren til barnet som er',
-    'oversikt.infoPanel.mor.farSignert.2': ', og oppgitt faren har erklært farskap for barnet.',
+    'oversikt.infoPanel.mor.farSignert.2': ', og oppgitt far har erklært farskap for barnet.',
     'oversikt.infoPanel.mor.farSignert.3': 'Erklæringen er oversendt til Skatteetaten for registrering. En kopi av erklæringen er sendt til e-postadressen du har registret hos NAV.',
 
     'oversikt.infoPanel.far.utenErklaering': 'Det er ingen farskapserklæring som venter på din signatur. For at du skal kunne erklære farskap elektronisk må moren til barnet først oppgi deg som faren til barnet.',
