@@ -58,7 +58,7 @@ function ForelderHarVerge() {
                 <FormattedMessage id="error.taKontakt" />
             </Normaltekst>
         </>
-    )
+    );
 }
 
 function IkkeMyndig() {
