@@ -110,6 +110,7 @@ export default {
 
     'forside.loginButton': 'Fyll ut erklæring om farskap',
 
+    'notPermitted.forelderHarVerge': 'Du er registrert med verge i Folkeregisteret og kan derfor ikke bruke løsningen', // TODO: bra tekst?
     'notPermitted.ikkeMyndig': 'For at farskap skal kunne erklæres elektronisk, må begge foreldrene være over 18 år.',
     'notPermitted.medmorEllerUkjent': 'Medmor eller person med ukjent rolle kan ikke benytte løsningen', // TODO: endre tekst
     'notPermitted.morSivilstandGift.1': 'Du er gift og ektefellen din blir automatisk registrert som faren til barn du føder. Hvis det er en annen mann enn ektefellen din som er barnets far, kan farskapet endres. Dette kan ikke gjøres elektronisk.',

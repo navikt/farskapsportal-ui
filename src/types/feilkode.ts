@@ -12,6 +12,7 @@ export enum Feilkode {
     FeilRolleFar = 'FEIL_ROLLE_FAR', // Personen har ikke riktig rolle for å kunne opptre som far i løsningen
     FeilRolleOpprette = 'FEIL_ROLLE_OPPRETTE', // Personen har ikke rettigheter til å opprette farskapserklæring
     FoedselsnummerManglerFar = 'FOEDSELNUMMER_MANGLER_FAR', // Fødselsnummer mangler for oppgitt far
+    ForelderHarVerge = 'FORELDER_HAR_VERGE', // Forelder er registrert med verge i Folkeregisteret, og kan derfor ikke bruke løsningen
     IkkeMyndig = 'IKKE_MYNDIG', // Personen er ikke myndig
     IngenNyfoedteUtenFar = 'INGEN_NYFOEDTE_UTEN_FAR', // Mor er ikke registrert med noen nyfødte barn uten oppgitt far
     NyfoedtErForGammel = 'NYFODT_ER_FOR_GAMMEL', // Gyldighetsperioden for å erklære farskap er utløpt for oppgitt barn
