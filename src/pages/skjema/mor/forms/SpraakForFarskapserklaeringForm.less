@@ -1,0 +1,25 @@
+@import 'styles/assets';
+
+.SpraakForFarskapserklaeringForm {
+  // Override small legend from Designsystem
+  .skjemagruppe.radiogruppe {
+    .skjemagruppe__legend {
+      .typo-ingress-mixin();
+    }
+
+    .SpraakForFarskapserklaeringForm__radiogruppe__values {
+      display: flex;
+      flex-direction: row;
+
+      .skjemaelement:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+  }
+
+  @media (min-width: @mobile-breakpoint) {
+    .inputPanel {
+      max-width: 11rem;
+    }
+  }
+}

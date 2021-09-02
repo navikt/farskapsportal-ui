@@ -1,28 +1,28 @@
-import {Normaltekst, Systemtittel} from "nav-frontend-typografi";
+import {Element, Systemtittel} from "nav-frontend-typografi";
 import {FormattedMessage} from "react-intl";
-import {SpraakForFarskapserklaeringValue} from "../forms/SpraakForFarskapserklaeringForm";
+import {Skriftspraak} from "../../../../types/skriftspraak";
 
+import './SpraakForFarskapserklaeringPresentation.less'
 
 interface SpraakForFarskapserklaeringPresentationProps {
-    titleId: string;
-    spraak: SpraakForFarskapserklaeringValue;
+    spraak: Skriftspraak;
 }
 
-function SpraakForFarskapserklaeringPresentation({ titleId, spraak }: SpraakForFarskapserklaeringPresentationProps) {
+function SpraakForFarskapserklaeringPresentation({ spraak }: SpraakForFarskapserklaeringPresentationProps) {
     return (
         <div className="SpraakForFarskapserklaeringPresentation">
             <Systemtittel>
-                <FormattedMessage id={titleId} />
+                <FormattedMessage id="skjema.mor.spraak.title" />
             </Systemtittel>
-            <Normaltekst>
+            <Element>
                 <FormattedMessage
                     id={
-                        spraak === 'NO'
+                        spraak === Skriftspraak.Bookmaal
                             ? 'skjema.mor.spraak.label.norwegian'
                             : 'skjema.mor.spraak.label.english'
                     }
                 />
-            </Normaltekst>
+            </Element>
         </div>
     );
 }

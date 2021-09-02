@@ -4,24 +4,22 @@ import {Radio, RadioGruppe} from "nav-frontend-skjema";
 import {Systemtittel} from "nav-frontend-typografi";
 import {getMessage} from "../../../../utils/intl";
 import FormButtons from "../../../../components/form-buttons/FormButtons";
-import EkspanderbarInformasjon from "../../common/EkspanderbarInformasjon";
+import {Skriftspraak} from "../../../../types/skriftspraak";
 
+import './SpraakForFarskapserklaeringForm.less'
 
-export type SpraakForFarskapserklaeringValue = 'NO' | 'EN' | null;
-
-export interface SpraakForFarskapserklaeringInput {
-    spraak: SpraakForFarskapserklaeringValue;
+export interface SpraakForFarskapserklaeringFormInput {
+    spraak: Skriftspraak | null;
 }
 
-interface SpraakForFarskapserklaeringProps {
-    titleId: string;
-    onSubmit: (data: SpraakForFarskapserklaeringInput) => void;
+interface SpraakForFarskapserklaeringFormProps {
+    onSubmit: (data: SpraakForFarskapserklaeringFormInput) => void;
     onCancel: () => void;
 }
 
-function SpraakForFarskapserklaeringForm(props: SpraakForFarskapserklaeringProps) {
+function SpraakForFarskapserklaeringForm(props: SpraakForFarskapserklaeringFormProps) {
     const intl = useIntl();
-    const { handleSubmit, errors, register } = useForm<SpraakForFarskapserklaeringInput>({
+    const { handleSubmit, errors, register } = useForm<SpraakForFarskapserklaeringFormInput>({
         defaultValues: {
             spraak: null,
         },
@@ -31,24 +29,26 @@ function SpraakForFarskapserklaeringForm(props: SpraakForFarskapserklaeringProps
     return (
         <form onSubmit={handleSubmit(props.onSubmit)} className="SpraakForFarskapserklaeringForm">
             <RadioGruppe
-                legend={<Systemtittel>{getMessage(intl, props.titleId)}</Systemtittel>}
+                legend={<Systemtittel>{getMessage(intl, 'skjema.mor.spraak.title')}</Systemtittel>}
                 description={getMessage(intl, 'skjema.mor.spraak.description')}
                 feil={errors.spraak?.message}
             >
-                <Radio
-                    name="spraak"
-                    value="NO"
-                    label={getMessage(intl, 'skjema.mor.spraak.label.norwegian')}
-                    radioRef={register}
-                />
-                <Radio
-                    name="spraak"
-                    value="EN"
-                    label={getMessage(intl, 'skjema.mor.spraak.label.english')}
-                    radioRef={register({
-                        required: getMessage(intl, 'skjema.mor.praak.validation.required'),
-                    })}
-                />
+                <div className="SpraakForFarskapserklaeringForm__radiogruppe__values">
+                    <Radio
+                        name="spraak"
+                        value={Skriftspraak.Bookmaal}
+                        label={getMessage(intl, 'skjema.mor.spraak.label.norwegian')}
+                        radioRef={register}
+                    />
+                    <Radio
+                        name="spraak"
+                        value={Skriftspraak.Engelsk}
+                        label={getMessage(intl, 'skjema.mor.spraak.label.english')}
+                        radioRef={register({
+                            required: getMessage(intl, 'skjema.mor.praak.validation.required'),
+                        })}
+                    />
+                </div>
             </RadioGruppe>
             <FormButtons
                 submitText={getMessage(intl, 'skjema.next')}

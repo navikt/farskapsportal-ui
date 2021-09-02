@@ -2,6 +2,7 @@ import { Barn } from './barn';
 import { Farskapserklaering } from './farskapserklaering';
 import { Feilkode } from './feilkode';
 import { Foreldrerolle } from './foreldrerolle';
+import {Skriftspraak} from "./skriftspraak";
 
 /*
  * INBOUND
@@ -47,8 +48,8 @@ export interface KontrollerePersonopplysningerRequest {
 
 export interface OppretteFarskaperklaeringRequest {
     barn: Barn;
-    morBorSammenMedFar: boolean;
     opplysningerOmFar: KontrollerePersonopplysningerRequest;
+    skriftspraak: Skriftspraak;
 }
 
 export interface OppdatereFarskapserklaeringRequest {
