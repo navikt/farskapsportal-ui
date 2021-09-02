@@ -228,7 +228,7 @@ export default {
     // 'skjema.mor.spraak.description': '',
     // 'skjema.mor.spraak.label.norwegian': '',
     // 'skjema.mor.spraak.label.english': '',
-    // 'skjema.mor.praak.validation.required': '',
+    // 'skjema.mor.spraak.validation.required': '',
     'skjema.mor.confirm.title': 'Confirm information about the father of the child',
     'skjema.mor.confirm.farCorrect.label': 'I approve that the information about the child\'s father is correct.',
     'skjema.mor.confirm.cannotWithdraw.label': 'I am aware that I cannot withdraw this confirmation later.',

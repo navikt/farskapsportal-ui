@@ -229,7 +229,7 @@ export default {
     // 'skjema.mor.spraak.description': '',
     // 'skjema.mor.spraak.label.norwegian': '',
     // 'skjema.mor.spraak.label.english': '',
-    // 'skjema.mor.praak.validation.required': '',
+    // 'skjema.mor.spraak.validation.required': '',
     'skjema.mor.confirm.title': 'Stadfest opplysningane om far til barnet.',
     'skjema.mor.confirm.farCorrect.label': 'Eg godkjenner at opplysningane om far til barnet er korrekte.',
     'skjema.mor.confirm.cannotWithdraw.label': 'Eg er klar over at eg ikkje kan trekkje tilbake denne stadfestinga seinare.',

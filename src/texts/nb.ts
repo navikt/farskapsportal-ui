@@ -229,7 +229,7 @@ export default {
     'skjema.mor.spraak.description': 'Erklæringen skal sendes til far for signering på det språket du velger i dette steget. Hvis far ikke forstår norsk eller erklæringen skal brukes i utlandet bør du velge å opprette erklæringen på engelsk. Far kan ikke selv endre på dette.',
     'skjema.mor.spraak.label.norwegian': 'Norsk',
     'skjema.mor.spraak.label.english': 'Engelsk (English)',
-    'skjema.mor.praak.validation.required': 'Opplysningen er påkrevd',
+    'skjema.mor.spraak.validation.required': 'Opplysningen er påkrevd',
     'skjema.mor.confirm.title': 'Bekreft opplysninger om faren til barnet',
     'skjema.mor.confirm.farCorrect.label': 'Jeg godkjenner at opplysningene om faren til barnet er korrekt.',
     'skjema.mor.confirm.cannotWithdraw.label': 'Jeg er klar over at jeg ikke kan trekke tilbake denne bekreftelsen senere.',
