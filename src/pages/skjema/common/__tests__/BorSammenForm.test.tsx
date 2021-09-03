@@ -9,7 +9,7 @@ const submitButtonLabel = texts['skjema.next'];
 const requiredErrorMessage = texts['skjema.borSammen.validation.required'];
 
 const defaultProps: BorSammenFormProps = {
-    titleId: 'skjema.far.borSammen.title',
+    titleId: 'skjema.mor.borSammen.title',
     defaultBorSammen: null,
     onSubmit: () => undefined,
     onCancel: () => undefined,
