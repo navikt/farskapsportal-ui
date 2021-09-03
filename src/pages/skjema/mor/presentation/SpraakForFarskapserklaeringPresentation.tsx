@@ -1,14 +1,16 @@
-import {Element, Systemtittel} from "nav-frontend-typografi";
-import {FormattedMessage} from "react-intl";
-import {Skriftspraak} from "../../../../types/skriftspraak";
+import { Element, Systemtittel } from 'nav-frontend-typografi';
+import { FormattedMessage } from 'react-intl';
+import { Skriftspraak } from '../../../../types/skriftspraak';
 
-import './SpraakForFarskapserklaeringPresentation.less'
+import './SpraakForFarskapserklaeringPresentation.less';
 
 interface SpraakForFarskapserklaeringPresentationProps {
     spraak: Skriftspraak;
 }
 
-function SpraakForFarskapserklaeringPresentation({ spraak }: SpraakForFarskapserklaeringPresentationProps) {
+function SpraakForFarskapserklaeringPresentation({
+    spraak,
+}: SpraakForFarskapserklaeringPresentationProps) {
     return (
         <div className="SpraakForFarskapserklaeringPresentation">
             <Systemtittel>

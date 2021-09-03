@@ -1,12 +1,12 @@
-import {useIntl} from "react-intl";
-import {useForm} from "react-hook-form";
-import {Radio, RadioGruppe} from "nav-frontend-skjema";
-import {Systemtittel} from "nav-frontend-typografi";
-import {getMessage} from "../../../../utils/intl";
-import FormButtons from "../../../../components/form-buttons/FormButtons";
-import {Skriftspraak} from "../../../../types/skriftspraak";
+import { useIntl } from 'react-intl';
+import { useForm } from 'react-hook-form';
+import { Radio, RadioGruppe } from 'nav-frontend-skjema';
+import { Systemtittel } from 'nav-frontend-typografi';
+import { getMessage } from '../../../../utils/intl';
+import FormButtons from '../../../../components/form-buttons/FormButtons';
+import { Skriftspraak } from '../../../../types/skriftspraak';
 
-import './SpraakForFarskapserklaeringForm.less'
+import './SpraakForFarskapserklaeringForm.less';
 
 export interface SpraakForFarskapserklaeringFormInput {
     spraak: Skriftspraak | null;
@@ -56,7 +56,7 @@ function SpraakForFarskapserklaeringForm(props: SpraakForFarskapserklaeringFormP
                 onCancel={props.onCancel}
             />
         </form>
-    )
+    );
 }
 
 export default SpraakForFarskapserklaeringForm;

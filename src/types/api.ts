@@ -2,7 +2,7 @@ import { Barn } from './barn';
 import { Farskapserklaering } from './farskapserklaering';
 import { Feilkode } from './feilkode';
 import { Foreldrerolle } from './foreldrerolle';
-import {Skriftspraak} from "./skriftspraak";
+import { Skriftspraak } from './skriftspraak';
 
 /*
  * INBOUND

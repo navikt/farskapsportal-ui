@@ -1,26 +1,28 @@
-import {useReducer} from 'react';
-import {useIntl} from 'react-intl';
+import { useReducer } from 'react';
+import { useIntl } from 'react-intl';
 
-import {opprettFarskapserklaering} from 'api/api';
+import { opprettFarskapserklaering } from 'api/api';
 import Error from 'components/error/Error';
-import {AlertError} from 'types/error';
-import {StepStatus} from 'types/form';
-import {Path} from 'types/path';
-import {UserInfo} from 'types/user';
-import {FNR_ID} from 'utils/constants';
-import {useNavigateTo} from 'utils/hooks/useNavigateTo';
-import {useQuery} from 'utils/hooks/useQuery';
-import {getMessage} from 'utils/intl';
-import FarForm, {FarFormInput} from './forms/FarForm';
+import { AlertError } from 'types/error';
+import { StepStatus } from 'types/form';
+import { Path } from 'types/path';
+import { UserInfo } from 'types/user';
+import { FNR_ID } from 'utils/constants';
+import { useNavigateTo } from 'utils/hooks/useNavigateTo';
+import { useQuery } from 'utils/hooks/useQuery';
+import { getMessage } from 'utils/intl';
+import FarForm, { FarFormInput } from './forms/FarForm';
 import MorBekreftForm from './forms/MorBekreftForm';
-import TermindatoForm, {TermindatoFormInput} from './forms/TermindatoForm';
+import TermindatoForm, { TermindatoFormInput } from './forms/TermindatoForm';
 import BarnPresentation from './presentation/BarnPresentation';
 import FarPresentation from './presentation/FarPresentation';
-import {Stepper, StepperStep} from '../../../components/stepper';
+import { Stepper, StepperStep } from '../../../components/stepper';
 import SkjemaStep from '../common/SkjemaStep';
-import SpraakForFarskapserklaeringForm, {SpraakForFarskapserklaeringFormInput} from "./forms/SpraakForFarskapserklaeringForm";
-import {Skriftspraak} from "../../../types/skriftspraak";
-import SpraakForFarskapserklaeringPresentation from "./presentation/SpraakForFarskapserklaeringPresentation";
+import SpraakForFarskapserklaeringForm, {
+    SpraakForFarskapserklaeringFormInput,
+} from './forms/SpraakForFarskapserklaeringForm';
+import { Skriftspraak } from '../../../types/skriftspraak';
+import SpraakForFarskapserklaeringPresentation from './presentation/SpraakForFarskapserklaeringPresentation';
 
 type ActionType =
     | { type: 'EDIT_TERMINDATO' }
@@ -150,14 +152,14 @@ function MorSkjema({ userInfo }: MorSkjemaProps) {
                 foedselsnummer: '',
             },
             spraak: {
-                spraak: null
-            }
+                spraak: null,
+            },
         },
         activeStep: barnFoedselsnummer ? 1 : 0,
         stepStatus: {
             barn: barnFoedselsnummer ? StepStatus.Done : StepStatus.Active,
             far: barnFoedselsnummer ? StepStatus.Active : StepStatus.NotStarted,
-            spraak: StepStatus.NotStarted
+            spraak: StepStatus.NotStarted,
         },
         submit: {
             pending: false,
