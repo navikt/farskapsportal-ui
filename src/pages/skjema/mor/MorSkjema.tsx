@@ -18,12 +18,19 @@ import BarnPresentation from './presentation/BarnPresentation';
 import FarPresentation from './presentation/FarPresentation';
 import { Stepper, StepperStep } from '../../../components/stepper';
 import SkjemaStep from '../common/SkjemaStep';
+import SpraakForFarskapserklaeringForm, {
+    SpraakForFarskapserklaeringFormInput,
+} from './forms/SpraakForFarskapserklaeringForm';
+import { Skriftspraak } from '../../../types/skriftspraak';
+import SpraakForFarskapserklaeringPresentation from './presentation/SpraakForFarskapserklaeringPresentation';
 
 type ActionType =
     | { type: 'EDIT_TERMINDATO' }
     | { type: 'SET_TERMINDATO'; payload: TermindatoFormInput }
     | { type: 'EDIT_FAR' }
     | { type: 'SET_FAR'; payload: FarFormInput }
+    | { type: 'EDIT_SPRAAK' }
+    | { type: 'SET_SPRAAK'; payload: SpraakForFarskapserklaeringFormInput }
     | { type: 'SUBMIT' }
     | { type: 'SUBMIT_FAILURE'; payload: AlertError };
 
@@ -31,11 +38,13 @@ interface StateType {
     formValues: {
         termindato: TermindatoFormInput;
         far: FarFormInput;
+        spraak: SpraakForFarskapserklaeringFormInput;
     };
     activeStep: number;
     stepStatus: {
         barn: StepStatus;
         far: StepStatus;
+        spraak: StepStatus;
     };
     submit: {
         pending: boolean;
@@ -60,6 +69,7 @@ const reducer = (state: StateType, action: ActionType): StateType => {
                 },
                 activeStep: state.stepStatus.far === StepStatus.Done ? 2 : 1,
                 stepStatus: {
+                    ...state.stepStatus,
                     barn: StepStatus.Done,
                     far:
                         state.stepStatus.far === StepStatus.Done
@@ -81,6 +91,26 @@ const reducer = (state: StateType, action: ActionType): StateType => {
                 stepStatus: {
                     ...state.stepStatus,
                     far: StepStatus.Done,
+                    spraak:
+                        state.stepStatus.spraak === StepStatus.Done
+                            ? StepStatus.Done
+                            : StepStatus.Active,
+                },
+            };
+        case 'EDIT_SPRAAK':
+            return {
+                ...state,
+                activeStep: 2,
+                stepStatus: { ...state.stepStatus, spraak: StepStatus.Active },
+            };
+        case 'SET_SPRAAK':
+            return {
+                ...state,
+                formValues: { ...state.formValues, spraak: action.payload },
+                activeStep: 3,
+                stepStatus: {
+                    ...state.stepStatus,
+                    spraak: StepStatus.Done,
                 },
             };
         case 'SUBMIT':
@@ -121,11 +151,15 @@ function MorSkjema({ userInfo }: MorSkjemaProps) {
                 navn: '',
                 foedselsnummer: '',
             },
+            spraak: {
+                spraak: null,
+            },
         },
         activeStep: barnFoedselsnummer ? 1 : 0,
         stepStatus: {
             barn: barnFoedselsnummer ? StepStatus.Done : StepStatus.Active,
             far: barnFoedselsnummer ? StepStatus.Active : StepStatus.NotStarted,
+            spraak: StepStatus.NotStarted,
         },
         submit: {
             pending: false,
@@ -145,11 +179,11 @@ function MorSkjema({ userInfo }: MorSkjemaProps) {
                 foedselsnummer: barnFoedselsnummer,
                 termindato: barnFoedselsnummer ? null : state.formValues.termindato.termindato,
             },
-            morBorSammenMedFar: true,
             opplysningerOmFar: {
                 foedselsnummer: state.formValues.far.foedselsnummer,
                 navn: state.formValues.far.navn,
             },
+            skriftspraak: state.formValues.spraak.spraak ?? Skriftspraak.Bookmaal,
         })
             .then((response) => {
                 window.location.assign(response.redirectUrlForSigneringMor);
@@ -176,6 +210,14 @@ function MorSkjema({ userInfo }: MorSkjemaProps) {
 
     const onEndreFarForm = () => {
         dispatch({ type: 'EDIT_FAR' });
+    };
+
+    const onSubmitSpraakForm = (data: SpraakForFarskapserklaeringFormInput) => {
+        dispatch({ type: 'SET_SPRAAK', payload: data });
+    };
+
+    const onEndreSpraakForm = () => {
+        dispatch({ type: 'EDIT_SPRAAK' });
     };
 
     return (
@@ -223,6 +265,25 @@ function MorSkjema({ userInfo }: MorSkjemaProps) {
                         isDisabled={state.submit.pending}
                     />
                 </StepperStep>
+                <StepperStep status={mapStepStatusToStepperState(state.stepStatus.spraak)}>
+                    <SkjemaStep
+                        formComponent={
+                            <SpraakForFarskapserklaeringForm
+                                onSubmit={onSubmitSpraakForm}
+                                onCancel={onCancel}
+                            />
+                        }
+                        presentationComponent={
+                            <SpraakForFarskapserklaeringPresentation
+                                spraak={state.formValues.spraak.spraak ?? Skriftspraak.Bookmaal}
+                            />
+                        }
+                        title={getMessage(intl, 'skjema.mor.spraak.title')}
+                        status={state.stepStatus.spraak}
+                        onChange={onEndreSpraakForm}
+                        isDisabled={state.submit.pending}
+                    />
+                </StepperStep>
                 <StepperStep>
                     <SkjemaStep
                         formComponent={
@@ -235,7 +296,8 @@ function MorSkjema({ userInfo }: MorSkjemaProps) {
                         title={getMessage(intl, 'skjema.mor.confirm.title')}
                         status={
                             state.stepStatus.barn === StepStatus.Done &&
-                            state.stepStatus.far === StepStatus.Done
+                            state.stepStatus.far === StepStatus.Done &&
+                            state.stepStatus.spraak === StepStatus.Done
                                 ? StepStatus.Active
                                 : StepStatus.NotStarted
                         }
