@@ -7,6 +7,7 @@ const EXPECTED_FEILKODER_FETCH_USER = [
     Feilkode.MorSivilstandGift,
     Feilkode.MorSivilstandRegistrertPartner,
     Feilkode.MorSivilstandUoppgitt,
+    Feilkode.ForelderHarVerge,
 ];
 
 const EXPECTED_FEILKODER_CONTROL_FATHER = [
