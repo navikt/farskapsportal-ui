@@ -7,42 +7,57 @@ interface FarFormValidationResterendeForsoekProps {
     antallResterendeForsoek?: number | null;
 }
 
-const getIncorrectAttemptsTextId = (antallResterendeForsoek: number) => {
-    if (antallResterendeForsoek === 2) {
-        return 'three';
-    } else {
-        return 'two';
-    }
-};
+// TODO: determine number of attempts
+// const getIncorrectAttemptsTextId = (antallResterendeForsoek: number) => {
+//     if (antallResterendeForsoek === 2) {
+//         return 'three';
+//     } else {
+//         return 'two';
+//     }
+// };
+//
+// function FarFormValidationResterendeForsoek({
+//     antallResterendeForsoek,
+// }: FarFormValidationResterendeForsoekProps) {
+//     const intl = useIntl();
+//
+//     if (!antallResterendeForsoek || antallResterendeForsoek > 3) {
+//         return null;
+//     }
+//
+//     if (antallResterendeForsoek === 1) {
+//         return (
+//             <AlertStripe type="advarsel">
+//                 <FormattedMessage id="skjema.mor.far.validation.resterendeForsoek.final" />
+//             </AlertStripe>
+//         );
+//     }
+//
+//     return (
+//         <AlertStripe type="advarsel">
+//             <FormattedMessage
+//                 id="skjema.mor.far.validation.resterendeForsoek"
+//                 values={{
+//                     incorrectAttempts: getMessage(
+//                         intl,
+//                         getIncorrectAttemptsTextId(antallResterendeForsoek)
+//                     ),
+//                 }}
+//             />
+//         </AlertStripe>
+//     );
+// }
 
 function FarFormValidationResterendeForsoek({
     antallResterendeForsoek,
 }: FarFormValidationResterendeForsoekProps) {
-    const intl = useIntl();
-
-    if (!antallResterendeForsoek || antallResterendeForsoek > 3) {
+    if (antallResterendeForsoek !== 1) {
         return null;
-    }
-
-    if (antallResterendeForsoek === 1) {
-        return (
-            <AlertStripe type="advarsel">
-                <FormattedMessage id="skjema.mor.far.validation.resterendeForsoek.final" />
-            </AlertStripe>
-        );
     }
 
     return (
         <AlertStripe type="advarsel">
-            <FormattedMessage
-                id="skjema.mor.far.validation.resterendeForsoek"
-                values={{
-                    incorrectAttempts: getMessage(
-                        intl,
-                        getIncorrectAttemptsTextId(antallResterendeForsoek)
-                    ),
-                }}
-            />
+            <FormattedMessage id="skjema.mor.far.validation.resterendeForsoek.final" />
         </AlertStripe>
     );
 }
