@@ -1,7 +1,5 @@
 import AlertStripe from 'nav-frontend-alertstriper';
-import { FormattedMessage, useIntl } from 'react-intl';
-
-import { getMessage } from 'utils/intl';
+import { FormattedMessage } from 'react-intl';
 
 interface FarFormValidationResterendeForsoekProps {
     antallResterendeForsoek?: number | null;
