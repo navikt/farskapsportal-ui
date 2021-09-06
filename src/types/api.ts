@@ -52,6 +52,6 @@ export interface OppretteFarskaperklaeringRequest {
 }
 
 export interface OppdatereFarskapserklaeringRequest {
-    borSammen: boolean;
+    farBorSammenMedMor: boolean;
     idFarskapserklaering: number;
 }

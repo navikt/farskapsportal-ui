@@ -134,7 +134,7 @@ function FarSkjema({ userInfo }: FarskjemaProps) {
     const onSubmit = () => {
         dispatch({ type: 'SUBMIT' });
         oppdaterFarskapserklaering({
-            borSammen: state.formValues.borSammen.borSammen === 'YES',
+            farBorSammenMedMor: state.formValues.borSammen.borSammen === 'YES',
             idFarskapserklaering: parseInt(erklaeringId),
         })
             .then(() => {
