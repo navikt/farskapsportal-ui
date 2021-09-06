@@ -179,10 +179,11 @@ export default {
     'oversikt.barn.link.status': 'This child does not have a registered father in the National Population Register',
 
     'oversikt.erklaeringer.link.forelder.mor': 'from ',
-    'oversikt.erklaeringer.link.forelder.far': 'with ', // TODO ??
+    'oversikt.erklaeringer.link.forelder.far': 'with ',
     'oversikt.erklaeringer.link.status.signering-bruker': 'Waiting for your signature',
     'oversikt.erklaeringer.link.status.signering-motpart': 'Waiting for your opposite party’s signature',
     'oversikt.erklaeringer.link.status.registrering': 'Signed and sent to the National Population Register',
+    'oversikt.erklaeringer.link.status.registrering-pending': 'Signed and is shceduled to be sent to the National Population Register',
     'oversikt.goToSkjemaButton': 'Create paternity declaration',
 
     'skjema.next': 'Next',

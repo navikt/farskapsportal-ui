@@ -184,6 +184,7 @@ export default {
     'oversikt.erklaeringer.link.status.signering-bruker': 'Venter på din signering',
     'oversikt.erklaeringer.link.status.signering-motpart': 'Venter på motparts signering',
     'oversikt.erklaeringer.link.status.registrering': 'Signert og sendt til Folkeregisteret',
+    'oversikt.erklaeringer.link.status.registrering-pending': 'Signert og vil bli oversendt til Folkeregisteret',
     'oversikt.goToSkjemaButton': 'Opprett farskapserklæring',
 
     'skjema.next': 'Neste',

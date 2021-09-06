@@ -27,6 +27,10 @@ function LinkKvittering({ erklaering }: { erklaering: Farskapserklaering }) {
     const [{ language }] = useStore();
 
     const linkPath = `/${language}${Path.Kvittering}?${ERKLAERING_ID}=${erklaering.idFarskapserklaering}`;
+    const etikettType = erklaering.sendtTilSkatt ? 'suksess' : 'fokus';
+    const etikettId = erklaering.sendtTilSkatt
+        ? 'oversikt.erklaeringer.link.status.registrering'
+        : 'oversikt.erklaeringer.link.status.registrering-pending';
 
     return (
         <ErklaeringLinkPanel
@@ -34,8 +38,8 @@ function LinkKvittering({ erklaering }: { erklaering: Farskapserklaering }) {
             erklaering={erklaering}
             displayMor={true}
             displayFar={true}
-            etikettType="suksess"
-            etikettId="oversikt.erklaeringer.link.status.registrering"
+            etikettType={etikettType}
+            etikettId={etikettId}
         />
     );
 }

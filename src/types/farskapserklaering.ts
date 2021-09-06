@@ -11,6 +11,7 @@ export interface Farskapserklaering {
     mor: Forelder | null;
     morBorSammenMedFar: boolean | null;
     paaloggetBrukersRolle: Rolle | null;
+    sendtTilSkatt: string | null;
 }
 
 export enum Rolle {
