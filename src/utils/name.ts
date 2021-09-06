@@ -2,12 +2,13 @@ import { Forelder } from 'types/forelder';
 import { capitalizeFirsLetterInEveryWord } from './string';
 
 export const getNameFromForelder = (forelder?: Forelder | null) => {
-    if (!forelder) {
-        // TODO: handle this differently? Should not be missing
+    if (!forelder?.navn) {
         return '';
     }
 
-    return `${capitalizeFirsLetterInEveryWord(forelder.fornavn)}${
-        forelder.mellomnavn ? ' ' + capitalizeFirsLetterInEveryWord(forelder.mellomnavn) : ''
-    } ${capitalizeFirsLetterInEveryWord(forelder.etternavn)}`;
+    return `${capitalizeFirsLetterInEveryWord(forelder.navn.fornavn)}${
+        forelder.navn.mellomnavn
+            ? ' ' + capitalizeFirsLetterInEveryWord(forelder.navn.mellomnavn)
+            : ''
+    } ${capitalizeFirsLetterInEveryWord(forelder.navn.etternavn)}`;
 };
