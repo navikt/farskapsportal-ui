@@ -8,7 +8,7 @@ export enum Feilkode {
     FeilformatertUrlNyRedirect = 'FEILFORMATERT_URL_NY_REDIRECT', // Feilformatert redirect-url mottatt fra e-signeringsløsningen
     FeilformatertUrlUndertegnerurl = 'FEILFORMATERT_URL_UNDERTEGNERURL', // URL for å hente ny redirect-url er feilformatert
     FantIkkeFarskapserklaering = 'FANT_IKKE_FARSKAPSERKLAERING', // Oppgitt farskapserklæring ble ikke funnet i databasen
-    FarHarIkkeFnummer = 'MOR_HAR_IKKE_FNUMMER', // Far er ikke registrert med fødselsnummer i PDL
+    FarHarIkkeFnummer = 'FAR_HAR_IKKE_FNUMMER', // Far er ikke registrert med fødselsnummer i PDL
     FeilRolle = 'FEIL_ROLLE', // Pålogget person kan verken opptre som mor eller far i løsningen
     FeilRolleFar = 'FEIL_ROLLE_FAR', // Personen har ikke riktig rolle for å kunne opptre som far i løsningen
     FeilRolleOpprette = 'FEIL_ROLLE_OPPRETTE', // Personen har ikke rettigheter til å opprette farskapserklæring

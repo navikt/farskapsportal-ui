@@ -9,7 +9,6 @@ const EXPECTED_FEILKODER_FETCH_USER = [
     Feilkode.MorSivilstandUoppgitt,
     Feilkode.ForelderHarVerge,
 
-    // TODO
     Feilkode.MorHarIkkeFnummer,
     Feilkode.FarHarIkkeFnummer,
     Feilkode.MorIkkeNorskBostedsadresse,
@@ -25,7 +24,6 @@ const EXPECTED_FEILKODER_CONTROL_FATHER = [
     Feilkode.PdlPersonIkkeFunnet,
     Feilkode.PersonErDoed,
 
-    // TODO
     Feilkode.FarHarIkkeFnummer,
     // Feilkode.MorOgFarSammePerson,
 ];

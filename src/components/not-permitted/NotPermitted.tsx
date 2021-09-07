@@ -18,12 +18,18 @@ const showAlertFor = [Feilkode.IkkeMyndig /* TODO: DNR, bor i utlandet */];
 function NotPermitted({ feilkode }: NotPermittedProps) {
     const renderContent = () => {
         switch (feilkode) {
+            case Feilkode.FarHarIkkeFnummer:
+                return <ForelderHarIkkeFnummer />
             case Feilkode.ForelderHarVerge:
                 return <ForelderHarVerge />;
             case Feilkode.IkkeMyndig:
                 return <IkkeMyndig />;
             case Feilkode.MedmorEllerUkjent:
                 return <MedmorEllerUkjent />;
+            case Feilkode.MorHarIkkeFnummer:
+                return <ForelderHarIkkeFnummer />
+            case Feilkode.MorIkkeNorskBostedsadresse:
+                return <MorIkkeNorskBostedsadresse />
             case Feilkode.MorSivilstandGift:
                 return <MorSivilstandGift />;
             case Feilkode.MorSivilstandRegistrertPartner:
@@ -46,6 +52,26 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
             </InfoPanel>
         </ContentContainer>
     );
+}
+
+function MorIkkeNorskBostedsadresse() {
+    return (
+        <>
+            <Normaltekst>
+                <FormattedMessage id="notPermitted.morIkkeNorskBostedsadresse" />
+            </Normaltekst>
+        </>
+    )
+}
+
+function ForelderHarIkkeFnummer() {
+    return (
+        <>
+            <Normaltekst>
+                <FormattedMessage id="notPermitted.forelderHarIkkeFnummer" />
+            </Normaltekst>
+        </>
+    )
 }
 
 function ForelderHarVerge() {

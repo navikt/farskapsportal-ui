@@ -109,9 +109,11 @@ export default {
 
     'forside.loginButton': 'Fill out paternity declaration',
 
-    'notPermitted.forelderHarVerge': 'You are registered with a guardian in the National Population Register and can therefore not use the solution', // TODO: bra tekst?
+    'notPermitted.forelderHarIkkeFnummer': 'In order to declare paternity electronically, you must be registered with a Norwegian national identity number in the National Population Register.', // TODO
+    'notPermitted.forelderHarVerge': 'You are registered with a guardian in the National Population Register and can therefore not use the solution.', // TODO
     'notPermitted.ikkeMyndig': 'In order to declare paternity electronically, both parents must be over the age of 18.',
     'notPermitted.medmorEllerUkjent': 'The co-mother or person with an unknown role cannot use the solution', // TODO: endre tekst
+    'notPermitted.morIkkeNorskBostedsadresse': 'In order to declare paternity electronically, you must be registered with a Norwegian residential address in the National Register.', // TODO
     'notPermitted.morSivilstandGift.1': 'You are married and your spouse is automatically registered as the father of the child you give birth to. If a man other than your spouse is the child\'s father, the paternity can be changed. This cannot be done electronically.',
     'notPermitted.morSivilstandGift.2': 'You can find more information about changing paternity <a>here</a>. You are also welcome to contact us at nav.no/contact or phone +47 55 55 33 33',
     'notPermitted.morSivilstandGift.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap', // TODO /en
