@@ -15,16 +15,20 @@
       "mor": {
         "forelderrolle": "MOR_ELLER_FAR",
         "foedselsnummer": "12345678901",
-        "fornavn": "Kåre",
-        "mellomnavn": null,
-        "etternavn": "Nordmann"
+        "navn": {
+          "fornavn": "Kåre",
+          "mellomnavn": null,
+          "etternavn": "Nordmann"
+        }
       },
       "far": {
         "forelderrolle": "FAR",
         "foedselsnummer": "12345678902",
-        "fornavn": "Ola",
-        "mellomnavn": null,
-        "etternavn": "Nordmann"
+        "navn": {
+          "fornavn": "Ola",
+          "mellomnavn": null,
+          "etternavn": "Nordmann"
+        }
       },
       "morBorSammenMedFar": true,
       "farBorSammenMedMor": null,
