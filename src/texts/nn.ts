@@ -113,6 +113,7 @@ export default {
     //'notPermitted.forelderHarVerge': 'Du er registrert med verge i Folkeregisteret og kan derfor ikke bruke løsningen',
     'notPermitted.ikkeMyndig': 'For at farskap skal kunne erklærast elektronisk, må begge forelda vere over 18 år.',
     'notPermitted.medmorEllerUkjent': 'Medmor eller person med ukjend rolle kan ikkje bruke løysinga.', // TODO: endre tekst
+    //'notPermitted.morIkkeNorskBostedsadresse': 'For at farskap skal kunne erklærast elektronisk, må du være registrert med ein norsk bustedsadresse i Folkeregisteret.', // TODO
     'notPermitted.morSivilstandGift.1': 'Du er gift, og ektefellen din blir automatisk regisrert som far til barn du føder. Dersom det er ein annan mann enn ektefellen din som er far til barnet, kan farskapen endrast. Dette kan ikkje gjerast elektronisk.',
     'notPermitted.morSivilstandGift.2': 'Du finn meir informasjon om å endre farskap <a>her</a>. Du er også velkomen til å kontakte oss på nav.no/kontakt eller telefon 55 55 33 33',
     'notPermitted.morSivilstandGift.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap',
@@ -222,6 +223,7 @@ export default {
     'skjema.mor.far.validation.defaultUgyldigFarMessage': 'Den oppgitte faren kan ikkje erklære farskap digitalt. Ta kontakt med NAV på nav.no/kontakt eller telefon 55 55 33 33 for meir informasjon.',
     'skjema.mor.far.validation.maksAntallForsoek.1': 'Du har tasta feil fødselsnummer/namn på oppgitt far tre gonger, og er no blitt blokkert frå løysinga.',
     'skjema.mor.far.validation.maksAntallForsoek.2': 'Du kan prøve på nytt igjen om {timerIgjenForNullstillingAvForsoek} {tidsEnhet}.',
+    'skjema.mor.far.validation.morOgFarSammePerson': 'Du kan ikkje oppgi deg selv som far.', // TODO
     'skjema.mor.far.validation.navnStemmerIkkeMedRegister.1': 'Namnet og/eller fødselsnummeret til barnet er feil.',
     'skjema.mor.far.validation.navnStemmerIkkeMedRegister.2': 'Sjekk at namnet er stava rett, og at fødselsnummeret stemmer.',
     'skjema.mor.far.validation.resterendeForsoek': 'Du har tasta feil fødsesnummer/namn på oppgitt far {incorrectAttempts} gonger. Ver vennleg og be far til barnet om å sjekke korleis namnet hans er skrive i Folkeregisteret, før du prøver på nytt. Dersom du tastar feil fem gonger, blir du blokkert frå løysinga.',

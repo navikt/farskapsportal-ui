@@ -7,6 +7,10 @@ const EXPECTED_FEILKODER_FETCH_USER = [
     Feilkode.MorSivilstandGift,
     Feilkode.MorSivilstandRegistrertPartner,
     Feilkode.MorSivilstandUoppgitt,
+    Feilkode.ForelderHarVerge,
+    Feilkode.MorHarIkkeFnummer,
+    Feilkode.FarHarIkkeFnummer,
+    Feilkode.MorIkkeNorskBostedsadresse,
 ];
 
 const EXPECTED_FEILKODER_CONTROL_FATHER = [
@@ -17,6 +21,7 @@ const EXPECTED_FEILKODER_CONTROL_FATHER = [
     Feilkode.NavnStemmerIkkeMedRegister,
     Feilkode.PdlPersonIkkeFunnet,
     Feilkode.PersonErDoed,
+    Feilkode.MorOgFarSammePerson,
 ];
 
 export const isUserNotPermitted = (error: AlertError): boolean =>
