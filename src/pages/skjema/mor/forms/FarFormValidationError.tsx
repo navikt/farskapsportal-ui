@@ -32,7 +32,7 @@ function FarFormValidationError({
                     />
                 );
             case Feilkode.MorOgFarSammePerson:
-                return <MorOgFarSammePerson />
+                return <MorOgFarSammePerson />;
             case Feilkode.NavnStemmerIkkeMedRegister:
                 if (antallResterendeForsoek === 0) {
                     return (

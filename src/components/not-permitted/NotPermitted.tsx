@@ -19,7 +19,7 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
     const renderContent = () => {
         switch (feilkode) {
             case Feilkode.FarHarIkkeFnummer:
-                return <ForelderHarIkkeFnummer />
+                return <ForelderHarIkkeFnummer />;
             case Feilkode.ForelderHarVerge:
                 return <ForelderHarVerge />;
             case Feilkode.IkkeMyndig:
@@ -27,9 +27,9 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
             case Feilkode.MedmorEllerUkjent:
                 return <MedmorEllerUkjent />;
             case Feilkode.MorHarIkkeFnummer:
-                return <ForelderHarIkkeFnummer />
+                return <ForelderHarIkkeFnummer />;
             case Feilkode.MorIkkeNorskBostedsadresse:
-                return <MorIkkeNorskBostedsadresse />
+                return <MorIkkeNorskBostedsadresse />;
             case Feilkode.MorSivilstandGift:
                 return <MorSivilstandGift />;
             case Feilkode.MorSivilstandRegistrertPartner:
@@ -61,7 +61,7 @@ function MorIkkeNorskBostedsadresse() {
                 <FormattedMessage id="notPermitted.morIkkeNorskBostedsadresse" />
             </Normaltekst>
         </>
-    )
+    );
 }
 
 function ForelderHarIkkeFnummer() {
@@ -71,7 +71,7 @@ function ForelderHarIkkeFnummer() {
                 <FormattedMessage id="notPermitted.forelderHarIkkeFnummer" />
             </Normaltekst>
         </>
-    )
+    );
 }
 
 function ForelderHarVerge() {
