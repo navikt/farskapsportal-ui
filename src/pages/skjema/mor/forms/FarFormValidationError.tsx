@@ -31,6 +31,8 @@ function FarFormValidationError({
                         tidspunktForNullstillingAvForsoek={tidspunktForNullstillingAvForsoek}
                     />
                 );
+            case Feilkode.MorOgFarSammePerson:
+                return <MorOgFarSammePerson />
             case Feilkode.NavnStemmerIkkeMedRegister:
                 if (antallResterendeForsoek === 0) {
                     return (
@@ -55,6 +57,16 @@ function FarFormValidationError({
         <AlertStripe id={id} type="feil">
             {renderContent()}
         </AlertStripe>
+    );
+}
+
+function MorOgFarSammePerson() {
+    return (
+        <>
+            <Normaltekst>
+                <FormattedMessage id="skjema.mor.far.validation.morOgFarSammePerson" />
+            </Normaltekst>
+        </>
     );
 }
 

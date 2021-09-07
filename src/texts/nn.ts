@@ -110,7 +110,6 @@ export default {
 
     'forside.loginButton': 'Fyll ut erklæring om farskap.',
 
-    'notPermitted.forelderHarIkkeFnummer': 'For at farskap skal kunne erklærast elektronisk, må du være registrert med eit norsk fødselsnummer i Folkeregisteret', // TODO
     //'notPermitted.forelderHarVerge': 'Du er registrert med verge i Folkeregisteret og kan derfor ikke bruke løsningen',
     'notPermitted.ikkeMyndig': 'For at farskap skal kunne erklærast elektronisk, må begge forelda vere over 18 år.',
     'notPermitted.medmorEllerUkjent': 'Medmor eller person med ukjend rolle kan ikkje bruke løysinga.', // TODO: endre tekst
@@ -224,6 +223,7 @@ export default {
     'skjema.mor.far.validation.defaultUgyldigFarMessage': 'Den oppgitte faren kan ikkje erklære farskap digitalt. Ta kontakt med NAV på nav.no/kontakt eller telefon 55 55 33 33 for meir informasjon.',
     'skjema.mor.far.validation.maksAntallForsoek.1': 'Du har tasta feil fødselsnummer/namn på oppgitt far tre gonger, og er no blitt blokkert frå løysinga.',
     'skjema.mor.far.validation.maksAntallForsoek.2': 'Du kan prøve på nytt igjen om',
+    'skjema.mor.far.validation.morOgFarSammePerson': 'Du kan ikkje oppgi deg selv som far.', // TODO
     'skjema.mor.far.validation.navnStemmerIkkeMedRegister.1': 'Namnet og/eller fødselsnummeret til barnet er feil.',
     'skjema.mor.far.validation.navnStemmerIkkeMedRegister.2': 'Sjekk at namnet er stava rett, og at fødselsnummeret stemmer.',
     'skjema.mor.far.validation.resterendeForsoek': 'Du har tasta feil fødsesnummer/namn på oppgitt far {incorrectAttempts} gonger. Ver vennleg og be far til barnet om å sjekke korleis namnet hans er skrive i Folkeregisteret, før du prøver på nytt. Dersom du tastar feil fem gonger, blir du blokkert frå løysinga.',

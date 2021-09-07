@@ -22,6 +22,7 @@ export enum Feilkode {
     MaksAntallForsoek = 'MAKS_ANTALL_FORSOEK', // Mor har brukt opp antall mulige forsøk på å komme frem til riktig kombinasjon av fars fødselsnummer og navn
     MorHarIkkeFnummer = 'MOR_HAR_IKKE_FNUMMER', // Mor er ikke registrert med fødselsnummer i PDL
     MorIkkeNorskBostedsadresse = 'MOR_IKKE_NORSK_BOSTEDSADRESSE', // Mor er ikke registrert med norsk bostedsadresse
+    MorOgFarSammePerson = 'MOR_OG_FAR_SAMME_PERSON', // Mor kan ikke oppgi seg selv som far.
     MorSivilstandGift = 'MOR_SIVILSTAND_GIFT', // Mor kan ikke opprette farskapserklæring dersom hun er gift
     MorSivilstandRegistrertPartner = 'MOR_SIVILSTAND_REGISTRERT_PARTNER', // Mor kan ikke opprette farskapserklæring dersom hun er registrert partner
     MorSivilstandUoppgitt = 'MOR_SIVILSTAND_UOPPGITT', // Mor kan ikke opprette farskapserklæring dersom hun har sivilstand uoppgitt

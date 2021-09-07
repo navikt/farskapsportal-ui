@@ -109,7 +109,6 @@ export default {
 
     'forside.loginButton': 'Fill out paternity declaration',
 
-    'notPermitted.forelderHarIkkeFnummer': 'In order to declare paternity electronically, you must be registered with a Norwegian national identity number in the National Population Register.', // TODO
     'notPermitted.forelderHarVerge': 'You are registered with a guardian in the National Population Register and can therefore not use the solution.', // TODO
     'notPermitted.ikkeMyndig': 'In order to declare paternity electronically, both parents must be over the age of 18.',
     'notPermitted.medmorEllerUkjent': 'The co-mother or person with an unknown role cannot use the solution', // TODO: endre tekst
@@ -223,6 +222,7 @@ export default {
     'skjema.mor.far.validation.defaultUgyldigFarMessage': 'The listed father cannot declare paternity digitally. For further information, please contact NAV at nav.no/contact or phone +47 55 55 33 33.',
     'skjema.mor.far.validation.maksAntallForsoek.1': 'You have entered the wrong national identity number/name of the listed father three times and have now been blocked from the solution.',
     'skjema.mor.far.validation.maksAntallForsoek.2': 'You can try again in',
+    'skjema.mor.far.validation.morOgFarSammePerson': 'You can not register yourself as the father.',
     'skjema.mor.far.validation.navnStemmerIkkeMedRegister.1': 'The name and/or national identity number of the father of the child is incorrect.',
     'skjema.mor.far.validation.navnStemmerIkkeMedRegister.2': 'Check that the name is spelled correctly and that the national identity number is correct.',
     'skjema.mor.far.validation.resterendeForsoek': 'You have entered the wrong national identity number/name of the listed father {incorrectAttempts} times. Please ask the child\'s father to check how his name is written in the National Population Register before trying again. If you make five incorrect entries you will be blocked from the solution.',
