@@ -11,6 +11,8 @@ export default {
     'far': 'Far',
     'farskapserklaering': 'Farskapserklæring',
 
+    'read.more': 'Les mer',
+
     'api.error': 'Oisann, noe gikk galt!',
 
     'form.feiloppsummering': 'For å gå videre må du rette opp følgende:',
@@ -194,7 +196,8 @@ export default {
     'skjema.submit': 'Signer farskapserklæring',
 
     'skjema.borSammen.description.intro': 'Foreldre som ikke bor sammen med barnet har plikt til å betale barnebidrag.',
-    'skjema.borSammen.description.content': 'Når foreldrene ikke bor sammen når barnet blir født og heller ikke har inngått en avtale om barnebidrag, skal NAV ta opp bidragssak og fastsette bidrag på eget tiltak. Hvis dere inngår en avtale og sender informasjon om dette til oss, vil vi ikke ta opp bidragssak.',
+    'skjema.borSammen.description.content': 'Når foreldrene ikke bor sammen når barnet blir født og heller ikke har inngått en avtale om barnebidrag, skal NAV ta opp bidragssak og fastsette bidrag på eget initiativ. Hvis dere inngår en avtale og sender informasjon om dette til oss, vil vi ikke ta opp bidragssak. Les mer om barnebidrag <a>her</a>.',
+    'skjema.borSammen.description.content.link': 'https://www.nav.no/barnebidrag',
     'skjema.borSammen.label.yes': 'Ja',
     'skjema.borSammen.label.no': 'Nei',
     'skjema.borSammen.validation.required': 'Opplysningen er påkrevd',

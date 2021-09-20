@@ -5,9 +5,10 @@ import { useIntl } from 'react-intl';
 import FormButtons from 'components/form-buttons/FormButtons';
 import { getMessage } from 'utils/intl';
 import EkspanderbarInformasjon from './EkspanderbarInformasjon';
-import { Systemtittel } from 'nav-frontend-typografi';
+import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 
 import './BorSammenForm.less';
+import FormattedMessageWithExternalLink from '../../../components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
 
 export type BorSammenValue = 'YES' | 'NO' | null;
 
@@ -37,8 +38,19 @@ function BorSammenForm(props: BorSammenFormProps) {
                 legend={<Systemtittel>{getMessage(intl, props.titleId)}</Systemtittel>}
                 description={
                     <EkspanderbarInformasjon
-                        introText={getMessage(intl, 'skjema.borSammen.description.intro')}
-                        contentText={getMessage(intl, 'skjema.borSammen.description.content')}
+                        intro={
+                            <Normaltekst>
+                                {getMessage(intl, 'skjema.borSammen.description.intro')}
+                            </Normaltekst>
+                        }
+                        content={
+                            <Normaltekst>
+                                <FormattedMessageWithExternalLink
+                                    textId="skjema.borSammen.description.content"
+                                    linkId="skjema.borSammen.description.content.link"
+                                />
+                            </Normaltekst>
+                        }
                     />
                 }
                 feil={errors.borSammen?.message}

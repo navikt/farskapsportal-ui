@@ -11,6 +11,8 @@ export default {
     'far': 'Father',
     'farskapserklaering': 'Declaration of paternity',
 
+    'read.more': 'Expand info',
+
     'api.error': 'Whoops, something went wrong!',
 
     'form.feiloppsummering': 'To proceed, you must correct the following',
@@ -192,7 +194,8 @@ export default {
     'skjema.submit': 'Sign declaration of paternity',
 
     'skjema.borSammen.description.intro': 'Parents who do not live with the child are obliged to pay child maintenance.',
-    'skjema.borSammen.description.content': 'When the parents do not live together when the child is born and have also not entered into an agreement on child maintenance, NAV will open a maintenance case and determine support on its own initiative. If you enter into an agreement and send information about this to us, we will not open a maintenance case. ',
+    'skjema.borSammen.description.content': 'When the parents do not live together when the child is born and have also not entered into an agreement on child maintenance, NAV will open a maintenance case and determine support on its own initiative. If you enter into an agreement and send information about this to us, we will not open a maintenance case. Read more about child maintenance <a>here</a>.',
+    //'skjema.borSammen.description.content.link': '', // TODO /en
     'skjema.borSammen.label.yes': 'Yes',
     'skjema.borSammen.label.no': 'No',
     'skjema.borSammen.validation.required': 'The information is required',
