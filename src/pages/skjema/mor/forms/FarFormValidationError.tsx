@@ -21,6 +21,8 @@ function FarFormValidationError({
 }: FarFormValidationErrorProps) {
     const renderContent = () => {
         switch (feilkode) {
+            case Feilkode.FarHarIkkeFnummer:
+                return <FarHarIkkeFnummer />;
             case Feilkode.FeilRolleFar:
                 return <FeilRolleFar />;
             case Feilkode.ForskjelligeFedre:
@@ -57,6 +59,16 @@ function FarFormValidationError({
         <AlertStripe id={id} type="feil">
             {renderContent()}
         </AlertStripe>
+    );
+}
+
+function FarHarIkkeFnummer() {
+    return (
+        <>
+            <Normaltekst>
+                <FormattedMessage id="skjema.mor.far.validation.farHarIkkeFnummer" />
+            </Normaltekst>
+        </>
     );
 }
 

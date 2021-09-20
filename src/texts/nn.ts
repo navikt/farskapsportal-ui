@@ -11,6 +11,8 @@ export default {
     'far': 'Far',
     'farskapserklaering': 'Farskapserklæring',
 
+    'read.more': 'Les mer',
+
     'api.error': 'Oisann, noko gjekk gale.',
 
     'form.feiloppsummering': 'For å gå vidare må du rette opp følgjande',
@@ -193,7 +195,8 @@ export default {
     'skjema.submit': 'Signer farskapserklæringa',
 
     'skjema.borSammen.description.intro': 'Foreldre som ikkje bur saman med barnet, har plikt til å betale barnebidrag.',
-    'skjema.borSammen.description.content': 'Når foreldra ikkje bur saman når barnet blir født, og heller ikkje har inngått ein avtale om barnebidrag, skal NAV ta opp bidragssak og fastsetje bidrag på eige tiltak. Dersom de inngår ein avtale og sender informasjonen om dette til oss, vil vi ikkje ta opp bidragssak.',
+    'skjema.borSammen.description.content': 'Når foreldra ikkje bur saman når barnet blir født, og heller ikkje har inngått ein avtale om barnebidrag, skal NAV ta opp bidragssak og fastsetje bidrag på eige initiativ. Dersom de inngår ein avtale og sender informasjonen om dette til oss, vil vi ikkje ta opp bidragssak. Les mer om barnebidrag <a>her</a>.',
+    'skjema.borSammen.description.content.link': 'https://www.nav.no/barnebidrag',
     'skjema.borSammen.label.yes': 'Ja',
     'skjema.borSammen.label.no': 'Nei',
     'skjema.borSammen.validation.required': 'Opplysinga er påkravd.',
@@ -215,6 +218,7 @@ export default {
     'skjema.mor.far.foedselsnummer.label': 'Fødselsnummer',
     'skjema.mor.far.foedselsnummer.validation.required': 'Fødselsnummeret til faren er påkravd.',
     'skjema.mor.far.foedselsnummer.validation.fnr': 'Ugyldig fødselsnummer',
+    'skjema.mor.far.validation.farHarIkkeFnummer': 'Farskap kan ikkje erklærast elektronisk hvis far kun er registrert med d-nummer i Folkeregisteret.', // TODO
     'skjema.mor.far.validation.feilRolleFar.1': 'Medmor kan ikkje erklærast elektronisk. Dersom du er sambuar med ei kvinne, kan de søkje Skatteetaten om medmorskap dersom barnet er blitt til ved hjelp av assistert befruktning.',
     'skjema.mor.far.validation.feilRolleFar.2': 'Du finn informasjon og søknadsskjema <a>her</a>.',
     'skjema.mor.far.validation.feilRolleFar.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/soknad-om-medmorskap/',
