@@ -217,6 +217,7 @@ export default {
     'skjema.mor.far.foedselsnummer.label': 'National identity number',
     'skjema.mor.far.foedselsnummer.validation.required': 'The national identity number of the father is required',
     'skjema.mor.far.foedselsnummer.validation.fnr': 'Invalid national identity number',
+    //'skjema.mor.far.validation.farHarIkkeFnummer': '', // TODO
     'skjema.mor.far.validation.feilRolleFar.1': 'Co-maternity cannot be declared electronically. If you are cohabiting with a woman, you can apply to the Norwegian Tax Administration about co-maternity if the child has been conceived by means of assisted fertilisation.',
     'skjema.mor.far.validation.feilRolleFar.2': 'You can find information and the application form <a>here</a>',
     'skjema.mor.far.validation.feilRolleFar.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/application-for-joint-maternity/',
