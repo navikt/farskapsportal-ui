@@ -14,6 +14,7 @@ import LoginButton from './LoginButton';
 import AlertStripe from 'nav-frontend-alertstriper';
 
 import './Forside.less';
+import PvkModal from './PvkModal';
 
 function Forside() {
     return (
@@ -35,6 +36,7 @@ function Forside() {
                     <Hvordan />
                     <LoginButton />
                     <AlleredeRegistrert />
+                    <PvkModal />
                 </Panel>
             </ContentContainer>
         </Page>
