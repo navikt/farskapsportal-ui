@@ -1,7 +1,7 @@
 import { Knapp } from 'nav-frontend-knapper';
 import Modal from 'nav-frontend-modal';
 import { useState } from 'react';
-import { Innholdstittel, Normaltekst, Undertittel } from 'nav-frontend-typografi';
+import { Ingress, Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import { FormattedMessage } from 'react-intl';
 import FormattedMessageWithExternalLink from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
 
@@ -12,10 +12,15 @@ function PvkModal() {
 
     Modal.setAppElement('div#app');
 
+    const onClick = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
         <>
-            <Knapp onClick={() => setIsOpen(!isOpen)}>Se PVK</Knapp>
+            <Knapp onClick={onClick}>Se PVK</Knapp>
             <Modal
+                shouldFocusAfterRender={true}
                 className="PvkModal"
                 isOpen={isOpen}
                 onRequestClose={() => setIsOpen(false)}
@@ -31,12 +36,13 @@ function PvkModal() {
 function Pvk() {
     return (
         <>
-            <Innholdstittel>
+            <Systemtittel className="PvkModal__header">
                 <FormattedMessage id="forside.pvk.title" />
-            </Innholdstittel>
-            <Undertittel>
+            </Systemtittel>
+            <br />
+            <Ingress className="PvkModal__ingress">
                 <FormattedMessage id="mor" />
-            </Undertittel>
+            </Ingress>
             <Normaltekst>
                 <FormattedMessage id="forside.pvk.mor.content" />
             </Normaltekst>
@@ -53,12 +59,15 @@ function Pvk() {
                 <li>
                     <FormattedMessage id="forside.pvk.mor.list.4" />
                 </li>
+                <li>
+                    <FormattedMessage id="forside.pvk.mor.list.5" />
+                </li>
             </ul>
-            <Undertittel>
+            <Ingress className="PvkModal__ingress">
                 <FormattedMessage id="far" />
-            </Undertittel>
+            </Ingress>
             <Normaltekst>
-                <FormattedMessage id="forside.pvk.far" />
+                <FormattedMessage id="forside.pvk.far.content" />
             </Normaltekst>
             <ul>
                 <li>
@@ -68,16 +77,16 @@ function Pvk() {
                     <FormattedMessage id="forside.pvk.far.list.2" />
                 </li>
                 <li>
-                    <FormattedMessage id="forside.pvk.mor.list.3" />
+                    <FormattedMessage id="forside.pvk.far.list.3" />
                 </li>
             </ul>
             <Normaltekst>
                 <FormattedMessage id="forside.pvk.etterSignering" />
             </Normaltekst>
-            <br/>
-            <Undertittel>
+            <br />
+            <Ingress className="PvkModal__ingress">
                 <FormattedMessage id="forside.pvk.personvernerklaering.title" />
-            </Undertittel>
+            </Ingress>
             <Normaltekst>
                 <FormattedMessageWithExternalLink
                     textId="forside.pvk.personvernerklaering.content"

@@ -112,6 +112,22 @@ export default {
 
     'forside.loginButton': 'Fyll ut erklæring om farskap.',
 
+    //'forside.pvk.title': '',
+    //'forside.pvk.mor.content': '',
+    //'forside.pvk.mor.list.1': '',
+    //'forside.pvk.mor.list.2': '',
+    //'forside.pvk.mor.list.3': '',
+    //'forside.pvk.mor.list.4': '',
+    //'forside.pvk.far.content': '',
+    //'forside.pvk.far.list.1': '',
+    //'forside.pvk.far.list.2': '',
+    //'forside.pvk.far.list.3': '',
+    //'forside.pvk.far.list.4': '',
+    //'forside.pvk.etterSignering': '',
+    //'forside.pvk.personvernerklaering.title': '',
+    //'forside.pvk.personvernerklaering.content': '',
+    //'forside.pvk.personvernerklaering.link': '',
+
     //'notPermitted.forelderHarVerge': 'Du er registrert med verge i Folkeregisteret og kan derfor ikke bruke løsningen',
     'notPermitted.ikkeMyndig': 'For at farskap skal kunne erklærast elektronisk, må begge forelda vere over 18 år.',
     'notPermitted.medmorEllerUkjent': 'Medmor eller person med ukjend rolle kan ikkje bruke løysinga.', // TODO: endre tekst

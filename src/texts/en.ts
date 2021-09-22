@@ -111,6 +111,22 @@ export default {
 
     'forside.loginButton': 'Fill out paternity declaration',
 
+    //'forside.pvk.title': '',
+    //'forside.pvk.mor.content': '',
+    //'forside.pvk.mor.list.1': '',
+    //'forside.pvk.mor.list.2': '',
+    //'forside.pvk.mor.list.3': '',
+    //'forside.pvk.mor.list.4': '',
+    //'forside.pvk.far.content': '',
+    //'forside.pvk.far.list.1': '',
+    //'forside.pvk.far.list.2': '',
+    //'forside.pvk.far.list.3': '',
+    //'forside.pvk.far.list.4': '',
+    //'forside.pvk.etterSignering': '',
+    //'forside.pvk.personvernerklaering.title': '',
+    //'forside.pvk.personvernerklaering.content': '',
+    //'forside.pvk.personvernerklaering.link': '',
+
     'notPermitted.forelderHarVerge': 'You are registered with a guardian in the National Population Register and can therefore not use the solution.', // TODO
     'notPermitted.ikkeMyndig': 'In order to declare paternity electronically, both parents must be over the age of 18.',
     'notPermitted.medmorEllerUkjent': 'The co-mother or person with an unknown role cannot use the solution', // TODO: endre tekst
