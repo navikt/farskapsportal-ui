@@ -119,7 +119,7 @@ export default {
     'forside.dinePersonopplysninger.mor.list.3': 'Kjønn',
     'forside.dinePersonopplysninger.mor.list.4': 'Bostedsadresse',
     'forside.dinePersonopplysninger.mor.list.5': 'Familieforhold',
-    'forside.dinePersonopplysninger.far.content': 'Mor gir NAV opplysninger om ditt fulle navn og personnummer. I tillegg innhenter vi følgende opplysninger fra offentlige registre før kan erklære farskap:',
+    'forside.dinePersonopplysninger.far.content': 'Mor gir NAV opplysninger om ditt fulle navn og personnummer. I tillegg innhenter vi følgende opplysninger fra offentlige registre før man kan erklære farskap:',
     'forside.dinePersonopplysninger.far.list.1': 'Alder',
     'forside.dinePersonopplysninger.far.list.2': 'Kjønn',
     'forside.dinePersonopplysninger.far.list.3': 'Aktivt personnummer',

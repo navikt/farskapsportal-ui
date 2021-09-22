@@ -1,9 +1,9 @@
-import { Knapp } from 'nav-frontend-knapper';
 import Modal from 'nav-frontend-modal';
 import { useState } from 'react';
 import { Ingress, Normaltekst, Systemtittel } from 'nav-frontend-typografi';
 import { FormattedMessage } from 'react-intl';
 import FormattedMessageWithExternalLink from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
+import Lenke from 'nav-frontend-lenker';
 
 import './DinePersonopplysningerModal.less';
 
@@ -18,9 +18,10 @@ function DinePersonopplysningerModal() {
 
     return (
         <>
-            <Knapp onClick={onClick}>Se Dine Personopplysninger</Knapp>
+            <Lenke href="#bottom" onClick={onClick}>
+                Les om hvordan NAV behandler personopplysningene dine
+            </Lenke>
             <Modal
-                shouldFocusAfterRender={true}
                 className="DinePersonopplysningerModal"
                 isOpen={isOpen}
                 onRequestClose={() => setIsOpen(false)}
