@@ -44,7 +44,6 @@ const getStore = ({
     termindato = null,
     foedselsnummer = null,
     farBorSammenMedMor = null,
-    morBorSammenMedFar = null,
 }: {
     foreldrerolle: Foreldrerolle;
     paaloggetBrukersRolle: Rolle;
@@ -53,7 +52,6 @@ const getStore = ({
     termindato?: string | null;
     foedselsnummer?: string | null;
     farBorSammenMedMor?: boolean | null;
-    morBorSammenMedFar?: boolean | null;
 }): Partial<Store> => ({
     userInfo: {
         status: 'SUCCESS',
@@ -83,7 +81,6 @@ const getStore = ({
                     farBorSammenMedMor: farBorSammenMedMor,
                     idFarskapserklaering: ERKLAERING_ID,
                     mor: null,
-                    morBorSammenMedFar: morBorSammenMedFar,
                     paaloggetBrukersRolle: paaloggetBrukersRolle,
                 },
             ],
@@ -100,7 +97,7 @@ test('should render info for mor with termindato erklaering and bor sammen true'
             paaloggetBrukersRolle: Rolle.Mor,
             signertAvMor: '2021-03-17',
             termindato: '2021-03-17',
-            morBorSammenMedFar: true,
+            farBorSammenMedMor: true,
         }),
     });
 
@@ -138,7 +135,7 @@ test('should render info for mor with foedselsnummer erklaering and bor sammen t
             paaloggetBrukersRolle: Rolle.Mor,
             signertAvMor: '2021-03-17',
             foedselsnummer: '12345678901',
-            morBorSammenMedFar: true,
+            farBorSammenMedMor: true,
         }),
     });
 
@@ -176,7 +173,7 @@ test('should render info for mor with termindato erklaering and bor sammen false
             paaloggetBrukersRolle: Rolle.Mor,
             signertAvMor: '2021-03-17',
             termindato: '2021-03-17',
-            morBorSammenMedFar: false,
+            farBorSammenMedMor: false,
         }),
     });
 
@@ -215,7 +212,7 @@ test('should render info for mor with termindato erklaering and bor sammen true 
             signertAvMor: '2021-03-17',
             signertAvFar: '2021-03-17',
             termindato: '2021-03-17',
-            morBorSammenMedFar: true,
+            farBorSammenMedMor: true,
         }),
     });
 

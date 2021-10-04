@@ -30,7 +30,6 @@
           "etternavn": "Nordmann"
         }
       },
-      "morBorSammenMedFar": true,
       "farBorSammenMedMor": null,
       "dokument": {
         "dokumentnavn": null,
@@ -70,7 +69,6 @@
           "etternavn": "Nordmann"
         }
       },
-      "morBorSammenMedFar": true,
       "farBorSammenMedMor": null,
       "dokument": {
         "dokumentnavn": null,
