@@ -19,7 +19,7 @@ function DinePersonopplysningerModal() {
     return (
         <>
             <Lenke href="#bottom" onClick={onClick}>
-                Les om hvordan NAV behandler personopplysningene dine
+                <FormattedMessage id="forside.dinePersonopplysninger.lenkeKnapp" />
             </Lenke>
             <Modal
                 className="DinePersonopplysningerModal"

@@ -112,6 +112,7 @@ export default {
 
     'forside.loginButton': 'Fyll ut erklæring om farskap',
 
+    'forside.dinePersonopplysninger.lenkeKnapp': 'Les om hvordan NAV behandler personopplysningene dine',
     'forside.dinePersonopplysninger.title': 'Slik behandler NAV personopplysningene dine',
     'forside.dinePersonopplysninger.mor.content': 'NAV innhenter følgende opplysninger fra deg fra offentlige registre før du kan påbegynne en erklæring om farskap:',
     'forside.dinePersonopplysninger.mor.list.1': 'Sivilstand',
@@ -119,7 +120,7 @@ export default {
     'forside.dinePersonopplysninger.mor.list.3': 'Kjønn',
     'forside.dinePersonopplysninger.mor.list.4': 'Bostedsadresse',
     'forside.dinePersonopplysninger.mor.list.5': 'Familieforhold',
-    'forside.dinePersonopplysninger.far.content': 'Mor gir NAV opplysninger om ditt fulle navn og personnummer. I tillegg innhenter vi følgende opplysninger fra offentlige registre før man kan erklære farskap:',
+    'forside.dinePersonopplysninger.far.content': 'Mor gir NAV opplysninger om ditt fulle navn og personnummer. I tillegg innhenter vi følgende opplysninger fra offentlige registre før man du erklære farskap:',
     'forside.dinePersonopplysninger.far.list.1': 'Alder',
     'forside.dinePersonopplysninger.far.list.2': 'Kjønn',
     'forside.dinePersonopplysninger.far.list.3': 'Aktivt personnummer',
