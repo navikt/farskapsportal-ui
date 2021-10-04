@@ -40,4 +40,4 @@ export const isTermindatoErklaering = (erklaering: Farskapserklaering): boolean 
     !!erklaering.barn?.termindato;
 
 export const isBorSammen = (erklaering: Farskapserklaering): boolean =>
-    isBrukerFar(erklaering) ? !!erklaering.farBorSammenMedMor : !!erklaering.morBorSammenMedFar;
+    !!erklaering.farBorSammenMedMor;
