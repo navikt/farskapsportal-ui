@@ -112,6 +112,23 @@ export default {
 
     'forside.loginButton': 'Fyll ut erklæring om farskap.',
 
+    'forside.dinePersonopplysninger.lenkeKnapp': 'Les om korleis NAV behandlar personopplysningane dine',
+    'forside.dinePersonopplysninger.title': 'Slik behandlar NAV personopplysningane dine',
+    'forside.dinePersonopplysninger.mor.content': 'NAV innhentar følgande opplysningar om deg frå offentlege register før du kan begynne på ei erklæring om farskap:',
+    'forside.dinePersonopplysninger.mor.list.1': 'Sivilstand',
+    'forside.dinePersonopplysninger.mor.list.2': 'Alder',
+    'forside.dinePersonopplysninger.mor.list.3': 'Kjønn',
+    'forside.dinePersonopplysninger.mor.list.4': 'Bustadsadresse',
+    'forside.dinePersonopplysninger.mor.list.5': 'Familieforhold',
+    'forside.dinePersonopplysninger.far.content': 'Mor gir NAV opplysningar om ditt fulle namn og personnummer. I tillegg hentar vi inn følgande opplysningar frå offentlege register før du kan erklære farskap:',
+    'forside.dinePersonopplysninger.far.list.1': 'Alder',
+    'forside.dinePersonopplysninger.far.list.2': 'Kjønn',
+    'forside.dinePersonopplysninger.far.list.3': 'Aktivt personnummer',
+    'forside.dinePersonopplysninger.etterSignering': 'Når begge foreldrane har signert erklæringa sendes den til Folkeregisteret/Skatteetaten for registrering og arkivering.',
+    'forside.dinePersonopplysninger.personvernerklaering.title': 'Personvernerklæring i NAV',
+    'forside.dinePersonopplysninger.personvernerklaering.content': 'Du kan lese meir om korleis NAV behandlar personopplysningar i Arbeids- og velferdsetatens personvernerklæring på <a>nav.no/personvern.</a>',
+    'forside.dinePersonopplysninger.personvernerklaering.link': 'https://www.nav.no/no/NAV+og+samfunn/Om+NAV/personvern-i-arbeids-og-velferdsetaten/personvernerkl%C3%A6ring-for-arbeids-og-velferdsetaten',
+
     //'notPermitted.forelderHarVerge': 'Du er registrert med verge i Folkeregisteret og kan derfor ikke bruke løsningen',
     'notPermitted.ikkeMyndig': 'For at farskap skal kunne erklærast elektronisk, må begge forelda vere over 18 år.',
     'notPermitted.medmorEllerUkjent': 'Medmor eller person med ukjend rolle kan ikkje bruke løysinga.', // TODO: endre tekst

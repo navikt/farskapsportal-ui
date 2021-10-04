@@ -3,6 +3,9 @@ import { axe } from 'jest-axe';
 import { render, screen } from 'test-utils';
 import texts from 'texts/nb';
 import App from '../App';
+import Modal from 'nav-frontend-modal';
+
+Modal.setAppElement = () => null;
 
 const headerText = texts['header.forside'];
 

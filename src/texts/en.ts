@@ -111,6 +111,23 @@ export default {
 
     'forside.loginButton': 'Fill out paternity declaration',
 
+    'forside.dinePersonopplysninger.lenkeKnapp': 'Read about how NAV handle your personal data',
+    'forside.dinePersonopplysninger.title': 'This is how NAV handle your personal data',
+    'forside.dinePersonopplysninger.mor.content': 'NAV will collect the following data about you from public registers before you can initiate a declaration of paternity:',
+    'forside.dinePersonopplysninger.mor.list.1': 'Civil Status',
+    'forside.dinePersonopplysninger.mor.list.2': 'Age',
+    'forside.dinePersonopplysninger.mor.list.3': 'Sex',
+    'forside.dinePersonopplysninger.mor.list.4': 'Residential Address',
+    'forside.dinePersonopplysninger.mor.list.5': 'Family relationships',
+    'forside.dinePersonopplysninger.far.content': 'The child’s mother informs NAV about your full name and your national identity number. Additionally, NAV will collect the following data about you from public registers before you can declare paternity:',
+    'forside.dinePersonopplysninger.far.list.1': 'Age',
+    'forside.dinePersonopplysninger.far.list.2': 'Sex',
+    'forside.dinePersonopplysninger.far.list.3': 'Active identity number',
+    'forside.dinePersonopplysninger.etterSignering': 'When both parents have signed the declaration, it will be sent to the National Population Register/ Norwegian Tax Administration for registration and archiving.',
+    'forside.dinePersonopplysninger.personvernerklaering.title': 'NAVs Privacy Statement',
+    'forside.dinePersonopplysninger.personvernerklaering.content': 'You can read more about how NAV handle your personal data in our Privacy Statement on <a>nav.no/personvern (Norwegian only).</a>',
+    'forside.dinePersonopplysninger.personvernerklaering.link': 'https://www.nav.no/no/NAV+og+samfunn/Om+NAV/personvern-i-arbeids-og-velferdsetaten/personvernerkl%C3%A6ring-for-arbeids-og-velferdsetaten',
+
     'notPermitted.forelderHarVerge': 'You are registered with a guardian in the National Population Register and can therefore not use the solution.', // TODO
     'notPermitted.ikkeMyndig': 'In order to declare paternity electronically, both parents must be over the age of 18.',
     'notPermitted.medmorEllerUkjent': 'The co-mother or person with an unknown role cannot use the solution', // TODO: endre tekst

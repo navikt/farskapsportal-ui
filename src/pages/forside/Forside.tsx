@@ -13,6 +13,7 @@ import Rettigheter from './info-content/Rettigheter';
 import LoginButton from './LoginButton';
 
 import './Forside.less';
+import DinePersonopplysningerModal from './DinePersonopplysningerModal';
 
 function Forside() {
     return (
@@ -29,6 +30,7 @@ function Forside() {
                     <Hvordan />
                     <LoginButton />
                     <AlleredeRegistrert />
+                    <DinePersonopplysningerModal />
                 </Panel>
             </ContentContainer>
         </Page>
