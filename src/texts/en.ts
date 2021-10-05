@@ -107,7 +107,7 @@ export default {
 
     'forside.alleredeRegistrert.title': 'Are you wondering if the paternity has already been registered?',
     'forside.alleredeRegistrert.content': 'If you have already had the child and both you and the father of the child have already signed the paternity, please contact the Norwegian Tax Administration (National Population Register)',
-    'forside.alleredeRegistrert.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/paternity-and-parental-responsibility/',
+    'forside.alleredeRegistrert.link': 'https://www.skatteetaten.no/en/my-page/',
 
     'forside.loginButton': 'Fill out paternity declaration',
 

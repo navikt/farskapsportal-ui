@@ -108,7 +108,7 @@ export default {
 
     'forside.alleredeRegistrert.title': 'Lurer du på om farskapet allerede er registert?',
     'forside.alleredeRegistrert.content': 'Har du allerede fått barn og både du og faren til barnet allerede har signert farskapet, ber vi deg  å ta kontakt med ta kontakt med Skatteetaten (Folkeregisteret):      ',
-    'forside.alleredeRegistrert.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/farskap/',
+    'forside.alleredeRegistrert.link': 'https://www.skatteetaten.no/min-side/',
 
     'forside.loginButton': 'Fyll ut erklæring om farskap',
 
