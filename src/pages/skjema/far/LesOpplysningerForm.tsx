@@ -1,11 +1,11 @@
-import {Systemtittel} from 'nav-frontend-typografi';
-import {FormattedMessage, useIntl} from 'react-intl';
+import { Systemtittel } from 'nav-frontend-typografi';
+import { FormattedMessage, useIntl } from 'react-intl';
 import FarskapserklaeringPresentation from 'components/farskapserklaering-presentation/FarskapserklaeringPresentation';
-import {Farskapserklaering} from 'types/farskapserklaering';
-import {getMessage} from "../../../utils/intl";
-import {BekreftCheckboksPanel} from "nav-frontend-skjema";
-import {Controller, useForm} from "react-hook-form";
-import FormButtons from "../../../components/form-buttons/FormButtons";
+import { Farskapserklaering } from 'types/farskapserklaering';
+import { getMessage } from '../../../utils/intl';
+import { BekreftCheckboksPanel } from 'nav-frontend-skjema';
+import { Controller, useForm } from 'react-hook-form';
+import FormButtons from '../../../components/form-buttons/FormButtons';
 
 import './LesOpplysningerForm.less';
 
