@@ -48,7 +48,7 @@ function LesOpplysningerForm({ farskapserklaering, onCancel, onSubmit }: LesOppl
                 render={({ onChange, value, name }) => (
                     <BekreftCheckboksPanel
                         className="BekreftCheckBoksPanel"
-                        label={getMessage(intl, `skjema.far.lesOpplysninger.label`)}
+                        label={getMessage(intl, `skjema.far.lesOpplysninger.confirm.label`)}
                         checked={value}
                         onChange={(e) => onChange((e.target as HTMLInputElement).checked)}
                         feil={errors.readAndAccepted?.message}

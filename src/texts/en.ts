@@ -261,6 +261,8 @@ export default {
 
     'skjema.far.borSammen.title': 'Do you live with the mother of the child?',
     'skjema.far.lesOpplysninger.title': 'Read information provided by the child\'s mother',
+    // 'skjema.far.lesOpplysninger.confirm.label': '',
+    // 'skjema.far.lesOpplysninger.validation.required': '',
     'skjema.far.confirm.title': 'Sign declaration of paternity',
     'skjema.far.confirm.readAndUnderstood.label': 'I\'ve read and understood what the paternity declaration entails.',
     'skjema.far.confirm.cannotWithdraw.label': 'I am aware that this confirmation cannot be withdrawn at a later date.',
