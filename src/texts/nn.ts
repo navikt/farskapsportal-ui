@@ -261,8 +261,8 @@ export default {
 
     'skjema.far.borSammen.title': 'Bur du saman med mor til barnet?',
     'skjema.far.lesOpplysninger.title': 'Les opplysningane som er gitt opp av mor til barnet.',
-    // 'skjema.far.lesOpplysninger.confirm.label': '',
-    // 'skjema.far.lesOpplysninger.validation.required': '',
+    'skjema.far.lesOpplysninger.confirm.label': 'Eg bekrefter at opplysningane som er oppgitt av mora til barnet er korrekte.',
+    'skjema.far.lesOpplysninger.validation.required': 'Du må bekrefte opplysningane oppgitt av mora til barnet for å gå vidare.',
     'skjema.far.confirm.title': 'Signer farskapserklæringa',
     'skjema.far.confirm.readAndUnderstood.label': 'Eg har lese og forstått kva farskapserklæringa inneber.',
     'skjema.far.confirm.cannotWithdraw.label': 'Eg er kjend med at denne stadfestinga ikkje kan trekkjast tilbake på eit seinare tidspunkt.',

@@ -263,8 +263,8 @@ export default {
 
     'skjema.far.borSammen.title': 'Bor du sammen med moren til barnet?',
     'skjema.far.lesOpplysninger.title': 'Les opplysninger oppgitt av moren til barnet',
-    'skjema.far.lesOpplysninger.confirm.label': 'Jeg bekrefter at opplysningene som er oppgitt av moren til barnet er korrekte.',
-    'skjema.far.lesOpplysninger.validation.required': 'Du må bekrefte opplysningene oppgitt av moren til barnet for å gå videre',
+    'skjema.far.lesOpplysninger.confirm.label': 'Jeg bekrefter at opplysningene oppgitt av moren til barnet er korrekte.',
+    'skjema.far.lesOpplysninger.validation.required': 'Du må bekrefte opplysningene oppgitt av moren til barnet for å gå videre.',
     'skjema.far.confirm.title': 'Signer farskapserklæringen',
     'skjema.far.confirm.readAndUnderstood.label': 'Jeg har lest og forstått hva farskapserklæringen innebærer.',
     'skjema.far.confirm.cannotWithdraw.label': 'Jeg er kjent med at denne bekreftelsen ikke kan trekkes tilbake på et senere tidspunkt.',
