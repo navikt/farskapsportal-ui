@@ -16,6 +16,7 @@ const EXPECTED_FEILKODER_FETCH_USER = [
 const EXPECTED_FEILKODER_CONTROL_FATHER = [
     Feilkode.FarHarIkkeFnummer,
     Feilkode.FeilRolleFar,
+    Feilkode.ForelderHarVerge,
     Feilkode.ForskjelligeFedre,
     Feilkode.IkkeMyndig,
     Feilkode.MaksAntallForsoek,
