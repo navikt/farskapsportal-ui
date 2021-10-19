@@ -16,14 +16,12 @@ const EXPECTED_FEILKODER_FETCH_USER = [
 const EXPECTED_FEILKODER_CONTROL_FATHER = [
     Feilkode.FarHarIkkeFnummer,
     Feilkode.FeilRolleFar,
-    Feilkode.ForelderHarVerge,
     Feilkode.ForskjelligeFedre,
-    Feilkode.IkkeMyndig,
     Feilkode.MaksAntallForsoek,
     Feilkode.MorOgFarSammePerson,
     Feilkode.NavnStemmerIkkeMedRegister,
     Feilkode.PdlPersonIkkeFunnet,
-    Feilkode.PersonErDoed,
+    Feilkode.UgyldigFar, // doed, ikke myndig, har verge
 ];
 
 export const isUserNotPermitted = (error: AlertError): boolean =>

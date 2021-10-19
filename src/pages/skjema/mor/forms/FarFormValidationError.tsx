@@ -47,9 +47,7 @@ function FarFormValidationError({
                 }
             case Feilkode.PdlPersonIkkeFunnet:
                 return <PdlPersonIkkeFunnet />;
-            case Feilkode.IkkeMyndig:
-            case Feilkode.ForelderHarVerge:
-            case Feilkode.PersonErDoed:
+            case Feilkode.UgyldigFar:
                 return <DefaultUgyldigFarMessage />;
             default:
                 return null;
