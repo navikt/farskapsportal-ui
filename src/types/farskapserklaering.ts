@@ -9,7 +9,6 @@ export interface Farskapserklaering {
     farBorSammenMedMor: boolean | null;
     idFarskapserklaering: number;
     mor: Forelder | null;
-    morBorSammenMedFar: boolean | null;
     paaloggetBrukersRolle: Rolle | null;
 }
 

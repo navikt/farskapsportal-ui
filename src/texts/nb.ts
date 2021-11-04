@@ -11,6 +11,8 @@ export default {
     'far': 'Far',
     'farskapserklaering': 'Farskapserklæring',
 
+    'read.more': 'Les mer',
+
     'api.error': 'Oisann, noe gikk galt!',
 
     'form.feiloppsummering': 'For å gå videre må du rette opp følgende:',
@@ -106,13 +108,32 @@ export default {
 
     'forside.alleredeRegistrert.title': 'Lurer du på om farskapet allerede er registert?',
     'forside.alleredeRegistrert.content': 'Har du allerede fått barn og både du og faren til barnet allerede har signert farskapet, ber vi deg  å ta kontakt med ta kontakt med Skatteetaten (Folkeregisteret):      ',
-    'forside.alleredeRegistrert.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/farskap/',
+    'forside.alleredeRegistrert.link': 'https://www.skatteetaten.no/min-side/',
 
     'forside.loginButton': 'Fyll ut erklæring om farskap',
 
+    'forside.dinePersonopplysninger.lenkeKnapp': 'Les om hvordan NAV behandler personopplysningene dine',
+    'forside.dinePersonopplysninger.title': 'Slik behandler NAV personopplysningene dine',
+    'forside.dinePersonopplysninger.mor.content': 'NAV innhenter følgende opplysninger fra deg fra offentlige registre før du kan påbegynne en erklæring om farskap:',
+    'forside.dinePersonopplysninger.mor.list.1': 'Sivilstand',
+    'forside.dinePersonopplysninger.mor.list.2': 'Alder',
+    'forside.dinePersonopplysninger.mor.list.3': 'Kjønn',
+    'forside.dinePersonopplysninger.mor.list.4': 'Bostedsadresse',
+    'forside.dinePersonopplysninger.mor.list.5': 'Familieforhold',
+    'forside.dinePersonopplysninger.far.content': 'Mor gir NAV opplysninger om ditt fulle navn og personnummer. I tillegg innhenter vi følgende opplysninger fra offentlige registre før man du erklære farskap:',
+    'forside.dinePersonopplysninger.far.list.1': 'Alder',
+    'forside.dinePersonopplysninger.far.list.2': 'Kjønn',
+    'forside.dinePersonopplysninger.far.list.3': 'Aktivt personnummer',
+    'forside.dinePersonopplysninger.etterSignering': 'Når begge foreldrene har signert erklæringen overføres den til Folkregisteret/Skatteetaten for registrering og arkivering.',
+    'forside.dinePersonopplysninger.personvernerklaering.title': 'Personvernerklæringen i NAV',
+    'forside.dinePersonopplysninger.personvernerklaering.content': 'Du kan lese mer om hvordan NAV behandler personopplysninger i Arbeids- og velferdsetatens personvernerklæring på <a>nav.no/personvern</a>.',
+    'forside.dinePersonopplysninger.personvernerklaering.link': 'https://www.nav.no/no/NAV+og+samfunn/Om+NAV/personvern-i-arbeids-og-velferdsetaten/personvernerkl%C3%A6ring-for-arbeids-og-velferdsetaten',
+
+    'notPermitted.forelderHarIkkeFnummer': 'For at farskap skal kunne erklæres elektronisk, må du være registrert med et norsk fødselsnummer i Folkeregisteret', // TODO
     'notPermitted.forelderHarVerge': 'Du er registrert med verge i Folkeregisteret og kan derfor ikke bruke løsningen', // TODO: bra tekst?
     'notPermitted.ikkeMyndig': 'For at farskap skal kunne erklæres elektronisk, må begge foreldrene være over 18 år.',
     'notPermitted.medmorEllerUkjent': 'Medmor eller person med ukjent rolle kan ikke benytte løsningen', // TODO: endre tekst
+    'notPermitted.morIkkeNorskBostedsadresse': 'For at farskap skal kunne erklæres elektronisk, må du være registrert med en norsk bostedsadresse i Folkeregisteret.', // TODO
     'notPermitted.morSivilstandGift.1': 'Du er gift og ektefellen din blir automatisk registrert som faren til barn du føder. Hvis det er en annen mann enn ektefellen din som er barnets far, kan farskapet endres. Dette kan ikke gjøres elektronisk.',
     'notPermitted.morSivilstandGift.2': 'Du finner mer informasjon om endring av farskap <a>her</a>. Du er også velkommen til å kontakte oss på nav.no/kontakt eller telefon 55 55 33 33.',
     'notPermitted.morSivilstandGift.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap',
@@ -192,7 +213,8 @@ export default {
     'skjema.submit': 'Signer farskapserklæring',
 
     'skjema.borSammen.description.intro': 'Foreldre som ikke bor sammen med barnet har plikt til å betale barnebidrag.',
-    'skjema.borSammen.description.content': 'Når foreldrene ikke bor sammen når barnet blir født og heller ikke har inngått en avtale om barnebidrag, skal NAV ta opp bidragssak og fastsette bidrag på eget tiltak. Hvis dere inngår en avtale og sender informasjon om dette til oss, vil vi ikke ta opp bidragssak.',
+    'skjema.borSammen.description.content': 'Når foreldrene ikke bor sammen når barnet blir født og heller ikke har inngått en avtale om barnebidrag, skal NAV ta opp bidragssak og fastsette bidrag på eget initiativ. Hvis dere inngår en avtale og sender informasjon om dette til oss, vil vi ikke ta opp bidragssak. Les mer om barnebidrag <a>her</a>.',
+    'skjema.borSammen.description.content.link': 'https://www.nav.no/barnebidrag',
     'skjema.borSammen.label.yes': 'Ja',
     'skjema.borSammen.label.no': 'Nei',
     'skjema.borSammen.validation.required': 'Opplysningen er påkrevd',
@@ -214,6 +236,7 @@ export default {
     'skjema.mor.far.foedselsnummer.label': 'Fødselsnummer',
     'skjema.mor.far.foedselsnummer.validation.required': 'Fødselsnummeret til faren er påkrevd',
     'skjema.mor.far.foedselsnummer.validation.fnr': 'Ugyldig fødselsnummer',
+    'skjema.mor.far.validation.farHarIkkeFnummer': 'Du kan ikke erklære farskap elektronisk hvis far kun er registrert med d-nummer i Folkeregisteret.', // TODO
     'skjema.mor.far.validation.feilRolleFar.1': 'Medmorskap kan ikke erklæres elektronisk. Hvis du er samboer med en kvinne, kan dere søke Skatteetaten om medmorskap hvis barnet har blitt til ved hjelp av assistert befruktning.',
     'skjema.mor.far.validation.feilRolleFar.2': 'Du finner informasjon og søknadsskjema <a>her</a>',
     'skjema.mor.far.validation.feilRolleFar.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/soknad-om-medmorskap/',
@@ -222,10 +245,16 @@ export default {
     'skjema.mor.far.validation.defaultUgyldigFarMessage': 'Den oppgitte faren kan ikke erklære farskap digitalt. Ta kontakt med NAV på nav.no/kontakt eller telefon 55 55 33 33 for ytterligere informasjon.',
     'skjema.mor.far.validation.maksAntallForsoek.1': 'Du har tastet feil fødselsnummer/navn på oppgitt far tre ganger og har nå blitt blokkert fra løsningen.',
     'skjema.mor.far.validation.maksAntallForsoek.2': 'Du kan prøve på nytt igjen om {timerIgjenForNullstillingAvForsoek} {tidsEnhet}.',
+    'skjema.mor.far.validation.morOgFarSammePerson': 'Du kan ikke oppgi deg selv som far.',
     'skjema.mor.far.validation.navnStemmerIkkeMedRegister.1': 'Navnet og/eller fødselsnummeret til faren til barnet er feil.',
     'skjema.mor.far.validation.navnStemmerIkkeMedRegister.2': 'Sjekk at navnet er stavet riktig og at fødselsnummeret stemmer.',
     'skjema.mor.far.validation.resterendeForsoek': 'Du har tastet feil fødselsnummer/navn på oppgitt far {incorrectAttempts} ganger. Vennligst be faren til barnet om å sjekke hvordan navnet hans er skrevet i Folkeregisteret før du prøver på nytt. Hvis du taster feil fem ganger vil du bli blokkert fra løsningen.',
     'skjema.mor.far.validation.resterendeForsoek.final': 'Du har tastet feil fødselsnummer/navn på oppgitt far to ganger og har bare ett forsøk igjen før du vil bli blokkert fra løsningen.',
+    'skjema.mor.spraak.title': 'Språk for erklæringen',
+    'skjema.mor.spraak.description': 'Erklæringen skal sendes til far for signering på det språket du velger i dette steget. Hvis far ikke forstår norsk eller erklæringen skal brukes i utlandet bør du velge å opprette erklæringen på engelsk. Far kan ikke selv endre på dette.',
+    'skjema.mor.spraak.label.norwegian': 'Norsk',
+    'skjema.mor.spraak.label.english': 'Engelsk (English)',
+    'skjema.mor.spraak.validation.required': 'Opplysningen er påkrevd',
     'skjema.mor.borSammen.title': 'Bor du sammen med faren til barnet?',
     'skjema.mor.confirm.title': 'Bekreft opplysninger om faren til barnet',
     'skjema.mor.confirm.farCorrect.label': 'Jeg godkjenner at opplysningene om faren til barnet er korrekt.',
@@ -234,8 +263,10 @@ export default {
 
     'skjema.far.borSammen.title': 'Bor du sammen med moren til barnet?',
     'skjema.far.lesOpplysninger.title': 'Les opplysninger oppgitt av moren til barnet',
+    'skjema.far.lesOpplysninger.confirm.label': 'Jeg bekrefter at opplysningene oppgitt av moren til barnet er korrekte.',
+    'skjema.far.lesOpplysninger.validation.required': 'Du må bekrefte opplysningene oppgitt av moren til barnet for å gå videre.',
     'skjema.far.confirm.title': 'Signer farskapserklæringen',
-    'skjema.far.confirm.readAndUnderstood.label': 'Jeg har lest og forstått hva farksapserklæringen innebærer.',
+    'skjema.far.confirm.readAndUnderstood.label': 'Jeg har lest og forstått hva farskapserklæringen innebærer.',
     'skjema.far.confirm.cannotWithdraw.label': 'Jeg er kjent med at denne bekreftelsen ikke kan trekkes tilbake på et senere tidspunkt.',
 
     'kvittering.intro.foedselsnummer': 'med fødselsnummer {fnr}.',
@@ -253,7 +284,7 @@ export default {
     'kvittering.intro.far.2': 'Erklæringen er endelig og kan ikke endres.',
     'kvittering.intro.far.3': 'Du kan finne igjen erklæringer her: ',
     'kvittering.morAlert.1': 'Erklæringen er ikke gyldig før oppgitt far har signert.',
-    'kvittering.morAlert.2': 'Han kan allerede nå logge seg inn på Ditt NAV og signere erklæringen. Vi vil også sende ham en påminnelse på e-post og/eller sms. (OBS! Brukernotifikasjoner dukker ikke opp under pilottesten nå, far må også logge inn på farskapsportal.nav.no)',
+    'kvittering.morAlert.2': 'Han kan allerede nå logge seg inn på Ditt NAV og signere erklæringen. Vi vil også sende ham en påminnelse på e-post og/eller sms.',
     'kvittering.prosessIndikator.step.1': '1. Mor oppgir far',
     'kvittering.prosessIndikator.step.2': '2. Far erklærer farskap',
     'kvittering.prosessIndikator.step.3': '3. Erklæringen oversendes folkeregisteret for registering og arkivering',

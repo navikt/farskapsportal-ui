@@ -11,6 +11,8 @@ export default {
     'far': 'Far',
     'farskapserklaering': 'Farskapserklæring',
 
+    'read.more': 'Les mer',
+
     'api.error': 'Oisann, noko gjekk gale.',
 
     'form.feiloppsummering': 'For å gå vidare må du rette opp følgjande',
@@ -106,13 +108,31 @@ export default {
 
     'forside.alleredeRegistrert.title': 'Lurer du på om farskapen allereie er registrert?',
     'forside.alleredeRegistrert.content': 'Har du allereie fått barn og både du og far til barnet allereie har signert farskapen, ber vi deg om å kontakte Skattetaten (Folkeregisteret)',
-    'forside.alleredeRegistrert.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/farskap/',
+    'forside.alleredeRegistrert.link': 'https://www.skatteetaten.no/nn/mi-side/',
 
     'forside.loginButton': 'Fyll ut erklæring om farskap.',
+
+    'forside.dinePersonopplysninger.lenkeKnapp': 'Les om korleis NAV behandlar personopplysningane dine',
+    'forside.dinePersonopplysninger.title': 'Slik behandlar NAV personopplysningane dine',
+    'forside.dinePersonopplysninger.mor.content': 'NAV innhentar følgande opplysningar om deg frå offentlege register før du kan begynne på ei erklæring om farskap:',
+    'forside.dinePersonopplysninger.mor.list.1': 'Sivilstand',
+    'forside.dinePersonopplysninger.mor.list.2': 'Alder',
+    'forside.dinePersonopplysninger.mor.list.3': 'Kjønn',
+    'forside.dinePersonopplysninger.mor.list.4': 'Bustadsadresse',
+    'forside.dinePersonopplysninger.mor.list.5': 'Familieforhold',
+    'forside.dinePersonopplysninger.far.content': 'Mor gir NAV opplysningar om ditt fulle namn og personnummer. I tillegg hentar vi inn følgande opplysningar frå offentlege register før du kan erklære farskap:',
+    'forside.dinePersonopplysninger.far.list.1': 'Alder',
+    'forside.dinePersonopplysninger.far.list.2': 'Kjønn',
+    'forside.dinePersonopplysninger.far.list.3': 'Aktivt personnummer',
+    'forside.dinePersonopplysninger.etterSignering': 'Når begge foreldrane har signert erklæringa sendes den til Folkeregisteret/Skatteetaten for registrering og arkivering.',
+    'forside.dinePersonopplysninger.personvernerklaering.title': 'Personvernerklæring i NAV',
+    'forside.dinePersonopplysninger.personvernerklaering.content': 'Du kan lese meir om korleis NAV behandlar personopplysningar i Arbeids- og velferdsetatens personvernerklæring på <a>nav.no/personvern.</a>',
+    'forside.dinePersonopplysninger.personvernerklaering.link': 'https://www.nav.no/no/NAV+og+samfunn/Om+NAV/personvern-i-arbeids-og-velferdsetaten/personvernerkl%C3%A6ring-for-arbeids-og-velferdsetaten',
 
     //'notPermitted.forelderHarVerge': 'Du er registrert med verge i Folkeregisteret og kan derfor ikke bruke løsningen',
     'notPermitted.ikkeMyndig': 'For at farskap skal kunne erklærast elektronisk, må begge forelda vere over 18 år.',
     'notPermitted.medmorEllerUkjent': 'Medmor eller person med ukjend rolle kan ikkje bruke løysinga.', // TODO: endre tekst
+    //'notPermitted.morIkkeNorskBostedsadresse': 'For at farskap skal kunne erklærast elektronisk, må du være registrert med ein norsk bustedsadresse i Folkeregisteret.', // TODO
     'notPermitted.morSivilstandGift.1': 'Du er gift, og ektefellen din blir automatisk regisrert som far til barn du føder. Dersom det er ein annan mann enn ektefellen din som er far til barnet, kan farskapen endrast. Dette kan ikkje gjerast elektronisk.',
     'notPermitted.morSivilstandGift.2': 'Du finn meir informasjon om å endre farskap <a>her</a>. Du er også velkomen til å kontakte oss på nav.no/kontakt eller telefon 55 55 33 33',
     'notPermitted.morSivilstandGift.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap',
@@ -192,7 +212,8 @@ export default {
     'skjema.submit': 'Signer farskapserklæringa',
 
     'skjema.borSammen.description.intro': 'Foreldre som ikkje bur saman med barnet, har plikt til å betale barnebidrag.',
-    'skjema.borSammen.description.content': 'Når foreldra ikkje bur saman når barnet blir født, og heller ikkje har inngått ein avtale om barnebidrag, skal NAV ta opp bidragssak og fastsetje bidrag på eige tiltak. Dersom de inngår ein avtale og sender informasjonen om dette til oss, vil vi ikkje ta opp bidragssak.',
+    'skjema.borSammen.description.content': 'Når foreldra ikkje bur saman når barnet blir født, og heller ikkje har inngått ein avtale om barnebidrag, skal NAV ta opp bidragssak og fastsetje bidrag på eige initiativ. Dersom de inngår ein avtale og sender informasjonen om dette til oss, vil vi ikkje ta opp bidragssak. Les mer om barnebidrag <a>her</a>.',
+    'skjema.borSammen.description.content.link': 'https://www.nav.no/barnebidrag',
     'skjema.borSammen.label.yes': 'Ja',
     'skjema.borSammen.label.no': 'Nei',
     'skjema.borSammen.validation.required': 'Opplysinga er påkravd.',
@@ -214,6 +235,7 @@ export default {
     'skjema.mor.far.foedselsnummer.label': 'Fødselsnummer',
     'skjema.mor.far.foedselsnummer.validation.required': 'Fødselsnummeret til faren er påkravd.',
     'skjema.mor.far.foedselsnummer.validation.fnr': 'Ugyldig fødselsnummer',
+    'skjema.mor.far.validation.farHarIkkeFnummer': 'Farskap kan ikkje erklærast elektronisk hvis far kun er registrert med d-nummer i Folkeregisteret.', // TODO
     'skjema.mor.far.validation.feilRolleFar.1': 'Medmor kan ikkje erklærast elektronisk. Dersom du er sambuar med ei kvinne, kan de søkje Skatteetaten om medmorskap dersom barnet er blitt til ved hjelp av assistert befruktning.',
     'skjema.mor.far.validation.feilRolleFar.2': 'Du finn informasjon og søknadsskjema <a>her</a>.',
     'skjema.mor.far.validation.feilRolleFar.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/soknad-om-medmorskap/',
@@ -221,12 +243,17 @@ export default {
     'skjema.mor.far.validation.pdlPersonIkkeFunnet': 'Fødselsnummeret du har gitt opp, finst ikkje i Folkeregisteret.',
     'skjema.mor.far.validation.defaultUgyldigFarMessage': 'Den oppgitte faren kan ikkje erklære farskap digitalt. Ta kontakt med NAV på nav.no/kontakt eller telefon 55 55 33 33 for meir informasjon.',
     'skjema.mor.far.validation.maksAntallForsoek.1': 'Du har tasta feil fødselsnummer/namn på oppgitt far tre gonger, og er no blitt blokkert frå løysinga.',
-    'skjema.mor.far.validation.maksAntallForsoek.2': 'Du kan prøve på nytt igjen om',
+    'skjema.mor.far.validation.maksAntallForsoek.2': 'Du kan prøve på nytt igjen om {timerIgjenForNullstillingAvForsoek} {tidsEnhet}.',
+    'skjema.mor.far.validation.morOgFarSammePerson': 'Du kan ikkje oppgi deg selv som far.', // TODO
     'skjema.mor.far.validation.navnStemmerIkkeMedRegister.1': 'Namnet og/eller fødselsnummeret til barnet er feil.',
     'skjema.mor.far.validation.navnStemmerIkkeMedRegister.2': 'Sjekk at namnet er stava rett, og at fødselsnummeret stemmer.',
     'skjema.mor.far.validation.resterendeForsoek': 'Du har tasta feil fødsesnummer/namn på oppgitt far {incorrectAttempts} gonger. Ver vennleg og be far til barnet om å sjekke korleis namnet hans er skrive i Folkeregisteret, før du prøver på nytt. Dersom du tastar feil fem gonger, blir du blokkert frå løysinga.',
     'skjema.mor.far.validation.resterendeForsoek.final': 'Du har tasta feil fødselsnummer/namn på oppgitt far to gonger og har berre eitt forsøk igjen før du blir blokkert frå løysinga.',
-    'skjema.mor.borSammen.title': 'Bur du saman med far til barnet?',
+    // 'skjema.mor.spraak.title': '',
+    // 'skjema.mor.spraak.description': '',
+    // 'skjema.mor.spraak.label.norwegian': '',
+    // 'skjema.mor.spraak.label.english': '',
+    // 'skjema.mor.spraak.validation.required': '',
     'skjema.mor.confirm.title': 'Stadfest opplysningane om far til barnet.',
     'skjema.mor.confirm.farCorrect.label': 'Eg godkjenner at opplysningane om far til barnet er korrekte.',
     'skjema.mor.confirm.cannotWithdraw.label': 'Eg er klar over at eg ikkje kan trekkje tilbake denne stadfestinga seinare.',
@@ -234,6 +261,8 @@ export default {
 
     'skjema.far.borSammen.title': 'Bur du saman med mor til barnet?',
     'skjema.far.lesOpplysninger.title': 'Les opplysningane som er gitt opp av mor til barnet.',
+    'skjema.far.lesOpplysninger.confirm.label': 'Eg bekrefter at opplysningane oppgitt av mora til barnet er korrekte.',
+    'skjema.far.lesOpplysninger.validation.required': 'Du må bekrefte opplysningane oppgitt av mora til barnet for å gå vidare.',
     'skjema.far.confirm.title': 'Signer farskapserklæringa',
     'skjema.far.confirm.readAndUnderstood.label': 'Eg har lese og forstått kva farskapserklæringa inneber.',
     'skjema.far.confirm.cannotWithdraw.label': 'Eg er kjend med at denne stadfestinga ikkje kan trekkjast tilbake på eit seinare tidspunkt.',

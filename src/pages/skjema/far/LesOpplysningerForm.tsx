@@ -1,12 +1,17 @@
-import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
 import { Systemtittel } from 'nav-frontend-typografi';
-import { FormattedMessage } from 'react-intl';
-
-import ButtonContainer from 'components/button-container/ButtonContainer';
+import { FormattedMessage, useIntl } from 'react-intl';
 import FarskapserklaeringPresentation from 'components/farskapserklaering-presentation/FarskapserklaeringPresentation';
 import { Farskapserklaering } from 'types/farskapserklaering';
+import { getMessage } from '../../../utils/intl';
+import { BekreftCheckboksPanel } from 'nav-frontend-skjema';
+import { Controller, useForm } from 'react-hook-form';
+import FormButtons from '../../../components/form-buttons/FormButtons';
 
 import './LesOpplysningerForm.less';
+
+interface LesOpplysningerFormInput {
+    readAndAccepted: boolean;
+}
 
 interface LesOpplysningerFormProps {
     farskapserklaering: Farskapserklaering;
@@ -15,8 +20,16 @@ interface LesOpplysningerFormProps {
 }
 
 function LesOpplysningerForm({ farskapserklaering, onCancel, onSubmit }: LesOpplysningerFormProps) {
+    const intl = useIntl();
+    const { control, handleSubmit, errors } = useForm<LesOpplysningerFormInput>({
+        defaultValues: {
+            readAndAccepted: false,
+        },
+        shouldFocusError: false,
+    });
+
     return (
-        <div className="LesOpplysningerForm">
+        <form className="LesOpplysningerForm" onSubmit={handleSubmit(onSubmit)}>
             <Systemtittel>
                 <FormattedMessage id="skjema.far.lesOpplysninger.title" />
             </Systemtittel>
@@ -26,15 +39,29 @@ function LesOpplysningerForm({ farskapserklaering, onCancel, onSubmit }: LesOppl
                 showTitle={false}
                 border={true}
             />
-            <ButtonContainer>
-                <Hovedknapp htmlType="button" onClick={onSubmit}>
-                    <FormattedMessage id="skjema.next" />
-                </Hovedknapp>
-                <Knapp htmlType="button" onClick={onCancel}>
-                    <FormattedMessage id="skjema.cancel" />
-                </Knapp>
-            </ButtonContainer>
-        </div>
+            <Controller
+                name="readAndAccepted"
+                control={control}
+                rules={{
+                    required: getMessage(intl, 'skjema.far.lesOpplysninger.validation.required'),
+                }}
+                render={({ onChange, value, name }) => (
+                    <BekreftCheckboksPanel
+                        className="BekreftCheckBoksPanel"
+                        label={getMessage(intl, `skjema.far.lesOpplysninger.confirm.label`)}
+                        checked={value}
+                        onChange={(e) => onChange((e.target as HTMLInputElement).checked)}
+                        feil={errors.readAndAccepted?.message}
+                        inputProps={{ name }}
+                    />
+                )}
+            />
+            <FormButtons
+                submitText={getMessage(intl, 'skjema.next')}
+                cancelText={getMessage(intl, 'skjema.cancel')}
+                onCancel={onCancel}
+            />
+        </form>
     );
 }
 

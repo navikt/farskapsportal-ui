@@ -8,6 +8,7 @@ export enum Feilkode {
     FeilformatertUrlNyRedirect = 'FEILFORMATERT_URL_NY_REDIRECT', // Feilformatert redirect-url mottatt fra e-signeringsløsningen
     FeilformatertUrlUndertegnerurl = 'FEILFORMATERT_URL_UNDERTEGNERURL', // URL for å hente ny redirect-url er feilformatert
     FantIkkeFarskapserklaering = 'FANT_IKKE_FARSKAPSERKLAERING', // Oppgitt farskapserklæring ble ikke funnet i databasen
+    FarHarIkkeFnummer = 'FAR_HAR_IKKE_FNUMMER', // Far er ikke registrert med fødselsnummer i PDL
     FeilRolle = 'FEIL_ROLLE', // Pålogget person kan verken opptre som mor eller far i løsningen
     FeilRolleFar = 'FEIL_ROLLE_FAR', // Personen har ikke riktig rolle for å kunne opptre som far i løsningen
     FeilRolleOpprette = 'FEIL_ROLLE_OPPRETTE', // Personen har ikke rettigheter til å opprette farskapserklæring
@@ -19,6 +20,9 @@ export enum Feilkode {
     MedmorEllerUkjent = 'MEDMOR_ELLER_UKJENT', // Medmor eller person med ukjent rolle kan ikke benytte løsningen
     ForskjelligeFedre = 'FORSKJELLIGE_FEDRE', // Mor kan ikke opprette farskapserklæringer med forskjellige fedre for samme kull nyfødte
     MaksAntallForsoek = 'MAKS_ANTALL_FORSOEK', // Mor har brukt opp antall mulige forsøk på å komme frem til riktig kombinasjon av fars fødselsnummer og navn
+    MorHarIkkeFnummer = 'MOR_HAR_IKKE_FNUMMER', // Mor er ikke registrert med fødselsnummer i PDL
+    MorIkkeNorskBostedsadresse = 'MOR_IKKE_NORSK_BOSTEDSADRESSE', // Mor er ikke registrert med norsk bostedsadresse
+    MorOgFarSammePerson = 'MOR_OG_FAR_SAMME_PERSON', // Mor kan ikke oppgi seg selv som far.
     MorSivilstandGift = 'MOR_SIVILSTAND_GIFT', // Mor kan ikke opprette farskapserklæring dersom hun er gift
     MorSivilstandRegistrertPartner = 'MOR_SIVILSTAND_REGISTRERT_PARTNER', // Mor kan ikke opprette farskapserklæring dersom hun er registrert partner
     MorSivilstandUoppgitt = 'MOR_SIVILSTAND_UOPPGITT', // Mor kan ikke opprette farskapserklæring dersom hun har sivilstand uoppgitt
@@ -36,4 +40,5 @@ export enum Feilkode {
     PersonIkkePartIFarskapserklaering = 'PERSON_IKKE_PART_I_FARSKAPSERKLAERING', // Pålogget person er ikke forelder i oppgitt farskapserklaering
     PersonErDoed = 'PERSON_ER_DOED', // Død person kan ikke opptre som forelder i løsningen
     TermindatoUgyldig = 'TERMINDATO_UGYLDIG', // Oppgitt termindato er ikke innenfor godkjent intervall
+    UgyldigFar = 'UGYLDIG_FAR', // Oppgitt far kan ikke benytte løsningen, ta kontakt med NAV.
 }

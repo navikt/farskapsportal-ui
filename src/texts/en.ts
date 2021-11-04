@@ -11,6 +11,8 @@ export default {
     'far': 'Father',
     'farskapserklaering': 'Declaration of paternity',
 
+    'read.more': 'Expand info',
+
     'api.error': 'Whoops, something went wrong!',
 
     'form.feiloppsummering': 'To proceed, you must correct the following',
@@ -105,13 +107,31 @@ export default {
 
     'forside.alleredeRegistrert.title': 'Are you wondering if the paternity has already been registered?',
     'forside.alleredeRegistrert.content': 'If you have already had the child and both you and the father of the child have already signed the paternity, please contact the Norwegian Tax Administration (National Population Register)',
-    'forside.alleredeRegistrert.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/paternity-and-parental-responsibility/',
+    'forside.alleredeRegistrert.link': 'https://www.skatteetaten.no/en/my-page/',
 
     'forside.loginButton': 'Fill out paternity declaration',
 
-    //'notPermitted.forelderHarVerge': 'Du er registrert med verge i Folkeregisteret og kan derfor ikke bruke løsningen',
+    'forside.dinePersonopplysninger.lenkeKnapp': 'Read about how NAV handle your personal data',
+    'forside.dinePersonopplysninger.title': 'This is how NAV handle your personal data',
+    'forside.dinePersonopplysninger.mor.content': 'NAV will collect the following data about you from public registers before you can initiate a declaration of paternity:',
+    'forside.dinePersonopplysninger.mor.list.1': 'Civil Status',
+    'forside.dinePersonopplysninger.mor.list.2': 'Age',
+    'forside.dinePersonopplysninger.mor.list.3': 'Sex',
+    'forside.dinePersonopplysninger.mor.list.4': 'Residential Address',
+    'forside.dinePersonopplysninger.mor.list.5': 'Family relationships',
+    'forside.dinePersonopplysninger.far.content': 'The child’s mother informs NAV about your full name and your national identity number. Additionally, NAV will collect the following data about you from public registers before you can declare paternity:',
+    'forside.dinePersonopplysninger.far.list.1': 'Age',
+    'forside.dinePersonopplysninger.far.list.2': 'Sex',
+    'forside.dinePersonopplysninger.far.list.3': 'Active identity number',
+    'forside.dinePersonopplysninger.etterSignering': 'When both parents have signed the declaration, it will be sent to the National Population Register/ Norwegian Tax Administration for registration and archiving.',
+    'forside.dinePersonopplysninger.personvernerklaering.title': 'NAVs Privacy Statement',
+    'forside.dinePersonopplysninger.personvernerklaering.content': 'You can read more about how NAV handle your personal data in our Privacy Statement on <a>nav.no/personvern (Norwegian only).</a>',
+    'forside.dinePersonopplysninger.personvernerklaering.link': 'https://www.nav.no/no/NAV+og+samfunn/Om+NAV/personvern-i-arbeids-og-velferdsetaten/personvernerkl%C3%A6ring-for-arbeids-og-velferdsetaten',
+
+    'notPermitted.forelderHarVerge': 'You are registered with a guardian in the National Population Register and can therefore not use the solution.', // TODO
     'notPermitted.ikkeMyndig': 'In order to declare paternity electronically, both parents must be over the age of 18.',
     'notPermitted.medmorEllerUkjent': 'The co-mother or person with an unknown role cannot use the solution', // TODO: endre tekst
+    'notPermitted.morIkkeNorskBostedsadresse': 'In order to declare paternity electronically, you must be registered with a Norwegian residential address in the National Register.', // TODO
     'notPermitted.morSivilstandGift.1': 'You are married and your spouse is automatically registered as the father of the child you give birth to. If a man other than your spouse is the child\'s father, the paternity can be changed. This cannot be done electronically.',
     'notPermitted.morSivilstandGift.2': 'You can find more information about changing paternity <a>here</a>. You are also welcome to contact us at nav.no/contact or phone +47 55 55 33 33',
     'notPermitted.morSivilstandGift.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap', // TODO /en
@@ -191,7 +211,8 @@ export default {
     'skjema.submit': 'Sign declaration of paternity',
 
     'skjema.borSammen.description.intro': 'Parents who do not live with the child are obliged to pay child maintenance.',
-    'skjema.borSammen.description.content': 'When the parents do not live together when the child is born and have also not entered into an agreement on child maintenance, NAV will open a maintenance case and determine support on its own initiative. If you enter into an agreement and send information about this to us, we will not open a maintenance case. ',
+    'skjema.borSammen.description.content': 'When the parents do not live together when the child is born and have also not entered into an agreement on child maintenance, NAV will open a maintenance case and determine support on its own initiative. If you enter into an agreement and send information about this to us, we will not open a maintenance case. Read more about child maintenance <a>here</a>.',
+    //'skjema.borSammen.description.content.link': '', // TODO /en
     'skjema.borSammen.label.yes': 'Yes',
     'skjema.borSammen.label.no': 'No',
     'skjema.borSammen.validation.required': 'The information is required',
@@ -213,6 +234,7 @@ export default {
     'skjema.mor.far.foedselsnummer.label': 'National identity number',
     'skjema.mor.far.foedselsnummer.validation.required': 'The national identity number of the father is required',
     'skjema.mor.far.foedselsnummer.validation.fnr': 'Invalid national identity number',
+    //'skjema.mor.far.validation.farHarIkkeFnummer': '', // TODO
     'skjema.mor.far.validation.feilRolleFar.1': 'Co-maternity cannot be declared electronically. If you are cohabiting with a woman, you can apply to the Norwegian Tax Administration about co-maternity if the child has been conceived by means of assisted fertilisation.',
     'skjema.mor.far.validation.feilRolleFar.2': 'You can find information and the application form <a>here</a>',
     'skjema.mor.far.validation.feilRolleFar.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/application-for-joint-maternity/',
@@ -220,12 +242,18 @@ export default {
     'skjema.mor.far.validation.pdlPersonIkkeFunnet': 'The national identity number you have provided is not found in the National Population Register.',
     'skjema.mor.far.validation.defaultUgyldigFarMessage': 'The listed father cannot declare paternity digitally. For further information, please contact NAV at nav.no/contact or phone +47 55 55 33 33.',
     'skjema.mor.far.validation.maksAntallForsoek.1': 'You have entered the wrong national identity number/name of the listed father three times and have now been blocked from the solution.',
-    'skjema.mor.far.validation.maksAntallForsoek.2': 'You can try again in',
+    'skjema.mor.far.validation.maksAntallForsoek.2': 'You can try again in {timerIgjenForNullstillingAvForsoek} {tidsEnhet}',
+    'skjema.mor.far.validation.morOgFarSammePerson': 'You can not register yourself as the father.',
     'skjema.mor.far.validation.navnStemmerIkkeMedRegister.1': 'The name and/or national identity number of the father of the child is incorrect.',
     'skjema.mor.far.validation.navnStemmerIkkeMedRegister.2': 'Check that the name is spelled correctly and that the national identity number is correct.',
     'skjema.mor.far.validation.resterendeForsoek': 'You have entered the wrong national identity number/name of the listed father {incorrectAttempts} times. Please ask the child\'s father to check how his name is written in the National Population Register before trying again. If you make five incorrect entries you will be blocked from the solution.',
     'skjema.mor.far.validation.resterendeForsoek.final': 'You have entered the wrong national identity number/name of the listed father two times and have only one attempt left before you will be blocked from the solution.',
     'skjema.mor.borSammen.title': 'Do you live with the father of the child?',
+    'skjema.mor.spraak.title': 'Language for the declaration',
+    'skjema.mor.spraak.description': 'The declaration will be sent to the father for signing in the language of your choice. If the father does not understand Norwegian or the declaration is to be used abroad, you should choose to create the declaration in English. The father can not change this himself.',
+    'skjema.mor.spraak.label.norwegian': 'Norwegian',
+    'skjema.mor.spraak.label.english': 'English',
+    'skjema.mor.spraak.validation.required': 'The information is required',
     'skjema.mor.confirm.title': 'Confirm information about the father of the child',
     'skjema.mor.confirm.farCorrect.label': 'I approve that the information about the child\'s father is correct.',
     'skjema.mor.confirm.cannotWithdraw.label': 'I am aware that I cannot withdraw this confirmation later.',
@@ -233,6 +261,8 @@ export default {
 
     'skjema.far.borSammen.title': 'Do you live with the mother of the child?',
     'skjema.far.lesOpplysninger.title': 'Read information provided by the child\'s mother',
+    'skjema.far.lesOpplysninger.confirm.label': 'I confirm that the information provided by the mother of the child is correct.',
+    'skjema.far.lesOpplysninger.validation.required': 'You must confirm the information provided by the mother of the child to proceed.',
     'skjema.far.confirm.title': 'Sign declaration of paternity',
     'skjema.far.confirm.readAndUnderstood.label': 'I\'ve read and understood what the paternity declaration entails.',
     'skjema.far.confirm.cannotWithdraw.label': 'I am aware that this confirmation cannot be withdrawn at a later date.',

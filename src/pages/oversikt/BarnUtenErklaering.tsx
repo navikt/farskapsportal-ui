@@ -14,16 +14,21 @@ interface BarnUtenErklaeringProps {
 }
 
 function BarnUtenErklaering({ userInfo }: BarnUtenErklaeringProps) {
+    const fnrNyligFoedteBarnUtenRegistrertFar = userInfo.fnrNyligFoedteBarnUtenRegistrertFar;
     const barnUtenErklaering = getBarnUtenErklaering(userInfo);
 
-    if (!barnUtenErklaering.length) {
+    if (!barnUtenErklaering.length || !fnrNyligFoedteBarnUtenRegistrertFar) {
         return null;
     }
 
     return (
         <>
             {barnUtenErklaering.map((fnr, index) => (
-                <BarnLinkPanel key={fnr} foedselsnummer={fnr} index={index} />
+                <BarnLinkPanel
+                    key={fnr}
+                    foedselsnummer={fnr}
+                    index={fnrNyligFoedteBarnUtenRegistrertFar.indexOf(fnr)}
+                />
             ))}
         </>
     );

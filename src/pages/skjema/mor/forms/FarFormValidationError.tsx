@@ -21,6 +21,8 @@ function FarFormValidationError({
 }: FarFormValidationErrorProps) {
     const renderContent = () => {
         switch (feilkode) {
+            case Feilkode.FarHarIkkeFnummer:
+                return <FarHarIkkeFnummer />;
             case Feilkode.FeilRolleFar:
                 return <FeilRolleFar />;
             case Feilkode.ForskjelligeFedre:
@@ -31,6 +33,8 @@ function FarFormValidationError({
                         tidspunktForNullstillingAvForsoek={tidspunktForNullstillingAvForsoek}
                     />
                 );
+            case Feilkode.MorOgFarSammePerson:
+                return <MorOgFarSammePerson />;
             case Feilkode.NavnStemmerIkkeMedRegister:
                 if (antallResterendeForsoek === 0) {
                     return (
@@ -43,8 +47,7 @@ function FarFormValidationError({
                 }
             case Feilkode.PdlPersonIkkeFunnet:
                 return <PdlPersonIkkeFunnet />;
-            case Feilkode.IkkeMyndig:
-            case Feilkode.PersonErDoed:
+            case Feilkode.UgyldigFar:
                 return <DefaultUgyldigFarMessage />;
             default:
                 return null;
@@ -55,6 +58,26 @@ function FarFormValidationError({
         <AlertStripe id={id} type="feil">
             {renderContent()}
         </AlertStripe>
+    );
+}
+
+function FarHarIkkeFnummer() {
+    return (
+        <>
+            <Normaltekst>
+                <FormattedMessage id="skjema.mor.far.validation.farHarIkkeFnummer" />
+            </Normaltekst>
+        </>
+    );
+}
+
+function MorOgFarSammePerson() {
+    return (
+        <>
+            <Normaltekst>
+                <FormattedMessage id="skjema.mor.far.validation.morOgFarSammePerson" />
+            </Normaltekst>
+        </>
     );
 }
 

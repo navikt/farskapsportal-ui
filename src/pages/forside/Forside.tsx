@@ -11,19 +11,14 @@ import Naar from './info-content/Naar';
 import NaarErklaeres from './info-content/NaarErklaeres';
 import Rettigheter from './info-content/Rettigheter';
 import LoginButton from './LoginButton';
-import AlertStripe from 'nav-frontend-alertstriper';
 
 import './Forside.less';
+import DinePersonopplysningerModal from './DinePersonopplysningerModal';
 
 function Forside() {
     return (
         <Page titleId="header.forside">
             <ContentContainer className="Forside">
-                <AlertStripe type="info">
-                    Tusen takk for at du deltar i piloten. Vi håper du kan besvare noen spørsmål om
-                    løsningen etter at du har fylt inn og signert farskapserklæringen.
-                </AlertStripe>
-                <br />
                 <Panel border>
                     <Systemtittel>
                         <FormattedMessage id="forside.title" />
@@ -35,6 +30,7 @@ function Forside() {
                     <Hvordan />
                     <LoginButton />
                     <AlleredeRegistrert />
+                    <DinePersonopplysningerModal />
                 </Panel>
             </ContentContainer>
         </Page>
