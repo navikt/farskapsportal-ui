@@ -68,8 +68,8 @@ export const getNewRedirectUrl = (erklaeringId: string) => {
 /*
  *   PUT
  */
-export const setSigneringStatusToken = (statusToken: string) => {
-    const url = `/api/farskapserklaering/redirect?status_query_token=${statusToken}`;
+export const setSigneringStatusToken = (statusToken: string, erklaeringId: string) => {
+    const url = `/api/farskapserklaering/redirect?id_farskapserklaering=${erklaeringId}&status_query_token=${statusToken}`;
 
     return performPut(url).then(parseJson) as Promise<Farskapserklaering>;
 };

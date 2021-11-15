@@ -50,17 +50,17 @@ function App() {
                         component={Signer}
                     />
                     <Route
-                        exact={true}
+                        exact={false}
                         path={`${basePathWithLanguage}${Path.Suksess}`}
                         component={Suksess}
                     />
                     <Route
-                        exact={true}
+                        exact={false}
                         path={`${basePathWithLanguage}${Path.Feilet}`}
                         component={Feilet}
                     />
                     <Route
-                        exact={true}
+                        exact={false}
                         path={`${basePathWithLanguage}${Path.Avbrutt}`}
                         component={Avbrutt}
                     />
