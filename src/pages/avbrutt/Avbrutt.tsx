@@ -27,7 +27,7 @@ function Avbrutt() {
         } else {
             setIsError(true);
         }
-    }, [statusQueryToken, history, language, dispatch]);
+    }, [erklaeringId, statusQueryToken, history, language, dispatch]);
 
     // TODO: show error instead of redirecting?
     return isError ? <Redirect to={Path.Feilet} /> : <Spinner />;
