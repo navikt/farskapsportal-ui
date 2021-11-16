@@ -96,7 +96,9 @@ app.put('/api/farskapserklaering/redirect', async (req, res) => {
     try {
         const token = req.cookies[tokenName];
         const response = await fetch(
-            `${apiUrl}/farskapserklaering/redirect?id_farskapserklaering=${req.query.id_farskapserklaering}&status_query_token=${req.query.status_query_token}`,
+            req.query.id_farskapserklaering
+                ? `${apiUrl}/farskapserklaering/redirect?id_farskapserklaering=${req.query.id_farskapserklaering}&status_query_token=${req.query.status_query_token}`
+                : `${apiUrl}/farskapserklaering/redirect?status_query_token=${req.query.status_query_token}`,
             {
                 method: 'put',
                 headers: {
