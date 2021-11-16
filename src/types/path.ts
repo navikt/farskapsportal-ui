@@ -8,4 +8,7 @@ export enum Path {
     Avbrutt = '/avbrutt/id_farskapserklaering/:erklaeringId',
     Feilet = '/feilet/id_farskapserklaering/:erklaeringId',
     AvbruttOversikt = '/avbruttoversikt',
+    Suksess_deprecated = '/suksess',
+    Avbrutt_deprecated = '/avbrutt',
+    Feilet_deprecated = '/feilet',
 }

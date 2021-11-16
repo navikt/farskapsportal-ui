@@ -66,6 +66,21 @@ function App() {
                     />
                     <Route
                         exact={true}
+                        path={`${basePathWithLanguage}${Path.Suksess_deprecated}`}
+                        component={Suksess}
+                    />
+                    <Route
+                        exact={true}
+                        path={`${basePathWithLanguage}${Path.Feilet_deprecated}`}
+                        component={Feilet}
+                    />
+                    <Route
+                        exact={true}
+                        path={`${basePathWithLanguage}${Path.Avbrutt_deprecated}`}
+                        component={Avbrutt}
+                    />
+                    <Route
+                        exact={true}
                         path={`${basePathWithLanguage}${Path.AvbruttOversikt}`}
                         component={AvbruttOversikt}
                     />
