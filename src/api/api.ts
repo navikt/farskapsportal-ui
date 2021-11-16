@@ -68,7 +68,13 @@ export const getNewRedirectUrl = (erklaeringId: string) => {
 /*
  *   PUT
  */
-export const setSigneringStatusToken = (statusToken: string, erklaeringId: string) => {
+export const setSigneringStatusToken = (statusToken: string, erklaeringId?: string) => {
+    // TODO: remove temporary fix for deprecated url
+    if (!erklaeringId) {
+        const url = `/api/farskapserklaering/redirect?status_query_token=${statusToken}`;
+        return performPut(url).then(parseJson) as Promise<Farskapserklaering>;
+    }
+
     const url = `/api/farskapserklaering/redirect?id_farskapserklaering=${erklaeringId}&status_query_token=${statusToken}`;
 
     return performPut(url).then(parseJson) as Promise<Farskapserklaering>;
