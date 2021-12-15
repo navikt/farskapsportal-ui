@@ -29,3 +29,6 @@ export const getWeekOfPregnancy = (date: string): number =>
 
 export const getHoursUntil = (date: string): number =>
     differenceInHours(parseISO(date), new Date());
+
+export const isLessThanNHoursInThePast = (date: string, numberOfHours: number): boolean =>
+    differenceInHours(new Date(), new Date(date)) < numberOfHours;
