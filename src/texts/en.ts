@@ -283,6 +283,7 @@ export default {
     'kvittering.intro.far.3': 'You can find declarations here: ',
     'kvittering.morAlert.1': 'The declaration is not valid until the listed father has signed.',
     'kvittering.morAlert.2': 'He can log in already now to Your NAV (Ditt NAV) and sign the declaration. We will also send him a reminder by e-mail and/or sms.',
+    'kvittering.morAlert.3': 'Is the father going to sign from the same device as you? If so, you should close all browser windows first.',
     'kvittering.prosessIndikator.step.1': 'The mother lists the father',
     'kvittering.prosessIndikator.step.2': 'The father declares paternity',
     'kvittering.prosessIndikator.step.3': 'The declaration is sent to the National Population Register for registration and filing',

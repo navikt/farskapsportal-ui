@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { isBrukerFar, isSignedByFar } from 'utils/farskapserklaering';
+import { Normaltekst } from 'nav-frontend-typografi';
 
 import './MorAlert.less';
 
@@ -20,7 +21,13 @@ function MorAlert({ erklaering }: MorAlertProps) {
             <div className="MorAlert__boldtext">
                 <FormattedMessage id="kvittering.morAlert.1" />
             </div>
-            <FormattedMessage id="kvittering.morAlert.2" />
+            <Normaltekst>
+                <FormattedMessage id="kvittering.morAlert.2" />
+            </Normaltekst>
+            <br />
+            <Normaltekst>
+                <FormattedMessage id="kvittering.morAlert.3" />
+            </Normaltekst>
         </AlertStripe>
     );
 }

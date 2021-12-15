@@ -285,6 +285,7 @@ export default {
     'kvittering.intro.far.3': 'Du kan finne igjen erklæringer her: ',
     'kvittering.morAlert.1': 'Erklæringen er ikke gyldig før oppgitt far har signert.',
     'kvittering.morAlert.2': 'Han kan allerede nå logge seg inn på Ditt NAV og signere erklæringen. Vi vil også sende ham en påminnelse på e-post og/eller sms.',
+    'kvittering.morAlert.3': 'Skal far signere fra samme enhet som du? Husk at dere da først må stenge ned alle nettleservinduer.',
     'kvittering.prosessIndikator.step.1': '1. Mor oppgir far',
     'kvittering.prosessIndikator.step.2': '2. Far erklærer farskap',
     'kvittering.prosessIndikator.step.3': '3. Erklæringen oversendes folkeregisteret for registering og arkivering',
