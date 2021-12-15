@@ -142,6 +142,8 @@ export default {
     'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/soknad-om-medmorskap/',
     'notPermitted.morSivilstandUoppgitt': 'Du har uoppgitt sivilstand og kan ikke opprette farskapserklæring', // TODO: endre tekst
 
+    'oversikt.farAlert': 'Bruker du samme enhet som mor? Husk i så fall å stenge ned alle nettleservinduer først.',
+
     'oversikt.infoPanel.greeting': 'Hei, {fornavn}',
 
     'oversikt.infoPanel.common.forBarn.termindato': 'forventet født {termindato}',

@@ -140,6 +140,8 @@ export default {
     'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/soknad-om-medmorskap/', // TODO /en
     'notPermitted.morSivilstandUoppgitt': 'Your marital status is unspecified and you cannot create a declaration of paternity', // TODO: endre tekst
 
+    'oversikt.farAlert': 'Are you using the same device as the mother? If so, you should close all browser windows first.',
+
     'oversikt.infoPanel.greeting': 'Hi, {fornavn}',
 
     'oversikt.infoPanel.common.forBarn.termindato': 'expected to be born {termindato}',
