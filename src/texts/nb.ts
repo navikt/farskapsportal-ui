@@ -142,6 +142,8 @@ export default {
     'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/soknad-om-medmorskap/',
     'notPermitted.morSivilstandUoppgitt': 'Du har uoppgitt sivilstand og kan ikke opprette farskapserklæring', // TODO: endre tekst
 
+    'oversikt.farAlert': 'Bruker du samme enhet som mor? Husk i så fall å stenge ned alle nettleservinduer først.',
+
     'oversikt.infoPanel.greeting': 'Hei, {fornavn}',
 
     'oversikt.infoPanel.common.forBarn.termindato': 'forventet født {termindato}',
@@ -285,6 +287,7 @@ export default {
     'kvittering.intro.far.3': 'Du kan finne igjen erklæringer her: ',
     'kvittering.morAlert.1': 'Erklæringen er ikke gyldig før oppgitt far har signert.',
     'kvittering.morAlert.2': 'Han kan allerede nå logge seg inn på Ditt NAV og signere erklæringen. Vi vil også sende ham en påminnelse på e-post og/eller sms.',
+    'kvittering.morAlert.3': 'Skal far signere fra samme enhet som du? Husk at dere da først må stenge ned alle nettleservinduer.',
     'kvittering.prosessIndikator.step.1': '1. Mor oppgir far',
     'kvittering.prosessIndikator.step.2': '2. Far erklærer farskap',
     'kvittering.prosessIndikator.step.3': '3. Erklæringen oversendes folkeregisteret for registering og arkivering',

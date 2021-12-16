@@ -35,7 +35,7 @@ export default {
     'header.forside': 'Farskapserklæring',
     'header.oversikt': 'Farskapserklæringane dine',
     'header.skjema': 'Skjema: Farskapserklæring',
-    'header.kvittering': 'Kvittering',
+    'header.kvittering': 'Bekreftelse på innsendt farskapserklæring',
     'header.signer': 'Signer farskapserklæringa',
     'header.avbrutt': 'Signering er avbroten',
 
@@ -140,6 +140,8 @@ export default {
     'notPermitted.morSivilstandPartner.2': 'Du finn informasjon og søknadsskjema <a>her</a>.',
     'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/soknad-om-medmorskap/',
     'notPermitted.morSivilstandUoppgitt': 'Du har ikkje gitt opp sivilstand og kan ikkje opprette farskapserklæring.', // TODO: endre tekst
+
+    'oversikt.farAlert': 'Bruker du samme einheit som mor? Hugs i så fall å stenge ned alle nettlesarvindauge fyrst.',
 
     'oversikt.infoPanel.greeting': 'Hei, {fornavn}',
 
@@ -283,6 +285,7 @@ export default {
     'kvittering.intro.far.3': 'Du kan finne igjen erklæringa her: ',
     'kvittering.morAlert.1': 'Erklæringa er ikkje gyldig før oppgitt far har signert.',
     'kvittering.morAlert.2': 'Han kan allereie no logge seg inn på Ditt NAV og signere erklæringa. Vi vil også sende han ei påminning på e-post og/eller sms.',
+    'kvittering.morAlert.3': 'Skal far signere frå samme einheit som du? Hugs at dykk da fyrst må stenge ned alle nettlesarvindauge.',
     'kvittering.prosessIndikator.step.1': 'Mor oppgir far.',
     'kvittering.prosessIndikator.step.2': 'Far erklærer farskap.',
     'kvittering.prosessIndikator.step.3': 'Erklæringa blir send over til Folkeregisteret for å bli registrert og arkivert.',
