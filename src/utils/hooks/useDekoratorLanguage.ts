@@ -13,7 +13,7 @@ export const useDekoratorLanguage = () => {
 
     onLanguageSelect((language) => {
         dispatch(setLanguage(language.locale as Language));
-        history.push(language.url);
+        history.push(language.url || 'nb');
     });
 
     useEffect(() => {
