@@ -71,7 +71,7 @@ function TermindatoForm(props: TermindatoFormProps) {
                             beforeWeek22: (value) =>
                                 isLessThanNDaysInTheFuture(
                                     value,
-                                    DAYS_IN_EIGHTEEN_WEEKS_PLUS_3 - 1
+                                    DAYS_IN_EIGHTEEN_WEEKS_PLUS_3
                                 ) ||
                                 getMessage(
                                     intl,
