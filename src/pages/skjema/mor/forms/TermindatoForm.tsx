@@ -69,10 +69,7 @@ function TermindatoForm(props: TermindatoFormProps) {
                                 isLessThanNDaysInTheFuture(value, DAYS_IN_PREGNANCY) ||
                                 getMessage(intl, 'skjema.mor.barn.termindato.validation.maxDate'),
                             beforeWeek22: (value) =>
-                                isLessThanNDaysInTheFuture(
-                                    value,
-                                    DAYS_IN_EIGHTEEN_WEEKS_PLUS_3 - 1
-                                ) ||
+                                isLessThanNDaysInTheFuture(value, DAYS_IN_EIGHTEEN_WEEKS_PLUS_3) ||
                                 getMessage(
                                     intl,
                                     'skjema.mor.barn.termindato.validation.beforeWeek22',
@@ -89,7 +86,7 @@ function TermindatoForm(props: TermindatoFormProps) {
                             feil={errors.termindato?.message}
                             placeholder={getMessage(intl, 'form.date.placeholder')}
                             minDate={getNDaysInThePast(DAYS_IN_THREE_WEEKS)}
-                            maxDate={getNDaysInTheFuture(DAYS_IN_EIGHTEEN_WEEKS_PLUS_3 - 1)}
+                            maxDate={getNDaysInTheFuture(DAYS_IN_EIGHTEEN_WEEKS_PLUS_3)}
                             showYearSelector={true}
                         />
                     )}
