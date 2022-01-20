@@ -52,11 +52,11 @@ test('should show invalid foedselsnummer error', async () => {
     render(<FarForm {...defaultProps} />);
 
     const foedselsnummerInput = screen.getByLabelText(foedselsnummerLabel) as HTMLInputElement;
-    fireEvent.change(foedselsnummerInput, { target: { value: '12345678910' } });
+    fireEvent.change(foedselsnummerInput, { target: { value: 'A2345678910' } });
     fireEvent.click(screen.getByText(submitButtonLabel));
 
     await waitFor(() => {
-        expect(foedselsnummerInput.value).toBe('123456 78910');
+        expect(foedselsnummerInput.value).toBe('A23456 78910');
         // expect to find errors 2 times, one below field and one in Feiloppsummering
         expect(screen.getAllByText(invalidFoedselsnummerErrorMessage)).toHaveLength(2);
     });
