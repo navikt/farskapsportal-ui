@@ -164,9 +164,11 @@ function FarForm(props: FarFormProps) {
                             intl,
                             'skjema.mor.far.foedselsnummer.validation.required'
                         ),
-                        pattern: {
-                            value: /^\d{11}$/,
-                            message: getMessage(intl, 'skjema.mor.far.foedselsnummer.validation.fnr'),
+                        validate: (value: string) => {
+                            return (
+                                /^\d{11}$/.test(removeWhitespace(value)) ||
+                                getMessage(intl, 'skjema.mor.far.foedselsnummer.validation.fnr')
+                            );
                         },
                     }}
                     render={({ onChange, value, name }) => (
