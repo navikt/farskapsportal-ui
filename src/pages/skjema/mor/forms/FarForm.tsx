@@ -1,4 +1,3 @@
-import { fnr } from '@navikt/fnrvalidator';
 import { Feiloppsummering, Input, SkjemaGruppe } from 'nav-frontend-skjema';
 import { useReducer } from 'react';
 import { Controller, useForm } from 'react-hook-form';
@@ -167,7 +166,7 @@ function FarForm(props: FarFormProps) {
                         ),
                         validate: (value: string) => {
                             return (
-                                fnr(removeWhitespace(value)).status === 'valid' ||
+                                /^\d{11}$/.test(removeWhitespace(value)) ||
                                 getMessage(intl, 'skjema.mor.far.foedselsnummer.validation.fnr')
                             );
                         },
