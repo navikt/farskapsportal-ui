@@ -78,7 +78,7 @@ export default {
 
     'forside.naar.title': 'When can paternity be declared digitally',
     'forside.naar.content.1': 'Paternity can be declared digitally both before and after the child\'s birth',
-    'forside.naar.content.2': 'Paternity can be declared at the earliest when the mother is in the 22nd week of pregnancy', // TODO missing
+    'forside.naar.content.2': 'Paternity can be declared at the earliest when the mother is in the 22nd week of pregnancy',
 
     'forside.hvordan.title': 'How is paternity electronically declared?',
     'forside.hvordan.foer.title': 'Before birth',
@@ -236,7 +236,7 @@ export default {
     'skjema.mor.far.foedselsnummer.label': 'National identity number',
     'skjema.mor.far.foedselsnummer.validation.required': 'The national identity number of the father is required',
     'skjema.mor.far.foedselsnummer.validation.fnr': 'Invalid national identity number',
-    //'skjema.mor.far.validation.farHarIkkeFnummer': '', // TODO
+    'skjema.mor.far.validation.farHarIkkeFnummer': 'You can\'t declare paternity electronically if the father is only registered with a d-number in the National Register.',
     'skjema.mor.far.validation.feilRolleFar.1': 'Co-maternity cannot be declared electronically. If you are cohabiting with a woman, you can apply to the Norwegian Tax Administration about co-maternity if the child has been conceived by means of assisted fertilisation.',
     'skjema.mor.far.validation.feilRolleFar.2': 'You can find information and the application form <a>here</a>',
     'skjema.mor.far.validation.feilRolleFar.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/application-for-joint-maternity/',
@@ -323,6 +323,6 @@ export default {
     'signer.submit': 'Sign',
     'signer.cancel': 'Cancel',
 
-    'avbrutt.alert.mor': '', // TODO missing
-    'avbrutt.alert.far': '', // TODO missing
+    'avbrutt.alert.mor': 'You have canceled the signing and the declaration has been deleted. To create a new declaration of paternity, you must start the process again.',
+    'avbrutt.alert.far': 'You have canceled the signing and the declaration has been deleted. To create a new paternity declaration, the mother of the child must start the process again.',
 };

@@ -238,7 +238,7 @@ export default {
     'skjema.mor.far.foedselsnummer.label': 'Fødselsnummer',
     'skjema.mor.far.foedselsnummer.validation.required': 'Fødselsnummeret til faren er påkrevd',
     'skjema.mor.far.foedselsnummer.validation.fnr': 'Ugyldig fødselsnummer',
-    'skjema.mor.far.validation.farHarIkkeFnummer': 'Du kan ikke erklære farskap elektronisk hvis far kun er registrert med d-nummer i Folkeregisteret.', // TODO
+    'skjema.mor.far.validation.farHarIkkeFnummer': 'Du kan ikke erklære farskap elektronisk hvis far kun er registrert med d-nummer i Folkeregisteret.',
     'skjema.mor.far.validation.feilRolleFar.1': 'Medmorskap kan ikke erklæres elektronisk. Hvis du er samboer med en kvinne, kan dere søke Skatteetaten om medmorskap hvis barnet har blitt til ved hjelp av assistert befruktning.',
     'skjema.mor.far.validation.feilRolleFar.2': 'Du finner informasjon og søknadsskjema <a>her</a>',
     'skjema.mor.far.validation.feilRolleFar.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/soknad-om-medmorskap/',
