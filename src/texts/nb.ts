@@ -110,7 +110,7 @@ export default {
     'forside.alleredeRegistrert.content': 'Har du allerede fått barn og både du og faren til barnet allerede har signert farskapet, ber vi deg  å ta kontakt med ta kontakt med Skatteetaten (Folkeregisteret):      ',
     'forside.alleredeRegistrert.link': 'https://www.skatteetaten.no/min-side/',
 
-    'forside.loginButton': 'Fyll ut erklæring om farskap',
+    'forside.loginButton': 'Til farskapserklæring',
 
     'forside.dinePersonopplysninger.lenkeKnapp': 'Les om hvordan NAV behandler personopplysningene dine',
     'forside.dinePersonopplysninger.title': 'Slik behandler NAV personopplysningene dine',

@@ -78,7 +78,7 @@ export default {
 
     'forside.naar.title': 'When can paternity be declared digitally',
     'forside.naar.content.1': 'Paternity can be declared digitally both before and after the child\'s birth',
-    'forside.naar.content.2': 'Farskap kan tidligst erklæres når moren er i 22. svangerskapsuke', // TODO missing
+    'forside.naar.content.2': 'Paternity can be declared at the earliest when the mother is in the 22nd week of pregnancy', // TODO missing
 
     'forside.hvordan.title': 'How is paternity electronically declared?',
     'forside.hvordan.foer.title': 'Before birth',
@@ -109,7 +109,7 @@ export default {
     'forside.alleredeRegistrert.content': 'If you have already had the child and both you and the father of the child have already signed the paternity, please contact the Norwegian Tax Administration (National Population Register)',
     'forside.alleredeRegistrert.link': 'https://www.skatteetaten.no/en/my-page/',
 
-    'forside.loginButton': 'Fill out paternity declaration',
+    'forside.loginButton': 'Go to declaration of paternity',
 
     'forside.dinePersonopplysninger.lenkeKnapp': 'Read about how NAV handle your personal data',
     'forside.dinePersonopplysninger.title': 'This is how NAV handle your personal data',
