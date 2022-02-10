@@ -253,7 +253,7 @@ export default {
     'skjema.mor.far.validation.resterendeForsoek.final': 'Du har tasta feil fødselsnummer/namn på oppgitt far to gonger og har berre eitt forsøk igjen før du blir blokkert frå løysinga.',
     'skjema.mor.spraak.title': 'Språk for erklæringen',
     // 'skjema.mor.spraak.description': '', // TODO
-    'skjema.mor.spraak.label.norwegian': 'Norsk',
+    'skjema.mor.spraak.label.norwegian': 'Bokmål',
     'skjema.mor.spraak.label.nynorsk': 'Nynorsk',
     'skjema.mor.spraak.label.english': 'Engelsk (English)',
     'skjema.mor.confirm.title': 'Stadfest opplysningane om far til barnet.',
