@@ -2039,10 +2039,10 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.5.tgz#75a2a8e7d8ab4b230414505d92335d1dcb53a6df"
   integrity sha512-L28j2FcJfSZOnL1WBjDYp2vUHCeIFlyYI/53EwD/rKUBQ7MtUUfbQWiyKJGpcnv4/WgrhWsFKrcPstcAt/J0tQ==
 
-"@types/react-aria-menubutton@^6.2.7":
-  version "6.2.8"
-  resolved "https://registry.yarnpkg.com/@types/react-aria-menubutton/-/react-aria-menubutton-6.2.8.tgz#cec29f3a37ffdfab12996ffb534b13b92fcc25c1"
-  integrity sha512-yHKOGHRGQRIIyy5Gui6mvYsJAXAtZBR0mhnLZYhl/tM3aO5cn2s6jlbjAThjyTHJyF0ZNJ5N2qxd5DvRmDrUMg==
+"@types/react-aria-menubutton@^6.2.9":
+  version "6.2.9"
+  resolved "https://registry.yarnpkg.com/@types/react-aria-menubutton/-/react-aria-menubutton-6.2.9.tgz#df09f471c4bf50650443667aad96c985d7f667f4"
+  integrity sha512-4j1DGoJwT3NGYDuswC4TatrF0BPAvDAVe8AC9t7dPBogcVQPdHQC5yzFNCeFHTzLOXZ9mdYkjiieY+GdBxBfFg==
   dependencies:
     "@types/react" "*"
 
