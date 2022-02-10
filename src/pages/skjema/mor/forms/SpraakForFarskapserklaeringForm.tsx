@@ -42,6 +42,14 @@ function SpraakForFarskapserklaeringForm(props: SpraakForFarskapserklaeringFormP
                     />
                     <Radio
                         name="spraak"
+                        value={Skriftspraak.Nynorsk}
+                        label={getMessage(intl, 'skjema.mor.spraak.label.nynorsk')}
+                        radioRef={register({
+                            required: getMessage(intl, 'skjema.mor.spraak.validation.required'),
+                        })}
+                    />
+                    <Radio
+                        name="spraak"
                         value={Skriftspraak.Engelsk}
                         label={getMessage(intl, 'skjema.mor.spraak.label.english')}
                         radioRef={register({

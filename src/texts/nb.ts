@@ -255,6 +255,7 @@ export default {
     'skjema.mor.spraak.title': 'Språk for erklæringen',
     'skjema.mor.spraak.description': 'Erklæringen skal sendes til far for signering på det språket du velger i dette steget. Hvis far ikke forstår norsk eller erklæringen skal brukes i utlandet bør du velge å opprette erklæringen på engelsk. Far kan ikke selv endre på dette.',
     'skjema.mor.spraak.label.norwegian': 'Norsk',
+    'skjema.mor.spraak.label.nynorsk': 'Nynorsk',
     'skjema.mor.spraak.label.english': 'Engelsk (English)',
     'skjema.mor.spraak.validation.required': 'Opplysningen er påkrevd',
     'skjema.mor.borSammen.title': 'Bor du sammen med faren til barnet?',

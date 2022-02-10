@@ -254,6 +254,7 @@ export default {
     'skjema.mor.spraak.title': 'Language for the declaration',
     'skjema.mor.spraak.description': 'The declaration will be sent to the father for signing in the language of your choice. If the father does not understand Norwegian or the declaration is to be used abroad, you should choose to create the declaration in English. The father can not change this himself.',
     'skjema.mor.spraak.label.norwegian': 'Norwegian',
+    'skjema.mor.spraak.label.nynorsk': 'Norwegian Nynorsk',
     'skjema.mor.spraak.label.english': 'English',
     'skjema.mor.spraak.validation.required': 'The information is required',
     'skjema.mor.confirm.title': 'Confirm information about the father of the child',
