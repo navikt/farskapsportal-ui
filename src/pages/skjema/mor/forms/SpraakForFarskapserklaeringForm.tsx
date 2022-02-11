@@ -5,6 +5,7 @@ import { Systemtittel } from 'nav-frontend-typografi';
 import { getMessage } from '../../../../utils/intl';
 import FormButtons from '../../../../components/form-buttons/FormButtons';
 import { Skriftspraak } from '../../../../types/skriftspraak';
+import { useStore } from '../../../../store/Context';
 
 import './SpraakForFarskapserklaeringForm.less';
 
@@ -19,9 +20,10 @@ interface SpraakForFarskapserklaeringFormProps {
 
 function SpraakForFarskapserklaeringForm(props: SpraakForFarskapserklaeringFormProps) {
     const intl = useIntl();
+    const [{ language }] = useStore();
     const { handleSubmit, errors, register } = useForm<SpraakForFarskapserklaeringFormInput>({
         defaultValues: {
-            spraak: null,
+            spraak: mapLanguageToSkriftspraak(language),
         },
         shouldFocusError: false,
     });
@@ -42,6 +44,14 @@ function SpraakForFarskapserklaeringForm(props: SpraakForFarskapserklaeringFormP
                     />
                     <Radio
                         name="spraak"
+                        value={Skriftspraak.Nynorsk}
+                        label={getMessage(intl, 'skjema.mor.spraak.label.nynorsk')}
+                        radioRef={register({
+                            required: getMessage(intl, 'skjema.mor.spraak.validation.required'),
+                        })}
+                    />
+                    <Radio
+                        name="spraak"
                         value={Skriftspraak.Engelsk}
                         label={getMessage(intl, 'skjema.mor.spraak.label.english')}
                         radioRef={register({
@@ -58,5 +68,18 @@ function SpraakForFarskapserklaeringForm(props: SpraakForFarskapserklaeringFormP
         </form>
     );
 }
+
+const mapLanguageToSkriftspraak = (language: string): Skriftspraak | null => {
+    switch (language) {
+        case 'nb':
+            return Skriftspraak.Bookmaal;
+        case 'nn':
+            return Skriftspraak.Nynorsk;
+        case 'en':
+            return Skriftspraak.Engelsk;
+        default:
+            return null;
+    }
+};
 
 export default SpraakForFarskapserklaeringForm;
