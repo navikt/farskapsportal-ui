@@ -101,7 +101,7 @@ function OversiktInfoPanel({ userInfo }: OversiktInfoPanelProps) {
                     </>
                 );
             }
-            
+
             return (
                 <>
                     <FarUtenErklaering />
