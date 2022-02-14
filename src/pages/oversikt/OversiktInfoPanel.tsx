@@ -4,7 +4,11 @@ import { FormattedMessage } from 'react-intl';
 import InfoPanel from 'components/info-panel/InfoPanel';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { UserInfo } from 'types/user';
-import { getBarnUtenErklaering } from 'utils/farskapserklaering';
+import {
+    getBarnUtenErklaering,
+    hasOngoingWhereBrukerIsFar,
+    hasOngoingWhereBrukerIsMor,
+} from 'utils/farskapserklaering';
 import FarIkkeSignert from './info-panel-content/far/FarIkkeSignert';
 import FarSignert from './info-panel-content/far/FarSignert';
 import FarUtenErklaering from './info-panel-content/far/FarUtenErklaering';
@@ -58,10 +62,55 @@ function OversiktInfoPanel({ userInfo }: OversiktInfoPanelProps) {
             }
 
             return <FarUtenErklaering />;
+        } else if (userInfo.forelderrolle === Foreldrerolle.MorEllerFar) {
+            const paaloggetBrukersRolleIsFar = hasOngoingWhereBrukerIsFar(userInfo);
+            const paaloggetBrukersRolleIsMor = hasOngoingWhereBrukerIsMor(userInfo);
+
+            if (userInfo.avventerSigneringBruker?.length) {
+                return (
+                    <>
+                        {paaloggetBrukersRolleIsFar && <FarIkkeSignert />}
+                        {paaloggetBrukersRolleIsFar && paaloggetBrukersRolleIsMor && <hr />}
+                        {paaloggetBrukersRolleIsMor && (
+                            <MorIkkeSignert
+                                ikkeSignertErklaeringer={userInfo.avventerSigneringBruker}
+                            />
+                        )}
+                    </>
+                );
+            }
+
+            if (getBarnUtenErklaering(userInfo).length) {
+                return <MorMedBarn barn={getBarnUtenErklaering(userInfo)} />;
+            }
+            if (userInfo.avventerSigneringMotpart?.length) {
+                return (
+                    <MorFarIkkeSignert
+                        farIkkeSignertErklaeringer={userInfo.avventerSigneringMotpart}
+                    />
+                );
+            }
+            if (userInfo.avventerRegistrering?.length) {
+                return (
+                    <>
+                        {paaloggetBrukersRolleIsFar && <FarSignert />}
+                        {paaloggetBrukersRolleIsFar && paaloggetBrukersRolleIsMor && <hr />}
+                        {paaloggetBrukersRolleIsMor && (
+                            <MorFarSignert signertErklaeringer={userInfo.avventerRegistrering} />
+                        )}
+                    </>
+                );
+            }
+
+            return (
+                <>
+                    <FarUtenErklaering />
+                    <hr />
+                    <MorUtenBarn />
+                </>
+            );
         }
 
-        // TODO: MOR_ELLER_FAR
-        // TODO: handle error
         return null;
     };
 
