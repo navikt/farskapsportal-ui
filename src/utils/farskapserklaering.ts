@@ -27,6 +27,12 @@ export const getBarnUtenErklaering = (userInfo: UserInfo): string[] => {
 export const hasOngoingTermindatoErklaering = (userInfo: UserInfo): boolean =>
     getEveryFarskapserklaering(userInfo).some(isTermindatoErklaering);
 
+export const hasOngoingWhereBrukerIsFar = (userInfo: UserInfo): boolean =>
+    getEveryFarskapserklaering(userInfo).some(isBrukerFar);
+
+export const hasOngoingWhereBrukerIsMor = (userInfo: UserInfo): boolean =>
+    getEveryFarskapserklaering(userInfo).some(isBrukerMor);
+
 export const isSignedByMor = (erklaering: Farskapserklaering): boolean =>
     !!erklaering.dokument?.signertAvMor;
 
@@ -35,6 +41,9 @@ export const isSignedByFar = (erklaering: Farskapserklaering): boolean =>
 
 export const isBrukerFar = (erklaering: Farskapserklaering): boolean =>
     erklaering.paaloggetBrukersRolle === Rolle.Far;
+
+export const isBrukerMor = (erklaering: Farskapserklaering): boolean =>
+    erklaering.paaloggetBrukersRolle === Rolle.Mor;
 
 export const isTermindatoErklaering = (erklaering: Farskapserklaering): boolean =>
     !!erklaering.barn?.termindato;

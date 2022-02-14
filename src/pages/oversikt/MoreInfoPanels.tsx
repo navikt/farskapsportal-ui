@@ -79,14 +79,14 @@ function MoreInfoPanels({ userInfo }: MoreInfoPanelsProps) {
         ) {
             return (
                 <>
-                    {hasBarnUtenErklaering && <ErFarskapRegistrert />}
-                    {hasBarnUtenErklaering && <HvemErFar />}
-                    {hasBarnUtenErklaering && <Medmor />}
-                    {avventerSigneringMotpart && <HvaSkjerNaa />}
-                    {avventerSigneringMotpart && <FarErklaererIkke />}
-                    {avventerSigneringBruker && <AlleredeErklaert />}
-                    {avventerSigneringBruker && <ErJegFar />}
-                    {avventerRegistrering && <HvaSkjerNaa />}
+                    {!!hasBarnUtenErklaering && <ErFarskapRegistrert />}
+                    {!!hasBarnUtenErklaering && <HvemErFar />}
+                    {!!hasBarnUtenErklaering && <Medmor />}
+                    {!!avventerSigneringMotpart && <HvaSkjerNaa />}
+                    {!!avventerSigneringMotpart && <FarErklaererIkke />}
+                    {!!avventerSigneringBruker && <AlleredeErklaert />}
+                    {!!avventerSigneringBruker && <ErJegFar />}
+                    {!!avventerRegistrering && <HvaSkjerNaa />}
                 </>
             );
         }
