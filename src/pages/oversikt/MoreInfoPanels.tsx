@@ -15,12 +15,17 @@ interface MoreInfoPanelsProps {
 }
 
 function MoreInfoPanels({ userInfo }: MoreInfoPanelsProps) {
+    const hasBarnUtenErklaering = getBarnUtenErklaering(userInfo).length;
+    const avventerSigneringMotpart = userInfo.avventerSigneringMotpart?.length;
+    const avventerSigneringBruker = userInfo.avventerSigneringBruker?.length;
+    const avventerRegistrering = userInfo.avventerRegistrering?.length;
+
     if (userInfo.forelderrolle === Foreldrerolle.Mor) {
-        if (userInfo.avventerSigneringBruker?.length) {
+        if (avventerSigneringBruker) {
             return <HvemErFar />;
         }
 
-        if (getBarnUtenErklaering(userInfo).length) {
+        if (hasBarnUtenErklaering) {
             return (
                 <>
                     <ErFarskapRegistrert />
@@ -30,7 +35,7 @@ function MoreInfoPanels({ userInfo }: MoreInfoPanelsProps) {
             );
         }
 
-        if (userInfo.avventerSigneringMotpart?.length) {
+        if (avventerSigneringMotpart) {
             return (
                 <>
                     <HvaSkjerNaa />
@@ -39,7 +44,7 @@ function MoreInfoPanels({ userInfo }: MoreInfoPanelsProps) {
             );
         }
 
-        if (userInfo.avventerRegistrering?.length) {
+        if (avventerRegistrering) {
             return <HvaSkjerNaa />;
         }
 
@@ -51,7 +56,7 @@ function MoreInfoPanels({ userInfo }: MoreInfoPanelsProps) {
             </>
         );
     } else if (userInfo.forelderrolle === Foreldrerolle.Far) {
-        if (userInfo.avventerSigneringBruker?.length) {
+        if (avventerSigneringBruker) {
             return (
                 <>
                     <AlleredeErklaert />
@@ -60,14 +65,42 @@ function MoreInfoPanels({ userInfo }: MoreInfoPanelsProps) {
             );
         }
 
-        if (userInfo.avventerRegistrering?.length) {
+        if (avventerRegistrering) {
             return <HvaSkjerNaa />;
         }
 
         return <ErklaereUtenMor />;
+    } else if (userInfo.forelderrolle === Foreldrerolle.MorEllerFar) {
+        if (
+            hasBarnUtenErklaering ||
+            avventerSigneringMotpart ||
+            avventerSigneringBruker ||
+            avventerRegistrering
+        ) {
+            return (
+                <>
+                    {hasBarnUtenErklaering && <ErFarskapRegistrert />}
+                    {hasBarnUtenErklaering && <HvemErFar />}
+                    {hasBarnUtenErklaering && <Medmor />}
+                    {avventerSigneringMotpart && <HvaSkjerNaa />}
+                    {avventerSigneringMotpart && <FarErklaererIkke />}
+                    {avventerSigneringBruker && <AlleredeErklaert />}
+                    {avventerSigneringBruker && <ErJegFar />}
+                    {avventerRegistrering && <HvaSkjerNaa />}
+                </>
+            );
+        }
+
+        return (
+            <>
+                <ErklaereUtenMor />
+                <ErFarskapRegistrert />
+                <HvemErFar />
+                <Medmor />
+            </>
+        );
     }
 
-    // TODO MOR_ELLER_FAR
     return null;
 }
 
