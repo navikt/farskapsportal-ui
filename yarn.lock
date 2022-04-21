@@ -1476,10 +1476,12 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@navikt/ds-icons@^0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.3.3.tgz#19432cc0b711f4643cba611c5b593ff2b7b67626"
-  integrity sha512-851CJ6GJu4u1iLLhqhGW+jeEB4NpOsoN8Guhy6KZUPSGI1mbN1fGkUcu7p2BC7VF3Rcad/EdHGwTmPPAYZ4vDg==
+"@navikt/ds-icons@^0.8.6":
+  version "0.8.11"
+  resolved "https://registry.yarnpkg.com/@navikt/ds-icons/-/ds-icons-0.8.11.tgz#b9e2e62d0c6145f86c9688a59c97049657af80cb"
+  integrity sha512-1oO4hp1wnJUgLlw/YqT5w+N2UAhEBNuoOD+ngY3QhoQAyj6MLsIkw/778hD93qZAB5f2msfFvDqLUsYOSCHCdQ==
+  dependencies:
+    uuid "^8.3.2"
 
 "@navikt/fnrvalidator@^1.2.0":
   version "1.2.0"
