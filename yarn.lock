@@ -1216,13 +1216,13 @@
   dependencies:
     tslib "^2.1.0"
 
-"@formatjs/intl-numberformat@^7.4.1":
-  version "7.4.2"
-  resolved "https://registry.yarnpkg.com/@formatjs/intl-numberformat/-/intl-numberformat-7.4.2.tgz#8033ad9d32a90393e59314f2aee5738de21aa7b3"
-  integrity sha512-k0eN5cRf3pvnY/Y6GBYB2RFyZ4X5GQEw5IsUN17kg278a/0ewpVgtK8IKX97zsuz2gCSLNZ1x5vzxGFVm/e+jA==
+"@formatjs/intl-numberformat@^7.4.3":
+  version "7.4.3"
+  resolved "https://registry.yarnpkg.com/@formatjs/intl-numberformat/-/intl-numberformat-7.4.3.tgz#dbf15fb6c8341088f1d526cf24d54f5388b478d1"
+  integrity sha512-oxhLCw00YO7brwMPqGD+ui5gdeWoMiRhqsRSqwsDSRd03aJ/N3/VZQDoxGIn3IM9bhlPM5W0ckXiXuOMFLszjw==
   dependencies:
-    "@formatjs/ecma402-abstract" "1.11.3"
-    "@formatjs/intl-localematcher" "0.2.24"
+    "@formatjs/ecma402-abstract" "1.11.4"
+    "@formatjs/intl-localematcher" "0.2.25"
     tslib "^2.1.0"
 
 "@formatjs/intl@2.1.1":
