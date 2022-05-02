@@ -17,16 +17,21 @@ function SpraakForFarskapserklaeringPresentation({
                 <FormattedMessage id="skjema.mor.spraak.title" />
             </Systemtittel>
             <Element>
-                <FormattedMessage
-                    id={
-                        spraak === Skriftspraak.Bookmaal
-                            ? 'skjema.mor.spraak.label.norwegian'
-                            : 'skjema.mor.spraak.label.english'
-                    }
-                />
+                <FormattedMessage id={mapSkriftspraakToTextId(spraak)} />
             </Element>
         </div>
     );
 }
+
+const mapSkriftspraakToTextId = (spraak: Skriftspraak): string => {
+    switch (spraak) {
+        case Skriftspraak.Bookmaal:
+            return 'skjema.mor.spraak.label.norwegian';
+        case Skriftspraak.Nynorsk:
+            return 'skjema.mor.spraak.label.nynorsk';
+        case Skriftspraak.Engelsk:
+            return 'skjema.mor.spraak.label.english';
+    }
+};
 
 export default SpraakForFarskapserklaeringPresentation;
