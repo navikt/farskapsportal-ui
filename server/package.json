@@ -17,7 +17,7 @@
     "express": "^4.17.3",
     "jsdom": "^16.6.0",
     "node-cache": "^5.1.2",
-    "node-fetch": "^3.2.2"
+    "node-fetch": "^3.2.6"
   },
   "browserslist": [
     ">0.2%",
