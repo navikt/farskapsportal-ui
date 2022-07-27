@@ -92,7 +92,7 @@
     "react-hook-form": "^6.15.8",
     "react-intl": "^5.24.7",
     "react-modal": "^3.14.3",
-    "react-router-dom": "^5.2.0",
+    "react-router-dom": "^5.3.3",
     "react-scripts": "4.0.3",
     "typescript": "^4.6.3"
   },
