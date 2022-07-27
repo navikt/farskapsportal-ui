@@ -6,7 +6,7 @@ on:
       - '**'
 
 env:
-  IMAGE: docker.pkg.github.com/${{ github.repository }}/farskapsportal-ui:${{ github.sha }}
+  IMAGE: ghcr.io/${{ github.repository }}/farskapsportal-ui:${{ github.sha }}
 
 jobs:
   build:
@@ -41,7 +41,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           docker build --tag "$IMAGE" .
-          echo "$GITHUB_TOKEN" | docker login docker.pkg.github.com --username "$GITHUB_REPOSITORY" --password-stdin
+          echo "$GITHUB_TOKEN" | docker login ghcr.io --username "$GITHUB_REPOSITORY" --password-stdin
           docker push "$IMAGE"
 
   deploy:
