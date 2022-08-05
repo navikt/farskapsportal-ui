@@ -17,7 +17,7 @@
     "prettier:write": "prettier --write ."
   },
   "dependencies": {
-    "@craco/craco": "^6.1.2",
+    "@craco/craco": "^6.4.5",
     "@formatjs/intl-datetimeformat": "^4.5.1",
     "@formatjs/intl-numberformat": "^7.4.3",
     "@navikt/ds-icons": "^0.3.3",
