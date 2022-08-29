@@ -8372,10 +8372,10 @@ nav-frontend-knapper@^3.0.1:
   resolved "https://registry.yarnpkg.com/nav-frontend-knapper/-/nav-frontend-knapper-3.1.2.tgz#18f4ed49f778d8cc55d44a4086b54e7087b07af4"
   integrity sha512-IR+0lz1ir14FnLx6rZNA3DH6DUAUlN1MK/cwg7syDx1v0qh1wMHjv9GI85ciP0WW65W2zBo2fDjRMA7IlHB2wA==
 
-nav-frontend-lenkepanel-style@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/nav-frontend-lenkepanel-style/-/nav-frontend-lenkepanel-style-2.0.1.tgz#0904a1c5620bd8e9402e39800196989b3fa81c71"
-  integrity sha512-1l7BTd5qncmGnk7jiD3IU5Ebcjgij5W6R0f7m3Mo1izNoENw4vBFWOYXwsZwpNAcuy4YmT/ss0f6TMBPaeIbiw==
+nav-frontend-lenkepanel-style@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/nav-frontend-lenkepanel-style/-/nav-frontend-lenkepanel-style-2.0.2.tgz#18cb58835a013363fa4db10b8dc6c2dbe859ae7b"
+  integrity sha512-JG0Eb4w432C5YuI6qyzHq9Bkv3DfD7nepazd2UQ85Mii6BUJxX68FQE5Q8u9QWxyZAXYd8buygfuO+RK6tWv0g==
 
 nav-frontend-lenkepanel@^2.0.1:
   version "2.0.1"
