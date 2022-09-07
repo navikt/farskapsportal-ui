@@ -8402,10 +8402,10 @@ nav-frontend-lukknapp@^2.0.2:
   resolved "https://registry.yarnpkg.com/nav-frontend-lukknapp/-/nav-frontend-lukknapp-2.0.2.tgz#c074bbf4b1a6a89b3d00ac4358c739ec2b46bd8d"
   integrity sha512-ItSQSmbfSE8GPDcAGkWGIVydYUuzvYAMVJ9pMKpItvAUfZ+Dt7HyYLXjfSxwi10ign4fpi9dsZGKfsFYyOQ2RQ==
 
-nav-frontend-modal-style@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/nav-frontend-modal-style/-/nav-frontend-modal-style-2.0.1.tgz#c259ea2b4bea890def887840a5bcaf525410a8a9"
-  integrity sha512-olvzD1HxG3jt+bRvXLoBxKzgQXD7OlTu/E6TKwvw1LBn5GLDZO80gnV5Ogg87Vu/ma043o6dOqVMyCdAxvdEqA==
+nav-frontend-modal-style@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/nav-frontend-modal-style/-/nav-frontend-modal-style-2.0.2.tgz#d92bb6877cad7940366d60b263721b7984224b96"
+  integrity sha512-XKKE1Y+AAGobT218eKOV/cmTgauudG7nU30PUeLTfiQnCeuzt6ZRhwM7cdUfgCVVlAfK/pNHbZYK1vGr8l1iGw==
 
 nav-frontend-modal@^2.0.2:
   version "2.0.2"
