@@ -8459,10 +8459,10 @@ nav-frontend-veileder-style@^3.0.2:
   resolved "https://registry.yarnpkg.com/nav-frontend-veileder-style/-/nav-frontend-veileder-style-3.0.2.tgz#52a66cb67003d871f8665307a9ca6cfd25ff033f"
   integrity sha512-n07a69VxyhMofeDA5j3ldU8cqaNHzvhgQwDNs1SitAwdgqn1dyIRMhd3ZVD7/nItFWX54kT4puqIQMVCnv0jOg==
 
-nav-frontend-veileder@^3.0.1:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/nav-frontend-veileder/-/nav-frontend-veileder-3.0.2.tgz#ebd7adb673ecc3536e3d86adb6e7d80024b4477a"
-  integrity sha512-trBnXeY30UdxqQsPvArnqjlO33d+1paoDuz8KqWt8+Ujnp9QVAHdeWNVKDs89RyrHxTTWEKtI76wAUJj3fKzvw==
+nav-frontend-veileder@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/nav-frontend-veileder/-/nav-frontend-veileder-3.0.3.tgz#6a2f4dab81e2a7aacd1b0d9478bb6c4e53285e88"
+  integrity sha512-FBfKZsvw6BEV7QWIxT0VXiG/qNRNaaqV3Z4wfSRJ3+i2ZoQ28zU2bP33EHXMwQQqJuAXotTtCtu2wLJcUKnYoQ==
 
 nav-frontend-veilederpanel-style@^2.0.1:
   version "2.0.1"
