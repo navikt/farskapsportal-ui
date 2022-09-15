@@ -8469,10 +8469,10 @@ nav-frontend-veilederpanel-style@^2.0.1:
   resolved "https://registry.yarnpkg.com/nav-frontend-veilederpanel-style/-/nav-frontend-veilederpanel-style-2.0.1.tgz#e2886b02eb499b7552ac6fb43ea344cbc5a91550"
   integrity sha512-Bg39EHjE2R5S0Xyc1bLLaZ5yOrqpqqlLYq4t7ZR1namCO0CHTzqWVG9qCwqmze5KfJqrioy9RwSGcors7+r7xA==
 
-nav-frontend-veilederpanel@^2.0.1:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/nav-frontend-veilederpanel/-/nav-frontend-veilederpanel-2.0.2.tgz#1e0c168d20f5033e9d0aec08ef60908b30ada741"
-  integrity sha512-epRZoh9TQpeVSgm+I5k7wukGSMPJhHnpP3Rw2CAzZbKP9MtLZQmbFA38/H4KQPO2/GvOAgKgpeswZHsblkoyoQ==
+nav-frontend-veilederpanel@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/nav-frontend-veilederpanel/-/nav-frontend-veilederpanel-2.0.3.tgz#f7a5191bbac566e056e43b16477ac9e7f3a07822"
+  integrity sha512-26DODcYFusC3i0zh4A4xvHf0DBlmsHO+PcMQrpkTcGQ4IDPkYsqzbK+/+4APPYsYEM9gOX/1yh3bVQcwoxV7iQ==
 
 needle@^2.5.2:
   version "2.9.1"
