@@ -7,7 +7,7 @@
   "homepage": "/",
   "repository": "https://github.com/navikt/farskapsportal-ui",
   "scripts": {
-    "start": "craco start",
+    "start": "craco --openssl-legacy-provider start",
     "build": "craco build",
     "test": "craco test",
     "lint": "tsc --noEmit && yarn lint:jsts && yarn lint:less",
