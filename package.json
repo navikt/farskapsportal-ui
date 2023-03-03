@@ -16,9 +16,6 @@
     "prettier:check": "prettier --check .",
     "prettier:write": "prettier --write ."
   },
-  "engines": {
-    "node": "18.x"
-  },
   "dependencies": {
     "@craco/craco": "^6.4.5",
     "@formatjs/intl-datetimeformat": "^4.5.1",
