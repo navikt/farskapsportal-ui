@@ -17,7 +17,7 @@
     "prettier:write": "prettier --write ."
   },
   "engines": {
-    "node": "19.x"
+    "node": "18.x"
   },
   "dependencies": {
     "@craco/craco": "^6.4.5",
