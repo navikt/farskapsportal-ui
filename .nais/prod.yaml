@@ -12,3 +12,6 @@ env:
   DEKORATOREN_URL: https://www.nav.no/dekoratoren
   FARSKAPSPORTAL_API_URL: http://farskapsportal-api.farskapsportal.svc.cluster.local
   LOGINSERVICE_URL: https://loginservice.nav.no/login
+  ENONIC_BOKMAAL: https://www.nav.no/erklaer-farskap
+  ENONIC_NYNORSK: https://www.nav.no/erklaer-farskap/nn
+  ENONIC_ENGELSK: https://www.nav.no/erklaer-farskap/en
