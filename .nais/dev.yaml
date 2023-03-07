@@ -4,6 +4,8 @@ ingresses:
   - https://farskapsportal.ekstern.dev.nav.no
 host:
   - dekoratoren.ekstern.dev.nav.no
+application:
+  - farskapsportal-api
 env:
   ENV: dev
   DEKORATOREN_URL: https://dekoratoren.ekstern.dev.nav.no
