@@ -34,7 +34,7 @@
     "@types/jest": "^26.0.23",
     "@types/jest-axe": "^3.5.5",
     "@types/js-cookie": "^2.2.6",
-    "@types/node": "^15.12.4",
+    "@types/node": "^18.14.6",
     "@types/react": "^17.0.53",
     "@types/react-aria-menubutton": "^6.2.9",
     "@types/react-collapse": "^5.0.0",
