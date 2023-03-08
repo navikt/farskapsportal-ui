@@ -17,7 +17,6 @@ export const useDekoratorBreadcrumbs = (breadcrumbs?: Breadcrumb[]) => {
     });
 
     useEffect(() => {
-
         const appBreadcrumbs =
             breadcrumbs?.map((breadcrumb) => ({
                 url: `/${language}${breadcrumb.path || ''}`,
