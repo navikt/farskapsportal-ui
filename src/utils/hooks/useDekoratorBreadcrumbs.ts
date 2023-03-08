@@ -17,13 +17,6 @@ export const useDekoratorBreadcrumbs = (breadcrumbs?: Breadcrumb[]) => {
     });
 
     useEffect(() => {
-        const baseBreadcrumbs = [
-            {
-                url: `/${language}/`,
-                title: getMessage(intl, 'breadcrumbs.forside'),
-                handleInApp: true,
-            },
-        ];
 
         const appBreadcrumbs =
             breadcrumbs?.map((breadcrumb) => ({
@@ -32,6 +25,6 @@ export const useDekoratorBreadcrumbs = (breadcrumbs?: Breadcrumb[]) => {
                 handleInApp: !!breadcrumb.path,
             })) || [];
 
-        setBreadcrumbs(baseBreadcrumbs.concat(appBreadcrumbs));
+        setBreadcrumbs(appBreadcrumbs);
     }, [intl, breadcrumbs, language]);
 };
