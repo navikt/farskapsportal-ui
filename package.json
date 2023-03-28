@@ -46,7 +46,7 @@
     "date-fns": "^2.29.3",
     "dayjs": "^1.11.7",
     "dotenv": "^8.6.0",
-    "eslint-config-prettier": "^8.6.0",
+    "eslint-config-prettier": "^8.7.0",
     "eslint-plugin-prettier": "^3.4.0",
     "fetch-mock": "^9.11.0",
     "jest-axe": "^5.0.1",
