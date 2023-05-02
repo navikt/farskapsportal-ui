@@ -9,4 +9,4 @@ env:
   ENV: dev
   DEKORATOREN_URL: https://dekoratoren.ekstern.dev.nav.no
   FARSKAPSPORTAL_API_URL: http://farskapsportal-api
-  LOGINSERVICE_URL: https://loginservice.ekstern.dev.nav.no/login
+  LOGINSERVICE_URL: https://loginservice.intern.dev.nav.no/login
