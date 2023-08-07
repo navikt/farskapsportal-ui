@@ -52,7 +52,7 @@ export default {
     'notPermitted.morIkkeNorskBostedsadresse': 'For at farskap skal kunne erklæres elektronisk, må du være registrert med en norsk bostedsadresse i Folkeregisteret.', // TODO
     'notPermitted.morSivilstandGift.1': 'Du er gift og ektefellen din blir automatisk registrert som faren til barn du føder. Hvis det er en annen mann enn ektefellen din som er barnets far, kan farskapet endres. Dette kan ikke gjøres elektronisk.',
     'notPermitted.morSivilstandGift.2': 'Du finner mer informasjon om endring av farskap <a>her</a>. Du er også velkommen til å kontakte oss på nav.no/kontakt eller telefon 55 55 33 33.',
-    'notPermitted.morSivilstandGift.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap',
+    'notPermitted.morSivilstandGift.link': 'https://www.nav.no/erklaer-farskap#naar-hvordan-endre-farskap',
     'notPermitted.morSivilstandPartner.1': 'Du er gift/registrert partner og du og ektefellen/partneren din må sende en søknad til Skatteetaten for å få medmorskap registret.',
     'notPermitted.morSivilstandPartner.2': 'Du finner informasjon og søknadsskjema <a>her</a>.',
     'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/soknad-om-medmorskap/',
