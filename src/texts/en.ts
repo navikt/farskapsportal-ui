@@ -51,7 +51,7 @@ export default {
     'notPermitted.morIkkeNorskBostedsadresse': 'In order to declare paternity electronically, you must be registered with a Norwegian residential address in the National Register.', // TODO
     'notPermitted.morSivilstandGift.1': 'You are married and your spouse is automatically registered as the father of the child you give birth to. If a man other than your spouse is the child\'s father, the paternity can be changed. This cannot be done electronically.',
     'notPermitted.morSivilstandGift.2': 'You can find more information about changing paternity <a>here</a>. You are also welcome to contact us at nav.no/contact or phone +47 55 55 33 33',
-    'notPermitted.morSivilstandGift.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap', // TODO /en
+    'notPermitted.morSivilstandGift.link': 'https://www.nav.no/erklaer-farskap/en#when', 
     'notPermitted.morSivilstandPartner.1': 'You are a married/registered partner and you and your spouse/partner must submit an application to the Norwegian Tax Administration in order to have the co-maternity registered.',
     'notPermitted.morSivilstandPartner.2': 'You can find information and the application form <a>here</a>',
     'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/soknad-om-medmorskap/', // TODO /en
