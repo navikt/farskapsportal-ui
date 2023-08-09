@@ -26,10 +26,13 @@ app.use((req, res, next) => {
 
 // Static files
 app.use(express.static(buildPath, { index: false }));
+
+/*
 app.get('/', (req, res) => res.redirect(`${process.env.ENONIC_BOKMAAL}`));
 app.get('/nb', (req, res) => res.redirect(`${process.env.ENONIC_BOKMAAL}`));
 app.get('/nn', (req, res) => res.redirect(`${process.env.ENONIC_NYNORSK}`));
 app.get('/en', (req, res) => res.redirect(`${process.env.ENONIC_ENGELSK}`));
+*/
 
 app.get('/',(req, res) => res.redirect('/nb/oversikt'));
 app.get('/nb',(req, res) => res.redirect('/nb/oversikt'));
