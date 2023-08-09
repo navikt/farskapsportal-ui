@@ -51,7 +51,7 @@ export default {
     //'notPermitted.morIkkeNorskBostedsadresse': 'For at farskap skal kunne erklærast elektronisk, må du være registrert med ein norsk bustedsadresse i Folkeregisteret.', // TODO
     'notPermitted.morSivilstandGift.1': 'Du er gift, og ektefellen din blir automatisk regisrert som far til barn du føder. Dersom det er ein annan mann enn ektefellen din som er far til barnet, kan farskapen endrast. Dette kan ikkje gjerast elektronisk.',
     'notPermitted.morSivilstandGift.2': 'Du finn meir informasjon om å endre farskap <a>her</a>. Du er også velkomen til å kontakte oss på nav.no/kontakt eller telefon 55 55 33 33',
-    'notPermitted.morSivilstandGift.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap',
+    'notPermitted.morSivilstandGift.link': 'https://www.nav.no/erklaer-farskap/nn#nar',
     'notPermitted.morSivilstandPartner.1': 'Du er gift / registrert partnar, og du og ektefellen/partnaren din må sende ein søknad til skatteeteaten for å få medmorskap registrert.',
     'notPermitted.morSivilstandPartner.2': 'Du finn informasjon og søknadsskjema <a>her</a>.',
     'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/soknad-om-medmorskap/',
