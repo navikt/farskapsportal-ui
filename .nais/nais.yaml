@@ -12,6 +12,13 @@ spec:
     min: 2
     max: 2
     cpuThresholdPercentage: 50
+  idporten:
+    enabled: true
+    sidecar:
+      enabled: true
+      autoLogin: true
+  tokenx:
+    enabled: true
   liveness:
     path: /internal/isAlive
     initialDelay: 10

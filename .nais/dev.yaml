@@ -9,11 +9,7 @@ env:
   ENV: dev
   DEKORATOREN_URL: https://dekoratoren.ekstern.dev.nav.no
   FARSKAPSPORTAL_API_URL: http://farskapsportal-api
-<<<<<<< HEAD
   LOGINSERVICE_URL: https://loginservice.dev.nav.no/login
   ENONIC_BOKMAAL: https://www.dev.nav.no/erklaer-farskap
   ENONIC_NYNORSK: https://www.dev.nav.no/erklaer-farskap/nn
   ENONIC_ENGELSK: https://www.dev.nav.no/erklaer-farskap/en
-=======
-  LOGINSERVICE_URL: https://loginservice.intern.dev.nav.no/login
->>>>>>> main

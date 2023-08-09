@@ -20,6 +20,7 @@
     "node": "18.x"
   },
   "dependencies": {
+    "@babel/helper-string-parser": "^7.22.5",
     "@craco/craco": "^6.4.5",
     "@formatjs/intl-datetimeformat": "^4.5.1",
     "@formatjs/intl-numberformat": "^7.4.3",
@@ -34,11 +35,7 @@
     "@types/jest": "^26.0.23",
     "@types/jest-axe": "^3.5.5",
     "@types/js-cookie": "^2.2.6",
-<<<<<<< HEAD
-    "@types/node": "^18.14.6",
-=======
     "@types/node": "^18.17.4",
->>>>>>> main
     "@types/react": "^17.0.53",
     "@types/react-aria-menubutton": "^6.2.9",
     "@types/react-collapse": "^5.0.0",
