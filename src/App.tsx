@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom';
 import RedirectAfterLogin from 'components/redirect-after-login/RedirectAfterLogin';
 import RedirectToLanguage from 'components/redirect-to-language/RedirectToLanguage';
 import Feilet from 'pages/feilet/Feilet';
-import Forside from 'pages/forside/Forside';
 import Kvittering from 'pages/kvittering/Kvittering';
 import Oversikt from 'pages/oversikt/Oversikt';
 import PageNotFound from 'pages/page-not-found/PageNotFound';
@@ -24,11 +23,6 @@ function App() {
         <RedirectAfterLogin>
             <RedirectToLanguage>
                 <Switch>
-                    <Route
-                        exact={true}
-                        path={`${basePathWithLanguage}${Path.Forside}`}
-                        component={Forside}
-                    />
                     <Route
                         exact={true}
                         path={`${basePathWithLanguage}${Path.Oversikt}`}

@@ -25,14 +25,12 @@ export default {
     'withUserInfoError.title': 'An error occurred while retrieving user information',
     'withUserInfoError.text': 'Please try again later',
 
-    'breadcrumbs.forside': 'Declaration of paternity',
     'breadcrumbs.oversikt': 'Your declarations of paternity',
     'breadcrumbs.skjema': 'Declaration of paternity',
     'breadcrumbs.kvittering': 'Confirmation', // TODO receipt??
     'breadcrumbs.signer': 'Sign declaration of paternity',
     'breadcrumbs.avbrutt': 'Signing canceled', // TODO ok translation?
 
-    'header.forside': 'Declaration of paternity',
     'header.oversikt': 'Your declarations of paternity',
     'header.skjema': 'Declaration of paternity',
     'header.kvittering': 'Confirmation', // TODO receipt??
@@ -47,94 +45,13 @@ export default {
     'farskapserklaering.borSammen.yes': 'Yes',
     'farskapserklaering.borSammen.no': 'No',
 
-    'forside.title': 'What does it mean to declare paternity',
-
-    'forside.naarErklaeres.title': 'When does paternity have to be declared',
-    'forside.naarErklaeres.content.1': 'Paternity does not follow directly from the law when the child\'s parents are not married to each other.',
-    'forside.naarErklaeres.content.2': 'The normal procedure in such cases is that paternity is established by the mother of the child naming the father, and that he declares paternity. Paternity can be digitally declared by both parents electronically identifying themselves in a secure manner and signing a digital declaration',
-
-    'forside.rettigheter.title': 'Rights and obligations',
-    'forside.rettigheter.content': 'Declaring paternity of a child grants the father both rights and obligations towards the child, such as',
-    'forside.rettigheter.arv.title': 'Inheritance',
-    'forside.rettigheter.arv.content': 'Once paternity is validly established, the child has inheritance rights from the father',
-    'forside.rettigheter.foreldreansvar.title': 'Parental responsibility',
-    'forside.rettigheter.foreldreansvar.content.1': 'Parental responsibility is the right and duty of parents to take decisions for the child in personal matters. Parents shall exercise parental responsibility based on the child\'s needs and interests. The person or those who have parental responsibility are also the child\'s guardian',
-    'forside.rettigheter.foreldreansvar.content.2': 'The mother and father have joint parental responsibility for children born after 1 January 2020. This applies to children who have married parents, children who have cohabiting parents and children whose parents do not live together.',
-    'forside.rettigheter.foreldreansvar.content.3': 'If the mother wishes to have sole parental responsibility, she must notify the National Population Register within one year from the date on which the paternity has been established. If the father does not wish to have parental responsibility, he must notify the National Population Register within one year from the date on which the paternity has been established. If the mother has reported that she desires sole parental responsibility and the father desires parental responsibility or joint parental responsibility, he must take the matter to court himself.',
-    'forside.rettigheter.barnebidrag.title': 'Child maintenance',
-    'forside.rettigheter.barnebidrag.content': 'Both parents have a duty to provide for their child according to ability. When the parents do not live together, the person who does not live permanently with the child must pay child maintenance. The parents can enter into an agreement on the amount of the child maintenance. If the parents do not agree, each may demand that NAV determine the amount of the child maintenance. If the parents do not live together when the child is born, and they have not made an agreement concerning the support, NAV shall take the initiative to determine the support for the child.',
-    'forside.rettigheter.samvaer.title': 'Access',
-    'forside.rettigheter.samvaer.content.1': 'The child has a right of access to both parents even if they live apart. The parents have mutual responsibility for ensuring that the right of access is fulfilled.',
-    'forside.rettigheter.samvaer.content.2': 'An agreement on parental responsibility, access or where the child will live permanently can be amended by a new agreement between the parents. If the parents do not agree, they can bring the case to court.',
-    'forside.rettigheter.navn.title': 'Name',
-    'forside.rettigheter.navn.content': 'Parents with parental responsibility can choose the name of the child. They must send notification of the name to <a>the National Population Register</a> (Norwegian Tax Administration). If the parents do not submit a last name within 6 months, the child will receive the mother\'s last name.',
-    'forside.rettigheter.navn.link': 'https://www.skatteetaten.no/skjema/navnevalg/', // TODO /en
-    'forside.rettigheter.linkLabel': '<a>Read more about the law on paternity</a>',
-    'forside.rettigheter.link': 'https://lovdata.no/dokument/NL/lov/1981-04-08-7', // TODO /en
-
-    'forside.hvem.title': 'Who can declare?',
-    'forside.hvem.content.1': 'Both parents must have a Norwegian birth and personal identification number',
-    'forside.hvem.content.2': 'Both parents must be over 18 years of age',
-
-    'forside.naar.title': 'When can paternity be declared digitally',
-    'forside.naar.content.1': 'Paternity can be declared digitally both before and after the child\'s birth',
-    'forside.naar.content.2': 'Paternity can be declared at the earliest when the mother is in the 22nd week of pregnancy',
-
-    'forside.hvordan.title': 'How is paternity electronically declared?',
-    'forside.hvordan.foer.title': 'Before birth',
-    'forside.hvordan.foer.step.1': 'The mother lists the father',
-    'forside.hvordan.foer.step.1.content.1': 'The mother logs into the paternity declaration solution',
-    'forside.hvordan.foer.step.1.content.2': 'The mother enters her due date',
-    'forside.hvordan.foer.step.1.content.4': 'The mother confirms that the person listed is the father of the child',
-    'forside.hvordan.foer.step.2': 'The father declares paternity',
-    'forside.hvordan.foer.step.2.content.1': 'The father receives notice from the mother or NAV with a link to the solution',
-    'forside.hvordan.foer.step.2.content.2': 'The father logs in and checks the information',
-    'forside.hvordan.foer.step.2.content.3': 'The father confirms he is aware of the legal implications of declaring paternity',
-    'forside.hvordan.foer.step.2.content.4': 'The father signs the declaration',
-    'forside.hvordan.foer.step.3': 'The declaration is sent to the National Population Register for registration and filing.',
-    'forside.hvordan.etter.title': 'After the birth',
-    'forside.hvordan.etter.step.1': 'The mother lists the father',
-    'forside.hvordan.etter.step.1.content.1': 'The mother logs into the paternity declaration solution',
-    'forside.hvordan.etter.step.1.content.2': 'The mother chooses the child whose father she wishes to list',
-    'forside.hvordan.etter.step.1.content.3': 'The mother lists the father\'s name and national identity number (11 digits)',
-    'forside.hvordan.etter.step.1.content.4': 'The mother confirms the person listed is child\'s father',
-    'forside.hvordan.etter.step.2': 'The father declares paternity',
-    'forside.hvordan.etter.step.2.content.1': 'The father receives notice from the mother or NAV with a link to the solution',
-    'forside.hvordan.etter.step.2.content.2': 'The father logs in and checks the information',
-    'forside.hvordan.etter.step.2.content.3': 'The father confirms he is aware of the legal implications of declaring paternity',
-    'forside.hvordan.etter.step.2.content.4': 'The father signs the declaration',
-    'forside.hvordan.etter.step.3': 'The declaration is sent to the National Population Register for registration and filing',
-
-    'forside.alleredeRegistrert.title': 'Are you wondering if the paternity has already been registered?',
-    'forside.alleredeRegistrert.content': 'If you have already had the child and both you and the father of the child have already signed the paternity, please contact the Norwegian Tax Administration (National Population Register)',
-    'forside.alleredeRegistrert.link': 'https://www.skatteetaten.no/en/my-page/',
-
-    'forside.loginButton': 'Go to declaration of paternity',
-
-    'forside.dinePersonopplysninger.lenkeKnapp': 'Read about how NAV handle your personal data',
-    'forside.dinePersonopplysninger.title': 'This is how NAV handle your personal data',
-    'forside.dinePersonopplysninger.mor.content': 'NAV will collect the following data about you from public registers before you can initiate a declaration of paternity:',
-    'forside.dinePersonopplysninger.mor.list.1': 'Civil Status',
-    'forside.dinePersonopplysninger.mor.list.2': 'Age',
-    'forside.dinePersonopplysninger.mor.list.3': 'Sex',
-    'forside.dinePersonopplysninger.mor.list.4': 'Residential Address',
-    'forside.dinePersonopplysninger.mor.list.5': 'Family relationships',
-    'forside.dinePersonopplysninger.far.content': 'The child’s mother informs NAV about your full name and your national identity number. Additionally, NAV will collect the following data about you from public registers before you can declare paternity:',
-    'forside.dinePersonopplysninger.far.list.1': 'Age',
-    'forside.dinePersonopplysninger.far.list.2': 'Sex',
-    'forside.dinePersonopplysninger.far.list.3': 'Active identity number',
-    'forside.dinePersonopplysninger.etterSignering': 'When both parents have signed the declaration, it will be sent to the National Population Register/ Norwegian Tax Administration for registration and archiving.',
-    'forside.dinePersonopplysninger.personvernerklaering.title': 'NAVs Privacy Statement',
-    'forside.dinePersonopplysninger.personvernerklaering.content': 'You can read more about how NAV handle your personal data in our Privacy Statement on <a>nav.no/personvern (Norwegian only).</a>',
-    'forside.dinePersonopplysninger.personvernerklaering.link': 'https://www.nav.no/no/NAV+og+samfunn/Om+NAV/personvern-i-arbeids-og-velferdsetaten/personvernerkl%C3%A6ring-for-arbeids-og-velferdsetaten',
-
     'notPermitted.forelderHarVerge': 'You are registered with a guardian in the National Population Register and can therefore not use the solution.', // TODO
     'notPermitted.ikkeMyndig': 'In order to declare paternity electronically, both parents must be over the age of 18.',
     'notPermitted.medmorEllerUkjent': 'The co-mother or person with an unknown role cannot use the solution', // TODO: endre tekst
     'notPermitted.morIkkeNorskBostedsadresse': 'In order to declare paternity electronically, you must be registered with a Norwegian residential address in the National Register.', // TODO
     'notPermitted.morSivilstandGift.1': 'You are married and your spouse is automatically registered as the father of the child you give birth to. If a man other than your spouse is the child\'s father, the paternity can be changed. This cannot be done electronically.',
     'notPermitted.morSivilstandGift.2': 'You can find more information about changing paternity <a>here</a>. You are also welcome to contact us at nav.no/contact or phone +47 55 55 33 33',
-    'notPermitted.morSivilstandGift.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap', // TODO /en
+    'notPermitted.morSivilstandGift.link': 'https://www.nav.no/erklaer-farskap/en#when', 
     'notPermitted.morSivilstandPartner.1': 'You are a married/registered partner and you and your spouse/partner must submit an application to the Norwegian Tax Administration in order to have the co-maternity registered.',
     'notPermitted.morSivilstandPartner.2': 'You can find information and the application form <a>here</a>',
     'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/soknad-om-medmorskap/', // TODO /en
