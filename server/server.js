@@ -191,7 +191,6 @@ app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
         .then((html) => {
             res.send(
                 html
-                    .replace('{{{LOGIN_URL}}}', process.env.LOGINSERVICE_URL)
                     .replace('{{{APP_VERSION}}}', process.env.APP_VERSION)
             );
         })
