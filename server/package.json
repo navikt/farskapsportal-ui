@@ -20,7 +20,7 @@
     "node-fetch": "^3.3.1"
   },
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "browserslist": [
     ">0.2%",
