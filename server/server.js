@@ -1,6 +1,6 @@
 import 'dotenv/config.js';
 import express from 'express';
-import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
 import fetch from 'node-fetch';
 import compression from 'compression';
 import { getHtmlWithDekorator } from './dekorator.js';
@@ -27,9 +27,7 @@ headers.setup(app);
 
 app.set('trust proxy', 1);
 app.use(setupSession());
-
 app.use(compression());
-app.use(cookieParser());
 
 // Parse application/json
 app.use(express.json());
