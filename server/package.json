@@ -18,7 +18,8 @@
     "jsdom": "^16.6.0",
     "node-cache": "^5.1.2",
     "node-fetch": "^3.3.1",
-    "openid-client": "^4.9.1"
+    "openid-client": "^4.9.1",
+    "winston": "^3.10.0"
   },
   "engines": {
     "node": "18.x"
