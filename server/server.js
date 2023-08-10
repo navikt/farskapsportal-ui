@@ -4,11 +4,29 @@ import cookieParser from 'cookie-parser';
 import fetch from 'node-fetch';
 import compression from 'compression';
 import { getHtmlWithDekorator } from './dekorator.js';
+import { generators, TokenSet } from 'openid-client';
+import jsdom from 'jsdom';
+import * as auth from './auth.js';
+import * as config from './config.js';
+import * as headers from './headers.js';
+import { logger } from './logger.js';
+import { setupSession } from './session.js';
 
+const { JSDOM } = jsdom;
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
-const tokenName = 'selvbetjening-idtoken';
 const app = express();
+
+auth.setup(config.app, config.idporten, config.tokenx).catch((error) => {
+    logger.error('Error while setting up auth:', error);
+    process.exit(1);
+});
+
+app.use(bodyParser.text());
+headers.setup(app);
+
+app.set('trust proxy', 1);
+app.use(setupSession());
 
 app.use(compression());
 app.use(cookieParser());
@@ -27,6 +45,52 @@ app.use((req, res, next) => {
 // Static files
 app.use(express.static(buildPath, { index: false }));
 
+const checkAuth = async (req, res, next) => {
+    const currentTokens = req.session.tokens;
+
+    if (!currentTokens) {
+        res.sendStatus(401);
+    } else {
+        let tokenSet = new TokenSet(currentTokens);
+
+        if (tokenSet.expired()) {
+            logger.debug('Refreshing token');
+            tokenSet = new TokenSet(await auth.refresh(currentTokens));
+            req.session.tokens = tokenSet;
+        }
+
+        return next();
+    }
+};
+
+app.get('/oauth2/callback', (req, res) => {
+    const session = req.session;
+    auth.validateOidcCallback(req)
+        .then((tokens) => {
+            session.tokens = tokens;
+            session.state = null;
+            session.nonce = null;
+            res.cookie('dings-id', `${tokens.id_token}`, {
+                secure: config.app.useSecureCookies,
+                sameSite: 'lax',
+                maxAge: config.session.maxAgeMs,
+            });
+            res.redirect(303, '/');
+        })
+        .catch((error) => {
+            logger.error('Error while validating OIDC callback:', error);
+            session.destroy();
+            res.sendStatus(403);
+        });
+});
+
+app.get('/login', (req, res) => {
+    const session = req.session;
+    session.nonce = generators.nonce();
+    session.state = generators.state();
+    res.redirect(auth.authUrl(session));
+});
+
 /*
 app.get('/', (req, res) => res.redirect(`${process.env.ENONIC_BOKMAAL}`));
 app.get('/nb', (req, res) => res.redirect(`${process.env.ENONIC_BOKMAAL}`));
@@ -44,7 +108,7 @@ app.get('/nb',(req, res) => res.redirect('/en/oversikt'));
 app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 
 // Api calls
-app.get('/api/brukerinformasjon', async (req, res) => {
+app.get('/api/brukerinformasjon', checkAuth, async (req, res) => {
     try {
         const token = req.cookies[tokenName];
         const response = await fetch(`${apiUrl}/brukerinformasjon`, {
@@ -61,7 +125,7 @@ app.get('/api/brukerinformasjon', async (req, res) => {
     }
 });
 
-app.post('/api/personopplysninger/far', async (req, res) => {
+app.post('/api/personopplysninger/far', checkAuth, async (req, res) => {
     try {
         const token = req.cookies[tokenName];
         const response = await fetch(`${apiUrl}/personopplysninger/far`, {
@@ -85,7 +149,7 @@ app.post('/api/personopplysninger/far', async (req, res) => {
     }
 });
 
-app.post('/api/farskapserklaering/ny', async (req, res) => {
+app.post('/api/farskapserklaering/ny', checkAuth, async (req, res) => {
     try {
         const token = req.cookies[tokenName];
         const response = await fetch(`${apiUrl}/farskapserklaering/ny`, {
@@ -105,7 +169,7 @@ app.post('/api/farskapserklaering/ny', async (req, res) => {
     }
 });
 
-app.put('/api/farskapserklaering/redirect', async (req, res) => {
+app.put('/api/farskapserklaering/redirect',checkAuth, async (req, res) => {
     try {
         const token = req.cookies[tokenName];
         const response = await fetch(
@@ -127,7 +191,7 @@ app.put('/api/farskapserklaering/redirect', async (req, res) => {
     }
 });
 
-app.post('/api/redirect-url/ny', async (req, res) => {
+app.post('/api/redirect-url/ny', checkAuth, async (req, res) => {
     try {
         const token = req.cookies[tokenName];
         const response = await fetch(
@@ -147,7 +211,7 @@ app.post('/api/redirect-url/ny', async (req, res) => {
     }
 });
 
-app.put('/api/farskapserklaering/oppdatere', async (req, res) => {
+app.put('/api/farskapserklaering/oppdatere', checkAuth, async (req, res) => {
     try {
         const token = req.cookies[tokenName];
         const response = await fetch(`${apiUrl}/farskapserklaering/oppdatere`, {
@@ -167,7 +231,7 @@ app.put('/api/farskapserklaering/oppdatere', async (req, res) => {
     }
 });
 
-app.get('/api/farskapserklaering/:erklaeringId/dokument', async (req, res) => {
+app.get('/api/farskapserklaering/:erklaeringId/dokument', checkAuth,  async (req, res) => {
     try {
         const token = req.cookies[tokenName];
         const response = await fetch(
