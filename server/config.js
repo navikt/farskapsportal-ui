@@ -9,9 +9,6 @@ export const app = {
 export const session = {
     secret: process.env.SESSION_SECRET,
     maxAgeMs: process.env.SESSION_MAX_AGE_MS || 12 * 60 * 60 * 1000, // defaults to 12 hours
-    redisHost: process.env.REDIS_HOST,
-    redisPort: process.env.REDIS_PORT || 6379,
-    redisPassword: process.env.REDIS_PASSWORD,
 };
 
 export const idporten = {
