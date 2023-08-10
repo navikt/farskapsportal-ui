@@ -36,10 +36,10 @@
     "@types/jest-axe": "^3.5.5",
     "@types/js-cookie": "^2.2.6",
     "@types/node": "^18.17.4",
-    "@types/react": "^17.0.53",
+    "@types/react": "^17.0.54",
     "@types/react-aria-menubutton": "^6.2.9",
     "@types/react-collapse": "^5.0.0",
-    "@types/react-dom": "^17.0.19",
+    "@types/react-dom": "^17.0.20",
     "@types/react-modal": "^3.16.0",
     "@types/react-router-dom": "^5.3.3",
     "classnames": "^2.3.2",
@@ -102,7 +102,7 @@
   },
   "devDependencies": {
     "prettier": "2.3.1",
-    "stylelint": "^13.13.1",
+    "stylelint": "^15.10.2",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-prettier": "^1.2.0"
