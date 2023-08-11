@@ -32,6 +32,9 @@ export const tokenx = {
 };
 
 function getIdportenJWKS() {
+
+    logger.info("process.env.IDPORTEN_JWKS_URI: ", process.env.IDPORTEN_JWKS_URI);
+
     if (!remoteJWKSet)
         remoteJWKSet = createRemoteJWKSet(new URL(process.env.IDPORTEN_JWKS_URI));
     return remoteJWKSet;
