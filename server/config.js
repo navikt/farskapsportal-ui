@@ -1,7 +1,6 @@
 import {createRemoteJWKSet} from "jose";
-import { GetKeyFunction } from "jose/dist/types/types";
 
-let remoteJWKSet = GetKeyFunction<JWSHeaderParameters, FlattenedJWSInput>;
+let remoteJWKSet = null;
 
 export const app = {
     useSecureCookies: !!process.env.NAIS_CLUSTER_NAME,
