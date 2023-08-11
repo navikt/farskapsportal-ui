@@ -4,9 +4,7 @@ import bodyParser from 'body-parser';
 import fetch from 'node-fetch';
 import compression from 'compression';
 import { getHtmlWithDekorator } from './dekorator.js';
-import { generators, TokenSet } from 'openid-client';
 import * as headers from './headers.js';
-import {setupSession} from './auth/session.js';
 const { validateAccessToken } = import("./auth/auth-middleware.js");
 
 const buildPath = '../build';
@@ -17,7 +15,6 @@ app.use(bodyParser.text());
 headers.setup(app);
 
 app.set('trust proxy', 1);
-app.use(setupSession());
 app.use(compression());
 
 // Parse application/json
@@ -33,13 +30,6 @@ app.use((req, res, next) => {
 
 // Static files
 app.use(express.static(buildPath, { index: false }));
-
-app.get('/login', (req, res) => {
-    const session = req.session;
-    session.nonce = generators.nonce();
-    session.state = generators.state();
-    res.redirect(auth.authUrl(session));
-});
 
 /*
 app.get('/', (req, res) => res.redirect(`${process.env.ENONIC_BOKMAAL}`));
