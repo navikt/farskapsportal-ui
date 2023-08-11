@@ -1,4 +1,5 @@
 import {createRemoteJWKSet} from "jose";
+import { GetKeyFunction } from "jose/dist/types/types";
 
 let remoteJWKSet = GetKeyFunction<JWSHeaderParameters, FlattenedJWSInput>;
 
