@@ -1,6 +1,6 @@
 import session from 'express-session';
 
-import * as config from './config.js';
+import * as config from '../config.js';
 
 export const setupSession = () => {
     const options = {
