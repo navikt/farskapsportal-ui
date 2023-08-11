@@ -9,7 +9,7 @@ import * as config from './config.js';
 import * as headers from './headers.js';
 import { logger } from './logger.js';
 import {setupSession} from './auth/session.js';
-const { validateAccessToken } = require("./auth/auth-middleware.js");
+const { validateAccessToken } = import("./auth/auth-middleware.js");
 
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;

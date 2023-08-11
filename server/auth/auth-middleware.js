@@ -1,5 +1,5 @@
-const { auth } = require("express-oauth2-jwt-bearer");
-const dotenv = require("dotenv");
+const { auth } = import("express-oauth2-jwt-bearer");
+const dotenv = import("dotenv");
 
 dotenv.config();
 
