@@ -22,7 +22,3 @@ export const setupSession = () => {
 
     return session(options);
 };
-
-function expiresIn(timestamp: number): number {
-    return timestamp - Math.round(Date.now() / 1000);
-}
