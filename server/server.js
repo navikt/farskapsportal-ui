@@ -5,20 +5,13 @@ import fetch from 'node-fetch';
 import compression from 'compression';
 import { getHtmlWithDekorator } from './dekorator.js';
 import { generators, TokenSet } from 'openid-client';
-import * as config from './config.js';
 import * as headers from './headers.js';
-import { logger } from './logger.js';
 import {setupSession} from './auth/session.js';
 const { validateAccessToken } = import("./auth/auth-middleware.js");
 
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
 const app = express();
-
-auth.setup(config.app, config.idporten, config.tokenx).catch((error) => {
-    logger.error('Error while setting up auth:', error);
-    process.exit(1);
-});
 
 app.use(bodyParser.text());
 headers.setup(app);
