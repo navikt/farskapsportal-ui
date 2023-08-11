@@ -74,7 +74,10 @@ const init = async () => {
 
     try {
         const idportenJwk = JSON.parse(idportenConfig.clientJwk);
+        logger.info("idportenConfig.clientJwk: ", idportenConfig.clientJwk);
+
         const tokenxJwk = JSON.parse(tokenxConfig.privateJwk);
+        logger.info("tokenxConfig.privateJwk ", tokenxConfig.privateJwk);
 
         const idporten = new idportenIssuer.Client(
             {
