@@ -5,7 +5,7 @@ import fetch from 'node-fetch';
 import compression from 'compression';
 import { getHtmlWithDekorator } from './dekorator.js';
 import * as headers from './headers.js';
-import { validateAccessToken } from './auth/auth-middleware.js';
+import { validateAccessToken, exchangeToken } from './auth/auth-middleware.js';
 import { logger } from './logger.js';
 
 const buildPath = '../build';
@@ -51,12 +51,13 @@ app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 // Api calls
 app.get('/api/brukerinformasjon', validateAccessToken, async (req, res) => {
     try {
-        const token = req.auth.token;
+        const oboToken = await auth.exchangeToken(req.auth.token);
+
         logger.info("request: ", req)
         const response = await fetch(`${apiUrl}/brukerinformasjon`, {
             method: 'get',
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${oboToken}`,
             },
         });
         const json = await response.json();
