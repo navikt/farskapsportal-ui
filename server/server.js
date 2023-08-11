@@ -51,7 +51,7 @@ app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 // Api calls
 app.get('/api/brukerinformasjon', validateAccessToken, async (req, res) => {
     try {
-        const oboToken = await auth.exchangeToken(req.auth.token);
+        const oboToken = await exchangeToken(req.auth.token);
 
         logger.info("request: ", req)
         const response = await fetch(`${apiUrl}/brukerinformasjon`, {
