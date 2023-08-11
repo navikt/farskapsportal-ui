@@ -35,6 +35,9 @@ export const exchangeToken = async (idportenToken) => {
         },
     };
 
+    logger.info("appConfig.targetAudience: ", appConfig.targetAudience);
+    logger.info("idportenToken ", idportenToken);
+
     return tokenxClient
         .grant(
             {
