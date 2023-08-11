@@ -27,7 +27,6 @@ export const setup = async (appConf, idpConfig, txConfig) => {
     });
 };
 
-
 export const exchangeToken = async (idportenToken) => {
     const now = Math.floor(Date.now() / 1000);
     // additional claims not set by openid-client

@@ -1,3 +1,7 @@
+import {createRemoteJWKSet} from "jose";
+
+let remoteJWKSet: GetKeyFunction<JWSHeaderParameters, FlattenedJWSInput>;
+
 export const app = {
     useSecureCookies: !!process.env.NAIS_CLUSTER_NAME,
     port: process.env.PORT || 8080,
@@ -16,7 +20,7 @@ export const idporten = {
         process.env.IDPORTEN_WELL_KNOWN_URL ||
         'https://oidc-ver2.difi.no/idporten-oidc-provider/.well-known/openid-configuration',
     clientID: process.env.IDPORTEN_CLIENT_ID,
-    clientJwkUri: process.env.IDPORTEN_JWKS_URI,
+    clientJwk: getIdportenJWKS(),
     responseType: ['code'],
     scope: 'openid profile',
 };
@@ -26,3 +30,9 @@ export const tokenx = {
     clientID: process.env.TOKEN_X_CLIENT_ID,
     privateJwk: process.env.TOKEN_X_PRIVATE_JWK,
 };
+
+function getIdportenJWKS() {
+    if (!remoteJWKSet)
+        remoteJWKSet = createRemoteJWKSet(new URL(process.env.IDPORTEN_JWKS_URI));
+    return remoteJWKSet;
+}
