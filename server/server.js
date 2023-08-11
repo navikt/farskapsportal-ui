@@ -3,6 +3,7 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import fetch from 'node-fetch';
 import compression from 'compression';
+import * as config from './config.js';
 import { getHtmlWithDekorator } from './dekorator.js';
 import * as headers from './headers.js';
 import { validateAccessToken, exchangeToken, setup } from './auth/auth-middleware.js';
