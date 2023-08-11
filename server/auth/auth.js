@@ -1,5 +1,5 @@
 import { Issuer } from 'openid-client';
-
+import { getJWKS } from './idporten.js';
 import { logger } from './logger.js';
 
 let appConfig = null;
@@ -32,25 +32,6 @@ export const authUrl = (session) =>
         resource: 'https://nav.no',
         acr_values: 'Level4',
     });
-
-export const validateOidcCallback = async (req) => {
-    const params = idportenClient.callbackParams(req);
-    const nonce = req.session.nonce;
-    const state = req.session.state;
-
-    return idportenClient
-        .callback(
-            idportenConfig.redirectUri,
-            params,
-            { nonce, state },
-            { clientAssertionPayload: { aud: idportenIssuer.metadata.issuer } }
-        )
-        .catch((error) => {
-            logger.error('Error in OIDC callback:', error);
-            Promise.reject(error);
-        })
-        .then(async (tokenSet) => tokenSet);
-};
 
 export const exchangeToken = async (idportenToken) => {
     const now = Math.floor(Date.now() / 1000);
@@ -95,7 +76,6 @@ const init = async () => {
     logger.info(`discovered tokenx @ ${tokenxIssuer.issuer}`);
 
     try {
-        const idportenJwk = JSON.parse(idportenConfig.clientJwk);
         const tokenxJwk = JSON.parse(tokenxConfig.privateJwk);
 
         const idporten = new idportenIssuer.Client(
@@ -103,11 +83,10 @@ const init = async () => {
                 client_id: idportenConfig.clientID,
                 token_endpoint_auth_method: 'private_key_jwt',
                 token_endpoint_auth_signing_alg: 'RS256',
-                redirect_uris: [idportenConfig.redirectUri, 'http://localhost:8080/callback'],
                 response_types: ['code'],
             },
             {
-                keys: [idportenJwk],
+                keys: [getJWKS()],
             }
         );
 
