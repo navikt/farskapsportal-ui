@@ -5,11 +5,10 @@ import fetch from 'node-fetch';
 import compression from 'compression';
 import { getHtmlWithDekorator } from './dekorator.js';
 import { generators, TokenSet } from 'openid-client';
-import * as auth from './auth/auth.js';
 import * as config from './config.js';
 import * as headers from './headers.js';
 import { logger } from './logger.js';
-import {getValidSession, setupSession} from './auth/session.js';
+import {setupSession} from './auth/session.js';
 const { validateAccessToken } = require("./auth/auth-middleware.js");
 
 const buildPath = '../build';
@@ -68,7 +67,7 @@ app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 // Api calls
 app.get('/api/brukerinformasjon', validateAccessToken, async (req, res) => {
     try {
-        const token = req.cookies[tokenName];
+        const token = req.auth.token;
         const response = await fetch(`${apiUrl}/brukerinformasjon`, {
             method: 'get',
             headers: {
@@ -85,7 +84,7 @@ app.get('/api/brukerinformasjon', validateAccessToken, async (req, res) => {
 
 app.post('/api/personopplysninger/far', validateAccessToken, async (req, res) => {
     try {
-        const token = req.cookies[tokenName];
+        const token = req.auth.token;
         const response = await fetch(`${apiUrl}/personopplysninger/far`, {
             method: 'post',
             headers: {
@@ -109,7 +108,7 @@ app.post('/api/personopplysninger/far', validateAccessToken, async (req, res) =>
 
 app.post('/api/farskapserklaering/ny', validateAccessToken, async (req, res) => {
     try {
-        const token = req.cookies[tokenName];
+        const token = req.auth.token;
         const response = await fetch(`${apiUrl}/farskapserklaering/ny`, {
             method: 'post',
             headers: {
@@ -129,7 +128,7 @@ app.post('/api/farskapserklaering/ny', validateAccessToken, async (req, res) => 
 
 app.put('/api/farskapserklaering/redirect',validateAccessToken, async (req, res) => {
     try {
-        const token = req.cookies[tokenName];
+        const token = req.auth.token;
         const response = await fetch(
             req.query.id_farskapserklaering
                 ? `${apiUrl}/farskapserklaering/redirect?id_farskapserklaering=${req.query.id_farskapserklaering}&status_query_token=${req.query.status_query_token}`
@@ -151,7 +150,7 @@ app.put('/api/farskapserklaering/redirect',validateAccessToken, async (req, res)
 
 app.post('/api/redirect-url/ny', validateAccessToken, async (req, res) => {
     try {
-        const token = req.cookies[tokenName];
+        const token = req.auth.token;
         const response = await fetch(
             `${apiUrl}/redirect-url/ny?id_farskapserklaering=${req.query.id_farskapserklaering}`,
             {
@@ -171,7 +170,7 @@ app.post('/api/redirect-url/ny', validateAccessToken, async (req, res) => {
 
 app.put('/api/farskapserklaering/oppdatere', validateAccessToken, async (req, res) => {
     try {
-        const token = req.cookies[tokenName];
+        const token = req.auth.token;
         const response = await fetch(`${apiUrl}/farskapserklaering/oppdatere`, {
             method: 'put',
             headers: {
@@ -191,7 +190,7 @@ app.put('/api/farskapserklaering/oppdatere', validateAccessToken, async (req, re
 
 app.get('/api/farskapserklaering/:erklaeringId/dokument', validateAccessToken,  async (req, res) => {
     try {
-        const token = req.cookies[tokenName];
+        const token = req.auth.token;
         const response = await fetch(
             `${apiUrl}/farskapserklaering/${req.params.erklaeringId}/dokument`,
             {
