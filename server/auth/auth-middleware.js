@@ -1,4 +1,5 @@
 import {auth} from 'express-oauth2-jwt-bearer';
+import { Issuer } from 'openid-client';
 import 'dotenv/config.js';
 
 let appConfig = null;
