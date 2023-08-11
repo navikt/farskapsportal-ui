@@ -6,6 +6,7 @@ import compression from 'compression';
 import { getHtmlWithDekorator } from './dekorator.js';
 import * as headers from './headers.js';
 import { validateAccessToken } from './auth/auth-middleware.js';
+import { logger } from './logger.js';
 
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
@@ -51,6 +52,7 @@ app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 app.get('/api/brukerinformasjon', validateAccessToken, async (req, res) => {
     try {
         const token = req.auth.token;
+        logger.info("request: ", req)
         const response = await fetch(`${apiUrl}/brukerinformasjon`, {
             method: 'get',
             headers: {
@@ -58,6 +60,8 @@ app.get('/api/brukerinformasjon', validateAccessToken, async (req, res) => {
             },
         });
         const json = await response.json();
+
+        logger.info("response: ", res)
         res.status(response.status).send(json);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
