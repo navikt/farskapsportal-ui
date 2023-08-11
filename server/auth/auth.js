@@ -1,6 +1,6 @@
 import { Issuer } from 'openid-client';
 import { getJWKS } from './idporten.js';
-import { logger } from './logger.js';
+import { logger } from '../logger.js';
 
 let appConfig = null;
 let idportenConfig = null;
