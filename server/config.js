@@ -1,5 +1,5 @@
 import {createRemoteJWKSet} from "jose";
-import { logger } from '../logger.js';
+import { logger } from './logger.js';
 
 let remoteJWKSet = null;
 
