@@ -1,7 +1,7 @@
 import {auth} from 'express-oauth2-jwt-bearer';
 import { Issuer } from 'openid-client';
 import 'dotenv/config.js';
-import { logger } from './logger.js';
+import { logger } from '../logger.js';
 
 let appConfig = null;
 let idportenConfig = null;
