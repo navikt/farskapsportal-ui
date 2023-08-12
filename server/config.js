@@ -1,5 +1,5 @@
 import {createRemoteJWKSet} from "jose";
-require('dotenv').config();
+import 'dotenv/config.js';
 import { logger } from './logger.js';
 
 let remoteJWKSet = null;
