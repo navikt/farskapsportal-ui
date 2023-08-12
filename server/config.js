@@ -42,5 +42,7 @@ function getIdportenJWKS() {
 
     if (!remoteJWKSet)
         remoteJWKSet = createRemoteJWKSet(new URL(process.env.IDPORTEN_JWKS_URI));
+
+    logger.info(`remoteJWKSet: ${remoteJWKSet}`);
     return remoteJWKSet;
 }
