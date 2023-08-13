@@ -44,7 +44,7 @@ async function getIdportenJWKS() {
 
         if (res.status >= 200 && res.status < 400) {
             const body = await res.text();
-            const keys = JSON.parse(body).keys;
+            const keys = JSON.parse(body);
             logger.info(`body: ${keys}`);
             return keys;
         }
