@@ -1,4 +1,4 @@
-import {createRemoteJWKSet} from "jose";
+import {createRemoteJWKSet, jwtVerify} from "jose";
 import 'dotenv/config.js';
 import { logger } from './logger.js';
 
