@@ -33,7 +33,7 @@ export const tokenx = {
     privateJwk: process.env.TOKEN_X_PRIVATE_JWK,
 };
 
-function getIdportenJWKS() {
+async function getIdportenJWKS() {
 
     logger.info(`env:  process.env`);
     logger.info(`env.IDPORTEN_WELL_KNOWN_URL: ${process.env.IDPORTEN_WELL_KNOWN_URL}`);
@@ -44,5 +44,11 @@ function getIdportenJWKS() {
         remoteJWKSet = createRemoteJWKSet(new URL(process.env.IDPORTEN_JWKS_URI));
 
     logger.info(`remoteJWKSet: ${remoteJWKSet}`);
-    return remoteJWKSet;
+
+    const jwks = await jwtVerify(token, getJWKS(), {
+        issuer: process.env.IDPORTEN_ISSUER,
+    });
+
+    logger.info(`jwks: ${jwks}`)
+    return jwks;
 }
