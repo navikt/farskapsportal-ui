@@ -1,8 +1,7 @@
-import {createRemoteJWKSet, jwtVerify} from "jose";
+
+import fetch from 'node-fetch';
 import 'dotenv/config.js';
 import { logger } from './logger.js';
-
-let remoteJWKSet = null;
 
 export const app = {
     useSecureCookies: !!process.env.NAIS_CLUSTER_NAME,
@@ -40,15 +39,16 @@ async function getIdportenJWKS() {
     logger.info(`process.env.TOKEN_X_WELL_KNOWN_URL: ${process.env.TOKEN_X_WELL_KNOWN_URL}`);
     logger.info(`process.env.IDPORTEN_JWKS_URI: ${process.env.IDPORTEN_JWKS_URI}`);
 
-    if (!remoteJWKSet)
-        remoteJWKSet = createRemoteJWKSet(new URL(process.env.IDPORTEN_JWKS_URI));
+    try {
+        const res = await fetch(process.env.IDPORTEN_JWKS_URI)
 
-    logger.info(`remoteJWKSet: ${remoteJWKSet}`);
-
-    const jwks = await jwtVerify(token, getJWKS(), {
-        issuer: process.env.IDPORTEN_ISSUER,
-    });
-
-    logger.info(`jwks: ${jwks}`)
-    return jwks;
+        if (res.status >= 200 && res.status < 400) {
+            const body = await res.text();
+            logger.info(`body: ${body}`);
+            return body;
+        }
+    }  catch (error) {
+        logger.error('Failed to get idporten jwks:', error);
+        throw error;
+    }
 }
