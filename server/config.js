@@ -5,9 +5,8 @@ import {logger} from './logger.js';
 export const app = {
     useSecureCookies: !!process.env.NAIS_CLUSTER_NAME,
     port: process.env.PORT || 8080,
-    apiUrl: process.env.FARSKAPSPORTAL_API_URL || 'https://farskapsportal-api.dev.nav.no',
-    targetAudience:
-        process.env.FARSKAPSPORTAL_API_AUDIENCE || 'dev-gcp:farskapsportal:farskapsportal-api',
+    apiUrl: process.env.FARSKAPSPORTAL_API_URL,
+    targetAudience: process.env.FARSKAPSPORTAL_API_AUDIENCE,
 };
 
 export const session = {
