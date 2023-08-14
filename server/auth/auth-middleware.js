@@ -2,12 +2,10 @@ import {auth} from 'express-oauth2-jwt-bearer';
 import { Issuer } from 'openid-client';
 import 'dotenv/config.js';
 import { logger } from '../logger.js';
-import {tokenx} from "../config.js";
 
 let appConfig = null;
 let idportenConfig = null;
 let idportenClient = null;
-let idportenIssuer = null;
 let tokenxConfig = null;
 let tokenxClient = null;
 let tokenxIssuer = null;
@@ -38,9 +36,6 @@ export const exchangeToken = async (idportenToken) => {
         },
     };
 
-    logger.info(`appConfig.targetAudience:  ${appConfig.targetAudience}`);
-    logger.info(`idportenToken  ${idportenToken}`);
-
     return tokenxClient
         .grant(
             {
@@ -69,34 +64,11 @@ export const refresh = (oldTokenSet) =>
         });
 
 const init = async () => {
-    idportenIssuer = await Issuer.discover(idportenConfig.discoveryUrl);
     tokenxIssuer = await Issuer.discover(tokenxConfig.discoveryUrl);
-    logger.info(`discovered idporten @ ${idportenIssuer.issuer}`);
     logger.info(`discovered tokenx @ ${tokenxIssuer.issuer}`);
 
     try {
-
-        /*
-        const idportenJwk = JSON.parse(idportenConfig.clientJwk);
-        logger.info("idportenConfig.clientJwk: ", idportenConfig.clientJwk);
-
-        const idporten = new idportenIssuer.Client(
-            {
-                client_id: idportenConfig.clientID,
-                token_endpoint_auth_method: 'private_key_jwt',
-                token_endpoint_auth_signing_alg: 'RS256',
-                redirect_uris: [idportenConfig.redirectUri, 'http://localhost:8080/callback'],
-                response_types: ['code'],
-            },
-            {
-                keys: [idportenJwk],
-            }
-        );
-        */
-
         const tokenxJwk = JSON.parse(tokenxConfig.privateJwk);
-        logger.info("tokenxConfig.privateJwk ", tokenxConfig.privateJwk);
-
         const tokenx = new tokenxIssuer.Client(
             {
                 client_id: tokenxConfig.clientID,

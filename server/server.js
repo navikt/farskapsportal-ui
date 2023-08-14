@@ -77,11 +77,11 @@ app.get('/api/brukerinformasjon', validateAccessToken, async (req, res) => {
 
 app.post('/api/personopplysninger/far', validateAccessToken, async (req, res) => {
     try {
-        const token = req.auth.token;
+        const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(`${apiUrl}/personopplysninger/far`, {
             method: 'post',
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${oboToken}`,
                 'Content-Type': 'application/json;charset=UTF-8',
             },
             body: JSON.stringify(req.body),
@@ -101,11 +101,11 @@ app.post('/api/personopplysninger/far', validateAccessToken, async (req, res) =>
 
 app.post('/api/farskapserklaering/ny', validateAccessToken, async (req, res) => {
     try {
-        const token = req.auth.token;
+        const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(`${apiUrl}/farskapserklaering/ny`, {
             method: 'post',
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${oboToken}`,
                 'Content-Type': 'application/json;charset=UTF-8',
             },
             body: JSON.stringify(req.body),
@@ -121,7 +121,7 @@ app.post('/api/farskapserklaering/ny', validateAccessToken, async (req, res) => 
 
 app.put('/api/farskapserklaering/redirect',validateAccessToken, async (req, res) => {
     try {
-        const token = req.auth.token;
+        const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(
             req.query.id_farskapserklaering
                 ? `${apiUrl}/farskapserklaering/redirect?id_farskapserklaering=${req.query.id_farskapserklaering}&status_query_token=${req.query.status_query_token}`
@@ -129,7 +129,7 @@ app.put('/api/farskapserklaering/redirect',validateAccessToken, async (req, res)
             {
                 method: 'put',
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${oboToken}`,
                 },
             }
         );
@@ -143,13 +143,13 @@ app.put('/api/farskapserklaering/redirect',validateAccessToken, async (req, res)
 
 app.post('/api/redirect-url/ny', validateAccessToken, async (req, res) => {
     try {
-        const token = req.auth.token;
+        const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(
             `${apiUrl}/redirect-url/ny?id_farskapserklaering=${req.query.id_farskapserklaering}`,
             {
                 method: 'post',
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${oboToken}`,
                 },
             }
         );
@@ -163,11 +163,11 @@ app.post('/api/redirect-url/ny', validateAccessToken, async (req, res) => {
 
 app.put('/api/farskapserklaering/oppdatere', validateAccessToken, async (req, res) => {
     try {
-        const token = req.auth.token;
+        const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(`${apiUrl}/farskapserklaering/oppdatere`, {
             method: 'put',
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${oboToken}`,
                 'Content-Type': 'application/json;charset=UTF-8',
             },
             body: JSON.stringify(req.body),
@@ -183,13 +183,13 @@ app.put('/api/farskapserklaering/oppdatere', validateAccessToken, async (req, re
 
 app.get('/api/farskapserklaering/:erklaeringId/dokument', validateAccessToken,  async (req, res) => {
     try {
-        const token = req.auth.token;
+        const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(
             `${apiUrl}/farskapserklaering/${req.params.erklaeringId}/dokument`,
             {
                 method: 'get',
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${oboToken}`,
                 },
             }
         );

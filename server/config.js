@@ -1,6 +1,4 @@
-import fetch from 'node-fetch';
 import 'dotenv/config.js';
-import {logger} from './logger.js';
 
 export const app = {
     useSecureCookies: !!process.env.NAIS_CLUSTER_NAME,
@@ -19,7 +17,6 @@ export const idporten = {
         process.env.IDPORTEN_WELL_KNOWN_URL ||
         'https://oidc-ver2.difi.no/idporten-oidc-provider/.well-known/openid-configuration',
     clientID: process.env.IDPORTEN_CLIENT_ID,
-    //clientJwk: getIdportenJWKS(),
     responseType: ['code'],
     scope: 'openid profile',
 };
@@ -31,27 +28,3 @@ export const tokenx = {
     privateJwk: process.env.TOKEN_X_PRIVATE_JWK,
     issuer: process.env.TOKEN_X_ISSUER,
 };
-
-async function getIdportenJWKS() {
-
-    try {
-        const res = await fetch(process.env.IDPORTEN_JWKS_URI,
-            {
-                method: 'GET',
-                headers: {
-                    'Accept': 'application/json',
-                },
-            });
-
-        if (res.status >= 200 && res.status < 400) {
-            const body = await res.json()
-
-            const keys = JSON.stringify(body.keys[0]);
-            logger.info(`keys: ${keys}`);
-            return keys;
-        }
-    } catch (error) {
-        logger.error('Failed to get idporten jwks:', error);
-        throw error;
-    }
-}
