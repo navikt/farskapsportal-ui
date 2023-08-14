@@ -1,7 +1,6 @@
-
 import fetch from 'node-fetch';
 import 'dotenv/config.js';
-import { logger } from './logger.js';
+import {logger} from './logger.js';
 
 export const app = {
     useSecureCookies: !!process.env.NAIS_CLUSTER_NAME,
@@ -40,17 +39,25 @@ async function getIdportenJWKS() {
     logger.info(`process.env.IDPORTEN_JWKS_URI: ${process.env.IDPORTEN_JWKS_URI}`);
 
     try {
-        const res = await fetch(process.env.IDPORTEN_JWKS_URI)
+        const res = await fetch(process.env.IDPORTEN_JWKS_URI,
+            {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                },
+            });
 
         if (res.status >= 200 && res.status < 400) {
             const body = await res.json()
-            logger.info(`body: ${body}`);
-            
+            const bodyString = JSON.stringify(body);
+            logger.info(`body: ${bodyString}`);
+
             const keys = body.keys;
-            logger.info(`keys: ${keys}`);
+            const keysString = JSON.stringify(keys);
+            logger.info(`keys: ${keysString}`);
             return keys;
         }
-    }  catch (error) {
+    } catch (error) {
         logger.error('Failed to get idporten jwks:', error);
         throw error;
     }
