@@ -1,5 +1,8 @@
+import cors from 'cors';
+
 export const setup = (app) => {
     app.disable('x-powered-by');
+    app.use(cors());
     app.use((req, res, next) => {
         res.header('X-Frame-Options', 'DENY');
         res.header('X-Xss-Protection', '1; mode=block');
