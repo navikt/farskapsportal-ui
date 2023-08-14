@@ -34,13 +34,12 @@ export const exchangeToken = async (idportenToken) => {
     const additionalClaims = {
         clientAssertionPayload: {
             nbf: now,
+            aud: process.env.TOKEN_X_TOKEN_ENDPOINT,
         },
     };
 
     logger.info(`appConfig.targetAudience:  ${appConfig.targetAudience}`);
     logger.info(`idportenToken  ${idportenToken}`);
-
-    logger.info(`tokenxClient: ${JSON.stringify(tokenxClient)}`);
 
     return tokenxClient
         .grant(
