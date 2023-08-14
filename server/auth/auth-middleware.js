@@ -40,7 +40,7 @@ export const exchangeToken = async (idportenToken) => {
     logger.info(`appConfig.targetAudience:  ${appConfig.targetAudience}`);
     logger.info(`idportenToken  ${idportenToken}`);
 
-    logger.info(`tokenxClient: ${tokenxClient}`);
+    logger.info(`tokenxClient: ${JSON.stringify(tokenxClient)}`);
 
     return tokenxClient
         .grant(
