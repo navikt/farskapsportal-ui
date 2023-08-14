@@ -25,6 +25,7 @@ export const idporten = {
 };
 
 export const tokenx = {
+    discoveryUrl: process.env.TOKEN_X_WELL_KNOWN_URL,
     tokenEndpoint: process.env.TOKEN_X_TOKEN_ENDPOINT,
     clientID: process.env.TOKEN_X_CLIENT_ID,
     privateJwk: process.env.TOKEN_X_PRIVATE_JWK,
