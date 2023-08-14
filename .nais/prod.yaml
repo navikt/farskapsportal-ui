@@ -11,7 +11,7 @@ env:
   ENV: prod
   DEKORATOREN_URL: https://www.nav.no/dekoratoren
   FARSKAPSPORTAL_API_URL: http://farskapsportal-api.farskapsportal.svc.cluster.local
-  FARSKAPSPORTAL_API_AUDIENCE: dev-gcp:farskapsportal:farskapsportal-api
+  FARSKAPSPORTAL_API_AUDIENCE: prod-gcp:farskapsportal:farskapsportal-api
   ENONIC_BOKMAAL: https://www.nav.no/erklaer-farskap
   ENONIC_NYNORSK: https://www.nav.no/erklaer-farskap/nn
   ENONIC_ENGELSK: https://www.nav.no/erklaer-farskap/en
