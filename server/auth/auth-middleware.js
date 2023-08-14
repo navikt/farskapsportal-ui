@@ -73,11 +73,10 @@ const init = async () => {
     logger.info(`discovered tokenx @ ${tokenxIssuer.issuer}`);
 
     try {
+
+        /*
         const idportenJwk = JSON.parse(idportenConfig.clientJwk);
         logger.info("idportenConfig.clientJwk: ", idportenConfig.clientJwk);
-
-        const tokenxJwk = JSON.parse(tokenxConfig.privateJwk);
-        logger.info("tokenxConfig.privateJwk ", tokenxConfig.privateJwk);
 
         const idporten = new idportenIssuer.Client(
             {
@@ -91,6 +90,10 @@ const init = async () => {
                 keys: [idportenJwk],
             }
         );
+        */
+
+        const tokenxJwk = JSON.parse(tokenxConfig.privateJwk);
+        logger.info("tokenxConfig.privateJwk ", tokenxConfig.privateJwk);
 
         const tokenx = new tokenxIssuer.Client(
             {
@@ -102,7 +105,8 @@ const init = async () => {
             }
         );
 
-        return Promise.resolve({ idporten, tokenx });
+      //  return Promise.resolve({ idporten, tokenx });
+        return Promise.resolve({ tokenx });
     } catch (error) {
         logger.error('Error while initializing auth:', error);
         return Promise.reject(error);
