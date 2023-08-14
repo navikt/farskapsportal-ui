@@ -1,7 +1,6 @@
 name: farskapsportal-ui
 ingresses:
   - https://farskapsportal.nav.no
-  - https://farskapsportal.intern.nav.no
 host:
   - nav.no
   - farskapsportal-api.nav.no
