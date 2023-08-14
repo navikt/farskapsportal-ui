@@ -6,19 +6,12 @@ export const setup = (app) => {
         res.header('X-Content-Type-Options', 'nosniff');
         res.header('Referrer-Policy', 'no-referrer');
 
-        // res.header('Content-Security-Policy', cspString);
-        // res.header('X-WebKit-CSP', cspString);
-        // res.header('X-Content-Security-Policy', cspString);
+        if (process.env.ENV === 'prod') {
+            res.setHeader('Access-Control-Allow-Origin', 'https://farskapsportal.nav.no');
+            res.setHeader('Access-Control-Allow-Methods', 'POST, GET');
+            res.setHeader('Access-Control-Allow-Headers',  'Origin, X-Requested-With, Content-Type, Accept');
+        }
 
-        // res.header('Feature-Policy', "geolocation 'none'; microphone 'none'; camera 'none'");
-        // if (process.env.NODE_ENV === 'development') {
-        //     res.header('Access-Control-Allow-Origin', 'http://localhost:1234');
-        //     res.header(
-        //         'Access-Control-Allow-Headers',
-        //         'Origin, X-Requested-With, Content-Type, Accept'
-        //     );
-        //     res.header('Access-Control-Allow-Methods', 'GET, POST');
-        // }
         next();
     });
 };
