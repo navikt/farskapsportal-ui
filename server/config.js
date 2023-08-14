@@ -20,7 +20,7 @@ export const idporten = {
         process.env.IDPORTEN_WELL_KNOWN_URL ||
         'https://oidc-ver2.difi.no/idporten-oidc-provider/.well-known/openid-configuration',
     clientID: process.env.IDPORTEN_CLIENT_ID,
-    clientJwk: getIdportenJWKS(),
+    //clientJwk: getIdportenJWKS(),
     responseType: ['code'],
     scope: 'openid profile',
 };
@@ -32,11 +32,6 @@ export const tokenx = {
 };
 
 async function getIdportenJWKS() {
-
-    logger.info(`env:  process.env`);
-    logger.info(`env.IDPORTEN_WELL_KNOWN_URL: ${process.env.IDPORTEN_WELL_KNOWN_URL}`);
-    logger.info(`process.env.TOKEN_X_WELL_KNOWN_URL: ${process.env.TOKEN_X_WELL_KNOWN_URL}`);
-    logger.info(`process.env.IDPORTEN_JWKS_URI: ${process.env.IDPORTEN_JWKS_URI}`);
 
     try {
         const res = await fetch(process.env.IDPORTEN_JWKS_URI,
@@ -50,9 +45,9 @@ async function getIdportenJWKS() {
         if (res.status >= 200 && res.status < 400) {
             const body = await res.json()
 
-            const keys0String = JSON.stringify(body.keys[0]);
-            logger.info(`keys0String: ${keys0String}`);
-            return keys0String;
+            const keys = JSON.stringify(body.keys[0]);
+            logger.info(`keys: ${keys}`);
+            return keys;
         }
     } catch (error) {
         logger.error('Failed to get idporten jwks:', error);
