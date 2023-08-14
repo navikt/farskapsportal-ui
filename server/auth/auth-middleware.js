@@ -2,6 +2,7 @@ import {auth} from 'express-oauth2-jwt-bearer';
 import { Issuer } from 'openid-client';
 import 'dotenv/config.js';
 import { logger } from '../logger.js';
+import {tokenx} from "../config.js";
 
 let appConfig = null;
 let idportenConfig = null;
@@ -36,8 +37,10 @@ export const exchangeToken = async (idportenToken) => {
         },
     };
 
-    logger.info("appConfig.targetAudience: ", appConfig.targetAudience);
-    logger.info("idportenToken ", idportenToken);
+    logger.info(`appConfig.targetAudience:  ${appConfig.targetAudience}`);
+    logger.info(`idportenToken  ${idportenToken}`);
+
+    logger.info(`tokenxClient: ${tokenxClient}`);
 
     return tokenxClient
         .grant(
