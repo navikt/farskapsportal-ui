@@ -1,17 +1,28 @@
 import 'dotenv/config.js';
 import express from 'express';
-import cookieParser from 'cookie-parser';
+import bodyParser from 'body-parser';
 import fetch from 'node-fetch';
 import compression from 'compression';
+import * as config from './config.js';
 import { getHtmlWithDekorator } from './dekorator.js';
+import * as headers from './headers.js';
+import { validateAccessToken, exchangeToken, setup } from './auth/auth-middleware.js';
+import { logger } from './logger.js';
 
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
-const tokenName = 'selvbetjening-idtoken';
 const app = express();
 
+setup(config.app, config.idporten, config.tokenx).catch((error) => {
+    logger.error('Error while setting up auth:', error);
+    process.exit(1);
+});
+
+app.use(bodyParser.text());
+headers.setup(app);
+
+app.set('trust proxy', 1);
 app.use(compression());
-app.use(cookieParser());
 
 // Parse application/json
 app.use(express.json());
@@ -27,6 +38,13 @@ app.use((req, res, next) => {
 // Static files
 app.use(express.static(buildPath, { index: false }));
 
+/*
+app.get('/', (req, res) => res.redirect(`${process.env.ENONIC_BOKMAAL}`));
+app.get('/nb', (req, res) => res.redirect(`${process.env.ENONIC_BOKMAAL}`));
+app.get('/nn', (req, res) => res.redirect(`${process.env.ENONIC_NYNORSK}`));
+app.get('/en', (req, res) => res.redirect(`${process.env.ENONIC_ENGELSK}`));
+*/
+
 app.get('/',(req, res) => res.redirect('/nb/oversikt'));
 app.get('/nb',(req, res) => res.redirect('/nb/oversikt'));
 app.get('/nn',(req, res) => res.redirect('/nn/oversikt'));
@@ -37,16 +55,19 @@ app.get('/nb',(req, res) => res.redirect('/en/oversikt'));
 app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 
 // Api calls
-app.get('/api/brukerinformasjon', async (req, res) => {
+app.get('/api/brukerinformasjon', validateAccessToken, async (req, res) => {
     try {
-        const token = req.cookies[tokenName];
+        const oboToken = await exchangeToken(req.auth.token);
+
         const response = await fetch(`${apiUrl}/brukerinformasjon`, {
             method: 'get',
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${oboToken}`,
             },
         });
         const json = await response.json();
+
+        logger.info("response: ", res)
         res.status(response.status).send(json);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
@@ -54,13 +75,13 @@ app.get('/api/brukerinformasjon', async (req, res) => {
     }
 });
 
-app.post('/api/personopplysninger/far', async (req, res) => {
+app.post('/api/personopplysninger/far', validateAccessToken, async (req, res) => {
     try {
-        const token = req.cookies[tokenName];
+        const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(`${apiUrl}/personopplysninger/far`, {
             method: 'post',
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${oboToken}`,
                 'Content-Type': 'application/json;charset=UTF-8',
             },
             body: JSON.stringify(req.body),
@@ -78,13 +99,13 @@ app.post('/api/personopplysninger/far', async (req, res) => {
     }
 });
 
-app.post('/api/farskapserklaering/ny', async (req, res) => {
+app.post('/api/farskapserklaering/ny', validateAccessToken, async (req, res) => {
     try {
-        const token = req.cookies[tokenName];
+        const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(`${apiUrl}/farskapserklaering/ny`, {
             method: 'post',
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${oboToken}`,
                 'Content-Type': 'application/json;charset=UTF-8',
             },
             body: JSON.stringify(req.body),
@@ -98,9 +119,9 @@ app.post('/api/farskapserklaering/ny', async (req, res) => {
     }
 });
 
-app.put('/api/farskapserklaering/redirect', async (req, res) => {
+app.put('/api/farskapserklaering/redirect',validateAccessToken, async (req, res) => {
     try {
-        const token = req.cookies[tokenName];
+        const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(
             req.query.id_farskapserklaering
                 ? `${apiUrl}/farskapserklaering/redirect?id_farskapserklaering=${req.query.id_farskapserklaering}&status_query_token=${req.query.status_query_token}`
@@ -108,7 +129,7 @@ app.put('/api/farskapserklaering/redirect', async (req, res) => {
             {
                 method: 'put',
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${oboToken}`,
                 },
             }
         );
@@ -120,15 +141,15 @@ app.put('/api/farskapserklaering/redirect', async (req, res) => {
     }
 });
 
-app.post('/api/redirect-url/ny', async (req, res) => {
+app.post('/api/redirect-url/ny', validateAccessToken, async (req, res) => {
     try {
-        const token = req.cookies[tokenName];
+        const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(
             `${apiUrl}/redirect-url/ny?id_farskapserklaering=${req.query.id_farskapserklaering}`,
             {
                 method: 'post',
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${oboToken}`,
                 },
             }
         );
@@ -140,13 +161,13 @@ app.post('/api/redirect-url/ny', async (req, res) => {
     }
 });
 
-app.put('/api/farskapserklaering/oppdatere', async (req, res) => {
+app.put('/api/farskapserklaering/oppdatere', validateAccessToken, async (req, res) => {
     try {
-        const token = req.cookies[tokenName];
+        const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(`${apiUrl}/farskapserklaering/oppdatere`, {
             method: 'put',
             headers: {
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${oboToken}`,
                 'Content-Type': 'application/json;charset=UTF-8',
             },
             body: JSON.stringify(req.body),
@@ -160,15 +181,15 @@ app.put('/api/farskapserklaering/oppdatere', async (req, res) => {
     }
 });
 
-app.get('/api/farskapserklaering/:erklaeringId/dokument', async (req, res) => {
+app.get('/api/farskapserklaering/:erklaeringId/dokument', validateAccessToken,  async (req, res) => {
     try {
-        const token = req.cookies[tokenName];
+        const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(
             `${apiUrl}/farskapserklaering/${req.params.erklaeringId}/dokument`,
             {
                 method: 'get',
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${oboToken}`,
                 },
             }
         );
@@ -187,7 +208,6 @@ app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
         .then((html) => {
             res.send(
                 html
-                    .replace('{{{LOGIN_URL}}}', process.env.LOGINSERVICE_URL)
                     .replace('{{{APP_VERSION}}}', process.env.APP_VERSION)
             );
         })
