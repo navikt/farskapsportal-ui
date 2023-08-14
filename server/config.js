@@ -43,8 +43,13 @@ async function getIdportenJWKS() {
         const res = await fetch(process.env.IDPORTEN_JWKS_URI)
 
         if (res.status >= 200 && res.status < 400) {
-            const body = await res.json();
+            const body = await res.text()
             logger.info(`body: ${body}`);
+
+            const json = JSON.parse(body);
+            
+            logger.info(`json: ${json}`);
+
             const keys = JSON.parse(body).keys;
             logger.info(`keys: ${keys}`);
             return keys;
