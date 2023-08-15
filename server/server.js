@@ -43,7 +43,6 @@ app.get('/nb',(req, res) => res.redirect('/nb/oversikt'));
 app.get('/nn',(req, res) => res.redirect('/nn/oversikt'));
 app.get('/nb',(req, res) => res.redirect('/en/oversikt'));
 
-
 // Nais functions
 app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
 
