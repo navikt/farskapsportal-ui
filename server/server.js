@@ -14,7 +14,18 @@ const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
 const app = express();
 
-maintenance(app);
+const options = {
+    mode: false,
+    accessKey: "pw1234",
+    endpoint: '/maintenance',
+    filePath: null,
+    useApi: false,
+    statusCode: 503,
+    message: 'Error 503: Server is temporarily unavailable due to scheduled maintenance, please try again lager.', // 503 is taken from statusCode
+    blockMethods: ['GET', 'POST']
+}
+
+maintenance(app, options);
 
 setup(config.app, config.idporten, config.tokenx).catch((error) => {
     logger.error('Error while setting up auth:', error);
