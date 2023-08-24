@@ -21,7 +21,7 @@
     "jsdom": "^16.7.0",
     "next": "13.4.13",
     "node-cache": "^5.1.2",
-    "node-fetch": "^3.3.1",
+    "node-fetch": "^3.3.2",
     "openid-client": "^4.9.1",
     "winston": "^3.10.0"
   },
