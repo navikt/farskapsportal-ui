@@ -16,7 +16,7 @@ const app = express();
 
 const options = {
     mode: false,
-    accessKey: "pw1234",
+    accessKey: process.env.MAINTENANCE_ACCESS_KEY, // add GCP secret
     endpoint: '/maintenance',
     filePath: null,
     useApi: false,
