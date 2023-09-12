@@ -6,21 +6,28 @@ on:
       - 'main'
 
 env:
-  IMAGE: ghcr.io/${{ github.repository }}/farskapsportal-ui:${{ github.sha }}
+  GITHUB_USERNAME: x-access-token
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
     name: Build and push Docker container
     runs-on: ubuntu-latest
+    permissions:
+      contents: "read"
+      id-token: "write"
+    outputs:
+      image: ${{ steps.docker-push.outputs.image }}
+      tag: ${{ steps.docker-push.outputs.tag }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
 
       - name: Cache node modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
@@ -36,13 +43,12 @@ jobs:
       - name: Build frontend (yarn build)
         run: yarn build
 
-      - name: Build and publish Docker image
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          docker build --tag "$IMAGE" .
-          echo "$GITHUB_TOKEN" | docker login ghcr.io --username "$GITHUB_REPOSITORY" --password-stdin
-          docker push "$IMAGE"
+      - uses: nais/docker-build-push@v0
+        id: docker-push
+        with:
+          team: farskapsportal
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
 
   deploy:
     name: Deploy to NAIS prod-gcp
@@ -50,7 +56,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Deploy to prod-gcp for main
         if: github.ref == 'refs/heads/main'
@@ -60,3 +66,4 @@ jobs:
           CLUSTER: prod-gcp
           RESOURCE: .nais/nais.yaml
           VARS: .nais/prod.yaml
+          IMAGE: ${{ needs.build.outputs.image }}
