@@ -6,7 +6,6 @@ on:
       - 'main'
 
 env:
-  IMAGE: ghcr.io/${{ github.repository }}/farskapsportal-ui:${{ github.sha }}
   GITHUB_USERNAME: x-access-token
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -17,6 +16,9 @@ jobs:
     permissions:
       contents: "read"
       id-token: "write"
+    outputs:
+      image: ${{ steps.docker-push.outputs.image }}
+      tag: ${{ steps.docker-push.outputs.tag }}
     steps:
       - uses: actions/checkout@v4
 
@@ -41,13 +43,12 @@ jobs:
       - name: Build frontend (yarn build)
         run: yarn build
 
-      - name: Build and publish Docker image
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          docker build --tag "$IMAGE" .
-          echo "$GITHUB_TOKEN" | docker login ghcr.io --username "$GITHUB_REPOSITORY" --password-stdin
-          docker push "$IMAGE"
+      - uses: nais/docker-build-push@v0
+        id: docker-push
+        with:
+          team: farskapsportal
+          identity_provider: ${{ secrets.NAIS_WORKLOAD_IDENTITY_PROVIDER }}
+          project_id: ${{ vars.NAIS_MANAGEMENT_PROJECT_ID }}
 
   deploy:
     name: Deploy to NAIS prod-gcp
@@ -65,3 +66,4 @@ jobs:
           CLUSTER: prod-gcp
           RESOURCE: .nais/nais.yaml
           VARS: .nais/prod.yaml
+          IMAGE: ${{ needs.build.outputs.image }}
