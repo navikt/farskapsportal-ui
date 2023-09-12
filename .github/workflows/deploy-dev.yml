@@ -7,6 +7,8 @@ on:
 
 env:
   IMAGE: ghcr.io/${{ github.repository }}/farskapsportal-ui:${{ github.sha }}
+  GITHUB_USERNAME: x-access-token
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
