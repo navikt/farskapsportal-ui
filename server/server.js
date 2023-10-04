@@ -16,7 +16,7 @@ const app = express();
 
 const options = {
     mode: false,
-    accessKey: process.env.MAINTENANCE_KEY, // From GCP secret farskapsportal-ui-maintenance-key
+    accessKey: `${process.env.MAINTENANCE_KEY}`, // From GCP secret farskapsportal-ui-maintenance-key
     endpoint: '/maintenance',
     filePath: null,
     useApi: false,
