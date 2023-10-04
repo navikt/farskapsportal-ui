@@ -8,10 +8,13 @@ import { getHtmlWithDekorator } from './dekorator.js';
 import * as headers from './headers.js';
 import { validateAccessToken, exchangeToken, setup } from './auth/auth-middleware.js';
 import { logger } from './logger.js';
+import maintenance from 'nodejs-server-maintenance';
 
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
 const app = express();
+
+maintenance(app);
 
 setup(config.app, config.idporten, config.tokenx).catch((error) => {
     logger.error('Error while setting up auth:', error);
