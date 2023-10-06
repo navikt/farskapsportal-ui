@@ -19,6 +19,7 @@ console.log(`>---> maintenanceKey: ${maintenanceKey} <---<`);
 
 const options = {
     mode: false,
+    accessKey: maintenanceKey,
     endpoint: '/maintenance',
     filePath: null,
     useApi: false,
