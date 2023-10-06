@@ -12,11 +12,14 @@ import maintenance from 'nodejs-server-maintenance';
 
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
+const maintenanceKey = `${process.env.MAINTENANCE_KEY}`;
 const app = express();
+
+console.log(`>---> maintenanceKey: ${maintenanceKey} <---<`);
 
 const options = {
     mode: false,
-    accessKey: `${process.env.MAINTENANCE_KEY}`, // From GCP secret farskapsportal-ui-maintenance-key
+    accessKey: `${maintenanceKey}`, // From GCP secret farskapsportal-ui-maintenance-key
     endpoint: '/maintenance',
     filePath: null,
     useApi: false,
