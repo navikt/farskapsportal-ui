@@ -19,7 +19,7 @@ console.log(`>---> maintenanceKey: ${maintenanceKey} <---<`);
 
 const options = {
     mode: false,
-    accessKey: `${maintenanceKey}`, // From GCP secret farskapsportal-ui-maintenance-key
+    accessKey: "pw1234", // From GCP secret farskapsportal-ui-maintenance-key
     endpoint: '/maintenance',
     filePath: null,
     useApi: false,
