@@ -15,11 +15,11 @@ const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
 const maintenanceKey = `${process.env.MAINTENANCE_KEY}`;
 const app = express();
 
-console.log(`>---> maintenanceKey: ${maintenanceKey} <---<`);
+console.log(`--- maintenanceKey: ${maintenanceKey} ---`);
 
 const options = {
     mode: false,
-    accessKey: maintenanceKey,
+    accessKey: `${maintenanceKey}`,
     endpoint: '/maintenance',
     filePath: null,
     useApi: false,
