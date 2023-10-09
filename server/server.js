@@ -15,31 +15,6 @@ const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
 const maintenanceKey = `${process.env.MAINTENANCE_KEY}`;
 const app = express();
 
-console.log(`--- maintenanceKey: ${maintenanceKey} ---`);
-
-app.post('/maintenance', async (req, res, next) => {
-    console.log(`req.query.access_key: ${req.query.access_key}`);
-
-    const erLike = req.query.access_key === maintenanceKey;
-
-    console.log(`Nøklene er like: ${erLike}`);
-
-    next();
-});
-
-const options = {
-    mode: false,
-    accessKey: `${maintenanceKey}`,
-    endpoint: '/maintenance',
-    filePath: null,
-    useApi: false,
-    statusCode: 503,
-    message: 'Error 503: Server is temporarily unavailable due to scheduled maintenance, please try again lager.', // 503 is taken from statusCode
-    blockMethods: ['GET', 'POST']
-}
-
-maintenance(app, options);
-
 setup(config.app, config.idporten, config.tokenx).catch((error) => {
     logger.error('Error while setting up auth:', error);
     process.exit(1);
@@ -61,6 +36,31 @@ app.use((req, res, next) => {
     res.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
     next();
 });
+
+app.post('/maintenance', async (req, res, next) => {
+    console.log(`req.query.access_key: ${req.query.access_key}`);
+
+    const erLike = req.query.access_key === maintenanceKey;
+
+    console.log(`Nøklene er like: ${erLike}`);
+
+    next();
+});
+
+console.log(`--- maintenanceKey: ${maintenanceKey} ---`);
+
+const options = {
+    mode: false,
+    accessKey: `${maintenanceKey}`,
+    endpoint: '/maintenance',
+    filePath: null,
+    useApi: false,
+    statusCode: 503,
+    message: 'Error 503: Server is temporarily unavailable due to scheduled maintenance, please try again lager.', // 503 is taken from statusCode
+    blockMethods: ['GET', 'POST']
+};
+
+maintenance(app, options);
 
 // Static files
 app.use(express.static(buildPath, { index: false }));
