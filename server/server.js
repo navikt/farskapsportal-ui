@@ -17,6 +17,16 @@ const app = express();
 
 console.log(`--- maintenanceKey: ${maintenanceKey} ---`);
 
+app.post('/maintenance', async (req, res, next) => {
+    console.log(`req.query.access_key: ${req.query.access_key}`);
+
+    const erLike = req.query.access_key === maintenanceKey;
+
+    console.log(`Nøklene er like: ${erLike}`);
+
+    next();
+});
+
 const options = {
     mode: false,
     accessKey: `${maintenanceKey}`,
