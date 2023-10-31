@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 
 
 app.post('/maintenance', async (req, res, next) => {
-
+    console.log(`maintenanceKey: ${maintenanceKey}`);
     const erLike = req.query.access_key === maintenanceKey;
     try {
         if (erLike) return next();
