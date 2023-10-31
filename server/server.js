@@ -37,24 +37,11 @@ app.use((req, res, next) => {
     next();
 });
 
-app.post('/maintenance', async (req, res, next) => {
-    console.log(`request: ${req}`)
-    console.log(`req.query.access_key: ${req.query.access_key}`);
-
-    const erLike = req.query.access_key === maintenanceKey;
-
-    console.log(`Nøklene er like: ${erLike}`);
-
-    next();
-});
-
-console.log(`--- maintenanceKey: ${maintenanceKey} ---`);
-
 const options = {
     mode: false,
     accessKey: `${maintenanceKey}`,
     endpoint: '/maintenance',
-    filePath: null,
+    filePath: 'vedlikehold.html',
     useApi: false,
     statusCode: 503,
     message: 'Error 503: Server is temporarily unavailable due to scheduled maintenance, please try again lager.', // 503 is taken from statusCode
