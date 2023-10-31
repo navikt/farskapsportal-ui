@@ -15,11 +15,6 @@ const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
 const maintenanceKey = `${process.env.MAINTENANCE_KEY}`;
 const app = express();
 
-setup(config.app, config.idporten, config.tokenx).catch((error) => {
-    logger.error('Error while setting up auth:', error);
-    process.exit(1);
-});
-
 app.use(bodyParser.text());
 headers.setup(app);
 
@@ -64,6 +59,11 @@ maintenance(app, options);
 
 // Static files
 app.use(express.static(buildPath, {index: false}));
+
+setup(config.app, config.idporten, config.tokenx).catch((error) => {
+    logger.error('Error while setting up auth:', error);
+    process.exit(1);
+});
 
 app.get('/', (req, res) => res.redirect('/nb/oversikt'));
 app.get('/nb', (req, res) => res.redirect('/nb/oversikt'));
