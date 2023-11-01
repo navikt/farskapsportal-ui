@@ -16,6 +16,31 @@ const maintenanceKey = `${process.env.MAINTENANCE_KEY}`;
 const app = express();
 
 app.use(bodyParser.text());
+
+const maintenanceMiddleware = (req, res, next) => {
+    console.log(`maintenanceKey: ${maintenanceKey}`);
+    const erLike = req.query.access_key === maintenanceKey;
+    try {
+        if (erLike) return next();
+        throw new Error();
+    } catch (error) {
+        res.sendStatus(404);
+    }
+};
+
+const options = {
+    mode: false,
+    accessKey: `${maintenanceKey}`,
+    endpoint: '/internal/maintenance',
+    filePath: 'vedlikehold.html',
+    useApi: false,
+    statusCode: 503,
+    message: 'Error 503: Server is temporarily unavailable due to scheduled maintenance, please try again lager.', // 503 is taken from statusCode
+    blockMethods: ['GET', 'POST']
+};
+
+maintenance(app, options, maintenanceMiddleware);
+
 headers.setup(app);
 app.set('trust proxy', 1);
 app.use(compression());
@@ -31,35 +56,6 @@ app.use((req, res, next) => {
     res.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
     next();
 });
-
-app.get('/internal/maintenance', (req, res) => {
-    console.log(`maintenanceKey: ${maintenanceKey}`);
-    res.sendStatus(200)
-});
-
-app.post('/internal/maintenance', async (req, res, next) => {
-    console.log(`maintenanceKey: ${maintenanceKey}`);
-    const erLike = req.query.access_key === maintenanceKey;
-    try {
-        if (erLike) return next();
-        throw new Error();
-    } catch (error) {
-        res.sendStatus(404);
-    }
-});
-
-const options = {
-    mode: false,
-    accessKey: `${maintenanceKey}`,
-    endpoint: '/internal/maintenance',
-    filePath: 'vedlikehold.html',
-    useApi: false,
-    statusCode: 503,
-    message: 'Error 503: Server is temporarily unavailable due to scheduled maintenance, please try again lager.', // 503 is taken from statusCode
-    blockMethods: ['GET', 'POST']
-};
-
-maintenance(app, options);
 
 // Static files
 app.use(express.static(buildPath, {index: false}));
