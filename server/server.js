@@ -14,15 +14,19 @@ const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
 const maintenanceKey = `${process.env.MAINTENANCE_KEY}`;
 const app = express();
+setup(config.app, config.idporten, config.tokenx).catch((error) => {
+    logger.error('Error while setting up auth:', error);
+    process.exit(1);
+});
 
 app.use(bodyParser.text());
 headers.setup(app);
-
 app.set('trust proxy', 1);
 app.use(compression());
 
 // Parse application/json
 app.use(express.json());
+
 app.use((req, res, next) => {
     res.removeHeader('X-Powered-By');
     res.set('X-Frame-Options', 'SAMEORIGIN');
@@ -31,7 +35,6 @@ app.use((req, res, next) => {
     res.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
     next();
 });
-
 
 app.post('/internal/maintenance', async (req, res, next) => {
     console.log(`maintenanceKey: ${maintenanceKey}`);
@@ -86,7 +89,6 @@ app.get('/api/brukerinformasjon', validateAccessToken, async (req, res) => {
         });
         const json = await response.json();
 
-        logger.info("response: ", res)
         res.status(response.status).send(json);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
