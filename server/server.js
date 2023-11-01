@@ -58,8 +58,6 @@ app.get('/api/brukerinformasjon', validateAccessToken, async (req, res) => {
             },
         });
         const json = await response.json();
-
-        logger.info("response: ", res)
         res.status(response.status).send(json);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
