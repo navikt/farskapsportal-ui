@@ -30,3 +30,15 @@ Start applikasjonen lokalt:
 ```
 yarn start
 ```
+
+### Vedlikeholdsmodus
+
+Se https://www.npmjs.com/package/nodejs-server-maintenance
+
+```
+Eksempel-curl for å aktivere vedlikeholdsmodus:
+curl -X POST https://farskapsportal-feature.ekstern.dev.nav.no/internal/maintenance -d '{"access_key":"pwd123"}'    
+
+deaktivere:
+curl -X DELETE https://farskapsportal-feature.ekstern.dev.nav.no/maintenance?access_key=pw123
+```

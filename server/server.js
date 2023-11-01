@@ -4,28 +4,39 @@ import bodyParser from 'body-parser';
 import fetch from 'node-fetch';
 import compression from 'compression';
 import * as config from './config.js';
-import { getHtmlWithDekorator } from './dekorator.js';
+import {getHtmlWithDekorator} from './dekorator.js';
 import * as headers from './headers.js';
-import { validateAccessToken, exchangeToken, setup } from './auth/auth-middleware.js';
-import { logger } from './logger.js';
+import {exchangeToken, setup, validateAccessToken} from './auth/auth-middleware.js';
+import {logger} from './logger.js';
+import maintenance from 'nodejs-server-maintenance';
 
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
+const maintenanceKey = `${process.env.MAINTENANCE_KEY}`;
 const app = express();
 
-setup(config.app, config.idporten, config.tokenx).catch((error) => {
-    logger.error('Error while setting up auth:', error);
-    process.exit(1);
-});
-
 app.use(bodyParser.text());
-headers.setup(app);
 
+headers.setup(app);
 app.set('trust proxy', 1);
 app.use(compression());
 
 // Parse application/json
 app.use(express.json());
+
+const options = {
+    mode: false,
+    accessKey: `${maintenanceKey}`,
+    endpoint: '/maintenance',
+    filePath: null,
+    useApi: false,
+    statusCode: 503,
+    message: 'Error 503: Server is temporarily unavailable due to scheduled maintenance, please try again lager.', // 503 is taken from statusCode
+    blockMethods: ['GET', 'POST']
+};
+
+maintenance(app, options);
+
 app.use((req, res, next) => {
     res.removeHeader('X-Powered-By');
     res.set('X-Frame-Options', 'SAMEORIGIN');
@@ -36,15 +47,21 @@ app.use((req, res, next) => {
 });
 
 // Static files
-app.use(express.static(buildPath, { index: false }));
+app.use(express.static(buildPath, {index: false}));
 
-app.get('/',(req, res) => res.redirect('/nb/oversikt'));
-app.get('/nb',(req, res) => res.redirect('/nb/oversikt'));
-app.get('/nn',(req, res) => res.redirect('/nn/oversikt'));
-app.get('/nb',(req, res) => res.redirect('/en/oversikt'));
+app.get('/', (req, res) => res.redirect('/nb/oversikt'));
+app.get('/nb', (req, res) => res.redirect('/nb/oversikt'));
+app.get('/nn', (req, res) => res.redirect('/nn/oversikt'));
+app.get('/nb', (req, res) => res.redirect('/en/oversikt'));
 
 // Nais functions
 app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
+
+// Set up security
+setup(config.app, config.idporten, config.tokenx).catch((error) => {
+    logger.error('Error while setting up auth:', error);
+    process.exit(1);
+});
 
 // Api calls
 app.get('/api/brukerinformasjon', validateAccessToken, async (req, res) => {
@@ -59,7 +76,6 @@ app.get('/api/brukerinformasjon', validateAccessToken, async (req, res) => {
         });
         const json = await response.json();
 
-        logger.info("response: ", res)
         res.status(response.status).send(json);
     } catch (error) {
         console.log(`Error while calling api: ${error}`);
@@ -111,7 +127,7 @@ app.post('/api/farskapserklaering/ny', validateAccessToken, async (req, res) => 
     }
 });
 
-app.put('/api/farskapserklaering/redirect',validateAccessToken, async (req, res) => {
+app.put('/api/farskapserklaering/redirect', validateAccessToken, async (req, res) => {
     try {
         const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(
@@ -173,7 +189,7 @@ app.put('/api/farskapserklaering/oppdatere', validateAccessToken, async (req, re
     }
 });
 
-app.get('/api/farskapserklaering/:erklaeringId/dokument', validateAccessToken,  async (req, res) => {
+app.get('/api/farskapserklaering/:erklaeringId/dokument', validateAccessToken, async (req, res) => {
     try {
         const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(

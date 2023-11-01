@@ -1202,6 +1202,11 @@ node-fetch@^3.3.2:
     fetch-blob "^3.1.4"
     formdata-polyfill "^4.0.10"
 
+nodejs-server-maintenance@^2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/nodejs-server-maintenance/-/nodejs-server-maintenance-2.1.1.tgz#912af70b7a8c988e09553ab7b02bf638d9dce481"
+  integrity sha512-CvPxpiUN6ZgN+Rmtvd1j26HhZRyZqf6II5xlzoWyMeARNzUVsaugY4Ik6Y3jRX77gI3HyY0BtO8WrNMn5CwMwg==
+
 normalize-url@^6.0.1:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-6.1.0.tgz#40d0885b535deffe3f3147bec877d05fe4c5668a"
