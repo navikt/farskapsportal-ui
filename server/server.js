@@ -17,29 +17,18 @@ const app = express();
 
 app.use(bodyParser.text());
 
-const maintenanceMiddleware = (req, res, next) => {
-    console.log(`maintenanceKey: ${maintenanceKey}`);
-    const erLike = req.query.access_key === maintenanceKey;
-    try {
-        if (erLike) return next();
-        throw new Error();
-    } catch (error) {
-        res.sendStatus(404);
-    }
-};
-
 const options = {
     mode: false,
     accessKey: `${maintenanceKey}`,
     endpoint: '/internal/maintenance',
-    filePath: 'vedlikehold.html',
+    filePath: null,
     useApi: false,
     statusCode: 503,
     message: 'Error 503: Server is temporarily unavailable due to scheduled maintenance, please try again lager.', // 503 is taken from statusCode
     blockMethods: ['GET', 'POST']
 };
 
-maintenance(app, options, maintenanceMiddleware);
+maintenance(app, options);
 
 headers.setup(app);
 app.set('trust proxy', 1);
