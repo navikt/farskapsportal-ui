@@ -33,7 +33,7 @@ app.use((req, res, next) => {
 });
 
 
-app.post('/maintenance', async (req, res, next) => {
+app.post('/internal/maintenance', async (req, res, next) => {
     console.log(`maintenanceKey: ${maintenanceKey}`);
     const erLike = req.query.access_key === maintenanceKey;
     try {
@@ -47,7 +47,7 @@ app.post('/maintenance', async (req, res, next) => {
 const options = {
     mode: false,
     accessKey: `${maintenanceKey}`,
-    endpoint: '/maintenance',
+    endpoint: '/internal/maintenance',
     filePath: 'vedlikehold.html',
     useApi: false,
     statusCode: 503,
