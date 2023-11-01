@@ -17,10 +17,17 @@ const app = express();
 
 app.use(bodyParser.text());
 
+headers.setup(app);
+app.set('trust proxy', 1);
+app.use(compression());
+
+// Parse application/json
+app.use(express.json());
+
 const options = {
     mode: false,
     accessKey: `${maintenanceKey}`,
-    endpoint: '/internal/maintenance',
+    endpoint: '/maintenance',
     filePath: null,
     useApi: false,
     statusCode: 503,
@@ -29,13 +36,6 @@ const options = {
 };
 
 maintenance(app, options);
-
-headers.setup(app);
-app.set('trust proxy', 1);
-app.use(compression());
-
-// Parse application/json
-app.use(express.json());
 
 app.use((req, res, next) => {
     res.removeHeader('X-Powered-By');
