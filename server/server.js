@@ -14,10 +14,6 @@ const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
 const maintenanceKey = `${process.env.MAINTENANCE_KEY}`;
 const app = express();
-setup(config.app, config.idporten, config.tokenx).catch((error) => {
-    logger.error('Error while setting up auth:', error);
-    process.exit(1);
-});
 
 app.use(bodyParser.text());
 headers.setup(app);
@@ -34,6 +30,11 @@ app.use((req, res, next) => {
     res.set('X-Content-Type-Options', 'nosniff');
     res.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
     next();
+});
+
+app.get('/internal/maintenance', (req, res) => {
+    console.log(`maintenanceKey: ${maintenanceKey}`);
+    res.sendStatus(200)
 });
 
 app.post('/internal/maintenance', async (req, res, next) => {
@@ -63,11 +64,6 @@ maintenance(app, options);
 // Static files
 app.use(express.static(buildPath, {index: false}));
 
-setup(config.app, config.idporten, config.tokenx).catch((error) => {
-    logger.error('Error while setting up auth:', error);
-    process.exit(1);
-});
-
 app.get('/', (req, res) => res.redirect('/nb/oversikt'));
 app.get('/nb', (req, res) => res.redirect('/nb/oversikt'));
 app.get('/nn', (req, res) => res.redirect('/nn/oversikt'));
@@ -75,6 +71,12 @@ app.get('/nb', (req, res) => res.redirect('/en/oversikt'));
 
 // Nais functions
 app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
+
+// Set up security
+setup(config.app, config.idporten, config.tokenx).catch((error) => {
+    logger.error('Error while setting up auth:', error);
+    process.exit(1);
+});
 
 // Api calls
 app.get('/api/brukerinformasjon', validateAccessToken, async (req, res) => {
