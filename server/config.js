@@ -1,5 +1,3 @@
-import 'dotenv/config.js';
-
 export const app = {
     useSecureCookies: !!process.env.NAIS_CLUSTER_NAME,
     port: process.env.PORT || 8080,
