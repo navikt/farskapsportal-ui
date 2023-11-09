@@ -14,7 +14,9 @@ scope.
 
 ```
 git clone https://github.com/navikt/farskapsportal-ui.git
+```
 
+```
 git clone git@github.com:navikt/farskapsportal-ui.git
 ```
 
