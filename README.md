@@ -4,12 +4,18 @@
 
 UI for [farskapserklæring](https://www.nav.no/erklaer-farskap).
 
-## Utviklingsmiljø
+## Oppsett av lokalt utviklingsmiljø
 
-Hent repoet fra github:
+Hent repoet fra github. Hvilken måte du henter repoet på har ikke noe å si, men for å kunne hente GitHub image pakker,
+se
+lenger ned, må din GitHub bruker ha en Personal Access Token (PAT) autorisert for SSO i ``navikt`` oragnisasjonen med
+minst *read:packages*
+scope.
 
 ```
 git clone https://github.com/navikt/farskapsportal-ui.git
+
+git clone git@github.com:navikt/farskapsportal-ui.git
 ```
 
 Installer nødvendige pakker:
@@ -31,7 +37,7 @@ Kjør flere Docker containere samtidig, slik som [nav-dekoratoren](https://githu
 docker-compose up -d
 ```
 
-Start applikasjonen lokalt:
+Start applikasjonen:
 
 ```
 yarn start
@@ -39,5 +45,6 @@ yarn start
 
 ## Testmiljø
 
-Testmiljøet er tilgjengelig på https://farskapsportal.ekstern.dev.nav.no/. For å logge inn trenger man en
+Testmiljøer er tilgjengelige eksternt. Miljøet nærmest likt produksjon finnes
+på https://farskapsportal.ekstern.dev.nav.no/. For å logge inn trenger man en
 testbruker fra [Tenor - Skatteetatens testdata](https://www.skatteetaten.no/skjema/testdata/).
