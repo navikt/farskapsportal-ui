@@ -2,6 +2,8 @@ import { ClockFilled, SuccessFilled, WarningFilled } from '@navikt/ds-icons';
 import cl from 'classnames';
 import React, { forwardRef } from 'react';
 import { StepContext } from './Stepper';
+import { IntlShape, useIntl } from 'react-intl';
+import { getMessage } from "../../utils/intl";
 
 import { OverridableComponent } from './OverridableComponent';
 
@@ -33,19 +35,23 @@ const StepperStep: OverridableComponent<StepperStepProps> = forwardRef(
         },
         ref
     ) => {
-        const getIndicator = () => {
+        const getIndicator = ({ intl }: { intl: IntlShape } ) => {
             switch (status) {
                 case 'finished':
-                    return <SuccessFilled style={{ color: '#0067C5' }} />;
+                    return <SuccessFilled title={getMessage(intl, 'skjema.stepper.successFilled.title')}
+                                          titleId="successTitle" aria-labelledby="successTitle"
+                                          style={{ color: '#0067C5' }} />;
                 case 'warning':
-                    return <WarningFilled />;
+                    return <WarningFilled title={getMessage(intl, 'skjema.stepper.warningFilled.title')}
+                                          titleId="warningqTitle" aria-labelledby="warningTitle" />;
                 case 'inProgress':
-                    return <ClockFilled />;
+                    return <ClockFilled   title={getMessage(intl, 'skjema.stepper.clockFilled.title')}
+                                          titleId="clockTitle" aria-labelledby="clockTitle" />;
                 default:
                     return index + 1;
             }
         };
-
+        const intl = useIntl();
         return (
             <StepContext.Consumer>
                 {({ activeStep }) => (
@@ -59,7 +65,7 @@ const StepperStep: OverridableComponent<StepperStepProps> = forwardRef(
                         disabled={Component === 'button' && disabled}
                         {...rest}
                     >
-                        <span className="navds-step__indicator">{getIndicator()}</span>
+                        <span className="navds-step__indicator">{getIndicator({intl})}</span>
                         <div className={cl('navds-step__label')}>{children}</div>
                     </Component>
                 )}

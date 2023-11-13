@@ -188,6 +188,10 @@ export default {
     'skjema.far.confirm.readAndUnderstood.label': 'Jeg har lest og forstått hva farskapserklæringen innebærer.',
     'skjema.far.confirm.cannotWithdraw.label': 'Jeg er kjent med at denne bekreftelsen ikke kan trekkes tilbake på et senere tidspunkt.',
 
+    "skjema.stepper.successFilled.title": "Steg fullført",
+    "skjema.stepper.warningFilled.title": "Stegadvarsel",
+    "skjema.stepper.clockFilled.title": "Sgteg fortsatt til behandling",
+
     'kvittering.intro.foedselsnummer': 'med fødselsnummer {fnr}.',
     'kvittering.intro.termindato': 'forventet født {termindato}.',
     'kvittering.intro.downloadPdfNotSigned': 'Du kan laste ned farskapserklæringen som en pdf på denne siden etter at begge parter har signert.',
