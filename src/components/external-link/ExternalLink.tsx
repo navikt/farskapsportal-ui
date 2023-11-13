@@ -13,7 +13,7 @@ function ExternalLink({ href, children }: ExternalLinkProps) {
     return (
         <Lenke className="ExternalLink" href={href} target="_blank" rel="noopener noreferrer">
             <span>{children ?? href}</span>
-            <ExternalSvg />
+            <ExternalSvg aria-hidden />
         </Lenke>
     );
 }
