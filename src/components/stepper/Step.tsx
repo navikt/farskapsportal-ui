@@ -3,7 +3,7 @@ import cl from 'classnames';
 import React, { forwardRef } from 'react';
 import { StepContext } from './Stepper';
 import { IntlShape, useIntl } from 'react-intl';
-import { getMessage } from "../../utils/intl";
+import { getMessage } from '../../utils/intl';
 
 import { OverridableComponent } from './OverridableComponent';
 
