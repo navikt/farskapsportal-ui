@@ -190,7 +190,7 @@ export default {
 
     "skjema.stepper.successFilled.title": "Steg fullført",
     "skjema.stepper.warningFilled.title": "Stegadvarsel",
-    "skjema.stepper.clockFilled.title": "Sgteg fortsatt til behandling",
+    "skjema.stepper.clockFilled.title": "Steg fortsatt til behandling",
 
     'kvittering.intro.foedselsnummer': 'med fødselsnummer {fnr}.',
     'kvittering.intro.termindato': 'forventet født {termindato}.',
