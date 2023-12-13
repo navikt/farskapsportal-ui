@@ -120,6 +120,7 @@ function FarForm(props: FarFormProps) {
     };
 
     const feil = mapErrors(errors, ['navn', 'foedselsnummer']);
+    const stateError = !state.pending && state.feilkode;
 
     return (
         <form onSubmit={handleSubmit(controlInfoAndSubmit, onError)}>
@@ -155,7 +156,7 @@ function FarForm(props: FarFormProps) {
                     inputRef={register({
                         required: getMessage(intl, 'skjema.mor.far.navn.validation.required'),
                     })}
-                    feil={errors.navn?.message}
+                    feil={errors.navn?.message || !!stateError}
                 />
 
                 <Controller
@@ -180,7 +181,7 @@ function FarForm(props: FarFormProps) {
                             label={getMessage(intl, 'skjema.mor.far.foedselsnummer.label')}
                             value={value}
                             onChange={(e) => onChange(formatFoedselsnummer(e.target.value))}
-                            feil={errors.foedselsnummer?.message}
+                            feil={errors.foedselsnummer?.message || !!stateError}
                             inputClassName="skjemaelement__input-fodselsnr"
                             bredde="S"
                             type="text"
