@@ -155,8 +155,7 @@ function FarForm(props: FarFormProps) {
                     })}
                     feil={farFeilMelding}
                 />
-            </SkjemaGruppe>
-            <SkjemaGruppe utenFeilPropagering>
+
                 <Controller
                     name="foedselsnummer"
                     control={control}
