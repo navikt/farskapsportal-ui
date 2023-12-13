@@ -1,5 +1,6 @@
 import AlertStripe from 'nav-frontend-alertstriper';
 import { FormattedMessage } from 'react-intl';
+import './FarFormValidationResterendeForsoek.less';
 
 interface FarFormValidationResterendeForsoekProps {
     antallResterendeForsoek?: number | null;
@@ -54,7 +55,7 @@ function FarFormValidationResterendeForsoek({
     }
 
     return (
-        <AlertStripe type="advarsel">
+        <AlertStripe type="advarsel" className="marginBottom">
             <FormattedMessage id="skjema.mor.far.validation.resterendeForsoek.final" />
         </AlertStripe>
     );
