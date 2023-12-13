@@ -39,14 +39,14 @@ const StepperStep: OverridableComponent<StepperStepProps> = forwardRef(
             switch (status) {
                 case 'finished':
                     return <SuccessFilled title={getMessage(intl, 'skjema.stepper.successFilled.title')}
-                                          titleId="successTitle" aria-labelledby="successTitle"
+                                          titleId={"successTitle-" + index} aria-labelledby={"successTitle-" + index}
                                           style={{ color: '#0067C5' }} />;
                 case 'warning':
                     return <WarningFilled title={getMessage(intl, 'skjema.stepper.warningFilled.title')}
-                                          titleId="warningTitle" aria-labelledby="warningTitle" />;
+                                          titleId={"warningTitle-" + index} aria-labelledby={"warningTitle-" + index} />;
                 case 'inProgress':
                     return <ClockFilled   title={getMessage(intl, 'skjema.stepper.clockFilled.title')}
-                                          titleId="clockTitle" aria-labelledby="clockTitle" />;
+                                          titleId={"clockTitle-" + index} aria-labelledby={"clockTitle-" + index} />;
                 default:
                     return index + 1;
             }
