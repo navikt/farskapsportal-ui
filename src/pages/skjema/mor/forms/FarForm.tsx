@@ -121,23 +121,22 @@ function FarForm(props: FarFormProps) {
 
     const feil = mapErrors(errors, ['navn', 'foedselsnummer']);
 
+    const farFeilMelding =
+        errors.navn?.message ||
+        (!state.pending && state.feilkode && (
+            <FarFormValidationError
+                id="far-form-validation-error"
+                feilkode={state.feilkode}
+                antallResterendeForsoek={state.antallResterendeForsoek}
+                tidspunktForNullstillingAvForsoek={state.tidspunktForNullstillingAvForsoek}
+            />
+        ));
+
     return (
         <form onSubmit={handleSubmit(controlInfoAndSubmit, onError)}>
             <SkjemaGruppe
                 legend={<Systemtittel>{getMessage(intl, 'skjema.mor.far.title')}</Systemtittel>}
-                feil={
-                    !state.pending &&
-                    state.feilkode && (
-                        <FarFormValidationError
-                            id="far-form-validation-error"
-                            feilkode={state.feilkode}
-                            antallResterendeForsoek={state.antallResterendeForsoek}
-                            tidspunktForNullstillingAvForsoek={
-                                state.tidspunktForNullstillingAvForsoek
-                            }
-                        />
-                    )
-                }
+                utenFeilPropagering
             >
                 <Input
                     id="navn"
@@ -154,8 +153,10 @@ function FarForm(props: FarFormProps) {
                     inputRef={register({
                         required: getMessage(intl, 'skjema.mor.far.navn.validation.required'),
                     })}
-                    feil={errors.navn?.message}
+                    feil={farFeilMelding}
                 />
+            </SkjemaGruppe>
+            <SkjemaGruppe utenFeilPropagering>
                 <Controller
                     name="foedselsnummer"
                     control={control}
@@ -186,14 +187,16 @@ function FarForm(props: FarFormProps) {
                         />
                     )}
                 />
-                <div aria-live="polite">
-                    {!state.pending && (
-                        <FarFormValidationResterendeForsoek
-                            antallResterendeForsoek={state.antallResterendeForsoek}
-                        />
-                    )}
-                </div>
             </SkjemaGruppe>
+
+            <div aria-live="polite">
+                {!state.pending && (
+                    <FarFormValidationResterendeForsoek
+                        antallResterendeForsoek={state.antallResterendeForsoek}
+                    />
+                )}
+            </div>
+
             {!!feil.length && (
                 <Feiloppsummering
                     tittel={getMessage(intl, 'form.feiloppsummering')}
