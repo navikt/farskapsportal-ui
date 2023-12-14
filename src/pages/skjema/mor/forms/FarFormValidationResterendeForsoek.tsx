@@ -55,7 +55,7 @@ function FarFormValidationResterendeForsoek({
     }
 
     return (
-        <AlertStripe type="advarsel" className="marginBottom">
+        <AlertStripe type="advarsel" className="resterendeForsoek--alert">
             <FormattedMessage id="skjema.mor.far.validation.resterendeForsoek.final" />
         </AlertStripe>
     );
