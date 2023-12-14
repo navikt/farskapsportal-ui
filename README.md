@@ -6,9 +6,9 @@ UI for [farskapserklæring](https://www.nav.no/erklaer-farskap).
 
 ## Oppsett av lokalt utviklingsmiljø
 
-Hent repoet fra github. Hvilken måte du henter repoet på har ikke noe å si, men for å kunne hente GitHub image pakker,
+Hent repoet fra GitHub. Hvilken måte du henter repoet på har ikke noe å si, men for å kunne hente GitHub image pakker,
 se
-lenger ned, må din GitHub bruker ha en Personal Access Token (PAT) autorisert for SSO i ``navikt`` oragnisasjonen med
+lenger ned, må din GitHub bruker ha en Personal Access Token (PAT) autorisert for SSO i ``navikt`` organisasjonen med
 minst *read:packages*
 scope.
 
