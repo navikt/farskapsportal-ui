@@ -187,6 +187,10 @@ export default {
     'skjema.far.confirm.readAndUnderstood.label': 'I\'ve read and understood what the paternity declaration entails.',
     'skjema.far.confirm.cannotWithdraw.label': 'I am aware that this confirmation cannot be withdrawn at a later date.',
 
+    "skjema.stepper.successFilled.title": "Step completed",
+    "skjema.stepper.warningFilled.title": "Step warning",
+    "skjema.stepper.clockFilled.title": "Step waiting",
+
     'kvittering.intro.foedselsnummer': 'with national identity number',
     'kvittering.intro.termindato': 'expected date of birth',
     'kvittering.intro.downloadPdfNotSigned': 'You can download the paternity declaration as a pdf on this page after both parties have signed.',

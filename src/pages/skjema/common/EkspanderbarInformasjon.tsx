@@ -39,7 +39,7 @@ function EkspanderbarInformasjon(props: EkspanderbarInformasjonProps) {
                     </Normaltekst>
                 </button>
             </div>
-            <Collapse isOpened={isOpen}>{props.content}</Collapse>
+            {isOpen && <Collapse isOpened={isOpen}>{props.content}</Collapse>}
         </div>
     );
 }
