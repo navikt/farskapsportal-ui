@@ -54,6 +54,7 @@ function BorSammenForm(props: BorSammenFormProps) {
                     />
                 }
                 feil={errors.borSammen?.message}
+                utenFeilPropagering
             >
                 <Radio
                     name="borSammen"
