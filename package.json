@@ -50,6 +50,7 @@
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-prettier": "^3.4.0",
     "fetch-mock": "^9.11.0",
+    "follow-redirects": "^1.0.0",
     "jest-axe": "^5.0.1",
     "js-cookie": "^2.2.1",
     "lodash.throttle": "^4.1.1",
