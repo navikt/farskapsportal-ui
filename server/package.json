@@ -19,7 +19,7 @@
     "express-session": "^1.17.3",
     "jose": "^5.0.0",
     "jsdom": "^16.7.0",
-    "next": "14.0.0",
+    "next": "14.1.1",
     "node-cache": "^5.1.2",
     "node-fetch": "^3.3.2",
     "openid-client": "^4.9.1",
