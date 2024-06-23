@@ -184,7 +184,11 @@ export default {
     'skjema.far.lesOpplysninger.confirm.label': 'I confirm that the information provided by the mother of the child is correct.',
     'skjema.far.lesOpplysninger.validation.required': 'You must confirm the information provided by the mother of the child to proceed.',
     'skjema.far.confirm.title': 'Sign declaration of paternity',
-    'skjema.far.confirm.readAndUnderstood.label': 'I\'ve read and understood what the paternity declaration entails.',
+    'oversikt.moreInfoPanels.hvaErFarskapserklaering.title': 'What does the paternity declaration entail?',
+    'oversikt.moreInfoPanels.hvaErFarskapserklaering.content.1': 'Paternity status grants rights to both the child and the father. In addition, paternity status also entails some duties for you as the father.',
+    'oversikt.moreInfoPanels.hvaErFarskapserklaering.content.2': 'You can find more information about what the paternity declaration entails <a>here</a>.',
+    'oversikt.moreInfoPanels.hvaErFarskapserklaering.link': 'https://www.nav.no/erklaer-farskap/en',
+    'skjema.far.confirm.readAndUnderstood.label': 'I understand what the paternity declaration entails.',
     'skjema.far.confirm.cannotWithdraw.label': 'I am aware that this confirmation cannot be withdrawn at a later date.',
 
     "skjema.stepper.successFilled.title": "Step completed",

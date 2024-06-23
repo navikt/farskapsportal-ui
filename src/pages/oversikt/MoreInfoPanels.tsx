@@ -9,6 +9,7 @@ import FarErklaererIkke from './more-info-panels-content/FarErklaererIkke';
 import HvaSkjerNaa from './more-info-panels-content/HvaSkjerNaa';
 import HvemErFar from './more-info-panels-content/HvemErFar';
 import Medmor from './more-info-panels-content/Medmor';
+import HvaErFarskapserklaering from "./more-info-panels-content/HvaErFarskapserklaering";
 
 interface MoreInfoPanelsProps {
     userInfo: UserInfo;
@@ -59,6 +60,7 @@ function MoreInfoPanels({ userInfo }: MoreInfoPanelsProps) {
         if (avventerSigneringBruker) {
             return (
                 <>
+                    <HvaErFarskapserklaering />
                     <AlleredeErklaert />
                     <ErJegFar />
                 </>
@@ -84,6 +86,7 @@ function MoreInfoPanels({ userInfo }: MoreInfoPanelsProps) {
                     {!!hasBarnUtenErklaering && <Medmor />}
                     {!!avventerSigneringMotpart && <HvaSkjerNaa />}
                     {!!avventerSigneringMotpart && <FarErklaererIkke />}
+                    {!!avventerSigneringBruker && <HvaErFarskapserklaering />}
                     {!!avventerSigneringBruker && <AlleredeErklaert />}
                     {!!avventerSigneringBruker && <ErJegFar />}
                     {!!avventerRegistrering && <HvaSkjerNaa />}

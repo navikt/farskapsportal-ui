@@ -111,6 +111,10 @@ export default {
     'oversikt.moreInfoPanels.alleredeErklaert.content.1': 'Det er Skatteetaten ved Folkeregisteret som er ansvarleg for å registrere og arkivere farskapserklæringar. Når de melder inn opplysningar om namnet på barnet til dei, vil du få ei stadfesting på at fødselsnummeret og namnet er registrert. Stadfestinga får du i innboksen din i Altinn.',
     'oversikt.moreInfoPanels.alleredeErklaert.content.2': ' Du finn meir informasjon om å registrere farskap og å velje namn <a>her</a>.',
     'oversikt.moreInfoPanels.alleredeErklaert.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/barn-fodt-i-norge/',
+    'oversikt.moreInfoPanels.hvaErFarskapserklaering.title': 'Lurer du på kva det å erklære farskap inneber?',
+    'oversikt.moreInfoPanels.hvaErFarskapserklaering.content.1': 'Eit farskap gir rettar både til barnet og faren. Og, i tillegg nokre plikter for deg som far.',
+    'oversikt.moreInfoPanels.hvaErFarskapserklaering.content.2': 'Les meir om kva farskap inneber <a>her</a>.',
+    'oversikt.moreInfoPanels.hvaErFarskapserklaering.link': 'https://www.nav.no/erklaer-farskap/nn',
     'oversikt.moreInfoPanels.erJegFar.title': 'Kva gjer eg dersom eg er usikker på om eg er far til barnet?',
     'oversikt.moreInfoPanels.erJegFar.content': 'Dersom du erklærer farskap for barnet, kan du ikkje seinare trekkje erklæringa tilbake. Dersom du er usikker på om du er far til barnet, bør du derfor ikkje signere erklæringa. NAV vil då ta ansvar for at farskapen blir fastsett. Du kan i så fall bli kalla inn og beden om å gi prøve til DNA-analyse. For meir informasjon kan du kontakte oss på nav.no/kontakt eller telefon 55 55 33 33.',
 
@@ -182,7 +186,7 @@ export default {
     'skjema.far.lesOpplysninger.confirm.label': 'Eg bekrefter at opplysningane oppgitt av mora til barnet er korrekte.',
     'skjema.far.lesOpplysninger.validation.required': 'Du må bekrefte opplysningane oppgitt av mora til barnet for å gå vidare.',
     'skjema.far.confirm.title': 'Signer farskapserklæringa',
-    'skjema.far.confirm.readAndUnderstood.label': 'Eg har lese og forstått kva farskapserklæringa inneber.',
+    'skjema.far.confirm.readAndUnderstood.label': 'Eg er kjend med kva erklæring av farskap inneber.',
     'skjema.far.confirm.cannotWithdraw.label': 'Eg er kjend med at denne stadfestinga ikkje kan trekkjast tilbake på eit seinare tidspunkt.',
 
     "skjema.stepper.successFilled.title": "Steg fullført",
