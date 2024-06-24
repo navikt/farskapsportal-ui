@@ -9,7 +9,7 @@ import FarErklaererIkke from './more-info-panels-content/FarErklaererIkke';
 import HvaSkjerNaa from './more-info-panels-content/HvaSkjerNaa';
 import HvemErFar from './more-info-panels-content/HvemErFar';
 import Medmor from './more-info-panels-content/Medmor';
-import HvaErFarskapserklaering from "./more-info-panels-content/HvaErFarskapserklaering";
+import HvaErFarskapserklaering from './more-info-panels-content/HvaErFarskapserklaering';
 
 interface MoreInfoPanelsProps {
     userInfo: UserInfo;
