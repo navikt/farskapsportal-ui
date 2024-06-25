@@ -189,7 +189,7 @@ export default {
     'skjema.far.lesOpplysninger.confirm.label': 'Jeg bekrefter at opplysningene oppgitt av moren til barnet er korrekte.',
     'skjema.far.lesOpplysninger.validation.required': 'Du må bekrefte opplysningene oppgitt av moren til barnet for å gå videre.',
     'skjema.far.confirm.title': 'Signer farskapserklæringen',
-    'skjema.far.confirm.readAndUnderstood.label': 'Jeg er kjent med hva erklæring av farskap innebærer. Les om erklæring av farskap <a>her</a>.',
+    'skjema.far.confirm.readAndUnderstood.label': 'Jeg er kjent med hva erklæring av farskap innebærer.',
     'skjema.far.confirm.readAndUnderstood.link': 'https://www.nav.no/registrere-far-eller-mor',
     'skjema.far.confirm.cannotWithdraw.label': 'Jeg er kjent med at denne bekreftelsen ikke kan trekkes tilbake på et senere tidspunkt.',
 
