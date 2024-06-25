@@ -39,11 +39,17 @@ Kjør flere Docker containere samtidig, slik som [nav-dekoratoren](https://githu
 docker-compose up -d
 ```
 
+Velg modus ved å endre import til ønsket test-scenario i src/api/mock/app/index.ts.
+
 Start applikasjonen:
 
 ```
 yarn start
 ```
+
+Nå applikasjonen fra nettleser:
+
+http://localhost:3000/nb/oversikt
 
 ## Testmiljø
 
