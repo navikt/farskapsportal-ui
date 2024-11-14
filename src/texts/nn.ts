@@ -18,7 +18,7 @@ export default {
     'form.feiloppsummering': 'For å gå vidare må du rette opp følgjande',
     'form.date.placeholder': 'dd.mm.åå',
 
-    'error.taKontakt': 'Ta gjerne kontakt med oss på nav.no/kontakt eller telefon 55 55 33 33 for å få informasjon om korleis du skal gå fram for å få fastsett farskap.',
+    'error.taKontakt': 'Ta gjerne kontakt med oss på nav.no/kontaktoss eller telefon 55 55 33 33 for å få informasjon om korleis du skal gå fram for å få fastsett farskap.',
 
     'withUserInfoError.banner.title': 'Oops, ',
     'withUserInfoError.banner.text': 'noko gjekk gale',
@@ -50,7 +50,7 @@ export default {
     'notPermitted.medmorEllerUkjent': 'Medmor eller person med ukjend rolle kan ikkje bruke løysinga.', // TODO: endre tekst
     //'notPermitted.morIkkeNorskBostedsadresse': 'For at farskap skal kunne erklærast elektronisk, må du være registrert med ein norsk bustedsadresse i Folkeregisteret.', // TODO
     'notPermitted.morSivilstandGift.1': 'Du er gift, og ektefellen din blir automatisk regisrert som far til barn du føder. Dersom det er ein annan mann enn ektefellen din som er far til barnet, kan farskapen endrast. Dette kan ikkje gjerast elektronisk.',
-    'notPermitted.morSivilstandGift.2': 'Du finn meir informasjon om å endre farskap <a>her</a>. Du er også velkomen til å kontakte oss på nav.no/kontakt eller telefon 55 55 33 33',
+    'notPermitted.morSivilstandGift.2': 'Du finn meir informasjon om å endre farskap <a>her</a>. Du er også velkomen til å kontakte oss på nav.no/kontaktoss eller telefon 55 55 33 33',
     'notPermitted.morSivilstandGift.link': 'https://www.nav.no/erklaer-farskap/nn#nar',
     'notPermitted.morSivilstandPartner.1': 'Du er gift / registrert partnar, og du og ektefellen/partnaren din må sende ein søknad til skatteeteaten for å få medmorskap registrert.',
     'notPermitted.morSivilstandPartner.2': 'Du finn informasjon og søknadsskjema <a>her</a>.',
@@ -70,7 +70,7 @@ export default {
     'oversikt.infoPanel.mor.medBarn.1.multiple': 'Vi har fått opplysningar om dei nyleg fødte barna dine:',
     'oversikt.infoPanel.mor.medBarn.2': 'Ifølgje opplysningane våre er farskapen ikkje fastsett for barnet nemnt over. Dersom du gir opplysningar om far til barnet nedanfor, kan han erklære farskapen elektronisk. Hugs at du må ha fullt namn og fødselsnummer til mannen du gir opp som far.',
     'oversikt.infoPanel.mor.ikkeSignert.1': 'Du har begynt på ei erklæring for barn.',
-    'oversikt.infoPanel.mor.ikkeSignert.2': 'Dersom opplysningane du har gitt om far til barnet, ikkje stemmer, eller du er usikker på kven som er far til barnet, kan du slette erklæringa ved å ta kontakt med Nav på nav.no/kontakt eller telefon 55 55 33 33.',
+    'oversikt.infoPanel.mor.ikkeSignert.2': 'Dersom opplysningane du har gitt om far til barnet, ikkje stemmer, eller du er usikker på kven som er far til barnet, kan du slette erklæringa ved å ta kontakt med Nav på nav.no/kontaktoss eller telefon 55 55 33 33.',
     'oversikt.infoPanel.mor.farIkkeSignert.1': 'Du har tidlegare gitt opplysningar om far til barn.',
     'oversikt.infoPanel.mor.farIkkeSignert.2': 'Faren du har gitt opp, har ikkje erklært farskapen til barnet. Når han erklærer farskapen, blir erklæringa send over til Skatteetaten for å bli registrert. Ein kopi av erklæringa blir også send til adressa du har registrert hos Nav.',
     'oversikt.infoPanel.mor.farSignert.1': 'Du har gitt opplysningar om far til barnet, som er',
@@ -87,7 +87,7 @@ export default {
     'oversikt.moreInfoPanels.erFarskapRegistrert.content': 'Dersom du allereie har født eit barn og lurer på om farskapen er registrert, ber vi deg ta kontatk med Skatteetaten. Du finn meir informasjon om registrering av farskap <a>her</a>. Dersom du tidlegare har erklært farskap elektronisk, skal erklæringa vere send til e-postadressa du har registrert hos Nav.',
     'oversikt.moreInfoPanels.erFarskapRegistrert.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/barn-fodt-i-norge/',
     'oversikt.moreInfoPanels.hvemErFar.title': 'Er du usikker på kven som er far til barnet?',
-    'oversikt.moreInfoPanels.hvemErFar.content': 'Dersom du ikkje har fullt namn og fødselsnummer eller er usikker på kven som er far til barnet, kan du ikkje bruke løysinga. Dersom farskapen ikkje er fastsett når barnet blir født, vil vi kontakte deg for å få fastsett farskapen. Dersom du lurer på saksgangen eller andre ting, kan du kontakte oss på nav.no/kontakt eller telefon 55 55 33 33.',
+    'oversikt.moreInfoPanels.hvemErFar.content': 'Dersom du ikkje har fullt namn og fødselsnummer eller er usikker på kven som er far til barnet, kan du ikkje bruke løysinga. Dersom farskapen ikkje er fastsett når barnet blir født, vil vi kontakte deg for å få fastsett farskapen. Dersom du lurer på saksgangen eller andre ting, kan du kontakte oss på nav.no/kontaktoss eller telefon 55 55 33 33.',
     'oversikt.moreInfoPanels.medmor.title': 'Ønskjer du å gi opp medmor?',
     'oversikt.moreInfoPanels.medmor.content.1': 'Ei medmor er ei kvinne som har fått juridisk foreldrestatus for det biologiske barnet til den kvinnelege ektefellen eller sambuaren sin. Dersom du er sambuar med ei kvinne, kan de søkje om medmorskap dersom barnet er blitt til ved assistert befruktning.',
     'oversikt.moreInfoPanels.medmor.content.2': 'Du finn informasjon og søknadsskjema <a>her</a>.',
@@ -96,7 +96,7 @@ export default {
     'oversikt.moreInfoPanels.hvaSkjerNaa.content': 'Det er Skatteetaten ved Folkeregisteret som er ansvarleg for å registrere og arkivere farskapserklæringar. Når de melder inn opplysningar om namnet til barnet til dei, vil du få ei stadfesting på at fødselsnummeret og namnet er registrert. Stadfestinga får du i innboksen din i Altinn. Du finn meir informasjon om å registrere farskap og å velje namn <a>her</a>.',
     'oversikt.moreInfoPanels.hvaSkjerNaa.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/barn-fodt-i-norge/',
     'oversikt.moreInfoPanels.farErklaererIkke.title': 'Kva skjer dersom faren du har gitt opp, ikkje erklærer farskapen?',
-    'oversikt.moreInfoPanels.farErklaererIkke.content': 'Dersom faren du har gitt opp, ikkje erklærer farskapen, har Nav ansvaret for å fastsetje han. Det kan då vere aktuelt å kalle inn partane og stadfeste farskapen ved å bruke DNA-analyse. For meir informasjon kan du kontakte oss på nav.no/kontakt eller telefon 55 55 33 33.',
+    'oversikt.moreInfoPanels.farErklaererIkke.content': 'Dersom faren du har gitt opp, ikkje erklærer farskapen, har Nav ansvaret for å fastsetje han. Det kan då vere aktuelt å kalle inn partane og stadfeste farskapen ved å bruke DNA-analyse. For meir informasjon kan du kontakte oss på nav.no/kontaktoss eller telefon 55 55 33 33.',
     'oversikt.moreInfoPanels.erklaereUtenMor.title': 'Vil du erklære farskap for eit barn utan at mor til barnet har gitt opp deg som far til barnet?',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.1': 'Dersom du ønskjer å erklære farskap for eit barn og du ikkje er blitt gitt opp som far, kan du møte personleg på ein av desse stadene.',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.li.1': 'Lege/jordmor i samband med svangerskapskontroll/fødsel',
@@ -116,7 +116,7 @@ export default {
     'oversikt.moreInfoPanels.hvaErFarskapserklaering.content.2': 'Les meir om kva farskap inneber <a>her</a>.',
     'oversikt.moreInfoPanels.hvaErFarskapserklaering.link': 'https://www.nav.no/erklaer-farskap/nn',
     'oversikt.moreInfoPanels.erJegFar.title': 'Kva gjer eg dersom eg er usikker på om eg er far til barnet?',
-    'oversikt.moreInfoPanels.erJegFar.content': 'Dersom du erklærer farskap for barnet, kan du ikkje seinare trekkje erklæringa tilbake. Dersom du er usikker på om du er far til barnet, bør du derfor ikkje signere erklæringa. Nav vil då ta ansvar for at farskapen blir fastsett. Du kan i så fall bli kalla inn og beden om å gi prøve til DNA-analyse. For meir informasjon kan du kontakte oss på nav.no/kontakt eller telefon 55 55 33 33.',
+    'oversikt.moreInfoPanels.erJegFar.content': 'Dersom du erklærer farskap for barnet, kan du ikkje seinare trekkje erklæringa tilbake. Dersom du er usikker på om du er far til barnet, bør du derfor ikkje signere erklæringa. Nav vil då ta ansvar for at farskapen blir fastsett. Du kan i så fall bli kalla inn og beden om å gi prøve til DNA-analyse. For meir informasjon kan du kontakte oss på nav.no/kontaktoss eller telefon 55 55 33 33.',
 
     'oversikt.barn.link.title': 'Opprett farskapserklæring for barn.',
     'oversikt.barn.link.status': 'Dette barnet har ikkje ein registrert far i Folkeregisteret.',
@@ -163,7 +163,7 @@ export default {
     'skjema.mor.far.validation.feilRolleFar.link': 'https://www.skatteetaten.no/nn/person/folkeregister/fodsel-og-namneval/soknad-om-medmorskap/',
     'skjema.mor.far.validation.forskjelligeFedre': 'Du kan ikkje opprette farskapserklæringar med forskjellige fedrar for same kull nyfødte.', // TODO: skal denne kunne oppstå? Kanskje ikke tillate mor å taste inn annen far?
     'skjema.mor.far.validation.pdlPersonIkkeFunnet': 'Fødselsnummeret du har gitt opp, finst ikkje i Folkeregisteret.',
-    'skjema.mor.far.validation.defaultUgyldigFarMessage': 'Den oppgitte faren kan ikkje erklære farskap digitalt. Ta kontakt med Nav på nav.no/kontakt eller telefon 55 55 33 33 for meir informasjon.',
+    'skjema.mor.far.validation.defaultUgyldigFarMessage': 'Den oppgitte faren kan ikkje erklære farskap digitalt. Ta kontakt med Nav på nav.no/kontaktoss eller telefon 55 55 33 33 for meir informasjon.',
     'skjema.mor.far.validation.maksAntallForsoek.1': 'Du har tasta feil fødselsnummer/namn på oppgitt far tre gonger, og er no blitt blokkert frå løysinga.',
     'skjema.mor.far.validation.maksAntallForsoek.2': 'Du kan prøve på nytt igjen om {timerIgjenForNullstillingAvForsoek} {tidsEnhet}.',
     'skjema.mor.far.validation.morOgFarSammePerson': 'Du kan ikkje oppgi deg selv som far.', // TODO
@@ -243,7 +243,7 @@ export default {
     'kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.link': 'https://www.nav.no/familie/alene-med-barn',
 
     'signer.alert.1': 'Du har fylt ut opplysningar om far og barn, men har ikkje signert skjemaet. Sjekk om opplysningane stemmer, og signer skjemaet.',
-    'signer.alert.2': 'Vil du slette eller endre erklæringa, ta kontakt med Nav på nav.no/kontakt eller telefon 55 55 33 33.',
+    'signer.alert.2': 'Vil du slette eller endre erklæringa, ta kontakt med Nav på nav.no/kontaktoss eller telefon 55 55 33 33.',
     'signer.submit': 'Signer',
     'signer.cancel': 'Avbryt',
 
