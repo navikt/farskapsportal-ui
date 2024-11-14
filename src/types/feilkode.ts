@@ -40,5 +40,5 @@ export enum Feilkode {
     PersonIkkePartIFarskapserklaering = 'PERSON_IKKE_PART_I_FARSKAPSERKLAERING', // Pålogget person er ikke forelder i oppgitt farskapserklaering
     PersonErDoed = 'PERSON_ER_DOED', // Død person kan ikke opptre som forelder i løsningen
     TermindatoUgyldig = 'TERMINDATO_UGYLDIG', // Oppgitt termindato er ikke innenfor godkjent intervall
-    UgyldigFar = 'UGYLDIG_FAR', // Oppgitt far kan ikke benytte løsningen, ta kontakt med NAV.
+    UgyldigFar = 'UGYLDIG_FAR', // Oppgitt far kan ikke benytte løsningen, ta kontakt med Nav.
 }
