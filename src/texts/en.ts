@@ -18,7 +18,7 @@ export default {
     'form.feiloppsummering': 'To proceed, you must correct the following',
     'form.date.placeholder': 'dd.mm.yyyy',
 
-    'error.taKontakt': 'Feel free to contact us at nav.no/contact or phone +47 55 55 33 33 for information on how to proceed to establish paternity',
+    'error.taKontakt': 'Feel free to contact us at nav.no/kontaktoss/en or phone +47 55 55 33 33 for information on how to proceed to establish paternity',
 
     'withUserInfoError.banner.title': 'Whoops, ',
     'withUserInfoError.banner.text': 'something went wrong',
@@ -50,7 +50,7 @@ export default {
     'notPermitted.medmorEllerUkjent': 'The co-mother or person with an unknown role cannot use the solution', // TODO: endre tekst
     'notPermitted.morIkkeNorskBostedsadresse': 'In order to declare paternity electronically, you must be registered with a Norwegian residential address in the National Register.', // TODO
     'notPermitted.morSivilstandGift.1': 'You are married and your spouse is automatically registered as the father of the child you give birth to. If a man other than your spouse is the child\'s father, the paternity can be changed. This cannot be done electronically.',
-    'notPermitted.morSivilstandGift.2': 'You can find more information about changing paternity <a>here</a>. You are also welcome to contact us at nav.no/contact or phone +47 55 55 33 33',
+    'notPermitted.morSivilstandGift.2': 'You can find more information about changing paternity <a>here</a>. You are also welcome to contact us at nav.no/kontaktoss/en or phone +47 55 55 33 33',
     'notPermitted.morSivilstandGift.link': 'https://www.nav.no/erklaer-farskap/en#when', 
     'notPermitted.morSivilstandPartner.1': 'You are a married/registered partner and you and your spouse/partner must submit an application to the Norwegian Tax Administration in order to have the co-maternity registered.',
     'notPermitted.morSivilstandPartner.2': 'You can find information and the application form <a>here</a>',
@@ -70,7 +70,7 @@ export default {
     'oversikt.infoPanel.mor.medBarn.1.multiple': 'We have received information about your recently born children:',
     'oversikt.infoPanel.mor.medBarn.2': 'According to our information, paternity has not been established for the above children. If you provide information about the father below, he can declare paternity electronically. Please note that you must have the full name and national identity number of the man you list as the father.',
     'oversikt.infoPanel.mor.ikkeSignert.1': 'You have started filling out a declaration for child',
-    'oversikt.infoPanel.mor.ikkeSignert.2': 'If the information you have provided about the child\'s father is incorrect, or you are unsure who the child\'s father is, you can delete the declaration by contacting Nav at nav.no/contact or phone +47 55 55 33 33.',
+    'oversikt.infoPanel.mor.ikkeSignert.2': 'If the information you have provided about the child\'s father is incorrect, or you are unsure who the child\'s father is, you can delete the declaration by contacting Nav at nav.no/kontaktoss/en or phone +47 55 55 33 33.',
     'oversikt.infoPanel.mor.farIkkeSignert.1': 'You have previously provided information about the father of the child',
     'oversikt.infoPanel.mor.farIkkeSignert.2': 'The father you have listed has not declared the paternity of the child. When he declares paternity, the declaration is sent to the Norwegian Tax Administration for registration. A copy of the declaration will also be sent to the address you have registered with Nav.',
     'oversikt.infoPanel.mor.farSignert.1': 'You have provided information about the father of the child who is',
@@ -96,7 +96,7 @@ export default {
     'oversikt.moreInfoPanels.hvaSkjerNaa.content': 'The Norwegian Tax Administration is responsible for registering and filing paternity certificates in the National Population Register. When you submit information about your child\'s name to them, you will receive confirmation of the registration of the child\'s national identity number and name. You will receive the confirmation in your Altinn inbox. You can find more information about registering paternity and choice of name <a>here</a>.',
     'oversikt.moreInfoPanels.hvaSkjerNaa.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/children-born-in-norway/',
     'oversikt.moreInfoPanels.farErklaererIkke.title': 'What happens if the father you have listed does not declare paternity?',
-    'oversikt.moreInfoPanels.farErklaererIkke.content': 'If the father you have listed does not declare paternity, Nav is responsible for establishing it. It may then be relevant to call in the parties and confirm paternity by means of DNA analysis. For further information, please contact us at nav.no/contact or phone +47 55 55 33 33.',
+    'oversikt.moreInfoPanels.farErklaererIkke.content': 'If the father you have listed does not declare paternity, Nav is responsible for establishing it. It may then be relevant to call in the parties and confirm paternity by means of DNA analysis. For further information, please contact us at nav.no/kontaktoss/en or phone +47 55 55 33 33.',
     'oversikt.moreInfoPanels.erklaereUtenMor.title': 'Do you want to declare paternity of a child without the child\'s mother listing you as the father of the child?',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.1': 'If you want to declare paternity of a child and you have not been listed as the father, you can come in person to one of these places:',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.li.1': 'Doctor/midwife in connection with pregnancy check-up/childbirth',
@@ -105,14 +105,14 @@ export default {
     'oversikt.moreInfoPanels.erklaereUtenMor.content.li.4': 'Judge',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.li.5': 'Norwegian diplomatic or consular official, if you are abroad',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.2': 'Remember to bring your ID.',
-    'oversikt.moreInfoPanels.erklaereUtenMor.content.3': 'For more information, see <a>paternity and parenthood</a>, contact us at nav.no/contact or phone +47 55 55 33 33. If the child is born abroad, please note that the mother must have listed you as the father of the child before you can declare paternity.',
+    'oversikt.moreInfoPanels.erklaereUtenMor.content.3': 'For more information, see <a>paternity and parenthood</a>, contact us at nav.no/kontaktoss/en or phone +47 55 55 33 33. If the child is born abroad, please note that the mother must have listed you as the father of the child before you can declare paternity.',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.3.link': 'https://www.nav.no/erklaer-farskap/en',
     'oversikt.moreInfoPanels.alleredeErklaert.title': 'Have you already declared paternity and wonder what happens next?',
     'oversikt.moreInfoPanels.alleredeErklaert.content.1': 'The Norwegian Tax Administration is responsible for registering and filing paternity certificates in the National Population Register. When you submit information about your child\'s name to them, you will receive confirmation of the registration of the child\'s national identity number and name. You will receive the confirmation in your Altinn inbox',
     'oversikt.moreInfoPanels.alleredeErklaert.content.2': ' You can find more information about registering paternity and choice of name <a>here</a>',
     'oversikt.moreInfoPanels.alleredeErklaert.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/children-born-in-norway/',
     'oversikt.moreInfoPanels.erJegFar.title': 'What do I do if I\'m unsure whether I\'m the father of the child?',
-    'oversikt.moreInfoPanels.erJegFar.content': 'If you declare paternity of the child, you cannot withdraw the declaration at a later time. If you are unsure whether you are the child\'s father, you should therefore not sign the declaration. Nav will then take responsibility for ensuring that the paternity is established. In this case, you may be summoned and requested to provide samples for DNA analysis. For further information, please contact us at nav.no/contact or phone +47 55 55 33 33.',
+    'oversikt.moreInfoPanels.erJegFar.content': 'If you declare paternity of the child, you cannot withdraw the declaration at a later time. If you are unsure whether you are the child\'s father, you should therefore not sign the declaration. Nav will then take responsibility for ensuring that the paternity is established. In this case, you may be summoned and requested to provide samples for DNA analysis. For further information, please contact us at nav.no/kontaktoss/en or phone +47 55 55 33 33.',
 
     'oversikt.barn.link.title': 'Create paternity declaration for children',
     'oversikt.barn.link.status': 'This child does not have a registered father in the National Population Register',
@@ -159,7 +159,7 @@ export default {
     'skjema.mor.far.validation.feilRolleFar.link': 'https://www.skatteetaten.no/en/person/national-registry/birth-and-name-selection/application-for-joint-maternity/',
     'skjema.mor.far.validation.forskjelligeFedre': 'You can\'t create paternity declarations with different fathers for the same cohort of newborns', // TODO: skal denne kunne oppstå? Kanskje ikke tillate mor å taste inn annen far?
     'skjema.mor.far.validation.pdlPersonIkkeFunnet': 'The national identity number you have provided is not found in the National Population Register.',
-    'skjema.mor.far.validation.defaultUgyldigFarMessage': 'The listed father cannot declare paternity digitally. For further information, please contact Nav at nav.no/contact or phone +47 55 55 33 33.',
+    'skjema.mor.far.validation.defaultUgyldigFarMessage': 'The listed father cannot declare paternity digitally. For further information, please contact Nav at nav.no/kontaktoss/en or phone +47 55 55 33 33.',
     'skjema.mor.far.validation.maksAntallForsoek.1': 'You have entered the wrong national identity number/name of the listed father three times and have now been blocked from the solution.',
     'skjema.mor.far.validation.maksAntallForsoek.2': 'You can try again in {timerIgjenForNullstillingAvForsoek} {tidsEnhet}',
     'skjema.mor.far.validation.morOgFarSammePerson': 'You can not register yourself as the father.',
@@ -245,7 +245,7 @@ export default {
     'kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.link': 'https://www.nav.no/familie/alene-med-barn',
 
     'signer.alert.1': 'You have filled out information about the father and child, but have not signed the form. Check if the information is correct and sign the form.',
-    'signer.alert.2': 'If you would like to delete or change the declaration, please contact Nav at nav.no/contact or phone +47 55 55 33 33.',
+    'signer.alert.2': 'If you would like to delete or change the declaration, please contact Nav at nav.no/kontaktoss/en or phone +47 55 55 33 33.',
     'signer.submit': 'Sign',
     'signer.cancel': 'Cancel',
 
