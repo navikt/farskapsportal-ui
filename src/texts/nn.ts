@@ -208,7 +208,7 @@ export default {
     'kvittering.intro.far.2': 'Erklæringa er endeleg og kan ikkje endrast.',
     'kvittering.intro.far.3': 'Du kan finne igjen erklæringa her: ',
     'kvittering.morAlert.1': 'Erklæringa er ikkje gyldig før oppgitt far har signert.',
-    'kvittering.morAlert.2': 'Han kan allereie no logge seg inn på Ditt Nav og signere erklæringa. Vi vil også sende han ei påminning på e-post og/eller sms.',
+    'kvittering.morAlert.2': 'Han kan allereie no logge seg inn på Min side og signere erklæringa. Vi vil også sende han ei påminning på e-post og/eller sms.',
     'kvittering.morAlert.3': 'Skal far signere frå samme einheit som du? Hugs at dykk da fyrst må stenge ned alle nettlesarvindauge.',
     'kvittering.prosessIndikator.step.1': 'Mor oppgir far.',
     'kvittering.prosessIndikator.step.2': 'Far erklærer farskap.',
