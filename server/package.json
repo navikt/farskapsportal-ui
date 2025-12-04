@@ -25,7 +25,7 @@
     "winston": "^3.10.0"
   },
   "engines": {
-    "node": "18.x"
+    "node": "20.x"
   },
   "browserslist": [
     ">0.2%",
