@@ -4,6 +4,7 @@ import { Foreldrerolle } from 'types/foreldrerolle';
 import { getToday } from 'utils/date';
 
 import MorSkjema from '../MorSkjema';
+import { generateRandomValidNorwegianIdent } from 'test-utils';
 
 jest.mock('api/api', () => ({ controlFatherInfo: () => Promise.resolve() }));
 
@@ -59,7 +60,7 @@ test('should display steps correctly', async () => {
         // fill out step 2
         fireEvent.change(navnInput, { target: { value: 'TEST' } });
         foedselsnummerInput.focus();
-        fireEvent.change(foedselsnummerInput, { target: { value: '1234567890' } });
+        fireEvent.change(foedselsnummerInput, { target: { value: generateRandomValidNorwegianIdent() } });
         fireEvent.click(submitButton);
     });
 
