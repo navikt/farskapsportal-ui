@@ -60,9 +60,8 @@ jobs:
 
       - name: Deploy to dev-gcp for main
         if: github.ref == 'refs/heads/main'
-        uses: nais/deploy/actions/deploy@v1
+        uses: nais/deploy/actions/deploy@v2
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
           RESOURCE: .nais/nais.yaml
           VARS: .nais/dev.yaml
@@ -70,9 +69,8 @@ jobs:
 
       - name: Deploy to dev-gcp for feature
         if: github.ref != 'refs/heads/main'
-        uses: nais/deploy/actions/deploy@v1
+        uses: nais/deploy/actions/deploy@v2
         env:
-          APIKEY: ${{ secrets.NAIS_DEPLOY_APIKEY }}
           CLUSTER: dev-gcp
           RESOURCE: .nais/nais.yaml
           VARS: .nais/feature.yaml

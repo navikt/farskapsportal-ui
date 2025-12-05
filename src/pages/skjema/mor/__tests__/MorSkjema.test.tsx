@@ -59,7 +59,7 @@ test('should display steps correctly', async () => {
         // fill out step 2
         fireEvent.change(navnInput, { target: { value: 'TEST' } });
         foedselsnummerInput.focus();
-        fireEvent.change(foedselsnummerInput, { target: { value: '03119022621' } });
+        fireEvent.change(foedselsnummerInput, { target: { value: '1234567890' } });
         fireEvent.click(submitButton);
     });
 
