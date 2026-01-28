@@ -1,16 +1,16 @@
 version: 2
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  - package-ecosystem: 'npm'
+    directory: '/'
     schedule:
-      interval: "weekly"
+      interval: 'weekly'
     cooldown:
       default-days: 7
     labels:
-      - "npm"
-      - "dependencies"
+      - 'npm'
+      - 'dependencies'
     groups:
       aksel:
         patterns:
-          - "@navikt/aksel*"
-          - "@navikt/ds*"
+          - '@navikt/aksel*'
+          - '@navikt/ds*'

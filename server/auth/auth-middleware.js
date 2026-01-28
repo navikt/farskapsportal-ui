@@ -1,4 +1,4 @@
-import {auth} from 'express-oauth2-jwt-bearer';
+import { auth } from 'express-oauth2-jwt-bearer';
 import { Issuer } from 'openid-client';
 import { logger } from '../logger.js';
 
@@ -78,7 +78,7 @@ const init = async () => {
             }
         );
 
-      //  return Promise.resolve({ idporten, tokenx });
+        //  return Promise.resolve({ idporten, tokenx });
         return Promise.resolve({ tokenx });
     } catch (error) {
         logger.error('Error while initializing auth:', error);

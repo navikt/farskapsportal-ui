@@ -26,7 +26,7 @@ const init = async () => {
         await import('./api/mock/app').then(({ setUpMock }) => setUpMock());
 
         injectDecoratorClientSide({
-            env: "dev",
+            env: 'dev',
             params: {
                 simple: true,
                 chatbot: true,

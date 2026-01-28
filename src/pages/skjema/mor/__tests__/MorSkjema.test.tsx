@@ -60,7 +60,9 @@ test('should display steps correctly', async () => {
         // fill out step 2
         fireEvent.change(navnInput, { target: { value: 'TEST' } });
         foedselsnummerInput.focus();
-        fireEvent.change(foedselsnummerInput, { target: { value: generateRandomValidNorwegianIdent() } });
+        fireEvent.change(foedselsnummerInput, {
+            target: { value: generateRandomValidNorwegianIdent() },
+        });
         fireEvent.click(submitButton);
     });
 

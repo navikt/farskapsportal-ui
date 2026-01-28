@@ -1,6 +1,6 @@
 # The MIT License
 
-Copyright 2020 Nav (Arbeids- og velferdsdirektoratet) - The Norwegian Labour 
+Copyright 2020 Nav (Arbeids- og velferdsdirektoratet) - The Norwegian Labour
 and Welfare Administration
 
 Permission is hereby granted, free of charge, to any person obtaining

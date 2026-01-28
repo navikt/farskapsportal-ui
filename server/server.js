@@ -37,10 +37,10 @@ app.use((req, res, next) => {
 // Static files
 app.use(express.static(buildPath, { index: false }));
 
-app.get('/',(req, res) => res.redirect('/nb/oversikt'));
-app.get('/nb',(req, res) => res.redirect('/nb/oversikt'));
-app.get('/nn',(req, res) => res.redirect('/nn/oversikt'));
-app.get('/nb',(req, res) => res.redirect('/en/oversikt'));
+app.get('/', (req, res) => res.redirect('/nb/oversikt'));
+app.get('/nb', (req, res) => res.redirect('/nb/oversikt'));
+app.get('/nn', (req, res) => res.redirect('/nn/oversikt'));
+app.get('/nb', (req, res) => res.redirect('/en/oversikt'));
 
 // Nais functions
 app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
@@ -108,7 +108,7 @@ app.post('/api/farskapserklaering/ny', validateAccessToken, async (req, res) => 
     }
 });
 
-app.put('/api/farskapserklaering/redirect',validateAccessToken, async (req, res) => {
+app.put('/api/farskapserklaering/redirect', validateAccessToken, async (req, res) => {
     try {
         const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(
@@ -170,7 +170,7 @@ app.put('/api/farskapserklaering/oppdatere', validateAccessToken, async (req, re
     }
 });
 
-app.get('/api/farskapserklaering/:erklaeringId/dokument', validateAccessToken,  async (req, res) => {
+app.get('/api/farskapserklaering/:erklaeringId/dokument', validateAccessToken, async (req, res) => {
     try {
         const oboToken = await exchangeToken(req.auth.token);
         const response = await fetch(
@@ -195,10 +195,7 @@ app.get('/api/farskapserklaering/:erklaeringId/dokument', validateAccessToken,  
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
     getHtmlWithDekorator(`${buildPath}/index.html`)
         .then((html) => {
-            res.send(
-                html
-                    .replace('{{{APP_VERSION}}}', process.env.APP_VERSION)
-            );
+            res.send(html.replace('{{{APP_VERSION}}}', process.env.APP_VERSION));
         })
         .catch((e) => {
             const error = `Failed to get decorator: ${e}`;

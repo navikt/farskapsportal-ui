@@ -35,18 +35,33 @@ const StepperStep: OverridableComponent<StepperStepProps> = forwardRef(
         },
         ref
     ) => {
-        const getIndicator = ({ intl }: { intl: IntlShape } ) => {
+        const getIndicator = ({ intl }: { intl: IntlShape }) => {
             switch (status) {
                 case 'finished':
-                    return <SuccessFilled title={getMessage(intl, 'skjema.stepper.successFilled.title')}
-                                          titleId={"successTitle-" + index} aria-labelledby={"successTitle-" + index}
-                                          style={{ color: '#0067C5' }} />;
+                    return (
+                        <SuccessFilled
+                            title={getMessage(intl, 'skjema.stepper.successFilled.title')}
+                            titleId={'successTitle-' + index}
+                            aria-labelledby={'successTitle-' + index}
+                            style={{ color: '#0067C5' }}
+                        />
+                    );
                 case 'warning':
-                    return <WarningFilled title={getMessage(intl, 'skjema.stepper.warningFilled.title')}
-                                          titleId={"warningTitle-" + index} aria-labelledby={"warningTitle-" + index} />;
+                    return (
+                        <WarningFilled
+                            title={getMessage(intl, 'skjema.stepper.warningFilled.title')}
+                            titleId={'warningTitle-' + index}
+                            aria-labelledby={'warningTitle-' + index}
+                        />
+                    );
                 case 'inProgress':
-                    return <ClockFilled   title={getMessage(intl, 'skjema.stepper.clockFilled.title')}
-                                          titleId={"clockTitle-" + index} aria-labelledby={"clockTitle-" + index} />;
+                    return (
+                        <ClockFilled
+                            title={getMessage(intl, 'skjema.stepper.clockFilled.title')}
+                            titleId={'clockTitle-' + index}
+                            aria-labelledby={'clockTitle-' + index}
+                        />
+                    );
                 default:
                     return index + 1;
             }
@@ -65,7 +80,7 @@ const StepperStep: OverridableComponent<StepperStepProps> = forwardRef(
                         disabled={Component === 'button' && disabled}
                         {...rest}
                     >
-                        <span className="navds-step__indicator">{getIndicator({intl})}</span>
+                        <span className="navds-step__indicator">{getIndicator({ intl })}</span>
                         <div className={cl('navds-step__label')}>{children}</div>
                     </Component>
                 )}

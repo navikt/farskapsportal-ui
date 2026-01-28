@@ -46,7 +46,9 @@ export function generateRandomValidNorwegianIdent(): string {
     const k1Weights = [3, 7, 6, 1, 8, 9, 4, 5, 2];
     const k2Weights = [5, 4, 3, 2, 7, 6, 5, 4, 3, 2];
 
-    const k1Sum = partial.split('').reduce((sum, digit, i) => sum + parseInt(digit) * k1Weights[i], 0);
+    const k1Sum = partial
+        .split('')
+        .reduce((sum, digit, i) => sum + parseInt(digit) * k1Weights[i], 0);
     const k1 = 11 - (k1Sum % 11);
     const firstControl = k1 === 11 ? 0 : k1;
 
@@ -56,7 +58,9 @@ export function generateRandomValidNorwegianIdent(): string {
     }
 
     const partialWithK1 = partial + firstControl;
-    const k2Sum = partialWithK1.split('').reduce((sum, digit, i) => sum + parseInt(digit) * k2Weights[i], 0);
+    const k2Sum = partialWithK1
+        .split('')
+        .reduce((sum, digit, i) => sum + parseInt(digit) * k2Weights[i], 0);
     const k2 = 11 - (k2Sum % 11);
     const secondControl = k2 === 11 ? 0 : k2;
 
