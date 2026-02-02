@@ -8,8 +8,8 @@ UI for [farskapserklæring](https://www.nav.no/erklaer-farskap).
 
 Hent repoet fra GitHub. Hvilken måte du henter repoet på har ikke noe å si, men for å kunne hente GitHub image pakker,
 se
-lenger ned, må din GitHub bruker ha en Personal Access Token (PAT) autorisert for SSO i ``navikt`` organisasjonen med
-minst *read:packages*
+lenger ned, må din GitHub bruker ha en Personal Access Token (PAT) autorisert for SSO i `navikt` organisasjonen med
+minst _read:packages_
 scope.
 
 ```
@@ -51,10 +51,10 @@ Nå applikasjonen fra nettleser:
 
 http://localhost:3000/nb/oversikt
 
-Endre lokalt testscenario i fila src/api/mock/app/index.tx. Avkommenter scenariet du ønsker å legge til grunn, 
+Endre lokalt testscenario i fila src/api/mock/app/index.tx. Avkommenter scenariet du ønsker å legge til grunn,
 f.eks
 
- > import user from './get/far_unsigned.json'; 
+> import user from './get/far_unsigned.json';
 
 for simulere prosessen for far som har ventende usignert farskapserklæring.
 

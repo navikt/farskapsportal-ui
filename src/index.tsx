@@ -26,10 +26,12 @@ const init = async () => {
         await import('./api/mock/app').then(({ setUpMock }) => setUpMock());
 
         injectDecoratorClientSide({
-            env: 'localhost',
-            port: 8100,
-            level: 'Level4',
-            redirectToApp: true,
+            env: 'dev',
+            params: {
+                level: 'Level4',
+                simple: true,
+                chatbot: false,
+            },
         });
     }
 
