@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router';
 
 import RedirectAfterLogin from 'components/redirect-after-login/RedirectAfterLogin';
 import RedirectToLanguage from 'components/redirect-to-language/RedirectToLanguage';

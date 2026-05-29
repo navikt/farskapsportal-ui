@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 import { useStore } from 'store/Context';
 import { Path } from 'types/path';

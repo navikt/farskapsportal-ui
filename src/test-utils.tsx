@@ -1,5 +1,5 @@
 import { ReactElement, ReactNode } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router';
 import { render, RenderOptions } from '@testing-library/react';
 
 import { StoreProvider } from 'store/Context';

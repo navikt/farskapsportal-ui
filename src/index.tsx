@@ -2,7 +2,7 @@ import { injectDecoratorClientSide } from '@navikt/nav-dekoratoren-moduler';
 import * as Sentry from '@sentry/react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router';
 
 import '@navikt/ds-css';
 import './index.css';

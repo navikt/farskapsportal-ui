@@ -1,7 +1,7 @@
 import { Alert } from '@navikt/ds-react';
 import { BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 
 import ContentContainer from 'components/content-container/ContentContainer';
 import FarskapserklaeringPresentation from 'components/farskapserklaering-presentation/FarskapserklaeringPresentation';

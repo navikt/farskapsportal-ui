@@ -1,7 +1,7 @@
 import { Heading, Tag } from '@navikt/ds-react';
 import { AnchorHTMLAttributes, ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 import './LinkPanel.css';
 

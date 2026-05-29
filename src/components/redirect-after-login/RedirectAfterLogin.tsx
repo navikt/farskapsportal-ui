@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 import Spinner from 'components/spinner/Spinner';
 import { getCookie, redirectLoginCookie, removeCookie } from 'utils/cookies';

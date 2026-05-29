@@ -1,4 +1,4 @@
-import { Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router';
 
 import ContentContainer from 'components/content-container/ContentContainer';
 import Page from 'components/page/Page';
