@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import SpeechBubble from './SpeechBubble';
 import Veileder, { VeilederProps } from './Veileder';
 
-import './VeilederBanner.less';
+import './VeilederBanner.css';
 
 interface VeilederBannerProps {
     title: string;

@@ -1,0 +1,5 @@
+@media (min-width: 600px) {
+  .BorSammenForm .inputPanel {
+    max-width: 11rem;
+  }
+}

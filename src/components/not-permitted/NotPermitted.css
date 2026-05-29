@@ -1,0 +1,3 @@
+.NotPermitted .InfoPanel p.typo-normal:not(:last-child) {
+  margin-bottom: 1rem;
+}

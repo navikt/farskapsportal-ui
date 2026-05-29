@@ -1,0 +1,53 @@
+.ProsessIndikator {
+  display: flex;
+  flex-direction: column;
+  margin: 1.5rem 0.5rem 2.5rem 0.5rem;
+}
+.ProsessIndikator__line {
+  height: 50px;
+  width: 2px;
+  background-color: #c6c2bf;
+  margin-left: 6.5px;
+}
+.Step {
+  display: flex;
+  align-items: center;
+}
+.Step__label {
+  margin-left: 1rem;
+  display: inline;
+}
+.Step .bold {
+  font-weight: 600;
+}
+.ProsessStegIcon {
+  display: flex;
+  align-items: center;
+  color: #59514b;
+  width: 1rem;
+}
+.ProsessStegIcon__circle {
+  height: 1rem;
+  min-width: 1rem;
+  background-color: #59514b;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ProsessStegIcon__circle__inner {
+  height: 0.5rem;
+  min-width: 0.5rem;
+  background-color: #f1f1f1;
+  border-radius: 50%;
+}
+.dot {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+.gray {
+  background-color: #59514b;
+}
+.white {
+  background-color: #f1f1f1;
+}

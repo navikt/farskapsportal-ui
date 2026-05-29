@@ -1,0 +1,9 @@
+.MorBekreftForm .bekreftCheckboksPanel {
+  margin-bottom: 1rem;
+}
+.MorBekreftForm .bekreftCheckboksPanel .skjemaelement {
+  margin-bottom: 0;
+}
+.MorBekreftForm .alertstripe {
+  margin-bottom: 2.5rem;
+}

@@ -8,7 +8,7 @@ import { UserInfo } from '../../types/user';
 import { Foreldrerolle } from '../../types/foreldrerolle';
 import { isLessThanNHoursInThePast } from '../../utils/date';
 
-import './Oversikt.less';
+import './Oversikt.css';
 
 function Oversikt() {
     return (

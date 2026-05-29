@@ -1,0 +1,24 @@
+.SpeechBubble {
+  position: relative;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  text-align: left;
+}
+.SpeechBubble .typo-element {
+  margin-bottom: 0.5rem;
+}
+.SpeechBubble::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  margin-left: -7rem;
+  width: 0;
+  height: 0;
+  bottom: -1.3rem;
+  border-left: 1.3rem solid transparent;
+  border-bottom: 1.3rem solid transparent;
+  border-top: 1.3rem solid transparent;
+  border-right: 1.3rem solid white;
+  transform: scaleX(1.5);
+}

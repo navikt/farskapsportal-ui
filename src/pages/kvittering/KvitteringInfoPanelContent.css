@@ -1,0 +1,6 @@
+.KvitteringInfoPanelContent:not(:last-child) {
+  margin-bottom: 2rem;
+}
+.KvitteringInfoPanelContent .typo-undertittel {
+  margin-bottom: 1rem;
+}

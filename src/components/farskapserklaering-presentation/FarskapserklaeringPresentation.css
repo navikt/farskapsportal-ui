@@ -1,0 +1,32 @@
+.FarskapserklaeringPresentation {
+  padding: 2rem;
+}
+.FarskapserklaeringPresentation__title {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.FarskapserklaeringPresentation .typo-systemtittel {
+  margin-bottom: 1rem;
+}
+.FarskapserklaeringPresentation__barn {
+  margin-bottom: 2rem;
+}
+.FarskapserklaeringPresentation__foreldre {
+  display: flex;
+  flex-direction: column;
+}
+.FarskapserklaeringPresentation__foreldre__mor {
+  margin-bottom: 1rem;
+}
+@media (min-width: 600px) {
+  .FarskapserklaeringPresentation__foreldre {
+    flex-direction: row;
+  }
+  .FarskapserklaeringPresentation__foreldre__mor {
+    margin-right: 1rem;
+    margin-bottom: 0;
+  }
+}
+.FarskapserklaeringPresentation__borSammen {
+  margin-top: 2rem;
+}

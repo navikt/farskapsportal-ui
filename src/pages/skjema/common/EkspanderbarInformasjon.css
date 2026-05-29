@@ -1,0 +1,33 @@
+.EkspanderbarInformasjon__intro {
+  display: flex;
+}
+.EkspanderbarInformasjon__intro__lesMerKnapp {
+  position: relative;
+  border: none !important;
+  background: transparent;
+  padding: 0;
+  display: inline-block;
+  margin-left: 0.5rem;
+}
+.EkspanderbarInformasjon__intro__lesMerKnapp:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #0067c5;
+}
+.EkspanderbarInformasjon__intro__lesMerKnapp__content {
+  color: #0067c5;
+  width: 4.8rem;
+  display: inline-block;
+  text-align: left;
+  border-bottom: solid 1px #c6c2bf;
+}
+.EkspanderbarInformasjon__intro__lesMerKnapp__content .nav-frontend-chevron {
+  margin-left: 0.2rem;
+}
+.EkspanderbarInformasjon__intro__lesMerKnapp:hover .EkspanderbarInformasjon__intro__lesMerKnapp__content,
+.EkspanderbarInformasjon__intro__lesMerKnapp:focus .EkspanderbarInformasjon__intro__lesMerKnapp__content,
+.EkspanderbarInformasjon__intro__lesMerKnapp:active .EkspanderbarInformasjon__intro__lesMerKnapp__content {
+  border-bottom-color: #0067c5;
+}
+.EkspanderbarInformasjon .ReactCollapse--content {
+  margin-top: 1rem;
+}

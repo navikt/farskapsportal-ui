@@ -1,6 +1,6 @@
 import { ReactComponent as VeilederSvg } from 'assets/icons/veileder.svg';
 
-import './Veileder.less';
+import './Veileder.css';
 
 export interface VeilederProps {
     type?: 'happy' | 'unsure' | 'hesitant';

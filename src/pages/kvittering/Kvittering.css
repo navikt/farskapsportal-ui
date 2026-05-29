@@ -1,0 +1,7 @@
+.Kvittering .KvitteringIntro,
+.Kvittering .KvitteringLastNedErklaering,
+.Kvittering .alertstripe,
+.Kvittering .FarskapserklaeringPresentation,
+.Kvittering .InfoExpandablePanel {
+  margin-bottom: 1rem;
+}
