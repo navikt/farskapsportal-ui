@@ -1,4 +1,4 @@
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import ContentContainer from 'components/content-container/ContentContainer';
 import Page from 'components/page/Page';
@@ -21,7 +21,7 @@ function Skjema() {
             return <FarSkjema userInfo={userInfo} />;
         } else if (userInfo.forelderrolle === Foreldrerolle.Mor) {
             if (!userInfo.kanOppretteFarskapserklaering) {
-                return <Redirect to={`/${language}${Path.Oversikt}`} />;
+                return <Navigate to={`/${language}${Path.Oversikt}`} replace />;
             }
 
             return <MorSkjema userInfo={userInfo} />;

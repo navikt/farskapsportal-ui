@@ -1,4 +1,4 @@
-import { Route, Switch } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 import RedirectAfterLogin from 'components/redirect-after-login/RedirectAfterLogin';
 import RedirectToLanguage from 'components/redirect-to-language/RedirectToLanguage';
@@ -14,7 +14,7 @@ import AvbruttOversikt from './pages/avbruttoversikt/AvbruttOversikt';
 import { Path } from 'types/path';
 import { useDekoratorLanguage } from 'utils/hooks/useDekoratorLanguage';
 
-const basePathWithLanguage = '/(nb|nn|en)?';
+const basePath = '/:lang';
 
 function App() {
     useDekoratorLanguage();
@@ -22,64 +22,53 @@ function App() {
     return (
         <RedirectAfterLogin>
             <RedirectToLanguage>
-                <Switch>
+                <Routes>
                     <Route
-                        exact={true}
-                        path={`${basePathWithLanguage}${Path.Oversikt}`}
-                        component={Oversikt}
+                        path={`${basePath}${Path.Oversikt}`}
+                        element={<Oversikt />}
                     />
                     <Route
-                        exact={true}
-                        path={`${basePathWithLanguage}${Path.Skjema}`}
-                        component={Skjema}
+                        path={`${basePath}${Path.Skjema}`}
+                        element={<Skjema />}
                     />
                     <Route
-                        exact={true}
-                        path={`${basePathWithLanguage}${Path.Kvittering}`}
-                        component={Kvittering}
+                        path={`${basePath}${Path.Kvittering}`}
+                        element={<Kvittering />}
                     />
                     <Route
-                        exact={true}
-                        path={`${basePathWithLanguage}${Path.Signer}`}
-                        component={Signer}
+                        path={`${basePath}${Path.Signer}`}
+                        element={<Signer />}
                     />
                     <Route
-                        exact={false}
-                        path={`${basePathWithLanguage}${Path.Suksess}`}
-                        component={Suksess}
+                        path={`${basePath}${Path.Suksess}`}
+                        element={<Suksess />}
                     />
                     <Route
-                        exact={false}
-                        path={`${basePathWithLanguage}${Path.Feilet}`}
-                        component={Feilet}
+                        path={`${basePath}${Path.Feilet}`}
+                        element={<Feilet />}
                     />
                     <Route
-                        exact={false}
-                        path={`${basePathWithLanguage}${Path.Avbrutt}`}
-                        component={Avbrutt}
+                        path={`${basePath}${Path.Avbrutt}`}
+                        element={<Avbrutt />}
                     />
                     <Route
-                        exact={true}
-                        path={`${basePathWithLanguage}${Path.Suksess_deprecated}`}
-                        component={Suksess}
+                        path={`${basePath}${Path.Suksess_deprecated}`}
+                        element={<Suksess />}
                     />
                     <Route
-                        exact={true}
-                        path={`${basePathWithLanguage}${Path.Feilet_deprecated}`}
-                        component={Feilet}
+                        path={`${basePath}${Path.Feilet_deprecated}`}
+                        element={<Feilet />}
                     />
                     <Route
-                        exact={true}
-                        path={`${basePathWithLanguage}${Path.Avbrutt_deprecated}`}
-                        component={Avbrutt}
+                        path={`${basePath}${Path.Avbrutt_deprecated}`}
+                        element={<Avbrutt />}
                     />
                     <Route
-                        exact={true}
-                        path={`${basePathWithLanguage}${Path.AvbruttOversikt}`}
-                        component={AvbruttOversikt}
+                        path={`${basePath}${Path.AvbruttOversikt}`}
+                        element={<AvbruttOversikt />}
                     />
-                    <Route component={PageNotFound} />
-                </Switch>
+                    <Route path="*" element={<PageNotFound />} />
+                </Routes>
             </RedirectToLanguage>
         </RedirectAfterLogin>
     );

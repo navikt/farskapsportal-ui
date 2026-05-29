@@ -1,5 +1,5 @@
-import Panel from 'nav-frontend-paneler';
-import { Element, Innholdstittel, Normaltekst, Undertittel } from 'nav-frontend-typografi';
+import { Box } from '@navikt/ds-react';
+import { BodyShort, Heading, Label } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import DatePresentation from 'components/date-presentation/DatePresentation';
@@ -8,7 +8,7 @@ import { isBorSammen } from 'utils/farskapserklaering';
 import { formatFoedselsnummer } from 'utils/foedselsnummer';
 import { getNameFromForelder } from 'utils/name';
 
-import './FarskapserklaeringPresentation.less';
+import './FarskapserklaeringPresentation.css';
 
 interface FarskapserklaeringPresentationProps {
     farskapserklaering: Farskapserklaering;
@@ -24,67 +24,67 @@ function FarskapserklaeringPresentation({
     border,
 }: FarskapserklaeringPresentationProps) {
     return (
-        <Panel className="FarskapserklaeringPresentation" border={border}>
+        <Box className="FarskapserklaeringPresentation" borderWidth={border ? '1' : '0'} padding="space-16" borderColor="neutral-subtle" borderRadius="4">
             {showTitle && (
-                <Innholdstittel tag="p" className="FarskapserklaeringPresentation__title">
+                <Heading level="2" size="medium" as="p" className="FarskapserklaeringPresentation__title">
                     <FormattedMessage id="farskapserklaering" />
-                </Innholdstittel>
+                </Heading>
             )}
-            <Undertittel tag="p">
+            <Heading level="3" size="small" as="p">
                 <FormattedMessage id="farskapserklaering.aboutChildren" />
-            </Undertittel>
+            </Heading>
             <div className="FarskapserklaeringPresentation__barn">
                 {farskapserklaering.barn?.termindato ? (
                     <>
-                        <Element>
+                        <Label>
                             <FormattedMessage id="farskapserklaering.expectingChildren" />
-                        </Element>
-                        <Normaltekst>
+                        </Label>
+                        <BodyShort>
                             <FormattedMessage id="termindato" />{' '}
                             <DatePresentation date={farskapserklaering.barn.termindato} />
-                        </Normaltekst>
+                        </BodyShort>
                     </>
                 ) : (
                     <>
-                        <Element>
+                        <Label>
                             <FormattedMessage id="farskapserklaering.bornChildren" />
-                        </Element>
-                        <Normaltekst>
+                        </Label>
+                        <BodyShort>
                             <FormattedMessage id="foedselsnummer" />{' '}
                             {formatFoedselsnummer(farskapserklaering.barn?.foedselsnummer ?? '')}
-                        </Normaltekst>
+                        </BodyShort>
                     </>
                 )}
             </div>
-            <Undertittel tag="p">
+            <Heading level="3" size="small" as="p">
                 <FormattedMessage id="farskapserklaering.parents" />
-            </Undertittel>
+            </Heading>
             <div className="FarskapserklaeringPresentation__foreldre">
                 <div className="FarskapserklaeringPresentation__foreldre__mor">
-                    <Element>
+                    <Label>
                         <FormattedMessage id="mor" />
-                    </Element>
-                    <Normaltekst>{getNameFromForelder(farskapserklaering.mor)}</Normaltekst>
-                    <Normaltekst>
+                    </Label>
+                    <BodyShort>{getNameFromForelder(farskapserklaering.mor)}</BodyShort>
+                    <BodyShort>
                         {formatFoedselsnummer(farskapserklaering.mor?.foedselsnummer ?? '')}
-                    </Normaltekst>
+                    </BodyShort>
                 </div>
                 <div>
-                    <Element>
+                    <Label>
                         <FormattedMessage id="far" />
-                    </Element>
-                    <Normaltekst>{getNameFromForelder(farskapserklaering.far)}</Normaltekst>
-                    <Normaltekst>
+                    </Label>
+                    <BodyShort>{getNameFromForelder(farskapserklaering.far)}</BodyShort>
+                    <BodyShort>
                         {formatFoedselsnummer(farskapserklaering.far?.foedselsnummer ?? '')}
-                    </Normaltekst>
+                    </BodyShort>
                 </div>
             </div>
             {showBorSammen && farskapserklaering.farBorSammenMedMor !== null && (
                 <>
-                    <Undertittel tag="p" className="FarskapserklaeringPresentation__borSammen">
+                    <Heading level="3" size="small" as="p" className="FarskapserklaeringPresentation__borSammen">
                         <FormattedMessage id="farskapserklaering.borSammen" />
-                    </Undertittel>
-                    <Normaltekst>
+                    </Heading>
+                    <BodyShort>
                         <FormattedMessage
                             id={
                                 isBorSammen(farskapserklaering)
@@ -92,10 +92,10 @@ function FarskapserklaeringPresentation({
                                     : 'farskapserklaering.borSammen.no'
                             }
                         />
-                    </Normaltekst>
+                    </BodyShort>
                 </>
             )}
-        </Panel>
+        </Box>
     );
 }
 

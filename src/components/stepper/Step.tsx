@@ -1,27 +1,24 @@
-import { ClockFilled, SuccessFilled, WarningFilled } from '@navikt/ds-icons';
+import { ClockFillIcon, CheckmarkCircleFillIcon, ExclamationmarkTriangleFillIcon } from '@navikt/aksel-icons';
 import cl from 'classnames';
 import React, { forwardRef } from 'react';
 import { StepContext } from './Stepper';
 import { IntlShape, useIntl } from 'react-intl';
 import { getMessage } from '../../utils/intl';
 
-import { OverridableComponent } from './OverridableComponent';
-
-import './index.less';
-
-export interface StepperStepProps {
-    props: {
-        children: React.ReactNode;
-        index?: number;
-        last?: boolean;
-        status?: 'none' | 'finished' | 'warning' | 'inProgress';
-        disabled?: boolean;
-    } & React.HTMLAttributes<HTMLLIElement>;
-    defaultComponent: 'span';
-}
+import './index.css';
 
 /* eslint-disable */
-const StepperStep: OverridableComponent<StepperStepProps> = forwardRef(
+type StepProps = {
+    children: React.ReactNode;
+    className?: string;
+    index?: number;
+    last?: boolean;
+    status?: 'none' | 'finished' | 'warning' | 'inProgress';
+    disabled?: boolean;
+    component?: React.ElementType;
+} & React.HTMLAttributes<HTMLLIElement>;
+
+const StepperStep = forwardRef<HTMLElement, StepProps>(
     (
         {
             children,
@@ -39,26 +36,23 @@ const StepperStep: OverridableComponent<StepperStepProps> = forwardRef(
             switch (status) {
                 case 'finished':
                     return (
-                        <SuccessFilled
+                        <CheckmarkCircleFillIcon
                             title={getMessage(intl, 'skjema.stepper.successFilled.title')}
-                            titleId={'successTitle-' + index}
                             aria-labelledby={'successTitle-' + index}
                             style={{ color: '#0067C5' }}
                         />
                     );
                 case 'warning':
                     return (
-                        <WarningFilled
+                        <ExclamationmarkTriangleFillIcon
                             title={getMessage(intl, 'skjema.stepper.warningFilled.title')}
-                            titleId={'warningTitle-' + index}
                             aria-labelledby={'warningTitle-' + index}
                         />
                     );
                 case 'inProgress':
                     return (
-                        <ClockFilled
+                        <ClockFillIcon
                             title={getMessage(intl, 'skjema.stepper.clockFilled.title')}
-                            titleId={'clockTitle-' + index}
                             aria-labelledby={'clockTitle-' + index}
                         />
                     );

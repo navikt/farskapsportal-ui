@@ -1,7 +1,7 @@
+import { Heading } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
-import { Innholdstittel } from 'nav-frontend-typografi';
 
-import './Banner.less';
+import './Banner.css';
 
 interface BannerProps {
     titleId: string;
@@ -12,9 +12,9 @@ interface BannerProps {
 function Banner({ titleId }: BannerProps) {
     return (
         <div className="Banner">
-            <Innholdstittel>
+            <Heading level="2" size="medium">
                 <FormattedMessage id={titleId} />
-            </Innholdstittel>
+            </Heading>
         </div>
     );
 }

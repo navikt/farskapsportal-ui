@@ -1,8 +1,8 @@
-import { Element, Systemtittel } from 'nav-frontend-typografi';
+import { Heading, Label } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 import { Skriftspraak } from '../../../../types/skriftspraak';
 
-import './SpraakForFarskapserklaeringPresentation.less';
+import './SpraakForFarskapserklaeringPresentation.css';
 
 interface SpraakForFarskapserklaeringPresentationProps {
     spraak: Skriftspraak;
@@ -13,12 +13,12 @@ function SpraakForFarskapserklaeringPresentation({
 }: SpraakForFarskapserklaeringPresentationProps) {
     return (
         <div className="SpraakForFarskapserklaeringPresentation">
-            <Systemtittel>
+            <Heading level="2" size="small">
                 <FormattedMessage id="skjema.mor.spraak.title" />
-            </Systemtittel>
-            <Element>
+            </Heading>
+            <Label>
                 <FormattedMessage id={mapSkriftspraakToTextId(spraak)} />
-            </Element>
+            </Label>
         </div>
     );
 }

@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { ReactNode } from 'react';
 
-import './ContentContainer.less';
+import './ContentContainer.css';
 
 interface ContentContainerProps {
     children: ReactNode;

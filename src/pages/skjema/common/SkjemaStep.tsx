@@ -1,12 +1,10 @@
-import { Knapp } from 'nav-frontend-knapper';
-import Panel from 'nav-frontend-paneler';
-import { Systemtittel } from 'nav-frontend-typografi';
+import { Box, Button, Heading } from '@navikt/ds-react';
 import { ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { StepStatus } from 'types/form';
 
-import './SkjemaStep.less';
+import './SkjemaStep.css';
 
 interface SkjemaStepProps {
     formComponent: ReactNode;
@@ -25,26 +23,27 @@ function SkjemaStep(props: SkjemaStepProps) {
                     <div className="SkjemaStep__done">
                         {props.presentationComponent}
                         {props.onChange && (
-                            <Knapp
-                                htmlType="button"
+                            <Button
+                                type="button"
+                                variant="secondary"
                                 onClick={props.onChange}
                                 disabled={props.isDisabled}
                             >
                                 <FormattedMessage id="skjema.edit" />
-                            </Knapp>
+                            </Button>
                         )}
                     </div>
                 );
             case StepStatus.Active:
                 return props.formComponent;
             case StepStatus.NotStarted:
-                return <Systemtittel>{props.title}</Systemtittel>;
+                return <Heading level="2" size="small">{props.title}</Heading>;
         }
     };
 
     return (
         <section className="SkjemaStep">
-            <Panel>{renderContent()}</Panel>
+            <Box background="default" borderWidth="1" borderColor="neutral-subtle" borderRadius="4" padding="space-16">{renderContent()}</Box>
         </section>
     );
 }

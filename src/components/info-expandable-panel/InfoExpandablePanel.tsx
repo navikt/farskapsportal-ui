@@ -1,9 +1,8 @@
-import Ekspanderbartpanel from 'nav-frontend-ekspanderbartpanel';
-import { Undertittel } from 'nav-frontend-typografi';
+import { Accordion, Heading } from '@navikt/ds-react';
 import { ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import './InfoExpandablePanel.less';
+import './InfoExpandablePanel.css';
 
 interface InfoExpandablePanelProps {
     children: ReactNode;
@@ -12,16 +11,16 @@ interface InfoExpandablePanelProps {
 
 function InfoExpandablePanel({ children, titleId }: InfoExpandablePanelProps) {
     return (
-        <Ekspanderbartpanel
-            className="InfoExpandablePanel"
-            tittel={
-                <Undertittel>
-                    <FormattedMessage id={titleId} />
-                </Undertittel>
-            }
-        >
-            {children}
-        </Ekspanderbartpanel>
+        <Accordion className="InfoExpandablePanel">
+            <Accordion.Item>
+                <Accordion.Header>
+                    <Heading level="3" size="small">
+                        <FormattedMessage id={titleId} />
+                    </Heading>
+                </Accordion.Header>
+                <Accordion.Content>{children}</Accordion.Content>
+            </Accordion.Item>
+        </Accordion>
     );
 }
 

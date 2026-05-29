@@ -1,11 +1,11 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 function FarSignert() {
     return (
-        <Normaltekst>
+        <BodyShort>
             <FormattedMessage id="oversikt.infoPanel.far.signert" />
-        </Normaltekst>
+        </BodyShort>
     );
 }
 

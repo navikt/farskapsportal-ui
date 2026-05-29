@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { Element, Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort, Label } from '@navikt/ds-react';
 
-import './SpeechBubble.less';
+import './SpeechBubble.css';
 
 interface SpeechBubbleProps {
     title: string;
@@ -11,8 +11,8 @@ interface SpeechBubbleProps {
 function SpeechBubble({ title, text }: SpeechBubbleProps) {
     return (
         <div className="SpeechBubble">
-            <Element>{title}</Element>
-            <Normaltekst>{text}</Normaltekst>
+            <Label>{title}</Label>
+            <BodyShort>{text}</BodyShort>
         </div>
     );
 }

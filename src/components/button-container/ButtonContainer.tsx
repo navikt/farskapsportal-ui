@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import './ButtonContainer.less';
+import './ButtonContainer.css';
 
 interface ButtonContainerProps {
     children: ReactNode;

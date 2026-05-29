@@ -1,8 +1,8 @@
-import { Undertittel } from 'nav-frontend-typografi';
+import { Heading } from '@navikt/ds-react';
 import { ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
 
-import './KvitteringInfoPanelContent.less';
+import './KvitteringInfoPanelContent.css';
 
 interface KvitteringInfoPanelContentProps {
     children: ReactNode;
@@ -12,9 +12,9 @@ interface KvitteringInfoPanelContentProps {
 function KvitteringInfoPanelContent({ children, titleId }: KvitteringInfoPanelContentProps) {
     return (
         <section className="KvitteringInfoPanelContent">
-            <Undertittel tag="h3">
+            <Heading level="3" size="small" as="h3">
                 <FormattedMessage id={titleId} />
-            </Undertittel>
+            </Heading>
             {children}
         </section>
     );

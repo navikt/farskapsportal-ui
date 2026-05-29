@@ -1,14 +1,14 @@
 import { UserInfo } from '../../types/user';
-import Panel from 'nav-frontend-paneler';
+import { Box } from '@navikt/ds-react';
 import ErklaeringerAvventerBruker from './ErklaeringerAvventerBruker';
 import ErklaeringerAvventerMotpart from './ErklaeringerAvventerMotpart';
 import ErklaeringerAvventerRegistrering from './ErklaeringerAvventerRegistrering';
 import { FormattedMessage } from 'react-intl';
-import { Systemtittel } from 'nav-frontend-typografi';
+import { Heading } from '@navikt/ds-react';
 import BarnUtenErklaering from './BarnUtenErklaering';
 import { getBarnUtenErklaering } from '../../utils/farskapserklaering';
 
-import './VentendeErklaeringer.less';
+import './VentendeErklaeringer.css';
 
 interface VentendeErklaeringerProps {
     userInfo: UserInfo;
@@ -25,15 +25,15 @@ function VentendeErklaeringer({ userInfo }: VentendeErklaeringerProps) {
     }
 
     return (
-        <Panel className="VentendeErklaeringer" border>
-            <Systemtittel tag="h2">
+        <Box className="VentendeErklaeringer" borderWidth="1" borderColor="neutral-subtle" borderRadius="4" padding="space-16">
+            <Heading level="2" size="small" as="h2">
                 <FormattedMessage id="oversikt.ventendeErklaeringer.title" />
-            </Systemtittel>
+            </Heading>
             <BarnUtenErklaering userInfo={userInfo} />
             <ErklaeringerAvventerBruker userInfo={userInfo} />
             <ErklaeringerAvventerMotpart userInfo={userInfo} />
             <ErklaeringerAvventerRegistrering userInfo={userInfo} />
-        </Panel>
+        </Box>
     );
 }
 

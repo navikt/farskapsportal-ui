@@ -1,21 +1,21 @@
 import { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import Spinner from 'components/spinner/Spinner';
 import { getCookie, redirectLoginCookie, removeCookie } from 'utils/cookies';
 
 function RedirectAfterLogin(props: { children: JSX.Element }) {
     const [loading, setLoading] = useState(true);
-    const history = useHistory();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const redirectTo = getCookie(redirectLoginCookie);
         if (redirectTo) {
             removeCookie(redirectLoginCookie);
-            history.replace(redirectTo);
+            navigate(redirectTo, { replace: true });
         }
         setLoading(false);
-    }, [history]);
+    }, [navigate]);
 
     return loading ? <Spinner /> : props.children;
 }

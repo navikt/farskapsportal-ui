@@ -1,3 +1,4 @@
+import React from 'react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import ExternalLink from 'components/external-link/ExternalLink';
@@ -19,8 +20,8 @@ function FormattedMessageWithExternalLink({
             id={textId}
             values={{
                 // eslint-disable-next-line react/display-name
-                a: (text: string) => (
-                    <ExternalLink href={getMessage(intl, linkId)}>{text}</ExternalLink>
+                a: (chunks: React.ReactNode) => (
+                    <ExternalLink href={getMessage(intl, linkId)}>{chunks}</ExternalLink>
                 ),
             }}
         />

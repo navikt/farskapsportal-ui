@@ -1,4 +1,4 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import InfoExpandablePanel from 'components/info-expandable-panel/InfoExpandablePanel';
@@ -6,9 +6,9 @@ import InfoExpandablePanel from 'components/info-expandable-panel/InfoExpandable
 function ErJegFar() {
     return (
         <InfoExpandablePanel titleId="oversikt.moreInfoPanels.erJegFar.title">
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="oversikt.moreInfoPanels.erJegFar.content" />
-            </Normaltekst>
+            </BodyShort>
         </InfoExpandablePanel>
     );
 }

@@ -1,4 +1,4 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import { Farskapserklaering } from 'types/farskapserklaering';
@@ -55,9 +55,9 @@ function HvaSkjerHvisPanel({ erklaering }: HvaSkjerHvisPanelProps) {
 function FarSignererIkkeTermindato() {
     return (
         <KvitteringInfoPanelContent titleId="kvittering.hvaSkjerHvis.farSignererIkke.title">
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="kvittering.hvaSkjerHvis.farSignererIkke.termindato.text" />
-            </Normaltekst>
+            </BodyShort>
         </KvitteringInfoPanelContent>
     );
 }
@@ -65,9 +65,9 @@ function FarSignererIkkeTermindato() {
 function FarSignererIkkeFoedselsnummer() {
     return (
         <KvitteringInfoPanelContent titleId="kvittering.hvaSkjerHvis.farSignererIkke.title">
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="kvittering.hvaSkjerHvis.farSignererIkke.foedselsnummer.text" />
-            </Normaltekst>
+            </BodyShort>
         </KvitteringInfoPanelContent>
     );
 }
@@ -75,9 +75,9 @@ function FarSignererIkkeFoedselsnummer() {
 function FoedtIUtlandet() {
     return (
         <KvitteringInfoPanelContent titleId="kvittering.hvaSkjerHvis.foedtIUtlandet.title">
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="kvittering.hvaSkjerHvis.foedtIUtlandet.text" />
-            </Normaltekst>
+            </BodyShort>
         </KvitteringInfoPanelContent>
     );
 }
@@ -85,9 +85,9 @@ function FoedtIUtlandet() {
 function BarnetDoer() {
     return (
         <KvitteringInfoPanelContent titleId="kvittering.hvaSkjerHvis.barnetDoer.title">
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="kvittering.hvaSkjerHvis.barnetDoer.text" />
-            </Normaltekst>
+            </BodyShort>
         </KvitteringInfoPanelContent>
     );
 }

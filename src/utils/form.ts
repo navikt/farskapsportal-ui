@@ -1,14 +1,18 @@
 import { FieldErrors } from 'react-hook-form';
-import { FeiloppsummeringFeil } from 'nav-frontend-skjema';
 
-export const mapErrors = (errors: FieldErrors, keys: string[]): FeiloppsummeringFeil[] => {
-    const feil: FeiloppsummeringFeil[] = [];
+export interface FormFeil {
+    skjemaelementId: string;
+    feilmelding: string;
+}
+
+export const mapErrors = (errors: FieldErrors, keys: string[]): FormFeil[] => {
+    const feil: FormFeil[] = [];
 
     keys.forEach((key) => {
         if (errors[key]) {
             feil.push({
                 skjemaelementId: key,
-                feilmelding: errors[key].message,
+                feilmelding: errors[key]?.message as string ?? '',
             });
         }
     });

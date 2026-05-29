@@ -1,10 +1,10 @@
 import { Farskapserklaering } from '../../types/farskapserklaering';
 import { isSignedByFar } from '../../utils/farskapserklaering';
 import { FormattedMessage } from 'react-intl';
-import { Normaltekst } from 'nav-frontend-typografi';
-import { SuccessFilled } from '@navikt/ds-icons';
+import { BodyShort } from '@navikt/ds-react';
+import { CheckmarkCircleFillIcon } from '@navikt/aksel-icons';
 
-import './ProsessIndikator.less';
+import './ProsessIndikator.css';
 
 // TODO: Bytt ut med relevant komponent naar den er publisert
 
@@ -39,9 +39,9 @@ function ProsessSteg({ textId, iconType }: { textId: string; iconType: IconType 
     return (
         <span className="Step">
             <ProsessStegIcon iconType={iconType} />
-            <Normaltekst className={`Step__label ${iconType === 'circle' ? 'bold' : ''}`}>
+            <BodyShort className={`Step__label ${iconType === 'circle' ? 'bold' : ''}`}>
                 <FormattedMessage id={textId} />
-            </Normaltekst>
+            </BodyShort>
         </span>
     );
 }
@@ -50,11 +50,10 @@ function ProsessStegIcon({ iconType }: { iconType: IconType }) {
     switch (iconType) {
         case 'checked':
             return (
-                <SuccessFilled
+                <CheckmarkCircleFillIcon
                     className="ProsessStegIcon"
                     aria-label="OK icon"
                     role="img"
-                    focusable={false}
                 />
             );
         case 'circle':

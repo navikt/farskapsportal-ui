@@ -1,15 +1,15 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 function MorUtenBarn() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="oversikt.infoPanel.mor.utenBarn.1" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessage id="oversikt.infoPanel.mor.utenBarn.2" />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }

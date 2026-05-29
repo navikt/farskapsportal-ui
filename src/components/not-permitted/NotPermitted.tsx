@@ -1,5 +1,4 @@
-import AlertStripe from 'nav-frontend-alertstriper';
-import { Normaltekst } from 'nav-frontend-typografi';
+import { Alert, BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import ContentContainer from 'components/content-container/ContentContainer';
@@ -7,7 +6,7 @@ import FormattedMessageWithExternalLink from 'components/formatted-message-with-
 import InfoPanel from 'components/info-panel/InfoPanel';
 import { Feilkode } from 'types/feilkode';
 
-import './NotPermitted.less';
+import './NotPermitted.css';
 
 interface NotPermittedProps {
     feilkode: Feilkode;
@@ -45,7 +44,7 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
         <ContentContainer className="NotPermitted">
             <InfoPanel>
                 {showAlertFor.includes(feilkode) ? (
-                    <AlertStripe type="advarsel">{renderContent()}</AlertStripe>
+                    <Alert variant="warning">{renderContent()}</Alert>
                 ) : (
                     renderContent()
                 )}
@@ -57,9 +56,9 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
 function MorIkkeNorskBostedsadresse() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="notPermitted.morIkkeNorskBostedsadresse" />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }
@@ -67,9 +66,9 @@ function MorIkkeNorskBostedsadresse() {
 function ForelderHarIkkeFnummer() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="notPermitted.forelderHarIkkeFnummer" />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }
@@ -77,12 +76,12 @@ function ForelderHarIkkeFnummer() {
 function ForelderHarVerge() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="notPermitted.forelderHarVerge" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessage id="error.taKontakt" />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }
@@ -90,12 +89,12 @@ function ForelderHarVerge() {
 function IkkeMyndig() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="notPermitted.ikkeMyndig" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessage id="error.taKontakt" />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }
@@ -103,9 +102,9 @@ function IkkeMyndig() {
 // TODO: skal endres, skille medmor fra ukjent og nye tekster
 function MedmorEllerUkjent() {
     return (
-        <Normaltekst>
+        <BodyShort>
             <FormattedMessage id="notPermitted.medmorEllerUkjent" />
-        </Normaltekst>
+        </BodyShort>
     );
 }
 
@@ -113,15 +112,15 @@ function MedmorEllerUkjent() {
 function MorSivilstandGift() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="notPermitted.morSivilstandGift.1" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessageWithExternalLink
                     textId="notPermitted.morSivilstandGift.2"
                     linkId="notPermitted.morSivilstandGift.link"
                 />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }
@@ -130,24 +129,24 @@ function MorSivilstandGift() {
 function MorSivilstandPartner() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="notPermitted.morSivilstandPartner.1" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessageWithExternalLink
                     textId="notPermitted.morSivilstandPartner.2"
                     linkId="notPermitted.morSivilstandPartner.link"
                 />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }
 
 function MorSivilstandUoppgitt() {
     return (
-        <Normaltekst>
+        <BodyShort>
             <FormattedMessage id="notPermitted.morSivilstandUoppgitt" />
-        </Normaltekst>
+        </BodyShort>
     );
 }
 

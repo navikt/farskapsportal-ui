@@ -1,7 +1,7 @@
-import AlertStripe from 'nav-frontend-alertstriper';
-import { Normaltekst } from 'nav-frontend-typografi';
+import { Alert } from '@navikt/ds-react';
+import { BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import ContentContainer from 'components/content-container/ContentContainer';
 import FarskapserklaeringPresentation from 'components/farskapserklaering-presentation/FarskapserklaeringPresentation';
@@ -16,7 +16,7 @@ import { getFarskapserklaeringForId } from 'utils/farskapserklaering';
 import { useQuery } from 'utils/hooks/useQuery';
 import SignerButtons from './SignerButtons';
 
-import './Signer.less';
+import './Signer.css';
 
 function Signer() {
     const [{ language }] = useStore();
@@ -24,7 +24,7 @@ function Signer() {
 
     const renderContent = (userInfo: UserInfo) => {
         if (userInfo.forelderrolle === Foreldrerolle.Far) {
-            return <Redirect to={`/${language}${Path.Oversikt}`} />;
+            return <Navigate to={`/${language}${Path.Oversikt}`} replace />;
         }
 
         const erklaering = getFarskapserklaeringForId(userInfo, erklaeringId);
@@ -60,14 +60,14 @@ function Signer() {
 
 function IkkeSignertAlert() {
     return (
-        <AlertStripe type="advarsel" className="IkkeSignertAlert">
-            <Normaltekst>
+        <Alert variant="warning" className="IkkeSignertAlert">
+            <BodyShort>
                 <FormattedMessage id="signer.alert.1" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessage id="signer.alert.2" />
-            </Normaltekst>
-        </AlertStripe>
+            </BodyShort>
+        </Alert>
     );
 }
 

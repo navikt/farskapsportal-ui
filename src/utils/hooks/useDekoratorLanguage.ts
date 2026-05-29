@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { onLanguageSelect, setAvailableLanguages } from '@navikt/nav-dekoratoren-moduler';
 
 import { setLanguage } from 'store/actions';
@@ -8,12 +8,12 @@ import { Language } from 'types/intl';
 
 export const useDekoratorLanguage = () => {
     const [, dispatch] = useStore();
-    const history = useHistory();
+    const navigate = useNavigate();
     const location = useLocation();
 
     onLanguageSelect((language) => {
         dispatch(setLanguage(language.locale as Language));
-        history.push(language.url || 'nb');
+        navigate(language.url || '/nb');
     });
 
     useEffect(() => {

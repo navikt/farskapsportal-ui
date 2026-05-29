@@ -1,4 +1,4 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import FormattedMessageWithExternalLink from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
@@ -7,9 +7,9 @@ import InfoExpandablePanel from 'components/info-expandable-panel/InfoExpandable
 function ErklaereUtenMor() {
     return (
         <InfoExpandablePanel titleId="oversikt.moreInfoPanels.erklaereUtenMor.title">
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="oversikt.moreInfoPanels.erklaereUtenMor.content.1" />
-            </Normaltekst>
+            </BodyShort>
             <ul>
                 <li>
                     <FormattedMessage id="oversikt.moreInfoPanels.erklaereUtenMor.content.li.1" />
@@ -27,15 +27,15 @@ function ErklaereUtenMor() {
                     <FormattedMessage id="oversikt.moreInfoPanels.erklaereUtenMor.content.li.5" />
                 </li>
             </ul>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="oversikt.moreInfoPanels.erklaereUtenMor.content.2" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessageWithExternalLink
                     textId="oversikt.moreInfoPanels.erklaereUtenMor.content.3"
                     linkId="oversikt.moreInfoPanels.erklaereUtenMor.content.3.link"
                 />
-            </Normaltekst>
+            </BodyShort>
         </InfoExpandablePanel>
     );
 }

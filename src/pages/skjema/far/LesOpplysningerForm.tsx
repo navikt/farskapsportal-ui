@@ -1,13 +1,13 @@
-import { Systemtittel } from 'nav-frontend-typografi';
+import { Checkbox, CheckboxGroup, Heading } from '@navikt/ds-react';
+import { Controller, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
+
 import FarskapserklaeringPresentation from 'components/farskapserklaering-presentation/FarskapserklaeringPresentation';
+import FormButtons from '../../../components/form-buttons/FormButtons';
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { getMessage } from '../../../utils/intl';
-import { BekreftCheckboksPanel } from 'nav-frontend-skjema';
-import { Controller, useForm } from 'react-hook-form';
-import FormButtons from '../../../components/form-buttons/FormButtons';
 
-import './LesOpplysningerForm.less';
+import './LesOpplysningerForm.css';
 
 interface LesOpplysningerFormInput {
     readAndAccepted: boolean;
@@ -21,7 +21,7 @@ interface LesOpplysningerFormProps {
 
 function LesOpplysningerForm({ farskapserklaering, onCancel, onSubmit }: LesOpplysningerFormProps) {
     const intl = useIntl();
-    const { control, handleSubmit, errors } = useForm<LesOpplysningerFormInput>({
+    const { control, handleSubmit, formState: { errors } } = useForm<LesOpplysningerFormInput>({
         defaultValues: {
             readAndAccepted: false,
         },
@@ -30,9 +30,9 @@ function LesOpplysningerForm({ farskapserklaering, onCancel, onSubmit }: LesOppl
 
     return (
         <form className="LesOpplysningerForm" onSubmit={handleSubmit(onSubmit)}>
-            <Systemtittel>
+            <Heading level="2" size="small">
                 <FormattedMessage id="skjema.far.lesOpplysninger.title" />
-            </Systemtittel>
+            </Heading>
             <FarskapserklaeringPresentation
                 farskapserklaering={farskapserklaering}
                 showBorSammen={false}
@@ -45,15 +45,20 @@ function LesOpplysningerForm({ farskapserklaering, onCancel, onSubmit }: LesOppl
                 rules={{
                     required: getMessage(intl, 'skjema.far.lesOpplysninger.validation.required'),
                 }}
-                render={({ onChange, value, name }) => (
-                    <BekreftCheckboksPanel
-                        className="BekreftCheckBoksPanel"
-                        label={getMessage(intl, `skjema.far.lesOpplysninger.confirm.label`)}
-                        checked={value}
-                        onChange={(e) => onChange((e.target as HTMLInputElement).checked)}
-                        feil={errors.readAndAccepted?.message}
-                        inputProps={{ name }}
-                    />
+                render={({ field: { onChange, value } }) => (
+                    <CheckboxGroup
+                        legend={getMessage(intl, 'skjema.far.lesOpplysninger.confirm.label')}
+                        hideLegend
+                        error={errors.readAndAccepted?.message}
+                    >
+                        <Checkbox
+                            className="BekreftCheckBoksPanel"
+                            checked={value}
+                            onChange={(e) => onChange(e.target.checked)}
+                        >
+                            {getMessage(intl, `skjema.far.lesOpplysninger.confirm.label`)}
+                        </Checkbox>
+                    </CheckboxGroup>
                 )}
             />
             <FormButtons

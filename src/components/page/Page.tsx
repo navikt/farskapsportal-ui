@@ -1,12 +1,11 @@
 import { ReactNode } from 'react';
 
+import { Alert, BodyShort, Heading } from '@navikt/ds-react';
 import { Breadcrumb } from 'types/breadcrumbs';
 import { useDekoratorBreadcrumbs } from 'utils/hooks/useDekoratorBreadcrumbs';
-import { Normaltekst, Sidetittel } from 'nav-frontend-typografi';
 import { FormattedMessage } from 'react-intl';
-import AlertStripe from 'nav-frontend-alertstriper';
 
-import './Page.less';
+import './Page.css';
 
 interface PageProps {
     children: ReactNode;
@@ -21,9 +20,9 @@ function Page({ breadcrumbs, children, titleId, alertTextId }: PageProps) {
     return (
         <div className="Page">
             <PageAlert alertTextId={alertTextId} />
-            <Sidetittel>
+            <Heading level="1" size="large">
                 <FormattedMessage id={titleId} />
-            </Sidetittel>
+            </Heading>
             <div role="main">{children}</div>
         </div>
     );
@@ -36,11 +35,11 @@ function PageAlert({ alertTextId }: { alertTextId?: string }) {
 
     return (
         <div className="PageAlert">
-            <AlertStripe type="advarsel">
-                <Normaltekst>
+            <Alert variant="warning">
+                <BodyShort>
                     <FormattedMessage id={alertTextId} />
-                </Normaltekst>
-            </AlertStripe>
+                </BodyShort>
+            </Alert>
         </div>
     );
 }

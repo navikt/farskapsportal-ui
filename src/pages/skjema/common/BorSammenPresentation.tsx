@@ -1,9 +1,9 @@
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
+import { BodyShort, Heading } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import { BorSammenValue } from './BorSammenForm';
 
-import './BorSammenPresentation.less';
+import './BorSammenPresentation.css';
 
 interface BorSammenPresentationProps {
     titleId: string;
@@ -13,10 +13,10 @@ interface BorSammenPresentationProps {
 function BorSammenPresentation({ titleId, borSammen }: BorSammenPresentationProps) {
     return (
         <div className="BorSammenPresentation">
-            <Systemtittel>
+            <Heading level="2" size="small">
                 <FormattedMessage id={titleId} />
-            </Systemtittel>
-            <Normaltekst>
+            </Heading>
+            <BodyShort>
                 <FormattedMessage
                     id={
                         borSammen === 'YES'
@@ -24,7 +24,7 @@ function BorSammenPresentation({ titleId, borSammen }: BorSammenPresentationProp
                             : 'skjema.borSammen.label.no'
                     }
                 />
-            </Normaltekst>
+            </BodyShort>
         </div>
     );
 }

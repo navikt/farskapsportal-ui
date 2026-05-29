@@ -1,4 +1,4 @@
-import { ReactComponent as VeilederSvg } from 'assets/icons/veileder.svg';
+import VeilederSvg from 'assets/icons/veileder.svg?react';
 
 import './Veileder.css';
 

@@ -1,9 +1,9 @@
-import { Element, Normaltekst, Systemtittel } from 'nav-frontend-typografi';
+import { BodyShort, Heading, Label } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import { formatFoedselsnummer } from 'utils/foedselsnummer';
 
-import './FarPresentation.less';
+import './FarPresentation.css';
 
 interface FarPresentationProps {
     navn: string;
@@ -13,20 +13,20 @@ interface FarPresentationProps {
 function FarPresentation(props: FarPresentationProps) {
     return (
         <div className="FarPresentation">
-            <Systemtittel>
+            <Heading level="2" size="small">
                 <FormattedMessage id="skjema.mor.far.title" />
-            </Systemtittel>
+            </Heading>
             <div className="FarPresentation__navn">
-                <Normaltekst>
+                <BodyShort>
                     <FormattedMessage id="navn" />:
-                </Normaltekst>
-                <Element>{props.navn}</Element>
+                </BodyShort>
+                <Label>{props.navn}</Label>
             </div>
             <div>
-                <Normaltekst>
+                <BodyShort>
                     <FormattedMessage id="foedselsnummer" />:
-                </Normaltekst>
-                <Element>{formatFoedselsnummer(props.foedselsnummer)}</Element>
+                </BodyShort>
+                <Label>{formatFoedselsnummer(props.foedselsnummer)}</Label>
             </div>
         </div>
     );

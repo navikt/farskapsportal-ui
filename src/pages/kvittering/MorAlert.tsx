@@ -1,11 +1,11 @@
-import AlertStripe from 'nav-frontend-alertstriper';
+import { Alert } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { isBrukerFar, isSignedByFar } from 'utils/farskapserklaering';
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
 
-import './MorAlert.less';
+import './MorAlert.css';
 
 interface MorAlertProps {
     erklaering: Farskapserklaering;
@@ -17,18 +17,18 @@ function MorAlert({ erklaering }: MorAlertProps) {
     }
 
     return (
-        <AlertStripe type="advarsel" className="MorAlert">
+        <Alert variant="warning" className="MorAlert">
             <div className="MorAlert__boldtext">
                 <FormattedMessage id="kvittering.morAlert.1" />
             </div>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="kvittering.morAlert.2" />
-            </Normaltekst>
+            </BodyShort>
             <br />
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="kvittering.morAlert.3" />
-            </Normaltekst>
-        </AlertStripe>
+            </BodyShort>
+        </Alert>
     );
 }
 

@@ -4,11 +4,11 @@ import WithUserInfo from '../../store/providers/WithUserInfo';
 import OversiktInfoPanel from '../oversikt/OversiktInfoPanel';
 import MoreInfoPanels from '../oversikt/MoreInfoPanels';
 import VentendeErklaeringer from '../oversikt/VentendeErklaeringer';
-import AlertStripe from 'nav-frontend-alertstriper';
+import { Alert } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 import { Foreldrerolle } from '../../types/foreldrerolle';
 
-import './AvbruttOversikt.less';
+import './AvbruttOversikt.css';
 
 function AvbruttOversikt() {
     return (
@@ -16,13 +16,13 @@ function AvbruttOversikt() {
             <WithUserInfo>
                 {(userInfo) => (
                     <ContentContainer className="AvbruttOversikt">
-                        <AlertStripe type="advarsel">
+                        <Alert variant="warning">
                             {userInfo.forelderrolle === Foreldrerolle.Mor ? (
                                 <FormattedMessage id="avbrutt.alert.mor" />
                             ) : (
                                 <FormattedMessage id="avbrutt.alert.far" />
                             )}
-                        </AlertStripe>
+                        </Alert>
                         <OversiktInfoPanel userInfo={userInfo} />
                         <MoreInfoPanels userInfo={userInfo} />
                         <VentendeErklaeringer userInfo={userInfo} />

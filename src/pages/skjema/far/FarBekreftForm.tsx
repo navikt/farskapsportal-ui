@@ -1,14 +1,13 @@
-import { BekreftCheckboksPanel, SkjemaGruppe } from 'nav-frontend-skjema';
+import { Alert, Checkbox, CheckboxGroup } from '@navikt/ds-react';
 import { useForm, Controller } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import FormButtons from 'components/form-buttons/FormButtons';
 import { getMessage } from 'utils/intl';
 
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
-import AlertStripe from 'nav-frontend-alertstriper';
+import { BodyShort, Heading } from '@navikt/ds-react';
 
-import './FarBekreftForm.less';
+import './FarBekreftForm.css';
 
 interface FarBekreftFormInput {
     readAndUnderstood: boolean;
@@ -25,7 +24,7 @@ const checkboxIds: (keyof FarBekreftFormInput)[] = ['readAndUnderstood', 'cannot
 
 function FarBekreftForm(props: FarBekreftFormProps) {
     const intl = useIntl();
-    const { control, handleSubmit, errors } = useForm<FarBekreftFormInput>({
+    const { control, handleSubmit, formState: { errors } } = useForm<FarBekreftFormInput>({
         defaultValues: {
             readAndUnderstood: false,
             cannotWithdraw: false,
@@ -35,34 +34,36 @@ function FarBekreftForm(props: FarBekreftFormProps) {
 
     return (
         <form onSubmit={handleSubmit(props.onSubmit)} className="FarBekreftForm">
-            <SkjemaGruppe
-                legend={<Systemtittel>{getMessage(intl, 'skjema.far.confirm.title')}</Systemtittel>}
-            >
-                {checkboxIds.map((id) => (
-                    <Controller
-                        key={id}
-                        name={id}
-                        control={control}
-                        rules={{
-                            required: getMessage(intl, 'skjema.confirm.validation.required'),
-                        }}
-                        render={({ onChange, value, name }) => (
-                            <BekreftCheckboksPanel
-                                label={getMessage(intl, `skjema.far.confirm.${id}.label`)}
+            <Heading level="2" size="small">{getMessage(intl, 'skjema.far.confirm.title')}</Heading>
+            {checkboxIds.map((id) => (
+                <Controller
+                    key={id}
+                    name={id}
+                    control={control}
+                    rules={{
+                        required: getMessage(intl, 'skjema.confirm.validation.required'),
+                    }}
+                    render={({ field: { onChange, value } }) => (
+                        <CheckboxGroup
+                            legend={getMessage(intl, `skjema.far.confirm.${id}.label`)}
+                            hideLegend
+                            error={errors[id]?.message}
+                        >
+                            <Checkbox
                                 checked={value}
-                                onChange={(e) => onChange((e.target as HTMLInputElement).checked)}
-                                feil={errors[id]?.message}
-                                inputProps={{ name }}
-                            />
-                        )}
-                    />
-                ))}
-            </SkjemaGruppe>
-            <AlertStripe type="info">
-                <Normaltekst>
+                                onChange={(e) => onChange(e.target.checked)}
+                            >
+                                {getMessage(intl, `skjema.far.confirm.${id}.label`)}
+                            </Checkbox>
+                        </CheckboxGroup>
+                    )}
+                />
+            ))}
+            <Alert variant="info">
+                <BodyShort>
                     <FormattedMessage id="skjema.confirm.signeringPostenInfo" />
-                </Normaltekst>
-            </AlertStripe>
+                </BodyShort>
+            </Alert>
             <FormButtons
                 submitText={getMessage(intl, 'skjema.submit')}
                 cancelText={getMessage(intl, 'skjema.cancel')}

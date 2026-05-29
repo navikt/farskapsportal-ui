@@ -1,16 +1,5 @@
-import classNames from 'classnames';
-import { Datepicker } from 'nav-datovelger';
-import {
-    Label,
-    SkjemaelementFeilmelding,
-    SkjemaGruppeFeilContext,
-    SkjemaGruppeFeilContextProps,
-} from 'nav-frontend-skjema';
+import { TextField } from '@navikt/ds-react';
 import { ReactNode } from 'react';
-import 'dayjs/locale/nb';
-import 'dayjs/locale/nn';
-
-import { useStore } from 'store/Context';
 
 interface DateInputProps {
     id: string;
@@ -26,41 +15,18 @@ interface DateInputProps {
 }
 
 function DateInput(props: DateInputProps) {
-    const [{ language }] = useStore();
-
     return (
-        <SkjemaGruppeFeilContext.Consumer>
-            {(context: SkjemaGruppeFeilContextProps) => {
-                const feilmelding = context.feil || props.feil;
-
-                return (
-                    <div className={classNames('skjemaelement', props.className)}>
-                        <Label htmlFor={props.id}>{props.label}</Label>
-                        <Datepicker
-                            inputId={props.id}
-                            onChange={props.onChange}
-                            value={props.value}
-                            locale={language}
-                            inputProps={{
-                                name: props.id,
-                                placeholder: props.placeholder,
-                                'aria-invalid': !!feilmelding,
-                            }}
-                            showYearSelector={props.showYearSelector}
-                            limitations={{
-                                minDate: props.minDate,
-                                maxDate: props.maxDate,
-                            }}
-                        />
-                        {!context.feil && props.feil && (
-                            <SkjemaelementFeilmelding>
-                                {typeof feilmelding !== 'boolean' && feilmelding}
-                            </SkjemaelementFeilmelding>
-                        )}
-                    </div>
-                );
-            }}
-        </SkjemaGruppeFeilContext.Consumer>
+        <TextField
+            id={props.id}
+            type={"date" as never}
+            label={props.label}
+            value={props.value ?? ''}
+            onChange={(e) => props.onChange(e.target.value || undefined)}
+            error={props.feil as string | undefined}
+            min={props.minDate}
+            max={props.maxDate}
+            className={props.className}
+        />
     );
 }
 

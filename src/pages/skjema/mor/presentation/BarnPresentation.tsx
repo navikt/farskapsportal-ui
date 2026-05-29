@@ -1,10 +1,10 @@
-import { Element, Normaltekst, Systemtittel } from 'nav-frontend-typografi';
+import { BodyShort, Heading, Label } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import DatePresentation from 'components/date-presentation/DatePresentation';
 import { formatFoedselsnummer } from 'utils/foedselsnummer';
 
-import './BarnPresentation.less';
+import './BarnPresentation.css';
 
 interface BarnPresentationProps {
     foedselsnummer: string | null;
@@ -14,25 +14,25 @@ interface BarnPresentationProps {
 function BarnPresentation(props: BarnPresentationProps) {
     return (
         <div className="BarnPresentation">
-            <Systemtittel>
+            <Heading level="2" size="small">
                 <FormattedMessage id="skjema.mor.barn.title" />
-            </Systemtittel>
+            </Heading>
             {props.foedselsnummer && (
                 <>
-                    <Normaltekst>
+                    <BodyShort>
                         <FormattedMessage id="foedselsnummer" />:
-                    </Normaltekst>
-                    <Element>{formatFoedselsnummer(props.foedselsnummer)}</Element>
+                    </BodyShort>
+                    <Label>{formatFoedselsnummer(props.foedselsnummer)}</Label>
                 </>
             )}
             {props.termindato && (
                 <>
-                    <Normaltekst>
+                    <BodyShort>
                         <FormattedMessage id="termindato" />:
-                    </Normaltekst>
-                    <Element>
+                    </BodyShort>
+                    <Label>
                         <DatePresentation date={props.termindato} />
-                    </Element>
+                    </Label>
                 </>
             )}
         </div>

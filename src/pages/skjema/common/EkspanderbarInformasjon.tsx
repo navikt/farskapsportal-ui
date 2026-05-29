@@ -1,13 +1,11 @@
-import * as React from 'react';
 import { ReactNode, useState } from 'react';
-import { Collapse } from 'react-collapse';
-import NavFrontendChevron from 'nav-frontend-chevron';
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
+import { ChevronDownIcon, ChevronUpIcon } from '@navikt/aksel-icons';
 
 import { useIntl } from 'react-intl';
 import { getMessage } from '../../../utils/intl';
 
-import './EkspanderbarInformasjon.less';
+import './EkspanderbarInformasjon.css';
 
 interface EkspanderbarInformasjonProps {
     intro?: ReactNode;
@@ -33,13 +31,13 @@ function EkspanderbarInformasjon(props: EkspanderbarInformasjonProps) {
                     onClick={onOpenPanel}
                     aria-expanded={isOpen}
                 >
-                    <Normaltekst className="EkspanderbarInformasjon__intro__lesMerKnapp__content">
+                    <BodyShort className="EkspanderbarInformasjon__intro__lesMerKnapp__content">
                         {props.lesMerLabel ?? getMessage(intl, 'read.more')}
-                        <NavFrontendChevron type={isOpen ? 'opp' : 'ned'} />
-                    </Normaltekst>
+                        {isOpen ? <ChevronUpIcon aria-hidden /> : <ChevronDownIcon aria-hidden />}
+                    </BodyShort>
                 </button>
             </div>
-            {isOpen && <Collapse isOpened={isOpen}>{props.content}</Collapse>}
+            {isOpen && <div>{props.content}</div>}
         </div>
     );
 }

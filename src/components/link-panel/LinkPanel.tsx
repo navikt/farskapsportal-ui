@@ -1,11 +1,16 @@
-import Etikett from 'nav-frontend-etiketter';
-import { LenkepanelBase } from 'nav-frontend-lenkepanel';
-import { Undertittel } from 'nav-frontend-typografi';
+import { Heading, Tag } from '@navikt/ds-react';
 import { AnchorHTMLAttributes, ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
 
-import './LinkPanel.less';
+import './LinkPanel.css';
+
+const tagVariantMap = {
+    suksess: 'success',
+    info: 'info',
+    advarsel: 'warning',
+    fokus: 'alt1',
+} as const;
 
 interface LinkPanelProps {
     linkPath: string;
@@ -16,22 +21,18 @@ interface LinkPanelProps {
 }
 
 function LinkPanel({ linkPath, titleId, children, etikettType, etikettId }: LinkPanelProps) {
-    const linkCreator = (props: AnchorHTMLAttributes<HTMLAnchorElement>) => (
-        <Link {...props} to={linkPath} />
-    );
-
     return (
-        <LenkepanelBase className="LinkPanel" href="" linkCreator={linkCreator} border={true}>
+        <Link className="LinkPanel" to={linkPath}>
             <div>
-                <Undertittel className="lenkepanel__heading">
+                <Heading level="3" size="small" className="LinkPanel__heading">
                     <FormattedMessage id={titleId} />
-                </Undertittel>
+                </Heading>
                 {children}
-                <Etikett type={etikettType}>
+                <Tag variant={tagVariantMap[etikettType]}>
                     <FormattedMessage id={etikettId} />
-                </Etikett>
+                </Tag>
             </div>
-        </LenkepanelBase>
+        </Link>
     );
 }
 

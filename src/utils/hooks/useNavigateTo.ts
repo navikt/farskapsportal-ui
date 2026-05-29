@@ -1,13 +1,13 @@
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { useStore } from 'store/Context';
 import { Path } from 'types/path';
 
 export const useNavigateTo = () => {
     const [{ language }] = useStore();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     return (path: Path) => {
-        history.push(`/${language}${path}`);
+        navigate(`/${language}${path}`);
     };
 };

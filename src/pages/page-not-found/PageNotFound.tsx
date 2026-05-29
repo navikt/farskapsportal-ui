@@ -1,11 +1,11 @@
-import { Sidetittel } from 'nav-frontend-typografi';
+import { Heading } from '@navikt/ds-react';
 
-import './PageNotFound.less';
+import './PageNotFound.css';
 
 function PageNotFound() {
     return (
         <div className="PageNotFound">
-            <Sidetittel>404</Sidetittel>
+            <Heading level="1" size="large">404</Heading>
         </div>
     );
 }

@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
-import Lenke from 'nav-frontend-lenker';
-import { ExternalLink as ExternalSvg } from '@navikt/ds-icons';
+import { Link } from '@navikt/ds-react';
+import { ExternalLinkIcon } from '@navikt/aksel-icons';
 
-import './ExternalLink.less';
+import './ExternalLink.css';
 
 interface ExternalLinkProps {
     href: string;
@@ -11,10 +11,10 @@ interface ExternalLinkProps {
 
 function ExternalLink({ href, children }: ExternalLinkProps) {
     return (
-        <Lenke className="ExternalLink" href={href} target="_blank" rel="noopener noreferrer">
+        <Link className="ExternalLink" href={href} target="_blank" rel="noopener noreferrer">
             <span>{children ?? href}</span>
-            <ExternalSvg aria-hidden />
-        </Lenke>
+            <ExternalLinkIcon aria-hidden />
+        </Link>
     );
 }
 

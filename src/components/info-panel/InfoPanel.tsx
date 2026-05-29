@@ -1,10 +1,9 @@
 import classNames from 'classnames';
-import Veilederpanel from 'nav-frontend-veilederpanel';
 import { ReactNode } from 'react';
 
-import { ReactComponent as FamilieSvg } from 'assets/icons/familie.svg';
+import FamilieSvg from 'assets/icons/familie.svg?react';
 
-import './InfoPanel.less';
+import './InfoPanel.css';
 
 interface InfoPanelProps {
     children: ReactNode;
@@ -14,9 +13,10 @@ interface InfoPanelProps {
 function InfoPanel({ children, className }: InfoPanelProps) {
     return (
         <div className={classNames('InfoPanel', className)}>
-            <Veilederpanel type="plakat" svg={<FamilieSvg />} kompakt={true}>
-                {children}
-            </Veilederpanel>
+            <div className="InfoPanel__svg-wrapper">
+                <FamilieSvg />
+            </div>
+            <div className="InfoPanel__content">{children}</div>
         </div>
     );
 }

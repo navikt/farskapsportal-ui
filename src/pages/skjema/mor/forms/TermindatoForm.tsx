@@ -1,4 +1,3 @@
-import { SkjemaGruppe } from 'nav-frontend-skjema';
 import { Controller, useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
@@ -17,9 +16,9 @@ import {
     isLessThanNDaysInThePast,
 } from 'utils/date';
 import { getMessage } from 'utils/intl';
-import { Systemtittel } from 'nav-frontend-typografi';
+import { Heading } from '@navikt/ds-react';
 
-import './TermindatoForm.less';
+import './TermindatoForm.css';
 
 export interface TermindatoFormInput {
     termindato: string;
@@ -33,7 +32,7 @@ export interface TermindatoFormProps {
 
 function TermindatoForm(props: TermindatoFormProps) {
     const intl = useIntl();
-    const { handleSubmit, errors, control } = useForm<TermindatoFormInput>({
+    const { handleSubmit, control, formState: { errors } } = useForm<TermindatoFormInput>({
         defaultValues: {
             termindato: props.defaultTermindato,
         },
@@ -42,10 +41,11 @@ function TermindatoForm(props: TermindatoFormProps) {
 
     return (
         <form onSubmit={handleSubmit(props.onSubmit)} className="TermindatoForm">
-            <SkjemaGruppe
-                legend={<Systemtittel>{getMessage(intl, 'skjema.mor.barn.title')}</Systemtittel>}
-                description={getMessage(intl, 'skjema.mor.barn.description')}
-            >
+            <fieldset className="TermindatoForm__fieldset">
+                <legend>
+                    <Heading level="2" size="small">{getMessage(intl, 'skjema.mor.barn.title')}</Heading>
+                </legend>
+                <p className="TermindatoForm__description">{getMessage(intl, 'skjema.mor.barn.description')}</p>
                 <Controller
                     name="termindato"
                     control={control}
@@ -77,7 +77,7 @@ function TermindatoForm(props: TermindatoFormProps) {
                                 ),
                         },
                     }}
-                    render={({ onChange, value, name }) => (
+                    render={({ field: { onChange, value, name } }) => (
                         <DateInput
                             id={name}
                             label={getMessage(intl, 'termindato')}
@@ -91,7 +91,7 @@ function TermindatoForm(props: TermindatoFormProps) {
                         />
                     )}
                 />
-            </SkjemaGruppe>
+            </fieldset>
             <FormButtons
                 submitText={getMessage(intl, 'skjema.next')}
                 cancelText={getMessage(intl, 'skjema.cancel')}
