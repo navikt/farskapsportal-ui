@@ -14,6 +14,7 @@ import YtelserOgTjenesterPanel from './YtelserOgTjenesterPanel';
 import ProsessIndikator from './ProsessIndikator';
 import KvitteringLastNedErklaering from './KvitteringLastNedErklaering';
 import FarskapserklaeringPresentation from '../../components/farskapserklaering-presentation/FarskapserklaeringPresentation';
+import { Accordion } from '@navikt/ds-react';
 
 import './Kvittering.css';
 
@@ -57,9 +58,11 @@ function Kvittering() {
                                 border={true}
                             />
                             <KvitteringLastNedErklaering erklaering={erklaering} />
-                            <HvaSkjerViderePanel />
-                            <HvaSkjerHvisPanel erklaering={erklaering} />
-                            <YtelserOgTjenesterPanel erklaering={erklaering} />
+                            <Accordion>
+                                <HvaSkjerViderePanel />
+                                <HvaSkjerHvisPanel erklaering={erklaering} />
+                                <YtelserOgTjenesterPanel erklaering={erklaering} />
+                            </Accordion>
                         </ContentContainer>
                     );
                 }}

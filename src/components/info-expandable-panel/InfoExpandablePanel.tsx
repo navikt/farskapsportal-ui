@@ -11,7 +11,6 @@ interface InfoExpandablePanelProps {
 
 function InfoExpandablePanel({ children, titleId }: InfoExpandablePanelProps) {
     return (
-        <Accordion className="InfoExpandablePanel">
             <Accordion.Item>
                 <Accordion.Header>
                     <Heading level="3" size="small">
@@ -20,7 +19,6 @@ function InfoExpandablePanel({ children, titleId }: InfoExpandablePanelProps) {
                 </Accordion.Header>
                 <Accordion.Content>{children}</Accordion.Content>
             </Accordion.Item>
-        </Accordion>
     );
 }
 
