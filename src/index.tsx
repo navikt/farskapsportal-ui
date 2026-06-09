@@ -5,7 +5,6 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router';
 
 import '@navikt/ds-css';
-import './index.css';
 import App from './App';
 import ErrorBoundary from 'components/error-boundary/ErrorBoundary';
 import ScrollToTop from 'components/scroll-to-top/ScrollToTop';

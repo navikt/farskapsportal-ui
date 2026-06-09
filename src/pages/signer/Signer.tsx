@@ -1,5 +1,4 @@
-import { Alert } from '@navikt/ds-react';
-import { BodyShort } from '@navikt/ds-react';
+import { Alert, BodyShort, Box } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 import { Navigate } from 'react-router';
 
@@ -15,8 +14,6 @@ import { ERKLAERING_ID } from 'utils/constants';
 import { getFarskapserklaeringForId } from 'utils/farskapserklaering';
 import { useQuery } from 'utils/hooks/useQuery';
 import SignerButtons from './SignerButtons';
-
-import './Signer.css';
 
 function Signer() {
     const [{ language }] = useStore();
@@ -60,14 +57,16 @@ function Signer() {
 
 function IkkeSignertAlert() {
     return (
-        <Alert variant="warning" className="IkkeSignertAlert">
-            <BodyShort>
-                <FormattedMessage id="signer.alert.1" />
-            </BodyShort>
-            <BodyShort>
-                <FormattedMessage id="signer.alert.2" />
-            </BodyShort>
-        </Alert>
+        <Box marginBlock="space-0 space-16">
+            <Alert variant="warning">
+                <BodyShort>
+                    <FormattedMessage id="signer.alert.1" />
+                </BodyShort>
+                <BodyShort>
+                    <FormattedMessage id="signer.alert.2" />
+                </BodyShort>
+            </Alert>
+        </Box>
     );
 }
 

@@ -1,11 +1,9 @@
 import { ReactNode } from 'react';
 
-import { Alert, BodyShort, Heading } from '@navikt/ds-react';
+import { Alert, BodyShort, Heading, Page as AkselPage, Box, VStack } from '@navikt/ds-react';
 import { Breadcrumb } from 'types/breadcrumbs';
 import { useDekoratorBreadcrumbs } from 'utils/hooks/useDekoratorBreadcrumbs';
 import { FormattedMessage } from 'react-intl';
-
-import './Page.css';
 
 interface PageProps {
     children: ReactNode;
@@ -18,13 +16,17 @@ function Page({ breadcrumbs, children, titleId, alertTextId }: PageProps) {
     useDekoratorBreadcrumbs(breadcrumbs);
 
     return (
-        <div className="Page">
-            <PageAlert alertTextId={alertTextId} />
-            <Heading level="1" size="large">
-                <FormattedMessage id={titleId} />
-            </Heading>
-            <div role="main">{children}</div>
-        </div>
+        <Box paddingBlock="space-0 space-24" asChild>
+            <AkselPage.Block as="main" width="md" gutters>
+                <VStack gap="space-24">
+                    <PageAlert alertTextId={alertTextId} />
+                    <Heading level="1" size="xlarge">
+                        <FormattedMessage id={titleId} />
+                    </Heading>
+                    {children}
+                </VStack>
+            </AkselPage.Block>
+        </Box>
     );
 }
 
@@ -34,13 +36,13 @@ function PageAlert({ alertTextId }: { alertTextId?: string }) {
     }
 
     return (
-        <div className="PageAlert">
+        <Box>
             <Alert variant="warning">
                 <BodyShort>
                     <FormattedMessage id={alertTextId} />
                 </BodyShort>
             </Alert>
-        </div>
+        </Box>
     );
 }
 

@@ -1,13 +1,12 @@
 import { ReactNode } from 'react';
-
-import './ButtonContainer.css';
+import { VStack } from '@navikt/ds-react';
 
 interface ButtonContainerProps {
     children: ReactNode;
 }
 
 function ButtonContainer({ children }: ButtonContainerProps) {
-    return <div className="ButtonContainer">{children}</div>;
+    return <VStack gap="space-16">{children}</VStack>;
 }
 
 export default ButtonContainer;

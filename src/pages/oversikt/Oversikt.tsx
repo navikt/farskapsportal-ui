@@ -8,8 +8,6 @@ import { UserInfo } from '../../types/user';
 import { Foreldrerolle } from '../../types/foreldrerolle';
 import { isLessThanNHoursInThePast } from '../../utils/date';
 
-import './Oversikt.css';
-
 function Oversikt() {
     return (
         <WithUserInfo>

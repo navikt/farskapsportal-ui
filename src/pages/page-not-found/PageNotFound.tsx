@@ -1,12 +1,12 @@
-import { Heading } from '@navikt/ds-react';
-
-import './PageNotFound.css';
+import { Box, Heading } from '@navikt/ds-react';
 
 function PageNotFound() {
     return (
-        <div className="PageNotFound">
-            <Heading level="1" size="large">404</Heading>
-        </div>
+        <Box style={{ minHeight: '20rem', width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Heading level="1" size="large">
+                404
+            </Heading>
+        </Box>
     );
 }
 

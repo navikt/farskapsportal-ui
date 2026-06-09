@@ -1,7 +1,6 @@
+import { VStack } from '@navikt/ds-react';
 import classNames from 'classnames';
 import { ReactNode } from 'react';
-
-import './ContentContainer.css';
 
 interface ContentContainerProps {
     children: ReactNode;
@@ -9,7 +8,11 @@ interface ContentContainerProps {
 }
 
 function ContentContainer({ children, className }: ContentContainerProps) {
-    return <div className={classNames('ContentContainer', className)}>{children}</div>;
+    return (
+        <VStack className={classNames(className)} gap="space-24">
+            {children}
+        </VStack>
+    );
 }
 
 export default ContentContainer;

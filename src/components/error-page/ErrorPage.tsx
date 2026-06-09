@@ -1,9 +1,7 @@
 import { ReactNode } from 'react';
-import { BodyLong, Heading } from '@navikt/ds-react';
+import { BodyLong, Box, Heading, VStack } from '@navikt/ds-react';
 
 import VeilederBanner from 'components/veileder-banner/VeilederBanner';
-
-import './ErrorPage.css';
 
 export interface ErrorPageProps {
     title: ReactNode;
@@ -16,13 +14,17 @@ export interface ErrorPageProps {
 
 function ErrorPage({ title, text, banner }: ErrorPageProps) {
     return (
-        <div className="ErrorPage">
+        <VStack gap="space-24">
             <VeilederBanner title={banner.title} text={banner.text} veileder={{ type: 'unsure' }} />
-            <div className="ErrorPage__content">
-                <Heading level="2" size="medium">{title}</Heading>
+            <Box padding="space-32" marginInline="auto" style={{ maxWidth: '800px', textAlign: 'center' }}>
+                <VStack gap="space-16" align="center">
+                    <Heading level="2" size="medium">
+                        {title}
+                    </Heading>
                 <BodyLong size="large">{text}</BodyLong>
-            </div>
-        </div>
+                </VStack>
+            </Box>
+        </VStack>
     );
 }
 
