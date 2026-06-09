@@ -8,8 +8,6 @@ import { Heading } from '@navikt/ds-react';
 import BarnUtenErklaering from './BarnUtenErklaering';
 import { getBarnUtenErklaering } from '../../utils/farskapserklaering';
 
-import './VentendeErklaeringer.css';
-
 interface VentendeErklaeringerProps {
     userInfo: UserInfo;
 }
@@ -25,10 +23,10 @@ function VentendeErklaeringer({ userInfo }: VentendeErklaeringerProps) {
     }
 
     return (
-        <Box className="VentendeErklaeringer" borderWidth="1" borderColor="neutral-subtle" borderRadius="4" padding="space-16">
-            <Heading level="2" size="small" as="h2">
-                <FormattedMessage id="oversikt.ventendeErklaeringer.title" />
-            </Heading>
+        <Box borderWidth="1" borderColor="neutral-subtle" borderRadius="4" padding="space-16">
+                <Heading level="2" size="small" as="h2">
+                    <FormattedMessage id="oversikt.ventendeErklaeringer.title" />
+                </Heading>
             <BarnUtenErklaering userInfo={userInfo} />
             <ErklaeringerAvventerBruker userInfo={userInfo} />
             <ErklaeringerAvventerMotpart userInfo={userInfo} />

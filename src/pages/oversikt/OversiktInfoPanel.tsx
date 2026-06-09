@@ -20,8 +20,6 @@ import MorUtenBarn from './info-panel-content/mor/MorUtenBarn';
 import ToSkjemaButton from './ToSkjemaButton';
 import { capitalizeFirsLetterInEveryWord } from '../../utils/string';
 
-import './OversiktInfoPanel.css';
-
 interface OversiktInfoPanelProps {
     userInfo: UserInfo;
 }
@@ -116,12 +114,12 @@ function OversiktInfoPanel({ userInfo }: OversiktInfoPanelProps) {
 
     return (
         <InfoPanel className="OversiktInfoPanel">
-            <Heading level="2" size="medium" as="h2">
-                <FormattedMessage
-                    id="oversikt.infoPanel.greeting"
-                    values={{ fornavn: capitalizeFirsLetterInEveryWord(userInfo.brukersFornavn) }}
-                />
-            </Heading>
+                <Heading level="2" size="medium" as="h2">
+                    <FormattedMessage
+                        id="oversikt.infoPanel.greeting"
+                        values={{ fornavn: capitalizeFirsLetterInEveryWord(userInfo.brukersFornavn) }}
+                    />
+                </Heading>
             {renderContent()}
             <ToSkjemaButton userInfo={userInfo} />
         </InfoPanel>
