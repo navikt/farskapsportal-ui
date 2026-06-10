@@ -1,11 +1,9 @@
-import { Alert, BodyShort, GuidePanel } from '@navikt/ds-react';
+import { Alert, BodyShort, GuidePanel, VStack } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import ContentContainer from 'components/content-container/ContentContainer';
 import FormattedMessageWithExternalLink from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
 import { Feilkode } from 'types/feilkode';
-
-import './NotPermitted.css';
 
 interface NotPermittedProps {
     feilkode: Feilkode;
@@ -74,27 +72,27 @@ function ForelderHarIkkeFnummer() {
 
 function ForelderHarVerge() {
     return (
-        <>
+        <VStack gap="space-16">
             <BodyShort>
                 <FormattedMessage id="notPermitted.forelderHarVerge" />
             </BodyShort>
             <BodyShort>
                 <FormattedMessage id="error.taKontakt" />
             </BodyShort>
-        </>
+        </VStack>
     );
 }
 
 function IkkeMyndig() {
     return (
-        <>
+        <VStack gap="space-16">
             <BodyShort>
                 <FormattedMessage id="notPermitted.ikkeMyndig" />
             </BodyShort>
             <BodyShort>
                 <FormattedMessage id="error.taKontakt" />
             </BodyShort>
-        </>
+        </VStack>
     );
 }
 
@@ -110,7 +108,7 @@ function MedmorEllerUkjent() {
 // TODO: endre når api endres, skal være for kvinne gift med mann
 function MorSivilstandGift() {
     return (
-        <>
+        <VStack gap="space-16">
             <BodyShort>
                 <FormattedMessage id="notPermitted.morSivilstandGift.1" />
             </BodyShort>
@@ -120,14 +118,14 @@ function MorSivilstandGift() {
                     linkId="notPermitted.morSivilstandGift.link"
                 />
             </BodyShort>
-        </>
+        </VStack>
     );
 }
 
 // TODO: endre når api endres, skal være for kvinne gift med kvinne
 function MorSivilstandPartner() {
     return (
-        <>
+        <VStack gap="space-16">
             <BodyShort>
                 <FormattedMessage id="notPermitted.morSivilstandPartner.1" />
             </BodyShort>
@@ -137,7 +135,7 @@ function MorSivilstandPartner() {
                     linkId="notPermitted.morSivilstandPartner.link"
                 />
             </BodyShort>
-        </>
+        </VStack>
     );
 }
 

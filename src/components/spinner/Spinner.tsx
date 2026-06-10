@@ -1,12 +1,10 @@
-import { Loader } from '@navikt/ds-react';
-
-import './Spinner.css';
+import { Loader, VStack } from '@navikt/ds-react';
 
 function Spinner() {
     return (
-        <div className="Spinner">
-            <Loader size="xlarge" />
-        </div>
+        <VStack gap="space-16" align="center" justify="center" marginBlock="space-64">
+            <Loader size="2xlarge" />
+        </VStack>
     );
 }
 
