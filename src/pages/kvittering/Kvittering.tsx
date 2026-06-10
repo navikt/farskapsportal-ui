@@ -49,7 +49,7 @@ function Kvittering() {
                     }
 
                     return (
-                        <ContentContainer className="Kvittering">
+                        <ContentContainer>
                             <KvitteringIntro erklaering={erklaering} />
                             <MorAlert erklaering={erklaering} />
                             <ProsessIndikator erklaering={erklaering} />

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useIntl } from 'react-intl';
-
 import { fetchUser } from 'api/fetchUser';
 import ErrorPage from 'components/error-page/ErrorPage';
 import NotPermitted from 'components/not-permitted/NotPermitted';

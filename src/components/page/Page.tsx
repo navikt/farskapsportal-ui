@@ -1,6 +1,14 @@
 import { ReactNode } from 'react';
 
-import { Alert, BodyShort, Heading, Page as AkselPage, Box, VStack } from '@navikt/ds-react';
+import {
+    Alert,
+    BodyShort,
+    Heading,
+    Page as AkselPage,
+    Box,
+    VStack,
+    LocalAlert,
+} from '@navikt/ds-react';
 import { Breadcrumb } from 'types/breadcrumbs';
 import { useDekoratorBreadcrumbs } from 'utils/hooks/useDekoratorBreadcrumbs';
 import { FormattedMessage } from 'react-intl';
@@ -18,13 +26,11 @@ function Page({ breadcrumbs, children, titleId, alertTextId }: PageProps) {
     return (
         <Box paddingBlock="space-0 space-24" asChild>
             <AkselPage.Block as="main" width="md" gutters>
-                <VStack gap="space-24">
-                    <PageAlert alertTextId={alertTextId} />
-                    <Heading level="1" size="xlarge">
-                        <FormattedMessage id={titleId} />
-                    </Heading>
-                    {children}
-                </VStack>
+                <Heading level="1" size="xlarge" as="h1" spacing>
+                    <FormattedMessage id={titleId} />
+                </Heading>
+                <PageAlert alertTextId={alertTextId} />
+                {children}
             </AkselPage.Block>
         </Box>
     );
@@ -36,12 +42,15 @@ function PageAlert({ alertTextId }: { alertTextId?: string }) {
     }
 
     return (
-        <Box>
-            <Alert variant="warning">
-                <BodyShort>
+        <Box marginBlock="space-0 space-16" asChild>
+            <LocalAlert status="warning">
+                <LocalAlert.Header>
+                    <LocalAlert.Title>Advarsel</LocalAlert.Title>
+                </LocalAlert.Header>
+                <LocalAlert.Content>
                     <FormattedMessage id={alertTextId} />
-                </BodyShort>
-            </Alert>
+                </LocalAlert.Content>
+            </LocalAlert>
         </Box>
     );
 }

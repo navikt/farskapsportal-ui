@@ -1,15 +1,12 @@
-import { Heading, Tag } from '@navikt/ds-react';
-import { AnchorHTMLAttributes, ReactNode } from 'react';
+import { LinkCard, Tag } from '@navikt/ds-react';
+import { ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
-import { Link } from 'react-router';
-
-import './LinkPanel.css';
 
 const tagVariantMap = {
     suksess: 'success',
     info: 'info',
-    advarsel: 'warning',
-    fokus: 'alt1',
+    advarsel: 'danger',
+    fokus: 'warning',
 } as const;
 
 interface LinkPanelProps {
@@ -22,17 +19,19 @@ interface LinkPanelProps {
 
 function LinkPanel({ linkPath, titleId, children, etikettType, etikettId }: LinkPanelProps) {
     return (
-        <Link className="LinkPanel" to={linkPath}>
-            <div>
-                <Heading level="3" size="small" className="LinkPanel__heading">
+        <LinkCard>
+            <LinkCard.Title as="h3">
+                <LinkCard.Anchor href={linkPath}>
                     <FormattedMessage id={titleId} />
-                </Heading>
-                {children}
-                <Tag variant={tagVariantMap[etikettType]}>
+                </LinkCard.Anchor>
+            </LinkCard.Title>
+            <LinkCard.Description>{children}</LinkCard.Description>
+            <LinkCard.Footer>
+                <Tag data-color={tagVariantMap[etikettType]}>
                     <FormattedMessage id={etikettId} />
                 </Tag>
-            </div>
-        </Link>
+            </LinkCard.Footer>
+        </LinkCard>
     );
 }
 

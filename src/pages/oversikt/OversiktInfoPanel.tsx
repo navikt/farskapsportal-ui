@@ -1,7 +1,5 @@
-import { Heading } from '@navikt/ds-react';
+import { GuidePanel, Heading } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
-
-import InfoPanel from 'components/info-panel/InfoPanel';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { UserInfo } from 'types/user';
 import {
@@ -113,16 +111,16 @@ function OversiktInfoPanel({ userInfo }: OversiktInfoPanelProps) {
     };
 
     return (
-        <InfoPanel className="OversiktInfoPanel">
-                <Heading level="2" size="medium" as="h2">
-                    <FormattedMessage
-                        id="oversikt.infoPanel.greeting"
-                        values={{ fornavn: capitalizeFirsLetterInEveryWord(userInfo.brukersFornavn) }}
-                    />
-                </Heading>
+        <GuidePanel poster>
+            <Heading level="2" size="medium" as="h2" spacing>
+                <FormattedMessage
+                    id="oversikt.infoPanel.greeting"
+                    values={{ fornavn: capitalizeFirsLetterInEveryWord(userInfo.brukersFornavn) }}
+                />
+            </Heading>
             {renderContent()}
             <ToSkjemaButton userInfo={userInfo} />
-        </InfoPanel>
+        </GuidePanel>
     );
 }
 

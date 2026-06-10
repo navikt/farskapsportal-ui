@@ -1,5 +1,5 @@
 import { UserInfo } from '../../types/user';
-import { Box } from '@navikt/ds-react';
+import { VStack } from '@navikt/ds-react';
 import ErklaeringerAvventerBruker from './ErklaeringerAvventerBruker';
 import ErklaeringerAvventerMotpart from './ErklaeringerAvventerMotpart';
 import ErklaeringerAvventerRegistrering from './ErklaeringerAvventerRegistrering';
@@ -23,15 +23,15 @@ function VentendeErklaeringer({ userInfo }: VentendeErklaeringerProps) {
     }
 
     return (
-        <Box borderWidth="1" borderColor="neutral-subtle" borderRadius="4" padding="space-16">
-                <Heading level="2" size="small" as="h2">
-                    <FormattedMessage id="oversikt.ventendeErklaeringer.title" />
-                </Heading>
+        <VStack gap="space-16">
+            <Heading level="2" size="medium" as="h2">
+                <FormattedMessage id="oversikt.ventendeErklaeringer.title" />
+            </Heading>
             <BarnUtenErklaering userInfo={userInfo} />
             <ErklaeringerAvventerBruker userInfo={userInfo} />
             <ErklaeringerAvventerMotpart userInfo={userInfo} />
             <ErklaeringerAvventerRegistrering userInfo={userInfo} />
-        </Box>
+        </VStack>
     );
 }
 

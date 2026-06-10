@@ -1,9 +1,8 @@
-import { Alert, BodyShort } from '@navikt/ds-react';
+import { Alert, BodyShort, GuidePanel } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import ContentContainer from 'components/content-container/ContentContainer';
 import FormattedMessageWithExternalLink from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
-import InfoPanel from 'components/info-panel/InfoPanel';
 import { Feilkode } from 'types/feilkode';
 
 import './NotPermitted.css';
@@ -41,14 +40,14 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
     };
 
     return (
-        <ContentContainer className="NotPermitted">
-            <InfoPanel>
+        <ContentContainer>
+            <GuidePanel poster>
                 {showAlertFor.includes(feilkode) ? (
                     <Alert variant="warning">{renderContent()}</Alert>
                 ) : (
                     renderContent()
                 )}
-            </InfoPanel>
+            </GuidePanel>
         </ContentContainer>
     );
 }

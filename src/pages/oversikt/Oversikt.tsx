@@ -7,6 +7,7 @@ import VentendeErklaeringer from './VentendeErklaeringer';
 import { UserInfo } from '../../types/user';
 import { Foreldrerolle } from '../../types/foreldrerolle';
 import { isLessThanNHoursInThePast } from '../../utils/date';
+import { VStack } from '@navikt/ds-react';
 
 function Oversikt() {
     return (
@@ -17,11 +18,11 @@ function Oversikt() {
                     breadcrumbs={[{ titleId: 'breadcrumbs.oversikt' }]}
                     alertTextId={getFarAlertTextId(userInfo)}
                 >
-                    <ContentContainer className="Oversikt">
+                    <VStack gap="space-24">
                         <OversiktInfoPanel userInfo={userInfo} />
                         <MoreInfoPanels userInfo={userInfo} />
                         <VentendeErklaeringer userInfo={userInfo} />
-                    </ContentContainer>
+                    </VStack>
                 </Page>
             )}
         </WithUserInfo>
