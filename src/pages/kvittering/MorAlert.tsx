@@ -1,11 +1,8 @@
-import { Alert } from '@navikt/ds-react';
+import { Alert, Box, BodyShort, VStack } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { isBrukerFar, isSignedByFar } from 'utils/farskapserklaering';
-import { BodyShort } from '@navikt/ds-react';
-
-import './MorAlert.css';
 
 interface MorAlertProps {
     erklaering: Farskapserklaering;
@@ -17,18 +14,21 @@ function MorAlert({ erklaering }: MorAlertProps) {
     }
 
     return (
-        <Alert variant="warning" className="MorAlert">
-            <div className="MorAlert__boldtext">
-                <FormattedMessage id="kvittering.morAlert.1" />
-            </div>
-            <BodyShort>
-                <FormattedMessage id="kvittering.morAlert.2" />
-            </BodyShort>
-            <br />
-            <BodyShort>
-                <FormattedMessage id="kvittering.morAlert.3" />
-            </BodyShort>
-        </Alert>
+        <Box marginBlock="space-24 space-0">
+            <Alert variant="warning">
+                <VStack gap="space-16">
+                    <BodyShort weight="semibold">
+                        <FormattedMessage id="kvittering.morAlert.1" />
+                    </BodyShort>
+                    <BodyShort>
+                        <FormattedMessage id="kvittering.morAlert.2" />
+                    </BodyShort>
+                    <BodyShort>
+                        <FormattedMessage id="kvittering.morAlert.3" />
+                    </BodyShort>
+                </VStack>
+            </Alert>
+        </Box>
     );
 }
 

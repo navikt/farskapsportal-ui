@@ -1,11 +1,9 @@
 import { ReactNode, useState } from 'react';
-import { BodyShort } from '@navikt/ds-react';
+import { BodyShort, HStack } from '@navikt/ds-react';
 import { ChevronDownIcon, ChevronUpIcon } from '@navikt/aksel-icons';
 
 import { useIntl } from 'react-intl';
 import { getMessage } from '../../../utils/intl';
-
-import './EkspanderbarInformasjon.css';
 
 interface EkspanderbarInformasjonProps {
     intro?: ReactNode;
@@ -22,21 +20,16 @@ function EkspanderbarInformasjon(props: EkspanderbarInformasjonProps) {
     };
 
     return (
-        <div className="EkspanderbarInformasjon">
-            <div className="EkspanderbarInformasjon__intro">
+        <div>
+            <HStack gap="space-8" align="start" wrap={false}>
                 {props.intro}
-                <button
-                    type="button"
-                    className="EkspanderbarInformasjon__intro__lesMerKnapp"
-                    onClick={onOpenPanel}
-                    aria-expanded={isOpen}
-                >
-                    <BodyShort className="EkspanderbarInformasjon__intro__lesMerKnapp__content">
+                <button type="button" onClick={onOpenPanel} aria-expanded={isOpen}>
+                    <BodyShort>
                         {props.lesMerLabel ?? getMessage(intl, 'read.more')}
                         {isOpen ? <ChevronUpIcon aria-hidden /> : <ChevronDownIcon aria-hidden />}
                     </BodyShort>
                 </button>
-            </div>
+            </HStack>
             {isOpen && <div>{props.content}</div>}
         </div>
     );

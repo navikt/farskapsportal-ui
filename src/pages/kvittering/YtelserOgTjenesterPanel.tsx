@@ -1,4 +1,4 @@
-import { BodyShort } from '@navikt/ds-react';
+import { BodyShort, VStack } from '@navikt/ds-react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import ExternalLink from 'components/external-link/ExternalLink';
@@ -19,29 +19,29 @@ function YtelserOgTjenesterPanel({ erklaering }: YtelserOgTjenesterPanelProps) {
     const renderContent = () => {
         if (borSammen) {
             return (
-                <>
+                <VStack gap="space-32">
                     <ForeldrepengerSvangerskapspengerEngangsstoenad />
                     <Barnetrygd />
-                </>
+                </VStack>
             );
         } else {
             if (isFar) {
                 return (
-                    <>
+                    <VStack gap="space-32">
                         <ForeldrepengerSvangerskapspengerEngangsstoenad />
                         <Barnetrygd />
                         <Barnebidrag />
-                    </>
+                    </VStack>
                 );
             } else {
                 return (
-                    <>
+                    <VStack gap="space-32">
                         <ForeldrepengerSvangerskapspengerEngangsstoenad />
                         <Barnetrygd />
                         <UtvidetBarnetrygd />
                         <Barnebidrag />
                         <StoenadTilEnsligMorEllerFar />
-                    </>
+                    </VStack>
                 );
             }
         }

@@ -1,5 +1,5 @@
 import { CheckmarkCircleFillIcon } from '@navikt/aksel-icons';
-import { Box } from '@navikt/ds-react';
+import { Box, HStack } from '@navikt/ds-react';
 import { Heading } from '@navikt/ds-react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -7,27 +7,27 @@ import { Farskapserklaering } from 'types/farskapserklaering';
 import { isBrukerFar } from 'utils/farskapserklaering';
 import { formatDate } from 'utils/intl';
 
-import './KvitteringIntro.css';
-
 interface KvitteringIntroProps {
     erklaering: Farskapserklaering;
 }
 
 function KvitteringIntro({ erklaering }: KvitteringIntroProps) {
     return (
-        <Box className="KvitteringIntro" borderWidth="1" borderColor="neutral-subtle" borderRadius="4" padding="space-16">
-            <CheckmarkCircleFillIcon
-                id="success-icon"
-                aria-label="Success icon"
-                role="img"
-            />
-            <div>
-                {isBrukerFar(erklaering) ? (
-                    <KvitteringIntroFar erklaering={erklaering} />
-                ) : (
-                    <KvitteringIntroMor erklaering={erklaering} />
-                )}
-            </div>
+        <Box borderWidth="1" borderColor="success" borderRadius="4" padding="space-16">
+            <HStack align="start" gap="space-16">
+                <CheckmarkCircleFillIcon
+                    aria-label="Success icon"
+                    role="img"
+                    style={{ minHeight: '2rem', minWidth: '2rem', color: '#06893a' }}
+                />
+                <div>
+                    {isBrukerFar(erklaering) ? (
+                        <KvitteringIntroFar erklaering={erklaering} />
+                    ) : (
+                        <KvitteringIntroMor erklaering={erklaering} />
+                    )}
+                </div>
+            </HStack>
         </Box>
     );
 }

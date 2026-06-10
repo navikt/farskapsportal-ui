@@ -18,8 +18,6 @@ import {
 import { getMessage } from 'utils/intl';
 import { Heading } from '@navikt/ds-react';
 
-import './TermindatoForm.css';
-
 export interface TermindatoFormInput {
     termindato: string;
 }
@@ -40,12 +38,14 @@ function TermindatoForm(props: TermindatoFormProps) {
     });
 
     return (
-        <form onSubmit={handleSubmit(props.onSubmit)} className="TermindatoForm">
-            <fieldset className="TermindatoForm__fieldset">
+        <form onSubmit={handleSubmit(props.onSubmit)}>
+            <fieldset style={{ border: 'none', padding: 0, margin: 0 }}>
                 <legend>
-                    <Heading level="2" size="small">{getMessage(intl, 'skjema.mor.barn.title')}</Heading>
+                    <Heading level="2" size="small" spacing>
+                        {getMessage(intl, 'skjema.mor.barn.title')}
+                    </Heading>
                 </legend>
-                <p className="TermindatoForm__description">{getMessage(intl, 'skjema.mor.barn.description')}</p>
+                <p style={{ marginBottom: '1rem' }}>{getMessage(intl, 'skjema.mor.barn.description')}</p>
                 <Controller
                     name="termindato"
                     control={control}

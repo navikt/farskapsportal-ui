@@ -1,9 +1,7 @@
-import { BodyShort, Heading, Label } from '@navikt/ds-react';
+import { BodyShort, Heading, Label, VStack } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import { formatFoedselsnummer } from 'utils/foedselsnummer';
-
-import './FarPresentation.css';
 
 interface FarPresentationProps {
     navn: string;
@@ -12,11 +10,11 @@ interface FarPresentationProps {
 
 function FarPresentation(props: FarPresentationProps) {
     return (
-        <div className="FarPresentation">
-            <Heading level="2" size="small">
+        <VStack gap="space-16">
+            <Heading level="2" size="small" spacing>
                 <FormattedMessage id="skjema.mor.far.title" />
             </Heading>
-            <div className="FarPresentation__navn">
+            <div>
                 <BodyShort>
                     <FormattedMessage id="navn" />:
                 </BodyShort>
@@ -28,7 +26,7 @@ function FarPresentation(props: FarPresentationProps) {
                 </BodyShort>
                 <Label>{formatFoedselsnummer(props.foedselsnummer)}</Label>
             </div>
-        </div>
+        </VStack>
     );
 }
 

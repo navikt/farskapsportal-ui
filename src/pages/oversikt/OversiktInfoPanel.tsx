@@ -1,4 +1,5 @@
 import { GuidePanel, Heading } from '@navikt/ds-react';
+import { BreakpointMd } from '@navikt/ds-tokens/dist/tokens';
 import { FormattedMessage } from 'react-intl';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { UserInfo } from 'types/user';
@@ -17,6 +18,7 @@ import MorMedBarn from './info-panel-content/mor/MorMedBarn';
 import MorUtenBarn from './info-panel-content/mor/MorUtenBarn';
 import ToSkjemaButton from './ToSkjemaButton';
 import { capitalizeFirsLetterInEveryWord } from '../../utils/string';
+import InfoPanel from 'components/info-panel/InfoPanel';
 
 interface OversiktInfoPanelProps {
     userInfo: UserInfo;
@@ -111,7 +113,7 @@ function OversiktInfoPanel({ userInfo }: OversiktInfoPanelProps) {
     };
 
     return (
-        <GuidePanel poster>
+        <InfoPanel>
             <Heading level="2" size="medium" as="h2" spacing>
                 <FormattedMessage
                     id="oversikt.infoPanel.greeting"
@@ -120,7 +122,7 @@ function OversiktInfoPanel({ userInfo }: OversiktInfoPanelProps) {
             </Heading>
             {renderContent()}
             <ToSkjemaButton userInfo={userInfo} />
-        </GuidePanel>
+        </InfoPanel>
     );
 }
 

@@ -2,8 +2,6 @@ import { Heading, Label } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 import { Skriftspraak } from '../../../../types/skriftspraak';
 
-import './SpraakForFarskapserklaeringPresentation.css';
-
 interface SpraakForFarskapserklaeringPresentationProps {
     spraak: Skriftspraak;
 }
@@ -12,8 +10,8 @@ function SpraakForFarskapserklaeringPresentation({
     spraak,
 }: SpraakForFarskapserklaeringPresentationProps) {
     return (
-        <div className="SpraakForFarskapserklaeringPresentation">
-            <Heading level="2" size="small">
+        <div>
+            <Heading level="2" size="small" spacing>
                 <FormattedMessage id="skjema.mor.spraak.title" />
             </Heading>
             <Label>

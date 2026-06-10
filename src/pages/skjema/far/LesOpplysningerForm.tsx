@@ -1,4 +1,4 @@
-import { Checkbox, CheckboxGroup, Heading } from '@navikt/ds-react';
+import { Checkbox, CheckboxGroup, Heading, VStack } from '@navikt/ds-react';
 import { Controller, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 
@@ -6,8 +6,6 @@ import FarskapserklaeringPresentation from 'components/farskapserklaering-presen
 import FormButtons from '../../../components/form-buttons/FormButtons';
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { getMessage } from '../../../utils/intl';
-
-import './LesOpplysningerForm.css';
 
 interface LesOpplysningerFormInput {
     readAndAccepted: boolean;
@@ -29,43 +27,44 @@ function LesOpplysningerForm({ farskapserklaering, onCancel, onSubmit }: LesOppl
     });
 
     return (
-        <form className="LesOpplysningerForm" onSubmit={handleSubmit(onSubmit)}>
-            <Heading level="2" size="small">
-                <FormattedMessage id="skjema.far.lesOpplysninger.title" />
-            </Heading>
-            <FarskapserklaeringPresentation
-                farskapserklaering={farskapserklaering}
-                showBorSammen={false}
-                showTitle={false}
-                border={true}
-            />
-            <Controller
-                name="readAndAccepted"
-                control={control}
-                rules={{
-                    required: getMessage(intl, 'skjema.far.lesOpplysninger.validation.required'),
-                }}
-                render={({ field: { onChange, value } }) => (
-                    <CheckboxGroup
-                        legend={getMessage(intl, 'skjema.far.lesOpplysninger.confirm.label')}
-                        hideLegend
-                        error={errors.readAndAccepted?.message}
-                    >
-                        <Checkbox
-                            className="BekreftCheckBoksPanel"
-                            checked={value}
-                            onChange={(e) => onChange(e.target.checked)}
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <VStack gap="space-16">
+                <Heading level="2" size="small" spacing>
+                    <FormattedMessage id="skjema.far.lesOpplysninger.title" />
+                </Heading>
+                <FarskapserklaeringPresentation
+                    farskapserklaering={farskapserklaering}
+                    showBorSammen={false}
+                    showTitle={false}
+                    border={true}
+                />
+                <Controller
+                    name="readAndAccepted"
+                    control={control}
+                    rules={{
+                        required: getMessage(intl, 'skjema.far.lesOpplysninger.validation.required'),
+                    }}
+                    render={({ field: { onChange, value } }) => (
+                        <CheckboxGroup
+                            legend={getMessage(intl, 'skjema.far.lesOpplysninger.confirm.label')}
+                            hideLegend
+                            error={errors.readAndAccepted?.message}
                         >
-                            {getMessage(intl, `skjema.far.lesOpplysninger.confirm.label`)}
-                        </Checkbox>
-                    </CheckboxGroup>
-                )}
-            />
-            <FormButtons
-                submitText={getMessage(intl, 'skjema.next')}
-                cancelText={getMessage(intl, 'skjema.cancel')}
-                onCancel={onCancel}
-            />
+                            <Checkbox
+                                checked={value}
+                                onChange={(e) => onChange(e.target.checked)}
+                            >
+                                {getMessage(intl, `skjema.far.lesOpplysninger.confirm.label`)}
+                            </Checkbox>
+                        </CheckboxGroup>
+                    )}
+                />
+                <FormButtons
+                    submitText={getMessage(intl, 'skjema.next')}
+                    cancelText={getMessage(intl, 'skjema.cancel')}
+                    onCancel={onCancel}
+                />
+            </VStack>
         </form>
     );
 }

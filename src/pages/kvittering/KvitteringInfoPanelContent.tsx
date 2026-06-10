@@ -1,8 +1,6 @@
-import { Heading } from '@navikt/ds-react';
+import { Heading, VStack } from '@navikt/ds-react';
 import { ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
-
-import './KvitteringInfoPanelContent.css';
 
 interface KvitteringInfoPanelContentProps {
     children: ReactNode;
@@ -11,11 +9,11 @@ interface KvitteringInfoPanelContentProps {
 
 function KvitteringInfoPanelContent({ children, titleId }: KvitteringInfoPanelContentProps) {
     return (
-        <section className="KvitteringInfoPanelContent">
-            <Heading level="3" size="small" as="h3">
+        <section>
+            <Heading level="3" size="small" as="h3" spacing>
                 <FormattedMessage id={titleId} />
             </Heading>
-            {children}
+            <VStack gap="space-16">{children}</VStack>
         </section>
     );
 }

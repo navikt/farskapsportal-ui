@@ -31,14 +31,14 @@ function KvitteringLastNedErklaering({ erklaering }: KvitteringLastNedErklaering
     }
 
     return beggeParterSignert ? (
-        <BodyShort className="KvitteringLastNedErklaering">
+        <BodyShort>
             <FormattedMessage id="kvittering.intro.downloadPdf" />
             <a href={pdfDownloadUrl} download={pdfName}>
                 {pdfName}
             </a>
         </BodyShort>
     ) : (
-        <BodyShort className="KvitteringLastNedErklaering">
+        <BodyShort>
             <FormattedMessage id="kvittering.intro.downloadPdfNotSigned" />
         </BodyShort>
     );

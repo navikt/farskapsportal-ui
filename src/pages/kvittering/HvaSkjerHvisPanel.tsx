@@ -1,4 +1,4 @@
-import { BodyShort } from '@navikt/ds-react';
+import { BodyShort, VStack } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import { Farskapserklaering } from 'types/farskapserklaering';
@@ -25,19 +25,19 @@ function HvaSkjerHvisPanel({ erklaering }: HvaSkjerHvisPanelProps) {
     const renderContent = () => {
         if (isFar) {
             return (
-                <>
+                <VStack gap="space-32">
                     <FoedtIUtlandet />
                     <BarnetDoer />
-                </>
+                </VStack>
             );
         } else {
             if (isTermindato) {
                 return (
-                    <>
+                    <VStack gap="space-32">
                         {!isSignedByFar(erklaering) && <FarSignererIkkeTermindato />}
                         <FoedtIUtlandet />
                         <BarnetDoer />
-                    </>
+                    </VStack>
                 );
             } else {
                 return <FarSignererIkkeFoedselsnummer />;

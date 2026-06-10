@@ -1,20 +1,10 @@
-import { ReactNode } from 'react';
-
-import {
-    Alert,
-    BodyShort,
-    Heading,
-    Page as AkselPage,
-    Box,
-    VStack,
-    LocalAlert,
-} from '@navikt/ds-react';
+import { Heading, Page as AkselPage, Box, LocalAlert, VStack } from '@navikt/ds-react';
 import { Breadcrumb } from 'types/breadcrumbs';
 import { useDekoratorBreadcrumbs } from 'utils/hooks/useDekoratorBreadcrumbs';
 import { FormattedMessage } from 'react-intl';
 
 interface PageProps {
-    children: ReactNode;
+    children: React.ReactNode;
     titleId: string;
     breadcrumbs?: Breadcrumb[];
     alertTextId?: string;
@@ -24,7 +14,7 @@ function Page({ breadcrumbs, children, titleId, alertTextId }: PageProps) {
     useDekoratorBreadcrumbs(breadcrumbs);
 
     return (
-        <Box paddingBlock="space-0 space-24" asChild>
+        <VStack gap="space-32" paddingBlock="space-32" asChild>
             <AkselPage.Block as="main" width="md" gutters>
                 <Heading level="1" size="xlarge" as="h1" spacing>
                     <FormattedMessage id={titleId} />
@@ -32,7 +22,7 @@ function Page({ breadcrumbs, children, titleId, alertTextId }: PageProps) {
                 <PageAlert alertTextId={alertTextId} />
                 {children}
             </AkselPage.Block>
-        </Box>
+        </VStack>
     );
 }
 

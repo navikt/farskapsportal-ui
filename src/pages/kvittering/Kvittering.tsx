@@ -16,8 +16,6 @@ import KvitteringLastNedErklaering from './KvitteringLastNedErklaering';
 import FarskapserklaeringPresentation from '../../components/farskapserklaering-presentation/FarskapserklaeringPresentation';
 import { Accordion } from '@navikt/ds-react';
 
-import './Kvittering.css';
-
 function Kvittering() {
     const erklaeringId = useQuery().get(ERKLAERING_ID);
 

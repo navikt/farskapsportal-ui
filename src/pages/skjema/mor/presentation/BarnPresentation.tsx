@@ -4,8 +4,6 @@ import { FormattedMessage } from 'react-intl';
 import DatePresentation from 'components/date-presentation/DatePresentation';
 import { formatFoedselsnummer } from 'utils/foedselsnummer';
 
-import './BarnPresentation.css';
-
 interface BarnPresentationProps {
     foedselsnummer: string | null;
     termindato: string | null;
@@ -13,8 +11,8 @@ interface BarnPresentationProps {
 
 function BarnPresentation(props: BarnPresentationProps) {
     return (
-        <div className="BarnPresentation">
-            <Heading level="2" size="small">
+        <div>
+            <Heading level="2" size="small" spacing>
                 <FormattedMessage id="skjema.mor.barn.title" />
             </Heading>
             {props.foedselsnummer && (

@@ -6,8 +6,6 @@ import FormButtons from 'components/form-buttons/FormButtons';
 import { getMessage } from 'utils/intl';
 import EkspanderbarInformasjon from './EkspanderbarInformasjon';
 import { BodyShort, Heading } from '@navikt/ds-react';
-
-import './BorSammenForm.css';
 import FormattedMessageWithExternalLink from '../../../components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
 
 export type BorSammenValue = 'YES' | 'NO' | null;

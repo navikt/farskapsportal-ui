@@ -19,8 +19,6 @@ import LesOpplysningerPresentation from './LesOpplysningerPresentation';
 import { Stepper, StepperStep } from '../../../components/stepper';
 import SkjemaStep from '../common/SkjemaStep';
 
-import './FarSkjema.css';
-
 type ActionType =
     | { type: 'SET_LES_OPPLYSNINGER' }
     | { type: 'EDIT_BOR_SAMMEN' }

@@ -1,8 +1,7 @@
 import { CheckmarkCircleFillIcon } from '@navikt/aksel-icons';
+import { Box } from '@navikt/ds-react';
 
 import { StepStatus } from 'types/form';
-
-import './StepIcon.css';
 
 interface StepIconProps {
     stepNumber: number;
@@ -15,13 +14,13 @@ function StepIcon(props: StepIconProps) {
             case StepStatus.Done:
                 return <CheckmarkCircleFillIcon aria-label="OK icon" role="img" />;
             case StepStatus.Active:
-                return <div className="StepIcon__active">{props.stepNumber}</div>;
+                return <Box as="div">{props.stepNumber}</Box>;
             case StepStatus.NotStarted:
-                return <div className="StepIcon__not-started">{props.stepNumber}</div>;
+                return <Box as="div">{props.stepNumber}</Box>;
         }
     };
 
-    return <div className="StepIcon">{renderIcon()}</div>;
+    return <Box as="div">{renderIcon()}</Box>;
 }
 
 export default StepIcon;

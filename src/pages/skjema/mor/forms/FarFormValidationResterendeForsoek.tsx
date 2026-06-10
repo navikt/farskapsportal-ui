@@ -1,6 +1,5 @@
-import { Alert } from '@navikt/ds-react';
+import { Alert, Box } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
-import './FarFormValidationResterendeForsoek.css';
 
 interface FarFormValidationResterendeForsoekProps {
     antallResterendeForsoek?: number | null;
@@ -55,9 +54,11 @@ function FarFormValidationResterendeForsoek({
     }
 
     return (
-        <Alert variant="warning" className="resterendeForsoek--alert">
-            <FormattedMessage id="skjema.mor.far.validation.resterendeForsoek.final" />
-        </Alert>
+        <Box marginBlock="space-16" asChild>
+            <Alert variant="warning">
+                <FormattedMessage id="skjema.mor.far.validation.resterendeForsoek.final" />
+            </Alert>
+        </Box>
     );
 }
 

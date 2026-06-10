@@ -1,10 +1,8 @@
-import { Box, Button, Heading } from '@navikt/ds-react';
+import { Box, Button, Heading, HStack } from '@navikt/ds-react';
 import { ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
 
 import { StepStatus } from 'types/form';
-
-import './SkjemaStep.css';
 
 interface SkjemaStepProps {
     formComponent: ReactNode;
@@ -20,7 +18,7 @@ function SkjemaStep(props: SkjemaStepProps) {
         switch (props.status) {
             case StepStatus.Done:
                 return (
-                    <div className="SkjemaStep__done">
+                    <HStack justify="space-between" align="start" gap="space-16">
                         {props.presentationComponent}
                         {props.onChange && (
                             <Button
@@ -32,7 +30,7 @@ function SkjemaStep(props: SkjemaStepProps) {
                                 <FormattedMessage id="skjema.edit" />
                             </Button>
                         )}
-                    </div>
+                    </HStack>
                 );
             case StepStatus.Active:
                 return props.formComponent;
@@ -42,8 +40,10 @@ function SkjemaStep(props: SkjemaStepProps) {
     };
 
     return (
-        <section className="SkjemaStep">
-            <Box background="default" borderWidth="1" borderColor="neutral-subtle" borderRadius="4" padding="space-16">{renderContent()}</Box>
+        <section>
+            <Box background="default" borderWidth="1" borderColor="neutral-subtle" borderRadius="4" padding="space-16">
+                {renderContent()}
+            </Box>
         </section>
     );
 }

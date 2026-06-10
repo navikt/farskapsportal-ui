@@ -7,8 +7,6 @@ import FormButtons from '../../../../components/form-buttons/FormButtons';
 import { Skriftspraak } from '../../../../types/skriftspraak';
 import { useStore } from '../../../../store/Context';
 
-import './SpraakForFarskapserklaeringForm.css';
-
 export interface SpraakForFarskapserklaeringFormInput {
     spraak: Skriftspraak | null;
 }
@@ -29,7 +27,7 @@ function SpraakForFarskapserklaeringForm(props: SpraakForFarskapserklaeringFormP
     });
 
     return (
-        <form onSubmit={handleSubmit(props.onSubmit)} className="SpraakForFarskapserklaeringForm">
+        <form onSubmit={handleSubmit(props.onSubmit)}>
             <Controller
                 name="spraak"
                 control={control}
@@ -42,11 +40,9 @@ function SpraakForFarskapserklaeringForm(props: SpraakForFarskapserklaeringFormP
                         value={value ?? ''}
                         error={errors.spraak?.message}
                     >
-                        <div className="SpraakForFarskapserklaeringForm__radiogruppe__values">
-                            <Radio value={Skriftspraak.Bookmaal}>{getMessage(intl, 'skjema.mor.spraak.label.norwegian')}</Radio>
-                            <Radio value={Skriftspraak.Nynorsk}>{getMessage(intl, 'skjema.mor.spraak.label.nynorsk')}</Radio>
-                            <Radio value={Skriftspraak.Engelsk}>{getMessage(intl, 'skjema.mor.spraak.label.english')}</Radio>
-                        </div>
+                        <Radio value={Skriftspraak.Bookmaal}>{getMessage(intl, 'skjema.mor.spraak.label.norwegian')}</Radio>
+                        <Radio value={Skriftspraak.Nynorsk}>{getMessage(intl, 'skjema.mor.spraak.label.nynorsk')}</Radio>
+                        <Radio value={Skriftspraak.Engelsk}>{getMessage(intl, 'skjema.mor.spraak.label.english')}</Radio>
                     </RadioGroup>
                 )}
             />

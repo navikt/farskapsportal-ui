@@ -3,8 +3,6 @@ import { FormattedMessage } from 'react-intl';
 
 import { BorSammenValue } from './BorSammenForm';
 
-import './BorSammenPresentation.css';
-
 interface BorSammenPresentationProps {
     titleId: string;
     borSammen: BorSammenValue;
@@ -12,8 +10,8 @@ interface BorSammenPresentationProps {
 
 function BorSammenPresentation({ titleId, borSammen }: BorSammenPresentationProps) {
     return (
-        <div className="BorSammenPresentation">
-            <Heading level="2" size="small">
+        <div>
+            <Heading level="2" size="small" spacing>
                 <FormattedMessage id={titleId} />
             </Heading>
             <BodyShort>
