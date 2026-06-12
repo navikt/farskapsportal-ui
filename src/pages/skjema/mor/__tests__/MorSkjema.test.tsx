@@ -1,4 +1,5 @@
 import { fireEvent, render, screen, waitFor } from 'test-utils';
+import { vi } from 'vitest';
 import texts from 'texts/nb';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { getToday } from 'utils/date';
@@ -6,7 +7,7 @@ import { getToday } from 'utils/date';
 import MorSkjema from '../MorSkjema';
 import { generateRandomValidNorwegianIdent } from 'test-utils';
 
-jest.mock('api/api', () => ({ controlFatherInfo: () => Promise.resolve() }));
+vi.mock('api/api', () => ({ controlFatherInfo: () => Promise.resolve() }));
 
 const termindatoLabel = texts['termindato'];
 const navnLabel = texts['skjema.mor.far.navn.label'];
@@ -14,6 +15,11 @@ const foedselsnummerLabel = texts['skjema.mor.far.foedselsnummer.label'];
 const spraakBokmaalLabel = texts['skjema.mor.spraak.label.norwegian'];
 const farCorrectLabel = texts['skjema.mor.confirm.farCorrect.label'];
 const submitButtonLabel = texts['skjema.next'];
+
+const toDateInputValue = (isoDate: string): string => {
+    const [year, month, day] = isoDate.split('-');
+    return `${day}.${month}.${year}`;
+};
 
 test('should display steps correctly', async () => {
     render(
@@ -35,14 +41,14 @@ test('should display steps correctly', async () => {
     const submitButton = screen.getByText(submitButtonLabel);
 
     // only step 1 is displayed
-    expect(termindatoInput).toBeInTheDocument();
-    expect(screen.queryByLabelText(navnLabel)).not.toBeInTheDocument();
-    expect(screen.queryByLabelText(farCorrectLabel)).not.toBeInTheDocument();
-    expect(screen.queryByLabelText(spraakBokmaalLabel)).not.toBeInTheDocument();
+    expect(termindatoInput).not.toBeNull();
+    expect(screen.queryByLabelText(navnLabel)).toBeNull();
+    expect(screen.queryByLabelText(farCorrectLabel)).toBeNull();
+    expect(screen.queryByLabelText(spraakBokmaalLabel)).toBeNull();
 
     // fill out step 1
     termindatoInput.focus();
-    fireEvent.change(termindatoInput, { target: { value: getToday() } });
+    fireEvent.change(termindatoInput, { target: { value: toDateInputValue(getToday()) } });
     submitButton.focus();
     fireEvent.click(submitButton);
 
@@ -52,10 +58,10 @@ test('should display steps correctly', async () => {
         const submitButton = screen.getByText(submitButtonLabel);
 
         // only step 2 is displayed
-        expect(screen.queryByLabelText(termindatoLabel)).not.toBeInTheDocument();
-        expect(navnInput).toBeInTheDocument();
-        expect(screen.queryByLabelText(farCorrectLabel)).not.toBeInTheDocument();
-        expect(screen.queryByLabelText(spraakBokmaalLabel)).not.toBeInTheDocument();
+        expect(screen.queryByLabelText(termindatoLabel)).toBeNull();
+        expect(navnInput).not.toBeNull();
+        expect(screen.queryByLabelText(farCorrectLabel)).toBeNull();
+        expect(screen.queryByLabelText(spraakBokmaalLabel)).toBeNull();
 
         // fill out step 2
         fireEvent.change(navnInput, { target: { value: 'TEST' } });
@@ -71,10 +77,10 @@ test('should display steps correctly', async () => {
         const submitButton = screen.getByText(submitButtonLabel);
 
         // only step 3 is displayed
-        expect(screen.queryByLabelText(termindatoLabel)).not.toBeInTheDocument();
-        expect(screen.queryByLabelText(navnLabel)).not.toBeInTheDocument();
-        expect(screen.queryByLabelText(farCorrectLabel)).not.toBeInTheDocument();
-        expect(spraakBokmaalInput).toBeInTheDocument();
+        expect(screen.queryByLabelText(termindatoLabel)).toBeNull();
+        expect(screen.queryByLabelText(navnLabel)).toBeNull();
+        expect(screen.queryByLabelText(farCorrectLabel)).toBeNull();
+        expect(spraakBokmaalInput).not.toBeNull();
 
         // fill out step 3
         fireEvent.change(spraakBokmaalInput, { target: { checked: true } });
@@ -85,8 +91,8 @@ test('should display steps correctly', async () => {
         const farCorrectCheckbox = screen.getByLabelText(farCorrectLabel);
 
         // only step 4 is displayed
-        expect(screen.queryByLabelText(termindatoLabel)).not.toBeInTheDocument();
-        expect(screen.queryByLabelText(navnLabel)).not.toBeInTheDocument();
-        expect(farCorrectCheckbox).toBeInTheDocument();
+        expect(screen.queryByLabelText(termindatoLabel)).toBeNull();
+        expect(screen.queryByLabelText(navnLabel)).toBeNull();
+        expect(farCorrectCheckbox).not.toBeNull();
     });
 });

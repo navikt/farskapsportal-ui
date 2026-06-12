@@ -32,8 +32,5 @@ export default defineConfig({
         globals: true,
         environment: 'jsdom',
         setupFiles: ['./src/test-setup.ts'],
-        alias: {
-            '@navikt/aksel-icons': '@navikt/aksel-icons/cjs',
-        },
     },
 });

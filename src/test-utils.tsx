@@ -1,5 +1,6 @@
 import { ReactElement, ReactNode } from 'react';
 import { BrowserRouter as Router } from 'react-router';
+import axeCore, { AxeResults } from 'axe-core';
 import { render, RenderOptions } from '@testing-library/react';
 
 import { StoreProvider } from 'store/Context';
@@ -20,6 +21,8 @@ const customRender = (
     ui: ReactElement,
     { store, ...options }: RenderOptions & { store?: Partial<Store> } = {}
 ) => render(<ProviderWrapper store={store}>{ui}</ProviderWrapper>, { ...options });
+
+export const runAxe = (container: HTMLElement): Promise<AxeResults> => axeCore.run(container);
 
 export * from '@testing-library/react';
 export function generateRandomValidNorwegianIdent(): string {

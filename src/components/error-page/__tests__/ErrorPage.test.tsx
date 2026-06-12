@@ -1,6 +1,5 @@
-import { axe } from 'jest-axe';
-
-import { render, screen } from 'test-utils';
+import { render, runAxe, screen } from 'test-utils';
+import { expect, test } from 'vitest';
 import ErrorPage, { ErrorPageProps } from '../ErrorPage';
 
 const defaultProps: ErrorPageProps = {
@@ -15,15 +14,15 @@ const defaultProps: ErrorPageProps = {
 test('should have no a11y violations', async () => {
     const { container } = render(<ErrorPage {...defaultProps} />);
 
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    const results = await runAxe(container);
+    expect(results.violations).toHaveLength(0);
 });
 
 test('should display title, text and banner', async () => {
     render(<ErrorPage {...defaultProps} />);
 
-    expect(screen.getByText('Test title')).toBeInTheDocument();
-    expect(screen.getByText('Test text')).toBeInTheDocument();
-    expect(screen.getByText('Test banner title')).toBeInTheDocument();
-    expect(screen.getByText('Test banner text')).toBeInTheDocument();
+    expect(screen.getByText('Test title')).not.toBeNull();
+    expect(screen.getByText('Test text')).not.toBeNull();
+    expect(screen.getByText('Test banner title')).not.toBeNull();
+    expect(screen.getByText('Test banner text')).not.toBeNull();
 });

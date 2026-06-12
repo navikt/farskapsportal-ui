@@ -1,6 +1,5 @@
-import { axe } from 'jest-axe';
-
-import { fireEvent, render, screen, waitFor } from 'test-utils';
+import { fireEvent, render, runAxe, screen, waitFor } from 'test-utils';
+import { expect, test } from 'vitest';
 import texts from 'texts/nb';
 import FarForm, { FarFormProps } from '../FarForm';
 
@@ -22,8 +21,8 @@ const defaultProps: FarFormProps = {
 test('should have no a11y violations', async () => {
     const { container } = render(<FarForm {...defaultProps} />);
 
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    const results = await runAxe(container);
+    expect(results.violations).toHaveLength(0);
 });
 
 test('should set default values', async () => {
