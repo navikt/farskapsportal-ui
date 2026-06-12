@@ -129,7 +129,7 @@ export default {
     'oversikt.goToSkjemaButton': 'Opprett farskapserklæring',
 
     'skjema.next': 'Neste',
-    'skjema.cancel': 'Avbryt',
+    'skjema.cancel': 'Tilbake',
     'skjema.edit': 'Endre',
     'skjema.submit': 'Signer farskapserklæringa',
 

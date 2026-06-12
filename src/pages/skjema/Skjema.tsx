@@ -11,6 +11,7 @@ import { ERKLAERING_ID } from 'utils/constants';
 import { useQuery } from 'utils/hooks/useQuery';
 import MorSkjema from './mor/MorSkjema';
 import FarSkjema from './far/FarSkjema';
+import { VStack } from '@navikt/ds-react';
 
 function Skjema() {
     const [{ language }] = useStore();
@@ -46,9 +47,7 @@ function Skjema() {
                 { titleId: 'breadcrumbs.skjema' },
             ]}
         >
-            <WithUserInfo>
-                {(userInfo) => <ContentContainer>{renderContent(userInfo)}</ContentContainer>}
-            </WithUserInfo>
+            <WithUserInfo>{(userInfo) => renderContent(userInfo)}</WithUserInfo>
         </Page>
     );
 }

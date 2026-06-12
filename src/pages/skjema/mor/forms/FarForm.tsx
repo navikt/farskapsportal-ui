@@ -1,8 +1,7 @@
-import { Alert, TextField } from '@navikt/ds-react';
+import { ErrorSummary, Heading, TextField, VStack } from '@navikt/ds-react';
 import { useReducer } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-
 import { controlFatherInfo } from 'api/api';
 import Error from 'components/error/Error';
 import FormButtons from 'components/form-buttons/FormButtons';
@@ -17,7 +16,6 @@ import { getMessage } from 'utils/intl';
 import { removeWhitespace } from 'utils/string';
 import FarFormValidationError from './FarFormValidationError';
 import FarFormValidationResterendeForsoek from './FarFormValidationResterendeForsoek';
-import { Heading } from '@navikt/ds-react';
 
 type ActionType =
     | { type: 'CONTROL_FATHER' }
@@ -78,7 +76,13 @@ function FarForm(props: FarFormProps) {
         tidspunktForNullstillingAvForsoek: undefined,
         apiError: undefined,
     });
-    const { control, register, handleSubmit, formState: { errors } } = useForm<FarFormInput>({
+    const {
+        control,
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<FarFormInput>({
+        mode: 'onSubmit',
         defaultValues: {
             navn: props.defaultNavn,
             foedselsnummer: props.defaultFoedselsnummer,
@@ -124,9 +128,12 @@ function FarForm(props: FarFormProps) {
 
     return (
         <form onSubmit={handleSubmit(controlInfoAndSubmit, onError)}>
-            <div>
-                <Heading level="2" size="small">{getMessage(intl, 'skjema.mor.far.title')}</Heading>
+            <Heading level="2" size="medium" spacing>
+                {getMessage(intl, 'skjema.mor.far.title')}
+            </Heading>
+            <VStack gap="space-16">
                 <TextField
+                    style={{ maxWidth: '42ch' }}
                     id="navn"
                     label={getMessage(intl, 'skjema.mor.far.navn.label')}
                     description={
@@ -137,6 +144,7 @@ function FarForm(props: FarFormProps) {
                         </>
                     }
                     error={errors.navn?.message}
+                    aria-describedby={errors.navn ? 'navn-error' : undefined}
                     {...register('navn', {
                         required: getMessage(intl, 'skjema.mor.far.navn.validation.required'),
                     })}
@@ -148,14 +156,28 @@ function FarForm(props: FarFormProps) {
                     rules={{
                         required: getMessage(
                             intl,
-                            'skjema.mor.far.foedselsnummer.validation.required'
+                            'skjema.mor.far.foedselsnummer.validation.required',
                         ),
                         validate: (value: string) => {
-                            return (/^\d{11}$/.test(removeWhitespace(value)) || getMessage(intl, 'skjema.mor.far.foedselsnummer.validation.fnr'));
+                            const cleaned = removeWhitespace(value);
+                            if (cleaned.length !== 11) {
+                                return getMessage(
+                                    intl,
+                                    'skjema.mor.far.foedselsnummer.validation.fnr',
+                                );
+                            }
+                            if (!/^\d{11}$/.test(cleaned)) {
+                                return getMessage(
+                                    intl,
+                                    'skjema.mor.far.foedselsnummer.validation.fnr',
+                                );
+                            }
+                            return true;
                         },
                     }}
                     render={({ field: { onChange, value, name } }) => (
                         <TextField
+                            style={{ maxWidth: '16ch' }}
                             id={name}
                             label={getMessage(intl, 'skjema.mor.far.foedselsnummer.label')}
                             value={value}
@@ -163,43 +185,45 @@ function FarForm(props: FarFormProps) {
                             error={errors.foedselsnummer?.message || (stateError ? ' ' : undefined)}
                             inputMode="numeric"
                             type="text"
+                            aria-describedby={errors.foedselsnummer ? `${name}-error` : undefined}
                         />
                     )}
                 />
-            </div>
-            {!state.pending && state.feilkode && (
-                <FarFormValidationError
-                    id="far-form-validation-error"
-                    feilkode={state.feilkode}
-                    antallResterendeForsoek={state.antallResterendeForsoek}
-                    tidspunktForNullstillingAvForsoek={state.tidspunktForNullstillingAvForsoek}
-                />
-            )}
-            <div aria-live="polite">
-                {!state.pending && (
-                    <FarFormValidationResterendeForsoek
+                {!state.pending && state.feilkode && (
+                    <FarFormValidationError
+                        id="far-form-validation-error"
+                        feilkode={state.feilkode}
                         antallResterendeForsoek={state.antallResterendeForsoek}
+                        tidspunktForNullstillingAvForsoek={state.tidspunktForNullstillingAvForsoek}
                     />
                 )}
-            </div>
-            {!!feil.length && (
-                <Alert variant="error" ref={feilRef} tabIndex={-1}>
-                    <ul>
+                <div aria-live="polite">
+                    {!state.pending && (
+                        <FarFormValidationResterendeForsoek
+                            antallResterendeForsoek={state.antallResterendeForsoek}
+                        />
+                    )}
+                </div>
+                {!!feil.length && (
+                    <ErrorSummary ref={feilRef} heading={getMessage(intl, 'form.feiloppsummering')}>
                         {feil.map((f) => (
-                            <li key={f.skjemaelementId}>
-                                <a href={`#${f.skjemaelementId}`}>{f.feilmelding}</a>
-                            </li>
+                            <ErrorSummary.Item
+                                key={f.skjemaelementId}
+                                href={`#${f.skjemaelementId}`}
+                            >
+                                {f.feilmelding}
+                            </ErrorSummary.Item>
                         ))}
-                    </ul>
-                </Alert>
-            )}
-            <div aria-live="polite">{state.apiError && <Error error={state.apiError} />}</div>
-            <FormButtons
-                submitText={getMessage(intl, 'skjema.next')}
-                cancelText={getMessage(intl, 'skjema.cancel')}
-                onCancel={props.onCancel}
-                submitSpinner={state.pending}
-            />
+                    </ErrorSummary>
+                )}
+                {state.apiError && <Error ariaLive="polite" error={state.apiError} />}
+                <FormButtons
+                    submitText={getMessage(intl, 'skjema.next')}
+                    cancelText={getMessage(intl, 'skjema.cancel')}
+                    onCancel={props.onCancel}
+                    submitSpinner={state.pending}
+                />
+            </VStack>
         </form>
     );
 }

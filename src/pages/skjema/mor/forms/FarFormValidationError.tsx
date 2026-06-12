@@ -55,7 +55,7 @@ function FarFormValidationError({
     };
 
     return (
-        <Alert id={id} variant="error">
+        <Alert id={id} variant="error" role="alert" aria-live="assertive">
             {renderContent()}
         </Alert>
     );

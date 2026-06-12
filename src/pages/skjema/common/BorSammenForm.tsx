@@ -1,10 +1,9 @@
-import { Radio, RadioGroup } from '@navikt/ds-react';
+import { Radio, RadioGroup, ReadMore } from '@navikt/ds-react';
 import { Controller, useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
 
 import FormButtons from 'components/form-buttons/FormButtons';
 import { getMessage } from 'utils/intl';
-import EkspanderbarInformasjon from './EkspanderbarInformasjon';
 import { BodyShort, Heading } from '@navikt/ds-react';
 import FormattedMessageWithExternalLink from '../../../components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
 
@@ -23,7 +22,12 @@ export interface BorSammenFormProps {
 
 function BorSammenForm(props: BorSammenFormProps) {
     const intl = useIntl();
-    const { control, handleSubmit, formState: { errors } } = useForm<BorSammenFormInput>({
+    const {
+        control,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<BorSammenFormInput>({
+        mode: 'onSubmit',
         defaultValues: {
             borSammen: props.defaultBorSammen,
         },
@@ -38,23 +42,25 @@ function BorSammenForm(props: BorSammenFormProps) {
                 rules={{ required: getMessage(intl, 'skjema.borSammen.validation.required') }}
                 render={({ field: { onChange, value } }) => (
                     <RadioGroup
-                        legend={<Heading level="2" size="small">{getMessage(intl, props.titleId)}</Heading>}
+                        legend={
+                            <Heading level="2" size="medium" spacing>
+                                {getMessage(intl, props.titleId)}
+                            </Heading>
+                        }
                         description={
-                            <EkspanderbarInformasjon
-                                intro={
-                                    <BodyShort>
-                                        {getMessage(intl, 'skjema.borSammen.description.intro')}
-                                    </BodyShort>
-                                }
-                                content={
+                            <>
+                                <BodyShort>
+                                    {getMessage(intl, 'skjema.borSammen.description.intro')}
+                                </BodyShort>
+                                <ReadMore header={getMessage(intl, 'read.more')}>
                                     <BodyShort>
                                         <FormattedMessageWithExternalLink
                                             textId="skjema.borSammen.description.content"
                                             linkId="skjema.borSammen.description.content.link"
                                         />
                                     </BodyShort>
-                                }
-                            />
+                                </ReadMore>
+                            </>
                         }
                         onChange={onChange}
                         value={value ?? ''}

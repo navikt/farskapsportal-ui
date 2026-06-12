@@ -1,11 +1,9 @@
-import { Alert, Checkbox, CheckboxGroup, VStack } from '@navikt/ds-react';
+import { Checkbox, CheckboxGroup, ErrorMessage, Heading, InfoCard, VStack } from '@navikt/ds-react';
 import { useForm, Controller } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
-
 import FormButtons from 'components/form-buttons/FormButtons';
 import { getMessage } from 'utils/intl';
-
-import { BodyShort, Heading } from '@navikt/ds-react';
+import { InformationSquareIcon } from '@navikt/aksel-icons';
 
 interface MorBekreftFormInput {
     farCorrect: boolean;
@@ -22,7 +20,12 @@ const checkboxIds: (keyof MorBekreftFormInput)[] = ['farCorrect', 'cannotWithdra
 
 function MorBekreftForm(props: MorBekreftFormProps) {
     const intl = useIntl();
-    const { control, handleSubmit, formState: { errors } } = useForm<MorBekreftFormInput>({
+    const {
+        control,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<MorBekreftFormInput>({
+        mode: 'onSubmit',
         defaultValues: {
             farCorrect: false,
             cannotWithdraw: false,
@@ -33,38 +36,40 @@ function MorBekreftForm(props: MorBekreftFormProps) {
     return (
         <form onSubmit={handleSubmit(props.onSubmit)}>
             <VStack gap="space-16">
-                <Heading level="2" size="small" spacing>
+                <Heading level="2" size="medium" spacing>
                     {getMessage(intl, 'skjema.mor.confirm.title')}
                 </Heading>
-                {checkboxIds.map((id) => (
-                    <Controller
-                        key={id}
-                        name={id}
-                        control={control}
-                        rules={{
-                            required: getMessage(intl, 'skjema.confirm.validation.required'),
-                        }}
-                        render={({ field: { onChange, value } }) => (
-                            <CheckboxGroup
-                                legend={getMessage(intl, `skjema.mor.confirm.${id}.label`)}
-                                hideLegend
-                                error={errors[id]?.message}
-                            >
+                <CheckboxGroup legend={getMessage(intl, 'skjema.mor.confirm.title')} hideLegend>
+                    {checkboxIds.map((id) => (
+                        <Controller
+                            key={id}
+                            name={id}
+                            control={control}
+                            rules={{
+                                required: getMessage(intl, 'skjema.confirm.validation.required'),
+                            }}
+                            render={({ field: { onChange, value } }) => (
                                 <Checkbox
                                     checked={value}
                                     onChange={(e) => onChange(e.target.checked)}
+                                    error={!!errors[id]}
                                 >
                                     {getMessage(intl, `skjema.mor.confirm.${id}.label`)}
                                 </Checkbox>
-                            </CheckboxGroup>
-                        )}
-                    />
-                ))}
-                <Alert variant="info" style={{ marginBottom: '2.5rem' }}>
-                    <BodyShort>
+                            )}
+                        />
+                    ))}
+                </CheckboxGroup>
+                {checkboxIds.some((id) => errors[id]) && (
+                    <ErrorMessage showIcon>
+                        {getMessage(intl, 'skjema.confirm.validation.required')}
+                    </ErrorMessage>
+                )}
+                <InfoCard>
+                    <InfoCard.Message icon={<InformationSquareIcon aria-hidden />}>
                         <FormattedMessage id="skjema.confirm.signeringPostenInfo" />
-                    </BodyShort>
-                </Alert>
+                    </InfoCard.Message>
+                </InfoCard>
                 <FormButtons
                     submitText={getMessage(intl, 'skjema.submit')}
                     cancelText={getMessage(intl, 'skjema.cancel')}

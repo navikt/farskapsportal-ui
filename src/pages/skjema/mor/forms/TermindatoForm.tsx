@@ -16,7 +16,7 @@ import {
     isLessThanNDaysInThePast,
 } from 'utils/date';
 import { getMessage } from 'utils/intl';
-import { Heading } from '@navikt/ds-react';
+import { BodyLong, Heading, VStack } from '@navikt/ds-react';
 
 export interface TermindatoFormInput {
     termindato: string;
@@ -31,6 +31,7 @@ export interface TermindatoFormProps {
 function TermindatoForm(props: TermindatoFormProps) {
     const intl = useIntl();
     const { handleSubmit, control, formState: { errors } } = useForm<TermindatoFormInput>({
+        mode: 'onSubmit',
         defaultValues: {
             termindato: props.defaultTermindato,
         },
@@ -39,26 +40,24 @@ function TermindatoForm(props: TermindatoFormProps) {
 
     return (
         <form onSubmit={handleSubmit(props.onSubmit)}>
-            <fieldset style={{ border: 'none', padding: 0, margin: 0 }}>
-                <legend>
-                    <Heading level="2" size="small" spacing>
-                        {getMessage(intl, 'skjema.mor.barn.title')}
-                    </Heading>
-                </legend>
-                <p style={{ marginBottom: '1rem' }}>{getMessage(intl, 'skjema.mor.barn.description')}</p>
+            <Heading level="2" size="medium" spacing>
+                {getMessage(intl, 'skjema.mor.barn.title')}
+            </Heading>
+            <VStack gap="space-16">
+                <BodyLong>{getMessage(intl, 'skjema.mor.barn.description')}</BodyLong>
                 <Controller
                     name="termindato"
                     control={control}
                     rules={{
                         required: getMessage(
                             intl,
-                            'skjema.mor.barn.termindato.validation.required'
+                            'skjema.mor.barn.termindato.validation.required',
                         ),
                         pattern: {
                             value: /\d{4}-\d{2}-\d{2}/,
                             message: getMessage(
                                 intl,
-                                'skjema.mor.barn.termindato.validation.pattern'
+                                'skjema.mor.barn.termindato.validation.pattern',
                             ),
                         },
                         validate: {
@@ -73,7 +72,9 @@ function TermindatoForm(props: TermindatoFormProps) {
                                 getMessage(
                                     intl,
                                     'skjema.mor.barn.termindato.validation.beforeWeek22',
-                                    { weekNr: getWeekOfPregnancy(value) }
+                                    {
+                                        weekNr: getWeekOfPregnancy(value),
+                                    },
                                 ),
                         },
                     }}
@@ -91,12 +92,12 @@ function TermindatoForm(props: TermindatoFormProps) {
                         />
                     )}
                 />
-            </fieldset>
-            <FormButtons
-                submitText={getMessage(intl, 'skjema.next')}
-                cancelText={getMessage(intl, 'skjema.cancel')}
-                onCancel={props.onCancel}
-            />
+                <FormButtons
+                    submitText={getMessage(intl, 'skjema.next')}
+                    cancelText={getMessage(intl, 'skjema.cancel')}
+                    onCancel={props.onCancel}
+                />
+            </VStack>
         </form>
     );
 }

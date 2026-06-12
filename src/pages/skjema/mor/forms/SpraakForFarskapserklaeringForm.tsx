@@ -19,7 +19,12 @@ interface SpraakForFarskapserklaeringFormProps {
 function SpraakForFarskapserklaeringForm(props: SpraakForFarskapserklaeringFormProps) {
     const intl = useIntl();
     const [{ language }] = useStore();
-    const { control, handleSubmit, formState: { errors } } = useForm<SpraakForFarskapserklaeringFormInput>({
+    const {
+        control,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<SpraakForFarskapserklaeringFormInput>({
+        mode: 'onSubmit',
         defaultValues: {
             spraak: mapLanguageToSkriftspraak(language),
         },
@@ -34,15 +39,25 @@ function SpraakForFarskapserklaeringForm(props: SpraakForFarskapserklaeringFormP
                 rules={{ required: getMessage(intl, 'skjema.mor.spraak.validation.required') }}
                 render={({ field: { onChange, value } }) => (
                     <RadioGroup
-                        legend={<Heading level="2" size="small">{getMessage(intl, 'skjema.mor.spraak.title')}</Heading>}
+                        legend={
+                            <Heading level="2" size="medium" spacing>
+                                {getMessage(intl, 'skjema.mor.spraak.title')}
+                            </Heading>
+                        }
                         description={getMessage(intl, 'skjema.mor.spraak.description')}
                         onChange={onChange}
                         value={value ?? ''}
                         error={errors.spraak?.message}
                     >
-                        <Radio value={Skriftspraak.Bookmaal}>{getMessage(intl, 'skjema.mor.spraak.label.norwegian')}</Radio>
-                        <Radio value={Skriftspraak.Nynorsk}>{getMessage(intl, 'skjema.mor.spraak.label.nynorsk')}</Radio>
-                        <Radio value={Skriftspraak.Engelsk}>{getMessage(intl, 'skjema.mor.spraak.label.english')}</Radio>
+                        <Radio value={Skriftspraak.Bookmaal}>
+                            {getMessage(intl, 'skjema.mor.spraak.label.norwegian')}
+                        </Radio>
+                        <Radio value={Skriftspraak.Nynorsk}>
+                            {getMessage(intl, 'skjema.mor.spraak.label.nynorsk')}
+                        </Radio>
+                        <Radio value={Skriftspraak.Engelsk}>
+                            {getMessage(intl, 'skjema.mor.spraak.label.english')}
+                        </Radio>
                     </RadioGroup>
                 )}
             />

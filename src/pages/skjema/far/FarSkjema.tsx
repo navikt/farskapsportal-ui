@@ -1,8 +1,8 @@
 import { useReducer } from 'react';
 import { useIntl } from 'react-intl';
-
 import { getNewRedirectUrl, oppdaterFarskapserklaering } from 'api/api';
 import Error from 'components/error/Error';
+import { FormProgress, VStack } from '@navikt/ds-react';
 import { AlertError } from 'types/error';
 import { StepStatus } from 'types/form';
 import { Path } from 'types/path';
@@ -12,17 +12,15 @@ import { useNavigateTo } from 'utils/hooks/useNavigateTo';
 import { useQuery } from 'utils/hooks/useQuery';
 import { getMessage } from 'utils/intl';
 import BorSammenForm, { BorSammenFormInput } from '../common/BorSammenForm';
-import BorSammenPresentation from '../common/BorSammenPresentation';
 import FarBekreftForm from './FarBekreftForm';
 import LesOpplysningerForm from './LesOpplysningerForm';
-import LesOpplysningerPresentation from './LesOpplysningerPresentation';
-import { Stepper, StepperStep } from '../../../components/stepper';
-import SkjemaStep from '../common/SkjemaStep';
 
 type ActionType =
     | { type: 'SET_LES_OPPLYSNINGER' }
     | { type: 'EDIT_BOR_SAMMEN' }
+    | { type: 'EDIT_CONFIRM' }
     | { type: 'SET_BOR_SAMMEN'; payload: BorSammenFormInput }
+    | { type: 'BACK_TO_LES_OPPLYSNINGER' }
     | { type: 'SUBMIT' }
     | { type: 'SUBMIT_FAILURE'; payload: AlertError };
 
@@ -55,12 +53,24 @@ const reducer = (state: StateType, action: ActionType): StateType => {
                 activeStep: 1,
                 stepStatus: { ...state.stepStatus, borSammen: StepStatus.Active },
             };
+        case 'EDIT_CONFIRM':
+            return {
+                ...state,
+                activeStep: 2,
+                stepStatus: { ...state.stepStatus, borSammen: StepStatus.Done },
+            };
         case 'SET_BOR_SAMMEN':
             return {
                 ...state,
                 activeStep: 2,
                 formValues: { borSammen: action.payload },
                 stepStatus: { ...state.stepStatus, borSammen: StepStatus.Done },
+            };
+        case 'BACK_TO_LES_OPPLYSNINGER':
+            return {
+                ...state,
+                activeStep: 0,
+                stepStatus: { ...state.stepStatus, lesOpplysninger: StepStatus.Active },
             };
         case 'SUBMIT':
             return { ...state, submit: { pending: true, error: undefined } };
@@ -69,14 +79,7 @@ const reducer = (state: StateType, action: ActionType): StateType => {
     }
 };
 
-function mapStepStatusToStepperState(stepStatus: StepStatus): 'none' | 'finished' | 'inProgress' {
-    switch (stepStatus) {
-        case StepStatus.Done:
-            return 'finished';
-        default:
-            return 'none';
-    }
-}
+
 
 interface FarskjemaProps {
     userInfo: UserInfo;
@@ -125,8 +128,16 @@ function FarSkjema({ userInfo }: FarskjemaProps) {
         return null;
     }
 
-    const onCancel = () => {
-        navigateTo(Path.Oversikt);
+    const currentFarskapserklaering = farskapserklaering;
+
+    const handleGoBack = () => {
+        if (state.activeStep === 0) {
+            navigateTo(Path.Oversikt);
+        } else if (state.activeStep === 1) {
+            dispatch({ type: 'BACK_TO_LES_OPPLYSNINGER' });
+        } else if (state.activeStep === 2) {
+            dispatch({ type: 'EDIT_BOR_SAMMEN' });
+        }
     };
 
     const onSubmit = () => {
@@ -161,71 +172,88 @@ function FarSkjema({ userInfo }: FarskjemaProps) {
         dispatch({ type: 'EDIT_BOR_SAMMEN' });
     };
 
+    const handleStepChange = (step: number) => {
+        const stepIndex = step - 1;
+        if (stepIndex === 0 && state.stepStatus.lesOpplysninger !== StepStatus.NotStarted) {
+            dispatch({ type: 'BACK_TO_LES_OPPLYSNINGER' });
+        } else if (stepIndex === 1 && state.stepStatus.borSammen !== StepStatus.NotStarted) {
+            dispatch({ type: 'EDIT_BOR_SAMMEN' });
+        } else if (
+            stepIndex === 2 &&
+            state.stepStatus.lesOpplysninger === StepStatus.Done &&
+            state.stepStatus.borSammen === StepStatus.Done
+        ) {
+            dispatch({ type: 'EDIT_CONFIRM' });
+        }
+    };
+
+    function renderSkjemaSteg() {
+        switch (state.activeStep) {
+            case 0:
+                return (
+                    <LesOpplysningerForm
+                        farskapserklaering={currentFarskapserklaering}
+                        onSubmit={onSubmitLesOpplysninger}
+                        onCancel={handleGoBack}
+                    />
+                );
+            case 1:
+                return (
+                    <BorSammenForm
+                        titleId="skjema.far.borSammen.title"
+                        defaultBorSammen={state.formValues.borSammen.borSammen}
+                        onSubmit={onSubmitBorSammenForm}
+                        onCancel={handleGoBack}
+                    />
+                );
+            case 2:
+                return (
+                    <FarBekreftForm
+                        isPending={state.submit.pending}
+                        onSubmit={onSubmit}
+                        onCancel={handleGoBack}
+                    />
+                );
+            default:
+                return null;
+        }
+    }
+
+    const isLesOpplysningerStepInteractive =
+        state.stepStatus.lesOpplysninger !== StepStatus.NotStarted;
+    const isBorSammenStepInteractive = state.stepStatus.borSammen !== StepStatus.NotStarted;
+    const isConfirmStepInteractive =
+        state.stepStatus.lesOpplysninger === StepStatus.Done &&
+        state.stepStatus.borSammen === StepStatus.Done;
+
     return (
-        <div className="FarSkjema">
-            <Stepper activeStep={state.activeStep} colorful>
-                <StepperStep status={mapStepStatusToStepperState(state.stepStatus.lesOpplysninger)}>
-                    <SkjemaStep
-                        formComponent={
-                            <LesOpplysningerForm
-                                farskapserklaering={farskapserklaering}
-                                onSubmit={onSubmitLesOpplysninger}
-                                onCancel={onCancel}
-                            />
-                        }
-                        presentationComponent={
-                            <LesOpplysningerPresentation farskapserklaering={farskapserklaering} />
-                        }
-                        status={state.stepStatus.lesOpplysninger}
-                    />
-                </StepperStep>
-                <StepperStep status={mapStepStatusToStepperState(state.stepStatus.borSammen)}>
-                    <SkjemaStep
-                        formComponent={
-                            <BorSammenForm
-                                titleId="skjema.far.borSammen.title"
-                                defaultBorSammen={state.formValues.borSammen.borSammen}
-                                onSubmit={onSubmitBorSammenForm}
-                                onCancel={onCancel}
-                            />
-                        }
-                        presentationComponent={
-                            <BorSammenPresentation
-                                titleId="skjema.far.borSammen.title"
-                                borSammen={state.formValues.borSammen.borSammen}
-                            />
-                        }
-                        title={getMessage(intl, 'skjema.far.borSammen.title')}
-                        status={state.stepStatus.borSammen}
-                        onChange={onEndreBorSammenForm}
-                        isDisabled={state.submit.pending}
-                    />
-                </StepperStep>
-                <StepperStep>
-                    <SkjemaStep
-                        formComponent={
-                            <FarBekreftForm
-                                isPending={state.submit.pending}
-                                onSubmit={onSubmit}
-                                onCancel={onCancel}
-                            />
-                        }
-                        title={getMessage(intl, 'skjema.far.confirm.title')}
-                        status={
-                            state.stepStatus.lesOpplysninger === StepStatus.Done &&
-                            state.stepStatus.borSammen === StepStatus.Done
-                                ? StepStatus.Active
-                                : StepStatus.NotStarted
-                        }
-                        onChange={onEndreBorSammenForm}
-                        isDisabled={state.submit.pending}
-                    />
-                </StepperStep>
-            </Stepper>
+        <VStack gap="space-24">
+            <FormProgress
+                totalSteps={3}
+                activeStep={state.activeStep + 1}
+                onStepChange={handleStepChange}
+            >
+                <FormProgress.Step
+                    completed={state.stepStatus.lesOpplysninger === StepStatus.Done ? true : false}
+                    interactive={isLesOpplysningerStepInteractive}
+                >
+                    {getMessage(intl, 'skjema.far.lesOpplysninger.title')}
+                </FormProgress.Step>
+                <FormProgress.Step
+                    completed={state.stepStatus.borSammen === StepStatus.Done ? true : false}
+                    interactive={isBorSammenStepInteractive}
+                >
+                    {getMessage(intl, 'skjema.far.borSammen.title')}
+                </FormProgress.Step>
+                <FormProgress.Step completed={false} interactive={isConfirmStepInteractive}>
+                    {getMessage(intl, 'skjema.far.confirm.title')}
+                </FormProgress.Step>
+            </FormProgress>
+            {renderSkjemaSteg()}
             <div aria-live="polite">
                 {state.submit.error && <Error error={state.submit.error} />}
             </div>
-        </div>
+        </VStack>
     );
 }
 

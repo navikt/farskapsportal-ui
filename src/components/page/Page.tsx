@@ -14,7 +14,7 @@ function Page({ breadcrumbs, children, titleId, alertTextId }: PageProps) {
     useDekoratorBreadcrumbs(breadcrumbs);
 
     return (
-        <VStack gap="space-32" paddingBlock="space-32" asChild>
+        <VStack gap="space-16" paddingBlock="space-32" asChild>
             <AkselPage.Block as="main" width="md" gutters>
                 <Heading level="1" size="xlarge" as="h1" spacing>
                     <FormattedMessage id={titleId} />

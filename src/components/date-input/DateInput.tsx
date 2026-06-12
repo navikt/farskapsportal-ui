@@ -1,4 +1,5 @@
-import { TextField } from '@navikt/ds-react';
+import { DatePicker, useDatepicker } from '@navikt/ds-react';
+import { formatISO, parseISO } from 'date-fns';
 import { ReactNode } from 'react';
 
 interface DateInputProps {
@@ -15,18 +16,29 @@ interface DateInputProps {
 }
 
 function DateInput(props: DateInputProps) {
+    const selectedDate = props.value ? parseISO(props.value) : undefined;
+    const fromDate = props.minDate ? parseISO(props.minDate) : undefined;
+    const toDate = props.maxDate ? parseISO(props.maxDate) : undefined;
+
+    const { datepickerProps, inputProps } = useDatepicker({
+        defaultSelected: selectedDate,
+        fromDate,
+        toDate,
+        onDateChange: (date) =>
+            props.onChange(date ? formatISO(date, { representation: 'date' }) : undefined),
+    });
+
     return (
-        <TextField
-            id={props.id}
-            type={"date" as never}
-            label={props.label}
-            value={props.value ?? ''}
-            onChange={(e) => props.onChange(e.target.value || undefined)}
-            error={props.feil as string | undefined}
-            min={props.minDate}
-            max={props.maxDate}
-            className={props.className}
-        />
+        <DatePicker {...datepickerProps} dropdownCaption={props.showYearSelector}>
+            <DatePicker.Input
+                {...inputProps}
+                id={props.id}
+                label={props.label}
+                placeholder={props.placeholder}
+                error={props.feil}
+                className={props.className}
+            />
+        </DatePicker>
     );
 }
 

@@ -55,7 +55,7 @@ function FarFormValidationResterendeForsoek({
 
     return (
         <Box marginBlock="space-16" asChild>
-            <Alert variant="warning">
+            <Alert variant="warning" role="alert" aria-live="polite">
                 <FormattedMessage id="skjema.mor.far.validation.resterendeForsoek.final" />
             </Alert>
         </Box>

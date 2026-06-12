@@ -12,11 +12,11 @@ interface FormButtonsProps {
 function FormButtons({ submitText, cancelText, onCancel, submitSpinner }: FormButtonsProps) {
     return (
         <ButtonContainer>
-            <Button type="submit" variant="primary" loading={submitSpinner}>
-                {submitText}
-            </Button>
             <Button type="button" variant="secondary" onClick={onCancel}>
                 {cancelText}
+            </Button>
+            <Button type="submit" variant="primary" loading={submitSpinner}>
+                {submitText}
             </Button>
         </ButtonContainer>
     );

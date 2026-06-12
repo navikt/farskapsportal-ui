@@ -125,7 +125,7 @@ export default {
     'oversikt.goToSkjemaButton': 'Create paternity declaration',
 
     'skjema.next': 'Next',
-    'skjema.cancel': 'Cancel',
+    'skjema.cancel': 'Back',
     'skjema.edit': 'Change',
     'skjema.submit': 'Sign declaration of paternity',
 

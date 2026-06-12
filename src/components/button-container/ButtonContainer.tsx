@@ -1,12 +1,11 @@
-import { ReactNode } from 'react';
-import { VStack } from '@navikt/ds-react';
+import { HGrid, HStack, VStack } from '@navikt/ds-react';
 
-interface ButtonContainerProps {
-    children: ReactNode;
-}
-
-function ButtonContainer({ children }: ButtonContainerProps) {
-    return <VStack gap="space-16">{children}</VStack>;
+function ButtonContainer({ children }: React.PropsWithChildren) {
+    return (
+        <HStack gap="space-8" justify="end">
+            {children}
+        </HStack>
+    );
 }
 
 export default ButtonContainer;

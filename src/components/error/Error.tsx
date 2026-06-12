@@ -5,19 +5,19 @@ import { HTTPError } from 'types/error';
 
 interface Props {
     error: HTTPError;
+    role?: string;
+    ariaLive?: 'polite' | 'assertive' | 'off';
 }
 
 // TODO: refakturer, bruker skal ikke se feilmelding fra api
-function Error({ error }: Props) {
+function Error({ error, role = 'alert', ariaLive = 'assertive' }: Props) {
     return (
-        <div>
-            <Alert variant="error">
-                <FormattedMessage id="api.error" />
-                {/*<br />*/}
-                {/*{error.code && <span>{`${error.code}: `}</span>}*/}
-                {/*{error.text && <span>{`${error.text}`}</span>}*/}
-            </Alert>
-        </div>
+        <Alert variant="error" role={role} aria-live={ariaLive}>
+            <FormattedMessage id="api.error" />
+            {/*<br />*/}
+            {/*{error.code && <span>{`${error.code}: `}</span>}*/}
+            {/*{error.text && <span>{`${error.text}`}</span>}*/}
+        </Alert>
     );
 }
 
