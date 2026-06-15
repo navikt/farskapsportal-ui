@@ -1,4 +1,3 @@
-import ContentContainer from 'components/content-container/ContentContainer';
 import Page from 'components/page/Page';
 import WithUserInfo from 'store/providers/WithUserInfo';
 import MoreInfoPanels from './MoreInfoPanels';

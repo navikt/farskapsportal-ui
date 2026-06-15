@@ -1,4 +1,4 @@
-import { HGrid, HStack, VStack } from '@navikt/ds-react';
+import { HStack } from '@navikt/ds-react';
 
 function ButtonContainer({ children }: React.PropsWithChildren) {
     return (

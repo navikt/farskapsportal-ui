@@ -168,10 +168,6 @@ function FarSkjema({ userInfo }: FarskjemaProps) {
         dispatch({ type: 'SET_BOR_SAMMEN', payload: data });
     };
 
-    const onEndreBorSammenForm = () => {
-        dispatch({ type: 'EDIT_BOR_SAMMEN' });
-    };
-
     const handleStepChange = (step: number) => {
         const stepIndex = step - 1;
         if (stepIndex === 0 && state.stepStatus.lesOpplysninger !== StepStatus.NotStarted) {

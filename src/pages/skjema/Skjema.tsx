@@ -1,6 +1,5 @@
 import { Navigate } from 'react-router';
 
-import ContentContainer from 'components/content-container/ContentContainer';
 import Page from 'components/page/Page';
 import { useStore } from 'store/Context';
 import WithUserInfo from 'store/providers/WithUserInfo';
@@ -11,7 +10,6 @@ import { ERKLAERING_ID } from 'utils/constants';
 import { useQuery } from 'utils/hooks/useQuery';
 import MorSkjema from './mor/MorSkjema';
 import FarSkjema from './far/FarSkjema';
-import { VStack } from '@navikt/ds-react';
 
 function Skjema() {
     const [{ language }] = useStore();

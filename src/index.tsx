@@ -30,7 +30,7 @@ const init = async () => {
             params: {
                 context: 'privatperson',
                 level: 'Level4',
-                chatbot: true,
+                chatbot: false,
             },
         });
     }
