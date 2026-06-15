@@ -23,6 +23,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -36,13 +41,17 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: Install dependencies (yarn install)
-        run: yarn install --production --ignore-scripts --ignore-optional --frozen-lockfile
+        run: yarn install --ignore-scripts --frozen-lockfile
 
       - name: Run tests (yarn test)
         run: yarn test
 
       - name: Build frontend (yarn build)
         run: yarn build
+
+      - name: Install server dependencies
+        run: yarn install --production --ignore-scripts --frozen-lockfile
+        working-directory: server
 
       - uses: nais/docker-build-push@v0
         id: docker-push
