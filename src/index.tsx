@@ -28,9 +28,9 @@ const init = async () => {
         injectDecoratorClientSide({
             env: 'dev',
             params: {
+                context: 'privatperson',
                 level: 'Level4',
-                simple: true,
-                chatbot: false,
+                chatbot: true,
             },
         });
     }
