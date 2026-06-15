@@ -1,6 +1,5 @@
 import { FormattedMessage } from 'react-intl';
 import { Button } from '@navikt/ds-react';
-
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
 import { hasOngoingTermindatoErklaering } from 'utils/farskapserklaering';
@@ -26,7 +25,7 @@ function ToSkjemaButton({ userInfo }: ToSkjemaButtonProps) {
     };
 
     return (
-        <Button type="button" onClick={goToSkjema}>
+        <Button type="button" variant="primary" onClick={goToSkjema}>
             <FormattedMessage id="oversikt.goToSkjemaButton" />
         </Button>
     );
