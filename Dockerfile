@@ -1,11 +1,11 @@
-FROM node:24-alpine
+FROM europe-north1-docker.pkg.dev/cgr-nav/pull-through/nav.no/node:24-slim
+
 ENV NODE_ENV production
 
-WORKDIR usr/src/app
 COPY server server/
 COPY build build/
 
-WORKDIR server
+WORKDIR /server
 
-CMD ["node", "./server.js"]
+CMD ["./server.js"]
 EXPOSE 8080
