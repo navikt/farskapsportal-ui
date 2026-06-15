@@ -5,17 +5,12 @@ import compression from 'compression';
 import * as config from './config.js';
 import { getHtmlWithDekorator } from './dekorator.js';
 import * as headers from './headers.js';
-import { validateAccessToken, exchangeToken, setup } from './auth/auth-middleware.js';
+import { validateAccessToken, exchangeToken } from './auth/auth-middleware.js';
 import { logger } from './logger.js';
 
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
 const app = express();
-
-setup(config.app, config.idporten, config.tokenx).catch((error) => {
-    logger.error('Error while setting up auth:', error);
-    process.exit(1);
-});
 
 app.use(bodyParser.text());
 headers.setup(app);

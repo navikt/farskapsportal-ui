@@ -50,6 +50,10 @@ jobs:
       - name: Build frontend (yarn build)
         run: yarn build
 
+      - name: Install server dependencies
+        run: yarn install --production --ignore-scripts --frozen-lockfile
+        working-directory: server
+
       - uses: nais/docker-build-push@v0
         id: docker-push
         with:
