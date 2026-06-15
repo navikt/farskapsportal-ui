@@ -42,6 +42,8 @@ spec:
       {{#each application}}
         - application: "{{this}}"
       {{/each}}
+        - application: nav-dekoratoren
+          namespace: personbruker
       external:
       {{#each host}}
         - host: "{{this}}"
