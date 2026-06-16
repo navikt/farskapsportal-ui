@@ -1,6 +1,7 @@
 import { LinkCard, Tag } from '@navikt/ds-react';
 import { ReactNode } from 'react';
 import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router';
 
 const tagVariantMap = {
     suksess: 'success',
@@ -21,8 +22,10 @@ function LinkPanel({ linkPath, titleId, children, etikettType, etikettId }: Link
     return (
         <LinkCard>
             <LinkCard.Title as="h3">
-                <LinkCard.Anchor href={linkPath}>
-                    <FormattedMessage id={titleId} />
+                <LinkCard.Anchor asChild>
+                    <Link to={linkPath}>
+                        <FormattedMessage id={titleId} />
+                    </Link>
                 </LinkCard.Anchor>
             </LinkCard.Title>
             <LinkCard.Description>{children}</LinkCard.Description>

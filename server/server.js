@@ -32,7 +32,7 @@ app.use(express.static(buildPath, { index: false }));
 app.get('/', (req, res) => res.redirect('/nb/oversikt'));
 app.get('/nb', (req, res) => res.redirect('/nb/oversikt'));
 app.get('/nn', (req, res) => res.redirect('/nn/oversikt'));
-app.get('/nb', (req, res) => res.redirect('/en/oversikt'));
+app.get('/en', (req, res) => res.redirect('/en/oversikt'));
 
 // Nais functions
 app.get(['/internal/isAlive', '/internal/isReady'], (req, res) => res.sendStatus(200));
