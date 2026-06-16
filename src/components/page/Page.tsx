@@ -1,4 +1,4 @@
-import { Heading, Page as AkselPage, Box, LocalAlert, VStack } from '@navikt/ds-react';
+import { Heading, Page as AkselPage, Box, VStack, Alert } from '@navikt/ds-react';
 import { Breadcrumb } from 'types/breadcrumbs';
 import { useDekoratorBreadcrumbs } from 'utils/hooks/useDekoratorBreadcrumbs';
 import { FormattedMessage } from 'react-intl';
@@ -33,14 +33,9 @@ function PageAlert({ alertTextId }: { alertTextId?: string }) {
 
     return (
         <Box marginBlock="space-0 space-16" asChild>
-            <LocalAlert status="warning">
-                <LocalAlert.Header>
-                    <LocalAlert.Title>Advarsel</LocalAlert.Title>
-                </LocalAlert.Header>
-                <LocalAlert.Content>
-                    <FormattedMessage id={alertTextId} />
-                </LocalAlert.Content>
-            </LocalAlert>
+            <Alert variant="warning">
+                <FormattedMessage id={alertTextId} />
+            </Alert>
         </Box>
     );
 }

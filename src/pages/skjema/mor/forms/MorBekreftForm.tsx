@@ -1,9 +1,8 @@
-import { Checkbox, CheckboxGroup, ErrorMessage, Heading, InfoCard, VStack } from '@navikt/ds-react';
+import { Alert, Checkbox, CheckboxGroup, ErrorMessage, Heading, VStack } from '@navikt/ds-react';
 import { useForm, Controller } from 'react-hook-form';
 import { FormattedMessage, useIntl } from 'react-intl';
 import FormButtons from 'components/form-buttons/FormButtons';
 import { getMessage } from 'utils/intl';
-import { InformationSquareIcon } from '@navikt/aksel-icons';
 
 interface MorBekreftFormInput {
     farCorrect: boolean;
@@ -65,11 +64,9 @@ function MorBekreftForm(props: MorBekreftFormProps) {
                         {getMessage(intl, 'skjema.confirm.validation.required')}
                     </ErrorMessage>
                 )}
-                <InfoCard>
-                    <InfoCard.Message icon={<InformationSquareIcon aria-hidden />}>
-                        <FormattedMessage id="skjema.confirm.signeringPostenInfo" />
-                    </InfoCard.Message>
-                </InfoCard>
+                <Alert variant="info">
+                    <FormattedMessage id="skjema.confirm.signeringPostenInfo" />
+                </Alert>
                 <FormButtons
                     submitText={getMessage(intl, 'skjema.submit')}
                     cancelText={getMessage(intl, 'skjema.cancel')}
