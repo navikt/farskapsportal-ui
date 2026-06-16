@@ -1,10 +1,9 @@
 import { UserInfo } from '../../types/user';
-import { VStack } from '@navikt/ds-react';
+import { Heading, VStack } from '@navikt/ds-react';
 import ErklaeringerAvventerBruker from './ErklaeringerAvventerBruker';
 import ErklaeringerAvventerMotpart from './ErklaeringerAvventerMotpart';
 import ErklaeringerAvventerRegistrering from './ErklaeringerAvventerRegistrering';
 import { FormattedMessage } from 'react-intl';
-import { Heading } from '@navikt/ds-react';
 import BarnUtenErklaering from './BarnUtenErklaering';
 import { getBarnUtenErklaering } from '../../utils/farskapserklaering';
 

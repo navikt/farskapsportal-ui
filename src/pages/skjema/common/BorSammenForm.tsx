@@ -1,10 +1,8 @@
-import { Radio, RadioGroup, ReadMore } from '@navikt/ds-react';
+import { BodyShort, Heading, Radio, RadioGroup, ReadMore } from '@navikt/ds-react';
 import { Controller, useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
-
 import FormButtons from 'components/form-buttons/FormButtons';
 import { getMessage } from 'utils/intl';
-import { BodyShort, Heading } from '@navikt/ds-react';
 import FormattedMessageWithExternalLink from '../../../components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
 
 export type BorSammenValue = 'YES' | 'NO' | null;
@@ -35,7 +33,7 @@ function BorSammenForm(props: BorSammenFormProps) {
     });
 
     return (
-        <form onSubmit={handleSubmit(props.onSubmit)} className="BorSammenForm">
+        <form onSubmit={handleSubmit(props.onSubmit)}>
             <Controller
                 name="borSammen"
                 control={control}

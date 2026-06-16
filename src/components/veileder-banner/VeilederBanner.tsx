@@ -12,7 +12,6 @@ function VeilederBanner({ title, text, veileder }: VeilederBannerProps) {
     return (
         <Bleed marginInline="full">
             <VStack
-                className="VeilederBanner"
                 align="center"
                 marginBlock="space-0 space-64"
                 paddingBlock="space-16 space-0"

@@ -1,7 +1,6 @@
 import { useIntl } from 'react-intl';
 import { Controller, useForm } from 'react-hook-form';
-import { Radio, RadioGroup } from '@navikt/ds-react';
-import { Heading } from '@navikt/ds-react';
+import { Heading, Radio, RadioGroup } from '@navikt/ds-react';
 import { getMessage } from '../../../../utils/intl';
 import FormButtons from '../../../../components/form-buttons/FormButtons';
 import { Skriftspraak } from '../../../../types/skriftspraak';

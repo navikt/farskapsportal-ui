@@ -1,5 +1,4 @@
 import { Navigate } from 'react-router';
-
 import Page from 'components/page/Page';
 import { useStore } from 'store/Context';
 import WithUserInfo from 'store/providers/WithUserInfo';
@@ -22,7 +21,6 @@ function Skjema() {
             if (!userInfo.kanOppretteFarskapserklaering) {
                 return <Navigate to={`/${language}${Path.Oversikt}`} replace />;
             }
-
             return <MorSkjema userInfo={userInfo} />;
         } else if (userInfo.forelderrolle === Foreldrerolle.MorEllerFar) {
             // TODO: rework logic?

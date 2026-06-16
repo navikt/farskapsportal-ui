@@ -1,7 +1,5 @@
-import { Alert } from '@navikt/ds-react';
-import { BodyShort } from '@navikt/ds-react';
+import { Alert, BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
-
 import FormattedMessageWithExternalLink from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
 import { Feilkode } from 'types/feilkode';
 import FarFormValidationMaksAntallForsoek from './FarFormValidationMaksAntallForsoek';
