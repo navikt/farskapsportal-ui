@@ -4,7 +4,7 @@ import { Heading, VStack, Page, Box, BodyShort, List, Button, Link } from '@navi
 function PageNotFound() {
     return (
         <Page.Block as="main" width="xl" gutters>
-            <Box paddingBlock="space-32 space-64" data-aksel-template="404-v3">
+            <Box paddingBlock="space-0 space-64" data-aksel-template="404-v3">
                 <VStack gap="space-64">
                     <VStack gap="space-48" align="start">
                         <VStack gap="space-16">
@@ -18,14 +18,14 @@ function PageNotFound() {
                             <List>
                                 <List.Item>Bruk gjerne søket eller menyen</List.Item>
                                 <List.Item>
-                                    <Link href="/">Gå til forsiden</Link>
+                                    <Link href="https://www.nav.no/">Gå til forsiden</Link>
                                 </List.Item>
                             </List>
                         </VStack>
-                        <Button as="a" href="/minside" variant="primary">
+                        <Button as="a" href="https://www.nav.no/minside" variant="primary">
                             Gå til Min side
                         </Button>
-                        <Link href="/person/kontakt-oss/nb/tilbakemeldinger/feil-og-mangler">
+                        <Link href="https://www.nav.no/person/kontakt-oss/nb/tilbakemeldinger/feil-og-mangler">
                             <BugIcon aria-hidden />
                             Meld gjerne fra om at lenken ikke virker
                         </Link>
@@ -37,8 +37,8 @@ function PageNotFound() {
                         </Heading>
                         <BodyShort spacing>The page you requested cannot be found.</BodyShort>
                         <BodyShort>
-                            Go to the <Link href="/">front page</Link>, or use one of the links in
-                            the menu.
+                            Go to the <Link href="https://www.nav.no/en">front page</Link>, or use
+                            one of the links in the menu.
                         </BodyShort>
                     </div>
                 </VStack>
