@@ -1,8 +1,5 @@
-import { CheckmarkCircleFillIcon } from '@navikt/aksel-icons';
-import { Box, HStack } from '@navikt/ds-react';
-import { Heading } from '@navikt/ds-react';
+import { Alert, BodyShort, Box, HStack } from '@navikt/ds-react';
 import { FormattedMessage, useIntl } from 'react-intl';
-
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { isBrukerFar } from 'utils/farskapserklaering';
 import { formatDate } from 'utils/intl';
@@ -13,22 +10,15 @@ interface KvitteringIntroProps {
 
 function KvitteringIntro({ erklaering }: KvitteringIntroProps) {
     return (
-        <Box borderWidth="1" borderColor="success" borderRadius="4" padding="space-16">
+        <Alert variant="success">
             <HStack align="start" gap="space-16">
-                <CheckmarkCircleFillIcon
-                    aria-label="Success icon"
-                    role="img"
-                    style={{ minHeight: '2rem', minWidth: '2rem', color: '#06893a' }}
-                />
-                <div>
-                    {isBrukerFar(erklaering) ? (
-                        <KvitteringIntroFar erklaering={erklaering} />
-                    ) : (
-                        <KvitteringIntroMor erklaering={erklaering} />
-                    )}
-                </div>
+                {isBrukerFar(erklaering) ? (
+                    <KvitteringIntroFar erklaering={erklaering} />
+                ) : (
+                    <KvitteringIntroMor erklaering={erklaering} />
+                )}
             </HStack>
-        </Box>
+        </Alert>
     );
 }
 
@@ -36,40 +26,38 @@ function KvitteringIntroMor({ erklaering }: { erklaering: Farskapserklaering }) 
     const intl = useIntl();
 
     const farSignert = (signertAvFar: string) => (
-        <>
-            <Heading level="2" size="small">
-                <FormattedMessage
-                    id="kvittering.intro.mor.farSignert"
-                    values={{ date: formatDate(intl, signertAvFar) }}
-                />{' '}
-                {erklaering.barn?.termindato ? (
-                    <>
-                        <FormattedMessage
-                            id="kvittering.intro.termindato"
-                            values={{ termindato: formatDate(intl, erklaering.barn?.termindato) }}
-                        />
-                    </>
-                ) : (
-                    <>
-                        <FormattedMessage
-                            id="kvittering.intro.foedselsnummer"
-                            values={{ fnr: erklaering.barn?.foedselsnummer ?? '' }}
-                        />
-                    </>
-                )}
-            </Heading>
-        </>
+        <BodyShort>
+            <FormattedMessage
+                id="kvittering.intro.mor.farSignert"
+                values={{ date: formatDate(intl, signertAvFar) }}
+            />{' '}
+            {erklaering.barn?.termindato ? (
+                <>
+                    <FormattedMessage
+                        id="kvittering.intro.termindato"
+                        values={{ termindato: formatDate(intl, erklaering.barn?.termindato) }}
+                    />
+                </>
+            ) : (
+                <>
+                    <FormattedMessage
+                        id="kvittering.intro.foedselsnummer"
+                        values={{ fnr: erklaering.barn?.foedselsnummer ?? '' }}
+                    />
+                </>
+            )}
+        </BodyShort>
     );
 
     const farIkkeSignert = () => {
         return (
             <>
-                <Heading level="2" size="small">
+                <BodyShort>
                     <FormattedMessage
                         id="kvittering.intro.mor.1"
                         values={{ date: formatDate(intl, erklaering.dokument?.signertAvMor ?? '') }}
                     />
-                </Heading>
+                </BodyShort>
                 {/*<BodyShort>*/}
                 {/*    <FormattedMessage id="kvittering.intro.mor.2" />*/}
                 {/*</BodyShort>*/}
@@ -90,7 +78,7 @@ function KvitteringIntroFar({ erklaering }: { erklaering: Farskapserklaering }) 
 
     return (
         <>
-            <Heading level="2" size="small">
+            <BodyShort>
                 <FormattedMessage
                     id="kvittering.intro.far.1"
                     values={{ date: formatDate(intl, erklaering.dokument?.signertAvFar ?? '') }}
@@ -110,7 +98,7 @@ function KvitteringIntroFar({ erklaering }: { erklaering: Farskapserklaering }) 
                         />
                     </>
                 )}
-            </Heading>
+            </BodyShort>
             {/*<BodyShort>*/}
             {/*    <FormattedMessage id="kvittering.intro.far.2" />*/}
             {/*</BodyShort>*/}

@@ -40,16 +40,17 @@ function SignerButtons({ erklaeringId }: SignerButtonsProps) {
         <>
             <div aria-live="polite">{apiError && <Error error={apiError} />}</div>
             <ButtonContainer>
+                <Button variant="secondary" type="button" onClick={onCancel}>
+                    <FormattedMessage id="signer.cancel" />
+                </Button>
                 <Button
                     type="button"
+                    variant="primary"
                     onClick={onSubmit}
                     loading={isPending}
                     disabled={isPending}
                 >
                     <FormattedMessage id="signer.submit" />
-                </Button>
-                <Button variant="secondary" type="button" onClick={onCancel}>
-                    <FormattedMessage id="signer.cancel" />
                 </Button>
             </ButtonContainer>
         </>

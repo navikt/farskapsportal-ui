@@ -1,8 +1,6 @@
-import { Alert, BodyShort, Box } from '@navikt/ds-react';
+import { Alert, BodyShort, VStack } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 import { Navigate } from 'react-router';
-
-import ContentContainer from 'components/content-container/ContentContainer';
 import FarskapserklaeringPresentation from 'components/farskapserklaering-presentation/FarskapserklaeringPresentation';
 import Page from 'components/page/Page';
 import { useStore } from 'store/Context';
@@ -30,7 +28,9 @@ function Signer() {
             return (
                 <>
                     <IkkeSignertAlert />
-                    <FarskapserklaeringPresentation border farskapserklaering={erklaering} />
+                    <VStack align="center">
+                        <FarskapserklaeringPresentation border farskapserklaering={erklaering} />
+                    </VStack>
                     <SignerButtons erklaeringId={erklaeringId} />
                 </>
             );
@@ -49,7 +49,7 @@ function Signer() {
             ]}
         >
             <WithUserInfo>
-                {(userInfo) => <ContentContainer>{renderContent(userInfo)}</ContentContainer>}
+                {(userInfo) => <VStack gap="space-24">{renderContent(userInfo)}</VStack>}
             </WithUserInfo>
         </Page>
     );
@@ -57,16 +57,14 @@ function Signer() {
 
 function IkkeSignertAlert() {
     return (
-        <Box marginBlock="space-0 space-16">
-            <Alert variant="warning">
-                <BodyShort>
-                    <FormattedMessage id="signer.alert.1" />
-                </BodyShort>
-                <BodyShort>
-                    <FormattedMessage id="signer.alert.2" />
-                </BodyShort>
-            </Alert>
-        </Box>
+        <Alert variant="warning">
+            <BodyShort spacing>
+                <FormattedMessage id="signer.alert.1" />
+            </BodyShort>
+            <BodyShort>
+                <FormattedMessage id="signer.alert.2" />
+            </BodyShort>
+        </Alert>
     );
 }
 

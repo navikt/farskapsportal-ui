@@ -1,4 +1,4 @@
-import { Alert, Box, BodyShort, VStack } from '@navikt/ds-react';
+import { Alert, Box, BodyShort, VStack, Heading } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import { Farskapserklaering } from 'types/farskapserklaering';
@@ -14,21 +14,19 @@ function MorAlert({ erklaering }: MorAlertProps) {
     }
 
     return (
-        <Box marginBlock="space-24 space-0">
-            <Alert variant="warning">
-                <VStack gap="space-16">
-                    <BodyShort weight="semibold">
-                        <FormattedMessage id="kvittering.morAlert.1" />
-                    </BodyShort>
-                    <BodyShort>
-                        <FormattedMessage id="kvittering.morAlert.2" />
-                    </BodyShort>
-                    <BodyShort>
-                        <FormattedMessage id="kvittering.morAlert.3" />
-                    </BodyShort>
-                </VStack>
-            </Alert>
-        </Box>
+        <Alert variant="warning">
+            <VStack>
+                <Heading size="small" spacing>
+                    <FormattedMessage id="kvittering.morAlert.1" />
+                </Heading>
+                <BodyShort spacing>
+                    <FormattedMessage id="kvittering.morAlert.2" />
+                </BodyShort>
+                <BodyShort>
+                    <FormattedMessage id="kvittering.morAlert.3" />
+                </BodyShort>
+            </VStack>
+        </Alert>
     );
 }
 

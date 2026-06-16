@@ -106,7 +106,7 @@ export default {
     'oversikt.moreInfoPanels.erklaereUtenMor.content.li.5': 'Norsk diplomatisk eller konsulær tenestemann, dersom du er i utlandet.',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.2': 'Hugs å ta med legitimasjon',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.3': 'For meir informasjon sjå <a>farskap og foreldreskap</a>, kontakt oss på nav,no/kontakt eller telefon 55 55 33 33. Vi gjer merksam på at dersom barnet er født i utlandet, må mora ha gitt opp deg som far til barnet før du kan erklære farskap.',
-    'oversikt.moreInfoPanels.erklaereUtenMor.content.3.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap/farskap-og-foreldreansvar',
+    'oversikt.moreInfoPanels.erklaereUtenMor.content.3.link': 'https://www.nav.no/registrere-far-eller-mor',
     'oversikt.moreInfoPanels.alleredeErklaert.title': 'Har du allereie erklært farskap og lurer på kva som skjer no?',
     'oversikt.moreInfoPanels.alleredeErklaert.content.1': 'Det er Skatteetaten ved Folkeregisteret som er ansvarleg for å registrere og arkivere farskapserklæringar. Når de melder inn opplysningar om namnet på barnet til dei, vil du få ei stadfesting på at fødselsnummeret og namnet er registrert. Stadfestinga får du i innboksen din i Altinn.',
     'oversikt.moreInfoPanels.alleredeErklaert.content.2': ' Du finn meir informasjon om å registrere farskap og å velje namn <a>her</a>.',

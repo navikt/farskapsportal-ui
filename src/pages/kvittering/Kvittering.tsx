@@ -1,4 +1,3 @@
-import ContentContainer from 'components/content-container/ContentContainer';
 import ErrorPage from 'components/error-page/ErrorPage';
 import Page from 'components/page/Page';
 import WithUserInfo from 'store/providers/WithUserInfo';
@@ -14,7 +13,7 @@ import YtelserOgTjenesterPanel from './YtelserOgTjenesterPanel';
 import ProsessIndikator from './ProsessIndikator';
 import KvitteringLastNedErklaering from './KvitteringLastNedErklaering';
 import FarskapserklaeringPresentation from '../../components/farskapserklaering-presentation/FarskapserklaeringPresentation';
-import { Accordion } from '@navikt/ds-react';
+import { Accordion, Box, HGrid, VStack } from '@navikt/ds-react';
 
 function Kvittering() {
     const erklaeringId = useQuery().get(ERKLAERING_ID);
@@ -47,21 +46,25 @@ function Kvittering() {
                     }
 
                     return (
-                        <ContentContainer>
-                            <KvitteringIntro erklaering={erklaering} />
-                            <MorAlert erklaering={erklaering} />
-                            <ProsessIndikator erklaering={erklaering} />
-                            <FarskapserklaeringPresentation
-                                farskapserklaering={erklaering}
-                                border={true}
-                            />
+                        <VStack gap="space-24">
+                            <VStack gap="space-16">
+                                <KvitteringIntro erklaering={erklaering} />
+                                <MorAlert erklaering={erklaering} />
+                            </VStack>
+                            <VStack gap="space-12" align="center">
+                                <ProsessIndikator erklaering={erklaering} />
+                                <FarskapserklaeringPresentation
+                                    farskapserklaering={erklaering}
+                                    border={true}
+                                />
+                            </VStack>
                             <KvitteringLastNedErklaering erklaering={erklaering} />
                             <Accordion>
                                 <HvaSkjerViderePanel />
                                 <HvaSkjerHvisPanel erklaering={erklaering} />
                                 <YtelserOgTjenesterPanel erklaering={erklaering} />
                             </Accordion>
-                        </ContentContainer>
+                        </VStack>
                     );
                 }}
             </WithUserInfo>
