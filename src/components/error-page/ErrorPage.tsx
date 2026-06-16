@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { BodyLong, Heading, Page, VStack } from '@navikt/ds-react';
-
 import VeilederBanner from 'components/veileder-banner/VeilederBanner';
 
 export interface ErrorPageProps {
@@ -17,7 +16,7 @@ function ErrorPage({ title, text, banner }: ErrorPageProps) {
         <Page.Block as="main">
             <VeilederBanner title={banner.title} text={banner.text} veileder={{ type: 'unsure' }} />
             <VStack gap="space-16" align="center" justify="center" padding="space-32">
-                <Heading level="2" size="medium" as="h2">
+                <Heading level="2" size="large" as="h2">
                     {title}
                 </Heading>
                 <BodyLong size="large">{text}</BodyLong>

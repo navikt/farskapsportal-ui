@@ -13,10 +13,10 @@ function SpeechBubble({ title, text }: SpeechBubbleProps) {
         <Box
             className="SpeechBubble"
             background="default"
-            borderRadius="4"
+            borderRadius="8"
             marginInline="auto"
             marginBlock="space-0 space-16"
-            padding="space-16"
+            padding="space-20"
             position="relative"
             width="90%"
             maxWidth="30rem"

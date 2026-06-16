@@ -15,7 +15,7 @@ function Page({ breadcrumbs, children, titleId, alertTextId }: PageProps) {
 
     return (
         <VStack gap="space-16" paddingBlock="space-32" asChild>
-            <AkselPage.Block as="main" width="md" gutters>
+            <AkselPage.Block as="main" width="lg" gutters>
                 <Heading level="1" size="xlarge" as="h1" spacing>
                     <FormattedMessage id={titleId} />
                 </Heading>
