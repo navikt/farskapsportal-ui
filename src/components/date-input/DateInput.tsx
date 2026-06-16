@@ -1,6 +1,6 @@
 import { DatePicker, useDatepicker } from '@navikt/ds-react';
 import { formatISO, parseISO } from 'date-fns';
-import { ReactNode } from 'react';
+import { ReactNode, useRef } from 'react';
 
 interface DateInputProps {
     id: string;
@@ -19,19 +19,31 @@ function DateInput(props: DateInputProps) {
     const selectedDate = props.value ? parseISO(props.value) : undefined;
     const fromDate = props.minDate ? parseISO(props.minDate) : undefined;
     const toDate = props.maxDate ? parseISO(props.maxDate) : undefined;
+    const rawInputRef = useRef<string>('');
 
     const { datepickerProps, inputProps } = useDatepicker({
         defaultSelected: selectedDate,
         fromDate,
         toDate,
-        onDateChange: (date) =>
-            props.onChange(date ? formatISO(date, { representation: 'date' }) : undefined),
+        onDateChange: (date) => {
+            if (date) {
+                props.onChange(formatISO(date, { representation: 'date' }));
+            } else if (rawInputRef.current) {
+                props.onChange(rawInputRef.current);
+            } else {
+                props.onChange(undefined);
+            }
+        },
     });
 
     return (
         <DatePicker {...datepickerProps} dropdownCaption={props.showYearSelector}>
             <DatePicker.Input
                 {...inputProps}
+                onChange={(e) => {
+                    rawInputRef.current = e.target.value;
+                    inputProps.onChange?.(e);
+                }}
                 id={props.id}
                 label={props.label}
                 placeholder={props.placeholder}

@@ -7,6 +7,7 @@ import TermindatoForm, { TermindatoFormProps } from '../TermindatoForm';
 
 const termindatoLabel = texts['termindato'];
 const requiredErrorMessage = texts['skjema.mor.barn.termindato.validation.required'];
+const invalidDateErrorMessage = texts['skjema.mor.barn.termindato.validation.pattern'];
 const minDateErrorMessage = texts['skjema.mor.barn.termindato.validation.minDate'];
 const submitButtonLabel = texts['skjema.next'];
 
@@ -53,7 +54,7 @@ test('should show error for invalid date', async () => {
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-        expect(screen.getByText(requiredErrorMessage)).not.toBeNull();
+        expect(screen.getByText(invalidDateErrorMessage)).not.toBeNull();
     });
 });
 
