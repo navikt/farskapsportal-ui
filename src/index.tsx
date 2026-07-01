@@ -11,6 +11,9 @@ import ScrollToTop from 'components/scroll-to-top/ScrollToTop';
 import { StoreProvider } from 'store/Context';
 import LanguageProvider from 'store/providers/LanguageProvider';
 import { initialState, reducer } from 'store/store';
+import { initFaro } from './faro';
+
+initFaro();
 
 if (import.meta.env.PROD) {
     Sentry.init({

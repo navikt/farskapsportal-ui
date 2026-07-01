@@ -12,6 +12,9 @@ spec:
     min: 2
     max: 2
     cpuThresholdPercentage: 50
+  frontend:
+    generatedConfig:
+      mountPath: /app/build/nais.js
   idporten:
     enabled: true
     sidecar:

@@ -27,6 +27,9 @@ export default defineConfig({
     },
     build: {
         outDir: 'build',
+        rollupOptions: {
+            external: ['/nais.js'],
+        },
     },
     test: {
         globals: true,
