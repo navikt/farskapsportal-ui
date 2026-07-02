@@ -1,22 +1,26 @@
-import { ReactNode } from 'react';
-
+import { Bleed, VStack } from '@navikt/ds-react';
 import SpeechBubble from './SpeechBubble';
 import Veileder, { VeilederProps } from './Veileder';
 
-import './VeilederBanner.less';
-
 interface VeilederBannerProps {
     title: string;
-    text: ReactNode;
+    text: React.ReactNode;
     veileder?: VeilederProps;
 }
 
 function VeilederBanner({ title, text, veileder }: VeilederBannerProps) {
     return (
-        <div className="VeilederBanner">
-            <SpeechBubble title={title} text={text} />
-            <Veileder {...veileder} />
-        </div>
+        <Bleed marginInline="full">
+            <VStack
+                align="center"
+                marginBlock="space-0 space-64"
+                paddingBlock="space-16 space-0"
+                style={{ backgroundColor: '#c1b5d0' }}
+            >
+                <SpeechBubble title={title} text={text} />
+                <Veileder {...veileder} />
+            </VStack>
+        </Bleed>
     );
 }
 

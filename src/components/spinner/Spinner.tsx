@@ -1,12 +1,10 @@
-import NavFrontendSpinner from 'nav-frontend-spinner';
-
-import './Spinner.less';
+import { Loader, VStack } from '@navikt/ds-react';
 
 function Spinner() {
     return (
-        <div className="Spinner">
-            <NavFrontendSpinner type="XL" />
-        </div>
+        <VStack gap="space-16" align="center" justify="center" marginBlock="space-64">
+            <Loader size="2xlarge" />
+        </VStack>
     );
 }
 

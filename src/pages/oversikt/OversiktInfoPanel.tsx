@@ -1,7 +1,5 @@
-import { Innholdstittel } from 'nav-frontend-typografi';
+import { Heading, VStack } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
-
-import InfoPanel from 'components/info-panel/InfoPanel';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { UserInfo } from 'types/user';
 import {
@@ -19,8 +17,7 @@ import MorMedBarn from './info-panel-content/mor/MorMedBarn';
 import MorUtenBarn from './info-panel-content/mor/MorUtenBarn';
 import ToSkjemaButton from './ToSkjemaButton';
 import { capitalizeFirsLetterInEveryWord } from '../../utils/string';
-
-import './OversiktInfoPanel.less';
+import InfoPanel from 'components/info-panel/InfoPanel';
 
 interface OversiktInfoPanelProps {
     userInfo: UserInfo;
@@ -115,16 +112,20 @@ function OversiktInfoPanel({ userInfo }: OversiktInfoPanelProps) {
     };
 
     return (
-        <InfoPanel className="OversiktInfoPanel">
-            <Innholdstittel tag="h2">
-                <FormattedMessage
-                    id="oversikt.infoPanel.greeting"
-                    values={{ fornavn: capitalizeFirsLetterInEveryWord(userInfo.brukersFornavn) }}
-                />
-            </Innholdstittel>
-            {renderContent()}
+        <VStack gap="space-24">
+            <InfoPanel>
+                <Heading level="2" size="medium" as="h2" spacing>
+                    <FormattedMessage
+                        id="oversikt.infoPanel.greeting"
+                        values={{
+                            fornavn: capitalizeFirsLetterInEveryWord(userInfo.brukersFornavn),
+                        }}
+                    />
+                </Heading>
+                {renderContent()}
+            </InfoPanel>
             <ToSkjemaButton userInfo={userInfo} />
-        </InfoPanel>
+        </VStack>
     );
 }
 

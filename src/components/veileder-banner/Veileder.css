@@ -1,0 +1,57 @@
+.Veileder #Background {
+  fill: #c1b5d0;
+}
+.Veileder #Left-eye,
+.Veileder #Right-eye {
+  animation: eyeBlink 6s infinite;
+  animation-timing-function: ease;
+}
+.Veileder #Nose {
+  stroke: #d1bfa3;
+  stroke-width: 0.2;
+  vector-effect: non-scaling-stroke;
+  animation: noseUp 6s infinite;
+  animation-timing-function: ease;
+}
+.Veileder #Mouth-happy,
+.Veileder #Mouth-unsure,
+.Veileder #Mouth-hesitant {
+  opacity: 0;
+}
+.Veileder--happy #Mouth-happy {
+  opacity: 1;
+}
+.Veileder--unsure #Mouth-unsure {
+  opacity: 1;
+}
+.Veileder--hesitant #Mouth-hesitant {
+  opacity: 1;
+}
+@keyframes eyeBlink {
+  0% {
+    transform: scaleY(1);
+  }
+  79% {
+    transform: scaleY(1);
+  }
+  80% {
+    transform: translateY(3px) scaleY(0.1);
+  }
+  81.5% {
+    transform: scaleY(1);
+  }
+}
+@keyframes noseUp {
+  0% {
+    transform: scaleY(1);
+  }
+  79% {
+    transform: scaleY(1);
+  }
+  80% {
+    transform: translate(0, -0.4px);
+  }
+  81.5% {
+    transform: scaleY(1);
+  }
+}

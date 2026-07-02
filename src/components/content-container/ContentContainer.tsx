@@ -1,15 +1,11 @@
-import classNames from 'classnames';
-import { ReactNode } from 'react';
+import { VStack } from '@navikt/ds-react';
 
-import './ContentContainer.less';
-
-interface ContentContainerProps {
-    children: ReactNode;
-    className?: string;
-}
-
-function ContentContainer({ children, className }: ContentContainerProps) {
-    return <div className={classNames('ContentContainer', className)}>{children}</div>;
+function ContentContainer({ children }: React.PropsWithChildren) {
+    return (
+        <VStack gap="space-24" align="center" justify="center">
+            {children}
+        </VStack>
+    );
 }
 
 export default ContentContainer;

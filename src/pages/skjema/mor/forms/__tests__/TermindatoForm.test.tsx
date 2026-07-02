@@ -1,6 +1,5 @@
-import { axe } from 'jest-axe';
-
-import { fireEvent, render, screen, waitFor } from 'test-utils';
+import { fireEvent, render, runAxe, screen, waitFor } from 'test-utils';
+import { expect, test } from 'vitest';
 import texts from 'texts/nb';
 import { DAYS_IN_THREE_WEEKS } from 'utils/constants';
 import { getNDaysInTheFuture, getNDaysInThePast } from 'utils/date';
@@ -21,8 +20,8 @@ const defaultProps: TermindatoFormProps = {
 test('should have no a11y violations', async () => {
     const { container } = render(<TermindatoForm {...defaultProps} />);
 
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    const results = await runAxe(container);
+    expect(results.violations).toHaveLength(0);
 });
 
 test('should set default value', async () => {
@@ -38,7 +37,7 @@ test('should show required error', async () => {
     fireEvent.click(screen.getByText(submitButtonLabel));
 
     await waitFor(() => {
-        expect(screen.getByText(requiredErrorMessage)).toBeInTheDocument();
+        expect(screen.getByText(requiredErrorMessage)).not.toBeNull();
     });
 });
 
@@ -55,46 +54,35 @@ test('should show error for invalid date', async () => {
     fireEvent.click(submitButton);
 
     await waitFor(() => {
-        expect(screen.getByText(invalidDateErrorMessage)).toBeInTheDocument();
+        expect(screen.getByText(invalidDateErrorMessage)).not.toBeNull();
     });
 });
 
 test('should show error for date too far in the future', async () => {
-    render(<TermindatoForm {...defaultProps} />);
+    render(<TermindatoForm {...defaultProps} defaultTermindato={getNDaysInTheFuture(200)} />);
 
-    const termindatoInput = screen.getByLabelText(termindatoLabel) as HTMLInputElement;
-    const submitButton = screen.getByText(submitButtonLabel);
-
-    // uses .focus() to trigger onBlur
-    termindatoInput.focus();
-    fireEvent.change(termindatoInput, { target: { value: getNDaysInTheFuture(200) } });
-    submitButton.focus();
-    fireEvent.click(submitButton);
+    fireEvent.click(screen.getByText(submitButtonLabel));
 
     await waitFor(() => {
         expect(
             screen.getByText(
-                'Du er i uke 11 i svangerskapet. Vent til uke 22 med å bekrefte faren til barnet.'
-            )
-        ).toBeInTheDocument();
+                'Du er i uke 11 i svangerskapet. Vent til uke 22 med å bekrefte faren til barnet.',
+            ),
+        ).not.toBeNull();
     });
 });
 
 test('should show error for date too far in the past', async () => {
-    render(<TermindatoForm {...defaultProps} />);
+    render(
+        <TermindatoForm
+            {...defaultProps}
+            defaultTermindato={getNDaysInThePast(DAYS_IN_THREE_WEEKS + 1)}
+        />,
+    );
 
-    const termindatoInput = screen.getByLabelText(termindatoLabel) as HTMLInputElement;
-    const submitButton = screen.getByText(submitButtonLabel);
-
-    // uses .focus() to trigger onBlur
-    termindatoInput.focus();
-    fireEvent.change(termindatoInput, {
-        target: { value: getNDaysInThePast(DAYS_IN_THREE_WEEKS + 1) },
-    });
-    submitButton.focus();
-    fireEvent.click(submitButton);
+    fireEvent.click(screen.getByText(submitButtonLabel));
 
     await waitFor(() => {
-        expect(screen.getByText(minDateErrorMessage)).toBeInTheDocument();
+        expect(screen.getByText(minDateErrorMessage)).not.toBeNull();
     });
 });

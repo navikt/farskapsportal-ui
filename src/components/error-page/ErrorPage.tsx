@@ -1,9 +1,6 @@
 import { ReactNode } from 'react';
-import { Ingress, Innholdstittel } from 'nav-frontend-typografi';
-
+import { BodyLong, Heading, Page, VStack } from '@navikt/ds-react';
 import VeilederBanner from 'components/veileder-banner/VeilederBanner';
-
-import './ErrorPage.less';
 
 export interface ErrorPageProps {
     title: ReactNode;
@@ -16,13 +13,15 @@ export interface ErrorPageProps {
 
 function ErrorPage({ title, text, banner }: ErrorPageProps) {
     return (
-        <div className="ErrorPage">
+        <Page.Block as="main">
             <VeilederBanner title={banner.title} text={banner.text} veileder={{ type: 'unsure' }} />
-            <div className="ErrorPage__content">
-                <Innholdstittel>{title}</Innholdstittel>
-                <Ingress>{text}</Ingress>
-            </div>
-        </div>
+            <VStack gap="space-16" align="center" justify="center" padding="space-32">
+                <Heading level="2" size="large" as="h2">
+                    {title}
+                </Heading>
+                <BodyLong size="large">{text}</BodyLong>
+            </VStack>
+        </Page.Block>
     );
 }
 

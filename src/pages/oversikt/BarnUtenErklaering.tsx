@@ -1,4 +1,4 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import LinkPanel from 'components/link-panel/LinkPanel';
@@ -46,9 +46,9 @@ function BarnLinkPanel({ foedselsnummer, index }: { foedselsnummer: string; inde
             etikettType="fokus"
             etikettId="oversikt.barn.link.status"
         >
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="foedselsnummer" />: {formatFoedselsnummer(foedselsnummer)}
-            </Normaltekst>
+            </BodyShort>
         </LinkPanel>
     );
 }

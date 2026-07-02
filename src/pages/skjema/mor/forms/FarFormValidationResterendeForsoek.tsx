@@ -1,6 +1,5 @@
-import AlertStripe from 'nav-frontend-alertstriper';
+import { Alert, Box } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
-import './FarFormValidationResterendeForsoek.less';
 
 interface FarFormValidationResterendeForsoekProps {
     antallResterendeForsoek?: number | null;
@@ -26,14 +25,14 @@ interface FarFormValidationResterendeForsoekProps {
 //
 //     if (antallResterendeForsoek === 1) {
 //         return (
-//             <AlertStripe type="advarsel">
+//             <Alert variant="warning">
 //                 <FormattedMessage id="skjema.mor.far.validation.resterendeForsoek.final" />
-//             </AlertStripe>
+//             </Alert>
 //         );
 //     }
 //
 //     return (
-//         <AlertStripe type="advarsel">
+//         <Alert variant="warning">
 //             <FormattedMessage
 //                 id="skjema.mor.far.validation.resterendeForsoek"
 //                 values={{
@@ -43,7 +42,7 @@ interface FarFormValidationResterendeForsoekProps {
 //                     ),
 //                 }}
 //             />
-//         </AlertStripe>
+//         </Alert>
 //     );
 // }
 
@@ -55,9 +54,11 @@ function FarFormValidationResterendeForsoek({
     }
 
     return (
-        <AlertStripe type="advarsel" className="resterendeForsoek--alert">
-            <FormattedMessage id="skjema.mor.far.validation.resterendeForsoek.final" />
-        </AlertStripe>
+        <Box marginBlock="space-16" asChild>
+            <Alert variant="warning" role="alert" aria-live="polite">
+                <FormattedMessage id="skjema.mor.far.validation.resterendeForsoek.final" />
+            </Alert>
+        </Box>
     );
 }
 

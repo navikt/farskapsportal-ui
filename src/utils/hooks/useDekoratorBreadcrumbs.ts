@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 import { useIntl } from 'react-intl';
 import { onBreadcrumbClick, setBreadcrumbs } from '@navikt/nav-dekoratoren-moduler';
 
@@ -9,11 +9,11 @@ import { getMessage } from 'utils/intl';
 
 export const useDekoratorBreadcrumbs = (breadcrumbs?: Breadcrumb[]) => {
     const intl = useIntl();
-    const history = useHistory();
+    const navigate = useNavigate();
     const [{ language }] = useStore();
 
     onBreadcrumbClick((breadcrumb) => {
-        history.push(breadcrumb.url);
+        navigate(breadcrumb.url);
     });
 
     useEffect(() => {

@@ -1,18 +1,21 @@
 import { injectDecoratorClientSide } from '@navikt/nav-dekoratoren-moduler';
 import * as Sentry from '@sentry/react';
 import { StrictMode } from 'react';
-import { render } from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter as Router } from 'react-router';
 
-import './index.less';
+import '@navikt/ds-css';
 import App from './App';
 import ErrorBoundary from 'components/error-boundary/ErrorBoundary';
 import ScrollToTop from 'components/scroll-to-top/ScrollToTop';
 import { StoreProvider } from 'store/Context';
 import LanguageProvider from 'store/providers/LanguageProvider';
 import { initialState, reducer } from 'store/store';
+import { initFaro } from './faro';
 
-if (process.env.NODE_ENV === 'production') {
+initFaro();
+
+if (import.meta.env.PROD) {
     Sentry.init({
         dsn: 'https://45feaf242d6e4c02b4b536ccc838eed1@sentry.gc.nav.no/48',
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -22,20 +25,22 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 const init = async () => {
-    if (process.env.NODE_ENV === 'development') {
+    if (import.meta.env.DEV) {
         await import('./api/mock/app').then(({ setUpMock }) => setUpMock());
 
         injectDecoratorClientSide({
             env: 'dev',
             params: {
+                context: 'privatperson',
                 level: 'Level4',
-                simple: true,
                 chatbot: false,
             },
         });
     }
 
-    render(
+    const container = document.getElementById('app');
+    if (!container) throw new Error('Root element #app not found');
+    createRoot(container).render(
         <StrictMode>
             <ErrorBoundary>
                 <StoreProvider initialState={initialState} reducer={reducer}>
@@ -47,8 +52,7 @@ const init = async () => {
                     </LanguageProvider>
                 </StoreProvider>
             </ErrorBoundary>
-        </StrictMode>,
-        document.getElementById('app')
+        </StrictMode>
     );
 };
 

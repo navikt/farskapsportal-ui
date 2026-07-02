@@ -1,12 +1,12 @@
-FROM node:20.19.6-alpine3.22
-ENV NODE_ENV production
+FROM europe-north1-docker.pkg.dev/cgr-nav/pull-through/nav.no/node:24-slim
 
-WORKDIR usr/src/app
+ENV NODE_ENV=production
+
+WORKDIR /app
 COPY server server/
 COPY build build/
 
-WORKDIR server
-RUN yarn install
+WORKDIR /app/server
 
-CMD ["node", "./server.js"]
+CMD ["./server.js"]
 EXPOSE 8080

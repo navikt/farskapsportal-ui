@@ -1,5 +1,3 @@
-import { AlertStripeType } from 'nav-frontend-alertstriper';
-
 import { Feilkode } from './feilkode';
 
 export interface HTTPError {
@@ -8,7 +6,7 @@ export interface HTTPError {
 }
 
 export interface AlertError extends HTTPError {
-    type: AlertStripeType;
+    type: 'feil' | 'advarsel' | 'info' | 'suksess';
     feilkode?: Feilkode | null;
     antallResterendeForsoek: number | null;
     tidspunktForNullstillingAvForsoek: string | null;

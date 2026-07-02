@@ -1,12 +1,8 @@
 import { Farskapserklaering } from '../../types/farskapserklaering';
 import { isSignedByFar } from '../../utils/farskapserklaering';
-import { FormattedMessage } from 'react-intl';
-import { Normaltekst } from 'nav-frontend-typografi';
-import { SuccessFilled } from '@navikt/ds-icons';
-
-import './ProsessIndikator.less';
-
-// TODO: Bytt ut med relevant komponent naar den er publisert
+import { useIntl } from 'react-intl';
+import { Stepper, VStack } from '@navikt/ds-react';
+import { getMessage } from '../../utils/intl';
 
 interface ProsessIndikatorProps {
     erklaering: Farskapserklaering;
@@ -14,62 +10,24 @@ interface ProsessIndikatorProps {
 
 // TODO: Check if erklaering has been archived and change icon?
 function ProsessIndikator({ erklaering }: ProsessIndikatorProps) {
+    const intl = useIntl();
     const signedByFar = isSignedByFar(erklaering);
 
     return (
-        <div className="ProsessIndikator">
-            <ProsessSteg textId="kvittering.prosessIndikator.step.1" iconType="checked" />
-            <div className="ProsessIndikator__line" />
-            <ProsessSteg
-                textId="kvittering.prosessIndikator.step.2"
-                iconType={signedByFar ? 'checked' : 'circle'}
-            />
-            <div className="ProsessIndikator__line" />
-            <ProsessSteg
-                textId="kvittering.prosessIndikator.step.3"
-                iconType={signedByFar ? 'circle' : 'dot'}
-            />
-        </div>
+        <VStack paddingBlock="space-16 space-24" paddingInline="space-8">
+            <Stepper activeStep={signedByFar ? 3 : 2}>
+                <Stepper.Step completed interactive={false}>
+                    {getMessage(intl, 'kvittering.prosessIndikator.step.1')}
+                </Stepper.Step>
+                <Stepper.Step completed={signedByFar} interactive={false}>
+                    {getMessage(intl, 'kvittering.prosessIndikator.step.2')}
+                </Stepper.Step>
+                <Stepper.Step interactive={false}>
+                    {getMessage(intl, 'kvittering.prosessIndikator.step.3')}
+                </Stepper.Step>
+            </Stepper>
+        </VStack>
     );
-}
-
-type IconType = 'checked' | 'circle' | 'dot';
-
-function ProsessSteg({ textId, iconType }: { textId: string; iconType: IconType }) {
-    return (
-        <span className="Step">
-            <ProsessStegIcon iconType={iconType} />
-            <Normaltekst className={`Step__label ${iconType === 'circle' ? 'bold' : ''}`}>
-                <FormattedMessage id={textId} />
-            </Normaltekst>
-        </span>
-    );
-}
-
-function ProsessStegIcon({ iconType }: { iconType: IconType }) {
-    switch (iconType) {
-        case 'checked':
-            return (
-                <SuccessFilled
-                    className="ProsessStegIcon"
-                    aria-label="OK icon"
-                    role="img"
-                    focusable={false}
-                />
-            );
-        case 'circle':
-            return (
-                <div className="ProsessStegIcon__circle">
-                    <div className="ProsessStegIcon__circle__inner" />
-                </div>
-            );
-        case 'dot':
-            return (
-                <div className="ProsessStegIcon__circle white dot">
-                    <div className="ProsessStegIcon__circle__inner gray" />
-                </div>
-            );
-    }
 }
 
 export default ProsessIndikator;

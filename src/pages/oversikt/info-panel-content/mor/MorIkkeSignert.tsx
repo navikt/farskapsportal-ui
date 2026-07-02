@@ -1,4 +1,4 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import { Farskapserklaering } from 'types/farskapserklaering';
@@ -11,13 +11,13 @@ interface MorIkkeSignertProps {
 function MorIkkeSignert({ ikkeSignertErklaeringer }: MorIkkeSignertProps) {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="oversikt.infoPanel.mor.ikkeSignert.1" />{' '}
                 <ForBarn erklaeringer={ikkeSignertErklaeringer} />.
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessage id="oversikt.infoPanel.mor.ikkeSignert.2" />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }

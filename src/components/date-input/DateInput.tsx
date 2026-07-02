@@ -1,16 +1,6 @@
-import classNames from 'classnames';
-import { Datepicker } from 'nav-datovelger';
-import {
-    Label,
-    SkjemaelementFeilmelding,
-    SkjemaGruppeFeilContext,
-    SkjemaGruppeFeilContextProps,
-} from 'nav-frontend-skjema';
-import { ReactNode } from 'react';
-import 'dayjs/locale/nb';
-import 'dayjs/locale/nn';
-
-import { useStore } from 'store/Context';
+import { DatePicker, useDatepicker } from '@navikt/ds-react';
+import { formatISO, parseISO } from 'date-fns';
+import { ReactNode, useRef } from 'react';
 
 interface DateInputProps {
     id: string;
@@ -26,41 +16,41 @@ interface DateInputProps {
 }
 
 function DateInput(props: DateInputProps) {
-    const [{ language }] = useStore();
+    const selectedDate = props.value ? parseISO(props.value) : undefined;
+    const fromDate = props.minDate ? parseISO(props.minDate) : undefined;
+    const toDate = props.maxDate ? parseISO(props.maxDate) : undefined;
+    const rawInputRef = useRef<string>('');
+
+    const { datepickerProps, inputProps } = useDatepicker({
+        defaultSelected: selectedDate,
+        fromDate,
+        toDate,
+        onDateChange: (date) => {
+            if (date) {
+                props.onChange(formatISO(date, { representation: 'date' }));
+            } else if (rawInputRef.current) {
+                props.onChange(rawInputRef.current);
+            } else {
+                props.onChange(undefined);
+            }
+        },
+    });
 
     return (
-        <SkjemaGruppeFeilContext.Consumer>
-            {(context: SkjemaGruppeFeilContextProps) => {
-                const feilmelding = context.feil || props.feil;
-
-                return (
-                    <div className={classNames('skjemaelement', props.className)}>
-                        <Label htmlFor={props.id}>{props.label}</Label>
-                        <Datepicker
-                            inputId={props.id}
-                            onChange={props.onChange}
-                            value={props.value}
-                            locale={language}
-                            inputProps={{
-                                name: props.id,
-                                placeholder: props.placeholder,
-                                'aria-invalid': !!feilmelding,
-                            }}
-                            showYearSelector={props.showYearSelector}
-                            limitations={{
-                                minDate: props.minDate,
-                                maxDate: props.maxDate,
-                            }}
-                        />
-                        {!context.feil && props.feil && (
-                            <SkjemaelementFeilmelding>
-                                {typeof feilmelding !== 'boolean' && feilmelding}
-                            </SkjemaelementFeilmelding>
-                        )}
-                    </div>
-                );
-            }}
-        </SkjemaGruppeFeilContext.Consumer>
+        <DatePicker {...datepickerProps} dropdownCaption={props.showYearSelector}>
+            <DatePicker.Input
+                {...inputProps}
+                onChange={(e) => {
+                    rawInputRef.current = e.target.value;
+                    inputProps.onChange?.(e);
+                }}
+                id={props.id}
+                label={props.label}
+                placeholder={props.placeholder}
+                error={props.feil}
+                className={props.className}
+            />
+        </DatePicker>
     );
 }
 

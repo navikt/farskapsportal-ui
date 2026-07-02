@@ -51,7 +51,7 @@ Nå applikasjonen fra nettleser:
 
 http://localhost:3000/nb/oversikt
 
-Endre lokalt testscenario i fila src/api/mock/app/index.tx. Avkommenter scenariet du ønsker å legge til grunn,
+Endre lokalt testscenario i fila src/api/mock/app/index.ts. Avkommenter scenariet du ønsker å legge til grunn,
 f.eks
 
 > import user from './get/far_unsigned.json';

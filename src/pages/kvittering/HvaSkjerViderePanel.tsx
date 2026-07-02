@@ -1,4 +1,4 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import ExternalLink from 'components/external-link/ExternalLink';
@@ -10,12 +10,12 @@ function HvaSkjerViderePanel() {
 
     return (
         <InfoExpandablePanel titleId="kvittering.hvaSkjerVidere.title">
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="kvittering.hvaSkjerVidere.1" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessage id="kvittering.hvaSkjerVidere.2" />
-            </Normaltekst>
+            </BodyShort>
             <ExternalLink href={getMessage(intl, 'kvittering.hvaSkjerVidere.link')} />
         </InfoExpandablePanel>
     );

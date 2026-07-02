@@ -1,7 +1,6 @@
-import { axe } from 'jest-axe';
-
+import { vi, test, expect } from 'vitest';
 import { Store } from 'store/store';
-import { fireEvent, render, screen } from 'test-utils';
+import { fireEvent, render, runAxe, screen } from 'test-utils';
 import texts from 'texts/nb';
 import { Rolle } from 'types/farskapserklaering';
 import { Foreldrerolle } from 'types/foreldrerolle';
@@ -9,7 +8,7 @@ import Kvittering from '../Kvittering';
 
 const ERKLAERING_ID = 123;
 
-jest.mock('utils/hooks/useQuery', () => ({
+vi.mock('utils/hooks/useQuery', () => ({
     useQuery: () => ({
         get: () => `${ERKLAERING_ID}`,
     }),
@@ -101,31 +100,31 @@ test('should render info for mor with termindato erklaering and bor sammen true'
         }),
     });
 
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    const results = await runAxe(container);
+    expect(results.violations).toHaveLength(0);
 
-    expect(screen.getByText(introMorText)).toBeInTheDocument();
-    expect(screen.queryByText(introFarText)).not.toBeInTheDocument();
-    expect(screen.getByText(morAlertText)).toBeInTheDocument();
-    expect(screen.getByText(hvaSkjerVidereTitle)).toBeInTheDocument();
-    expect(screen.getByText(hvaSkjerHvisTitle)).toBeInTheDocument();
-    expect(screen.getByText(ytelserOgTjenesterTitle)).toBeInTheDocument();
+    expect(screen.getByText(introMorText)).not.toBeNull();
+    expect(screen.queryByText(introFarText)).toBeNull();
+    expect(screen.getByText(morAlertText)).not.toBeNull();
+    expect(screen.getByText(hvaSkjerVidereTitle)).not.toBeNull();
+    expect(screen.getByText(hvaSkjerHvisTitle)).not.toBeNull();
+    expect(screen.getByText(ytelserOgTjenesterTitle)).not.toBeNull();
 
     fireEvent.click(screen.getByText(hvaSkjerHvisTitle));
     fireEvent.click(screen.getByText(ytelserOgTjenesterTitle));
 
-    expect(screen.getByText(farSignererIkkeTermindatoText)).toBeInTheDocument();
-    expect(screen.queryByText(farSignererIkkeFoedselsnummerText)).not.toBeInTheDocument();
-    expect(screen.getByText(foedtIUtlandetTitle)).toBeInTheDocument();
-    expect(screen.getByText(barnetDoerTitle)).toBeInTheDocument();
+    expect(screen.getByText(farSignererIkkeTermindatoText)).not.toBeNull();
+    expect(screen.queryByText(farSignererIkkeFoedselsnummerText)).toBeNull();
+    expect(screen.getByText(foedtIUtlandetTitle)).not.toBeNull();
+    expect(screen.getByText(barnetDoerTitle)).not.toBeNull();
 
     expect(
-        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)
-    ).toBeInTheDocument();
-    expect(screen.getByText(barnetrygdTitle)).toBeInTheDocument();
-    expect(screen.queryByText(utvidetBarnetrygdTitle)).not.toBeInTheDocument();
-    expect(screen.queryByText(barnebidragTitle)).not.toBeInTheDocument();
-    expect(screen.queryByText(stoenadTilEnsligMorEllerFarTitle)).not.toBeInTheDocument();
+        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle),
+    ).not.toBeNull();
+    expect(screen.getByText(barnetrygdTitle)).not.toBeNull();
+    expect(screen.queryByText(utvidetBarnetrygdTitle)).toBeNull();
+    expect(screen.queryByText(barnebidragTitle)).toBeNull();
+    expect(screen.queryByText(stoenadTilEnsligMorEllerFarTitle)).toBeNull();
 });
 
 test('should render info for mor with foedselsnummer erklaering and bor sammen true', async () => {
@@ -139,31 +138,31 @@ test('should render info for mor with foedselsnummer erklaering and bor sammen t
         }),
     });
 
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    const results = await runAxe(container);
+    expect(results.violations).toHaveLength(0);
 
-    expect(screen.getByText(introMorText)).toBeInTheDocument();
-    expect(screen.queryByText(introFarText)).not.toBeInTheDocument();
-    expect(screen.getByText(morAlertText)).toBeInTheDocument();
-    expect(screen.getByText(hvaSkjerVidereTitle)).toBeInTheDocument();
-    expect(screen.getByText(hvaSkjerHvisTitle)).toBeInTheDocument();
-    expect(screen.getByText(ytelserOgTjenesterTitle)).toBeInTheDocument();
+    expect(screen.getByText(introMorText)).not.toBeNull();
+    expect(screen.queryByText(introFarText)).toBeNull();
+    expect(screen.getByText(morAlertText)).not.toBeNull();
+    expect(screen.getByText(hvaSkjerVidereTitle)).not.toBeNull();
+    expect(screen.getByText(hvaSkjerHvisTitle)).not.toBeNull();
+    expect(screen.getByText(ytelserOgTjenesterTitle)).not.toBeNull();
 
     fireEvent.click(screen.getByText(hvaSkjerHvisTitle));
     fireEvent.click(screen.getByText(ytelserOgTjenesterTitle));
 
-    expect(screen.queryByText(farSignererIkkeTermindatoText)).not.toBeInTheDocument();
-    expect(screen.getByText(farSignererIkkeFoedselsnummerText)).toBeInTheDocument();
-    expect(screen.queryByText(foedtIUtlandetTitle)).not.toBeInTheDocument();
-    expect(screen.queryByText(barnetDoerTitle)).not.toBeInTheDocument();
+    expect(screen.queryByText(farSignererIkkeTermindatoText)).toBeNull();
+    expect(screen.getByText(farSignererIkkeFoedselsnummerText)).not.toBeNull();
+    expect(screen.queryByText(foedtIUtlandetTitle)).toBeNull();
+    expect(screen.queryByText(barnetDoerTitle)).toBeNull();
 
     expect(
-        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)
-    ).toBeInTheDocument();
-    expect(screen.getByText(barnetrygdTitle)).toBeInTheDocument();
-    expect(screen.queryByText(utvidetBarnetrygdTitle)).not.toBeInTheDocument();
-    expect(screen.queryByText(barnebidragTitle)).not.toBeInTheDocument();
-    expect(screen.queryByText(stoenadTilEnsligMorEllerFarTitle)).not.toBeInTheDocument();
+        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle),
+    ).not.toBeNull();
+    expect(screen.getByText(barnetrygdTitle)).not.toBeNull();
+    expect(screen.queryByText(utvidetBarnetrygdTitle)).toBeNull();
+    expect(screen.queryByText(barnebidragTitle)).toBeNull();
+    expect(screen.queryByText(stoenadTilEnsligMorEllerFarTitle)).toBeNull();
 });
 
 test('should render info for mor with termindato erklaering and bor sammen false', async () => {
@@ -177,31 +176,31 @@ test('should render info for mor with termindato erklaering and bor sammen false
         }),
     });
 
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    const results = await runAxe(container);
+    expect(results.violations).toHaveLength(0);
 
-    expect(screen.getByText(introMorText)).toBeInTheDocument();
-    expect(screen.queryByText(introFarText)).not.toBeInTheDocument();
-    expect(screen.getByText(morAlertText)).toBeInTheDocument();
-    expect(screen.getByText(hvaSkjerVidereTitle)).toBeInTheDocument();
-    expect(screen.getByText(hvaSkjerHvisTitle)).toBeInTheDocument();
-    expect(screen.getByText(ytelserOgTjenesterTitle)).toBeInTheDocument();
+    expect(screen.getByText(introMorText)).not.toBeNull();
+    expect(screen.queryByText(introFarText)).toBeNull();
+    expect(screen.getByText(morAlertText)).not.toBeNull();
+    expect(screen.getByText(hvaSkjerVidereTitle)).not.toBeNull();
+    expect(screen.getByText(hvaSkjerHvisTitle)).not.toBeNull();
+    expect(screen.getByText(ytelserOgTjenesterTitle)).not.toBeNull();
 
     fireEvent.click(screen.getByText(hvaSkjerHvisTitle));
     fireEvent.click(screen.getByText(ytelserOgTjenesterTitle));
 
-    expect(screen.getByText(farSignererIkkeTermindatoText)).toBeInTheDocument();
-    expect(screen.queryByText(farSignererIkkeFoedselsnummerText)).not.toBeInTheDocument();
-    expect(screen.getByText(foedtIUtlandetTitle)).toBeInTheDocument();
-    expect(screen.getByText(barnetDoerTitle)).toBeInTheDocument();
+    expect(screen.getByText(farSignererIkkeTermindatoText)).not.toBeNull();
+    expect(screen.queryByText(farSignererIkkeFoedselsnummerText)).toBeNull();
+    expect(screen.getByText(foedtIUtlandetTitle)).not.toBeNull();
+    expect(screen.getByText(barnetDoerTitle)).not.toBeNull();
 
     expect(
-        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)
-    ).toBeInTheDocument();
-    expect(screen.getByText(barnetrygdTitle)).toBeInTheDocument();
-    expect(screen.getByText(utvidetBarnetrygdTitle)).toBeInTheDocument();
-    expect(screen.getByText(barnebidragTitle)).toBeInTheDocument();
-    expect(screen.getByText(stoenadTilEnsligMorEllerFarTitle)).toBeInTheDocument();
+        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle),
+    ).not.toBeNull();
+    expect(screen.getByText(barnetrygdTitle)).not.toBeNull();
+    expect(screen.getByText(utvidetBarnetrygdTitle)).not.toBeNull();
+    expect(screen.getByText(barnebidragTitle)).not.toBeNull();
+    expect(screen.getByText(stoenadTilEnsligMorEllerFarTitle)).not.toBeNull();
 });
 
 test('should render info for mor with termindato erklaering and bor sammen true and far signed', async () => {
@@ -216,31 +215,31 @@ test('should render info for mor with termindato erklaering and bor sammen true 
         }),
     });
 
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    const results = await runAxe(container);
+    expect(results.violations).toHaveLength(0);
 
-    expect(screen.getByText(introMorFarSignertText)).toBeInTheDocument();
-    expect(screen.queryByText(introFarText)).not.toBeInTheDocument();
-    expect(screen.queryByText(morAlertText)).not.toBeInTheDocument();
-    expect(screen.getByText(hvaSkjerVidereTitle)).toBeInTheDocument();
-    expect(screen.getByText(hvaSkjerHvisTitle)).toBeInTheDocument();
-    expect(screen.getByText(ytelserOgTjenesterTitle)).toBeInTheDocument();
+    expect(screen.getByText(introMorFarSignertText)).not.toBeNull();
+    expect(screen.queryByText(introFarText)).toBeNull();
+    expect(screen.queryByText(morAlertText)).toBeNull();
+    expect(screen.getByText(hvaSkjerVidereTitle)).not.toBeNull();
+    expect(screen.getByText(hvaSkjerHvisTitle)).not.toBeNull();
+    expect(screen.getByText(ytelserOgTjenesterTitle)).not.toBeNull();
 
     fireEvent.click(screen.getByText(hvaSkjerHvisTitle));
     fireEvent.click(screen.getByText(ytelserOgTjenesterTitle));
 
-    expect(screen.queryByText(farSignererIkkeTermindatoText)).not.toBeInTheDocument();
-    expect(screen.queryByText(farSignererIkkeFoedselsnummerText)).not.toBeInTheDocument();
-    expect(screen.getByText(foedtIUtlandetTitle)).toBeInTheDocument();
-    expect(screen.getByText(barnetDoerTitle)).toBeInTheDocument();
+    expect(screen.queryByText(farSignererIkkeTermindatoText)).toBeNull();
+    expect(screen.queryByText(farSignererIkkeFoedselsnummerText)).toBeNull();
+    expect(screen.getByText(foedtIUtlandetTitle)).not.toBeNull();
+    expect(screen.getByText(barnetDoerTitle)).not.toBeNull();
 
     expect(
-        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)
-    ).toBeInTheDocument();
-    expect(screen.getByText(barnetrygdTitle)).toBeInTheDocument();
-    expect(screen.queryByText(utvidetBarnetrygdTitle)).not.toBeInTheDocument();
-    expect(screen.queryByText(barnebidragTitle)).not.toBeInTheDocument();
-    expect(screen.queryByText(stoenadTilEnsligMorEllerFarTitle)).not.toBeInTheDocument();
+        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle),
+    ).not.toBeNull();
+    expect(screen.getByText(barnetrygdTitle)).not.toBeNull();
+    expect(screen.queryByText(utvidetBarnetrygdTitle)).toBeNull();
+    expect(screen.queryByText(barnebidragTitle)).toBeNull();
+    expect(screen.queryByText(stoenadTilEnsligMorEllerFarTitle)).toBeNull();
 });
 
 test('should render info for far with termindato erklaering and bor sammen true', async () => {
@@ -255,27 +254,27 @@ test('should render info for far with termindato erklaering and bor sammen true'
         }),
     });
 
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    const results = await runAxe(container);
+    expect(results.violations).toHaveLength(0);
 
-    expect(screen.queryByText(introMorText)).not.toBeInTheDocument();
-    expect(screen.getByText(new RegExp(introFarText))).toBeInTheDocument(); // Date is added to string in document
-    expect(screen.queryByText(morAlertText)).not.toBeInTheDocument();
-    expect(screen.getByText(hvaSkjerVidereTitle)).toBeInTheDocument();
-    expect(screen.getByText(hvaSkjerHvisTitle)).toBeInTheDocument();
-    expect(screen.getByText(ytelserOgTjenesterTitle)).toBeInTheDocument();
+    expect(screen.queryByText(introMorText)).toBeNull();
+    expect(screen.getByText(new RegExp(introFarText))).not.toBeNull(); // Date is added to string in document
+    expect(screen.queryByText(morAlertText)).toBeNull();
+    expect(screen.getByText(hvaSkjerVidereTitle)).not.toBeNull();
+    expect(screen.getByText(hvaSkjerHvisTitle)).not.toBeNull();
+    expect(screen.getByText(ytelserOgTjenesterTitle)).not.toBeNull();
 
     fireEvent.click(screen.getByText(hvaSkjerHvisTitle));
     fireEvent.click(screen.getByText(ytelserOgTjenesterTitle));
 
-    expect(screen.getByText(foedtIUtlandetTitle)).toBeInTheDocument();
-    expect(screen.getByText(barnetDoerTitle)).toBeInTheDocument();
+    expect(screen.getByText(foedtIUtlandetTitle)).not.toBeNull();
+    expect(screen.getByText(barnetDoerTitle)).not.toBeNull();
 
     expect(
-        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)
-    ).toBeInTheDocument();
-    expect(screen.getByText(barnetrygdTitle)).toBeInTheDocument();
-    expect(screen.queryByText(barnebidragTitle)).not.toBeInTheDocument();
+        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle),
+    ).not.toBeNull();
+    expect(screen.getByText(barnetrygdTitle)).not.toBeNull();
+    expect(screen.queryByText(barnebidragTitle)).toBeNull();
 });
 
 test('should render info for far with foedselsnummer erklaering and bor sammen true', async () => {
@@ -290,23 +289,23 @@ test('should render info for far with foedselsnummer erklaering and bor sammen t
         }),
     });
 
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    const results = await runAxe(container);
+    expect(results.violations).toHaveLength(0);
 
-    expect(screen.queryByText(introMorText)).not.toBeInTheDocument();
-    expect(screen.getByText(new RegExp(introFarText))).toBeInTheDocument(); // Date is added to string in document
-    expect(screen.queryByText(morAlertText)).not.toBeInTheDocument();
-    expect(screen.getByText(hvaSkjerVidereTitle)).toBeInTheDocument();
-    expect(screen.queryByText(hvaSkjerHvisTitle)).not.toBeInTheDocument();
-    expect(screen.getByText(ytelserOgTjenesterTitle)).toBeInTheDocument();
+    expect(screen.queryByText(introMorText)).toBeNull();
+    expect(screen.getByText(new RegExp(introFarText))).not.toBeNull(); // Date is added to string in document
+    expect(screen.queryByText(morAlertText)).toBeNull();
+    expect(screen.getByText(hvaSkjerVidereTitle)).not.toBeNull();
+    expect(screen.queryByText(hvaSkjerHvisTitle)).toBeNull();
+    expect(screen.getByText(ytelserOgTjenesterTitle)).not.toBeNull();
 
     fireEvent.click(screen.getByText(ytelserOgTjenesterTitle));
 
     expect(
-        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)
-    ).toBeInTheDocument();
-    expect(screen.getByText(barnetrygdTitle)).toBeInTheDocument();
-    expect(screen.queryByText(barnebidragTitle)).not.toBeInTheDocument();
+        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle),
+    ).not.toBeNull();
+    expect(screen.getByText(barnetrygdTitle)).not.toBeNull();
+    expect(screen.queryByText(barnebidragTitle)).toBeNull();
 });
 
 test('should render info for far with termindato erklaering and bor sammen false', async () => {
@@ -321,25 +320,25 @@ test('should render info for far with termindato erklaering and bor sammen false
         }),
     });
 
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    const results = await runAxe(container);
+    expect(results.violations).toHaveLength(0);
 
-    expect(screen.queryByText(introMorText)).not.toBeInTheDocument();
-    expect(screen.getByText(new RegExp(introFarText))).toBeInTheDocument(); // Date is added to string in document
-    expect(screen.queryByText(morAlertText)).not.toBeInTheDocument();
-    expect(screen.getByText(hvaSkjerVidereTitle)).toBeInTheDocument();
-    expect(screen.getByText(hvaSkjerHvisTitle)).toBeInTheDocument();
-    expect(screen.getByText(ytelserOgTjenesterTitle)).toBeInTheDocument();
+    expect(screen.queryByText(introMorText)).toBeNull();
+    expect(screen.getByText(new RegExp(introFarText))).not.toBeNull(); // Date is added to string in document
+    expect(screen.queryByText(morAlertText)).toBeNull();
+    expect(screen.getByText(hvaSkjerVidereTitle)).not.toBeNull();
+    expect(screen.getByText(hvaSkjerHvisTitle)).not.toBeNull();
+    expect(screen.getByText(ytelserOgTjenesterTitle)).not.toBeNull();
 
     fireEvent.click(screen.getByText(hvaSkjerHvisTitle));
     fireEvent.click(screen.getByText(ytelserOgTjenesterTitle));
 
-    expect(screen.getByText(foedtIUtlandetTitle)).toBeInTheDocument();
-    expect(screen.getByText(barnetDoerTitle)).toBeInTheDocument();
+    expect(screen.getByText(foedtIUtlandetTitle)).not.toBeNull();
+    expect(screen.getByText(barnetDoerTitle)).not.toBeNull();
 
     expect(
-        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)
-    ).toBeInTheDocument();
-    expect(screen.getByText(barnetrygdTitle)).toBeInTheDocument();
-    expect(screen.getByText(barnebidragTitle)).toBeInTheDocument();
+        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle),
+    ).not.toBeNull();
+    expect(screen.getByText(barnetrygdTitle)).not.toBeNull();
+    expect(screen.getByText(barnebidragTitle)).not.toBeNull();
 });

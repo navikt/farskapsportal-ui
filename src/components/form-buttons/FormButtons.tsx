@@ -1,4 +1,4 @@
-import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
+import { Button } from '@navikt/ds-react';
 
 import ButtonContainer from 'components/button-container/ButtonContainer';
 
@@ -12,12 +12,12 @@ interface FormButtonsProps {
 function FormButtons({ submitText, cancelText, onCancel, submitSpinner }: FormButtonsProps) {
     return (
         <ButtonContainer>
-            <Hovedknapp htmlType="submit" spinner={submitSpinner} autoDisableVedSpinner={true}>
-                {submitText}
-            </Hovedknapp>
-            <Knapp htmlType="button" onClick={onCancel}>
+            <Button type="button" variant="secondary" onClick={onCancel}>
                 {cancelText}
-            </Knapp>
+            </Button>
+            <Button type="submit" variant="primary" loading={submitSpinner}>
+                {submitText}
+            </Button>
         </ButtonContainer>
     );
 }

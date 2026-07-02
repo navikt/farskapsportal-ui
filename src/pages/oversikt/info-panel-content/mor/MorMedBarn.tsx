@@ -1,4 +1,4 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import { formatFoedselsnummer } from 'utils/foedselsnummer';
@@ -12,7 +12,7 @@ function MorMedBarn({ barn }: MorMedBarnProps) {
 
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage
                     id={
                         isFlerfoedsel
@@ -20,17 +20,17 @@ function MorMedBarn({ barn }: MorMedBarnProps) {
                             : 'oversikt.infoPanel.mor.medBarn.1.single'
                     }
                 />
-            </Normaltekst>
+            </BodyShort>
             <br />
             {barn.map((barnFnr) => (
-                <Normaltekst key={barnFnr}>
+                <BodyShort key={barnFnr}>
                     <FormattedMessage id="foedselsnummer" />: {formatFoedselsnummer(barnFnr)}
-                </Normaltekst>
+                </BodyShort>
             ))}
             <br />
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="oversikt.infoPanel.mor.medBarn.2" />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }

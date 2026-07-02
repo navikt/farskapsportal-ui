@@ -1,4 +1,4 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort, VStack } from '@navikt/ds-react';
 import { FormattedMessage, useIntl } from 'react-intl';
 
 import ExternalLink from 'components/external-link/ExternalLink';
@@ -19,29 +19,29 @@ function YtelserOgTjenesterPanel({ erklaering }: YtelserOgTjenesterPanelProps) {
     const renderContent = () => {
         if (borSammen) {
             return (
-                <>
+                <VStack gap="space-32">
                     <ForeldrepengerSvangerskapspengerEngangsstoenad />
                     <Barnetrygd />
-                </>
+                </VStack>
             );
         } else {
             if (isFar) {
                 return (
-                    <>
+                    <VStack gap="space-32">
                         <ForeldrepengerSvangerskapspengerEngangsstoenad />
                         <Barnetrygd />
                         <Barnebidrag />
-                    </>
+                    </VStack>
                 );
             } else {
                 return (
-                    <>
+                    <VStack gap="space-32">
                         <ForeldrepengerSvangerskapspengerEngangsstoenad />
                         <Barnetrygd />
                         <UtvidetBarnetrygd />
                         <Barnebidrag />
                         <StoenadTilEnsligMorEllerFar />
-                    </>
+                    </VStack>
                 );
             }
         }
@@ -59,9 +59,9 @@ function ForeldrepengerSvangerskapspengerEngangsstoenad() {
 
     return (
         <KvitteringInfoPanelContent titleId="kvittering.ytelserOgTjenester.foreldrepengerSvangerskapspengerEngangsstoenad.title">
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="kvittering.ytelserOgTjenester.foreldrepengerSvangerskapspengerEngangsstoenad.text" />
-            </Normaltekst>
+            </BodyShort>
             <ExternalLink
                 href={getMessage(
                     intl,
@@ -77,9 +77,9 @@ function Barnetrygd() {
 
     return (
         <KvitteringInfoPanelContent titleId="kvittering.ytelserOgTjenester.barnetrygd.title">
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="kvittering.ytelserOgTjenester.barnetrygd.text" />
-            </Normaltekst>
+            </BodyShort>
             <ExternalLink
                 href={getMessage(intl, 'kvittering.ytelserOgTjenester.barnetrygd.link')}
             />
@@ -92,9 +92,9 @@ function UtvidetBarnetrygd() {
 
     return (
         <KvitteringInfoPanelContent titleId="kvittering.ytelserOgTjenester.utvidetBarnetrygd.title">
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="kvittering.ytelserOgTjenester.utvidetBarnetrygd.text" />
-            </Normaltekst>
+            </BodyShort>
             <ExternalLink
                 href={getMessage(intl, 'kvittering.ytelserOgTjenester.utvidetBarnetrygd.link')}
             />
@@ -107,9 +107,9 @@ function Barnebidrag() {
 
     return (
         <KvitteringInfoPanelContent titleId="kvittering.ytelserOgTjenester.barnebidrag.title">
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="kvittering.ytelserOgTjenester.barnebidrag.text" />
-            </Normaltekst>
+            </BodyShort>
             <ExternalLink
                 href={getMessage(intl, 'kvittering.ytelserOgTjenester.barnebidrag.link')}
             />
@@ -122,9 +122,9 @@ function StoenadTilEnsligMorEllerFar() {
 
     return (
         <KvitteringInfoPanelContent titleId="kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.title">
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.text" />
-            </Normaltekst>
+            </BodyShort>
             <ExternalLink
                 href={getMessage(
                     intl,

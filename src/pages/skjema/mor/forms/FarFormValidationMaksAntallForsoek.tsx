@@ -1,5 +1,5 @@
 import { FormattedMessage, useIntl } from 'react-intl';
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
 import { getMessage } from '../../../../utils/intl';
 import { getHoursUntil } from '../../../../utils/date';
 
@@ -22,10 +22,10 @@ function FarFormValidationMaksAntallForsoek({
 
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="skjema.mor.far.validation.maksAntallForsoek.1" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessage
                     id="skjema.mor.far.validation.maksAntallForsoek.2"
                     values={{
@@ -33,7 +33,7 @@ function FarFormValidationMaksAntallForsoek({
                         tidsEnhet: getMessage(intl, tidsEnhetTextId),
                     }}
                 />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }

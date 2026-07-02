@@ -1,4 +1,4 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import DatePresentation from 'components/date-presentation/DatePresentation';
@@ -37,18 +37,18 @@ function ErklaeringLinkPanel({
             etikettId={etikettId}
         >
             {displayMor && (
-                <Normaltekst>
+                <BodyShort>
                     <FormattedMessage id="oversikt.erklaeringer.link.forelder.mor" />
                     {getNameFromForelder(erklaering.mor)}
-                </Normaltekst>
+                </BodyShort>
             )}
             {displayFar && (
-                <Normaltekst>
+                <BodyShort>
                     <FormattedMessage id="oversikt.erklaeringer.link.forelder.far" />
                     {getNameFromForelder(erklaering.far)}
-                </Normaltekst>
+                </BodyShort>
             )}
-            <Normaltekst>
+            <BodyShort>
                 {erklaering.barn.termindato ? (
                     <>
                         <FormattedMessage id="termindato" />:{' '}
@@ -60,7 +60,7 @@ function ErklaeringLinkPanel({
                         {formatFoedselsnummer(erklaering.barn.foedselsnummer ?? '')}
                     </>
                 )}
-            </Normaltekst>
+            </BodyShort>
         </LinkPanel>
     );
 }

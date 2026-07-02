@@ -1,9 +1,6 @@
-import AlertStripe from 'nav-frontend-alertstriper';
-import { Normaltekst } from 'nav-frontend-typografi';
+import { Alert, BodyShort, VStack } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
-import { Redirect } from 'react-router-dom';
-
-import ContentContainer from 'components/content-container/ContentContainer';
+import { Navigate } from 'react-router';
 import FarskapserklaeringPresentation from 'components/farskapserklaering-presentation/FarskapserklaeringPresentation';
 import Page from 'components/page/Page';
 import { useStore } from 'store/Context';
@@ -16,15 +13,13 @@ import { getFarskapserklaeringForId } from 'utils/farskapserklaering';
 import { useQuery } from 'utils/hooks/useQuery';
 import SignerButtons from './SignerButtons';
 
-import './Signer.less';
-
 function Signer() {
     const [{ language }] = useStore();
     const erklaeringId = useQuery().get(ERKLAERING_ID);
 
     const renderContent = (userInfo: UserInfo) => {
         if (userInfo.forelderrolle === Foreldrerolle.Far) {
-            return <Redirect to={`/${language}${Path.Oversikt}`} />;
+            return <Navigate to={`/${language}${Path.Oversikt}`} replace />;
         }
 
         const erklaering = getFarskapserklaeringForId(userInfo, erklaeringId);
@@ -33,7 +28,9 @@ function Signer() {
             return (
                 <>
                     <IkkeSignertAlert />
-                    <FarskapserklaeringPresentation border farskapserklaering={erklaering} />
+                    <VStack align="center">
+                        <FarskapserklaeringPresentation border farskapserklaering={erklaering} />
+                    </VStack>
                     <SignerButtons erklaeringId={erklaeringId} />
                 </>
             );
@@ -52,7 +49,7 @@ function Signer() {
             ]}
         >
             <WithUserInfo>
-                {(userInfo) => <ContentContainer>{renderContent(userInfo)}</ContentContainer>}
+                {(userInfo) => <VStack gap="space-24">{renderContent(userInfo)}</VStack>}
             </WithUserInfo>
         </Page>
     );
@@ -60,14 +57,14 @@ function Signer() {
 
 function IkkeSignertAlert() {
     return (
-        <AlertStripe type="advarsel" className="IkkeSignertAlert">
-            <Normaltekst>
+        <Alert variant="warning">
+            <BodyShort spacing>
                 <FormattedMessage id="signer.alert.1" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessage id="signer.alert.2" />
-            </Normaltekst>
-        </AlertStripe>
+            </BodyShort>
+        </Alert>
     );
 }
 

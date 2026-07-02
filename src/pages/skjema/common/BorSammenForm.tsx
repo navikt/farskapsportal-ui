@@ -1,13 +1,8 @@
-import { Radio, RadioGruppe } from 'nav-frontend-skjema';
-import { useForm } from 'react-hook-form';
+import { BodyShort, Heading, Radio, RadioGroup, ReadMore } from '@navikt/ds-react';
+import { Controller, useForm } from 'react-hook-form';
 import { useIntl } from 'react-intl';
-
 import FormButtons from 'components/form-buttons/FormButtons';
 import { getMessage } from 'utils/intl';
-import EkspanderbarInformasjon from './EkspanderbarInformasjon';
-import { Normaltekst, Systemtittel } from 'nav-frontend-typografi';
-
-import './BorSammenForm.less';
 import FormattedMessageWithExternalLink from '../../../components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
 
 export type BorSammenValue = 'YES' | 'NO' | null;
@@ -25,7 +20,12 @@ export interface BorSammenFormProps {
 
 function BorSammenForm(props: BorSammenFormProps) {
     const intl = useIntl();
-    const { handleSubmit, errors, register } = useForm<BorSammenFormInput>({
+    const {
+        control,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<BorSammenFormInput>({
+        mode: 'onSubmit',
         defaultValues: {
             borSammen: props.defaultBorSammen,
         },
@@ -33,44 +33,42 @@ function BorSammenForm(props: BorSammenFormProps) {
     });
 
     return (
-        <form onSubmit={handleSubmit(props.onSubmit)} className="BorSammenForm">
-            <RadioGruppe
-                legend={<Systemtittel>{getMessage(intl, props.titleId)}</Systemtittel>}
-                description={
-                    <EkspanderbarInformasjon
-                        intro={
-                            <Normaltekst>
-                                {getMessage(intl, 'skjema.borSammen.description.intro')}
-                            </Normaltekst>
+        <form onSubmit={handleSubmit(props.onSubmit)}>
+            <Controller
+                name="borSammen"
+                control={control}
+                rules={{ required: getMessage(intl, 'skjema.borSammen.validation.required') }}
+                render={({ field: { onChange, value } }) => (
+                    <RadioGroup
+                        legend={
+                            <Heading level="2" size="medium" spacing>
+                                {getMessage(intl, props.titleId)}
+                            </Heading>
                         }
-                        content={
-                            <Normaltekst>
-                                <FormattedMessageWithExternalLink
-                                    textId="skjema.borSammen.description.content"
-                                    linkId="skjema.borSammen.description.content.link"
-                                />
-                            </Normaltekst>
+                        description={
+                            <>
+                                <BodyShort>
+                                    {getMessage(intl, 'skjema.borSammen.description.intro')}
+                                </BodyShort>
+                                <ReadMore header={getMessage(intl, 'read.more')}>
+                                    <BodyShort>
+                                        <FormattedMessageWithExternalLink
+                                            textId="skjema.borSammen.description.content"
+                                            linkId="skjema.borSammen.description.content.link"
+                                        />
+                                    </BodyShort>
+                                </ReadMore>
+                            </>
                         }
-                    />
-                }
-                feil={errors.borSammen?.message}
-                utenFeilPropagering
-            >
-                <Radio
-                    name="borSammen"
-                    value="YES"
-                    label={getMessage(intl, 'skjema.borSammen.label.yes')}
-                    radioRef={register}
-                />
-                <Radio
-                    name="borSammen"
-                    value="NO"
-                    label={getMessage(intl, 'skjema.borSammen.label.no')}
-                    radioRef={register({
-                        required: getMessage(intl, 'skjema.borSammen.validation.required'),
-                    })}
-                />
-            </RadioGruppe>
+                        onChange={onChange}
+                        value={value ?? ''}
+                        error={errors.borSammen?.message}
+                    >
+                        <Radio value="YES">{getMessage(intl, 'skjema.borSammen.label.yes')}</Radio>
+                        <Radio value="NO">{getMessage(intl, 'skjema.borSammen.label.no')}</Radio>
+                    </RadioGroup>
+                )}
+            />
             <FormButtons
                 submitText={getMessage(intl, 'skjema.next')}
                 cancelText={getMessage(intl, 'skjema.cancel')}

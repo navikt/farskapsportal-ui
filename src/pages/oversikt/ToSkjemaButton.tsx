@@ -1,12 +1,9 @@
 import { FormattedMessage } from 'react-intl';
-import { Hovedknapp } from 'nav-frontend-knapper';
-
+import { Button } from '@navikt/ds-react';
 import { Path } from 'types/path';
 import { UserInfo } from 'types/user';
 import { hasOngoingTermindatoErklaering } from 'utils/farskapserklaering';
 import { useNavigateTo } from 'utils/hooks/useNavigateTo';
-
-import './ToSkjemaButton.less';
 
 interface ToSkjemaButtonProps {
     userInfo: UserInfo;
@@ -28,9 +25,9 @@ function ToSkjemaButton({ userInfo }: ToSkjemaButtonProps) {
     };
 
     return (
-        <Hovedknapp className="ToSkjemaButton" htmlType="button" onClick={goToSkjema}>
+        <Button type="button" variant="primary" onClick={goToSkjema}>
             <FormattedMessage id="oversikt.goToSkjemaButton" />
-        </Hovedknapp>
+        </Button>
     );
 }
 

@@ -1,23 +1,15 @@
 import express from 'express';
-import bodyParser from 'body-parser';
-import fetch from 'node-fetch';
 import compression from 'compression';
-import * as config from './config.js';
 import { getHtmlWithDekorator } from './dekorator.js';
 import * as headers from './headers.js';
-import { validateAccessToken, exchangeToken, setup } from './auth/auth-middleware.js';
+import { validateAccessToken, exchangeToken } from './auth/auth-middleware.js';
 import { logger } from './logger.js';
 
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
 const app = express();
 
-setup(config.app, config.idporten, config.tokenx).catch((error) => {
-    logger.error('Error while setting up auth:', error);
-    process.exit(1);
-});
-
-app.use(bodyParser.text());
+app.use(express.text());
 headers.setup(app);
 
 app.set('trust proxy', 1);
@@ -40,10 +32,10 @@ app.use(express.static(buildPath, { index: false }));
 app.get('/', (req, res) => res.redirect('/nb/oversikt'));
 app.get('/nb', (req, res) => res.redirect('/nb/oversikt'));
 app.get('/nn', (req, res) => res.redirect('/nn/oversikt'));
-app.get('/nb', (req, res) => res.redirect('/en/oversikt'));
+app.get('/en', (req, res) => res.redirect('/en/oversikt'));
 
 // Nais functions
-app.get('/internal/isAlive|isReady', (req, res) => res.sendStatus(200));
+app.get(['/internal/isAlive', '/internal/isReady'], (req, res) => res.sendStatus(200));
 
 // Api calls
 app.get('/api/brukerinformasjon', validateAccessToken, async (req, res) => {
@@ -182,7 +174,7 @@ app.get('/api/farskapserklaering/:erklaeringId/dokument', validateAccessToken, a
                 },
             }
         );
-        const buffer = await response.buffer();
+        const buffer = Buffer.from(await response.arrayBuffer());
         res.contentType('application/pdf');
         res.status(response.status).send(buffer);
     } catch (error) {

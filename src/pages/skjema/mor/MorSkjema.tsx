@@ -1,8 +1,8 @@
 import { useReducer } from 'react';
 import { useIntl } from 'react-intl';
-
 import { opprettFarskapserklaering } from 'api/api';
 import Error from 'components/error/Error';
+import { FormProgress, VStack } from '@navikt/ds-react';
 import { AlertError } from 'types/error';
 import { StepStatus } from 'types/form';
 import { Path } from 'types/path';
@@ -14,15 +14,10 @@ import { getMessage } from 'utils/intl';
 import FarForm, { FarFormInput } from './forms/FarForm';
 import MorBekreftForm from './forms/MorBekreftForm';
 import TermindatoForm, { TermindatoFormInput } from './forms/TermindatoForm';
-import BarnPresentation from './presentation/BarnPresentation';
-import FarPresentation from './presentation/FarPresentation';
-import { Stepper, StepperStep } from '../../../components/stepper';
-import SkjemaStep from '../common/SkjemaStep';
 import SpraakForFarskapserklaeringForm, {
     SpraakForFarskapserklaeringFormInput,
 } from './forms/SpraakForFarskapserklaeringForm';
 import { Skriftspraak } from '../../../types/skriftspraak';
-import SpraakForFarskapserklaeringPresentation from './presentation/SpraakForFarskapserklaeringPresentation';
 
 type ActionType =
     | { type: 'EDIT_TERMINDATO' }
@@ -30,7 +25,11 @@ type ActionType =
     | { type: 'EDIT_FAR' }
     | { type: 'SET_FAR'; payload: FarFormInput }
     | { type: 'EDIT_SPRAAK' }
+    | { type: 'EDIT_CONFIRM' }
     | { type: 'SET_SPRAAK'; payload: SpraakForFarskapserklaeringFormInput }
+    | { type: 'BACK_TO_TERMINDATO' }
+    | { type: 'BACK_TO_FAR' }
+    | { type: 'BACK_TO_SPRAAK' }
     | { type: 'SUBMIT' }
     | { type: 'SUBMIT_FAILURE'; payload: AlertError };
 
@@ -103,6 +102,15 @@ const reducer = (state: StateType, action: ActionType): StateType => {
                 activeStep: 2,
                 stepStatus: { ...state.stepStatus, spraak: StepStatus.Active },
             };
+        case 'EDIT_CONFIRM':
+            return {
+                ...state,
+                activeStep: 3,
+                stepStatus: {
+                    ...state.stepStatus,
+                    spraak: StepStatus.Done,
+                },
+            };
         case 'SET_SPRAAK':
             return {
                 ...state,
@@ -113,21 +121,30 @@ const reducer = (state: StateType, action: ActionType): StateType => {
                     spraak: StepStatus.Done,
                 },
             };
+        case 'BACK_TO_TERMINDATO':
+            return {
+                ...state,
+                activeStep: 0,
+                stepStatus: { ...state.stepStatus, barn: StepStatus.Active },
+            };
+        case 'BACK_TO_FAR':
+            return {
+                ...state,
+                activeStep: 1,
+                stepStatus: { ...state.stepStatus, far: StepStatus.Active },
+            };
+        case 'BACK_TO_SPRAAK':
+            return {
+                ...state,
+                activeStep: 2,
+                stepStatus: { ...state.stepStatus, spraak: StepStatus.Active },
+            };
         case 'SUBMIT':
             return { ...state, submit: { pending: true, error: undefined } };
         case 'SUBMIT_FAILURE':
             return { ...state, submit: { pending: false, error: action.payload } };
     }
 };
-
-function mapStepStatusToStepperState(stepStatus: StepStatus): 'none' | 'finished' | 'inProgress' {
-    switch (stepStatus) {
-        case StepStatus.Done:
-            return 'finished';
-        default:
-            return 'none';
-    }
-}
 
 interface MorSkjemaProps {
     userInfo: UserInfo;
@@ -167,8 +184,16 @@ function MorSkjema({ userInfo }: MorSkjemaProps) {
         },
     });
 
-    const onCancel = () => {
-        navigateTo(Path.Oversikt);
+    const handleGoBack = () => {
+        if (state.activeStep === 0) {
+            navigateTo(Path.Oversikt);
+        } else if (state.activeStep === 1) {
+            dispatch({ type: 'BACK_TO_TERMINDATO' });
+        } else if (state.activeStep === 2) {
+            dispatch({ type: 'BACK_TO_FAR' });
+        } else if (state.activeStep === 3) {
+            dispatch({ type: 'BACK_TO_SPRAAK' });
+        }
     };
 
     const onSubmit = () => {
@@ -200,114 +225,105 @@ function MorSkjema({ userInfo }: MorSkjemaProps) {
         });
     };
 
-    const onEndreBarnForm = () => {
-        dispatch({ type: 'EDIT_TERMINDATO' });
-    };
-
     const onSubmitFarForm = (data: FarFormInput) => {
         dispatch({ type: 'SET_FAR', payload: data });
-    };
-
-    const onEndreFarForm = () => {
-        dispatch({ type: 'EDIT_FAR' });
     };
 
     const onSubmitSpraakForm = (data: SpraakForFarskapserklaeringFormInput) => {
         dispatch({ type: 'SET_SPRAAK', payload: data });
     };
 
-    const onEndreSpraakForm = () => {
-        dispatch({ type: 'EDIT_SPRAAK' });
+    const handleStepChange = (step: number) => {
+        const stepIndex = step - 1;
+        if (stepIndex === 0 && !barnFoedselsnummer) {
+            dispatch({ type: 'EDIT_TERMINDATO' });
+        } else if (stepIndex === 1 && state.stepStatus.far !== StepStatus.NotStarted) {
+            dispatch({ type: 'EDIT_FAR' });
+        } else if (stepIndex === 2 && state.stepStatus.spraak !== StepStatus.NotStarted) {
+            dispatch({ type: 'EDIT_SPRAAK' });
+        } else if (stepIndex === 3 && state.stepStatus.spraak === StepStatus.Done) {
+            dispatch({ type: 'EDIT_CONFIRM' });
+        }
     };
 
+    function renderSkjemaSteg() {
+        switch (state.activeStep) {
+            case 0:
+                return (
+                    <TermindatoForm
+                        defaultTermindato={state.formValues.termindato.termindato}
+                        onSubmit={onSubmitTermindatoForm}
+                        onCancel={handleGoBack}
+                    />
+                );
+            case 1:
+                return (
+                    <FarForm
+                        defaultNavn={state.formValues.far.navn}
+                        defaultFoedselsnummer={state.formValues.far.foedselsnummer}
+                        onSubmit={onSubmitFarForm}
+                        onCancel={handleGoBack}
+                    />
+                );
+            case 2:
+                return (
+                    <SpraakForFarskapserklaeringForm
+                        onSubmit={onSubmitSpraakForm}
+                        onCancel={handleGoBack}
+                    />
+                );
+            case 3:
+                return (
+                    <MorBekreftForm
+                        isPending={state.submit.pending}
+                        onSubmit={onSubmit}
+                        onCancel={handleGoBack}
+                    />
+                );
+            default:
+                return null;
+        }
+    }
+
+    const isBarnStepInteractive = !barnFoedselsnummer;
+    const isFarStepInteractive = state.stepStatus.far !== StepStatus.NotStarted;
+    const isSpraakStepInteractive = state.stepStatus.spraak !== StepStatus.NotStarted;
+    const isConfirmStepInteractive = state.stepStatus.spraak === StepStatus.Done;
+
     return (
-        <div>
-            <Stepper activeStep={state.activeStep} colorful>
-                <StepperStep status={mapStepStatusToStepperState(state.stepStatus.barn)}>
-                    <SkjemaStep
-                        formComponent={
-                            <TermindatoForm
-                                defaultTermindato={state.formValues.termindato.termindato}
-                                onSubmit={onSubmitTermindatoForm}
-                                onCancel={onCancel}
-                            />
-                        }
-                        presentationComponent={
-                            <BarnPresentation
-                                foedselsnummer={barnFoedselsnummer}
-                                termindato={state.formValues.termindato.termindato}
-                            />
-                        }
-                        status={state.stepStatus.barn}
-                        onChange={barnFoedselsnummer ? undefined : onEndreBarnForm}
-                        isDisabled={state.submit.pending}
-                    />
-                </StepperStep>
-                <StepperStep status={mapStepStatusToStepperState(state.stepStatus.far)}>
-                    <SkjemaStep
-                        formComponent={
-                            <FarForm
-                                defaultNavn={state.formValues.far.navn}
-                                defaultFoedselsnummer={state.formValues.far.foedselsnummer}
-                                onSubmit={onSubmitFarForm}
-                                onCancel={onCancel}
-                            />
-                        }
-                        presentationComponent={
-                            <FarPresentation
-                                navn={state.formValues.far.navn}
-                                foedselsnummer={state.formValues.far.foedselsnummer}
-                            />
-                        }
-                        title={getMessage(intl, 'skjema.mor.far.title')}
-                        status={state.stepStatus.far}
-                        onChange={onEndreFarForm}
-                        isDisabled={state.submit.pending}
-                    />
-                </StepperStep>
-                <StepperStep status={mapStepStatusToStepperState(state.stepStatus.spraak)}>
-                    <SkjemaStep
-                        formComponent={
-                            <SpraakForFarskapserklaeringForm
-                                onSubmit={onSubmitSpraakForm}
-                                onCancel={onCancel}
-                            />
-                        }
-                        presentationComponent={
-                            <SpraakForFarskapserklaeringPresentation
-                                spraak={state.formValues.spraak.spraak ?? Skriftspraak.Bookmaal}
-                            />
-                        }
-                        title={getMessage(intl, 'skjema.mor.spraak.title')}
-                        status={state.stepStatus.spraak}
-                        onChange={onEndreSpraakForm}
-                        isDisabled={state.submit.pending}
-                    />
-                </StepperStep>
-                <StepperStep>
-                    <SkjemaStep
-                        formComponent={
-                            <MorBekreftForm
-                                isPending={state.submit.pending}
-                                onSubmit={onSubmit}
-                                onCancel={onCancel}
-                            />
-                        }
-                        title={getMessage(intl, 'skjema.mor.confirm.title')}
-                        status={
-                            state.stepStatus.barn === StepStatus.Done &&
-                            state.stepStatus.far === StepStatus.Done &&
-                            state.stepStatus.spraak === StepStatus.Done
-                                ? StepStatus.Active
-                                : StepStatus.NotStarted
-                        }
-                    />
-                </StepperStep>
-            </Stepper>
+        <VStack gap="space-24">
+            <FormProgress
+                totalSteps={4}
+                activeStep={state.activeStep + 1}
+                onStepChange={handleStepChange}
+            >
+                <FormProgress.Step
+                    completed={state.stepStatus.barn === StepStatus.Done ? true : false}
+                    interactive={isBarnStepInteractive}
+                >
+                    {getMessage(intl, 'skjema.mor.barn.title')}
+                </FormProgress.Step>
+                <FormProgress.Step
+                    completed={state.stepStatus.far === StepStatus.Done ? true : false}
+                    interactive={isFarStepInteractive}
+                >
+                    {getMessage(intl, 'skjema.mor.far.title')}
+                </FormProgress.Step>
+                <FormProgress.Step
+                    completed={state.stepStatus.spraak === StepStatus.Done ? true : false}
+                    interactive={isSpraakStepInteractive}
+                >
+                    {getMessage(intl, 'skjema.mor.spraak.title')}
+                </FormProgress.Step>
+                <FormProgress.Step completed={false} interactive={isConfirmStepInteractive}>
+                    {getMessage(intl, 'skjema.mor.confirm.title')}
+                </FormProgress.Step>
+            </FormProgress>
+            {renderSkjemaSteg()}
             <div aria-live="polite">
                 {state.submit.error && <Error error={state.submit.error} />}
             </div>
-        </div>
+        </VStack>
     );
 }
 

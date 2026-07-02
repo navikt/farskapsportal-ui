@@ -107,7 +107,7 @@ export default {
     'oversikt.moreInfoPanels.erklaereUtenMor.content.li.5': 'Norsk diplomatisk eller konsulær tjenestemann, hvis du er i utlandet',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.2': 'Husk å ta med legitimasjon.',
     'oversikt.moreInfoPanels.erklaereUtenMor.content.3': 'For mer informasjon se <a>farskap og foreldreskap</a>, kontakt oss på nav.no/kontaktoss eller telefon 55 55 33 33. Vi gjør oppmerksom på moren må ha oppgitt deg som faren til barnet før du kan erklære farskap hvis barnet er født i utlandet.',
-    'oversikt.moreInfoPanels.erklaereUtenMor.content.3.link': 'https://www.nav.no/no/person/familie/farskap-og-morskap/farskap-og-foreldreansvar',
+    'oversikt.moreInfoPanels.erklaereUtenMor.content.3.link': 'https://www.nav.no/registrere-far-eller-mor',
     'oversikt.moreInfoPanels.alleredeErklaert.title': 'Har du allerede erklært farskap og lurer på hva som skjer nå?',
     'oversikt.moreInfoPanels.alleredeErklaert.content.1': 'Det er Skatteetaten ved Folkeregisteret som er ansvarlig for å registrere og arkivere farskapserklæringer. Når dere melder inn opplysninger om barnets navn til dem vil du motta en bekreftelse på registrering av fødselsnummer og navn. Bekreftelsen mottar du i innboksen din i Altinn.',
     'oversikt.moreInfoPanels.alleredeErklaert.content.2': ' Du finner mer informasjon om registrering av farskap og navnevalg <a>her</a>.',
@@ -130,7 +130,7 @@ export default {
     'oversikt.goToSkjemaButton': 'Opprett farskapserklæring',
 
     'skjema.next': 'Neste',
-    'skjema.cancel': 'Avbryt',
+    'skjema.cancel': 'Tilbake',
     'skjema.edit': 'Endre',
     'skjema.submit': 'Signer farskapserklæring',
 
@@ -216,7 +216,7 @@ export default {
     'kvittering.morAlert.3': 'Skal far signere fra samme enhet som du? Husk at dere da først må stenge ned alle nettleservinduer.',
     'kvittering.prosessIndikator.step.1': '1. Mor oppgir far',
     'kvittering.prosessIndikator.step.2': '2. Far erklærer farskap',
-    'kvittering.prosessIndikator.step.3': '3. Erklæringen oversendes folkeregisteret for registering og arkivering',
+    'kvittering.prosessIndikator.step.3': '3. Erklæringen oversendes Folkeregisteret for registering og arkivering',
     'kvittering.hvaSkjerVidere.title': 'Hva skjer videre?',
     'kvittering.hvaSkjerVidere.1': 'Det er Skatteetaten ved Folkeregisteret som har ansvaret for å registrere og arkivere farskapserklæringer. Dere vil få oversendt erklæringen når dere begge har signert den. Etter at dere har valgt navnet til barnet vil du motta en bekreftelse på registrering av fødselsnummer og navn. Bekreftelsen mottar du i innboksen din i Altinn.',
     'kvittering.hvaSkjerVidere.2': 'Flere opplysninger finner du her:',

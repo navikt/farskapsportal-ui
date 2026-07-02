@@ -1,4 +1,4 @@
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import FormattedMessageWithExternalLink from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
@@ -7,15 +7,15 @@ import InfoExpandablePanel from 'components/info-expandable-panel/InfoExpandable
 function HvaErFarskapserklaering() {
     return (
         <InfoExpandablePanel titleId="oversikt.moreInfoPanels.hvaErFarskapserklaering.title">
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="oversikt.moreInfoPanels.hvaErFarskapserklaering.content.1" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessageWithExternalLink
                     textId="oversikt.moreInfoPanels.hvaErFarskapserklaering.content.2"
                     linkId="oversikt.moreInfoPanels.hvaErFarskapserklaering.link"
                 />
-            </Normaltekst>
+            </BodyShort>
         </InfoExpandablePanel>
     );
 }

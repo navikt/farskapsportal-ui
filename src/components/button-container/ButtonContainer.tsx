@@ -1,13 +1,11 @@
-import { ReactNode } from 'react';
+import { HStack } from '@navikt/ds-react';
 
-import './ButtonContainer.less';
-
-interface ButtonContainerProps {
-    children: ReactNode;
-}
-
-function ButtonContainer({ children }: ButtonContainerProps) {
-    return <div className="ButtonContainer">{children}</div>;
+function ButtonContainer({ children }: React.PropsWithChildren) {
+    return (
+        <HStack gap="space-8" justify="end">
+            {children}
+        </HStack>
+    );
 }
 
 export default ButtonContainer;

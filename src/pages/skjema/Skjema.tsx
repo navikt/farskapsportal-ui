@@ -1,6 +1,4 @@
-import { Redirect } from 'react-router-dom';
-
-import ContentContainer from 'components/content-container/ContentContainer';
+import { Navigate } from 'react-router';
 import Page from 'components/page/Page';
 import { useStore } from 'store/Context';
 import WithUserInfo from 'store/providers/WithUserInfo';
@@ -21,9 +19,8 @@ function Skjema() {
             return <FarSkjema userInfo={userInfo} />;
         } else if (userInfo.forelderrolle === Foreldrerolle.Mor) {
             if (!userInfo.kanOppretteFarskapserklaering) {
-                return <Redirect to={`/${language}${Path.Oversikt}`} />;
+                return <Navigate to={`/${language}${Path.Oversikt}`} replace />;
             }
-
             return <MorSkjema userInfo={userInfo} />;
         } else if (userInfo.forelderrolle === Foreldrerolle.MorEllerFar) {
             // TODO: rework logic?
@@ -46,9 +43,7 @@ function Skjema() {
                 { titleId: 'breadcrumbs.skjema' },
             ]}
         >
-            <WithUserInfo>
-                {(userInfo) => <ContentContainer>{renderContent(userInfo)}</ContentContainer>}
-            </WithUserInfo>
+            <WithUserInfo>{(userInfo) => renderContent(userInfo)}</WithUserInfo>
         </Page>
     );
 }

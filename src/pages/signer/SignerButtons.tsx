@@ -1,4 +1,4 @@
-import { Hovedknapp, Knapp } from 'nav-frontend-knapper';
+import { Button } from '@navikt/ds-react';
 import { useState } from 'react';
 import { FormattedMessage } from 'react-intl';
 
@@ -40,17 +40,18 @@ function SignerButtons({ erklaeringId }: SignerButtonsProps) {
         <>
             <div aria-live="polite">{apiError && <Error error={apiError} />}</div>
             <ButtonContainer>
-                <Hovedknapp
-                    htmlType="button"
+                <Button variant="secondary" type="button" onClick={onCancel}>
+                    <FormattedMessage id="signer.cancel" />
+                </Button>
+                <Button
+                    type="button"
+                    variant="primary"
                     onClick={onSubmit}
-                    spinner={isPending}
-                    autoDisableVedSpinner={true}
+                    loading={isPending}
+                    disabled={isPending}
                 >
                     <FormattedMessage id="signer.submit" />
-                </Hovedknapp>
-                <Knapp htmlType="button" onClick={onCancel}>
-                    <FormattedMessage id="signer.cancel" />
-                </Knapp>
+                </Button>
             </ButtonContainer>
         </>
     );

@@ -1,6 +1,5 @@
-import { axe } from 'jest-axe';
-
-import { fireEvent, render, screen, waitFor } from 'test-utils';
+import { fireEvent, render, runAxe, screen, waitFor } from 'test-utils';
+import { expect, test } from 'vitest';
 import texts from 'texts/nb';
 import BorSammenForm, { BorSammenFormProps } from '../BorSammenForm';
 
@@ -18,8 +17,8 @@ const defaultProps: BorSammenFormProps = {
 test('should have no a11y violations', async () => {
     const { container } = render(<BorSammenForm {...defaultProps} />);
 
-    const results = await axe(container);
-    expect(results).toHaveNoViolations();
+    const results = await runAxe(container);
+    expect(results.violations).toHaveLength(0);
 });
 
 test('should set default values', async () => {
@@ -35,6 +34,6 @@ test('should show required error', async () => {
     fireEvent.click(screen.getByText(submitButtonLabel));
 
     await waitFor(() => {
-        expect(screen.getByText(requiredErrorMessage)).toBeInTheDocument();
+        expect(screen.getByText(requiredErrorMessage)).not.toBeNull();
     });
 });

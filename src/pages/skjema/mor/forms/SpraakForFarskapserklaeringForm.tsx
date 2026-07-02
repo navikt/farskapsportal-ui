@@ -1,13 +1,10 @@
 import { useIntl } from 'react-intl';
-import { useForm } from 'react-hook-form';
-import { Radio, RadioGruppe } from 'nav-frontend-skjema';
-import { Systemtittel } from 'nav-frontend-typografi';
+import { Controller, useForm } from 'react-hook-form';
+import { Heading, Radio, RadioGroup } from '@navikt/ds-react';
 import { getMessage } from '../../../../utils/intl';
 import FormButtons from '../../../../components/form-buttons/FormButtons';
 import { Skriftspraak } from '../../../../types/skriftspraak';
 import { useStore } from '../../../../store/Context';
-
-import './SpraakForFarskapserklaeringForm.less';
 
 export interface SpraakForFarskapserklaeringFormInput {
     spraak: Skriftspraak | null;
@@ -21,7 +18,12 @@ interface SpraakForFarskapserklaeringFormProps {
 function SpraakForFarskapserklaeringForm(props: SpraakForFarskapserklaeringFormProps) {
     const intl = useIntl();
     const [{ language }] = useStore();
-    const { handleSubmit, errors, register } = useForm<SpraakForFarskapserklaeringFormInput>({
+    const {
+        control,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<SpraakForFarskapserklaeringFormInput>({
+        mode: 'onSubmit',
         defaultValues: {
             spraak: mapLanguageToSkriftspraak(language),
         },
@@ -29,37 +31,35 @@ function SpraakForFarskapserklaeringForm(props: SpraakForFarskapserklaeringFormP
     });
 
     return (
-        <form onSubmit={handleSubmit(props.onSubmit)} className="SpraakForFarskapserklaeringForm">
-            <RadioGruppe
-                legend={<Systemtittel>{getMessage(intl, 'skjema.mor.spraak.title')}</Systemtittel>}
-                description={getMessage(intl, 'skjema.mor.spraak.description')}
-                feil={errors.spraak?.message}
-            >
-                <div className="SpraakForFarskapserklaeringForm__radiogruppe__values">
-                    <Radio
-                        name="spraak"
-                        value={Skriftspraak.Bookmaal}
-                        label={getMessage(intl, 'skjema.mor.spraak.label.norwegian')}
-                        radioRef={register}
-                    />
-                    <Radio
-                        name="spraak"
-                        value={Skriftspraak.Nynorsk}
-                        label={getMessage(intl, 'skjema.mor.spraak.label.nynorsk')}
-                        radioRef={register({
-                            required: getMessage(intl, 'skjema.mor.spraak.validation.required'),
-                        })}
-                    />
-                    <Radio
-                        name="spraak"
-                        value={Skriftspraak.Engelsk}
-                        label={getMessage(intl, 'skjema.mor.spraak.label.english')}
-                        radioRef={register({
-                            required: getMessage(intl, 'skjema.mor.spraak.validation.required'),
-                        })}
-                    />
-                </div>
-            </RadioGruppe>
+        <form onSubmit={handleSubmit(props.onSubmit)}>
+            <Controller
+                name="spraak"
+                control={control}
+                rules={{ required: getMessage(intl, 'skjema.mor.spraak.validation.required') }}
+                render={({ field: { onChange, value } }) => (
+                    <RadioGroup
+                        legend={
+                            <Heading level="2" size="medium" spacing>
+                                {getMessage(intl, 'skjema.mor.spraak.title')}
+                            </Heading>
+                        }
+                        description={getMessage(intl, 'skjema.mor.spraak.description')}
+                        onChange={onChange}
+                        value={value ?? ''}
+                        error={errors.spraak?.message}
+                    >
+                        <Radio value={Skriftspraak.Bookmaal}>
+                            {getMessage(intl, 'skjema.mor.spraak.label.norwegian')}
+                        </Radio>
+                        <Radio value={Skriftspraak.Nynorsk}>
+                            {getMessage(intl, 'skjema.mor.spraak.label.nynorsk')}
+                        </Radio>
+                        <Radio value={Skriftspraak.Engelsk}>
+                            {getMessage(intl, 'skjema.mor.spraak.label.english')}
+                        </Radio>
+                    </RadioGroup>
+                )}
+            />
             <FormButtons
                 submitText={getMessage(intl, 'skjema.next')}
                 cancelText={getMessage(intl, 'skjema.cancel')}

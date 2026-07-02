@@ -1,24 +1,9 @@
-import classNames from 'classnames';
-import Veilederpanel from 'nav-frontend-veilederpanel';
-import { ReactNode } from 'react';
+import React from 'react';
+import { GuidePanel } from '@navikt/ds-react';
+import './InfoPanel.css';
 
-import { ReactComponent as FamilieSvg } from 'assets/icons/familie.svg';
-
-import './InfoPanel.less';
-
-interface InfoPanelProps {
-    children: ReactNode;
-    className?: string;
-}
-
-function InfoPanel({ children, className }: InfoPanelProps) {
-    return (
-        <div className={classNames('InfoPanel', className)}>
-            <Veilederpanel type="plakat" svg={<FamilieSvg />} kompakt={true}>
-                {children}
-            </Veilederpanel>
-        </div>
-    );
+function InfoPanel({ children }: React.PropsWithChildren) {
+    return <GuidePanel className="InfoPanel">{children}</GuidePanel>;
 }
 
 export default InfoPanel;

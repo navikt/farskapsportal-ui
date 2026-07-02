@@ -10,6 +10,7 @@ import HvaSkjerNaa from './more-info-panels-content/HvaSkjerNaa';
 import HvemErFar from './more-info-panels-content/HvemErFar';
 import Medmor from './more-info-panels-content/Medmor';
 import HvaErFarskapserklaering from './more-info-panels-content/HvaErFarskapserklaering';
+import { Accordion } from '@navikt/ds-react';
 
 interface MoreInfoPanelsProps {
     userInfo: UserInfo;
@@ -23,55 +24,55 @@ function MoreInfoPanels({ userInfo }: MoreInfoPanelsProps) {
 
     if (userInfo.forelderrolle === Foreldrerolle.Mor) {
         if (avventerSigneringBruker) {
-            return <HvemErFar />;
+            return <Accordion><HvemErFar /></Accordion>;
         }
 
         if (hasBarnUtenErklaering) {
             return (
-                <>
+                <Accordion>
                     <ErFarskapRegistrert />
                     <HvemErFar />
                     <Medmor />
-                </>
+                </Accordion>
             );
         }
 
         if (avventerSigneringMotpart) {
             return (
-                <>
+                <Accordion>
                     <HvaSkjerNaa />
                     <FarErklaererIkke />
-                </>
+                </Accordion>
             );
         }
 
         if (avventerRegistrering) {
-            return <HvaSkjerNaa />;
+            return <Accordion><HvaSkjerNaa /></Accordion>;
         }
 
         return (
-            <>
+            <Accordion>
                 <ErFarskapRegistrert />
                 <HvemErFar />
                 <Medmor />
-            </>
+            </Accordion>
         );
     } else if (userInfo.forelderrolle === Foreldrerolle.Far) {
         if (avventerSigneringBruker) {
             return (
-                <>
+                <Accordion>
                     <HvaErFarskapserklaering />
                     <AlleredeErklaert />
                     <ErJegFar />
-                </>
+                </Accordion>
             );
         }
 
         if (avventerRegistrering) {
-            return <HvaSkjerNaa />;
+            return <Accordion><HvaSkjerNaa /></Accordion>;
         }
 
-        return <ErklaereUtenMor />;
+        return <Accordion><ErklaereUtenMor /></Accordion>;
     } else if (userInfo.forelderrolle === Foreldrerolle.MorEllerFar) {
         if (
             hasBarnUtenErklaering ||
@@ -80,7 +81,7 @@ function MoreInfoPanels({ userInfo }: MoreInfoPanelsProps) {
             avventerRegistrering
         ) {
             return (
-                <>
+                <Accordion>
                     {!!hasBarnUtenErklaering && <ErFarskapRegistrert />}
                     {!!hasBarnUtenErklaering && <HvemErFar />}
                     {!!hasBarnUtenErklaering && <Medmor />}
@@ -90,17 +91,17 @@ function MoreInfoPanels({ userInfo }: MoreInfoPanelsProps) {
                     {!!avventerSigneringBruker && <AlleredeErklaert />}
                     {!!avventerSigneringBruker && <ErJegFar />}
                     {!!avventerRegistrering && <HvaSkjerNaa />}
-                </>
+                </Accordion>
             );
         }
 
         return (
-            <>
+            <Accordion>
                 <ErklaereUtenMor />
                 <ErFarskapRegistrert />
                 <HvemErFar />
                 <Medmor />
-            </>
+            </Accordion>
         );
     }
 

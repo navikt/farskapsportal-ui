@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Redirect, useHistory, useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router';
 
 import { setSigneringStatusToken } from 'api/api';
 import Spinner from 'components/spinner/Spinner';
@@ -9,17 +9,17 @@ import { useQuery } from 'utils/hooks/useQuery';
 import { AlertError } from '../../types/error';
 
 function Avbrutt() {
-    const history = useHistory();
+    const navigate = useNavigate();
     const [{ language }, dispatch] = useStore();
     const statusQueryToken = useQuery().get('status_query_token');
-    const { erklaeringId } = useParams<{ erklaeringId: string }>();
+    const { erklaeringId } = useParams<{ erklaeringId?: string }>();
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {
         if (statusQueryToken) {
             setSigneringStatusToken(statusQueryToken, erklaeringId).catch((error: AlertError) => {
                 if (error.code === 410) {
-                    history.replace(`/${language}${Path.AvbruttOversikt}`);
+                    navigate(`/${language}${Path.AvbruttOversikt}`, { replace: true });
                 } else {
                     setIsError(true);
                 }
@@ -27,11 +27,11 @@ function Avbrutt() {
         } else {
             setIsError(true);
         }
-    }, [erklaeringId, statusQueryToken, history, language, dispatch]);
+    }, [erklaeringId, statusQueryToken, navigate, language, dispatch]);
 
     // TODO: show error instead of redirecting?
     return isError ? (
-        <Redirect to={Path.Feilet.replace(':erklaeringId', erklaeringId)} />
+        <Navigate to={Path.Feilet.replace(':erklaeringId', erklaeringId ?? '')} replace />
     ) : (
         <Spinner />
     );

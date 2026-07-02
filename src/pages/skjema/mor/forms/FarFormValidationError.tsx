@@ -1,7 +1,5 @@
-import AlertStripe from 'nav-frontend-alertstriper';
-import { Normaltekst } from 'nav-frontend-typografi';
+import { Alert, BodyShort } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
-
 import FormattedMessageWithExternalLink from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
 import { Feilkode } from 'types/feilkode';
 import FarFormValidationMaksAntallForsoek from './FarFormValidationMaksAntallForsoek';
@@ -55,18 +53,18 @@ function FarFormValidationError({
     };
 
     return (
-        <AlertStripe id={id} type="feil">
+        <Alert id={id} variant="error" role="alert" aria-live="assertive">
             {renderContent()}
-        </AlertStripe>
+        </Alert>
     );
 }
 
 function FarHarIkkeFnummer() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="skjema.mor.far.validation.farHarIkkeFnummer" />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }
@@ -74,9 +72,9 @@ function FarHarIkkeFnummer() {
 function MorOgFarSammePerson() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="skjema.mor.far.validation.morOgFarSammePerson" />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }
@@ -84,15 +82,15 @@ function MorOgFarSammePerson() {
 function FeilRolleFar() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="skjema.mor.far.validation.feilRolleFar.1" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessageWithExternalLink
                     textId="skjema.mor.far.validation.feilRolleFar.2"
                     linkId="skjema.mor.far.validation.feilRolleFar.link"
                 />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }
@@ -104,12 +102,12 @@ function ForskjelligeFedre() {
 function NavnStemmerIkkeMedRegister() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="skjema.mor.far.validation.navnStemmerIkkeMedRegister.1" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessage id="skjema.mor.far.validation.navnStemmerIkkeMedRegister.2" />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }
@@ -117,9 +115,9 @@ function NavnStemmerIkkeMedRegister() {
 function PdlPersonIkkeFunnet() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="skjema.mor.far.validation.pdlPersonIkkeFunnet" />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }
@@ -127,9 +125,9 @@ function PdlPersonIkkeFunnet() {
 function DefaultUgyldigFarMessage() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="skjema.mor.far.validation.defaultUgyldigFarMessage" />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Redirect, useHistory, useParams } from 'react-router-dom';
+import { Navigate, useNavigate, useParams } from 'react-router';
 
 import { setSigneringStatusToken } from 'api/api';
 import { fetchUser } from 'api/fetchUser';
@@ -10,10 +10,10 @@ import { ERKLAERING_ID } from 'utils/constants';
 import { useQuery } from 'utils/hooks/useQuery';
 
 function Suksess() {
-    const history = useHistory();
+    const navigate = useNavigate();
     const [{ language }, dispatch] = useStore();
     const statusQueryToken = useQuery().get('status_query_token');
-    const { erklaeringId } = useParams<{ erklaeringId: string }>();
+    const { erklaeringId } = useParams<{ erklaeringId?: string }>();
     const [isError, setIsError] = useState(false);
 
     useEffect(() => {
@@ -22,8 +22,9 @@ function Suksess() {
                 .then((res) => {
                     // TODO: er denne nødvendig? Ved redirect til kvittering vil brukerinfo hentes?
                     fetchUser(dispatch);
-                    history.replace(
-                        `/${language}${Path.Kvittering}?${ERKLAERING_ID}=${res.idFarskapserklaering}`
+                    navigate(
+                        `/${language}${Path.Kvittering}?${ERKLAERING_ID}=${res.idFarskapserklaering}`,
+                        { replace: true }
                     );
                 })
                 .catch(() => {
@@ -32,11 +33,11 @@ function Suksess() {
         } else {
             setIsError(true);
         }
-    }, [erklaeringId, statusQueryToken, history, language, dispatch]);
+    }, [erklaeringId, statusQueryToken, navigate, language, dispatch]);
 
     // TODO: show error instead of redirecting?
     return isError ? (
-        <Redirect to={Path.Feilet.replace(':erklaeringId', erklaeringId)} />
+        <Navigate to={Path.Feilet.replace(':erklaeringId', erklaeringId ?? '')} replace />
     ) : (
         <Spinner />
     );

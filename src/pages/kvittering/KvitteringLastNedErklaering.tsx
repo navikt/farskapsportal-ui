@@ -1,9 +1,10 @@
 import { FormattedMessage, useIntl } from 'react-intl';
 import { getMessage } from '../../utils/intl';
-import { Normaltekst } from 'nav-frontend-typografi';
+import { BodyShort, Link } from '@navikt/ds-react';
 import { Farskapserklaering } from '../../types/farskapserklaering';
 import { downloadSignedDocument } from '../../api/api';
 import { useEffect, useState } from 'react';
+import { DownloadIcon } from '@navikt/aksel-icons';
 
 interface KvitteringLastNedErklaeringProps {
     erklaering: Farskapserklaering;
@@ -31,16 +32,17 @@ function KvitteringLastNedErklaering({ erklaering }: KvitteringLastNedErklaering
     }
 
     return beggeParterSignert ? (
-        <Normaltekst className="KvitteringLastNedErklaering">
+        <BodyShort>
             <FormattedMessage id="kvittering.intro.downloadPdf" />
-            <a href={pdfDownloadUrl} download={pdfName}>
+            <Link href={pdfDownloadUrl} download={pdfName}>
                 {pdfName}
-            </a>
-        </Normaltekst>
+                <DownloadIcon aria-hidden fontSize="1.5rem" />
+            </Link>
+        </BodyShort>
     ) : (
-        <Normaltekst className="KvitteringLastNedErklaering">
+        <BodyShort>
             <FormattedMessage id="kvittering.intro.downloadPdfNotSigned" />
-        </Normaltekst>
+        </BodyShort>
     );
 }
 

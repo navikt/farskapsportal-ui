@@ -1,13 +1,9 @@
-import AlertStripe from 'nav-frontend-alertstriper';
-import { Normaltekst } from 'nav-frontend-typografi';
+import { Alert, BodyShort, GuidePanel, VStack } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import ContentContainer from 'components/content-container/ContentContainer';
 import FormattedMessageWithExternalLink from 'components/formatted-message-with-external-link/FormattedMessageWithExternalLink';
-import InfoPanel from 'components/info-panel/InfoPanel';
 import { Feilkode } from 'types/feilkode';
-
-import './NotPermitted.less';
 
 interface NotPermittedProps {
     feilkode: Feilkode;
@@ -42,14 +38,14 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
     };
 
     return (
-        <ContentContainer className="NotPermitted">
-            <InfoPanel>
+        <ContentContainer>
+            <GuidePanel poster>
                 {showAlertFor.includes(feilkode) ? (
-                    <AlertStripe type="advarsel">{renderContent()}</AlertStripe>
+                    <Alert variant="warning">{renderContent()}</Alert>
                 ) : (
                     renderContent()
                 )}
-            </InfoPanel>
+            </GuidePanel>
         </ContentContainer>
     );
 }
@@ -57,9 +53,9 @@ function NotPermitted({ feilkode }: NotPermittedProps) {
 function MorIkkeNorskBostedsadresse() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="notPermitted.morIkkeNorskBostedsadresse" />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }
@@ -67,87 +63,87 @@ function MorIkkeNorskBostedsadresse() {
 function ForelderHarIkkeFnummer() {
     return (
         <>
-            <Normaltekst>
+            <BodyShort>
                 <FormattedMessage id="notPermitted.forelderHarIkkeFnummer" />
-            </Normaltekst>
+            </BodyShort>
         </>
     );
 }
 
 function ForelderHarVerge() {
     return (
-        <>
-            <Normaltekst>
+        <VStack gap="space-16">
+            <BodyShort>
                 <FormattedMessage id="notPermitted.forelderHarVerge" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessage id="error.taKontakt" />
-            </Normaltekst>
-        </>
+            </BodyShort>
+        </VStack>
     );
 }
 
 function IkkeMyndig() {
     return (
-        <>
-            <Normaltekst>
+        <VStack gap="space-16">
+            <BodyShort>
                 <FormattedMessage id="notPermitted.ikkeMyndig" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessage id="error.taKontakt" />
-            </Normaltekst>
-        </>
+            </BodyShort>
+        </VStack>
     );
 }
 
 // TODO: skal endres, skille medmor fra ukjent og nye tekster
 function MedmorEllerUkjent() {
     return (
-        <Normaltekst>
+        <BodyShort>
             <FormattedMessage id="notPermitted.medmorEllerUkjent" />
-        </Normaltekst>
+        </BodyShort>
     );
 }
 
 // TODO: endre når api endres, skal være for kvinne gift med mann
 function MorSivilstandGift() {
     return (
-        <>
-            <Normaltekst>
+        <VStack gap="space-16">
+            <BodyShort>
                 <FormattedMessage id="notPermitted.morSivilstandGift.1" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessageWithExternalLink
                     textId="notPermitted.morSivilstandGift.2"
                     linkId="notPermitted.morSivilstandGift.link"
                 />
-            </Normaltekst>
-        </>
+            </BodyShort>
+        </VStack>
     );
 }
 
 // TODO: endre når api endres, skal være for kvinne gift med kvinne
 function MorSivilstandPartner() {
     return (
-        <>
-            <Normaltekst>
+        <VStack gap="space-16">
+            <BodyShort>
                 <FormattedMessage id="notPermitted.morSivilstandPartner.1" />
-            </Normaltekst>
-            <Normaltekst>
+            </BodyShort>
+            <BodyShort>
                 <FormattedMessageWithExternalLink
                     textId="notPermitted.morSivilstandPartner.2"
                     linkId="notPermitted.morSivilstandPartner.link"
                 />
-            </Normaltekst>
-        </>
+            </BodyShort>
+        </VStack>
     );
 }
 
 function MorSivilstandUoppgitt() {
     return (
-        <Normaltekst>
+        <BodyShort>
             <FormattedMessage id="notPermitted.morSivilstandUoppgitt" />
-        </Normaltekst>
+        </BodyShort>
     );
 }
 
