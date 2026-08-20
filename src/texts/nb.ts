@@ -52,7 +52,7 @@ export default {
     'notPermitted.morIkkeNorskBostedsadresse': 'For at farskap skal kunne erklæres elektronisk, må du være registrert med en norsk bostedsadresse i Folkeregisteret.', // TODO
     'notPermitted.morSivilstandGift.1': 'Du er gift og ektefellen din blir automatisk registrert som faren til barn du føder. Hvis det er en annen mann enn ektefellen din som er barnets far, kan farskapet endres. Dette kan ikke gjøres elektronisk.',
     'notPermitted.morSivilstandGift.2': 'Du finner mer informasjon om endring av farskap <a>her</a>. Du er også velkommen til å kontakte oss på nav.no/kontaktoss eller telefon 55 55 33 33.',
-    'notPermitted.morSivilstandGift.link': 'https://www.nav.no/erklaer-farskap#naar-hvordan-endre-farskap',
+    'notPermitted.morSivilstandGift.link': 'https://www.nav.no/erklaer-farskap',
     'notPermitted.morSivilstandPartner.1': 'Du er gift/registrert partner og du og ektefellen/partneren din må sende en søknad til Skatteetaten for å få medmorskap registret.',
     'notPermitted.morSivilstandPartner.2': 'Du finner informasjon og søknadsskjema <a>her</a>.',
     'notPermitted.morSivilstandPartner.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/soknad-om-medmorskap/',
@@ -232,7 +232,7 @@ export default {
     'kvittering.ytelserOgTjenester.title': 'Relaterte ytelser og tjenester fra Nav',
     'kvittering.ytelserOgTjenester.foreldrepengerSvangerskapspengerEngangsstoenad.title': 'Foreldrepenger, svangerskapspenger og engangsstønad',
     'kvittering.ytelserOgTjenester.foreldrepengerSvangerskapspengerEngangsstoenad.text': 'Du finner informasjon om hvilke rettigheter du har og søknadsskjema her:',
-    'kvittering.ytelserOgTjenester.foreldrepengerSvangerskapspengerEngangsstoenad.link': 'https://familie.nav.no',
+    'kvittering.ytelserOgTjenester.foreldrepengerSvangerskapspengerEngangsstoenad.link': 'https://nav.no/barn',
     'kvittering.ytelserOgTjenester.barnetrygd.title': 'Barnetrygd',
     'kvittering.ytelserOgTjenester.barnetrygd.text': 'Du trenger som hovedregel ikke å søke om barnetrygd. Hvis barnet blir født i Norge, vil moren til barnet automatisk få barnetrygd omtrent 2 måneder etter fødselen. Du finner mer informasjon om retten til barnetrygd her:',
     'kvittering.ytelserOgTjenester.barnetrygd.link': 'https://www.nav.no/barnetrygd',
