@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import * as Sentry from '@sentry/react';
+import { ApmErrorBoundary } from '@nais/apm/react';
 import { FaroErrorBoundary } from '@grafana/faro-react';
 
 import ErrorPage from 'components/error-page/ErrorPage';

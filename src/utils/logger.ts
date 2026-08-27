@@ -1,5 +1,3 @@
-import * as Sentry from '@sentry/react';
-
 import { AlertError } from 'types/error';
 
 export const logApiError = (url: string, error: AlertError) => {
@@ -16,6 +14,4 @@ export const logApiError = (url: string, error: AlertError) => {
     }
 
     const errorMessage = `Feil ved henting av data: ${url} - ${error.code} ${error.text}`;
-
-    Sentry.captureMessage(errorMessage);
 };
