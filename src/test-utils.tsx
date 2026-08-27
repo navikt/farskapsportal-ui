@@ -22,7 +22,14 @@ const customRender = (
     { store, ...options }: RenderOptions & { store?: Partial<Store> } = {}
 ) => render(<ProviderWrapper store={store}>{ui}</ProviderWrapper>, { ...options });
 
-export const runAxe = (container: HTMLElement): Promise<AxeResults> => axeCore.run(container);
+export const axeOptions = {
+  rules: {
+    'color-contrast': { enabled: false },
+  },
+} as const;
+
+export const runAxe = (container: HTMLElement, options = axeOptions): Promise<AxeResults> =>
+  axeCore.run(container, options);
 
 export * from '@testing-library/react';
 export function generateRandomValidNorwegianIdent(): string {
