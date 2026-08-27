@@ -441,7 +441,7 @@
     ua-parser-js "1.0.41"
     web-vitals "^5.1.0"
 
-"@grafana/faro-web-tracing@^2.8.2":
+"@grafana/faro-web-tracing@2.8.2", "@grafana/faro-web-tracing@^2.8.2":
   version "2.8.2"
   resolved "https://registry.yarnpkg.com/@grafana/faro-web-tracing/-/faro-web-tracing-2.8.2.tgz#d7c5d7088be109e63c3dc2329dc81f6fb357881a"
   integrity sha512-3MTOVHaW138Te2k1RTlM8a0WngYHwAJoSMX2EcZNn9elq1/5eNADN+75k89jYcCtcdiQAIq/hmT2WfRtUTD+kQ==
@@ -457,6 +457,44 @@
     "@opentelemetry/resources" "^2.0.0"
     "@opentelemetry/sdk-trace-web" "^2.0.0"
     "@opentelemetry/semantic-conventions" "^1.32.0"
+
+"@grafana/rrdom@^2.0.0-grafana.2":
+  version "2.0.0-grafana.2"
+  resolved "https://registry.yarnpkg.com/@grafana/rrdom/-/rrdom-2.0.0-grafana.2.tgz#1d9930829614d2066b0e96839220464fdfd87e61"
+  integrity sha512-eZFrDVTaoaiERuKyxv378XyzndcLz/oji8aWIIv9PD0yzCAnNA9jL9pCZvwrbas86ZEJmwKISWhioHAycPF2VA==
+  dependencies:
+    "@grafana/rrweb-snapshot" "^2.0.0-grafana.2"
+
+"@grafana/rrweb-snapshot@2.0.0-grafana.2", "@grafana/rrweb-snapshot@^2.0.0-grafana.2":
+  version "2.0.0-grafana.2"
+  resolved "https://registry.yarnpkg.com/@grafana/rrweb-snapshot/-/rrweb-snapshot-2.0.0-grafana.2.tgz#08ea51d6f4a8276de66c8138c4d9b0b1c05b5668"
+  integrity sha512-IFJnlW+3MmOxI53B1t1Fsu2sqrfWkA2c8pLo0jkqNmUnTqQbqEp9iuwA/mXRViMnQRm9QrpCnHf/Y5P/K5Mq6w==
+  dependencies:
+    postcss "^8.4.38"
+
+"@grafana/rrweb-types@^2.0.0-grafana.2":
+  version "2.0.0-grafana.2"
+  resolved "https://registry.yarnpkg.com/@grafana/rrweb-types/-/rrweb-types-2.0.0-grafana.2.tgz#6f4dfebe838decb3453fd3a251d32dabbbb75f48"
+  integrity sha512-/xFgQ8ztj5N0R1G6EBWoUXthcdosue9MdSIjLgLOrhAQrr6JhFzrH04NAEWzKmXSBzMEBTvbBu6L6R4NLzV2pA==
+
+"@grafana/rrweb-utils@^2.0.0-grafana.2":
+  version "2.0.0-grafana.2"
+  resolved "https://registry.yarnpkg.com/@grafana/rrweb-utils/-/rrweb-utils-2.0.0-grafana.2.tgz#a89ee860750eeace7b1016b6e5c30a8edcae20aa"
+  integrity sha512-UytD4i76BZRruGUZ1O2th32FzbcItqIlcdGTXm2neW93xrhMCHXNyMTUr9OnN/rjxRcLzcjNCfFzSXD86Aq85w==
+
+"@grafana/rrweb@2.0.0-grafana.2":
+  version "2.0.0-grafana.2"
+  resolved "https://registry.yarnpkg.com/@grafana/rrweb/-/rrweb-2.0.0-grafana.2.tgz#6cf007043afdbbc1072f2945ea9aa8a177e782a7"
+  integrity sha512-sQZj50i0t6YjLL8vY5CogSAXusmWusWhLifGK7RXLluQhlUZLB5Qfz+DUGN17UuJoE/Zrhe0nEF2gA+LqEEUDg==
+  dependencies:
+    "@grafana/rrdom" "^2.0.0-grafana.2"
+    "@grafana/rrweb-snapshot" "^2.0.0-grafana.2"
+    "@grafana/rrweb-types" "^2.0.0-grafana.2"
+    "@grafana/rrweb-utils" "^2.0.0-grafana.2"
+    "@types/css-font-loading-module" "0.0.7"
+    "@xstate/fsm" "^1.4.0"
+    base64-arraybuffer "^1.0.1"
+    mitt "^3.0.0"
 
 "@humanfs/core@^0.19.2":
   version "0.19.2"
@@ -522,6 +560,17 @@
   dependencies:
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
+
+"@nais/apm@^0.6.0":
+  version "0.6.0"
+  resolved "https://npm.pkg.github.com/download/@nais/apm/0.6.0/dbb076f4e13dffff0d7fe78918e2a22058693350#dbb076f4e13dffff0d7fe78918e2a22058693350"
+  integrity sha512-20AJDTd7+sdAwnX+yze/ePktMt3oqpiCO9Iy6NXv+NC3lN+DK1sxDn13SNbl0BaaC+le7lnjgilIwpH9qC0NeQ==
+  dependencies:
+    "@grafana/faro-web-sdk" "^2.8.2"
+    "@grafana/faro-web-tracing" "2.8.2"
+    "@grafana/rrweb" "2.0.0-grafana.2"
+    "@grafana/rrweb-snapshot" "2.0.0-grafana.2"
+    fflate "^0.8.3"
 
 "@napi-rs/wasm-runtime@^1.1.4":
   version "1.1.4"
@@ -951,6 +1000,11 @@
     "@types/deep-eql" "*"
     assertion-error "^2.0.1"
 
+"@types/css-font-loading-module@0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@types/css-font-loading-module/-/css-font-loading-module-0.0.7.tgz#2f98ede46acc0975de85c0b7b0ebe06041d24601"
+  integrity sha512-nl09VhutdjINdWyXxHWN/w9zlNCfr60JUqJbd24YXUuCwgeL0TpFSdElCwb6cxfB6ybE19Gjj4g0jsgkXxKv1Q==
+
 "@types/deep-eql@*":
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/@types/deep-eql/-/deep-eql-4.0.2.tgz#334311971d3a07121e7eb91b684a605e7eea9cbd"
@@ -1075,6 +1129,11 @@
     convert-source-map "^2.0.0"
     tinyrainbow "^3.1.0"
 
+"@xstate/fsm@^1.4.0":
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/@xstate/fsm/-/fsm-1.6.5.tgz#f599e301997ad7e3c572a0b1ff0696898081bea5"
+  integrity sha512-b5o1I6aLNeYlU/3CPlj/Z91ybk1gUsKT+5NAJI+2W4UjvS5KLG28K9v5UvNoFVjHV8PajVZ00RH3vnjyQO7ZAw==
+
 acorn-import-attributes@^1.9.5:
   version "1.9.5"
   resolved "https://registry.yarnpkg.com/acorn-import-attributes/-/acorn-import-attributes-1.9.5.tgz#7eb1557b1ba05ef18b5ed0ec67591bfab04688ef"
@@ -1175,6 +1234,11 @@ balanced-match@^4.0.2:
   version "4.0.4"
   resolved "https://registry.yarnpkg.com/balanced-match/-/balanced-match-4.0.4.tgz#bfb10662feed8196a2c62e7c68e17720c274179a"
   integrity sha512-BLrgEcRTwX2o6gGxGOCNyMvGSp35YofuYzw9h1IMTRmKqttAZZVU67bdb9Pr2vUHA8+j3i2tJfjO6C6+4myGTA==
+
+base64-arraybuffer@^1.0.1:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/base64-arraybuffer/-/base64-arraybuffer-1.0.2.tgz#1c37589a7c4b0746e34bd1feb951da2df01c1bdc"
+  integrity sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==
 
 baseline-browser-mapping@^2.10.12:
   version "2.10.32"
@@ -1718,6 +1782,11 @@ fetch-mock@^9.11.0:
     path-to-regexp "^2.2.1"
     querystring "^0.2.0"
     whatwg-url "^6.5.0"
+
+fflate@^0.8.3:
+  version "0.8.3"
+  resolved "https://registry.yarnpkg.com/fflate/-/fflate-0.8.3.tgz#bc27d8eb30343d4d512abb03480202ce65d825fc"
+  integrity sha512-tbZNuJrLwGUp3zshBtdy4W+ORxZuIh8a5ilyIEQDC5rY1f3U20JMry0Ll3WBzU58EZKsEuJFXhb5gwv8CsPvgA==
 
 file-entry-cache@^8.0.0:
   version "8.0.0"
@@ -2378,6 +2447,11 @@ minimatch@^10.2.4:
   dependencies:
     brace-expansion "^5.0.5"
 
+mitt@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/mitt/-/mitt-3.0.1.tgz#ea36cf0cc30403601ae074c8f77b7092cdab36d1"
+  integrity sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==
+
 module-details-from-path@^1.0.3, module-details-from-path@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/module-details-from-path/-/module-details-from-path-1.0.4.tgz#b662fdcd93f6c83d3f25289da0ce81c8d9685b94"
@@ -2541,7 +2615,7 @@ possible-typed-array-names@^1.0.0:
   resolved "https://registry.yarnpkg.com/possible-typed-array-names/-/possible-typed-array-names-1.1.0.tgz#93e3582bc0e5426586d9d07b79ee40fc841de4ae"
   integrity sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg==
 
-postcss@^8.5.15:
+postcss@^8.4.38, postcss@^8.5.15:
   version "8.5.26"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.5.26.tgz#6e75135780c7e10df3433bf2266c552d35c8c620"
   integrity sha512-u82N74LFzG8ca+dD8puPnplTXoGH4fTPpVGuIbt36G3qvNlkvfD0lEAZSxaly3KX8TS/L1A1gsCEmvKmBcVbkQ==
