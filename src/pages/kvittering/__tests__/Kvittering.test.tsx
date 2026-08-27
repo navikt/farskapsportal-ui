@@ -14,6 +14,10 @@ vi.mock('utils/hooks/useQuery', () => ({
     }),
 }));
 
+vi.mock('api/api', () => ({
+    downloadSignedDocument: vi.fn().mockRejectedValue(new Error('Download unavailable')),
+}));
+
 const introMorText = new RegExp(texts['kvittering.intro.mor.1'].substring(0, 30));
 const introMorFarSignertText = new RegExp(texts['kvittering.intro.mor.farSignert'].substring(0, 7));
 const introFarText = new RegExp(texts['kvittering.intro.far.1'].substring(0, 30));

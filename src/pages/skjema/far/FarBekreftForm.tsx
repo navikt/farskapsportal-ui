@@ -49,6 +49,7 @@ function FarBekreftForm(props: FarBekreftFormProps) {
                             }}
                             render={({ field: { onChange, value } }) => (
                                 <Checkbox
+                                    value={id}
                                     checked={value}
                                     onChange={(e) => onChange(e.target.checked)}
                                     error={!!errors[id]}
