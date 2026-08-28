@@ -8,11 +8,6 @@ const srcDir = path.resolve(__dirname, 'src');
 
 export default defineConfig({
     plugins: [react(), svgr()],
-    define: {
-        'process.env.NAIS_APP_NAME': JSON.stringify(process.env.NAIS_APP_NAME),
-        'process.env.NAIS_TEAM': JSON.stringify(process.env.NAIS_TEAM),
-        'process.env.NAIS_APP_IMAGE': JSON.stringify(process.env.NAIS_APP_IMAGE),
-    },
     server: {
         port: 3000,
     },

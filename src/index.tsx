@@ -11,11 +11,9 @@ import { StoreProvider } from 'store/Context';
 import LanguageProvider from 'store/providers/LanguageProvider';
 import { initialState, reducer } from 'store/store';
 
-initApm({
-    app: 'farskapsportal-ui',
-    namespace: 'farskapsportal',
-    version: process.env.NAIS_APP_IMAGE?.split(':').at(-1),
-});
+// NAIS meta tags (app, namespace, version, environment and telemetryUrl)
+// are resolved automatically from values injected by the server at runtime.
+initApm();
 
 const init = async () => {
     if (import.meta.env.DEV) {

@@ -187,7 +187,14 @@ app.get('/api/farskapserklaering/:erklaeringId/dokument', validateAccessToken, a
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
     getHtmlWithDekorator(`${buildPath}/index.html`)
         .then((html) => {
-            res.send(html.replace('{{{APP_VERSION}}}', process.env.APP_VERSION));
+            res.send(
+                html
+                    .replace('{{{APP_VERSION}}}', process.env.APP_VERSION ?? '')
+                    .replace('{{{NAIS_APP_NAME}}}', process.env.NAIS_APP_NAME ?? '')
+                    .replace('{{{NAIS_TEAM}}}', process.env.NAIS_TEAM ?? '')
+                    .replace('{{{NAIS_CLUSTER_NAME}}}', process.env.NAIS_CLUSTER_NAME ?? '')
+                    .replace('{{{NAIS_APP_IMAGE_TAG}}}', process.env.NAIS_APP_IMAGE?.split(':').at(-1) ?? '')
+            );
         })
         .catch((e) => {
             const error = `Failed to get decorator: ${e}`;
