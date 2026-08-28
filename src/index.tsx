@@ -12,7 +12,9 @@ import LanguageProvider from 'store/providers/LanguageProvider';
 import { initialState, reducer } from 'store/store';
 
 initApm({
+    app: 'farskapsportal-ui',
     namespace: 'farskapsportal',
+    version: process.env.NAIS_APP_IMAGE?.split(':').pop(),
 });
 
 const init = async () => {
@@ -33,7 +35,7 @@ const init = async () => {
     if (!container) throw new Error('Root element #app not found');
     createRoot(container).render(
         <StrictMode>
-            <ApmErrorBoundary fallback={<p>Noe gikk galt.</p>}>
+            <ApmErrorBoundary fallback={<p>Noe gikk galt. Vennligst prøv igjen senere.</p>}>
                 <StoreProvider initialState={initialState} reducer={reducer}>
                     <LanguageProvider>
                         <Router>
