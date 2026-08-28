@@ -14,7 +14,7 @@ import { initialState, reducer } from 'store/store';
 initApm({
     app: 'farskapsportal-ui',
     namespace: 'farskapsportal',
-    version: process.env.NAIS_APP_IMAGE?.split(':').pop(),
+    version: process.env.NAIS_APP_IMAGE?.split(':').at(-1),
 });
 
 const init = async () => {
