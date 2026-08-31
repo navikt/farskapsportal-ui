@@ -6,7 +6,7 @@ function Feilet() {
     return (
         <ErrorPage
             banner={{
-                title: 'Uvented feil',
+                title: 'Uventet feil',
                 text: 'Noe gikk galt.',
             }}
             title="Det oppstod en ukjent feil"
