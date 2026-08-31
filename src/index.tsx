@@ -3,7 +3,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router';
 import { init as initApm, setTag } from '@nais/apm';
-import { ApmErrorBoundary } from '@nais/apm/react';
+import ErrorBoundary from 'components/error-boundary/ErrorBoundary';
 import '@navikt/ds-css';
 import App from './App';
 import ScrollToTop from 'components/scroll-to-top/ScrollToTop';
@@ -37,7 +37,7 @@ const init = async () => {
     if (!container) throw new Error('Root element #app not found');
     createRoot(container).render(
         <StrictMode>
-            <ApmErrorBoundary fallback={<p>NA: Noe gikk galt. Vennligst prøv igjen senere.</p>}>
+            <ErrorBoundary>
                 <StoreProvider initialState={initialState} reducer={reducer}>
                     <LanguageProvider>
                         <Router>
@@ -46,7 +46,7 @@ const init = async () => {
                         </Router>
                     </LanguageProvider>
                 </StoreProvider>
-            </ApmErrorBoundary>
+            </ErrorBoundary>
         </StrictMode>
     );
 };

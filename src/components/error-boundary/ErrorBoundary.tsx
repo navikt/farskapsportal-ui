@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
 import { ApmErrorBoundary } from '@nais/apm/react';
-import { FaroErrorBoundary } from '@grafana/faro-react';
 
 import ErrorPage from 'components/error-page/ErrorPage';
 
@@ -10,13 +9,12 @@ interface ErrorBoundaryProps {
 
 function ErrorBoundary({ children }: ErrorBoundaryProps) {
     return (
-        <FaroErrorBoundary>
-            <Sentry.ErrorBoundary
+            <ApmErrorBoundary
                 fallback={
                     <ErrorPage
                         banner={{
-                            title: 'Oops,',
-                            text: 'noe gikk galt.',
+                            title: 'Ukjent feil',
+                            text: 'Beklager, noe gikk galt.',
                         }}
                         title="Det oppstod en ukjent feil"
                         text="Vennligst prøv igjen senere."
@@ -24,8 +22,7 @@ function ErrorBoundary({ children }: ErrorBoundaryProps) {
                 }
             >
                 {children}
-            </Sentry.ErrorBoundary>
-        </FaroErrorBoundary>
+            </ApmErrorBoundary>
     );
 }
 
