@@ -189,7 +189,6 @@ app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
         .then((html) => {
             res.send(
                 html
-                    .replace('{{{APP_VERSION}}}', process.env.APP_VERSION ?? '')
                     .replace('{{{NAIS_APP_NAME}}}', process.env.NAIS_APP_NAME ?? '')
                     .replace('{{{NAIS_TEAM}}}', process.env.NAIS_TEAM ?? '')
                     .replace('{{{NAIS_NAMESPACE}}}', process.env.NAIS_NAMESPACE ?? '')
