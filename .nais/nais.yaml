@@ -1,7 +1,7 @@
 apiVersion: nais.io/v1alpha1
 kind: Application
 metadata:
-  name: {{ name }}
+  name: {{ application_name }}
   namespace: farskapsportal
   labels:
     team: farskapsportal
@@ -41,8 +41,6 @@ spec:
     - name: {{@key}}
       value: "{{this}}"
   {{/each}}
-    - name: APP_VERSION
-      value: {{ image }}
   accessPolicy:
     outbound:
       rules:
