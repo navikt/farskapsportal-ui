@@ -187,7 +187,14 @@ app.get('/api/farskapserklaering/:erklaeringId/dokument', validateAccessToken, a
 app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
     getHtmlWithDekorator(`${buildPath}/index.html`)
         .then((html) => {
-            res.send(html.replace('{{{APP_VERSION}}}', process.env.APP_VERSION));
+            res.send(
+                html
+                    .replace('{{{NAIS_APP_NAME}}}', process.env.NAIS_APP_NAME ?? '')
+                    .replace('{{{NAIS_TEAM}}}', process.env.NAIS_TEAM ?? '')
+                    .replace('{{{NAIS_NAMESPACE}}}', process.env.NAIS_NAMESPACE ?? '')
+                    .replace('{{{NAIS_CLUSTER_NAME}}}', process.env.NAIS_CLUSTER_NAME ?? '')
+                    .replace('{{{NAIS_APP_IMAGE_TAG}}}', resolveImageTag())
+            );
         })
         .catch((e) => {
             const error = `Failed to get decorator: ${e}`;
@@ -200,3 +207,9 @@ const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`App listening on port: ${port}`));
 
 process.on('SIGTERM', () => setTimeout(() => console.log('Har sovet i 30 sekunder'), 30000));
+
+const resolveImageTag = () => {
+    const imageRef = process.env.NAIS_APP_IMAGE ?? '';
+    const imageWithoutDigest = imageRef.split('@')[0];
+    return imageWithoutDigest.includes(':') ? imageWithoutDigest.split(':').at(-1) ?? '' : imageWithoutDigest;
+};

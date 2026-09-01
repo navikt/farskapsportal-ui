@@ -12,9 +12,10 @@ spec:
     min: 2
     max: 2
     cpuThresholdPercentage: 50
-  frontend:
-    generatedConfig:
-      mountPath: /app/build/nais.js
+  observability:
+    autoInstrumentation:
+      enabled: true
+      runtime: nodejs
   idporten:
     enabled: true
     sidecar:
@@ -37,8 +38,6 @@ spec:
     - name: {{@key}}
       value: "{{this}}"
   {{/each}}
-    - name: APP_VERSION
-      value: {{ image }}
   accessPolicy:
     outbound:
       rules:

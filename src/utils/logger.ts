@@ -1,5 +1,4 @@
-import * as Sentry from '@sentry/react';
-
+import { captureException } from '@nais/apm';
 import { AlertError } from 'types/error';
 
 export const logApiError = (url: string, error: AlertError) => {
@@ -16,6 +15,5 @@ export const logApiError = (url: string, error: AlertError) => {
     }
 
     const errorMessage = `Feil ved henting av data: ${url} - ${error.code} ${error.text}`;
-
-    Sentry.captureMessage(errorMessage);
+    captureException(new Error(errorMessage), { context: { url, code: error.code, type: error.type } });
 };

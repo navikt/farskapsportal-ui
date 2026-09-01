@@ -1,28 +1,23 @@
 import { injectDecoratorClientSide } from '@navikt/nav-dekoratoren-moduler';
-import * as Sentry from '@sentry/react';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router } from 'react-router';
-
+import { init as initApm, setTag } from '@nais/apm';
+import ErrorBoundary from 'components/error-boundary/ErrorBoundary';
 import '@navikt/ds-css';
 import App from './App';
-import ErrorBoundary from 'components/error-boundary/ErrorBoundary';
 import ScrollToTop from 'components/scroll-to-top/ScrollToTop';
 import { StoreProvider } from 'store/Context';
 import LanguageProvider from 'store/providers/LanguageProvider';
 import { initialState, reducer } from 'store/store';
-import { initFaro } from './faro';
 
-initFaro();
-
-if (import.meta.env.PROD) {
-    Sentry.init({
-        dsn: 'https://45feaf242d6e4c02b4b536ccc838eed1@sentry.gc.nav.no/48',
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        release: (window as any).APP_VERSION,
-        environment: window.location.hostname,
-    });
-}
+// NAIS meta tags (app, namespace, version, environment and telemetryUrl)
+// are resolved automatically from values injected by the server at runtime.
+initApm();
+// Tagger alle events med scope:farskapsportal-ui (tilsvarte beforeCapture i Sentry.ErrorBoundary)
+// for å filtrere på kun exceptions fanget opp av ApmErrorBoundary.ErrorBoundary. Dette vil også
+// filtrere ut alle exceptions som nav-dekoratøren kaster.
+setTag('scope', 'farskapsportal-ui');
 
 const init = async () => {
     if (import.meta.env.DEV) {
@@ -56,4 +51,6 @@ const init = async () => {
     );
 };
 
-init();
+init().catch((error) => {
+    console.error('Failed to initialize app', error);
+});
