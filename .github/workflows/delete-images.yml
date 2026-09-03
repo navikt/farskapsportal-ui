@@ -1,8 +1,8 @@
 name: 'Delete GHCR images'
 on:
-  workflow_dispatch:
   schedule:
     - cron: "*/15 * * * *"
+  workflow_dispatch:
 
 jobs:
   delete-images:
