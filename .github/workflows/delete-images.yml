@@ -1,0 +1,20 @@
+name: 'Delete GHCR images'
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/15 * * * *"
+
+jobs:
+  delete-images:
+    name: 'Delete old GHCR images job except 300 most recent'
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: Delete old GHCR images
+      - uses: actions/delete-package-versions@v5
+        with: {
+          package-name: 'farskapsportal-ui/farskapsportal-ui',
+          package-type: 'container',
+          min-versions-to-keep: 300
+        }
