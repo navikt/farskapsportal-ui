@@ -12,7 +12,7 @@ jobs:
       packages: write
     steps:
       - name: Delete old GHCR images
-      - uses: actions/delete-package-versions@v5
+        uses: actions/delete-package-versions@v5
         with: {
           package-name: 'farskapsportal-ui/farskapsportal-ui',
           package-type: 'container',
