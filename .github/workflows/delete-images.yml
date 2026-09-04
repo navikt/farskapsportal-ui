@@ -5,7 +5,7 @@ on:
 
 jobs:
   delete-images:
-    name: 'Delete old GHCR images job except 300 most recent'
+    name: 'Delete old GHCR images job'
     runs-on: ubuntu-latest
     permissions:
       packages: write
@@ -15,4 +15,4 @@ jobs:
         with:
           package-name: 'farskapsportal-ui/farskapsportal-ui'
           package-type: 'container'
-          min-versions-to-keep: 300
+          min-versions-to-keep: 0
