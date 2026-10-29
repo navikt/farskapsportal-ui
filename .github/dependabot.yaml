@@ -1,11 +1,32 @@
 version: 2
 updates:
-  - package-ecosystem: 'npm'
+  # Basic set up for package managers.
+  # Maintain GitHub Actions dependencies.
+  - package-ecosystem: 'github-actions'
+    # Workflow files stored in the default location of `.github/workflows`.
+    # Don't need to specify `/.github/workflows`, just use `directory: "/"`.
     directory: '/'
     schedule:
       interval: 'weekly'
+      # Check for GitHub Actions updates on Thursdays.
+      day: 'thursday'
+      time: '06:30'
+      timezone: 'Europe/Oslo'
     cooldown:
       default-days: 7
+    commit-message:
+      prefix: '[github-actions] '
+  # Maintain npm dependencies
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'daily'
+      time: '06:30'
+      timezone: 'Europe/Oslo'
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: '[npm] '
     labels:
       - 'npm'
       - 'dependencies'
@@ -14,3 +35,14 @@ updates:
         patterns:
           - '@navikt/aksel*'
           - '@navikt/ds*'
+  - package-ecosystem: 'docker'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'thursday'
+      time: '06:00'
+      timezone: 'Europe/Oslo'
+    cooldown:
+      default-days: 7
+    commit-message:
+      prefix: '[docker] '
