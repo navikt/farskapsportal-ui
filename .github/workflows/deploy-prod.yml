@@ -73,7 +73,7 @@ jobs:
 
       - name: Deploy to prod-gcp for main
         if: github.ref == 'refs/heads/main'
-        uses: nais/deploy/actions/deploy@v2
+        uses: nais/deploy/actions/deploy@v3
         env:
           CLUSTER: prod-gcp
           RESOURCE: .nais/nais.yaml
