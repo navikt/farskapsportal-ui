@@ -1,4 +1,4 @@
-import { Alert, BodyShort, Box, HStack } from '@navikt/ds-react';
+import { Alert, BodyShort, HStack } from '@navikt/ds-react';
 import { FormattedMessage, useIntl } from 'react-intl';
 import { Farskapserklaering } from 'types/farskapserklaering';
 import { isBrukerFar } from 'utils/farskapserklaering';

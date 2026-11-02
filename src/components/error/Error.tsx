@@ -10,7 +10,7 @@ interface Props {
 }
 
 // TODO: refakturer, bruker skal ikke se feilmelding fra api
-function Error({ error, role = 'alert', ariaLive = 'assertive' }: Props) {
+function Error({ role = 'alert', ariaLive = 'assertive' }: Props) {
     return (
         <Alert variant="error" role={role} aria-live={ariaLive}>
             <FormattedMessage id="api.error" />

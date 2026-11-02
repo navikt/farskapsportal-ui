@@ -3,7 +3,6 @@ import compression from 'compression';
 import { getHtmlWithDekorator } from './dekorator.js';
 import * as headers from './headers.js';
 import { validateAccessToken, exchangeToken } from './auth/auth-middleware.js';
-import { logger } from './logger.js';
 
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;

@@ -23,7 +23,7 @@ function BarnUtenErklaering({ userInfo }: BarnUtenErklaeringProps) {
 
     return (
         <>
-            {barnUtenErklaering.map((fnr, index) => (
+            {barnUtenErklaering.map((fnr) => (
                 <BarnLinkPanel
                     key={fnr}
                     foedselsnummer={fnr}
