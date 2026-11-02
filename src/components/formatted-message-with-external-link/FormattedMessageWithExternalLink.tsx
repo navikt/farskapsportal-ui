@@ -19,7 +19,6 @@ function FormattedMessageWithExternalLink({
         <FormattedMessage
             id={textId}
             values={{
-                // eslint-disable-next-line react/display-name
                 a: (chunks: React.ReactNode) => (
                     <ExternalLink href={getMessage(intl, linkId)}>{chunks}</ExternalLink>
                 ),

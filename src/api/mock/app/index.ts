@@ -26,21 +26,21 @@ const mockGet = (
     path: string,
     response: MockResponse | MockResponseFunction,
     minDelay = 200,
-    maxDelay = 750
+    maxDelay = 750,
 ) => fetchMock.get(path, response, { delay: getDelay(minDelay, maxDelay) });
 
 const mockPost = (
     path: string,
     response: MockResponse | MockResponseFunction,
     minDelay = 200,
-    maxDelay = 750
+    maxDelay = 750,
 ) => fetchMock.post(path, response, { delay: getDelay(minDelay, maxDelay) });
 
 const mockPut = (
     path: string,
     response: MockResponse | MockResponseFunction,
     minDelay = 200,
-    maxDelay = 750
+    maxDelay = 750,
 ) => fetchMock.put(path, response, { delay: getDelay(minDelay, maxDelay) });
 
 export const setUpMock = async () => {
@@ -57,7 +57,7 @@ export const setUpMock = async () => {
             feilkode: null,
         },
         2000,
-        3000
+        3000,
     );
 
     mockPut('begin:/api/farskapserklaering/redirect', {

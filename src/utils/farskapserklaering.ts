@@ -8,18 +8,18 @@ const getEveryFarskapserklaering = (userInfo: UserInfo): Farskapserklaering[] =>
 
 export const getFarskapserklaeringForId = (
     userInfo: UserInfo,
-    id: string | null
+    id: string | null,
 ): Farskapserklaering | undefined =>
     getEveryFarskapserklaering(userInfo).find((e) => e.idFarskapserklaering.toString() === id);
 
 export const getBarnUtenErklaering = (userInfo: UserInfo): string[] => {
     const barnMedErklaering = getEveryFarskapserklaering(userInfo).map(
-        (erklaering) => erklaering.barn?.foedselsnummer ?? ''
+        (erklaering) => erklaering.barn?.foedselsnummer ?? '',
     );
 
     return (
         userInfo.fnrNyligFoedteBarnUtenRegistrertFar?.filter(
-            (fnr) => !barnMedErklaering.includes(fnr)
+            (fnr) => !barnMedErklaering.includes(fnr),
         ) ?? []
     );
 };

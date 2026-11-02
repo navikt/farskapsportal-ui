@@ -79,8 +79,6 @@ const reducer = (state: StateType, action: ActionType): StateType => {
     }
 };
 
-
-
 interface FarskjemaProps {
     userInfo: UserInfo;
 }
@@ -91,7 +89,7 @@ function FarSkjema({ userInfo }: FarskjemaProps) {
     const erklaeringId = useQuery().get(ERKLAERING_ID);
 
     const farskapserklaering = userInfo.avventerSigneringBruker?.find(
-        (erklaering) => erklaering.idFarskapserklaering === parseInt(erklaeringId ?? '')
+        (erklaering) => erklaering.idFarskapserklaering === parseInt(erklaeringId ?? ''),
     );
 
     const [state, dispatch] = useReducer(reducer, {
@@ -103,8 +101,8 @@ function FarSkjema({ userInfo }: FarskjemaProps) {
                     farskapserklaering?.farBorSammenMedMor === true
                         ? 'YES'
                         : farskapserklaering?.farBorSammenMedMor === false
-                        ? 'NO'
-                        : null,
+                          ? 'NO'
+                          : null,
             },
         },
         activeStep: 0,

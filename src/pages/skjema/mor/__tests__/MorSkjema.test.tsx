@@ -34,7 +34,7 @@ test('should display steps correctly', async () => {
                 avventerRegistrering: null,
                 fnrNyligFoedteBarnUtenRegistrertFar: null,
             }}
-        />
+        />,
     );
 
     const termindatoInput = screen.getByLabelText(termindatoLabel);

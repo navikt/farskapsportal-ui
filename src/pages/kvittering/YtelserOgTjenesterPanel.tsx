@@ -65,7 +65,7 @@ function ForeldrepengerSvangerskapspengerEngangsstoenad() {
             <ExternalLink
                 href={getMessage(
                     intl,
-                    'kvittering.ytelserOgTjenester.foreldrepengerSvangerskapspengerEngangsstoenad.link'
+                    'kvittering.ytelserOgTjenester.foreldrepengerSvangerskapspengerEngangsstoenad.link',
                 )}
             />
         </KvitteringInfoPanelContent>
@@ -128,7 +128,7 @@ function StoenadTilEnsligMorEllerFar() {
             <ExternalLink
                 href={getMessage(
                     intl,
-                    'kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.link'
+                    'kvittering.ytelserOgTjenester.stoenadTilEnsligMorEllerFar.link',
                 )}
             />
         </KvitteringInfoPanelContent>

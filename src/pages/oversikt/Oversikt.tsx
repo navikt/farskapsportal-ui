@@ -37,7 +37,7 @@ function getFarAlertTextId(userInfo: UserInfo) {
         !!userInfo.avventerSigneringBruker?.filter(
             (eklaering) =>
                 eklaering.dokument?.signertAvMor &&
-                isLessThanNHoursInThePast(eklaering.dokument.signertAvMor, 1)
+                isLessThanNHoursInThePast(eklaering.dokument.signertAvMor, 1),
         ).length;
 
     if (hasUnsignedErklaeringSignedByMotherWithinTheLastHour) {

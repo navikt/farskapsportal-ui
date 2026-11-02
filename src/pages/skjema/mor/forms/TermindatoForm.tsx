@@ -30,7 +30,11 @@ export interface TermindatoFormProps {
 
 function TermindatoForm(props: TermindatoFormProps) {
     const intl = useIntl();
-    const { handleSubmit, control, formState: { errors } } = useForm<TermindatoFormInput>({
+    const {
+        handleSubmit,
+        control,
+        formState: { errors },
+    } = useForm<TermindatoFormInput>({
         mode: 'onSubmit',
         defaultValues: {
             termindato: props.defaultTermindato,

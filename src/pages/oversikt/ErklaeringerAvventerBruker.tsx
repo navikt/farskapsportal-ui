@@ -22,7 +22,7 @@ function ErklaeringerAvventerBruker({ userInfo }: ErklaeringerAvventerBrukerProp
                     <LinkSkjema key={erklaering.idFarskapserklaering} erklaering={erklaering} />
                 ) : (
                     <LinkSigner key={erklaering.idFarskapserklaering} erklaering={erklaering} />
-                )
+                ),
             )}
         </>
     );

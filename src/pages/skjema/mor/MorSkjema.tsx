@@ -153,7 +153,7 @@ interface MorSkjemaProps {
 function MorSkjema({ userInfo }: MorSkjemaProps) {
     const fnrId = useQuery().get(FNR_ID);
     const barnFoedselsnummer = fnrId
-        ? userInfo.fnrNyligFoedteBarnUtenRegistrertFar?.[parseInt(fnrId)] ?? null
+        ? (userInfo.fnrNyligFoedteBarnUtenRegistrertFar?.[parseInt(fnrId)] ?? null)
         : null;
 
     const intl = useIntl();

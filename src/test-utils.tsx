@@ -19,17 +19,17 @@ function ProviderWrapper({ children, store }: { children: ReactNode; store?: Par
 
 const customRender = (
     ui: ReactElement,
-    { store, ...options }: RenderOptions & { store?: Partial<Store> } = {}
+    { store, ...options }: RenderOptions & { store?: Partial<Store> } = {},
 ) => render(<ProviderWrapper store={store}>{ui}</ProviderWrapper>, { ...options });
 
 export const axeOptions = {
-  rules: {
-    'color-contrast': { enabled: false },
-  },
+    rules: {
+        'color-contrast': { enabled: false },
+    },
 } as const;
 
 export const runAxe = (container: HTMLElement, options = axeOptions): Promise<AxeResults> =>
-  axeCore.run(container, options);
+    axeCore.run(container, options);
 
 export * from '@testing-library/react';
 export function generateRandomValidNorwegianIdent(): string {
@@ -38,7 +38,7 @@ export function generateRandomValidNorwegianIdent(): string {
     const randomDate = new Date(
         today.getFullYear() - Math.floor(Math.random() * 30),
         Math.floor(Math.random() * 12),
-        Math.floor(Math.random() * 28) + 1
+        Math.floor(Math.random() * 28) + 1,
     );
 
     const day = String(randomDate.getDate()).padStart(2, '0');

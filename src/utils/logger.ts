@@ -15,5 +15,7 @@ export const logApiError = (url: string, error: AlertError) => {
     }
 
     const errorMessage = `Feil ved henting av data: ${url} - ${error.code} ${error.text}`;
-    captureException(new Error(errorMessage), { context: { url, code: error.code, type: error.type } });
+    captureException(new Error(errorMessage), {
+        context: { url, code: error.code, type: error.type },
+    });
 };

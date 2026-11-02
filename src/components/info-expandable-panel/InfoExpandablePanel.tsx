@@ -15,9 +15,7 @@ function InfoExpandablePanel({ children, titleId }: InfoExpandablePanelProps) {
                     <FormattedMessage id={titleId} />
                 </Heading>
             </Accordion.Header>
-            <Accordion.Content>
-                {children}
-            </Accordion.Content>
+            <Accordion.Content>{children}</Accordion.Content>
         </Accordion.Item>
     );
 }

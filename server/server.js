@@ -111,7 +111,7 @@ app.put('/api/farskapserklaering/redirect', validateAccessToken, async (req, res
                 headers: {
                     Authorization: `Bearer ${oboToken}`,
                 },
-            }
+            },
         );
         const json = await response.json();
         res.status(response.status).send(json);
@@ -131,7 +131,7 @@ app.post('/api/redirect-url/ny', validateAccessToken, async (req, res) => {
                 headers: {
                     Authorization: `Bearer ${oboToken}`,
                 },
-            }
+            },
         );
         const text = await response.text();
         res.status(response.status).send(text);
@@ -171,7 +171,7 @@ app.get('/api/farskapserklaering/:erklaeringId/dokument', validateAccessToken, a
                 headers: {
                     Authorization: `Bearer ${oboToken}`,
                 },
-            }
+            },
         );
         const buffer = Buffer.from(await response.arrayBuffer());
         res.contentType('application/pdf');
@@ -192,14 +192,14 @@ app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
                     .replace('{{{NAIS_TEAM}}}', process.env.NAIS_TEAM ?? '')
                     .replace('{{{NAIS_NAMESPACE}}}', process.env.NAIS_NAMESPACE ?? '')
                     .replace('{{{NAIS_CLUSTER_NAME}}}', process.env.NAIS_CLUSTER_NAME ?? '')
-                    .replace('{{{NAIS_APP_IMAGE_TAG}}}', resolveImageTag())
+                    .replace('{{{NAIS_APP_IMAGE_TAG}}}', resolveImageTag()),
             );
         })
         .catch((e) => {
             const error = `Failed to get decorator: ${e}`;
             console.error(error);
             res.status(500).send(error);
-        })
+        }),
 );
 
 const port = process.env.PORT || 8080;
@@ -210,5 +210,7 @@ process.on('SIGTERM', () => setTimeout(() => console.log('Har sovet i 30 sekunde
 const resolveImageTag = () => {
     const imageRef = process.env.NAIS_APP_IMAGE ?? '';
     const imageWithoutDigest = imageRef.split('@')[0];
-    return imageWithoutDigest.includes(':') ? imageWithoutDigest.split(':').at(-1) ?? '' : imageWithoutDigest;
+    return imageWithoutDigest.includes(':')
+        ? (imageWithoutDigest.split(':').at(-1) ?? '')
+        : imageWithoutDigest;
 };

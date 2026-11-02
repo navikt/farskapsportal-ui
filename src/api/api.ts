@@ -95,20 +95,20 @@ const performGet = (url: string, onlyLogErrorOn?: (error: AlertError) => boolean
 const performPost = (
     url: string,
     data?: Outbound,
-    onlyLogErrorOn?: (error: AlertError) => boolean
+    onlyLogErrorOn?: (error: AlertError) => boolean,
 ) => performApiCall('POST', url, data, onlyLogErrorOn);
 
 const performPut = (
     url: string,
     data?: Outbound,
-    onlyLogErrorOn?: (error: AlertError) => boolean
+    onlyLogErrorOn?: (error: AlertError) => boolean,
 ) => performApiCall('PUT', url, data, onlyLogErrorOn);
 
 const performApiCall = (
     method: 'GET' | 'PUT' | 'POST',
     url: string,
     data?: Outbound,
-    onlyLogErrorOn?: (error: AlertError) => boolean
+    onlyLogErrorOn?: (error: AlertError) => boolean,
 ) =>
     fetch(url, {
         method: method,

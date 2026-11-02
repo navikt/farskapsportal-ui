@@ -23,46 +23,16 @@ function App() {
         <RedirectAfterLogin>
             <RedirectToLanguage>
                 <Routes>
-                    <Route
-                        path={`${basePath}${Path.Oversikt}`}
-                        element={<Oversikt />}
-                    />
-                    <Route
-                        path={`${basePath}${Path.Skjema}`}
-                        element={<Skjema />}
-                    />
-                    <Route
-                        path={`${basePath}${Path.Kvittering}`}
-                        element={<Kvittering />}
-                    />
-                    <Route
-                        path={`${basePath}${Path.Signer}`}
-                        element={<Signer />}
-                    />
-                    <Route
-                        path={`${basePath}${Path.Suksess}`}
-                        element={<Suksess />}
-                    />
-                    <Route
-                        path={`${basePath}${Path.Feilet}`}
-                        element={<Feilet />}
-                    />
-                    <Route
-                        path={`${basePath}${Path.Avbrutt}`}
-                        element={<Avbrutt />}
-                    />
-                    <Route
-                        path={`${basePath}${Path.Suksess_deprecated}`}
-                        element={<Suksess />}
-                    />
-                    <Route
-                        path={`${basePath}${Path.Feilet_deprecated}`}
-                        element={<Feilet />}
-                    />
-                    <Route
-                        path={`${basePath}${Path.Avbrutt_deprecated}`}
-                        element={<Avbrutt />}
-                    />
+                    <Route path={`${basePath}${Path.Oversikt}`} element={<Oversikt />} />
+                    <Route path={`${basePath}${Path.Skjema}`} element={<Skjema />} />
+                    <Route path={`${basePath}${Path.Kvittering}`} element={<Kvittering />} />
+                    <Route path={`${basePath}${Path.Signer}`} element={<Signer />} />
+                    <Route path={`${basePath}${Path.Suksess}`} element={<Suksess />} />
+                    <Route path={`${basePath}${Path.Feilet}`} element={<Feilet />} />
+                    <Route path={`${basePath}${Path.Avbrutt}`} element={<Avbrutt />} />
+                    <Route path={`${basePath}${Path.Suksess_deprecated}`} element={<Suksess />} />
+                    <Route path={`${basePath}${Path.Feilet_deprecated}`} element={<Feilet />} />
+                    <Route path={`${basePath}${Path.Avbrutt_deprecated}`} element={<Avbrutt />} />
                     <Route
                         path={`${basePath}${Path.AvbruttOversikt}`}
                         element={<AvbruttOversikt />}

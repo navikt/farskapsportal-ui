@@ -9,20 +9,20 @@ interface ErrorBoundaryProps {
 
 function ErrorBoundary({ children }: ErrorBoundaryProps) {
     return (
-            <ApmErrorBoundary
-                fallback={
-                    <ErrorPage
-                        banner={{
-                            title: 'Ukjent feil',
-                            text: 'Beklager, noe gikk galt.',
-                        }}
-                        title="Det oppstod en ukjent feil"
-                        text="Vennligst prøv igjen senere."
-                    />
-                }
-            >
-                {children}
-            </ApmErrorBoundary>
+        <ApmErrorBoundary
+            fallback={
+                <ErrorPage
+                    banner={{
+                        title: 'Ukjent feil',
+                        text: 'Beklager, noe gikk galt.',
+                    }}
+                    title="Det oppstod en ukjent feil"
+                    text="Vennligst prøv igjen senere."
+                />
+            }
+        >
+            {children}
+        </ApmErrorBoundary>
     );
 }
 

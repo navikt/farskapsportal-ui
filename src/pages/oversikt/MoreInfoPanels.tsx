@@ -24,7 +24,11 @@ function MoreInfoPanels({ userInfo }: MoreInfoPanelsProps) {
 
     if (userInfo.forelderrolle === Foreldrerolle.Mor) {
         if (avventerSigneringBruker) {
-            return <Accordion><HvemErFar /></Accordion>;
+            return (
+                <Accordion>
+                    <HvemErFar />
+                </Accordion>
+            );
         }
 
         if (hasBarnUtenErklaering) {
@@ -47,7 +51,11 @@ function MoreInfoPanels({ userInfo }: MoreInfoPanelsProps) {
         }
 
         if (avventerRegistrering) {
-            return <Accordion><HvaSkjerNaa /></Accordion>;
+            return (
+                <Accordion>
+                    <HvaSkjerNaa />
+                </Accordion>
+            );
         }
 
         return (
@@ -69,10 +77,18 @@ function MoreInfoPanels({ userInfo }: MoreInfoPanelsProps) {
         }
 
         if (avventerRegistrering) {
-            return <Accordion><HvaSkjerNaa /></Accordion>;
+            return (
+                <Accordion>
+                    <HvaSkjerNaa />
+                </Accordion>
+            );
         }
 
-        return <Accordion><ErklaereUtenMor /></Accordion>;
+        return (
+            <Accordion>
+                <ErklaereUtenMor />
+            </Accordion>
+        );
     } else if (userInfo.forelderrolle === Foreldrerolle.MorEllerFar) {
         if (
             hasBarnUtenErklaering ||
