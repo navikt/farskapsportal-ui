@@ -1,5 +1,5 @@
 import { fireEvent, render, screen, waitFor } from 'test-utils';
-import { vi } from 'vitest';
+import { expect, test, vi } from 'vitest';
 import texts from 'texts/nb';
 import { Foreldrerolle } from 'types/foreldrerolle';
 import { getToday } from 'utils/date';
