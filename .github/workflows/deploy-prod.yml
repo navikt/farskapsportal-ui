@@ -43,6 +43,9 @@ jobs:
       - name: Install dependencies (yarn install)
         run: yarn install --ignore-scripts --frozen-lockfile
 
+      - name: Run lint (yarn lint)
+        run: yarn lint
+
       - name: Run tests (yarn test)
         run: yarn test
 
