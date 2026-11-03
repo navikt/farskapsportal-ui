@@ -47,7 +47,7 @@ const init = async () => {
                     </LanguageProvider>
                 </StoreProvider>
             </ErrorBoundary>
-        </StrictMode>
+        </StrictMode>,
     );
 };
 

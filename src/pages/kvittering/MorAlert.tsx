@@ -1,4 +1,4 @@
-import { Alert, Box, BodyShort, VStack, Heading } from '@navikt/ds-react';
+import { Alert, BodyShort, VStack, Heading } from '@navikt/ds-react';
 import { FormattedMessage } from 'react-intl';
 
 import { Farskapserklaering } from 'types/farskapserklaering';

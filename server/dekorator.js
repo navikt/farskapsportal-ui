@@ -7,7 +7,7 @@ export const getHtmlWithDekorator = (filePath) => {
         ...(isLocalhost && { localUrl: 'http://localhost:8100' }),
         filePath,
         params: {
-            context: "privatperson",
+            context: 'privatperson',
             level: 'Level4',
             redirectToApp: true,
         },

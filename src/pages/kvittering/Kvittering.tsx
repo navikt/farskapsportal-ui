@@ -13,7 +13,7 @@ import YtelserOgTjenesterPanel from './YtelserOgTjenesterPanel';
 import ProsessIndikator from './ProsessIndikator';
 import KvitteringLastNedErklaering from './KvitteringLastNedErklaering';
 import FarskapserklaeringPresentation from '../../components/farskapserklaering-presentation/FarskapserklaeringPresentation';
-import { Accordion, Box, HGrid, VStack } from '@navikt/ds-react';
+import { Accordion, VStack } from '@navikt/ds-react';
 
 function Kvittering() {
     const erklaeringId = useQuery().get(ERKLAERING_ID);

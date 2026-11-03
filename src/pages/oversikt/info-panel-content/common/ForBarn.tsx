@@ -34,7 +34,7 @@ function ForBarn({ erklaeringer }: ForBarnProps) {
                 values={{
                     fnr: erklaeringer
                         .map((erklaering) =>
-                            formatFoedselsnummer(erklaering.barn?.foedselsnummer ?? '')
+                            formatFoedselsnummer(erklaering.barn?.foedselsnummer ?? ''),
                         )
                         .join(', '),
                 }}

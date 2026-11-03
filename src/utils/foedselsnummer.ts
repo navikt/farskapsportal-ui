@@ -9,7 +9,7 @@ export const formatFoedselsnummer = (fnr: string) => {
     if (fnrWithoutWhitespace.length === FOEDSELSNUMMER_LENGTH) {
         return `${fnrWithoutWhitespace.substring(0, CUTOFF_INDEX)} ${fnrWithoutWhitespace.substring(
             CUTOFF_INDEX,
-            FOEDSELSNUMMER_LENGTH
+            FOEDSELSNUMMER_LENGTH,
         )}`;
     }
 

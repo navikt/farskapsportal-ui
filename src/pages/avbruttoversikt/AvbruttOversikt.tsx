@@ -14,13 +14,13 @@ function AvbruttOversikt() {
             <WithUserInfo>
                 {(userInfo) => (
                     <ContentContainer>
-                            <Alert variant="warning">
-                                {userInfo.forelderrolle === Foreldrerolle.Mor ? (
-                                    <FormattedMessage id="avbrutt.alert.mor" />
-                                ) : (
-                                    <FormattedMessage id="avbrutt.alert.far" />
-                                )}
-                            </Alert>
+                        <Alert variant="warning">
+                            {userInfo.forelderrolle === Foreldrerolle.Mor ? (
+                                <FormattedMessage id="avbrutt.alert.mor" />
+                            ) : (
+                                <FormattedMessage id="avbrutt.alert.far" />
+                            )}
+                        </Alert>
                         <VStack gap="space-16">
                             <OversiktInfoPanel userInfo={userInfo} />
                             <MoreInfoPanels userInfo={userInfo} />

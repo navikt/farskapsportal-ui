@@ -12,7 +12,7 @@ export const mapErrors = (errors: FieldErrors, keys: string[]): FormFeil[] => {
         if (errors[key]) {
             feil.push({
                 skjemaelementId: key,
-                feilmelding: errors[key]?.message as string ?? '',
+                feilmelding: (errors[key]?.message as string) ?? '',
             });
         }
     });

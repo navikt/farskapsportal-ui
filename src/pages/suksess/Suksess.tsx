@@ -24,7 +24,7 @@ function Suksess() {
                     fetchUser(dispatch);
                     navigate(
                         `/${language}${Path.Kvittering}?${ERKLAERING_ID}=${res.idFarskapserklaering}`,
-                        { replace: true }
+                        { replace: true },
                     );
                 })
                 .catch(() => {

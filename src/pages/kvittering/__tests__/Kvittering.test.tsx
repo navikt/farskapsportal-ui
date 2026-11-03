@@ -122,9 +122,7 @@ test('should render info for mor with termindato erklaering and bor sammen true'
     expect(screen.getByText(foedtIUtlandetTitle)).not.toBeNull();
     expect(screen.getByText(barnetDoerTitle)).not.toBeNull();
 
-    expect(
-        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle),
-    ).not.toBeNull();
+    expect(screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)).not.toBeNull();
     expect(screen.getByText(barnetrygdTitle)).not.toBeNull();
     expect(screen.queryByText(utvidetBarnetrygdTitle)).toBeNull();
     expect(screen.queryByText(barnebidragTitle)).toBeNull();
@@ -160,9 +158,7 @@ test('should render info for mor with foedselsnummer erklaering and bor sammen t
     expect(screen.queryByText(foedtIUtlandetTitle)).toBeNull();
     expect(screen.queryByText(barnetDoerTitle)).toBeNull();
 
-    expect(
-        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle),
-    ).not.toBeNull();
+    expect(screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)).not.toBeNull();
     expect(screen.getByText(barnetrygdTitle)).not.toBeNull();
     expect(screen.queryByText(utvidetBarnetrygdTitle)).toBeNull();
     expect(screen.queryByText(barnebidragTitle)).toBeNull();
@@ -198,9 +194,7 @@ test('should render info for mor with termindato erklaering and bor sammen false
     expect(screen.getByText(foedtIUtlandetTitle)).not.toBeNull();
     expect(screen.getByText(barnetDoerTitle)).not.toBeNull();
 
-    expect(
-        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle),
-    ).not.toBeNull();
+    expect(screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)).not.toBeNull();
     expect(screen.getByText(barnetrygdTitle)).not.toBeNull();
     expect(screen.getByText(utvidetBarnetrygdTitle)).not.toBeNull();
     expect(screen.getByText(barnebidragTitle)).not.toBeNull();
@@ -237,9 +231,7 @@ test('should render info for mor with termindato erklaering and bor sammen true 
     expect(screen.getByText(foedtIUtlandetTitle)).not.toBeNull();
     expect(screen.getByText(barnetDoerTitle)).not.toBeNull();
 
-    expect(
-        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle),
-    ).not.toBeNull();
+    expect(screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)).not.toBeNull();
     expect(screen.getByText(barnetrygdTitle)).not.toBeNull();
     expect(screen.queryByText(utvidetBarnetrygdTitle)).toBeNull();
     expect(screen.queryByText(barnebidragTitle)).toBeNull();
@@ -274,9 +266,7 @@ test('should render info for far with termindato erklaering and bor sammen true'
     expect(screen.getByText(foedtIUtlandetTitle)).not.toBeNull();
     expect(screen.getByText(barnetDoerTitle)).not.toBeNull();
 
-    expect(
-        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle),
-    ).not.toBeNull();
+    expect(screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)).not.toBeNull();
     expect(screen.getByText(barnetrygdTitle)).not.toBeNull();
     expect(screen.queryByText(barnebidragTitle)).toBeNull();
 });
@@ -305,9 +295,7 @@ test('should render info for far with foedselsnummer erklaering and bor sammen t
 
     fireEvent.click(screen.getByText(ytelserOgTjenesterTitle));
 
-    expect(
-        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle),
-    ).not.toBeNull();
+    expect(screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)).not.toBeNull();
     expect(screen.getByText(barnetrygdTitle)).not.toBeNull();
     expect(screen.queryByText(barnebidragTitle)).toBeNull();
 });
@@ -340,9 +328,7 @@ test('should render info for far with termindato erklaering and bor sammen false
     expect(screen.getByText(foedtIUtlandetTitle)).not.toBeNull();
     expect(screen.getByText(barnetDoerTitle)).not.toBeNull();
 
-    expect(
-        screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle),
-    ).not.toBeNull();
+    expect(screen.getByText(foreldrepengerSvangerskapspengerEngangsstoenadTitle)).not.toBeNull();
     expect(screen.getByText(barnetrygdTitle)).not.toBeNull();
     expect(screen.getByText(barnebidragTitle)).not.toBeNull();
 });
