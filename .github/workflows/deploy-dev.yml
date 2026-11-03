@@ -77,7 +77,7 @@ jobs:
 
       - name: Deploy to dev-gcp for main
         if: github.ref == 'refs/heads/main'
-        uses: nais/deploy/actions/deploy@v2
+        uses: nais/deploy/actions/deploy@v3
         env:
           CLUSTER: dev-gcp
           RESOURCE: .nais/nais.yaml
@@ -86,7 +86,7 @@ jobs:
 
       - name: Deploy to dev-gcp for feature
         if: github.ref != 'refs/heads/main'
-        uses: nais/deploy/actions/deploy@v2
+        uses: nais/deploy/actions/deploy@v3
         env:
           CLUSTER: dev-gcp
           RESOURCE: .nais/nais.yaml
