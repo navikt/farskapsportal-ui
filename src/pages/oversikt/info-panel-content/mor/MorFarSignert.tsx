@@ -12,11 +12,10 @@ function MorFarSignert({ signertErklaeringer }: MorFarSignertProps) {
     return (
         <>
             <BodyShort>
-                <FormattedMessage id="oversikt.infoPanel.mor.farSignert.1" />{' '}
+                <FormattedMessage id="oversikt.infoPanel.mor.farSignert.1" />
                 <ForBarn erklaeringer={signertErklaeringer} />
+                {'.'}
                 <FormattedMessage id="oversikt.infoPanel.mor.farSignert.2" />
-            </BodyShort>
-            <BodyShort>
                 <FormattedMessage id="oversikt.infoPanel.mor.farSignert.3" />
             </BodyShort>
         </>

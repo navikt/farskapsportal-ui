@@ -61,7 +61,7 @@ export default {
 
     'oversikt.infoPanel.greeting': 'Hei, {fornavn}',
 
-    'oversikt.infoPanel.common.forBarn.termindato': 'forventet født {termindato}',
+    'oversikt.infoPanel.common.forBarn.termindato': '{termindato}',
     'oversikt.infoPanel.common.forBarn.foedselsnummer': 'med fødselsnummer {fnr}',
 
     'oversikt.infoPanel.mor.utenBarn.1': 'Hvis du er minimum 22 uker på vei kan du oppgi termindatoen og gi opplysninger om barnets far slik at han kan erklære farskapet elektronisk.',
@@ -73,9 +73,9 @@ export default {
     'oversikt.infoPanel.mor.ikkeSignert.2': 'Hvis opplysningene du har gitt om faren til barnet ikke stemmer, eller du er usikker på hvem som er faren til barnet, kan du slette erklæringen ved å ta kontakt med Nav på nav.no/kontaktoss eller telefon 55 55 33 33.',
     'oversikt.infoPanel.mor.farIkkeSignert.1': 'Du har tidligere gitt opplysninger om far til barn',
     'oversikt.infoPanel.mor.farIkkeSignert.2': 'Faren du har oppgitt har ikke erklært farskapet til barnet. Når han erklærer farskapet, blir erklæringen oversendt til Skatteetaten for registrering. En kopi av erklæringen blir også sendt til adressen du har registret hos Nav.',
-    'oversikt.infoPanel.mor.farSignert.1': 'Du har gitt opplysninger om faren til barnet som er',
-    'oversikt.infoPanel.mor.farSignert.2': ', og oppgitt far har erklært farskap for barnet.',
-    'oversikt.infoPanel.mor.farSignert.3': 'Erklæringen er oversendt til Skatteetaten for registrering. En kopi av erklæringen er sendt til e-postadressen du har registret hos Nav.',
+    'oversikt.infoPanel.mor.farSignert.1': 'Du har oppgitt hvem som er far til barnet du venter, som har termin ',
+    'oversikt.infoPanel.mor.farSignert.2': 'Far har erklært farskap for barnet.',
+    'oversikt.infoPanel.mor.farSignert.3': 'Farskapsrklæringen er oversendt til Skatteetaten for registrering. En kopi av farskapserklæringen er sendt til din digitale postkasse.',
 
     'oversikt.infoPanel.far.utenErklaering': 'Det er ingen farskapserklæring som venter på din signatur. For at du skal kunne erklære farskap elektronisk må moren til barnet først oppgi deg som faren til barnet.',
     'oversikt.infoPanel.far.ikkeSignert': 'Du er oppgitt som faren til barnet.', // TODO
@@ -93,7 +93,7 @@ export default {
     'oversikt.moreInfoPanels.medmor.content.2': 'Du finner informasjon og søknadsskjema <a>her</a>.',
     'oversikt.moreInfoPanels.medmor.content.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/soknad-om-medmorskap/',
     'oversikt.moreInfoPanels.hvaSkjerNaa.title': 'Hva skjer nå?',
-    'oversikt.moreInfoPanels.hvaSkjerNaa.content': 'Det er Skatteetaten ved Folkeregisteret som er ansvarlig for å registrere og arkivere farskapserklæringer. Når dere melder inn opplysninger om barnets navn til dem vil du motta en bekreftelse på registrering av fødselsnummer og navn. Bekreftelsen mottar du i innboksen din i Altinn. Du finner mer informasjon om registrering av farskap og navnevalg <a>her</a>.',
+    'oversikt.moreInfoPanels.hvaSkjerNaa.content': 'Skatteetaten registrerer farskapet i Folkeregisteret og tar vare på farskapserklæringen. Du finner mer <a>informasjon om registrering av farskap og valg av navn på Skatteetatens nettsider</a>.',
     'oversikt.moreInfoPanels.hvaSkjerNaa.link': 'https://www.skatteetaten.no/person/folkeregister/fodsel-og-navnevalg/barn-fodt-i-norge/',
     'oversikt.moreInfoPanels.farErklaererIkke.title': 'Hva skjer hvis faren du har oppgitt ikke erklærer farskapet?',
     'oversikt.moreInfoPanels.farErklaererIkke.content': 'Hvis faren du har oppgitt ikke erklærer farskapet, har Nav ansvaret for å fastsette det. Det kan da være aktuelt å kalle inn partene og bekrefte farskapet ved bruk av DNA-analyse. For ytterligere informasjon kan du kontakte oss på nav.no/kontaktoss eller telefon 55 55 33 33.',
@@ -197,7 +197,7 @@ export default {
     "skjema.stepper.clockFilled.title": "Steg fortsatt til behandling",
 
     'kvittering.intro.foedselsnummer': 'med fødselsnummer {fnr}.',
-    'kvittering.intro.termindato': 'forventet født {termindato}.',
+    'kvittering.intro.termindato': '{termindato}.',
     'kvittering.intro.downloadPdfNotSigned': 'Du kan laste ned farskapserklæringen som en pdf på denne siden etter at begge parter har signert.',
     'kvittering.intro.downloadPdf': 'Last ned ferdig signert farskapserklæring som pdf her: ',
     'kvittering.intro.pdfName': 'Farskapserklæring.pdf',
