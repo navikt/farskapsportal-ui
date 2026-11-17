@@ -57,7 +57,7 @@
     "fetch-mock": "^9.11.0",
     "globals": "^17.14.0",
     "jsdom": "^25.0.0",
-    "prettier": "^3.5.0",
+    "prettier": "3.9.10",
     "typescript": "^5.4.5",
     "typescript-eslint": "^8.72.2",
     "vite": "^8.1.6",
