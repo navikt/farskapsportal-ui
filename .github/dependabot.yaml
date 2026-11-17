@@ -1,4 +1,12 @@
 version: 2
+registries:
+  npm-github:
+    type: npm-registry
+    url: https://npm.pkg.github.com
+    token: ${{ secrets.READER_TOKEN }}
+    # Keep public npm as the default. The @navikt scope uses GitHub Packages
+    # via .npmrc file. This is not a fallback registry.
+    replaces-base: false
 updates:
   # Basic set up for package managers.
   # Maintain GitHub Actions dependencies.
@@ -27,14 +35,41 @@ updates:
       default-days: 7
     commit-message:
       prefix: '[npm] '
-    labels:
-      - 'npm'
-      - 'dependencies'
     groups:
-      aksel:
+      nav-designsystem-packages:
         patterns:
           - '@navikt/aksel*'
           - '@navikt/ds*'
+        update-types:
+          - 'minor'
+          - 'patch'
+      react-packages:
+        patterns:
+          - 'react'
+          - 'react-dom'
+          - '@types/react'
+          - '@types/react-dom'
+        update-types:
+          - 'minor'
+          - 'patch'
+      tailwind-packages:
+        patterns:
+          - 'tailwindcss'
+          - '@tailwindcss/*'
+        update-types:
+          - 'minor'
+          - 'patch'
+      # Name of group that also appears in the PR subject
+      non-grouped-patch-updates:
+        patterns:
+          - '*'
+        update-types:
+          - 'patch'
+    # Ensures that package.json is updated along with the lockfile
+    versioning-strategy: increase
+    open-pull-requests-limit: 15
+    registries:
+      - npm-github
   - package-ecosystem: 'docker'
     directory: '/'
     schedule:
