@@ -44,6 +44,9 @@ jobs:
       - name: Install dependencies (yarn install)
         run: yarn install --ignore-scripts --frozen-lockfile
 
+      - name: Check formatting (yarn prettier:check)
+        run: yarn prettier:check
+
       - name: Run lint (yarn lint)
         run: yarn lint
 
