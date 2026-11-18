@@ -26,7 +26,9 @@ updates:
       prefix: '[github-actions] '
   # Maintain npm dependencies
   - package-ecosystem: 'npm'
-    directory: '/'
+    directories:
+      - '/'
+      - '/server'
     schedule:
       interval: 'daily'
       time: '06:30'
