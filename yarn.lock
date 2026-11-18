@@ -665,37 +665,37 @@
   dependencies:
     "@tybys/wasm-util" "^0.10.3"
 
-"@navikt/aksel-icons@^8.16.1":
-  version "8.16.1"
-  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/8.16.1/14a6bd35401f4ab289af18de58f94399d621ebf7#14a6bd35401f4ab289af18de58f94399d621ebf7"
-  integrity sha512-qrvaYi2tr2hClZXGnVMR+kgd3ruV5bPDIVz8dlQqkZ8RNA6Rd14HXZ0pQUvxyvAWS/NxdjaYAO3Cl1MpFRilAA==
+"@navikt/aksel-icons@^8.22.1":
+  version "8.22.1"
+  resolved "https://npm.pkg.github.com/download/@navikt/aksel-icons/8.22.1/c93a3bad8be4134bd833ecc08db4583034be4d75#c93a3bad8be4134bd833ecc08db4583034be4d75"
+  integrity sha512-NmNg4vK6Hrabw8CleI6jJCwOb4aXnMjkE9Rw4OQjbfgHrg4UXWnUFgQJ3/Rk/unGdfXGNxV591RTwPNc2dZoTA==
 
 "@navikt/analytics-types@0.0.9":
   version "0.0.9"
   resolved "https://npm.pkg.github.com/download/@navikt/analytics-types/0.0.9/5919241a6dbb782eb101fff3234ce5c36d16e942#5919241a6dbb782eb101fff3234ce5c36d16e942"
   integrity sha512-bopCvqEogyFcmrJiBxK/Mr25d6yPKF7GR36MGrJqiHCPJYf1rDu6lK4cpooTG4Q//D/1xTkHRom8ZH5BI6dTew==
 
-"@navikt/ds-css@^8.16.1":
-  version "8.16.1"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-css/8.16.1/dd3196185f7119601a19b0910a5da1beb5e47c4f#dd3196185f7119601a19b0910a5da1beb5e47c4f"
-  integrity sha512-UV0Qu0ynV3orcFjwhD17taKll/ZwAcySXLR4unrBzFkaOdvJ78i8L81CVn7YkdpIcyaA68fz2K7QKQZNO/QteA==
+"@navikt/ds-css@^8.22.1":
+  version "8.22.1"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-css/8.22.1/623473ad66bd13b979cd026acb51b996b25a62a4#623473ad66bd13b979cd026acb51b996b25a62a4"
+  integrity sha512-whWza4g9GAssC9qWOEtrnPYcffaGGT6ko347A6KggccrC7/G7drxJj2aQVk+2bHFWT7GClg20dDxlmZKm9CcTA==
 
-"@navikt/ds-react@^8.16.1":
-  version "8.16.1"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/8.16.1/6534446031f78476a07862f1026ad61e3e392903#6534446031f78476a07862f1026ad61e3e392903"
-  integrity sha512-JU6k3dtjwTTWKR9FYKtBYCXRXvyt6WkVaAoOR0l8E9TjbvxdfUlgpcOZALe59OKDL6WnpGk2ZrfEf1CPohyyMw==
+"@navikt/ds-react@^8.22.1":
+  version "8.22.1"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-react/8.22.1/864ade4ec3891f9bf5e94a71089665433ce351d7#864ade4ec3891f9bf5e94a71089665433ce351d7"
+  integrity sha512-rS7wmk/pE3KIDTV3Oimbnx/vd9nxQs3AQt7QgxILNrIGvE+uih5ohbcz9UOk970beUDc+xeQ5jmRK209dzNfcw==
   dependencies:
     "@floating-ui/react" "0.27.20"
     "@floating-ui/react-dom" "^2.1.9"
-    "@navikt/aksel-icons" "^8.16.1"
-    "@navikt/ds-tokens" "^8.16.1"
+    "@navikt/aksel-icons" "^8.22.1"
+    "@navikt/ds-tokens" "^8.22.1"
     date-fns "^4.0.0"
-    react-day-picker "10.0.1"
+    react-day-picker "10.0.2"
 
-"@navikt/ds-tokens@^8.16.1":
-  version "8.16.1"
-  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/8.16.1/f1ac550ff75679021d1c3a21997f33a9728a6a01#f1ac550ff75679021d1c3a21997f33a9728a6a01"
-  integrity sha512-PTLN5EWkfprObW3sJfRqcZvYOTMpG2l92VrMYeVX272hPlKn7an9eodZ6ggIMTEeNoQ+MuOhN0wEVk6Cbs77SA==
+"@navikt/ds-tokens@^8.22.1":
+  version "8.23.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/8.23.0/569a10706977258093e2ecf396f29884b03562f9#569a10706977258093e2ecf396f29884b03562f9"
+  integrity sha512-+GXKDpfZixeCblvKJEnSG1/vlZp27xjqX6NNhzs0442Y1jGuEadGUJ+nxndYpmgZ4QcZCE2VEsKvluXctfHVYA==
 
 "@navikt/nav-dekoratoren-moduler@^4.2.2":
   version "4.2.2"
@@ -3555,10 +3555,10 @@ querystring@^0.2.0:
   resolved "https://registry.yarnpkg.com/querystring/-/querystring-0.2.1.tgz#40d77615bb09d16902a85c3e38aa8b5ed761c2dd"
   integrity sha512-wkvS7mL/JMugcup3/rMitHmd9ecIGd2lhFhK9N3UUQ450h66d1r3Y9nvXzQAW1Lq+wyx61k/1pfKS5KuKiyEbg==
 
-react-day-picker@10.0.1:
-  version "10.0.1"
-  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-10.0.1.tgz#8498e3f0ace2e9d03c209a5458c451a377c2d85c"
-  integrity sha512-eNh6BlwcYInWaJtRv18mXQ06Ys/H6rdTZAnTaSdOYJuTpwP1JMCHNd1FDRadA+gbeinq+psdULN5Xnowy9mV8w==
+react-day-picker@10.0.2:
+  version "10.0.2"
+  resolved "https://registry.yarnpkg.com/react-day-picker/-/react-day-picker-10.0.2.tgz#0bc95cb1ff49c31a65aefe2e3aa5ed44dba4fa4a"
+  integrity sha512-QetiKtZWE9Uaw/pM/SYNv6WPYOTRnSJ2puL0GgwkmUFMIwiY0dtjH1W4B7DOVXVNQM0ZOClGpH/heOfBSzWeiA==
   dependencies:
     "@date-fns/tz" "^1.4.1"
     date-fns "^4.1.0"
