@@ -7,6 +7,17 @@ import { validateAccessToken, exchangeToken } from './auth/auth-middleware.js';
 const buildPath = '../build';
 const apiUrl = `${process.env.FARSKAPSPORTAL_API_URL}/api/v1/farskapsportal`;
 const app = express();
+const parserErrorStatuses = {
+    'charset.unsupported': 415,
+    'encoding.unsupported': 415,
+    'entity.parse.failed': 400,
+    'entity.too.large': 413,
+    'entity.verify.failed': 403,
+    'request.aborted': 400,
+    'request.size.invalid': 400,
+    'stream.encoding.set': 500,
+    'stream.not.readable': 500,
+};
 
 app.use(express.text());
 headers.setup(app);
@@ -201,6 +212,17 @@ app.use(/^(?!.*\/(internal|static)\/).*$/, (req, res) =>
             res.status(500).send(error);
         }),
 );
+
+app.use((error, _req, res, next) => {
+    const status = Object.hasOwn(parserErrorStatuses, error.type)
+        ? parserErrorStatuses[error.type]
+        : undefined;
+    if (status) {
+        console.error('Request body parsing failed', { type: error.type, status });
+        return res.sendStatus(status);
+    }
+    next(error);
+});
 
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`App listening on port: ${port}`));
