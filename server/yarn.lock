@@ -417,23 +417,23 @@ hasown@^2.0.2:
   dependencies:
     function-bind "^1.1.2"
 
-html-dom-parser@8.0.0:
-  version "8.0.0"
-  resolved "https://registry.yarnpkg.com/html-dom-parser/-/html-dom-parser-8.0.0.tgz#c962f2a2cdbaf1de19de9bcd7e010e7c14591e55"
-  integrity sha512-cWLJ8mt930VceOzVfY/J+T1ou9v3ENT0BgWqy5aEZjdFp37TYLXULjX8u0vD2rBpFAkK5IofOPl0y4Gq0QLIyA==
+html-dom-parser@8.0.2:
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/html-dom-parser/-/html-dom-parser-8.0.2.tgz#eefc78a3c74bff970d956c33ac8827478dcab25e"
+  integrity sha512-UnUW0rcyfkYo9OCgeo+5Pzc4lRaifZB4h8RlGRwYIJmEz97Q3OKIYhNVXhG53jmNKWvBrq9n4ZzZIZAECnatSw==
   dependencies:
     domhandler "6.0.1"
     htmlparser2 "12.0.0"
 
-html-react-parser@^6.1.3:
-  version "6.1.3"
-  resolved "https://registry.yarnpkg.com/html-react-parser/-/html-react-parser-6.1.3.tgz#721dee42219fe0c9c1521c018f02637b38a724cd"
-  integrity sha512-CTsKtLJA23cgTbcJYT8vgHAPSqGY7NM+/mv+Tv6I0DqkLCa3FlceK2htH8AwlGa03BopqnVvK/XHqQq7HAw/sg==
+html-react-parser@^6.1.9:
+  version "6.1.9"
+  resolved "https://registry.yarnpkg.com/html-react-parser/-/html-react-parser-6.1.9.tgz#b87b5292efb4c94b5831f1db6454b78215a42fc0"
+  integrity sha512-5lQzzUQXrFe1+OR7GOGkATsm/2h3UIIWQvPkl+84+A9vYG6zbGxhZJjrCDlGvmQs7qPMbffO3XYizVrHekLZbA==
   dependencies:
     domhandler "6.0.1"
-    html-dom-parser "8.0.0"
+    html-dom-parser "8.0.2"
     react-property "2.0.2"
-    style-to-js "2.0.0"
+    style-to-js "2.0.2"
 
 htmlparser2@12.0.0:
   version "12.0.0"
@@ -468,10 +468,10 @@ inherits@^2.0.3, inherits@~2.0.4:
   resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz#0fa2c64f932917c3433a0ded55363aae37416b7c"
   integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
 
-inline-style-parser@0.2.7:
-  version "0.2.7"
-  resolved "https://registry.yarnpkg.com/inline-style-parser/-/inline-style-parser-0.2.7.tgz#b1fc68bfc0313b8685745e4464e37f9376b9c909"
-  integrity sha512-Nb2ctOyNR8DqQoR0OwRG95uNWIC0C1lCgf5Naz5H6Ji72KZ8OcFZLz2P5sNgwlyoJ8Yif11oMuYs5pBQa86csA==
+inline-style-parser@0.2.9:
+  version "0.2.9"
+  resolved "https://registry.yarnpkg.com/inline-style-parser/-/inline-style-parser-0.2.9.tgz#148d759a4b8677a560a1d3e185e6db7f6be57652"
+  integrity sha512-IttN8BqKLxzUrnTqHI+/hwAJQItBAUjdoHERCDv+oOuX48VP6bzW8+QjOXSfoevzq3YrYAwX1uLHp8TqO9yIeg==
 
 ipaddr.js@1.9.1:
   version "1.9.1"
@@ -789,19 +789,19 @@ string_decoder@^1.1.1:
   dependencies:
     safe-buffer "~5.2.0"
 
-style-to-js@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/style-to-js/-/style-to-js-2.0.0.tgz#ae08c74b69ac2a5e94de1601cc381b9f4cfa2fe7"
-  integrity sha512-amkl/SwHF/Gb430+eOiN+XToZ6VsD2nota1kCXps4k1xagZOniEVNm8zKYm7RrGm2Q6d6hjnZdqebFIunoSJng==
+style-to-js@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/style-to-js/-/style-to-js-2.0.2.tgz#eda76dfeac495f90f148798f4c39f0c96cb05ea8"
+  integrity sha512-ctgbFvvi406Jvhi/s6TJtX6XYYCCTg6POgsL+SLmrl2RHFgwulepqtYPrtKuEmT8kmyk/+fxfNzuhRLO4zsASg==
   dependencies:
-    style-to-object "1.0.14"
+    style-to-object "2.0.2"
 
-style-to-object@1.0.14:
-  version "1.0.14"
-  resolved "https://registry.yarnpkg.com/style-to-object/-/style-to-object-1.0.14.tgz#1d22f0e7266bb8c6d8cae5caf4ec4f005e08f611"
-  integrity sha512-LIN7rULI0jBscWQYaSswptyderlarFkjQ+t79nzty8tcIAceVomEVlLzH5VP4Cmsv6MtKhs7qaAiwlcp+Mgaxw==
+style-to-object@2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/style-to-object/-/style-to-object-2.0.2.tgz#f14fc7b1ec0fc7d8e88208a0e09fdd20b5e362e6"
+  integrity sha512-QmbXPUylqU80HAgTOJeEOdbA40W9KtxmjMhQy+tq+b8F2aoh3aQLuy82hh2jm2qsC9hR9eI0+eQidTMydKcqRA==
   dependencies:
-    inline-style-parser "0.2.7"
+    inline-style-parser "0.2.9"
 
 tdigest@^0.1.1:
   version "0.1.2"
