@@ -9,7 +9,7 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "@navikt/nav-dekoratoren-moduler": "^4.2.2",
+    "@navikt/nav-dekoratoren-moduler": "^4.6.0",
     "@navikt/oasis": "^4.2.2",
     "compression": "^1.8.2",
     "express": "^5.3.0",
