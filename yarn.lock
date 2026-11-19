@@ -697,14 +697,14 @@
   resolved "https://npm.pkg.github.com/download/@navikt/ds-tokens/8.23.0/569a10706977258093e2ecf396f29884b03562f9#569a10706977258093e2ecf396f29884b03562f9"
   integrity sha512-+GXKDpfZixeCblvKJEnSG1/vlZp27xjqX6NNhzs0442Y1jGuEadGUJ+nxndYpmgZ4QcZCE2VEsKvluXctfHVYA==
 
-"@navikt/nav-dekoratoren-moduler@^4.2.2":
-  version "4.2.2"
-  resolved "https://npm.pkg.github.com/download/@navikt/nav-dekoratoren-moduler/4.2.2/9982b2b38e397df0e9b0cd886beb3d16d0b97a61#9982b2b38e397df0e9b0cd886beb3d16d0b97a61"
-  integrity sha512-1V/fOlgTNzTWRzIgtJwymamj6NgppZdcRTiy9OXO57PwEA6lCoWX9qXh82Zgxl0pOYQQ7QOUH9DOfKov18h3wQ==
+"@navikt/nav-dekoratoren-moduler@^4.6.0":
+  version "4.6.0"
+  resolved "https://npm.pkg.github.com/download/@navikt/nav-dekoratoren-moduler/4.6.0/6c8cbd3d81091b0eb1e35818598aa81b0fc16295#6c8cbd3d81091b0eb1e35818598aa81b0fc16295"
+  integrity sha512-1Yrbbmap/zuC5zGic6/+pOp6hbveoApTyMPQEBHB3a4Ac9mMdKqnLJyDtcYJCVhpMByD4KaRm5NgBaLpy17JmA==
   dependencies:
     "@navikt/analytics-types" "0.0.9"
-    csp-header "6.3.1"
-    js-cookie "3.0.7"
+    csp-header "6.4.0"
+    js-cookie "3.0.8"
 
 "@opentelemetry/api-logs@0.219.0":
   version "0.219.0"
@@ -1800,10 +1800,10 @@ cross-spawn@^7.0.6:
     shebang-command "^2.0.0"
     which "^2.0.1"
 
-csp-header@6.3.1:
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/csp-header/-/csp-header-6.3.1.tgz#eab336e6205082e82f5e54ba13d07e703d2a384b"
-  integrity sha512-ykcqGMOGP/uU7RLXDD83k2Ge5Stgc/N3qgKgSN+dATDlNgLHnIoI1IdZBjOskD5Ev1RSKTabLdIETJ6VzXTmvA==
+csp-header@6.4.0:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/csp-header/-/csp-header-6.4.0.tgz#0a096b2108e17935668056ea727204d73de9d47f"
+  integrity sha512-9YEpW20tPtKzVouyAxNtXqSE4EGaTd4ZiT1n/FbUQ5xhmFkPCjC3Db/gHDbesryQoO/TigBAUCqgKypOHviRgQ==
 
 cssstyle@^4.1.0:
   version "4.6.0"
@@ -2992,12 +2992,7 @@ iterator.prototype@^1.1.5:
     has-symbols "^1.1.0"
     set-function-name "^2.0.2"
 
-js-cookie@3.0.7:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-3.0.7.tgz#0a53abfc459c8e89c85d7a38eb6cb68714965b8c"
-  integrity sha512-z/wZZgDrkNV1eA0ULjM/F9/50Ya8fbzgKneSpoPsXSGd0KnpdtHfOZWK+GcwLk+EZbS4F9RBhU+K2RgzuDaItw==
-
-js-cookie@^3.0.7:
+js-cookie@3.0.8, js-cookie@^3.0.7:
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/js-cookie/-/js-cookie-3.0.8.tgz#444e6f4b27a5d844594fef61c9d6bca5f0787688"
   integrity sha512-yeJd4aNAdYZQjaon2bpD/Gb0B/omw7HQOsynXXcOiWVCacbBcPlgn8S/d1X6blFSaHao7ozqtW7NZW19xpCtIw==
