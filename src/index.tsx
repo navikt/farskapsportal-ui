@@ -29,6 +29,7 @@ const init = async () => {
                 context: 'privatperson',
                 level: 'Level4',
                 chatbot: false,
+                teamName: 'farskapsportal-ui.farskapsportal',
             },
         });
     }
