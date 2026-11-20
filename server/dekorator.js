@@ -10,6 +10,7 @@ export const getHtmlWithDekorator = (filePath) => {
             context: 'privatperson',
             level: 'Level4',
             redirectToApp: true,
+            teamName: 'farskapsportal-ui.farskapsportal',
         },
     });
 };
