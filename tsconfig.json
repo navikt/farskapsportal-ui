@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": ["dom", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -15,7 +15,9 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "src",
+    "paths": {
+      "*": ["./src/*"]
+    },
     "sourceMap": true
   },
   "include": ["src"]
