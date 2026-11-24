@@ -17,7 +17,7 @@
     "prettier:write": "prettier --write ."
   },
   "engines": {
-    "node": "24.x"
+    "node": "^24.15.0"
   },
   "dependencies": {
     "@formatjs/intl-datetimeformat": "^4.5.1",
