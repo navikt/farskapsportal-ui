@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@formatjs/intl-datetimeformat": "^4.5.1",
-    "@formatjs/intl-numberformat": "^7.4.3",
+    "@formatjs/intl-numberformat": "^10.1.0",
     "@grafana/faro-react": "^2.14.0",
     "@nais/apm": "^0.7.3",
     "@navikt/aksel-icons": "^8.23.0",
