@@ -475,13 +475,13 @@
     "@opentelemetry/api" "^1.9.0"
     "@opentelemetry/otlp-transformer" "^0.223.0"
 
-"@grafana/faro-react@^2.8.2":
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/@grafana/faro-react/-/faro-react-2.11.0.tgz#9cc3edcef9c2256ba3805a3b56ff914dc619d358"
-  integrity sha512-x6lhs8raKlqdGXYcNGTWZhqGumRMbcQDe/Qr2RK2o0q42SFy3grfVA7KDTUjE21hPngmUHgfzY2MwldHzE9f/A==
+"@grafana/faro-react@^2.14.0":
+  version "2.14.0"
+  resolved "https://registry.yarnpkg.com/@grafana/faro-react/-/faro-react-2.14.0.tgz#d1f75ae98ca6f3cc475e937941bdc091d204cbef"
+  integrity sha512-2Iy/tSr8+qp6pioOH9k12/JrAf3z81me4kg+FFkRJTQxJSMIHaZyGZQcrMjgdFLJA6lZCiw9jhQFEvThWBhStA==
   dependencies:
-    "@grafana/faro-web-sdk" "^2.11.0"
-    "@grafana/faro-web-tracing" "^2.11.0"
+    "@grafana/faro-web-sdk" "^2.14.0"
+    "@grafana/faro-web-tracing" "^2.14.0"
     hoist-non-react-statics "^3.3.2"
 
 "@grafana/faro-web-sdk@2.12.1":
@@ -493,7 +493,7 @@
     ua-parser-js "1.0.41"
     web-vitals "^6.0.0"
 
-"@grafana/faro-web-sdk@^2.11.0", "@grafana/faro-web-sdk@^2.12.1":
+"@grafana/faro-web-sdk@^2.12.1", "@grafana/faro-web-sdk@^2.14.0", "@grafana/faro-web-sdk@^2.15.0":
   version "2.15.0"
   resolved "https://registry.yarnpkg.com/@grafana/faro-web-sdk/-/faro-web-sdk-2.15.0.tgz#d484bfbabddf07c6a2f1f68f17eb431c8de51d18"
   integrity sha512-d9xMaHUCoqZ2rwFd6emFxmz7Vdw1fJPhdbEoz4pke2m2eGG8dd6acqQBCA+rPAtVfOI39/GlwGXNR1fhgE1+6w==
@@ -502,7 +502,7 @@
     ua-parser-js "1.0.41"
     web-vitals "^6.0.0"
 
-"@grafana/faro-web-tracing@2.12.1", "@grafana/faro-web-tracing@^2.11.0":
+"@grafana/faro-web-tracing@2.12.1":
   version "2.12.1"
   resolved "https://registry.yarnpkg.com/@grafana/faro-web-tracing/-/faro-web-tracing-2.12.1.tgz#42347e7cf1ba615d6304636f47f379d05448c291"
   integrity sha512-m9TEjPsEc8kJVeKnHoHCEPz7eDVpn/etZqMc2louYCWZsXIH4v2hlfT8ZY3MAIKCzBPBgoxVFqOOjvSwtOKRfw==
@@ -515,6 +515,23 @@
     "@opentelemetry/instrumentation-fetch" "^0.222.0"
     "@opentelemetry/instrumentation-xml-http-request" "^0.222.0"
     "@opentelemetry/otlp-transformer" "^0.222.0"
+    "@opentelemetry/resources" "^2.0.0"
+    "@opentelemetry/sdk-trace-web" "^2.0.0"
+    "@opentelemetry/semantic-conventions" "^1.32.0"
+
+"@grafana/faro-web-tracing@^2.14.0":
+  version "2.15.0"
+  resolved "https://registry.yarnpkg.com/@grafana/faro-web-tracing/-/faro-web-tracing-2.15.0.tgz#838af5c4a2aa6560cadf0b3e26db2809896c779e"
+  integrity sha512-b2h/6H45Q6+u+BeM6HemA9P5keYYDeS6/Aum3rxXDuVGf/fc1HTKeub0FpR37bKpOEcElF5NHniSmT8zuD9V0Q==
+  dependencies:
+    "@grafana/faro-web-sdk" "^2.15.0"
+    "@opentelemetry/api" "^1.9.0"
+    "@opentelemetry/core" "^2.0.0"
+    "@opentelemetry/exporter-trace-otlp-http" "^0.223.0"
+    "@opentelemetry/instrumentation" "^0.223.0"
+    "@opentelemetry/instrumentation-fetch" "^0.223.0"
+    "@opentelemetry/instrumentation-xml-http-request" "^0.223.0"
+    "@opentelemetry/otlp-transformer" "^0.223.0"
     "@opentelemetry/resources" "^2.0.0"
     "@opentelemetry/sdk-trace-web" "^2.0.0"
     "@opentelemetry/semantic-conventions" "^1.32.0"
@@ -740,6 +757,15 @@
     "@opentelemetry/otlp-transformer" "0.222.0"
     "@opentelemetry/sdk-trace" "2.11.0"
 
+"@opentelemetry/exporter-trace-otlp-http@^0.223.0":
+  version "0.223.2"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/exporter-trace-otlp-http/-/exporter-trace-otlp-http-0.223.2.tgz#a19b67635ed9ffd31b7924145e4f90a6bc46231d"
+  integrity sha512-ERCu66nR7+0x/KzwxI+6GW9m26+u/Ett78yApmB/Oy42AaYJGhJSA0JTyrsFChyKvBQ9Bywo+dPSccYDY48UZQ==
+  dependencies:
+    "@opentelemetry/otlp-exporter-base" "0.223.2"
+    "@opentelemetry/otlp-transformer" "0.223.2"
+    "@opentelemetry/sdk-trace" "2.12.1"
+
 "@opentelemetry/instrumentation-fetch@^0.222.0":
   version "0.222.0"
   resolved "https://registry.yarnpkg.com/@opentelemetry/instrumentation-fetch/-/instrumentation-fetch-0.222.0.tgz#e28940dd4dff319d173fd9548acfcd4d9a4be645"
@@ -749,6 +775,16 @@
     "@opentelemetry/instrumentation" "0.222.0"
     "@opentelemetry/sdk-trace-web" "2.11.0"
     "@opentelemetry/semantic-conventions" "^1.29.0"
+
+"@opentelemetry/instrumentation-fetch@^0.223.0":
+  version "0.223.2"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/instrumentation-fetch/-/instrumentation-fetch-0.223.2.tgz#415dbeb0e5e3d052c1f53068a2cbd6298bdd2d11"
+  integrity sha512-ogh1No4x5GMzLDWN1/4lp9foZVyTNLTT4BOELfALxZnZgMm5J6T5j7afDi6L5bqHxZ5vVwhMHruffeE8pBlD5g==
+  dependencies:
+    "@opentelemetry/core" "2.12.1"
+    "@opentelemetry/instrumentation" "0.223.2"
+    "@opentelemetry/semantic-conventions" "^1.29.0"
+    "@opentelemetry/web-common" "0.223.2"
 
 "@opentelemetry/instrumentation-xml-http-request@^0.222.0":
   version "0.222.0"
@@ -760,12 +796,31 @@
     "@opentelemetry/sdk-trace-web" "2.11.0"
     "@opentelemetry/semantic-conventions" "^1.29.0"
 
+"@opentelemetry/instrumentation-xml-http-request@^0.223.0":
+  version "0.223.2"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/instrumentation-xml-http-request/-/instrumentation-xml-http-request-0.223.2.tgz#68c11595cc18ad21dccca3b10850847471c34dc0"
+  integrity sha512-biAlRPBJFdcPSYkUK0OXZcBr9fa8cXSg/9hCT7W/OrnuOG5X15Gn6gMgvqkvVSyb8s1CJYgOWIZk1TNDCADivw==
+  dependencies:
+    "@opentelemetry/core" "2.12.1"
+    "@opentelemetry/instrumentation" "0.223.2"
+    "@opentelemetry/semantic-conventions" "^1.29.0"
+    "@opentelemetry/web-common" "0.223.2"
+
 "@opentelemetry/instrumentation@0.222.0", "@opentelemetry/instrumentation@^0.222.0":
   version "0.222.0"
   resolved "https://registry.yarnpkg.com/@opentelemetry/instrumentation/-/instrumentation-0.222.0.tgz#a463a615c77e84615438c9a0f76390d179f4221a"
   integrity sha512-fhbRDuAgzPKpq1k5+hX3uS+3QAYNca0on0Ngot/R8dDsQtuFaADeZnG2uSgxABuvcI7S2phAaRhbct9jieeKZw==
   dependencies:
     "@opentelemetry/api-logs" "0.222.0"
+    import-in-the-middle "^3.0.0"
+    require-in-the-middle "^8.0.0"
+
+"@opentelemetry/instrumentation@0.223.2", "@opentelemetry/instrumentation@^0.223.0":
+  version "0.223.2"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/instrumentation/-/instrumentation-0.223.2.tgz#3366134a15a3b51a0bc62a08e1a407d16ced7dc3"
+  integrity sha512-2tRpOgQ91+wC2/h6IDt+dsQNuUlfUR+CVwABceAEtiWtON9JumZR6YQcYCsisNRTX942TnCjPDuBI0xxGgVLHQ==
+  dependencies:
+    "@opentelemetry/api-logs" "0.223.2"
     import-in-the-middle "^3.0.0"
     require-in-the-middle "^8.0.0"
 
@@ -776,6 +831,14 @@
   dependencies:
     "@opentelemetry/core" "2.11.0"
     "@opentelemetry/otlp-transformer" "0.222.0"
+
+"@opentelemetry/otlp-exporter-base@0.223.2":
+  version "0.223.2"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/otlp-exporter-base/-/otlp-exporter-base-0.223.2.tgz#6d95292d880a9ca717914e7bdf45acc70af476db"
+  integrity sha512-xiDR0ECXojG2zq5ZK2gnjP7FeHM0aLSfDVlpokbViY2BcgEySnbvazb/li8Ddd6XnUrt2g3kVVg5PFkvWYpFGw==
+  dependencies:
+    "@opentelemetry/core" "2.12.1"
+    "@opentelemetry/otlp-transformer" "0.223.2"
 
 "@opentelemetry/otlp-transformer@0.222.0", "@opentelemetry/otlp-transformer@^0.222.0":
   version "0.222.0"
@@ -789,7 +852,7 @@
     "@opentelemetry/sdk-metrics" "2.11.0"
     "@opentelemetry/sdk-trace" "2.11.0"
 
-"@opentelemetry/otlp-transformer@^0.223.0":
+"@opentelemetry/otlp-transformer@0.223.2", "@opentelemetry/otlp-transformer@^0.223.0":
   version "0.223.2"
   resolved "https://registry.yarnpkg.com/@opentelemetry/otlp-transformer/-/otlp-transformer-0.223.2.tgz#dbe9d474be6062d65c5eaa61f679727a05574a70"
   integrity sha512-EQcjay0lf1HDW0ykqOSakUpxpYyaV3URhWPhcFQCu19Dp5hYt8K44TOGp3ZAphZNQDBpRqLqMO8hkVyME54oXg==
@@ -918,6 +981,14 @@
   version "1.41.1"
   resolved "https://registry.yarnpkg.com/@opentelemetry/semantic-conventions/-/semantic-conventions-1.41.1.tgz#b04e7151c5913a7a006d4f465479da75efb98a7a"
   integrity sha512-/UhIkaZgPutTFmQ7RnIJGgDXZmtEJ7Dvi86xNTFWcnRxVRNk/aotsqDJYeEvDP+FSMB2SdW+pQzNMcWP0rwuNA==
+
+"@opentelemetry/web-common@0.223.2":
+  version "0.223.2"
+  resolved "https://registry.yarnpkg.com/@opentelemetry/web-common/-/web-common-0.223.2.tgz#ec3d835a64a688e1e91ccccc3f40ea32ea4700d2"
+  integrity sha512-Wrz50L1/PTb9EZ76N6sBaMF+sp1gv/4zDd1nP7CgEVOnZtovpc1SI9OAkjpdHdx7QY7tKKuCEEcf2QV31F3D+Q==
+  dependencies:
+    "@opentelemetry/core" "2.12.1"
+    "@opentelemetry/semantic-conventions" "^1.29.0"
 
 "@oxc-project/types@=0.156.0":
   version "0.156.0"
