@@ -28,7 +28,7 @@
     "@navikt/ds-css": "^8.23.0",
     "@navikt/ds-react": "^8.23.0",
     "@navikt/nav-dekoratoren-moduler": "^4.6.0",
-    "date-fns": "^2.30.0",
+    "date-fns": "^4.4.0",
     "html-react-parser": "^6.1.10",
     "js-cookie": "^3.0.7",
     "react": "^18.3.1",
