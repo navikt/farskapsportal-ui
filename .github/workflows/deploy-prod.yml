@@ -58,7 +58,7 @@ jobs:
         run: yarn install --production --ignore-scripts --frozen-lockfile
         working-directory: server
 
-      - uses: nais/docker-build-push@v0
+      - uses: nais/docker-build-push@6394144a53cad0332745f24a8302f5efaf81719a # v1.0.0
         id: docker-push
         with:
           team: farskapsportal
