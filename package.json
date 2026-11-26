@@ -20,7 +20,7 @@
     "node": "^24.15.0"
   },
   "dependencies": {
-    "@formatjs/intl-datetimeformat": "^4.5.1",
+    "@formatjs/intl-datetimeformat": "^8.2.0",
     "@formatjs/intl-numberformat": "^7.4.3",
     "@grafana/faro-react": "^2.14.0",
     "@nais/apm": "^0.7.3",
